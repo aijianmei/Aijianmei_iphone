@@ -368,7 +368,6 @@
 		4A965CCB168F6AE400FF34CE /* ShareToQQViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A965CC7168F6AE400FF34CE /* ShareToQQViewController.xib */; };
 		4A965CD0168F6AF600FF34CE /* FitnessNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A965CCE168F6AF600FF34CE /* FitnessNetworkRequest.m */; };
 		4A965CD4168F6B9100FF34CE /* MyselfTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A965CD3168F6B9100FF34CE /* MyselfTableViewCell.m */; };
-		4A965CD9168F6BFF00FF34CE /* libicucore.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 4A965CD6168F6BFF00FF34CE /* libicucore.dylib */; };
 		4AA681541689760700769157 /* TencentWeiboManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA681531689760700769157 /* TencentWeiboManager.m */; };
 		4AA681681689D28600769157 /* TengxunWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA681671689D28600769157 /* TengxunWeibo.m */; };
 		4AA941E31686D8BB00022B2D /* ShareToQQWeiboController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA941DE1686D8BB00022B2D /* ShareToQQWeiboController.m */; };
@@ -1058,7 +1057,6 @@
 		4A965CD1168F6B7E00FF34CE /* FitnessNetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitnessNetworkRequest.h; sourceTree = "<group>"; };
 		4A965CD2168F6B9100FF34CE /* MyselfTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyselfTableViewCell.h; sourceTree = "<group>"; };
 		4A965CD3168F6B9100FF34CE /* MyselfTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyselfTableViewCell.m; sourceTree = "<group>"; };
-		4A965CD6168F6BFF00FF34CE /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = WoJianMei/libicucore.dylib; sourceTree = "<group>"; };
 		4AA681521689760700769157 /* TencentWeiboManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TencentWeiboManager.h; sourceTree = "<group>"; };
 		4AA681531689760700769157 /* TencentWeiboManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TencentWeiboManager.m; sourceTree = "<group>"; };
 		4AA681661689D28600769157 /* TengxunWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TengxunWeibo.h; sourceTree = "<group>"; };
@@ -2946,7 +2944,6 @@
 				4ACF41A615E1DE02003D7404 /* EventKit.framework */,
 				4A55F60015DC8E080064C0C0 /* CoreFoundation.framework */,
 				4A4992C0168556D00073E682 /* libz.1.1.3.dylib */,
-				4A965CD6168F6BFF00FF34CE /* libicucore.dylib */,
 				4ABD0DAA15D7F59E00B08DDA /* libsqlite3.dylib */,
 				4ABD0DA615D7F55A00B08DDA /* libz.dylib */,
 				4AE20A8D15D4B4E8003BBE37 /* StoreKit.framework */,
@@ -3227,7 +3224,6 @@
 				4A965CC1168F6AC000FF34CE /* Default@2x.png in Resources */,
 				4A965CC9168F6AE400FF34CE /* README in Resources */,
 				4A965CCB168F6AE400FF34CE /* ShareToQQViewController.xib in Resources */,
-				4A965CD9168F6BFF00FF34CE /* libicucore.dylib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
