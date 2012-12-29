@@ -75,7 +75,6 @@
 		4A498E811685500F0073E682 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A498DAF1685500F0073E682 /* unzip.c */; };
 		4A498E821685500F0073E682 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A498DB11685500F0073E682 /* zip.c */; };
 		4A498E831685500F0073E682 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A498DB41685500F0073E682 /* SSZipArchive.m */; };
-		4A498EDF1685512E0073E682 /* FitnessNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A498EDE1685512E0073E682 /* FitnessNetworkRequest.m */; };
 		4A4991CD168553A30073E682 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A498F9F168553A20073E682 /* ASIAuthenticationDialog.m */; };
 		4A4991CE168553A30073E682 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A498FA2168553A20073E682 /* ASIDataCompressor.m */; };
 		4A4991CF168553A30073E682 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A498FA4168553A20073E682 /* ASIDataDecompressor.m */; };
@@ -288,8 +287,6 @@
 		4A4F4E3215D4E99600FBBC73 /* 01.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 4A4F4E2715D4E99600FBBC73 /* 01.m4v */; };
 		4A55F60115DC8E080064C0C0 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A55F60015DC8E080064C0C0 /* CoreFoundation.framework */; };
 		4A5F6CAC168AC2C200149252 /* weiboicon24.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A5F6CAB168AC2C200149252 /* weiboicon24.png */; };
-		4A5F6CB4168AF83800149252 /* ShareToQQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F6CB2168AF83700149252 /* ShareToQQViewController.m */; };
-		4A5F6CB5168AF83800149252 /* ShareToQQViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A5F6CB3168AF83700149252 /* ShareToQQViewController.xib */; };
 		4A7BFD1A15C4B67100C79C77 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7BFD1915C4B67100C79C77 /* MediaPlayer.framework */; };
 		4A7CF99215D74EF000206B14 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */; };
 		4A81F6DD15E3724100201BAA /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A81F6B215E3724100201BAA /* AboutViewController.m */; };
@@ -361,18 +358,17 @@
 		4A959A21168ED998006F1317 /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A959904168ED996006F1317 /* libWeChatSDK_armv7_armv7s.a */; };
 		4A959A43168EE264006F1317 /* QSyncHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A959A42168EE263006F1317 /* QSyncHttp.m */; };
 		4A959A46168EEB11006F1317 /* MakeFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A959A45168EEB10006F1317 /* MakeFriendsViewController.m */; };
-		4A959A49168EECC6006F1317 /* MyselfTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A959A48168EECC4006F1317 /* MyselfTableViewCell.m */; };
 		4A965CBD168F6AC000FF34CE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A965CB8168F6AC000FF34CE /* Default-568h@2x.png */; };
 		4A965CBE168F6AC000FF34CE /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A965CB9168F6AC000FF34CE /* Default-Landscape@2x~ipad.png */; };
 		4A965CBF168F6AC000FF34CE /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A965CBA168F6AC000FF34CE /* Default-Landscape~ipad.png */; };
 		4A965CC0168F6AC000FF34CE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A965CBB168F6AC000FF34CE /* Default.png */; };
 		4A965CC1168F6AC000FF34CE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A965CBC168F6AC000FF34CE /* Default@2x.png */; };
-		4A965CC8168F6AE400FF34CE /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A965CC3168F6AE400FF34CE /* Reachability.m */; };
 		4A965CC9168F6AE400FF34CE /* README in Resources */ = {isa = PBXBuildFile; fileRef = 4A965CC4168F6AE400FF34CE /* README */; };
 		4A965CCA168F6AE400FF34CE /* ShareToQQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A965CC6168F6AE400FF34CE /* ShareToQQViewController.m */; };
 		4A965CCB168F6AE400FF34CE /* ShareToQQViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A965CC7168F6AE400FF34CE /* ShareToQQViewController.xib */; };
-		4A965CCF168F6AF600FF34CE /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A965CCD168F6AF600FF34CE /* EGORefreshTableHeaderView.m */; };
 		4A965CD0168F6AF600FF34CE /* FitnessNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A965CCE168F6AF600FF34CE /* FitnessNetworkRequest.m */; };
+		4A965CD4168F6B9100FF34CE /* MyselfTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A965CD3168F6B9100FF34CE /* MyselfTableViewCell.m */; };
+		4A965CD9168F6BFF00FF34CE /* libicucore.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 4A965CD6168F6BFF00FF34CE /* libicucore.dylib */; };
 		4AA681541689760700769157 /* TencentWeiboManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA681531689760700769157 /* TencentWeiboManager.m */; };
 		4AA681681689D28600769157 /* TengxunWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA681671689D28600769157 /* TengxunWeibo.m */; };
 		4AA941E31686D8BB00022B2D /* ShareToQQWeiboController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA941DE1686D8BB00022B2D /* ShareToQQWeiboController.m */; };
@@ -532,8 +528,6 @@
 		4A498DB31685500F0073E682 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
 		4A498DB41685500F0073E682 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
 		4A498EDC168550D10073E682 /* FitnessNetworkConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitnessNetworkConstants.h; sourceTree = "<group>"; };
-		4A498EDD1685512E0073E682 /* FitnessNetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FitnessNetworkRequest.h; path = ../FitnessNetworkRequest.h; sourceTree = "<group>"; };
-		4A498EDE1685512E0073E682 /* FitnessNetworkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FitnessNetworkRequest.m; path = ../FitnessNetworkRequest.m; sourceTree = "<group>"; };
 		4A498F9E168553A20073E682 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		4A498F9F168553A20073E682 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		4A498FA0168553A20073E682 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -942,9 +936,6 @@
 		4A4F4E2715D4E99600FBBC73 /* 01.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = 01.m4v; sourceTree = "<group>"; };
 		4A55F60015DC8E080064C0C0 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		4A5F6CAB168AC2C200149252 /* weiboicon24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weiboicon24.png; sourceTree = "<group>"; };
-		4A5F6CB1168AF83600149252 /* ShareToQQViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareToQQViewController.h; path = ../ShareToQQViewController.h; sourceTree = "<group>"; };
-		4A5F6CB2168AF83700149252 /* ShareToQQViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareToQQViewController.m; path = ../ShareToQQViewController.m; sourceTree = "<group>"; };
-		4A5F6CB3168AF83700149252 /* ShareToQQViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShareToQQViewController.xib; path = ../ShareToQQViewController.xib; sourceTree = "<group>"; };
 		4A7BFD1915C4B67100C79C77 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4A81F6B115E3724100201BAA /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = Controllers/AboutViewController.h; sourceTree = "<group>"; };
@@ -1054,22 +1045,20 @@
 		4A959A42168EE263006F1317 /* QSyncHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSyncHttp.m; sourceTree = "<group>"; };
 		4A959A44168EEB10006F1317 /* MakeFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeFriendsViewController.h; sourceTree = "<group>"; };
 		4A959A45168EEB10006F1317 /* MakeFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeFriendsViewController.m; sourceTree = "<group>"; };
-		4A959A47168EECC3006F1317 /* MyselfTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyselfTableViewCell.h; path = ../MyselfTableViewCell.h; sourceTree = "<group>"; };
-		4A959A48168EECC4006F1317 /* MyselfTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyselfTableViewCell.m; path = ../MyselfTableViewCell.m; sourceTree = "<group>"; };
 		4A965CB8168F6AC000FF34CE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "WoJianMei/Default-568h@2x.png"; sourceTree = "<group>"; };
 		4A965CB9168F6AC000FF34CE /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "WoJianMei/Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		4A965CBA168F6AC000FF34CE /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "WoJianMei/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		4A965CBB168F6AC000FF34CE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = WoJianMei/Default.png; sourceTree = "<group>"; };
 		4A965CBC168F6AC000FF34CE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "WoJianMei/Default@2x.png"; sourceTree = "<group>"; };
-		4A965CC2168F6AE400FF34CE /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		4A965CC3168F6AE400FF34CE /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		4A965CC4168F6AE400FF34CE /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		4A965CC5168F6AE400FF34CE /* ShareToQQViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareToQQViewController.h; sourceTree = "<group>"; };
 		4A965CC6168F6AE400FF34CE /* ShareToQQViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareToQQViewController.m; sourceTree = "<group>"; };
 		4A965CC7168F6AE400FF34CE /* ShareToQQViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareToQQViewController.xib; sourceTree = "<group>"; };
-		4A965CCC168F6AF600FF34CE /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
-		4A965CCD168F6AF600FF34CE /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		4A965CCE168F6AF600FF34CE /* FitnessNetworkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitnessNetworkRequest.m; sourceTree = "<group>"; };
+		4A965CD1168F6B7E00FF34CE /* FitnessNetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitnessNetworkRequest.h; sourceTree = "<group>"; };
+		4A965CD2168F6B9100FF34CE /* MyselfTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyselfTableViewCell.h; sourceTree = "<group>"; };
+		4A965CD3168F6B9100FF34CE /* MyselfTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyselfTableViewCell.m; sourceTree = "<group>"; };
+		4A965CD6168F6BFF00FF34CE /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = WoJianMei/libicucore.dylib; sourceTree = "<group>"; };
 		4AA681521689760700769157 /* TencentWeiboManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TencentWeiboManager.h; sourceTree = "<group>"; };
 		4AA681531689760700769157 /* TencentWeiboManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TencentWeiboManager.m; sourceTree = "<group>"; };
 		4AA681661689D28600769157 /* TengxunWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TengxunWeibo.h; sourceTree = "<group>"; };
@@ -1357,17 +1346,14 @@
 			isa = PBXGroup;
 			children = (
 				4A498EDC168550D10073E682 /* FitnessNetworkConstants.h */,
-				4A965CCC168F6AF600FF34CE /* EGORefreshTableHeaderView.h */,
-				4A965CCD168F6AF600FF34CE /* EGORefreshTableHeaderView.m */,
+				4A965CD2168F6B9100FF34CE /* MyselfTableViewCell.h */,
+				4A965CD3168F6B9100FF34CE /* MyselfTableViewCell.m */,
 				4A965CCE168F6AF600FF34CE /* FitnessNetworkRequest.m */,
-				4A965CC2168F6AE400FF34CE /* Reachability.h */,
-				4A965CC3168F6AE400FF34CE /* Reachability.m */,
+				4A965CD1168F6B7E00FF34CE /* FitnessNetworkRequest.h */,
 				4A965CC4168F6AE400FF34CE /* README */,
 				4A965CC5168F6AE400FF34CE /* ShareToQQViewController.h */,
 				4A965CC6168F6AE400FF34CE /* ShareToQQViewController.m */,
 				4A965CC7168F6AE400FF34CE /* ShareToQQViewController.xib */,
-				4A498EDD1685512E0073E682 /* FitnessNetworkRequest.h */,
-				4A498EDE1685512E0073E682 /* FitnessNetworkRequest.m */,
 			);
 			name = NetWork;
 			sourceTree = "<group>";
@@ -2815,8 +2801,6 @@
 			children = (
 				4A81F6C115E3724100201BAA /* MyselfViewController.h */,
 				4A81F6C215E3724100201BAA /* MyselfViewController.m */,
-				4A959A47168EECC3006F1317 /* MyselfTableViewCell.h */,
-				4A959A48168EECC4006F1317 /* MyselfTableViewCell.m */,
 			);
 			name = MyselfViewController;
 			sourceTree = "<group>";
@@ -2863,9 +2847,6 @@
 				4AA941DD1686D8BB00022B2D /* ShareToQQWeiboController.h */,
 				4AA941DE1686D8BB00022B2D /* ShareToQQWeiboController.m */,
 				4AA941DF1686D8BB00022B2D /* ShareToQQWeiboController.xib */,
-				4A5F6CB1168AF83600149252 /* ShareToQQViewController.h */,
-				4A5F6CB2168AF83700149252 /* ShareToQQViewController.m */,
-				4A5F6CB3168AF83700149252 /* ShareToQQViewController.xib */,
 				4AA681521689760700769157 /* TencentWeiboManager.h */,
 				4AA681531689760700769157 /* TencentWeiboManager.m */,
 				4AA681661689D28600769157 /* TengxunWeibo.h */,
@@ -2965,6 +2946,7 @@
 				4ACF41A615E1DE02003D7404 /* EventKit.framework */,
 				4A55F60015DC8E080064C0C0 /* CoreFoundation.framework */,
 				4A4992C0168556D00073E682 /* libz.1.1.3.dylib */,
+				4A965CD6168F6BFF00FF34CE /* libicucore.dylib */,
 				4ABD0DAA15D7F59E00B08DDA /* libsqlite3.dylib */,
 				4ABD0DA615D7F55A00B08DDA /* libz.dylib */,
 				4AE20A8D15D4B4E8003BBE37 /* StoreKit.framework */,
@@ -3216,7 +3198,6 @@
 				4A3F4E1E168825190026F240 /* feedback_bg2@2x.png in Resources */,
 				4A3F4E22168826260026F240 /* topmenu_btn_right@2x.png in Resources */,
 				4A5F6CAC168AC2C200149252 /* weiboicon24.png in Resources */,
-				4A5F6CB5168AF83800149252 /* ShareToQQViewController.xib in Resources */,
 				4A9599A5168ED997006F1317 /* .gitignore in Resources */,
 				4A9599A8168ED997006F1317 /* tips.html in Resources */,
 				4A9599A9168ED997006F1317 /* QQ登录IOS SDK.rtf in Resources */,
@@ -3246,6 +3227,7 @@
 				4A965CC1168F6AC000FF34CE /* Default@2x.png in Resources */,
 				4A965CC9168F6AE400FF34CE /* README in Resources */,
 				4A965CCB168F6AE400FF34CE /* ShareToQQViewController.xib in Resources */,
+				4A965CD9168F6BFF00FF34CE /* libicucore.dylib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3296,7 +3278,6 @@
 				4A498E811685500F0073E682 /* unzip.c in Sources */,
 				4A498E821685500F0073E682 /* zip.c in Sources */,
 				4A498E831685500F0073E682 /* SSZipArchive.m in Sources */,
-				4A498EDF1685512E0073E682 /* FitnessNetworkRequest.m in Sources */,
 				4A4991CD168553A30073E682 /* ASIAuthenticationDialog.m in Sources */,
 				4A4991CE168553A30073E682 /* ASIDataCompressor.m in Sources */,
 				4A4991CF168553A30073E682 /* ASIDataDecompressor.m in Sources */,
@@ -3478,7 +3459,6 @@
 				4AA941EA1686D91400022B2D /* SinaweiboManager.m in Sources */,
 				4AA681541689760700769157 /* TencentWeiboManager.m in Sources */,
 				4AA681681689D28600769157 /* TengxunWeibo.m in Sources */,
-				4A5F6CB4168AF83800149252 /* ShareToQQViewController.m in Sources */,
 				4A9599A7168ED997006F1317 /* MobClickUtils.m in Sources */,
 				4A9599AA168ED997006F1317 /* QFObject.m in Sources */,
 				4A9599BC168ED997006F1317 /* APIBase.m in Sources */,
@@ -3504,12 +3484,10 @@
 				4A959A12168ED997006F1317 /* SinaWeiboRequest.m in Sources */,
 				4A959A43168EE264006F1317 /* QSyncHttp.m in Sources */,
 				4A959A46168EEB11006F1317 /* MakeFriendsViewController.m in Sources */,
-				4A959A49168EECC6006F1317 /* MyselfTableViewCell.m in Sources */,
 				4A311E9B168F119A0087012C /* WorkoutViewController.m in Sources */,
-				4A965CC8168F6AE400FF34CE /* Reachability.m in Sources */,
 				4A965CCA168F6AE400FF34CE /* ShareToQQViewController.m in Sources */,
-				4A965CCF168F6AF600FF34CE /* EGORefreshTableHeaderView.m in Sources */,
 				4A965CD0168F6AF600FF34CE /* FitnessNetworkRequest.m in Sources */,
+				4A965CD4168F6B9100FF34CE /* MyselfTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3699,6 +3677,7 @@
 					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/UMUFP_iPhone_SDK\"",
 					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/WeixinSDK\"",
 					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/YoumiSDK\"",
+					"\"$(SRCROOT)/WoJianMei\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = WoJianMei;
@@ -3785,6 +3764,7 @@
 					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/UMUFP_iPhone_SDK\"",
 					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/WeixinSDK\"",
 					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/YoumiSDK\"",
+					"\"$(SRCROOT)/WoJianMei\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = WoJianMei;
