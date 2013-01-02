@@ -478,10 +478,6 @@
 		4A34DE871614026E00974A2D /* StaticTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticTextFieldTableViewCell.h; sourceTree = "<group>"; };
 		4A34DE881614026E00974A2D /* StaticTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticTextFieldTableViewCell.m; sourceTree = "<group>"; };
 		4A34DE8D1614032A00974A2D /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Controllers/SettingsViewController.m; sourceTree = "<group>"; };
-		4A34DE941614241100974A2D /* back-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-arrow.png"; sourceTree = "<group>"; };
-		4A34DE951614241100974A2D /* back-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-arrow@2x.png"; sourceTree = "<group>"; };
-		4A34DE961614241100974A2D /* menu-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon.png"; sourceTree = "<group>"; };
-		4A34DE971614241100974A2D /* menu-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon@2x.png"; sourceTree = "<group>"; };
 		4A34DE981614241100974A2D /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
 		4A34DE991614241100974A2D /* MFSideMenuManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuManager.h; sourceTree = "<group>"; };
 		4A34DE9A1614241100974A2D /* MFSideMenuManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuManager.m; sourceTree = "<group>"; };
@@ -1280,10 +1276,6 @@
 		4A34DEA81614246E00974A2D /* MFSideMenu */ = {
 			isa = PBXGroup;
 			children = (
-				4A34DE941614241100974A2D /* back-arrow.png */,
-				4A34DE951614241100974A2D /* back-arrow@2x.png */,
-				4A34DE961614241100974A2D /* menu-icon.png */,
-				4A34DE971614241100974A2D /* menu-icon@2x.png */,
 				4A34DE981614241100974A2D /* MFSideMenu.h */,
 				4A34DE991614241100974A2D /* MFSideMenuManager.h */,
 				4A34DE9A1614241100974A2D /* MFSideMenuManager.m */,
