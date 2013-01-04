@@ -239,6 +239,24 @@
 		4A4992C1168556D00073E682 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4992C0168556D00073E682 /* libz.1.1.3.dylib */; };
 		4A4992D3168589E40073E682 /* UserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4992D2168589E40073E682 /* UserService.m */; };
 		4A55F60115DC8E080064C0C0 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A55F60015DC8E080064C0C0 /* CoreFoundation.framework */; };
+		4A764C07169675CC000F7839 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4A764BE0169675CC000F7839 /* LICENSE */; };
+		4A764C08169675CC000F7839 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4A764BE1169675CC000F7839 /* README.md */; };
+		4A764C09169675CC000F7839 /* DEComposeRuledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A764BE4169675CC000F7839 /* DEComposeRuledView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		4A764C0A169675CC000F7839 /* DEComposeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A764BE6169675CC000F7839 /* DEComposeTextView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		4A764C0B169675CC000F7839 /* REComposeBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A764BE8169675CC000F7839 /* REComposeBackgroundView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		4A764C0C169675CC000F7839 /* REComposeSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A764BEA169675CC000F7839 /* REComposeSheetView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		4A764C0D169675CC000F7839 /* REComposeViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A764BEB169675CC000F7839 /* REComposeViewController.bundle */; };
+		4A764C0E169675CC000F7839 /* REComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A764BED169675CC000F7839 /* REComposeViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		4A764C10169675CC000F7839 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A764BF2169675CC000F7839 /* bg@2x.png */; };
+		4A764C11169675CC000F7839 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A764BF3169675CC000F7839 /* Default-568h@2x.png */; };
+		4A764C12169675CC000F7839 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A764BF4169675CC000F7839 /* Default.png */; };
+		4A764C13169675CC000F7839 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A764BF5169675CC000F7839 /* Default@2x.png */; };
+		4A764C15169675CC000F7839 /* Flower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A764BF8169675CC000F7839 /* Flower.jpg */; };
+		4A764C16169675CC000F7839 /* foursquare-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A764BF9169675CC000F7839 /* foursquare-logo@2x.png */; };
+		4A764C19169675CC000F7839 /* ComposeRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A764BFE169675CC000F7839 /* ComposeRootViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		4A764C1A169675CC000F7839 /* Screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A764C02169675CC000F7839 /* Screenshot.png */; };
+		4A764C241696BA23000F7839 /* ComposeRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A764C231696BA21000F7839 /* ComposeRootViewController.xib */; };
+		4A764C281696BAA8000F7839 /* MFSlidingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A764C271696BAA8000F7839 /* MFSlidingView.m */; };
 		4A7BFD1A15C4B67100C79C77 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7BFD1915C4B67100C79C77 /* MediaPlayer.framework */; };
 		4A7CF99215D74EF000206B14 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */; };
 		4A81F6DD15E3724100201BAA /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A81F6B215E3724100201BAA /* AboutViewController.m */; };
@@ -911,6 +929,31 @@
 		4A4992D1168589E40073E682 /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserService.h; sourceTree = "<group>"; };
 		4A4992D2168589E40073E682 /* UserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserService.m; sourceTree = "<group>"; };
 		4A55F60015DC8E080064C0C0 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		4A764BE0169675CC000F7839 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		4A764BE1169675CC000F7839 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		4A764BE3169675CC000F7839 /* DEComposeRuledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEComposeRuledView.h; sourceTree = "<group>"; };
+		4A764BE4169675CC000F7839 /* DEComposeRuledView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEComposeRuledView.m; sourceTree = "<group>"; };
+		4A764BE5169675CC000F7839 /* DEComposeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEComposeTextView.h; sourceTree = "<group>"; };
+		4A764BE6169675CC000F7839 /* DEComposeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEComposeTextView.m; sourceTree = "<group>"; };
+		4A764BE7169675CC000F7839 /* REComposeBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REComposeBackgroundView.h; sourceTree = "<group>"; };
+		4A764BE8169675CC000F7839 /* REComposeBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REComposeBackgroundView.m; sourceTree = "<group>"; };
+		4A764BE9169675CC000F7839 /* REComposeSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REComposeSheetView.h; sourceTree = "<group>"; };
+		4A764BEA169675CC000F7839 /* REComposeSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REComposeSheetView.m; sourceTree = "<group>"; };
+		4A764BEB169675CC000F7839 /* REComposeViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = REComposeViewController.bundle; sourceTree = "<group>"; };
+		4A764BEC169675CC000F7839 /* REComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REComposeViewController.h; sourceTree = "<group>"; };
+		4A764BED169675CC000F7839 /* REComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REComposeViewController.m; sourceTree = "<group>"; };
+		4A764BF2169675CC000F7839 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg@2x.png"; path = "REComposeViewControllerExample/REComposeViewControllerExample/bg@2x.png"; sourceTree = "<group>"; };
+		4A764BF3169675CC000F7839 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "REComposeViewControllerExample/REComposeViewControllerExample/Default-568h@2x.png"; sourceTree = "<group>"; };
+		4A764BF4169675CC000F7839 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = REComposeViewControllerExample/REComposeViewControllerExample/Default.png; sourceTree = "<group>"; };
+		4A764BF5169675CC000F7839 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "REComposeViewControllerExample/REComposeViewControllerExample/Default@2x.png"; sourceTree = "<group>"; };
+		4A764BF8169675CC000F7839 /* Flower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Flower.jpg; path = REComposeViewControllerExample/REComposeViewControllerExample/Flower.jpg; sourceTree = "<group>"; };
+		4A764BF9169675CC000F7839 /* foursquare-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "foursquare-logo@2x.png"; path = "REComposeViewControllerExample/REComposeViewControllerExample/foursquare-logo@2x.png"; sourceTree = "<group>"; };
+		4A764BFD169675CC000F7839 /* ComposeRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComposeRootViewController.h; path = WoJianMei/REComposeViewController/REComposeViewControllerExample/REComposeViewControllerExample/ComposeRootViewController.h; sourceTree = SOURCE_ROOT; };
+		4A764BFE169675CC000F7839 /* ComposeRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComposeRootViewController.m; path = WoJianMei/REComposeViewController/REComposeViewControllerExample/REComposeViewControllerExample/ComposeRootViewController.m; sourceTree = SOURCE_ROOT; };
+		4A764C02169675CC000F7839 /* Screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot.png; sourceTree = "<group>"; };
+		4A764C231696BA21000F7839 /* ComposeRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeRootViewController.xib; sourceTree = "<group>"; };
+		4A764C261696BAA8000F7839 /* MFSlidingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSlidingView.h; sourceTree = "<group>"; };
+		4A764C271696BAA8000F7839 /* MFSlidingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSlidingView.m; sourceTree = "<group>"; };
 		4A7BFD1915C4B67100C79C77 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4A81F6B115E3724100201BAA /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = Controllers/AboutViewController.h; sourceTree = "<group>"; };
@@ -1337,8 +1380,8 @@
 				4A498EDC168550D10073E682 /* FitnessNetworkConstants.h */,
 				4A965CD2168F6B9100FF34CE /* MyselfTableViewCell.h */,
 				4A965CD3168F6B9100FF34CE /* MyselfTableViewCell.m */,
-				4A965CCE168F6AF600FF34CE /* FitnessNetworkRequest.m */,
 				4A965CD1168F6B7E00FF34CE /* FitnessNetworkRequest.h */,
+				4A965CCE168F6AF600FF34CE /* FitnessNetworkRequest.m */,
 				4A965CC4168F6AE400FF34CE /* README */,
 				4A965CC5168F6AE400FF34CE /* ShareToQQViewController.h */,
 				4A965CC6168F6AE400FF34CE /* ShareToQQViewController.m */,
@@ -2460,6 +2503,7 @@
 		4A58805115C52B81005F8415 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4A764C251696BA95000F7839 /* MFSlidingView */,
 				4AEE95BD15FB7F75005A66DC /* Leaves */,
 				4AEE95C415FB8046005A66DC /* Pagination.h */,
 				4AEE95C515FB8046005A66DC /* Pagination.m */,
@@ -2473,8 +2517,8 @@
 		4A58805215C52B89005F8415 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4AA941DC1686D83800022B2D /* ShareController */,
 				4ACD190916154F5C00567A24 /* Entries */,
+				4AA941DC1686D83800022B2D /* ShareController */,
 				4A34DEA91614250D00974A2D /* SliderMenuesViewController */,
 				4A81F6B715E3724100201BAA /* PlayVideosViewController.h */,
 				4A81F6B815E3724100201BAA /* PlayVideosViewController.m */,
@@ -2494,11 +2538,67 @@
 		4A58805B15C65B16005F8415 /* Common iphone */ = {
 			isa = PBXGroup;
 			children = (
+				4A764BDF169675CC000F7839 /* REComposeViewController */,
 				4A34DE93161423F600974A2D /* MFSliderViewController */,
 				4A34DE7D1614016400974A2D /* SettingsController */,
 			);
 			name = "Common iphone";
 			path = WoJianMei;
+			sourceTree = "<group>";
+		};
+		4A764BDF169675CC000F7839 /* REComposeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4A764C02169675CC000F7839 /* Screenshot.png */,
+				4A764C1E16967607000F7839 /* Resources */,
+				4A764BFD169675CC000F7839 /* ComposeRootViewController.h */,
+				4A764BFE169675CC000F7839 /* ComposeRootViewController.m */,
+				4A764C231696BA21000F7839 /* ComposeRootViewController.xib */,
+				4A764BE2169675CC000F7839 /* REComposeViewController */,
+			);
+			path = REComposeViewController;
+			sourceTree = "<group>";
+		};
+		4A764BE2169675CC000F7839 /* REComposeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4A764BE3169675CC000F7839 /* DEComposeRuledView.h */,
+				4A764BE4169675CC000F7839 /* DEComposeRuledView.m */,
+				4A764BE5169675CC000F7839 /* DEComposeTextView.h */,
+				4A764BE6169675CC000F7839 /* DEComposeTextView.m */,
+				4A764BE7169675CC000F7839 /* REComposeBackgroundView.h */,
+				4A764BE8169675CC000F7839 /* REComposeBackgroundView.m */,
+				4A764BE9169675CC000F7839 /* REComposeSheetView.h */,
+				4A764BEA169675CC000F7839 /* REComposeSheetView.m */,
+				4A764BEB169675CC000F7839 /* REComposeViewController.bundle */,
+				4A764BEC169675CC000F7839 /* REComposeViewController.h */,
+				4A764BED169675CC000F7839 /* REComposeViewController.m */,
+			);
+			path = REComposeViewController;
+			sourceTree = "<group>";
+		};
+		4A764C1E16967607000F7839 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4A764BF2169675CC000F7839 /* bg@2x.png */,
+				4A764BF3169675CC000F7839 /* Default-568h@2x.png */,
+				4A764BF4169675CC000F7839 /* Default.png */,
+				4A764BF5169675CC000F7839 /* Default@2x.png */,
+				4A764BF8169675CC000F7839 /* Flower.jpg */,
+				4A764BF9169675CC000F7839 /* foursquare-logo@2x.png */,
+				4A764BE0169675CC000F7839 /* LICENSE */,
+				4A764BE1169675CC000F7839 /* README.md */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		4A764C251696BA95000F7839 /* MFSlidingView */ = {
+			isa = PBXGroup;
+			children = (
+				4A764C261696BAA8000F7839 /* MFSlidingView.h */,
+				4A764C271696BAA8000F7839 /* MFSlidingView.m */,
+			);
+			name = MFSlidingView;
 			sourceTree = "<group>";
 		};
 		4A7BFD1215C4B3F000C79C77 /* Resources */ = {
@@ -3257,6 +3357,17 @@
 				4A965DA7168F710300FF34CE /* 01.m4v in Resources */,
 				4A965DA8168F710300FF34CE /* whiteArrow.png in Resources */,
 				4A965DA9168F710300FF34CE /* whiteArrow@2x.png in Resources */,
+				4A764C07169675CC000F7839 /* LICENSE in Resources */,
+				4A764C08169675CC000F7839 /* README.md in Resources */,
+				4A764C0D169675CC000F7839 /* REComposeViewController.bundle in Resources */,
+				4A764C10169675CC000F7839 /* bg@2x.png in Resources */,
+				4A764C11169675CC000F7839 /* Default-568h@2x.png in Resources */,
+				4A764C12169675CC000F7839 /* Default.png in Resources */,
+				4A764C13169675CC000F7839 /* Default@2x.png in Resources */,
+				4A764C15169675CC000F7839 /* Flower.jpg in Resources */,
+				4A764C16169675CC000F7839 /* foursquare-logo@2x.png in Resources */,
+				4A764C1A169675CC000F7839 /* Screenshot.png in Resources */,
+				4A764C241696BA23000F7839 /* ComposeRootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3517,6 +3628,13 @@
 				4A965CCA168F6AE400FF34CE /* ShareToQQViewController.m in Sources */,
 				4A965CD0168F6AF600FF34CE /* FitnessNetworkRequest.m in Sources */,
 				4A965CD4168F6B9100FF34CE /* MyselfTableViewCell.m in Sources */,
+				4A764C09169675CC000F7839 /* DEComposeRuledView.m in Sources */,
+				4A764C0A169675CC000F7839 /* DEComposeTextView.m in Sources */,
+				4A764C0B169675CC000F7839 /* REComposeBackgroundView.m in Sources */,
+				4A764C0C169675CC000F7839 /* REComposeSheetView.m in Sources */,
+				4A764C0E169675CC000F7839 /* REComposeViewController.m in Sources */,
+				4A764C19169675CC000F7839 /* ComposeRootViewController.m in Sources */,
+				4A764C281696BAA8000F7839 /* MFSlidingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

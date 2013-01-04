@@ -23,24 +23,47 @@
     [super viewDidLoad];
     
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
-    UIButton *femalebutton  = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
-    [femalebutton setBackgroundImage:[UIImage imageNamed:@"tabbar_whitebtn2.png"] forState:UIControlStateNormal];
-    UIButton *malebutton  = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [malebutton setBackgroundImage:[UIImage imageNamed:@"tabbar_whitebtn2.png"] forState:UIControlStateNormal];
-    [malebutton setFrame:CGRectMake(40, 2, 80, 50)];
-    [femalebutton setFrame:CGRectMake(150,2,80, 50)];
+    
+///3 buttons 
+    
+    UIButton *typeButton  = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [typeButton setBackgroundImage:[UIImage imageNamed:@"tabbar_whitebtn2.png"] forState:UIControlEventTouchUpOutside];
+    
+    
+    UIButton *aimButton  = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [aimButton setBackgroundImage:[UIImage imageNamed:@"tabbar_whitebtn2.png"] forState:UIControlEventTouchUpOutside];
+    
+    
+    UIButton *bodyPartButton  = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [bodyPartButton setBackgroundImage:[UIImage imageNamed:@"tabbar_whitebtn2.png"] forState:UIControlEventTouchUpOutside];
+    
+    
+    
+    
+    [typeButton setFrame:CGRectMake(20, 5, 70, 40)];
+    [aimButton setFrame:CGRectMake(100,5,70, 40)];
+    [bodyPartButton setFrame:CGRectMake(180,5,70, 40)];
 
-    [femalebutton setTitle:@"女生" forState:UIControlStateNormal];
-    [malebutton setTitle:@"男生" forState:UIControlStateNormal];
+    
+    
+
+    [typeButton setTitle:@"健身类型" forState:UIControlStateNormal];
+    [aimButton setTitle:@"健身目的" forState:UIControlStateNormal];
+    [bodyPartButton setTitle:@"健身部位" forState:UIControlStateNormal];
+
 
     
     
-    [view addSubview:femalebutton];
-    [view addSubview:malebutton];
+    [view addSubview:typeButton];
+    [view addSubview:aimButton];
+    [view addSubview:bodyPartButton];
+    
     self.headerView = view;
     [view release];
     [self.tableView setTableHeaderView:self.headerView];
+    
+    
 }
 
 
