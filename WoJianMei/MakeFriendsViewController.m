@@ -7,6 +7,7 @@
 //
 
 #import "MakeFriendsViewController.h"
+#import "ComposeRootViewController.h"
 
 @interface MakeFriendsViewController ()
 
@@ -27,6 +28,31 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    
+    UIViewController *nv =[self.navigationController topViewController];
+    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(sendPost:)];
+     UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc]initWithTitle:@"写消息" style:UIBarButtonItemStyleBordered target:self action:@selector(sendPost:)];
+    
+    
+    [nv.navigationItem setLeftBarButtonItem:leftBarButton];
+    [nv.navigationItem setRightBarButtonItem:rightBarButton];
+    
+    [nv.navigationController.navigationBar.backItem setBackBarButtonItem:rightBarButton];
+
+}
+
+
+-(void)sendPost:(id)sender{
+
+//    ComposeRootViewController *vc = [[ComposeRootViewController alloc]init];
+//    [self presentModalViewController:vc animated:YES];
+//    [vc release];
+    
+    
+    
+    
+
 }
 
 - (void)didReceiveMemoryWarning

@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MFSlidingView.h"
+
 
 @interface MakeFriendsViewController : UIViewController
 
