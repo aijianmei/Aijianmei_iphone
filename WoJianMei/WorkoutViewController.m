@@ -35,21 +35,21 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
         
-    UIViewController *nv =[self.navigationController topViewController];
-    [nv.navigationController.navigationBar setUserInteractionEnabled:YES];
+//    UIViewController *nv =[self.navigationController topViewController];
+//    [nv.navigationController.navigationBar setUserInteractionEnabled:YES];
+//    
+//    [nv.navigationItem setTitle:@"健身视频"];
+//    [nv.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bottom_bg.png"] forBarMetrics:UIBarMetricsDefault];
+//    
+//    UIBarButtonItem *bar = [[UIBarButtonItem alloc]initWithImage:nil style:UIBarButtonItemStyleBordered target:self action:nil];
+//    [bar setTitle:@"碧珍"];
+//    [nv.navigationItem setRightBarButtonItem:bar];
+//    
+//    [bar setAction:@selector(iamTomsGirlfriend)];
     
-    [nv.navigationItem setTitle:@"健身视频"];
-    [nv.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bottom_bg.png"] forBarMetrics:UIBarMetricsDefault];
     
-    UIBarButtonItem *bar = [[UIBarButtonItem alloc]initWithImage:nil style:UIBarButtonItemStyleBordered target:self action:nil];
-    [bar setTitle:@"碧珍"];
-    [nv.navigationItem setRightBarButtonItem:bar];
-    
-    [bar setAction:@selector(iamTomsGirlfriend)];
-    
-    
-    UIBarButtonItem *rightbarButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-icon.png"] style:UIBarButtonItemStyleBordered target:self action:nil];
-    [nv.navigationItem setLeftBarButtonItem:rightbarButton];
+//    UIBarButtonItem *rightbarButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-icon.png"] style:UIBarButtonItemStyleBordered target:self action:nil];
+//    [nv.navigationItem setLeftBarButtonItem:rightbarButton];
     
     
     

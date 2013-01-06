@@ -17,6 +17,7 @@
 #import "ShareToQQWeiboController.h"
 
 #import "ImageManager.h"
+#import "FontSize.h"
 
 
 
@@ -57,12 +58,23 @@ typedef enum {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.    
     [self optionListInit];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bottom_bg.png"] forBarMetrics:UIBarMetricsDefault];
+
     
-    [self loadView];
+    
     
     [self setBackgroundImageName:@"BackGround.png"];
     [self showBackgroundImage];
+    
+    
+    
+    [self setTitle:@"更多"];
+    [self setNavigationRightButton:@""
+                          fontSize:FONT_SIZE
+                         imageName:@"setting.png"
+                            action:@selector(clickSettingsButton:)];
+    
+    [self loadView];
+
 
 }
 
@@ -77,14 +89,17 @@ typedef enum {
 
     [super viewWillAppear:YES];
     
-    
-    UIViewController *nv =[self.navigationController topViewController];
-    [nv.navigationItem setTitle:@"更多"];
+//    
+//    UIViewController *nv = (UIViewController *) [self.navigationController topViewController];
+//    [nv.navigationItem setTitle:@"更多"];
+    //
 
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(clickSettingsButton:)];
-    [nv.navigationItem setLeftBarButtonItem:nil];
-    [nv.navigationItem setRightBarButtonItem:rightBarButton];
-    [nv.navigationController.navigationBar.backItem setBackBarButtonItem:rightBarButton];
+    
+
+        
+    
+    
+    
 }
 
 
@@ -140,8 +155,8 @@ typedef enum {
         cell.accessoryView = cellAccessoryView;
         [cellAccessoryView release];
         
-        cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:cell.frame] autorelease];
-        cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:0x2F/255.0 green:0x76/255.0 blue:0xB9/255.0 alpha:1.0];
+//        cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:cell.frame] autorelease];
+//        cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:0x2F/255.0 green:0x76/255.0 blue:0xB9/255.0 alpha:1.0];
         
         
     }
@@ -175,7 +190,7 @@ typedef enum {
     
     cell.imageView.image = image;
     cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.contentView.backgroundColor = [UIColor clearColor];
+//    cell.contentView.backgroundColor = [UIColor clearColor];
     
     
     //set backgroudView
@@ -189,7 +204,6 @@ typedef enum {
         imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"helptable_middle.png"]];
     
     cell.backgroundView=imageView;
-    cell.backgroundView.backgroundColor = [UIColor clearColor];
     
     [imageView release];
     

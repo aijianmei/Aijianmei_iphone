@@ -30,6 +30,12 @@
 #import "SinaweiboManager.h"
 
 
+#import "DeviceDetection.h"
+#import "ImageManager.h"
+#import "UINavigationBarExt.h"
+
+
+
 
 #define kAppRedirectURI     @"http://aijianmei.com"
 
@@ -75,21 +81,21 @@
     [UIUtils addViewControllerFromStoryBoard: workoutViewController
 					 viewTitle:@""
 					 viewImage:@"b_menu_1.png"
-			  hasNavController:NO
+			  hasNavController:YES
 			   viewControllers:controllers];
     
     Nutri_SupViewController * nutri_SupViewController = (Nutri_SupViewController*)[storyboard instantiateViewControllerWithIdentifier:@"Nutri_SupViewController"];
     [UIUtils addViewControllerFromStoryBoard:nutri_SupViewController
                      viewTitle:@""
                      viewImage:@"b_menu_2.png"
-              hasNavController:NO
+              hasNavController:YES
                viewControllers:controllers];
 
     MyselfViewController *myselfViewController = (MyselfViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
     [UIUtils addViewControllerFromStoryBoard:myselfViewController
                                    viewTitle:@""
                                    viewImage:@"b_menu_3.png"
-                            hasNavController:NO
+                            hasNavController:YES
                              viewControllers:controllers];
 
     
@@ -99,7 +105,7 @@
 	[UIUtils addViewControllerFromStoryBoard:makeFriendsViewController
 					 viewTitle:@""
 					 viewImage:@"b_menu_4.png"
-			  hasNavController:NO
+			  hasNavController:YES
 			   viewControllers:controllers];
     
     
@@ -107,7 +113,7 @@
 	[UIUtils addViewControllerFromStoryBoard:moreViewController
                                    viewTitle:@""
                                    viewImage:@"b_menu_5.png"
-                            hasNavController:NO
+                            hasNavController:YES
                              viewControllers:controllers];
     
     
@@ -124,7 +130,21 @@
     
     self.tabBarController.selectedIndex = TAB_REALTIME_SCORE;
     
+    
+    
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu_arrow.png"]];
+    [self.tabBarController setTopImageView:imageView down:1.0 animated:YES];
+    [imageView release];
+    
+    
+    
    [controllers release];
+    
+    
+    
+   
+
     
     
 }
@@ -152,10 +172,12 @@
    [self initTabViewControllers];
     
         
-    UINavigationController *nv = [[UINavigationController alloc]initWithRootViewController:self.tabBarController];
-    self.navigationController = nv;
-    [nv release];
-    [self.window setRootViewController:self.navigationController];
+//    UINavigationController *nv = [[UINavigationController alloc]initWithRootViewController:self.tabBarController];
+//    self.navigationController = nv;
+//    [nv release];
+    
+    
+    [self.window setRootViewController:self.tabBarController];
     
     [self.window makeKeyAndVisible];
     
@@ -182,6 +204,19 @@
                                                 menuSide:MenuLeftHandSide
                                                  options:options];
     [mySideMenuViewController release];
+    
+    
+    
+    
+    
+    if ([DeviceDetection isOS5]){
+        [[UINavigationBar appearance] setBackgroundImage:[[ImageManager defaultManager] navigationBgImage] forBarMetrics:UIBarMetricsDefault];
+    }else{
+        
+       GlobalSetNavBarBackground(@"topmenu_bg@2x.png");
+    }
+    
+//    [application setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
     
     return YES;
 }
