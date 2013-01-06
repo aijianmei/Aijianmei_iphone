@@ -61,7 +61,8 @@ typedef enum {
     
     [self loadView];
     
-    [self setBackgroundImageName:[ImageManager allBackgroundImage]];
+    [self setBackgroundImageName:@"BackGround.png"];
+    [self showBackgroundImage];
 
 }
 

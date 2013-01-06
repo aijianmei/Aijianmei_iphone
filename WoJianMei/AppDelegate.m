@@ -149,7 +149,6 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
     
-   [self customizeInterface];
    [self initTabViewControllers];
     
         
