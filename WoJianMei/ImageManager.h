@@ -41,8 +41,11 @@
 
 +(UIImage*)avatarbackgroundImage;
 
-
 - (UIImage *)allBackgroundImage;
+
+
+
+
 
 
 @end

@@ -86,12 +86,27 @@ enum ALERT_VIEW_TYPE {
 
 -(void)setUp{
 
-    ///settings Button
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]initWithTitle:@"设定" style:UIBarButtonItemStyleBordered target:self action:@selector(clickSettingsButton:)];
-    NSArray *array = [[NSArray alloc]initWithObjects:rightBarButton, nil];
+       
+
+    UIViewController *nv =[self.navigationController topViewController];
+    [nv.navigationItem setTitle:@"我健美"];
+    
+    
+    ///set the right buttons
+    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(clickSettingsButton:)];
+    ////set the left buttons
+    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc]initWithTitle:@"搜索" style:UIBarButtonItemStyleBordered target:self action:@selector(clickSettingsButton:)];
+    
+    
+    [nv.navigationItem setLeftBarButtonItem:leftBarButton];
+    [nv.navigationItem setRightBarButtonItem:rightBarButton];
+
     [rightBarButton release];
-    [self.navigationItem setRightBarButtonItems:array];
-    [array release];
+    [leftBarButton release];
+    
+
+    
+    
     
     
 //   Get the sinaweibomanger
@@ -116,64 +131,35 @@ enum ALERT_VIEW_TYPE {
     
 //    self.dataList = [NSArray arrayWithObjects:@"新浪微博",@"QQ账号",@"人人网账号",@"腾讯微博账号",@"豆瓣网账号",@"我的邮箱账号",@"", nil];
     self.dataList = [NSArray arrayWithObjects:@"新浪微博",@"QQ登陆",@"腾讯微博账号", nil];
+   
+    
+    
     
 
     UIView *headerView =[[UIView alloc]init];
-    UIView *footerView =[[UIView alloc]init];
-       
-    [headerView setFrame: CGRectMake(0, 0, 100, 200)];
-    [footerView setFrame: CGRectMake(0, 0, 100, 100)];
-
+    [headerView setFrame: CGRectMake(0, 0, 100, 100)];
     self.myHeaderView = headerView;
-    self.myFooterView = footerView;
-
     [headerView release];
-    [footerView release];
     
-    // set up the table's header view based on our UIView 'myHeaderView' outlet
-	CGRect newFrame = CGRectMake(0.0, 0.0,self.dataTableView.bounds.size.width, 100);
+            
     
-	self.myHeaderView.backgroundColor = [UIColor clearColor];
-	self.myHeaderView.frame = newFrame;
+    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+    [button addTarget:self action:@selector(clickVatarButton:) forControlEvents:UIControlEventTouchUpInside];
     
-    
-    
-    [self.dataTableView setTableHeaderView: self.myHeaderView];
+    [button setFrame:CGRectMake(15, 16, 70, 70)];
+    [button setBackgroundColor:[UIColor grayColor]];
+    [button setImage:[ImageManager avatarbackgroundImage] forState:UIControlStateNormal];
 
-    ////在heade上添加头像图片
-    
-    
-    
-    UIButton *button = [[UIButton alloc]init];
-    self.headerVImageButton =  button;
+
+    self.headerVImageButton = button;
     [button release];
     
-    [self.headerVImageButton addTarget:self action:@selector(clickVatarButton:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.headerVImageButton setFrame:CGRectMake(20, 16, 70, 70)];
-    [self.headerVImageButton setBackgroundColor:[UIColor redColor]];
-    [self.headerVImageButton setImage:[ImageManager avatarbackgroundImage] forState:UIControlStateNormal];
-    [self.myHeaderView addSubview:_headerVImageButton];
-   
-	
+    [self.myHeaderView addSubview:self.headerVImageButton];
     [self.dataTableView setTableHeaderView:self.myHeaderView];
-    
-    
-    
-    
-	// set up the table's footer view based on our UIView 'myFooterView' outlet
-	newFrame = CGRectMake(0.0, 0.0, self.dataTableView.bounds.size.width, self.myFooterView.frame.size.height);
-	self.myFooterView.backgroundColor = [UIColor clearColor];
-	self.myFooterView.frame = newFrame;
-    
-    ////在heade上添加头像图片
-    self.footerVImageV = [[UIImageView alloc]initWithImage:avatarImage];
-    [self.myFooterView   addSubview:_footerVImageV];
 
-	self.dataTableView.tableFooterView = self.myFooterView;	// note this will override UITableView's 'sectionFooterHeight' property
     
     
-    [self setBackgroundImageName:@"Default@2x.png"];
+    [self setBackgroundImageName:@"BackGround.png"];
     [self showBackgroundImage];
     
 
@@ -278,14 +264,8 @@ enum ALERT_VIEW_TYPE {
 
     [super viewWillAppear:YES];
     [self.dataTableView reloadData];
+    
     [self setUp];
-    
-    
-    UIViewController *nv =[self.navigationController topViewController];
-    [nv.navigationItem setTitle:@"我健美"];
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]initWithTitle:@"Settings" style:UIBarButtonItemStyleBordered target:self action:@selector(clickSettingsButton:)];
-    [nv.navigationItem setLeftBarButtonItem:nil];
-    [nv.navigationItem setRightBarButtonItem:rightBarButton];
     
     [self hideActivity];
     
@@ -293,6 +273,7 @@ enum ALERT_VIEW_TYPE {
 
 
 -(void)clickVatarButton:(id)sender{
+    PPDebug(@"i am the avatarButton ");
    
 }
 
@@ -368,21 +349,77 @@ enum ALERT_VIEW_TYPE {
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;    // fixed font style. use custom view (UILabel) if you want something different
 {
-    return @"绑定账号";
-    
+//    
+//    switch (section) {
+//        case 0:
+//        {
+//            return @"绑定账号";
+//
+//        }
+//            break;
+//        case 1:
+//        {
+//            return @"section 1";
+//            
+//        }
+//            break;
+//        case 2:
+//        {
+//            return @"section 2";
+//            
+//        }
+//            break;
+//        case 3:
+//        {
+//            return @"section 3";
+//            
+//        }
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//    
+    return nil;
 }
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-     
+    
+    switch (section) {
+        case 0:
+        {
+            return 2;
+        }
+            break;
+        case 1:
+        {
+            return 2;
+        }
+            break;
+        case 2:
+        {
+            return 2;
+        }
+            break;
+        case 3:
+        {
+            return 3;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
     return 3;
 }
 
@@ -415,45 +452,175 @@ enum ALERT_VIEW_TYPE {
 
     }
     
-    
 //      cell.delegate = self;
 //      cell.indexPath = indexPath;
-//    if (indexPath.section==0) {
-//        switch ([indexPath row]) {
-//            case 0:
-//                cell.imageView.image =[UIImage imageNamed:@"music-tab.png"];
-//                cell.textLabel.text =[_dataList objectAtIndex:indexPath.row];
-//                break;
-//            case 1:
-//                cell.textLabel.text =[_dataList objectAtIndex:indexPath.row];
-//                cell.imageView.image =[UIImage imageNamed:@"artist-tab.png"];
-//                break;
-//                default:
-//                break;
-//        }
-//    }
-//    if (indexPath.section==1) {
-//        switch ([indexPath row]) {
-//            case 0:
-//                cell.imageView.image =[UIImage imageNamed:@"music-tab.png"];
-//                cell.textLabel.text =[_dataList objectAtIndex:indexPath.row];
-//                break;
-//            case 1:
-//                cell.textLabel.text =[_dataList objectAtIndex:indexPath.row];
-//                cell.imageView.image =[UIImage imageNamed:@"artist-tab.png"];
-//                break;
-//            default:
-//                break;
-//        }
-//    }
+    
+    
+       
     if (indexPath.section==0) {
+        switch ([indexPath row]) {
+            case 0:
+            {
+               
+                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
+                [leftButton setTitle:@"私信" forState:UIControlStateNormal];
+                [leftButton addTarget:self
+                      action:@selector(theActionYouWant:)
+            forControlEvents:UIControlEventTouchUpInside];
+                [cell addSubview:leftButton];
+            
+                
+                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
+                [rightButton setTitle:@"预约" forState:UIControlStateNormal];
+                [rightButton addTarget:self
+                                action:@selector(theActionYouWant:)
+                      forControlEvents:UIControlEventTouchDragOutside];
+                [cell addSubview:rightButton];
+
+            }
+                
+                break;
+            case 1:
+            {
+                
+                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
+                [leftButton setTitle:@"评论" forState:UIControlStateNormal];
+                [leftButton addTarget:self
+                               action:@selector(theActionYouWant:)
+                     forControlEvents:UIControlEventTouchUpInside];
+                [cell addSubview:leftButton];
+
+                
+                
+                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
+                [rightButton setTitle:@"@我" forState:UIControlStateNormal];
+                [rightButton addTarget:self
+                      action:@selector(theActionYouWant:)
+            forControlEvents:UIControlEventTouchDragOutside];
+                [cell addSubview:rightButton];
+                
+            }
+                
+                
+                break;
+                default:
+                break;
+        }
+    }
+    
+    
+    if (indexPath.section==1) {
+        switch ([indexPath row]) {
+            case 0:
+            {
+                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
+                [leftButton setTitle:@"相册" forState:UIControlStateNormal];
+                [leftButton addTarget:self
+                               action:@selector(theActionYouWant:)
+                     forControlEvents:UIControlEventTouchUpInside];
+                [cell addSubview:leftButton];
+                
+                
+                
+                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
+                [rightButton setTitle:@"收藏" forState:UIControlStateNormal];
+                [rightButton addTarget:self
+                                action:@selector(theActionYouWant:)
+                      forControlEvents:UIControlEventTouchDragOutside];
+                [cell addSubview:rightButton];
+}                break;
+            case 1:
+            {
+                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
+                [leftButton setTitle:@"好友" forState:UIControlStateNormal];
+                [leftButton addTarget:self
+                               action:@selector(theActionYouWant:)
+                     forControlEvents:UIControlEventTouchUpInside];
+                [cell addSubview:leftButton];
+                
+                
+                
+                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
+                [rightButton setTitle:@"粉丝" forState:UIControlStateNormal];
+                [rightButton addTarget:self
+                                action:@selector(theActionYouWant:)
+                      forControlEvents:UIControlEventTouchDragOutside];
+                [cell addSubview:rightButton];
+
+            }
+                break;
+            default:
+                break;
+        }
+    }
+    
+    if (indexPath.section==2) {
+        switch ([indexPath row]) {
+            case 0:
+            {
+                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
+                [leftButton setTitle:@"消息" forState:UIControlStateNormal];
+                [leftButton addTarget:self
+                               action:@selector(theActionYouWant:)
+                     forControlEvents:UIControlEventTouchUpInside];
+                [cell addSubview:leftButton];
+                
+                
+                
+                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
+                [rightButton setTitle:@"消息" forState:UIControlStateNormal];
+                [rightButton addTarget:self
+                                action:@selector(theActionYouWant:)
+                      forControlEvents:UIControlEventTouchDragOutside];
+                [cell addSubview:rightButton];
+
+            }
+                break;
+            case 1:
+            {
+                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
+                [leftButton setTitle:@"消息" forState:UIControlStateNormal];
+                [leftButton addTarget:self
+                               action:@selector(theActionYouWant:)
+                     forControlEvents:UIControlEventTouchUpInside];
+                [cell addSubview:leftButton];
+                
+                
+                
+                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
+                [rightButton setTitle:@"消息" forState:UIControlStateNormal];
+                [rightButton addTarget:self
+                                action:@selector(theActionYouWant:)
+                      forControlEvents:UIControlEventTouchDragOutside];
+                [cell addSubview:rightButton];
+
+            }
+                break;
+            default:
+                break;
+        }
+    }
+    
+    if (indexPath.section==3) {
         switch ([indexPath row]) {
             case SINA_WEIBO_ACCOUNT:
                 cell.imageView.image =[ImageManager weiboImage];
                 cell.textLabel.text =@"新浪微博";
-    
+                
                 self.sinaModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-                 [self.sinaModeSwitch addTarget: self action: @selector(switchsinaModeSwitch:) forControlEvents:UIControlEventValueChanged];
+                [self.sinaModeSwitch addTarget: self action: @selector(switchsinaModeSwitch:) forControlEvents:UIControlEventValueChanged];
                 
                 if ([sinaweiboManager.sinaweibo isLoggedIn]) {
                     [self.sinaModeSwitch setOn:YES animated:NO];
@@ -463,7 +630,7 @@ enum ALERT_VIEW_TYPE {
                     [self.sinaModeSwitch setOn:NO animated:NO];
                 }
                 cell.accessoryView = self.sinaModeSwitch;
-            
+                
                 break;
             case TENGXUN_QQ_ACOUNT:
                 cell.textLabel.text =@"QQ账号";
@@ -475,7 +642,7 @@ enum ALERT_VIEW_TYPE {
                 if ([sinaweiboManager.sinaweibo isLoggedIn]) {
                     
                     [self.tenCentQQModeSwitch setOn:YES animated:NO];
-       
+                    
                 }else
                     
                 {
@@ -485,11 +652,11 @@ enum ALERT_VIEW_TYPE {
                 cell.accessoryView = self.tenCentQQModeSwitch;
                 
                 break;
-//            case RENREN_ACOUNT:
-//                cell.textLabel.text =@"人人账号";
-//                cell.detailTextLabel.text =@"未绑定";
-//                cell.imageView.image =[ImageManager renrenImage];
-//                break;
+                //            case RENREN_ACOUNT:
+                //                cell.textLabel.text =@"人人账号";
+                //                cell.detailTextLabel.text =@"未绑定";
+                //                cell.imageView.image =[ImageManager renrenImage];
+                //                break;
             case TENGXUN_WEIBO_ACCOUNT:
                 cell.textLabel.text =@"腾讯微博账号";
                 cell.detailTextLabel.text =@"未绑定";
@@ -503,7 +670,7 @@ enum ALERT_VIEW_TYPE {
                     
                     [self.tenCentWeiboModeSwitch setOn:YES animated:NO];
                     
-                
+                    
                 }else
                     
                 {
@@ -515,25 +682,25 @@ enum ALERT_VIEW_TYPE {
                 cell.accessoryView = self.tenCentWeiboModeSwitch;
                 
                 
-
+                
                 break;
-//            case DOUBAN_ACOUNT:
-//                cell.textLabel.text =@"豆瓣账号";
-//                cell.detailTextLabel.text =@"未绑定";
-//                cell.imageView.image =[ImageManager doubanImage];
-//                break;
-//            case YOUR_EMAIL_ACOUNT:
-//                cell.textLabel.text =@"你的邮箱";
-//                cell.detailTextLabel.text =@"未绑定";
-//                cell.imageView.image =[ImageManager loginEmailImage];
-//                break;
+                //            case DOUBAN_ACOUNT:
+                //                cell.textLabel.text =@"豆瓣账号";
+                //                cell.detailTextLabel.text =@"未绑定";
+                //                cell.imageView.image =[ImageManager doubanImage];
+                //                break;
+                //            case YOUR_EMAIL_ACOUNT:
+                //                cell.textLabel.text =@"你的邮箱";
+                //                cell.detailTextLabel.text =@"未绑定";
+                //                cell.imageView.image =[ImageManager loginEmailImage];
+                //                break;
             default:
                 break;
         }
     }
+
     
-    
-//    [cell  setBackgroundColor:[UIColor clearColor]];
+    cell.backgroundView.backgroundColor =[UIColor clearColor];
     
     return cell;
 }

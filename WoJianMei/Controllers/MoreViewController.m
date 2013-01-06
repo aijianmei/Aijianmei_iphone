@@ -16,6 +16,8 @@
 #import "ShareToSinaController.h"
 #import "ShareToQQWeiboController.h"
 
+#import "ImageManager.h"
+
 
 
 enum actionsheetNumber{
@@ -58,6 +60,8 @@ typedef enum {
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bottom_bg.png"] forBarMetrics:UIBarMetricsDefault];
     
     [self loadView];
+    
+    [self setBackgroundImageName:[ImageManager allBackgroundImage]];
 
 }
 

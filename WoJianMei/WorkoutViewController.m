@@ -58,7 +58,7 @@
      self.dataList = [[VideoManager defaultManager]  videoList];
     
     
-    [self setBackgroundImageName:@"Default@2x.png"];
+    [self setBackgroundImageName:@"BackGround.png"];
     [self showBackgroundImage];
 
     

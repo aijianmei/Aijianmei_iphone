@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "MFSlidingView.h"
+#import "PPTableViewController.h"
 
-
-@interface MakeFriendsViewController : UIViewController
+@interface MakeFriendsViewController : PPTableViewController
 
 @end

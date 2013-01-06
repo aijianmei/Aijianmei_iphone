@@ -116,7 +116,7 @@
     [self.buttonScrollView setShowsHorizontalScrollIndicator:YES];
     [self.view addSubview:self.buttonScrollView];
     
-    [self setBackgroundImageName:@"Default@2x.png"];
+    [self setBackgroundImageName:@"BackGround.png"];
     [self showBackgroundImage];
 
 }

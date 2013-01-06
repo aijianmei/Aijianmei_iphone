@@ -39,6 +39,12 @@
     [nv.navigationItem setRightBarButtonItem:rightBarButton];
     
     [nv.navigationController.navigationBar.backItem setBackBarButtonItem:rightBarButton];
+    
+    [self setBackgroundImageName:@"BackGround.png"];
+    [self showBackgroundImage];
+
+    
+
 
 }
 

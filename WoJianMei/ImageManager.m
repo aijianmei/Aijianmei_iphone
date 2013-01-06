@@ -105,9 +105,9 @@ static ImageManager *_defaultManager = nil;
 - (UIImage *)allBackgroundImage
 {
     if ([DeviceDetection isIPhone5]) {
-        return [UIImage imageNamed:@"all_page_bg2_i5.jpg"];
+        return [UIImage imageNamed:@"BackGround.png"];
     } else {
-        return [UIImage imageNamed:@"all_page_bg2.jpg"];
+        return [UIImage imageNamed:@"BackGround.png"];
     }
     
     return nil;
