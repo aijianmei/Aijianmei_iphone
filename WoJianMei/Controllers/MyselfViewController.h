@@ -36,6 +36,7 @@
 	UIView                      *myFooterView;
     
     UILabel                    *_userNameLabel;
+    UILabel                    *_mottoLabel;
     
     UISwitch  *_sinaModeSwitch;
     UISwitch *_tenCentWeiboModeSwitch;
@@ -44,6 +45,10 @@
     
     SinaweiboManager     *sinaweiboManager ;
     TencentWeiboManager *tencentWeiboManager;
+    
+    
+    NSDictionary *userInfo;
+
 
 
 }
@@ -67,6 +72,11 @@
 @property (nonatomic, retain)  UIView *myHeaderView;
 @property (nonatomic, retain)  UIView *myFooterView;
 @property (nonatomic, retain)  UILabel *userNameLabel;
+@property (nonatomic, retain)  UILabel *mottoLabel;
+
+
+
+
 
 
 

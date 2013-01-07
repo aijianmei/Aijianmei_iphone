@@ -187,7 +187,7 @@
     NSString *appSecret = @"e2064ac8fab9d889a9eccecc5babad11";
     
     
-     sinaWeiboManager = [SinaweiboManager defaultManager];
+    sinaWeiboManager = [SinaweiboManager defaultManager];
     [sinaWeiboManager createSinaweiboWithAppKey:appKey appSecret:appSecret appRedirectURI:kAppRedirectURI delegate:self];
 
     

@@ -62,6 +62,7 @@ enum ALERT_VIEW_TYPE {
 @synthesize myFooterView;
 @synthesize myHeaderView;
 @synthesize userNameLabel=_userNameLabel;
+@synthesize mottoLabel = _mottoLabel;
 
 
 
@@ -81,16 +82,18 @@ enum ALERT_VIEW_TYPE {
     [myHeaderView release];
     [myFooterView release];
     [_userNameLabel release];
+    [_mottoLabel release];
+    
+    [userInfo release], userInfo = nil;
+    
+
 }
 
 
 -(void)setUp{
-
-       
-
-    UIViewController *nv =[self.navigationController topViewController];
-    [nv.navigationItem setTitle:@"我健美"];
     
+    
+    [self setTitle:@"我"];
     
     ///set the right buttons
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(clickSettingsButton:)];
@@ -98,12 +101,31 @@ enum ALERT_VIEW_TYPE {
     UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc]initWithTitle:@"搜索" style:UIBarButtonItemStyleBordered target:self action:@selector(clickSettingsButton:)];
     
     
-    [nv.navigationItem setLeftBarButtonItem:leftBarButton];
-    [nv.navigationItem setRightBarButtonItem:rightBarButton];
+    [self.navigationItem setLeftBarButtonItem:leftBarButton];
+    [self.navigationItem setRightBarButtonItem:rightBarButton];
 
     [rightBarButton release];
     [leftBarButton release];
     
+
+    
+    
+    
+    NSData *data = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:[userInfo objectForKey:@"profile_image_url"]]];
+    UIImage *image = [[UIImage alloc] initWithData:data];
+    [data release];
+    [self.headerVImageButton setImage:image forState:UIControlStateNormal];
+    [image release];
+    
+    
+    NSString *userName = [userInfo objectForKey:@"screen_name"];
+    [self.userNameLabel setText:userName];
+    
+    
+    NSString *description = [userInfo objectForKey:@"description"];
+    [self.mottoLabel setText:description];
+    
+
 
     
     
@@ -154,16 +176,79 @@ enum ALERT_VIEW_TYPE {
     self.headerVImageButton = button;
     [button release];
     
+    
+    
+    
+    UILabel *userNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(120, 30, 100, 30)];
+    userNameLabel.backgroundColor =[UIColor clearColor];
+    self.userNameLabel =userNameLabel;
+    [userNameLabel release];
+    [self.myHeaderView addSubview:self.userNameLabel];
+    
+    
+    
+    UILabel *mottoLabel = [[UILabel alloc]initWithFrame:CGRectMake(120, 70, 200, 30)];
+    [mottoLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:12]];
+    mottoLabel.backgroundColor = [UIColor clearColor];
+    self.mottoLabel = mottoLabel;
+    [mottoLabel release];
+
+    [self.mottoLabel setTextAlignment:NSTextAlignmentLeft];
+    self.mottoLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    
+    [self.myHeaderView addSubview:self.mottoLabel];
+    
+    
+    
+    
+    
+    
+    
     [self.myHeaderView addSubview:self.headerVImageButton];
     [self.dataTableView setTableHeaderView:self.myHeaderView];
 
     
     
+    sinaweiboManager = [self sinaweiboManager] ;
+    
+    SinaWeibo *sinaweibo = [sinaweiboManager sinaweibo];
+    BOOL authValid = sinaweibo.isAuthValid;
+
+    if (authValid) {
+        if (userInfo ) {
+            
+            NSData *data = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:[userInfo objectForKey:@"profile_image_url"]]];
+            UIImage *image = [[UIImage alloc] initWithData:data];
+            [data release];
+            [self.headerVImageButton setBackgroundImage:image forState:UIControlStateNormal];
+            [image release];
+            
+              NSString *string = [userInfo objectForKey:@"screen_name"];
+             [self.userNameLabel setText:string];
+            
+            
+            
+        }else{
+            
+            [sinaweibo requestWithURL:@"users/show.json"
+                               params:[NSMutableDictionary dictionaryWithObject:sinaweibo.userID forKey:@"uid"]
+                           httpMethod:@"GET"
+                             delegate:self];
+        }
+            
+            
+    }else {
+    
+        [sinaweibo logInInView:self.view];
+}
+
+    
+    
+    
+    
     [self setBackgroundImageName:@"BackGround.png"];
     [self showBackgroundImage];
     
-
-        
 }
 -(void)clickSettingsButton:(id)sender{
    
@@ -171,8 +256,6 @@ enum ALERT_VIEW_TYPE {
     [self.navigationController pushViewController :settingsVC animated:YES];
     [settingsVC release];
 }
-
-
 
 
 
@@ -268,6 +351,10 @@ enum ALERT_VIEW_TYPE {
     [self setUp];
     
     [self hideActivity];
+    
+    [self setBackgroundImageName:@"BackGround.png"];
+    [self showBackgroundImage];
+
     
 }
 
@@ -790,6 +877,8 @@ enum ALERT_VIEW_TYPE {
     [sinaweiboManager storeAuthData];
     [self.dataTableView reloadData];
     
+    [self setUp];
+    
 }
 
 - (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
@@ -820,6 +909,36 @@ enum ALERT_VIEW_TYPE {
     [self.dataTableView reloadData];
 }
 
+
+
+
+/////微博请求的delegate 返回数据
+
+#pragma mark - SinaWeiboRequest Delegate
+
+- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
+{
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        [userInfo release], userInfo = nil;
+    }
+   
+    
+    [self setUp];
+}
+
+- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
+{
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        [userInfo release];
+         userInfo = [result retain];
+    }
+   
+    
+    [self setUp];
+    
+}
 
 
 

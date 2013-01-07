@@ -72,10 +72,6 @@ typedef enum {
                           fontSize:FONT_SIZE
                          imageName:@"setting.png"
                             action:@selector(clickSettingsButton:)];
-    
-    [self loadView];
-
-
 }
 
 - (void)viewDidUnload
@@ -95,6 +91,9 @@ typedef enum {
     //
 
     
+    [self setBackgroundImageName:@"BackGround.png"];
+    [self showBackgroundImage];
+
 
         
     
@@ -164,25 +163,25 @@ typedef enum {
     UIImage *image = nil;
     switch ([indexPath row]) {
         case ACCOUNT_MANAGEMENT:
-            image = [UIImage imageNamed:@"szicon1.png"];
+            image = [UIImage imageNamed:@"social_networks.png"];
             break;
         case FEEDBACK:
-            image = [UIImage imageNamed:@"szicon2.png"];
+            image = [UIImage imageNamed:@"share_social.png"];
             break;
         case SHARES :
-            image = [UIImage imageNamed:@"szicon3.png"];
+            image = [UIImage imageNamed:@"share_with_firends.png"];
             break;
         case RECOMMEN_TO_FRIENDS:
-            image = [UIImage imageNamed:@"szicon4.png"];
+            image = [UIImage imageNamed:@"Rate_Us.png"];
             break;
         case RATE_AT_APPLE_STORE:
-            image = [UIImage imageNamed:@"szicon5.png"];
+            image = [UIImage imageNamed:@"about_us.png"];
             break;
         case ABOUT:
-            image = [UIImage imageNamed:@"szicon7.png"];
+            image = [UIImage imageNamed:@"update_app.png"];
             break;
         case UPDATE:
-            image = [UIImage imageNamed:@"szicon8.png"];
+            image = [UIImage imageNamed:@"unknown.png"];
             break;
         default:
             break;
