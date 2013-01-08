@@ -95,7 +95,6 @@
     _carousel.type = iCarouselTypeCylinder;
     
     [self.carousel setCenterItemWhenSelected:YES];
-    [self.carousel setScrollSpeed:0.4];
     
     [self.myHeaderView addSubview:_carousel];
 
@@ -417,7 +416,7 @@
     [label setText:string];
     [label setTextAlignment:NSTextAlignmentCenter];
     [label setTextColor:[UIColor whiteColor]];
-    label.backgroundColor = [UIColor greenColor];
+    label.backgroundColor = [UIColor blueColor];
     [imageView addSubview:label];
     [label release];
         
