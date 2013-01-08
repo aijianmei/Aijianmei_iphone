@@ -7,16 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MessageUI/MessageUI.h>
 #import "JMStaticContentTableViewController.h"
 
-@interface SettingsViewController : JMStaticContentTableViewController<MFMessageComposeViewControllerDelegate>
+@interface SettingsViewController : JMStaticContentTableViewController
 
 
 
-- (IBAction)sendMessageToRestaurant:(id)sender;
-- (IBAction)callTheRestaurant:(id)sender;
-- (IBAction)loginWithSinaWeiBlog:(id)sender;
 
 
 @end
