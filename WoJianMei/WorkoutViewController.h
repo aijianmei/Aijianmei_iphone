@@ -14,4 +14,11 @@
 
 @interface WorkoutViewController : PPTableViewController
 
+{
+    UIView                      *_myHeaderView;
+
+
+}
+@property (nonatomic, retain)  UIView *myHeaderView;
+
 @end

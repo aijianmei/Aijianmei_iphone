@@ -20,40 +20,9 @@
 @end
 
 @implementation WorkoutViewController
+@synthesize myHeaderView =_myHeaderView;
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-        
-//    UIViewController *nv =[self.navigationController topViewController];
-//    [nv.navigationController.navigationBar setUserInteractionEnabled:YES];
-//    
-//    [nv.navigationItem setTitle:@"健身视频"];
-//    [nv.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bottom_bg.png"] forBarMetrics:UIBarMetricsDefault];
-//    
-//    UIBarButtonItem *bar = [[UIBarButtonItem alloc]initWithImage:nil style:UIBarButtonItemStyleBordered target:self action:nil];
-//    [bar setTitle:@"碧珍"];
-//    [nv.navigationItem setRightBarButtonItem:bar];
-//    
-//    [bar setAction:@selector(iamTomsGirlfriend)];
-    
-    
-//    UIBarButtonItem *rightbarButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-icon.png"] style:UIBarButtonItemStyleBordered target:self action:nil];
-//    [nv.navigationItem setLeftBarButtonItem:rightbarButton];
-    
-    
-    
-    [self initWorkOutDatas];
-    
-     self.dataList = [[VideoManager defaultManager]  videoList];
-    
-    
-    [self setBackgroundImageName:@"BackGround.png"];
-    [self showBackgroundImage];
 
-    
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -62,6 +31,68 @@
 }
 
 
+-(void)dealloc{
+    
+    
+    
+
+    [_myHeaderView release];
+    [super dealloc];
+    
+}
+
+
+//// init the userInterface 
+-(void)initUI{
+
+    
+    
+    [self setBackgroundImageName:@"BackGround.png"];
+    [self showBackgroundImage];
+    
+    [self.navigationItem setTitle:@"健身视频"];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bottom_bg.png"] forBarMetrics:UIBarMetricsDefault];
+    
+    UIBarButtonItem *bar = [[UIBarButtonItem alloc]initWithImage:nil style:UIBarButtonItemStyleBordered target:self action:nil];
+    [bar setTitle:@"碧珍"];
+    [self.navigationItem setRightBarButtonItem:bar];
+    
+    [bar setAction:@selector(iamTomsGirlfriend)];
+    
+    
+    UIBarButtonItem *rightbarButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-icon.png"] style:UIBarButtonItemStyleBordered target:self action:nil];
+    [self.navigationItem setLeftBarButtonItem:rightbarButton];
+    
+    
+    
+    
+    
+    UIView *headerView =[[UIView alloc]init];
+    [headerView setFrame: CGRectMake(0, 0, 100, 140)];
+    self.myHeaderView = headerView;
+    [headerView release];
+    
+    [self.dataTableView setTableHeaderView:self.myHeaderView];
+
+
+ 
+}
+
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    
+    
+    
+    [self initUI];
+    
+    [self initWorkOutDatas];
+    
+     self.dataList = [[VideoManager defaultManager]  videoList];
+    
+   }
 
 #pragma mark ----------------------------------------————————————————
 #pragma mark  tableviewDelegate Method

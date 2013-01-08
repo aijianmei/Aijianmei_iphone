@@ -444,6 +444,8 @@
 		4AD66B0E15CFCED3000F7CB8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD66B0815CFCED3000F7CB8 /* CoreVideo.framework */; };
 		4AD66B0F15CFCED3000F7CB8 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD66B0915CFCED3000F7CB8 /* ImageIO.framework */; };
 		4AD66B1415CFCEEC000F7CB8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD66B1315CFCEEC000F7CB8 /* MapKit.framework */; };
+		4AD8E02D169BBE4B00EE04F9 /* URLCacheAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8E02C169BBE4B00EE04F9 /* URLCacheAlert.m */; };
+		4AD8E031169BD46B00EE04F9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8E030169BD46A00EE04F9 /* User.m */; };
 		4AE20A8E15D4B4E8003BBE37 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE20A8D15D4B4E8003BBE37 /* StoreKit.framework */; };
 		4AE394B215C2DD9C00D06C61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE394B115C2DD9C00D06C61 /* UIKit.framework */; };
 		4AE394B415C2DD9C00D06C61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE394B315C2DD9C00D06C61 /* Foundation.framework */; };
@@ -1179,6 +1181,10 @@
 		4AD66B0815CFCED3000F7CB8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		4AD66B0915CFCED3000F7CB8 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		4AD66B1315CFCEEC000F7CB8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4AD8E02B169BBE4B00EE04F9 /* URLCacheAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCacheAlert.h; sourceTree = "<group>"; };
+		4AD8E02C169BBE4B00EE04F9 /* URLCacheAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLCacheAlert.m; sourceTree = "<group>"; };
+		4AD8E02F169BD46A00EE04F9 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		4AD8E030169BD46A00EE04F9 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		4AE20A8D15D4B4E8003BBE37 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4AE394AD15C2DD9C00D06C61 /* WoJianMei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoJianMei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AE394B115C2DD9C00D06C61 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -2466,6 +2472,8 @@
 				4AE4AB2A15D07FB5008FCAB8 /* VideoContants.h */,
 				4A3D0BA415CB73CC008F6639 /* Video.h */,
 				4A3D0BA515CB73CC008F6639 /* Video.m */,
+				4AD8E02F169BD46A00EE04F9 /* User.h */,
+				4AD8E030169BD46A00EE04F9 /* User.m */,
 				4A3D0BCF15CB9F38008F6639 /* VideoManager.h */,
 				4A3D0BD015CB9F38008F6639 /* VideoManager.m */,
 				4A3D0BB815CB7CF1008F6639 /* WorkOut.h */,
@@ -2887,6 +2895,8 @@
 			children = (
 				4A81F6C115E3724100201BAA /* MyselfViewController.h */,
 				4A81F6C215E3724100201BAA /* MyselfViewController.m */,
+				4AD8E02B169BBE4B00EE04F9 /* URLCacheAlert.h */,
+				4AD8E02C169BBE4B00EE04F9 /* URLCacheAlert.m */,
 			);
 			name = MyselfViewController;
 			sourceTree = "<group>";
@@ -3620,6 +3630,8 @@
 				4A764C0E169675CC000F7839 /* REComposeViewController.m in Sources */,
 				4A764C19169675CC000F7839 /* ComposeRootViewController.m in Sources */,
 				4A764C281696BAA8000F7839 /* MFSlidingView.m in Sources */,
+				4AD8E02D169BBE4B00EE04F9 /* URLCacheAlert.m in Sources */,
+				4AD8E031169BD46B00EE04F9 /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

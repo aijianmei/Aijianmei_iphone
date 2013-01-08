@@ -246,7 +246,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="123" sectionHeaderHeight="22" sectionFooterHeight="22" id="NtN-xg-TPp">
-                                <rect key="frame" x="0.0" y="39" width="320" height="372"/>
+                                <rect key="frame" x="0.0" y="35" width="320" height="376"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -393,7 +393,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" tag="1600" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="l3b-tK-q72">
-                                <rect key="frame" x="0.0" y="4" width="64" height="35"/>
+                                <rect key="frame" x="0.0" y="0.0" width="64" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                 <state key="normal" title="All Area" backgroundImage="data_m_1@2x.png">
@@ -409,7 +409,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1601" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6ct-aA-bhU">
-                                <rect key="frame" x="64" y="4" width="64" height="35"/>
+                                <rect key="frame" x="64" y="0.0" width="64" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                 <state key="normal" title="Upper Area" backgroundImage="data_m_1@2x.png">
@@ -425,7 +425,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1602" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="v6x-HN-9Un">
-                                <rect key="frame" x="128" y="4" width="64" height="35"/>
+                                <rect key="frame" x="128" y="0.0" width="64" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                 <state key="normal" title="Middle Area" backgroundImage="data_m_1@2x.png">
@@ -441,7 +441,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1603" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="j4G-4f-kIo">
-                                <rect key="frame" x="192" y="4" width="64" height="35"/>
+                                <rect key="frame" x="192" y="0.0" width="64" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                 <state key="normal" title="LowerArea" backgroundImage="data_m_1@2x.png">
@@ -457,7 +457,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1604" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RWh-d7-4P8">
-                                <rect key="frame" x="256" y="4" width="64" height="35"/>
+                                <rect key="frame" x="256" y="0.0" width="64" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                 <state key="normal" title="My Plan" backgroundImage="data_m_1@2x.png">
@@ -764,6 +764,81 @@
         <image name="publish_button_32.gif" width="142" height="32"/>
         <image name="star2.png" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="AboutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
+        </class>
+        <class className="BackgroundView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BackgroundView.h"/>
+        </class>
+        <class className="MakeFriendsViewController" superclassName="PPTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MakeFriendsViewController.h"/>
+        </class>
+        <class className="MoreViewController" superclassName="PPTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MoreViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="sinaWeiBlogshareButton:"/>
+            </relationships>
+        </class>
+        <class className="MyselfViewController" superclassName="PPTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyselfViewController.h"/>
+        </class>
+        <class className="Nutri_SupViewController" superclassName="PPTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Nutri_SupViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="buttonScrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="NutritionDetailCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NutritionDetailCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="clickedNumberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="creatdDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="introductionImageButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="PPTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPTabBarController.h"/>
+        </class>
+        <class className="PPTableViewController" superclassName="PPViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dataTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="PPViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPViewController.h"/>
+        </class>
+        <class className="PlayVideosViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlayVideosViewController.h"/>
+        </class>
+        <class className="ShowBigImageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShowBigImageViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="showBigImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="VideoListCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VideoListCell.h"/>
+            <relationships>
+                <relationship kind="action" name="clickBuyButton:"/>
+                <relationship kind="action" name="clickFollowButton:"/>
+                <relationship kind="action" name="clickShowBigImage:"/>
+                <relationship kind="action" name="clickSinaWeiBlogButton:"/>
+                <relationship kind="outlet" name="downLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="productImageButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="repeatTimesLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="setsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLeghtLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="upLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="WorkoutViewController" superclassName="PPTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
