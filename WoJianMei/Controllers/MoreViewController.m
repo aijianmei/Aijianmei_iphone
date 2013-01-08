@@ -53,6 +53,25 @@ typedef enum {
 }
 
 
+-(void)initUI{
+    
+    ////Set the background Image
+    
+    [self setBackgroundImageName:@"BackGround.png"];
+    [self showBackgroundImage];
+
+    ///Set the right bar button 
+    [self setTitle:@"更多"];
+    [self setNavigationRightButton:@"设置"
+                          fontSize:FONT_SIZE
+                         imageName:@"setting.png"
+                            action:@selector(clickSettingsButton:)];
+    
+
+
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -60,18 +79,9 @@ typedef enum {
     [self optionListInit];
 
     
+    [self initUI];
     
     
-    [self setBackgroundImageName:@"BackGround.png"];
-    [self showBackgroundImage];
-    
-    
-    
-    [self setTitle:@"更多"];
-    [self setNavigationRightButton:@""
-                          fontSize:FONT_SIZE
-                         imageName:@"setting.png"
-                            action:@selector(clickSettingsButton:)];
 }
 
 - (void)viewDidUnload
@@ -84,20 +94,6 @@ typedef enum {
 -(void)viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:YES];
-    
-//    
-//    UIViewController *nv = (UIViewController *) [self.navigationController topViewController];
-//    [nv.navigationItem setTitle:@"更多"];
-    //
-
-    
-    [self setBackgroundImageName:@"BackGround.png"];
-    [self showBackgroundImage];
-
-
-        
-    
-    
     
 }
 

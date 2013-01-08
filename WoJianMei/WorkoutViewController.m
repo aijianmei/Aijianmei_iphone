@@ -14,6 +14,15 @@
 #import "WorkOut.h"
 
 
+#import "ReflectionView.h"
+#import "iCarousel.h"
+///// the setings of the iCarousel
+#define NUMBER_OF_ITEMS 13
+#define NUMBER_OF_VISIBLE_ITEMS 8
+#define ITEM_SPACING 220
+
+
+
 
 @interface WorkoutViewController ()
 
@@ -21,6 +30,7 @@
 
 @implementation WorkoutViewController
 @synthesize myHeaderView =_myHeaderView;
+@synthesize  carousel =_carousel;
 
 
 
@@ -34,8 +44,10 @@
 -(void)dealloc{
     
     
+    _carousel.delegate = nil;
+    _carousel.dataSource = nil;
+    [_carousel release];
     
-
     [_myHeaderView release];
     [super dealloc];
     
@@ -67,14 +79,34 @@
     
     
     
+    //configure carousel
+
+
     UIView *headerView =[[UIView alloc]init];
-    [headerView setFrame: CGRectMake(0, 0, 100, 140)];
+    [headerView setFrame: CGRectMake(0, 0, 320, 140)];
     self.myHeaderView = headerView;
     [headerView release];
+    
+    
+    self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 0, 320, 140)];
+    
+    self.carousel.delegate = self;
+    self.carousel.dataSource = self;
+    _carousel.type = iCarouselTypeCylinder;
+    
+    [self.carousel setCenterItemWhenSelected:YES];
+    [self.carousel setScrollSpeed:0.4];
+    
+    [self.myHeaderView addSubview:_carousel];
+
     
     [self.dataTableView setTableHeaderView:self.myHeaderView];
 
 
+    
+    
+    
+    
  
 }
 
@@ -94,19 +126,16 @@
     
    }
 
-#pragma mark ----------------------------------------————————————————
-#pragma mark  tableviewDelegate Method
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;    // fixed font style. use custom view (UILabel) if you want something different
-{
-    
- 
-    
-    return @"hello";
-    
+-(void)viewDidUnload{
+
+    [super viewDidUnload];
+    self.carousel = nil;
+
 }
 
-
+#pragma mark ----------------------------------------————————————————
+#pragma mark  tableviewDelegate Method
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
@@ -331,6 +360,112 @@
     
     
 }
+
+
+
+#pragma mark -
+#pragma mark iCarousel methods
+
+- (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
+{
+    return NUMBER_OF_ITEMS;
+}
+
+- (NSUInteger)numberOfVisibleItemsInCarousel:(iCarousel *)carousel
+{
+    //if you have less than around 30 items in the carousel
+    //you'll get better performance if NUMBER_OF_VISIBLE_ITEMS >= NUMBER_OF_ITEMS
+    //because then the item view reflections won't have to be re-generated as
+    //the carousel is scrolling
+    return NUMBER_OF_VISIBLE_ITEMS;
+}
+
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
+{
+	UILabel *backgroudLabel = nil;
+	
+	//create new view if no view is available for recycling
+	if (view == nil)
+	{
+        //set up reflection view
+		view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 130.0f)] autorelease];
+        
+        //set up content
+		backgroudLabel = [[[UILabel alloc] initWithFrame:view.bounds] autorelease];
+		backgroudLabel.backgroundColor = [UIColor lightGrayColor];
+		backgroudLabel.layer.borderColor = [UIColor whiteColor].CGColor;
+        backgroudLabel.layer.borderWidth = 4.0f;
+        backgroudLabel.layer.cornerRadius = 8.0f;
+        backgroudLabel.textAlignment = UITextAlignmentCenter;
+		backgroudLabel.font = [backgroudLabel.font fontWithSize:50];
+        
+
+        [view addSubview:backgroudLabel];
+
+    ///add images
+    NSString *imageName = [NSString stringWithFormat:@"%d",index +1];
+    UIImageView *imageView =[[UIImageView alloc]initWithImage:[UIImage imageNamed:imageName]];
+        
+        
+    [backgroudLabel addSubview: imageView];
+    [imageView release];
+     
+        
+    ///add subtitles to each image
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0,100, 200, 30)];
+    NSString *string  =[NSString stringWithFormat:@"%d",index];
+    [label setText:string];
+    [label setTextAlignment:NSTextAlignmentCenter];
+    [label setTextColor:[UIColor whiteColor]];
+    label.backgroundColor = [UIColor greenColor];
+    [imageView addSubview:label];
+    [label release];
+        
+      
+        
+        
+	}
+	else
+	{
+		backgroudLabel = [[view subviews] lastObject];
+	}
+	
+    //set label
+	backgroudLabel.text = [NSString stringWithFormat:@"%@", @"adfsafasfasdfasdf"];
+    
+    //update reflection
+    //this step is expensive, so if you don't need
+    //unique reflections for each item, don't do this
+    //and you'll get much smoother peformance
+    
+    /// When it is the reflecttion view we need to implement this method.
+//    [view update];
+    
+    
+	
+	return view;
+}
+
+- (CGFloat)carouselItemWidth:(iCarousel *)carousel
+{
+    return ITEM_SPACING;
+}
+
+- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
+  
+    
+    PPDebug(@"I did selected the picture of %d",index);
+
+}
+
+-(void)carouselCurrentItemIndexUpdated:(iCarousel *)carousel{
+
+
+    
+    PPDebug(@"%d",[carousel currentItemIndex]);
+    
+}
+
 
 
 
