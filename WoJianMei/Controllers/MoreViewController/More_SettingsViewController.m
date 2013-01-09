@@ -7,6 +7,8 @@
 //
 
 #import "More_SettingsViewController.h"
+#import "UIButtonExt.h"
+#import "UIBarButtonItemExt.h"
 
 
 @interface More_SettingsViewController ()
@@ -40,19 +42,25 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.title = NSLocalizedString(@"Settings", @"Settings");
+    self.title = NSLocalizedString(@"设定", @"Settings");
     
+        
+        
     self.airplaneModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-    ////////add a section now 
+    
+    
+    ///////Section 1
     [self addSection:^(JMStaticContentTableViewSection *section, NSUInteger sectionIndex)
      
      {
+         [section setTitle:@"绑定账号"];
+         
          //// add a row at the section one 
          [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
              staticContentCell.reuseIdentifier = @"UIControlCell";
              cell.selectionStyle = UITableViewCellSelectionStyleNone;
              
-             cell.textLabel.text = NSLocalizedString(@"Airplane Mode", @"Airplane Mode");
+             cell.textLabel.text = NSLocalizedString(@"新浪微博", @"Airplane Mode");
              cell.imageView.image = [UIImage imageNamed:@"AirplaneMode"];
              cell.accessoryView = self.airplaneModeSwitch;
          }whenSelected:^(NSIndexPath *indexPath){
@@ -92,6 +100,9 @@
              //TODO			
          }];
      }];
+    
+///////Section 2 
+    
     [self addSection:^(JMStaticContentTableViewSection *section, NSUInteger sectionIndex) {
 		[section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
 			cell.textLabel.text = NSLocalizedString(@"Sounds", @"Sounds");
