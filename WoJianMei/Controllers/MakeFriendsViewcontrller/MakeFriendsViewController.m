@@ -7,7 +7,6 @@
 //
 
 #import "MakeFriendsViewController.h"
-#import "ComposeRootViewController.h"
 
 @interface MakeFriendsViewController ()
 

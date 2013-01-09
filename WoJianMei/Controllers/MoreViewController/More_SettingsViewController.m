@@ -7,8 +7,8 @@
 //
 
 #import "More_SettingsViewController.h"
-#import "UIButtonExt.h"
-#import "UIBarButtonItemExt.h"
+#import "WifiViewController.h"
+#import "NotificationsViewController.h"
 
 
 @interface More_SettingsViewController ()
@@ -36,6 +36,71 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
+#pragma mark - Social_NetWork_Account
+
+
+///////Section 1
+
+-(void)initSocialNetWorkAccountSection{
+
+
+    [self addSection:^(JMStaticContentTableViewSection *section, NSUInteger sectionIndex)
+     
+     {
+         [section setTitle:@"绑定账号"];
+         
+         //// add a row at the section one
+         [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
+             staticContentCell.reuseIdentifier = @"UIControlCell";
+             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+             
+             cell.textLabel.text = NSLocalizedString(@"新浪微博", @"Airplane Mode");
+             cell.detailTextLabel.text  =NSLocalizedString(@"新浪微博", @"Airplane Mode");
+             cell.imageView.image = [UIImage imageNamed:@"AirplaneMode"];
+             cell.accessoryView = self.airplaneModeSwitch;
+         }whenSelected:^(NSIndexPath *indexPath){
+             ///TODO
+             [self.navigationController pushViewController:[[WifiViewController alloc] init] animated:YES];
+             
+             
+         }];
+         
+         //// add a row at the section one
+         [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
+             staticContentCell.cellStyle = UITableViewCellStyleValue1;
+             staticContentCell.reuseIdentifier = @"DetailTextCell";
+             
+             cell.imageView.image = [UIImage imageNamed:@"AirplaneMode"];
+
+             cell.textLabel.text = NSLocalizedString(@"Wi-Fi", @"Wi-Fi");
+             cell.detailTextLabel.text = NSLocalizedString(@"未绑定", @"iamtheinternet");
+         } whenSelected:^(NSIndexPath *indexPath) {
+             [self.navigationController pushViewController:[[WifiViewController alloc] init] animated:YES];
+         }];
+         
+         //// add a row at the section one
+         [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
+             cell.textLabel.text = NSLocalizedString(@"Notifications", @"Notifications");
+             cell.imageView.image = [UIImage imageNamed:@"Notifications"];
+         } whenSelected:^(NSIndexPath *indexPath) {
+             [self.navigationController pushViewController:[[NotificationsViewController alloc] init] animated:YES];
+         }];
+         
+         //// add a row at the section one
+         [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
+             staticContentCell.cellStyle = UITableViewCellStyleValue1;
+             staticContentCell.reuseIdentifier = @"DetailTextCell";
+             
+             cell.textLabel.text = NSLocalizedString(@"Location Services", @"Location Services");
+             cell.detailTextLabel.text = NSLocalizedString(@"On", @"On");
+         } whenSelected:^(NSIndexPath *indexPath) {
+             //TODO
+         }];
+     }];
+}
+
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -48,59 +113,9 @@
         
     self.airplaneModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
     
+    [self initSocialNetWorkAccountSection];
     
-    ///////Section 1
-    [self addSection:^(JMStaticContentTableViewSection *section, NSUInteger sectionIndex)
-     
-     {
-         [section setTitle:@"绑定账号"];
-         
-         //// add a row at the section one 
-         [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
-             staticContentCell.reuseIdentifier = @"UIControlCell";
-             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-             
-             cell.textLabel.text = NSLocalizedString(@"新浪微博", @"Airplane Mode");
-             cell.imageView.image = [UIImage imageNamed:@"AirplaneMode"];
-             cell.accessoryView = self.airplaneModeSwitch;
-         }whenSelected:^(NSIndexPath *indexPath){
-         ///TODO
-             //    [self.navigationController pushViewController:[[WifiViewController alloc] init] animated:YES];
 
-         
-         }];
-         
-         //// add a row at the section one
-         [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
-             staticContentCell.cellStyle = UITableViewCellStyleValue1;
-             staticContentCell.reuseIdentifier = @"DetailTextCell";
-             
-             cell.textLabel.text = NSLocalizedString(@"Wi-Fi", @"Wi-Fi");
-             cell.detailTextLabel.text = NSLocalizedString(@"iamtheinternet", @"iamtheinternet");
-         } whenSelected:^(NSIndexPath *indexPath) {
-//             [self.navigationController pushViewController:[[WifiViewController alloc] init] animated:YES];
-         }];
-         
-         //// add a row at the section one
-         [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
-             cell.textLabel.text = NSLocalizedString(@"Notifications", @"Notifications");
-             cell.imageView.image = [UIImage imageNamed:@"Notifications"];
-         } whenSelected:^(NSIndexPath *indexPath) {
-//             [self.navigationController pushViewController:[[NotificationsViewController alloc] init] animated:YES];
-         }];
-         
-         //// add a row at the section one
-         [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
-             staticContentCell.cellStyle = UITableViewCellStyleValue1;
-             staticContentCell.reuseIdentifier = @"DetailTextCell";
-             
-             cell.textLabel.text = NSLocalizedString(@"Location Services", @"Location Services");
-             cell.detailTextLabel.text = NSLocalizedString(@"On", @"On");
-         } whenSelected:^(NSIndexPath *indexPath) {
-             //TODO			
-         }];
-     }];
-    
 ///////Section 2 
     
     [self addSection:^(JMStaticContentTableViewSection *section, NSUInteger sectionIndex) {
