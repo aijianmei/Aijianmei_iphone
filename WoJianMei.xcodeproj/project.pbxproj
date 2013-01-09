@@ -971,8 +971,8 @@
 		4A965CC4168F6AE400FF34CE /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		4A965CCE168F6AF600FF34CE /* FitnessNetworkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitnessNetworkRequest.m; sourceTree = "<group>"; };
 		4A965CD1168F6B7E00FF34CE /* FitnessNetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitnessNetworkRequest.h; sourceTree = "<group>"; };
-		4A965CD2168F6B9100FF34CE /* MyselfTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyselfTableViewCell.h; sourceTree = "<group>"; };
-		4A965CD3168F6B9100FF34CE /* MyselfTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyselfTableViewCell.m; sourceTree = "<group>"; };
+		4A965CD2168F6B9100FF34CE /* MyselfTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyselfTableViewCell.h; path = ../../MyselfTableViewCell.h; sourceTree = "<group>"; };
+		4A965CD3168F6B9100FF34CE /* MyselfTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyselfTableViewCell.m; path = ../../MyselfTableViewCell.m; sourceTree = "<group>"; };
 		4AA945F91686DD4E00022B2D /* FontSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontSize.h; sourceTree = "<group>"; };
 		4ABD0DA015D7F4EB00B08DDA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		4ABD0DA215D7F50A00B08DDA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -1311,8 +1311,6 @@
 			isa = PBXGroup;
 			children = (
 				4A498EDC168550D10073E682 /* FitnessNetworkConstants.h */,
-				4A965CD2168F6B9100FF34CE /* MyselfTableViewCell.h */,
-				4A965CD3168F6B9100FF34CE /* MyselfTableViewCell.m */,
 				4A965CD1168F6B7E00FF34CE /* FitnessNetworkRequest.h */,
 				4A965CCE168F6AF600FF34CE /* FitnessNetworkRequest.m */,
 				4A965CC4168F6AE400FF34CE /* README */,
@@ -2698,6 +2696,8 @@
 		4ADCFE04169D614600A3E979 /* MyselfViewContrller */ = {
 			isa = PBXGroup;
 			children = (
+				4A965CD2168F6B9100FF34CE /* MyselfTableViewCell.h */,
+				4A965CD3168F6B9100FF34CE /* MyselfTableViewCell.m */,
 				4ADCFE05169D614600A3E979 /* Myself_SettingsViewController.h */,
 				4ADCFE06169D614600A3E979 /* Myself_SettingsViewController.m */,
 				4ADCFE07169D614600A3E979 /* MyselfViewController.h */,
