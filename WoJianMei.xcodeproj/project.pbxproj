@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A202C701613063600E6D65C /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A202C6F1613063500E6D65C /* AssetsLibrary.framework */; };
-		4A3B1BDD15CFD0FE0077F05A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3B1BDC15CFD0FE0077F05A /* CoreText.framework */; };
+		4A071A21169D989D00F50D90 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A071A20169D989D00F50D90 /* MobileCoreServices.framework */; };
+		4A071A23169D991F00F50D90 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A071A22169D991F00F50D90 /* MediaPlayer.framework */; };
 		4A3D0BA615CB73CC008F6639 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BA515CB73CC008F6639 /* Video.m */; };
 		4A3D0BBA15CB7CF2008F6639 /* WorkOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BB915CB7CF2008F6639 /* WorkOut.m */; };
 		4A3D0BD115CB9F39008F6639 /* VideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BD015CB9F38008F6639 /* VideoManager.m */; };
@@ -219,15 +219,11 @@
 		4A4992B2168553A30073E682 /* UIViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4991C9168553A30073E682 /* UIViewUtils.m */; };
 		4A4992B3168553A30073E682 /* UIWebViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4991CC168553A30073E682 /* UIWebViewUtil.m */; };
 		4A4992B51685552D0073E682 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4992B41685552D0073E682 /* AddressBook.framework */; };
-		4A4992B71685553E0073E682 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4992B61685553E0073E682 /* AddressBookUI.framework */; };
 		4A4992B9168556240073E682 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4992B8168556240073E682 /* CoreLocation.framework */; };
 		4A4992BB1685562D0073E682 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4992BA1685562D0073E682 /* CoreData.framework */; };
-		4A4992BD168556540073E682 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4992BC168556540073E682 /* CoreTelephony.framework */; };
 		4A4992BF168556700073E682 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4992BE168556700073E682 /* AVFoundation.framework */; };
 		4A4992C1168556D00073E682 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4992C0168556D00073E682 /* libz.1.1.3.dylib */; };
 		4A4992D3168589E40073E682 /* UserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4992D2168589E40073E682 /* UserService.m */; };
-		4A55F60115DC8E080064C0C0 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A55F60015DC8E080064C0C0 /* CoreFoundation.framework */; };
-		4A7BFD1A15C4B67100C79C77 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7BFD1915C4B67100C79C77 /* MediaPlayer.framework */; };
 		4A7CF99215D74EF000206B14 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */; };
 		4A9599A5168ED997006F1317 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4A9597F9168ED995006F1317 /* .gitignore */; };
 		4A9599A6168ED997006F1317 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9597FA168ED995006F1317 /* libMobClickLibrary.a */; };
@@ -271,16 +267,8 @@
 		4A965CD0168F6AF600FF34CE /* FitnessNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A965CCE168F6AF600FF34CE /* FitnessNetworkRequest.m */; };
 		4A965CD4168F6B9100FF34CE /* MyselfTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A965CD3168F6B9100FF34CE /* MyselfTableViewCell.m */; };
 		4ABD0DA115D7F4EB00B08DDA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABD0DA015D7F4EB00B08DDA /* CFNetwork.framework */; };
-		4ABD0DA315D7F50A00B08DDA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABD0DA215D7F50A00B08DDA /* MobileCoreServices.framework */; };
-		4ABD0DA515D7F51B00B08DDA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABD0DA415D7F51B00B08DDA /* Security.framework */; };
-		4ABD0DA715D7F55A00B08DDA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABD0DA615D7F55A00B08DDA /* libz.dylib */; };
-		4ABD0DAB15D7F59E00B08DDA /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABD0DAA15D7F59E00B08DDA /* libsqlite3.dylib */; };
 		4ABD0DAE15D7F86200B08DDA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABD0DAD15D7F86200B08DDA /* MessageUI.framework */; };
 		4ABD0DB015D7F8FD00B08DDA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABD0DAF15D7F8FC00B08DDA /* QuartzCore.framework */; };
-		4ACF41A715E1DE02003D7404 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACF41A615E1DE02003D7404 /* EventKit.framework */; };
-		4ACF41A915E1DE0A003D7404 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACF41A815E1DE0A003D7404 /* EventKitUI.framework */; };
-		4AD66B0E15CFCED3000F7CB8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD66B0815CFCED3000F7CB8 /* CoreVideo.framework */; };
-		4AD66B0F15CFCED3000F7CB8 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD66B0915CFCED3000F7CB8 /* ImageIO.framework */; };
 		4AD66B1415CFCEEC000F7CB8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD66B1315CFCEEC000F7CB8 /* MapKit.framework */; };
 		4AD8E031169BD46B00EE04F9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8E030169BD46A00EE04F9 /* User.m */; };
 		4ADCFE19169D614600A3E979 /* MakeFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFDFC169D614600A3E979 /* MakeFriendsViewController.m */; };
@@ -497,8 +485,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4A202C6F1613063500E6D65C /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		4A3B1BDC15CFD0FE0077F05A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		4A071A20169D989D00F50D90 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		4A071A22169D991F00F50D90 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4A3D0BA415CB73CC008F6639 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
 		4A3D0BA515CB73CC008F6639 /* Video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
 		4A3D0BB815CB7CF1008F6639 /* WorkOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOut.h; sourceTree = "<group>"; };
@@ -914,16 +902,12 @@
 		4A4991CB168553A30073E682 /* UIWebViewUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWebViewUtil.h; sourceTree = "<group>"; };
 		4A4991CC168553A30073E682 /* UIWebViewUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIWebViewUtil.m; sourceTree = "<group>"; };
 		4A4992B41685552D0073E682 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		4A4992B61685553E0073E682 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		4A4992B8168556240073E682 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4A4992BA1685562D0073E682 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		4A4992BC168556540073E682 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		4A4992BE168556700073E682 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4A4992C0168556D00073E682 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		4A4992D1168589E40073E682 /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserService.h; sourceTree = "<group>"; };
 		4A4992D2168589E40073E682 /* UserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserService.m; sourceTree = "<group>"; };
-		4A55F60015DC8E080064C0C0 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		4A7BFD1915C4B67100C79C77 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4A9597F9168ED995006F1317 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4A9597FA168ED995006F1317 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
@@ -998,16 +982,8 @@
 		4A965CD3168F6B9100FF34CE /* MyselfTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyselfTableViewCell.m; path = ../../MyselfTableViewCell.m; sourceTree = "<group>"; };
 		4AA945F91686DD4E00022B2D /* FontSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontSize.h; sourceTree = "<group>"; };
 		4ABD0DA015D7F4EB00B08DDA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		4ABD0DA215D7F50A00B08DDA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		4ABD0DA415D7F51B00B08DDA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		4ABD0DA615D7F55A00B08DDA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		4ABD0DAA15D7F59E00B08DDA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4ABD0DAD15D7F86200B08DDA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		4ABD0DAF15D7F8FC00B08DDA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		4ACF41A615E1DE02003D7404 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
-		4ACF41A815E1DE0A003D7404 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
-		4AD66B0815CFCED3000F7CB8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		4AD66B0915CFCED3000F7CB8 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		4AD66B1315CFCEEC000F7CB8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4AD8E02F169BD46A00EE04F9 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		4AD8E030169BD46A00EE04F9 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -1285,32 +1261,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A071A23169D991F00F50D90 /* MediaPlayer.framework in Frameworks */,
+				4A071A21169D989D00F50D90 /* MobileCoreServices.framework in Frameworks */,
 				4A4992C1168556D00073E682 /* libz.1.1.3.dylib in Frameworks */,
 				4AD66B1415CFCEEC000F7CB8 /* MapKit.framework in Frameworks */,
 				4A4992BF168556700073E682 /* AVFoundation.framework in Frameworks */,
-				4A4992BD168556540073E682 /* CoreTelephony.framework in Frameworks */,
 				4A4992BB1685562D0073E682 /* CoreData.framework in Frameworks */,
 				4A4992B9168556240073E682 /* CoreLocation.framework in Frameworks */,
-				4A4992B71685553E0073E682 /* AddressBookUI.framework in Frameworks */,
 				4A4992B51685552D0073E682 /* AddressBook.framework in Frameworks */,
-				4A202C701613063600E6D65C /* AssetsLibrary.framework in Frameworks */,
-				4ACF41A915E1DE0A003D7404 /* EventKitUI.framework in Frameworks */,
-				4ACF41A715E1DE02003D7404 /* EventKit.framework in Frameworks */,
-				4A55F60115DC8E080064C0C0 /* CoreFoundation.framework in Frameworks */,
 				4ABD0DB015D7F8FD00B08DDA /* QuartzCore.framework in Frameworks */,
 				4ABD0DAE15D7F86200B08DDA /* MessageUI.framework in Frameworks */,
-				4ABD0DAB15D7F59E00B08DDA /* libsqlite3.dylib in Frameworks */,
-				4ABD0DA715D7F55A00B08DDA /* libz.dylib in Frameworks */,
-				4ABD0DA515D7F51B00B08DDA /* Security.framework in Frameworks */,
-				4ABD0DA315D7F50A00B08DDA /* MobileCoreServices.framework in Frameworks */,
 				4ABD0DA115D7F4EB00B08DDA /* CFNetwork.framework in Frameworks */,
 				4A7CF99215D74EF000206B14 /* SystemConfiguration.framework in Frameworks */,
 				4AE20A8E15D4B4E8003BBE37 /* StoreKit.framework in Frameworks */,
-				4A3B1BDD15CFD0FE0077F05A /* CoreText.framework in Frameworks */,
-				4AD66B0E15CFCED3000F7CB8 /* CoreVideo.framework in Frameworks */,
-				4AD66B0F15CFCED3000F7CB8 /* ImageIO.framework in Frameworks */,
 				4AE394B615C2DD9C00D06C61 /* CoreGraphics.framework in Frameworks */,
-				4A7BFD1A15C4B67100C79C77 /* MediaPlayer.framework in Frameworks */,
 				4AE394B215C2DD9C00D06C61 /* UIKit.framework in Frameworks */,
 				4AE394B415C2DD9C00D06C61 /* Foundation.framework in Frameworks */,
 				4A9599A6168ED997006F1317 /* libMobClickLibrary.a in Frameworks */,
@@ -3114,22 +3078,10 @@
 		4AE394B015C2DD9C00D06C61 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4A4992B61685553E0073E682 /* AddressBookUI.framework */,
-				4A202C6F1613063500E6D65C /* AssetsLibrary.framework */,
-				4A7BFD1915C4B67100C79C77 /* MediaPlayer.framework */,
-				4ACF41A815E1DE0A003D7404 /* EventKitUI.framework */,
-				4ACF41A615E1DE02003D7404 /* EventKit.framework */,
-				4A55F60015DC8E080064C0C0 /* CoreFoundation.framework */,
+				4A071A22169D991F00F50D90 /* MediaPlayer.framework */,
+				4A071A20169D989D00F50D90 /* MobileCoreServices.framework */,
 				4A4992C0168556D00073E682 /* libz.1.1.3.dylib */,
-				4ABD0DAA15D7F59E00B08DDA /* libsqlite3.dylib */,
-				4ABD0DA615D7F55A00B08DDA /* libz.dylib */,
 				4AE20A8D15D4B4E8003BBE37 /* StoreKit.framework */,
-				4AD66B0815CFCED3000F7CB8 /* CoreVideo.framework */,
-				4AD66B0915CFCED3000F7CB8 /* ImageIO.framework */,
-				4A3B1BDC15CFD0FE0077F05A /* CoreText.framework */,
-				4A4992BC168556540073E682 /* CoreTelephony.framework */,
-				4ABD0DA415D7F51B00B08DDA /* Security.framework */,
-				4ABD0DA215D7F50A00B08DDA /* MobileCoreServices.framework */,
 				4A4992BE168556700073E682 /* AVFoundation.framework */,
 				4ABD0DAD15D7F86200B08DDA /* MessageUI.framework */,
 				4AD66B1315CFCEEC000F7CB8 /* MapKit.framework */,
