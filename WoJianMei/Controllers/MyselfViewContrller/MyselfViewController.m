@@ -16,8 +16,9 @@
 
 #import "ShareToSinaController.h"
 #import "ShareToQQWeiboController.h"
-
 #import "ShareToQQViewController.h"
+
+
 
 #import "SinaweiboManager.h"
 #import "TencentWeiboManager.h"
@@ -460,7 +461,10 @@ const double URLCacheInterval = 86400.0;
 - (SinaweiboManager *)sinaweiboManager
 {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate.sinaWeiboManager.sinaweibo setDelegate:self];
+    
+   [appDelegate.sinaWeiboManager.sinaweibo setDelegate:self];
+    
+    
     return appDelegate.sinaWeiboManager;
 }
 

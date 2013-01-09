@@ -11,6 +11,7 @@
 
 #import "SinaweiboManager.h"
 
+@class SinaweiboManager;
 @class TengxunWeiboManager;
 @class PPTabBarController;
 
