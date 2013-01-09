@@ -259,13 +259,11 @@
 		4A764C281696BAA8000F7839 /* MFSlidingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A764C271696BAA8000F7839 /* MFSlidingView.m */; };
 		4A7BFD1A15C4B67100C79C77 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7BFD1915C4B67100C79C77 /* MediaPlayer.framework */; };
 		4A7CF99215D74EF000206B14 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */; };
-		4A81F6DD15E3724100201BAA /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A81F6B215E3724100201BAA /* AboutViewController.m */; };
 		4A81F6DE15E3724100201BAA /* artist-tab.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A81F6B315E3724100201BAA /* artist-tab.png */; };
 		4A81F6DF15E3724100201BAA /* artist-tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A81F6B415E3724100201BAA /* artist-tab@2x.png */; };
 		4A81F6E015E3724100201BAA /* clock-tab.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A81F6B515E3724100201BAA /* clock-tab.png */; };
 		4A81F6E115E3724100201BAA /* clock-tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A81F6B615E3724100201BAA /* clock-tab@2x.png */; };
 		4A81F6E215E3724100201BAA /* PlayVideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A81F6B815E3724100201BAA /* PlayVideosViewController.m */; };
-		4A81F6E515E3724100201BAA /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A81F6BE15E3724100201BAA /* MoreViewController.m */; };
 		4A81F6E615E3724100201BAA /* music-tab.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A81F6BF15E3724100201BAA /* music-tab.png */; };
 		4A81F6E715E3724100201BAA /* music-tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A81F6C015E3724100201BAA /* music-tab@2x.png */; };
 		4A81F6E815E3724100201BAA /* MyselfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A81F6C215E3724100201BAA /* MyselfViewController.m */; };
@@ -466,7 +464,9 @@
 		4AD66B1415CFCEEC000F7CB8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD66B1315CFCEEC000F7CB8 /* MapKit.framework */; };
 		4AD8E02D169BBE4B00EE04F9 /* URLCacheAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8E02C169BBE4B00EE04F9 /* URLCacheAlert.m */; };
 		4AD8E031169BD46B00EE04F9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8E030169BD46A00EE04F9 /* User.m */; };
-		4ADCFDEF169D59A000A3E979 /* More_SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFDEE169D59A000A3E979 /* More_SettingsViewController.m */; };
+		4ADCFDF6169D5C7200A3E979 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFDF1169D5C6D00A3E979 /* AboutViewController.m */; };
+		4ADCFDF7169D5C7200A3E979 /* More_SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFDF3169D5C6E00A3E979 /* More_SettingsViewController.m */; };
+		4ADCFDF8169D5C7200A3E979 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFDF5169D5C7000A3E979 /* MoreViewController.m */; };
 		4AE20A8E15D4B4E8003BBE37 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE20A8D15D4B4E8003BBE37 /* StoreKit.framework */; };
 		4AE394B215C2DD9C00D06C61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE394B115C2DD9C00D06C61 /* UIKit.framework */; };
 		4AE394B415C2DD9C00D06C61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE394B315C2DD9C00D06C61 /* Foundation.framework */; };
@@ -967,16 +967,12 @@
 		4A764C271696BAA8000F7839 /* MFSlidingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSlidingView.m; sourceTree = "<group>"; };
 		4A7BFD1915C4B67100C79C77 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		4A81F6B115E3724100201BAA /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = Controllers/AboutViewController.h; sourceTree = "<group>"; };
-		4A81F6B215E3724100201BAA /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = Controllers/AboutViewController.m; sourceTree = "<group>"; };
 		4A81F6B315E3724100201BAA /* artist-tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "artist-tab.png"; path = "Controllers/artist-tab.png"; sourceTree = "<group>"; };
 		4A81F6B415E3724100201BAA /* artist-tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "artist-tab@2x.png"; path = "Controllers/artist-tab@2x.png"; sourceTree = "<group>"; };
 		4A81F6B515E3724100201BAA /* clock-tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clock-tab.png"; path = "Controllers/clock-tab.png"; sourceTree = "<group>"; };
 		4A81F6B615E3724100201BAA /* clock-tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clock-tab@2x.png"; path = "Controllers/clock-tab@2x.png"; sourceTree = "<group>"; };
 		4A81F6B715E3724100201BAA /* PlayVideosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayVideosViewController.h; path = Controllers/PlayVideosViewController.h; sourceTree = "<group>"; };
 		4A81F6B815E3724100201BAA /* PlayVideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayVideosViewController.m; path = Controllers/PlayVideosViewController.m; sourceTree = "<group>"; };
-		4A81F6BD15E3724100201BAA /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreViewController.h; path = Controllers/MoreViewController.h; sourceTree = "<group>"; };
-		4A81F6BE15E3724100201BAA /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreViewController.m; path = Controllers/MoreViewController.m; sourceTree = "<group>"; };
 		4A81F6BF15E3724100201BAA /* music-tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "music-tab.png"; path = "Controllers/music-tab.png"; sourceTree = "<group>"; };
 		4A81F6C015E3724100201BAA /* music-tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "music-tab@2x.png"; path = "Controllers/music-tab@2x.png"; sourceTree = "<group>"; };
 		4A81F6C115E3724100201BAA /* MyselfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyselfViewController.h; path = Controllers/MyselfViewController.h; sourceTree = "<group>"; };
@@ -1228,8 +1224,12 @@
 		4AD8E02C169BBE4B00EE04F9 /* URLCacheAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLCacheAlert.m; sourceTree = "<group>"; };
 		4AD8E02F169BD46A00EE04F9 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		4AD8E030169BD46A00EE04F9 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		4ADCFDED169D59A000A3E979 /* More_SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = More_SettingsViewController.h; path = Controllers/More_SettingsViewController.h; sourceTree = "<group>"; };
-		4ADCFDEE169D59A000A3E979 /* More_SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = More_SettingsViewController.m; path = Controllers/More_SettingsViewController.m; sourceTree = "<group>"; };
+		4ADCFDF0169D5C6D00A3E979 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = Controllers/AboutViewController.h; sourceTree = "<group>"; };
+		4ADCFDF1169D5C6D00A3E979 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = Controllers/AboutViewController.m; sourceTree = "<group>"; };
+		4ADCFDF2169D5C6D00A3E979 /* More_SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = More_SettingsViewController.h; path = Controllers/More_SettingsViewController.h; sourceTree = "<group>"; };
+		4ADCFDF3169D5C6E00A3E979 /* More_SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = More_SettingsViewController.m; path = Controllers/More_SettingsViewController.m; sourceTree = "<group>"; };
+		4ADCFDF4169D5C6F00A3E979 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreViewController.h; path = Controllers/MoreViewController.h; sourceTree = "<group>"; };
+		4ADCFDF5169D5C7000A3E979 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreViewController.m; path = Controllers/MoreViewController.m; sourceTree = "<group>"; };
 		4AE20A8D15D4B4E8003BBE37 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4AE394AD15C2DD9C00D06C61 /* WoJianMei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoJianMei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AE394B115C2DD9C00D06C61 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -2955,19 +2955,6 @@
 			name = MakeFriendsViewController;
 			sourceTree = "<group>";
 		};
-		4A959A4D168EEE6A006F1317 /* More */ = {
-			isa = PBXGroup;
-			children = (
-				4ADCFDED169D59A000A3E979 /* More_SettingsViewController.h */,
-				4ADCFDEE169D59A000A3E979 /* More_SettingsViewController.m */,
-				4A81F6BD15E3724100201BAA /* MoreViewController.h */,
-				4A81F6BE15E3724100201BAA /* MoreViewController.m */,
-				4A81F6B115E3724100201BAA /* AboutViewController.h */,
-				4A81F6B215E3724100201BAA /* AboutViewController.m */,
-			);
-			name = More;
-			sourceTree = "<group>";
-		};
 		4A959A4E168EEED8006F1317 /* Nutri_SupViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -3130,10 +3117,23 @@
 				4A959A4A168EED09006F1317 /* WorkoutViewController */,
 				4A959A4E168EEED8006F1317 /* Nutri_SupViewController */,
 				4A959A4B168EED2E006F1317 /* MyselfViewController */,
+				4ADCFDF9169D5C9700A3E979 /* More */,
 				4A959A4C168EEE5D006F1317 /* MakeFriendsViewController */,
-				4A959A4D168EEE6A006F1317 /* More */,
 			);
 			name = Entries;
+			sourceTree = "<group>";
+		};
+		4ADCFDF9169D5C9700A3E979 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				4ADCFDF0169D5C6D00A3E979 /* AboutViewController.h */,
+				4ADCFDF1169D5C6D00A3E979 /* AboutViewController.m */,
+				4ADCFDF2169D5C6D00A3E979 /* More_SettingsViewController.h */,
+				4ADCFDF3169D5C6E00A3E979 /* More_SettingsViewController.m */,
+				4ADCFDF4169D5C6F00A3E979 /* MoreViewController.h */,
+				4ADCFDF5169D5C7000A3E979 /* MoreViewController.m */,
+			);
+			name = More;
 			sourceTree = "<group>";
 		};
 		4AE394A215C2DD9C00D06C61 = {
@@ -3490,9 +3490,7 @@
 				4A3D0BA615CB73CC008F6639 /* Video.m in Sources */,
 				4A3D0BBA15CB7CF2008F6639 /* WorkOut.m in Sources */,
 				4A3D0BD115CB9F39008F6639 /* VideoManager.m in Sources */,
-				4A81F6DD15E3724100201BAA /* AboutViewController.m in Sources */,
 				4A81F6E215E3724100201BAA /* PlayVideosViewController.m in Sources */,
-				4A81F6E515E3724100201BAA /* MoreViewController.m in Sources */,
 				4A81F6E815E3724100201BAA /* MyselfViewController.m in Sources */,
 				4A81F6E915E3724100201BAA /* Nutri_SupViewController.m in Sources */,
 				4A81F6EF15E3724100201BAA /* ShowBigImageViewController.m in Sources */,
@@ -3746,7 +3744,9 @@
 				4AD8E031169BD46B00EE04F9 /* User.m in Sources */,
 				4AB69002169C13FA007AA489 /* ReflectionView.m in Sources */,
 				4AB6900A169C14A6007AA489 /* iCarousel.m in Sources */,
-				4ADCFDEF169D59A000A3E979 /* More_SettingsViewController.m in Sources */,
+				4ADCFDF6169D5C7200A3E979 /* AboutViewController.m in Sources */,
+				4ADCFDF7169D5C7200A3E979 /* More_SettingsViewController.m in Sources */,
+				4ADCFDF8169D5C7200A3E979 /* MoreViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
