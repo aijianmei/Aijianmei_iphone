@@ -1203,8 +1203,8 @@
 		4AE394BB15C2DD9C00D06C61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4AE394BD15C2DD9C00D06C61 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4AE394BF15C2DD9C00D06C61 /* WoJianMei-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WoJianMei-Prefix.pch"; sourceTree = "<group>"; };
-		4AE394C015C2DD9C00D06C61 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		4AE394C115C2DD9C00D06C61 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4AE394C015C2DD9C00D06C61 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = WoJianMei/AppDelegate.h; sourceTree = "<group>"; };
+		4AE394C115C2DD9C00D06C61 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = WoJianMei/AppDelegate.m; sourceTree = "<group>"; };
 		4AE394C415C2DD9C00D06C61 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		4AE394C715C2DD9C00D06C61 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		4AE4AB2A15D07FB5008FCAB8 /* VideoContants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoContants.h; sourceTree = "<group>"; };
@@ -3042,6 +3042,10 @@
 				4A498F9B168553A20073E682 /* Core */,
 				4A498D711685500F0073E682 /* Component-Service */,
 				4AE394B715C2DD9C00D06C61 /* WoJianMei */,
+				4AE394C015C2DD9C00D06C61 /* AppDelegate.h */,
+				4AE394C115C2DD9C00D06C61 /* AppDelegate.m */,
+				4AE394C315C2DD9C00D06C61 /* MainStoryboard_iPhone.storyboard */,
+				4AE394C615C2DD9C00D06C61 /* MainStoryboard_iPad.storyboard */,
 				4AE394B015C2DD9C00D06C61 /* Frameworks */,
 				4AE394AE15C2DD9C00D06C61 /* Products */,
 			);
@@ -3093,10 +3097,6 @@
 		4AE394B715C2DD9C00D06C61 /* WoJianMei */ = {
 			isa = PBXGroup;
 			children = (
-				4AE394C015C2DD9C00D06C61 /* AppDelegate.h */,
-				4AE394C115C2DD9C00D06C61 /* AppDelegate.m */,
-				4AE394C315C2DD9C00D06C61 /* MainStoryboard_iPhone.storyboard */,
-				4AE394C615C2DD9C00D06C61 /* MainStoryboard_iPad.storyboard */,
 				4A58805215C52B89005F8415 /* Controllers */,
 				4A58805015C52B76005F8415 /* model */,
 				4A498EDA1685502A0073E682 /* NetWork */,
@@ -3678,6 +3678,7 @@
 				4AE394C415C2DD9C00D06C61 /* en */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
+			path = WoJianMei;
 			sourceTree = "<group>";
 		};
 		4AE394C615C2DD9C00D06C61 /* MainStoryboard_iPad.storyboard */ = {
@@ -3686,6 +3687,7 @@
 				4AE394C715C2DD9C00D06C61 /* en */,
 			);
 			name = MainStoryboard_iPad.storyboard;
+			path = WoJianMei;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
