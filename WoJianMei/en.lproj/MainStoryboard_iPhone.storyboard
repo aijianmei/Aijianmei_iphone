@@ -5,30 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
-        <!--Play Videos View Controller - First-->
-        <scene sceneID="11">
-            <objects>
-                <viewController title="First" id="2" customClass="PlayVideosViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="16">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="r4e-42-kSX">
-                                <rect key="frame" x="0.0" y="365" width="320" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Workout" image="first" id="7"/>
-                    <navigationItem key="navigationItem" title="图片" id="Jvd-Pq-MLd">
-                        <barButtonItem key="backBarButtonItem" title="返回" id="zTj-Dl-zYz"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3339" y="-3848"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="u0x-Yl-9YA">
             <objects>
@@ -173,69 +149,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xXH-LY-GsM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3494" y="-2298"/>
-        </scene>
-        <!--Setting View Controller - Second-->
-        <scene sceneID="13">
-            <objects>
-                <viewController storyboardIdentifier="SettingViewController" title="Second" id="3" customClass="SettingViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="17">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FeK-FP-Vdg">
-                                <rect key="frame" x="28" y="110" width="245" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Send messages" backgroundImage="data_menu_1@2x.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendMessageToRestaurant:" destination="3" eventType="touchUpInside" id="brb-mW-xqh"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HwP-Fb-djH">
-                                <rect key="frame" x="28" y="178" width="245" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Call and Order" backgroundImage="data_menu_1@2x.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="callTheRestaurant:" destination="3" eventType="touchUpInside" id="vGX-Kv-cbI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Rbq-yO-QcU">
-                                <rect key="frame" x="42" y="268" width="251" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="loginWeibo.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginWithSinaWeiBlog:" destination="3" eventType="touchUpInside" id="h5b-9N-x3J"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="设置" id="8Hd-CK-2vE"/>
-                    <navigationItem key="navigationItem" id="oLS-LB-zbt"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="12" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5188" y="-1541"/>
         </scene>
         <!--Workout View Controller - 视频-->
         <scene sceneID="KKm-98-eaU">
@@ -571,75 +484,6 @@
             </objects>
             <point key="canvasLocation" x="3408" y="-2969"/>
         </scene>
-        <!--Show Big Image View Controller - ShowBigImage-->
-        <scene sceneID="aCr-ni-3N1">
-            <objects>
-                <viewController storyboardIdentifier="ShowBigImage" autoresizesArchivedViewToFullSize="NO" title="ShowBigImage" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BNM-XD-GFZ" customClass="ShowBigImageViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="moN-S7-Ya9" customClass="BackgroundView">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" image="adductor-exercises.jpg" id="uuh-Ou-Cog">
-                                <rect key="frame" x="0.0" y="39" width="320" height="421"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YKx-r9-w0T">
-                                <rect key="frame" x="174" y="2" width="142" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" backgroundImage="publish_button_32.gif">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="showBigImageView" destination="uuh-Ou-Cog" id="BCb-N7-pdX"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="omm-RB-vLH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5114" y="-2218"/>
-        </scene>
-        <!--Show Alert Text View Controller-->
-        <scene sceneID="vO8-I9-17s">
-            <objects>
-                <viewController storyboardIdentifier="ShowAlertTextViewController" id="t8Y-5y-5Zc" customClass="ShowAlertTextViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7aQ-Pc-aL9">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" id="bd1-BB-a5t">
-                                <rect key="frame" x="83" y="156" width="128" height="69"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="e5m-LC-4d0">
-                                        <rect key="frame" x="43" y="24" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="messageLabel" destination="e5m-LC-4d0" id="xSY-sO-hXw"/>
-                        <outlet property="view" destination="bd1-BB-a5t" id="9xJ-gv-wUD"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8s8-s3-VKZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4673" y="-2164"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="IkO-V6-Ni3">
             <objects>
@@ -755,15 +599,73 @@
         <image name="5.jpg" width="270" height="180"/>
         <image name="@2x.png" width="16" height="16"/>
         <image name="Icon-Small.png" width="32" height="32"/>
-        <image name="adductor-exercises.jpg" width="300" height="300"/>
         <image name="data_m_1@2x.png" width="16" height="16"/>
         <image name="data_m_2@2x.png" width="16" height="16"/>
-        <image name="data_menu_1@2x.png" width="128" height="78"/>
-        <image name="first" width="16" height="16"/>
-        <image name="loginWeibo.png" width="239" height="48"/>
-        <image name="publish_button_32.gif" width="142" height="32"/>
         <image name="star2.png" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="AboutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
+        </class>
+        <class className="MakeFriendsViewController" superclassName="PPTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MakeFriendsViewController.h"/>
+        </class>
+        <class className="MoreViewController" superclassName="PPTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MoreViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="sinaWeiBlogshareButton:"/>
+            </relationships>
+        </class>
+        <class className="MyselfViewController" superclassName="PPTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyselfViewController.h"/>
+        </class>
+        <class className="Nutri_SupViewController" superclassName="PPTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Nutri_SupViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="buttonScrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="NutritionDetailCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NutritionDetailCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="clickedNumberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="creatdDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="introductionImageButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="PPTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPTabBarController.h"/>
+        </class>
+        <class className="PPTableViewController" superclassName="PPViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dataTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="PPViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPViewController.h"/>
+        </class>
+        <class className="VideoListCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VideoListCell.h"/>
+            <relationships>
+                <relationship kind="action" name="clickBuyButton:"/>
+                <relationship kind="action" name="clickFollowButton:"/>
+                <relationship kind="action" name="clickShowBigImage:"/>
+                <relationship kind="action" name="clickSinaWeiBlogButton:"/>
+                <relationship kind="outlet" name="downLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="productImageButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="repeatTimesLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="setsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLeghtLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="upLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="WorkoutViewController" superclassName="PPTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
