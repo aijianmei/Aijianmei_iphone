@@ -21,7 +21,6 @@
 #import "PlayVideosViewController.h"
 
 
-#import "SettingsViewController.h"
 #import "MySideMenueViewController.h"
 #import "MFSideMenu.h"
 

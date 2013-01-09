@@ -6,15 +6,15 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SettingsViewController.h"
+#import "Myself_SettingsViewController.h"
 
 
-@interface SettingsViewController ()
+@interface Myself_SettingsViewController ()
 @property (nonatomic, retain) UISwitch *airplaneModeSwitch;
 @end
 
 
-@implementation SettingsViewController
+@implementation Myself_SettingsViewController
 @synthesize airplaneModeSwitch = _airplaneModeSwitch;
 
 
@@ -40,7 +40,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.title = NSLocalizedString(@"Settings", @"Settings");
+    self.title = NSLocalizedString(@"设定", @"Settings");
     
     self.airplaneModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
     ////////add a section now 

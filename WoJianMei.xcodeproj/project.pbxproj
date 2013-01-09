@@ -15,7 +15,7 @@
 		4A34DE8A1614026E00974A2D /* JMStaticContentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34DE841614026E00974A2D /* JMStaticContentTableViewController.m */; };
 		4A34DE8B1614026E00974A2D /* JMStaticContentTableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34DE861614026E00974A2D /* JMStaticContentTableViewSection.m */; };
 		4A34DE8C1614026E00974A2D /* StaticTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34DE881614026E00974A2D /* StaticTextFieldTableViewCell.m */; };
-		4A34DE8E1614032A00974A2D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34DE8D1614032A00974A2D /* SettingsViewController.m */; };
+		4A34DE8E1614032A00974A2D /* Myself_SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34DE8D1614032A00974A2D /* Myself_SettingsViewController.m */; };
 		4A34DEA11614241100974A2D /* MFSideMenuManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34DE9A1614241100974A2D /* MFSideMenuManager.m */; };
 		4A34DEA21614241100974A2D /* UIViewController+MFSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34DE9C1614241100974A2D /* UIViewController+MFSideMenu.m */; };
 		4A34DEA61614245F00974A2D /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34DEA41614245F00974A2D /* DemoViewController.m */; };
@@ -466,6 +466,7 @@
 		4AD66B1415CFCEEC000F7CB8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD66B1315CFCEEC000F7CB8 /* MapKit.framework */; };
 		4AD8E02D169BBE4B00EE04F9 /* URLCacheAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8E02C169BBE4B00EE04F9 /* URLCacheAlert.m */; };
 		4AD8E031169BD46B00EE04F9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8E030169BD46A00EE04F9 /* User.m */; };
+		4ADCFDEF169D59A000A3E979 /* More_SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFDEE169D59A000A3E979 /* More_SettingsViewController.m */; };
 		4AE20A8E15D4B4E8003BBE37 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE20A8D15D4B4E8003BBE37 /* StoreKit.framework */; };
 		4AE394B215C2DD9C00D06C61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE394B115C2DD9C00D06C61 /* UIKit.framework */; };
 		4AE394B415C2DD9C00D06C61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE394B315C2DD9C00D06C61 /* Foundation.framework */; };
@@ -505,7 +506,7 @@
 		4A34DE861614026E00974A2D /* JMStaticContentTableViewSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMStaticContentTableViewSection.m; sourceTree = "<group>"; };
 		4A34DE871614026E00974A2D /* StaticTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticTextFieldTableViewCell.h; sourceTree = "<group>"; };
 		4A34DE881614026E00974A2D /* StaticTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticTextFieldTableViewCell.m; sourceTree = "<group>"; };
-		4A34DE8D1614032A00974A2D /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Controllers/SettingsViewController.m; sourceTree = "<group>"; };
+		4A34DE8D1614032A00974A2D /* Myself_SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Myself_SettingsViewController.m; path = Controllers/Myself_SettingsViewController.m; sourceTree = "<group>"; };
 		4A34DE981614241100974A2D /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
 		4A34DE991614241100974A2D /* MFSideMenuManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuManager.h; sourceTree = "<group>"; };
 		4A34DE9A1614241100974A2D /* MFSideMenuManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuManager.m; sourceTree = "<group>"; };
@@ -986,7 +987,7 @@
 		4A81F6C615E3724100201BAA /* podcast-tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "podcast-tab@2x.png"; path = "Controllers/podcast-tab@2x.png"; sourceTree = "<group>"; };
 		4A81F6C715E3724100201BAA /* selection-tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "selection-tab.png"; path = "Controllers/selection-tab.png"; sourceTree = "<group>"; };
 		4A81F6C815E3724100201BAA /* selection-tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "selection-tab@2x.png"; path = "Controllers/selection-tab@2x.png"; sourceTree = "<group>"; };
-		4A81F6C915E3724100201BAA /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Controllers/SettingsViewController.h; sourceTree = "<group>"; };
+		4A81F6C915E3724100201BAA /* Myself_SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Myself_SettingsViewController.h; path = Controllers/Myself_SettingsViewController.h; sourceTree = "<group>"; };
 		4A81F6CB15E3724100201BAA /* ShowBigImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShowBigImageViewController.h; path = Controllers/ShowBigImageViewController.h; sourceTree = "<group>"; };
 		4A81F6CC15E3724100201BAA /* ShowBigImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShowBigImageViewController.m; path = Controllers/ShowBigImageViewController.m; sourceTree = "<group>"; };
 		4A81F6CD15E3724100201BAA /* szicon_a@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "szicon_a@2x.png"; path = "Controllers/szicon_a@2x.png"; sourceTree = "<group>"; };
@@ -1227,6 +1228,8 @@
 		4AD8E02C169BBE4B00EE04F9 /* URLCacheAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLCacheAlert.m; sourceTree = "<group>"; };
 		4AD8E02F169BD46A00EE04F9 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		4AD8E030169BD46A00EE04F9 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		4ADCFDED169D59A000A3E979 /* More_SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = More_SettingsViewController.h; path = Controllers/More_SettingsViewController.h; sourceTree = "<group>"; };
+		4ADCFDEE169D59A000A3E979 /* More_SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = More_SettingsViewController.m; path = Controllers/More_SettingsViewController.m; sourceTree = "<group>"; };
 		4AE20A8D15D4B4E8003BBE37 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4AE394AD15C2DD9C00D06C61 /* WoJianMei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoJianMei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AE394B115C2DD9C00D06C61 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -2548,8 +2551,6 @@
 				4A34DEA91614250D00974A2D /* SliderMenuesViewController */,
 				4A81F6B715E3724100201BAA /* PlayVideosViewController.h */,
 				4A81F6B815E3724100201BAA /* PlayVideosViewController.m */,
-				4A81F6C915E3724100201BAA /* SettingsViewController.h */,
-				4A34DE8D1614032A00974A2D /* SettingsViewController.m */,
 				4A31D110161591A000D2A571 /* MoreSettingsViewController.h */,
 				4A31D111161591A000D2A571 /* MoreSettingsViewController.m */,
 				4AEE95AC15FB7F26005A66DC /* BookController.h */,
@@ -2937,6 +2938,8 @@
 			children = (
 				4A81F6C115E3724100201BAA /* MyselfViewController.h */,
 				4A81F6C215E3724100201BAA /* MyselfViewController.m */,
+				4A81F6C915E3724100201BAA /* Myself_SettingsViewController.h */,
+				4A34DE8D1614032A00974A2D /* Myself_SettingsViewController.m */,
 				4AD8E02B169BBE4B00EE04F9 /* URLCacheAlert.h */,
 				4AD8E02C169BBE4B00EE04F9 /* URLCacheAlert.m */,
 			);
@@ -2955,6 +2958,8 @@
 		4A959A4D168EEE6A006F1317 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				4ADCFDED169D59A000A3E979 /* More_SettingsViewController.h */,
+				4ADCFDEE169D59A000A3E979 /* More_SettingsViewController.m */,
 				4A81F6BD15E3724100201BAA /* MoreViewController.h */,
 				4A81F6BE15E3724100201BAA /* MoreViewController.m */,
 				4A81F6B115E3724100201BAA /* AboutViewController.h */,
@@ -3508,7 +3513,7 @@
 				4A34DE8A1614026E00974A2D /* JMStaticContentTableViewController.m in Sources */,
 				4A34DE8B1614026E00974A2D /* JMStaticContentTableViewSection.m in Sources */,
 				4A34DE8C1614026E00974A2D /* StaticTextFieldTableViewCell.m in Sources */,
-				4A34DE8E1614032A00974A2D /* SettingsViewController.m in Sources */,
+				4A34DE8E1614032A00974A2D /* Myself_SettingsViewController.m in Sources */,
 				4A34DEA11614241100974A2D /* MFSideMenuManager.m in Sources */,
 				4A34DEA21614241100974A2D /* UIViewController+MFSideMenu.m in Sources */,
 				4A34DEA61614245F00974A2D /* DemoViewController.m in Sources */,
@@ -3741,6 +3746,7 @@
 				4AD8E031169BD46B00EE04F9 /* User.m in Sources */,
 				4AB69002169C13FA007AA489 /* ReflectionView.m in Sources */,
 				4AB6900A169C14A6007AA489 /* iCarousel.m in Sources */,
+				4ADCFDEF169D59A000A3E979 /* More_SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

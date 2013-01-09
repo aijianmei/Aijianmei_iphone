@@ -53,21 +53,15 @@
     NSDictionary *sina_userInfo;
     NSDictionary *user_info;
     
-    
-    
-    
-    
+
     NSString *dataPath;
 	NSString *filePath;
 	NSDate *fileDate;
 	NSMutableArray *urlArray;
     
     NSError *cache_error;
-
+    
     User *_user;
-
-
-
 }
 
 

@@ -9,9 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JMStaticContentTableViewController.h"
 
-@interface SettingsViewController : JMStaticContentTableViewController
-
-
+@interface Myself_SettingsViewController: JMStaticContentTableViewController
 
 
 

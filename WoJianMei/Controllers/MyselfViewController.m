@@ -10,7 +10,8 @@
 #import "MyselfTableViewCell.h"
 
 #import "ImageManager.h"
-#import "SettingsViewController.h"
+
+#import "Myself_SettingsViewController.h"
 
 
 #import "ShareToSinaController.h"
@@ -198,6 +199,11 @@ const double URLCacheInterval = 86400.0;
     self.headerVImageButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
     [_headerVImageButton addTarget:self action:@selector(clickVatarButton:) forControlEvents:UIControlEventTouchUpInside];
     
+    _headerVImageButton.layer.borderWidth = 4.0f;
+    _headerVImageButton.layer.cornerRadius = 8.0f;
+    _headerVImageButton.layer.borderColor = [UIColor whiteColor].CGColor;
+
+    
     [_headerVImageButton setFrame:CGRectMake(15, 16, 70, 70)];
     [_headerVImageButton setBackgroundColor:[UIColor grayColor]];
     [_headerVImageButton setImage:[ImageManager avatarbackgroundImage] forState:UIControlStateNormal];
@@ -297,10 +303,14 @@ const double URLCacheInterval = 86400.0;
     
 }
 -(void)clickSettingsButton:(id)sender{
+    
+    
    
-    SettingsViewController *settingsVC = [[SettingsViewController alloc]init];
-    [self.navigationController pushViewController :settingsVC animated:YES];
-    [settingsVC release];
+    Myself_SettingsViewController *vc = [[Myself_SettingsViewController alloc]init];
+    [self.navigationController pushViewController :vc animated:YES];
+    [vc release];
+    
+    
 }
 
 
@@ -422,25 +432,20 @@ const double URLCacheInterval = 86400.0;
 {
     
 
+    
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     if (image != nil){
         
+        
+    [self.navigationController  dismissViewControllerAnimated:YES completion:^{
         [self.headerVImageButton setImage:image forState:UIControlStateNormal];
+         self.user.avatarImage = image;
+        [self storeUserInfo];
         
-
-        self.user.avatarImage = image;
-        
-        //// first we need to store the datas and then show the datas
-        
-        
-        NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:
-                            self.user];
-        [[NSUserDefaults standardUserDefaults] setObject:userData forKey:USER];
-
-        
-    }
+    }];
     
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+    
+    }
 }
 
 
@@ -628,9 +633,7 @@ const double URLCacheInterval = 86400.0;
 
     }
     
-//      cell.delegate = self;
-//      cell.indexPath = indexPath;
-    
+
     
        
     if (indexPath.section==0) {
@@ -742,7 +745,7 @@ const double URLCacheInterval = 86400.0;
         switch ([indexPath row]) {
             case 0:
             {
-                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];                
                 [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
                 [leftButton setTitle:@"消息" forState:UIControlStateNormal];
                 [leftButton addTarget:self
@@ -752,13 +755,15 @@ const double URLCacheInterval = 86400.0;
                 
                 
                 
-                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                 UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
                 [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
                 [rightButton setTitle:@"消息" forState:UIControlStateNormal];
                 [rightButton addTarget:self
                                 action:@selector(theActionYouWant:)
                       forControlEvents:UIControlEventTouchDragOutside];
                 [cell addSubview:rightButton];
+                
+            
 
             }
                 break;
@@ -875,8 +880,6 @@ const double URLCacheInterval = 86400.0;
         }
     }
 
-    
-    cell.backgroundView.backgroundColor =[UIColor clearColor];
     
     return cell;
 }
@@ -1047,19 +1050,23 @@ const double URLCacheInterval = 86400.0;
     NSString *gender = [dataDictionary objectForKey:USER_GENDER];
     
     
-    User *user = [[User alloc]init] ;
-    user.name = sinaUserName;
-    user.description =description;
-    user.avatarImage = image;
-    user.gender = gender;
+    self.user.name = sinaUserName;
+    self.user.description =description;
+    self.user.avatarImage = image;
+    self.user.gender = gender;
     
-    self.user = user;
+    [self storeUserInfo];
     
-     NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:
-     self.user];
+}
+
+
+-(void)storeUserInfo{
+    
+    NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.user];
     [[NSUserDefaults standardUserDefaults] setObject:userData forKey:USER];
     
 }
+
 
 - (void)didReceiveMemoryWarning
 {

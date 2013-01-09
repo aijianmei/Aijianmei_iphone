@@ -9,7 +9,10 @@
 #import "MoreViewController.h"
 #import "AboutViewController.h"
 #import <Social/Social.h>
-#import "SettingsViewController.h"
+
+#import "More_SettingsViewController.h"
+
+
 
 #import "UserService.h"
 
@@ -100,9 +103,9 @@ typedef enum {
 
 -(void)clickSettingsButton:(id)sender{
     
-    SettingsViewController *settingVC = [[SettingsViewController alloc]init];
-    [self.navigationController pushViewController:settingVC animated:YES];
-    [settingVC release];
+    More_SettingsViewController *vc = [[More_SettingsViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
 }
 
 
