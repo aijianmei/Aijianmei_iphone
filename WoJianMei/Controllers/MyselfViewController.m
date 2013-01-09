@@ -25,6 +25,9 @@
 #import "AppDelegate.h"
 #import "URLCacheAlert.h"
 
+#import "User.h"
+
+
 
 #define USER @"user"
 
@@ -80,7 +83,7 @@ const double URLCacheInterval = 86400.0;
 @synthesize avatarImage;
 @synthesize headerVImageButton=_headerVImageButton;
 @synthesize myFooterView;
-@synthesize myHeaderView;
+@synthesize myHeaderView =_myHeaderView;
 @synthesize userNameLabel=_userNameLabel;
 @synthesize mottoLabel = _mottoLabel;
 @synthesize userGenderLabel = _userGenderLabel;
@@ -110,7 +113,7 @@ const double URLCacheInterval = 86400.0;
     [_headerVImageButton release];
     [_footerVImageV release];
     [_avatarImage  release];
-    [myHeaderView release];
+    [_myHeaderView release];
     [myFooterView release];
     [_userNameLabel release];
     [_mottoLabel release];
@@ -188,35 +191,28 @@ const double URLCacheInterval = 86400.0;
     
      //////// Set the headerView of the buttons  
     
-    UIView *headerView =[[UIView alloc]init];
-    [headerView setFrame: CGRectMake(0, 0, 100, 100)];
-    self.myHeaderView = headerView;
-    [headerView release];
+    self.myHeaderView  =[[UIView alloc]init];
+    [_myHeaderView setFrame: CGRectMake(0, 0, 100, 100)];
     
-    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
-    [button addTarget:self action:@selector(clickVatarButton:) forControlEvents:UIControlEventTouchUpInside];
     
-    [button setFrame:CGRectMake(15, 16, 70, 70)];
-    [button setBackgroundColor:[UIColor grayColor]];
-    [button setImage:[ImageManager avatarbackgroundImage] forState:UIControlStateNormal];
+    self.headerVImageButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+    [_headerVImageButton addTarget:self action:@selector(clickVatarButton:) forControlEvents:UIControlEventTouchUpInside];
     
-    self.headerVImageButton = button;
-    [button release];
+    [_headerVImageButton setFrame:CGRectMake(15, 16, 70, 70)];
+    [_headerVImageButton setBackgroundColor:[UIColor grayColor]];
+    [_headerVImageButton setImage:[ImageManager avatarbackgroundImage] forState:UIControlStateNormal];
+    
     
 ////// set the Username 
-    UILabel *userNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(120, 30, 100, 30)];
-    userNameLabel.backgroundColor =[UIColor clearColor];
-    self.userNameLabel =userNameLabel;
-    [userNameLabel release];
+    self.userNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(120, 30, 100, 30)];
+    _userNameLabel.backgroundColor =[UIColor clearColor];
     [self.myHeaderView addSubview:self.userNameLabel];
     
     
     
     ////// set the User Gender
-    UILabel *userGenderLabel = [[UILabel alloc]initWithFrame:CGRectMake(250, 30, 100, 30)];
-    userGenderLabel.backgroundColor =[UIColor clearColor];
-    self.userGenderLabel =userGenderLabel;
-    [userNameLabel release];
+    self.userGenderLabel  = [[UILabel alloc]initWithFrame:CGRectMake(250, 30, 100, 30)];
+    _userGenderLabel.backgroundColor =[UIColor clearColor];
     [self.myHeaderView addSubview:self.userGenderLabel];
     
     
@@ -225,11 +221,9 @@ const double URLCacheInterval = 86400.0;
     
     
  //////set the motto 
-    UILabel *mottoLabel = [[UILabel alloc]initWithFrame:CGRectMake(120, 70, 200, 30)];
-    [mottoLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:12]];
-    mottoLabel.backgroundColor = [UIColor clearColor];
-    self.mottoLabel = mottoLabel;
-    [mottoLabel release];
+    self.mottoLabel = [[UILabel alloc]initWithFrame:CGRectMake(120, 70, 200, 30)];
+    [_mottoLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:12]];
+    _mottoLabel.backgroundColor = [UIColor clearColor];
     
     [self.mottoLabel setTextAlignment:NSTextAlignmentLeft];
     [self.mottoLabel  setLineBreakMode:NSLineBreakByTruncatingTail];
@@ -404,17 +398,60 @@ const double URLCacheInterval = 86400.0;
         
     [self hideActivity];
     
-    [self setBackgroundImageName:@"BackGround.png"];
-    [self showBackgroundImage];
+}
 
+
+
+
+
+-(void)clickVatarButton:(id)sender{
+    
+    PPDebug(@"i am the avatarButton ");
+    
+    [self takePhoto];
     
 }
 
 
--(void)clickVatarButton:(id)sender{
-    PPDebug(@"i am the avatarButton ");
-   
+
+
+#pragma mark -
+#pragma mark - ImagePickerControllerDelegate
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    
+
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    if (image != nil){
+        
+        [self.headerVImageButton setImage:image forState:UIControlStateNormal];
+        
+
+        self.user.avatarImage = image;
+        
+        //// first we need to store the datas and then show the datas
+        
+        
+        NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:
+                            self.user];
+        [[NSUserDefaults standardUserDefaults] setObject:userData forKey:USER];
+
+        
+    }
+    
+    [self.navigationController dismissModalViewControllerAnimated:YES];
 }
+
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    
+    PPDebug(@"This si call");
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+
+
+}
+
 
 - (SinaweiboManager *)sinaweiboManager
 {
@@ -1016,8 +1053,7 @@ const double URLCacheInterval = 86400.0;
     user.avatarImage = image;
     user.gender = gender;
     
-     self.user = user;
-    [user release];
+    self.user = user;
     
      NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:
      self.user];

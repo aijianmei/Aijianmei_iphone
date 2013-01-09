@@ -18,6 +18,7 @@
 #import "User.h"
 
 @class TencentWeiboManager;
+@class User;
 
 @interface MyselfViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,MyselfTableViewCellDelegate,UINavigationControllerDelegate,SinaWeiboDelegate,SinaWeiboAuthorizeViewDelegate,SinaWeiboRequestDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,TencentSessionDelegate>
 
@@ -33,7 +34,7 @@
     UIImageView                *_footerVImageV;
     UIImage                     *_avatarImage;
     
-    UIView                      *myHeaderView;
+    UIView                      *_myHeaderView;
 	UIView                      *myFooterView;
     
     UILabel                    *_userNameLabel;
