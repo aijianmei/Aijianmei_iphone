@@ -390,8 +390,6 @@
 		4ADCFEF8169D62C400A3E979 /* hamstring-exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE82169D62C400A3E979 /* hamstring-exercises.jpg */; };
 		4ADCFEF9169D62C400A3E979 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE83169D62C400A3E979 /* Icon-Small.png */; };
 		4ADCFEFA169D62C400A3E979 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE84169D62C400A3E979 /* Icon-Small@2x.png */; };
-		4ADCFEFB169D62C400A3E979 /* icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE85169D62C400A3E979 /* icon.jpg */; };
-		4ADCFEFC169D62C400A3E979 /* live_menu_10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE86169D62C400A3E979 /* live_menu_10@2x.png */; };
 		4ADCFEFD169D62C400A3E979 /* live_menu_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE87169D62C400A3E979 /* live_menu_3@2x.png */; };
 		4ADCFEFE169D62C400A3E979 /* live_menu_3_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE88169D62C400A3E979 /* live_menu_3_on@2x.png */; };
 		4ADCFEFF169D62C400A3E979 /* live_menu_8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE89169D62C400A3E979 /* live_menu_8@2x.png */; };
@@ -416,9 +414,6 @@
 		4ADCFF12169D62C400A3E979 /* page_button_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE9C169D62C400A3E979 /* page_button_press@2x.png */; };
 		4ADCFF13169D62C400A3E979 /* podcast-tab.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE9D169D62C400A3E979 /* podcast-tab.png */; };
 		4ADCFF14169D62C400A3E979 /* podcast-tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE9E169D62C400A3E979 /* podcast-tab@2x.png */; };
-		4ADCFF15169D62C400A3E979 /* publish_button_16.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE9F169D62C400A3E979 /* publish_button_16.gif */; };
-		4ADCFF16169D62C400A3E979 /* publish_button_24.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEA0169D62C400A3E979 /* publish_button_24.gif */; };
-		4ADCFF17169D62C400A3E979 /* publish_button_32.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEA1169D62C400A3E979 /* publish_button_32.gif */; };
 		4ADCFF18169D62C400A3E979 /* qq.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEA2169D62C400A3E979 /* qq.png */; };
 		4ADCFF19169D62C400A3E979 /* QQWeibo_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEA3169D62C400A3E979 /* QQWeibo_logo@2x.png */; };
 		4ADCFF1A169D62C400A3E979 /* quadriceps-exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEA4169D62C400A3E979 /* quadriceps-exercises.jpg */; };
@@ -1142,8 +1137,6 @@
 		4ADCFE82169D62C400A3E979 /* hamstring-exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hamstring-exercises.jpg"; sourceTree = "<group>"; };
 		4ADCFE83169D62C400A3E979 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
 		4ADCFE84169D62C400A3E979 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
-		4ADCFE85169D62C400A3E979 /* icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = icon.jpg; sourceTree = "<group>"; };
-		4ADCFE86169D62C400A3E979 /* live_menu_10@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "live_menu_10@2x.png"; sourceTree = "<group>"; };
 		4ADCFE87169D62C400A3E979 /* live_menu_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "live_menu_3@2x.png"; sourceTree = "<group>"; };
 		4ADCFE88169D62C400A3E979 /* live_menu_3_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "live_menu_3_on@2x.png"; sourceTree = "<group>"; };
 		4ADCFE89169D62C400A3E979 /* live_menu_8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "live_menu_8@2x.png"; sourceTree = "<group>"; };
@@ -1168,9 +1161,6 @@
 		4ADCFE9C169D62C400A3E979 /* page_button_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "page_button_press@2x.png"; sourceTree = "<group>"; };
 		4ADCFE9D169D62C400A3E979 /* podcast-tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "podcast-tab.png"; sourceTree = "<group>"; };
 		4ADCFE9E169D62C400A3E979 /* podcast-tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "podcast-tab@2x.png"; sourceTree = "<group>"; };
-		4ADCFE9F169D62C400A3E979 /* publish_button_16.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = publish_button_16.gif; sourceTree = "<group>"; };
-		4ADCFEA0169D62C400A3E979 /* publish_button_24.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = publish_button_24.gif; sourceTree = "<group>"; };
-		4ADCFEA1169D62C400A3E979 /* publish_button_32.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = publish_button_32.gif; sourceTree = "<group>"; };
 		4ADCFEA2169D62C400A3E979 /* qq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qq.png; sourceTree = "<group>"; };
 		4ADCFEA3169D62C400A3E979 /* QQWeibo_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QQWeibo_logo@2x.png"; sourceTree = "<group>"; };
 		4ADCFEA4169D62C400A3E979 /* quadriceps-exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "quadriceps-exercises.jpg"; sourceTree = "<group>"; };
@@ -2473,7 +2463,6 @@
 		4A58805115C52B81005F8415 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4A764C251696BA95000F7839 /* MFSlidingView */,
 				4AEE95BD15FB7F75005A66DC /* Leaves */,
 				4AEE95C415FB8046005A66DC /* Pagination.h */,
 				4AEE95C515FB8046005A66DC /* Pagination.m */,
@@ -2554,13 +2543,6 @@
 				4A764BE1169675CC000F7839 /* README.md */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		4A764C251696BA95000F7839 /* MFSlidingView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = MFSlidingView;
 			sourceTree = "<group>";
 		};
 		4A959679168ED995006F1317 /* 3PP-SDK */ = {
@@ -2996,8 +2978,6 @@
 				4ADCFE82169D62C400A3E979 /* hamstring-exercises.jpg */,
 				4ADCFE83169D62C400A3E979 /* Icon-Small.png */,
 				4ADCFE84169D62C400A3E979 /* Icon-Small@2x.png */,
-				4ADCFE85169D62C400A3E979 /* icon.jpg */,
-				4ADCFE86169D62C400A3E979 /* live_menu_10@2x.png */,
 				4ADCFE87169D62C400A3E979 /* live_menu_3@2x.png */,
 				4ADCFE88169D62C400A3E979 /* live_menu_3_on@2x.png */,
 				4ADCFE89169D62C400A3E979 /* live_menu_8@2x.png */,
@@ -3022,9 +3002,6 @@
 				4ADCFE9C169D62C400A3E979 /* page_button_press@2x.png */,
 				4ADCFE9D169D62C400A3E979 /* podcast-tab.png */,
 				4ADCFE9E169D62C400A3E979 /* podcast-tab@2x.png */,
-				4ADCFE9F169D62C400A3E979 /* publish_button_16.gif */,
-				4ADCFEA0169D62C400A3E979 /* publish_button_24.gif */,
-				4ADCFEA1169D62C400A3E979 /* publish_button_32.gif */,
 				4ADCFEA2169D62C400A3E979 /* qq.png */,
 				4ADCFEA3169D62C400A3E979 /* QQWeibo_logo@2x.png */,
 				4ADCFEA4169D62C400A3E979 /* quadriceps-exercises.jpg */,
@@ -3162,16 +3139,16 @@
 		4AE394B715C2DD9C00D06C61 /* WoJianMei */ = {
 			isa = PBXGroup;
 			children = (
-				4ADCFE56169D62C300A3E979 /* Resources */,
-				4A58805215C52B89005F8415 /* Controllers */,
-				4A498EDA1685502A0073E682 /* NetWork */,
-				4A4992D0168589900073E682 /* Service */,
-				4A58805115C52B81005F8415 /* View */,
-				4A58805015C52B76005F8415 /* model */,
 				4AE394C015C2DD9C00D06C61 /* AppDelegate.h */,
 				4AE394C115C2DD9C00D06C61 /* AppDelegate.m */,
 				4AE394C315C2DD9C00D06C61 /* MainStoryboard_iPhone.storyboard */,
 				4AE394C615C2DD9C00D06C61 /* MainStoryboard_iPad.storyboard */,
+				4A58805215C52B89005F8415 /* Controllers */,
+				4A58805015C52B76005F8415 /* model */,
+				4A498EDA1685502A0073E682 /* NetWork */,
+				4A4992D0168589900073E682 /* Service */,
+				4A58805115C52B81005F8415 /* View */,
+				4ADCFE56169D62C300A3E979 /* Resources */,
 				4AE394B815C2DD9C00D06C61 /* Supporting Files */,
 			);
 			path = WoJianMei;
@@ -3372,8 +3349,6 @@
 				4ADCFEF8169D62C400A3E979 /* hamstring-exercises.jpg in Resources */,
 				4ADCFEF9169D62C400A3E979 /* Icon-Small.png in Resources */,
 				4ADCFEFA169D62C400A3E979 /* Icon-Small@2x.png in Resources */,
-				4ADCFEFB169D62C400A3E979 /* icon.jpg in Resources */,
-				4ADCFEFC169D62C400A3E979 /* live_menu_10@2x.png in Resources */,
 				4ADCFEFD169D62C400A3E979 /* live_menu_3@2x.png in Resources */,
 				4ADCFEFE169D62C400A3E979 /* live_menu_3_on@2x.png in Resources */,
 				4ADCFEFF169D62C400A3E979 /* live_menu_8@2x.png in Resources */,
@@ -3398,9 +3373,6 @@
 				4ADCFF12169D62C400A3E979 /* page_button_press@2x.png in Resources */,
 				4ADCFF13169D62C400A3E979 /* podcast-tab.png in Resources */,
 				4ADCFF14169D62C400A3E979 /* podcast-tab@2x.png in Resources */,
-				4ADCFF15169D62C400A3E979 /* publish_button_16.gif in Resources */,
-				4ADCFF16169D62C400A3E979 /* publish_button_24.gif in Resources */,
-				4ADCFF17169D62C400A3E979 /* publish_button_32.gif in Resources */,
 				4ADCFF18169D62C400A3E979 /* qq.png in Resources */,
 				4ADCFF19169D62C400A3E979 /* QQWeibo_logo@2x.png in Resources */,
 				4ADCFF1A169D62C400A3E979 /* quadriceps-exercises.jpg in Resources */,
