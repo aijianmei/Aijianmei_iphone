@@ -45,7 +45,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">all_page_bg2@2x.jpg</string>
+							<string key="NSResourceName">all_page_bg2.jpg</string>
 						</object>
 					</object>
 				</array>
@@ -134,8 +134,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">all_page_bg2@2x.jpg</string>
-			<string key="NS.object.0">{640, 828}</string>
+			<string key="NS.key.0">all_page_bg2.jpg</string>
+			<string key="NS.object.0">{16, 16}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">1930</string>
 	</data>

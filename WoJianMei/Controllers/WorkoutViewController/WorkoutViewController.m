@@ -31,6 +31,7 @@
 @implementation WorkoutViewController
 @synthesize myHeaderView =_myHeaderView;
 @synthesize  carousel =_carousel;
+@synthesize spacePageControl =_spacePageControl;
 
 
 
@@ -48,10 +49,21 @@
     _carousel.dataSource = nil;
     [_carousel release];
     
+    [_spacePageControl release];
+    
     [_myHeaderView release];
     [super dealloc];
     
 }
+
+
+
+-(void)iamTomsGirlfriend{
+    
+    NSLog(@"I am Tom's girlfriend");
+    
+}
+
 
 
 //// init the userInterface 
@@ -65,12 +77,12 @@
     [self.navigationItem setTitle:@"健身视频"];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bottom_bg.png"] forBarMetrics:UIBarMetricsDefault];
     
-    UIBarButtonItem *bar = [[UIBarButtonItem alloc]initWithImage:nil style:UIBarButtonItemStyleBordered target:self action:nil];
-    [bar setTitle:@"碧珍"];
+    
+    
+    UIBarButtonItem *bar = [[UIBarButtonItem alloc]initWithImage:nil style:UIBarButtonItemStyleBordered target:self action:@selector(iamTomsGirlfriend)];
+    [bar setTitle:@"每天锻炼"];
     [self.navigationItem setRightBarButtonItem:bar];
-    
-    [bar setAction:@selector(iamTomsGirlfriend)];
-    
+    [bar release];
     
     UIBarButtonItem *rightbarButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-icon.png"] style:UIBarButtonItemStyleBordered target:self action:nil];
     [self.navigationItem setLeftBarButtonItem:rightbarButton];
@@ -97,17 +109,43 @@
     [self.carousel setCenterItemWhenSelected:YES];
     
     [self.myHeaderView addSubview:_carousel];
-
+   
+    
+    
+    ////The page controll
+    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(10, 127, 300, 20)];
+    [_spacePageControl setBackgroundColor:[UIColor clearColor]];
+    _spacePageControl.numberOfPages = 13;
+    [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
+    [_spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot"]];
+    [_spacePageControl addTarget:self action:@selector(pageControl:) forControlEvents:UIControlEventValueChanged];
+    [self.myHeaderView addSubview:_spacePageControl];
+    
+    
+    
     
     [self.dataTableView setTableHeaderView:self.myHeaderView];
 
 
     
     
-    
-    
- 
+
 }
+
+
+#pragma mark-- PageControl
+
+- (void)pageControl:(id)sender
+{
+	NSLog(@"Current Page (UIPageControl) : %i", _spacePageControl.currentPage);
+}
+
+- (void)spacePageControl:(SMPageControl *)sender
+{
+	NSLog(@"Current Page (SMPageControl): %i", sender.currentPage);
+}
+
+
 
 
 - (void)viewDidLoad
@@ -123,7 +161,7 @@
     
      self.dataList = [[VideoManager defaultManager]  videoList];
     
-   }
+}
 
 
 -(void)viewDidUnload{
@@ -454,6 +492,7 @@
   
     
     PPDebug(@"I did selected the picture of %d",index);
+    
 
 }
 
@@ -462,6 +501,8 @@
 
     
     PPDebug(@"%d",[carousel currentItemIndex]);
+    
+    [self.spacePageControl setCurrentPage:[carousel currentItemIndex]];
     
 }
 

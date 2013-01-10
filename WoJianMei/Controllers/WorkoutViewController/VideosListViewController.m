@@ -119,13 +119,6 @@
 }
 
 
--(void)iamTomsGirlfriend{
-
-    NSLog(@"I am Tom's girlfriend");
-    
-}
-
-
 
 -(void)viewWillAppear:(BOOL)animated{
     //    self.dataTableView.hidden = TRUE;

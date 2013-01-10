@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
 
+
+#import "SMPageControl.h"
+
+
 ///实现类似cover flow 效果。
 #import "iCarousel.h"
 
@@ -21,11 +25,13 @@
 {
     UIView                      *_myHeaderView;
     iCarousel                   *_carousel;
+    SMPageControl               *_spacePageControl;
 
 
 }
-@property (nonatomic, retain)  UIView *myHeaderView;
-@property (nonatomic, retain)  iCarousel *carousel;
+@property (nonatomic, retain)      UIView *myHeaderView;
+@property (nonatomic, retain)     iCarousel *carousel;
+@property (nonatomic, retain)  SMPageControl *spacePageControl;
 
 
 @end
