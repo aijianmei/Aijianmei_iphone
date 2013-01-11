@@ -168,7 +168,8 @@ typedef enum {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MoreViewController"] autorelease];
     }
     
-    [cell.textLabel setFont:[UIFont systemFontOfSize:14]];    
+    [cell.textLabel setFont:[UIFont systemFontOfSize:14]];
+    [cell.textLabel setTextAlignment:NSTextAlignmentLeft];
     UIImage* image_icon = [UIImage imageNamed:@"szicon_a.png"];
     UIImageView* cellAccessoryView = [[UIImageView alloc] initWithImage:image_icon];
     cell.accessoryView = cellAccessoryView;
@@ -202,9 +203,7 @@ typedef enum {
         
     }else {
         cell.textLabel.text = @"退出客户端";
-        cell.accessoryView = nil;
-        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottom_cell_background.png"]];
-        [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
+        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"singleCellBackgroud.png"]];
     }
     
 
