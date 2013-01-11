@@ -10,12 +10,22 @@
 
 
 @interface Myself_SettingsViewController ()
+
+
+#pragma Image Picker Related
+// this is just for copy
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info;
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker;
+- (void)selectPhoto;
+- (void)takePhoto;
+
 @property (nonatomic, retain) UISwitch *airplaneModeSwitch;
 @end
 
 
 @implementation Myself_SettingsViewController
 @synthesize airplaneModeSwitch = _airplaneModeSwitch;
+@synthesize avatarButton =_avatarButton;
 
 
 
@@ -41,6 +51,54 @@
     NSLog(@"Try to save the channges");
 
 }
+
+#pragma Image Picker Related
+
+// this is just for copy
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    if (image != nil){
+    }
+    
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
+- (void)selectPhoto
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum] &&
+        [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]){
+        
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        picker.allowsEditing = YES;
+        picker.delegate = self;
+        [self.navigationController presentModalViewController:picker animated:YES];
+        [picker release];
+        
+    }
+    
+}
+
+- (void)takePhoto
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+        
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.allowsEditing = YES;
+        picker.delegate = self;
+        [self.navigationController presentModalViewController:picker animated:YES];
+        [picker release];
+    }
+    
+}
+
 
 
 #pragma mark - View lifecycle
@@ -84,13 +142,24 @@
              staticContentCell.reuseIdentifier = @"DetailTextCell";
              
              [staticContentCell setCellHeight:50];
-
-//             cell.textLabel.text = NSLocalizedString(@"更换头像", @"Wi-Fi");
-             cell.imageView.image = [UIImage imageNamed:@"AirplaneMode"];
              cell.detailTextLabel.text = NSLocalizedString(@"更换头像", @"iamtheinternet");
+
+              self.avatarButton =[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+             [self.avatarButton setBackgroundColor:[UIColor redColor]];
+             [self.avatarButton setImage:[UIImage imageNamed:@"AirplaneMode"] forState:UIControlStateNormal];
+             [cell addSubview:self.avatarButton];
          } whenSelected:^(NSIndexPath *indexPath) {
-//             [self.navigationController pushViewController:[[WifiViewController alloc] init] animated:YES];
-         }];
+             
+             
+             UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
+                                                                delegate:self
+                                                       cancelButtonTitle:@"取消"
+                                                  destructiveButtonTitle:@"照相"
+                                                       otherButtonTitles:@"相册",nil];
+             [share showFromTabBar:self.tabBarController.tabBar];
+             [share release];
+             
+      }];
          
          //// add a row at the section one
 //         [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
@@ -284,6 +353,38 @@
         
 	}];
 }
+
+
+#pragma mark --actionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+
+        switch (buttonIndex) {
+            case 0:
+            {
+                NSLog(@"Button index :%d",buttonIndex);
+                [self takePhoto];
+            }
+                break;
+            case 1:
+            {
+                NSLog(@"Button index :%d",buttonIndex);
+                [self  selectPhoto];
+
+            }
+                break;
+            case 2:
+                
+            {
+                NSLog(@"Button index :%d",buttonIndex);
+            }
+                break;
+            default:
+                break;
+        }
+}
+
+
 
 
 - (void)viewDidUnload

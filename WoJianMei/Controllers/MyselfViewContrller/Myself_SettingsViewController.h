@@ -9,8 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "JMStaticContentTableViewController.h"
 
-@interface Myself_SettingsViewController: JMStaticContentTableViewController
+@interface Myself_SettingsViewController: JMStaticContentTableViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate>
 
+{
+
+    UIButton *_avatarButton;
+
+}
+@property (nonatomic ,retain)  UIButton *avatarButton;
 
 
 @end
