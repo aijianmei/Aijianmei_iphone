@@ -12,12 +12,22 @@
 
 
 @interface More_SettingsViewController ()
-@property (nonatomic, retain) UISwitch *airplaneModeSwitch;
+
+@property (nonatomic, retain) UISwitch *sinaModeSwitch;
+@property (nonatomic, retain) UISwitch *tencentWeiboModeSwitch;
+@property (nonatomic, retain) UISwitch *tencentQQModeSwich;
+@property (nonatomic, retain) UISwitch *renrenModeSwitch;
+
 @end
 
 
 @implementation More_SettingsViewController
-@synthesize airplaneModeSwitch = _airplaneModeSwitch;
+@synthesize sinaModeSwitch = _sinaModeSwitch;
+@synthesize tencentWeiboModeSwitch = _tencentWeiboModeSwitch;
+@synthesize tencentQQModeSwich = _tencentQQModeSwich;
+@synthesize renrenModeSwitch = _renrenModeSwitch;
+
+
 
 
 
@@ -30,6 +40,16 @@
 	return self;
 }
 
+-(void)dealloc{
+    
+    [_sinaModeSwitch release];
+    [_tencentQQModeSwich release];
+    [_tencentWeiboModeSwitch release];
+    [_renrenModeSwitch release];
+    [super dealloc];
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -37,14 +57,40 @@
 }
 
 
+
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
+    self.title = NSLocalizedString(@"设置", @"Settings");
+    self.sinaModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+    self.tencentQQModeSwich = [[UISwitch alloc] initWithFrame:CGRectZero];
+    self.tencentWeiboModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+    self.renrenModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+
+    [self initSocialNetWorkAccountSection];
+    [self changePasswords];
+    
+}
+
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+    self.sinaModeSwitch = nil;
+}
+
+
+
+
 #pragma mark - Social_NetWork_Account
-
-
-///////Section 1
-
 -(void)initSocialNetWorkAccountSection{
-
-
+    
+    
     [self addSection:^(JMStaticContentTableViewSection *section, NSUInteger sectionIndex)
      
      {
@@ -52,13 +98,16 @@
          
          //// add a row at the section one
          [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
-             staticContentCell.reuseIdentifier = @"UIControlCell";
-             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+             staticContentCell.cellStyle = UITableViewCellStyleValue1;
+             staticContentCell.reuseIdentifier = @"DetailTextCell";
              
-             cell.textLabel.text = NSLocalizedString(@"新浪微博", @"Airplane Mode");
-             cell.detailTextLabel.text  =NSLocalizedString(@"新浪微博", @"Airplane Mode");
+             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+             cell.textLabel.text = NSLocalizedString(@"新浪微博", @"Wi-Fi");
+             
+             cell.detailTextLabel.text  =NSLocalizedString(@"已绑定", @"Airplane Mode");
              cell.imageView.image = [UIImage imageNamed:@"AirplaneMode"];
-             cell.accessoryView = self.airplaneModeSwitch;
+             
+             
          }whenSelected:^(NSIndexPath *indexPath){
              ///TODO
              [self.navigationController pushViewController:[[WifiViewController alloc] init] animated:YES];
@@ -72,8 +121,8 @@
              staticContentCell.reuseIdentifier = @"DetailTextCell";
              
              cell.imageView.image = [UIImage imageNamed:@"AirplaneMode"];
-
-             cell.textLabel.text = NSLocalizedString(@"Wi-Fi", @"Wi-Fi");
+             
+             cell.textLabel.text = NSLocalizedString(@"腾讯微博", @"Wi-Fi");
              cell.detailTextLabel.text = NSLocalizedString(@"未绑定", @"iamtheinternet");
          } whenSelected:^(NSIndexPath *indexPath) {
              [self.navigationController pushViewController:[[WifiViewController alloc] init] animated:YES];
@@ -81,7 +130,11 @@
          
          //// add a row at the section one
          [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
-             cell.textLabel.text = NSLocalizedString(@"Notifications", @"Notifications");
+             staticContentCell.cellStyle = UITableViewCellStyleValue1;
+             staticContentCell.reuseIdentifier = @"DetailTextCell";
+             
+             cell.textLabel.text = NSLocalizedString(@"QQ账号", @"Notifications");
+             cell.detailTextLabel.text = NSLocalizedString(@"未绑定", @"iamtheinternet");
              cell.imageView.image = [UIImage imageNamed:@"Notifications"];
          } whenSelected:^(NSIndexPath *indexPath) {
              [self.navigationController pushViewController:[[NotificationsViewController alloc] init] animated:YES];
@@ -92,8 +145,9 @@
              staticContentCell.cellStyle = UITableViewCellStyleValue1;
              staticContentCell.reuseIdentifier = @"DetailTextCell";
              
-             cell.textLabel.text = NSLocalizedString(@"Location Services", @"Location Services");
-             cell.detailTextLabel.text = NSLocalizedString(@"On", @"On");
+             cell.textLabel.text = NSLocalizedString(@"人人网", @"Location Services");
+             cell.imageView.image = [UIImage imageNamed:@"Notifications"];
+             cell.detailTextLabel.text = NSLocalizedString(@"未绑定", @"On");
          } whenSelected:^(NSIndexPath *indexPath) {
              //TODO
          }];
@@ -101,45 +155,46 @@
 }
 
 
-#pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    self.title = NSLocalizedString(@"设定", @"Settings");
-    
-        
-        
-    self.airplaneModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-    
-    [self initSocialNetWorkAccountSection];
-    
 
-///////Section 2 
+#pragma mark - changePasswords
+
+-(void)changePasswords{
+    
+    ///////Section 2
     
     [self addSection:^(JMStaticContentTableViewSection *section, NSUInteger sectionIndex) {
 		[section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
-			cell.textLabel.text = NSLocalizedString(@"Sounds", @"Sounds");
+			cell.textLabel.text = NSLocalizedString(@"修改密码", @"Sounds");
 			cell.imageView.image = [UIImage imageNamed:@"Sounds"];
 		} whenSelected:^(NSIndexPath *indexPath) {
 			//TODO
 		}];
         
-		[section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
-			cell.textLabel.text = NSLocalizedString(@"Brightness", @"Brightness");
-			cell.imageView.image = [UIImage imageNamed:@"Brightness"];
-		} whenSelected:^(NSIndexPath *indexPath) {
-			//TODO
-		}];
+        //		[section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
+        //			cell.textLabel.text = NSLocalizedString(@"Brightness", @"Brightness");
+        //			cell.imageView.image = [UIImage imageNamed:@"Brightness"];
+        //		} whenSelected:^(NSIndexPath *indexPath) {
+        //			//TODO
+        //		}];
+        //
+        //		[section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
+        //			cell.textLabel.text = NSLocalizedString(@"Wallpaper", @"Wallpaper");
+        //		} whenSelected:^(NSIndexPath *indexPath) {
+        //			//TODO
+        //		}];
         
-		[section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
-			cell.textLabel.text = NSLocalizedString(@"Wallpaper", @"Wallpaper");
-		} whenSelected:^(NSIndexPath *indexPath) {
-			//TODO
-		}];
+        
 	}];
-	
+    
+}
+
+
+
+#pragma mark - toDoMethods
+
+-(void)toDoMethods{
+
 	[self addSection:^(JMStaticContentTableViewSection *section, NSUInteger sectionIndex) {
 		[section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
             cell.textLabel.text = NSLocalizedString(@"General", @"General");
@@ -226,39 +281,13 @@
 			cell.textLabel.text = NSLocalizedString(@"Store", @"Store");
 			cell.imageView.image = [UIImage imageNamed:@"AppStore"];
 		} whenSelected:^(NSIndexPath *indexPath) {
-			//TODO			
+			//TODO
 		}];
 	}];
+    
+    
 }
 
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-    self.airplaneModeSwitch = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

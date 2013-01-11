@@ -427,7 +427,7 @@
 		4ADCFFD3169D69F700A3E979 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFF9D169D69F600A3E979 /* 7.png */; };
 		4ADCFFD4169D69F700A3E979 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFF9E169D69F600A3E979 /* 8.png */; };
 		4ADCFFD5169D69F700A3E979 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFF9F169D69F600A3E979 /* 9.png */; };
-		4ADCFFD6169D69F700A3E979 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFFA1169D69F600A3E979 /* iCarousel.m */; };
+		4ADCFFD6169D69F700A3E979 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFFA1169D69F600A3E979 /* iCarousel.m */; settings = {COMPILER_FLAGS = " -fobjc-arc"; }; };
 		4ADCFFD7169D69F700A3E979 /* ReflectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFFA4169D69F600A3E979 /* ReflectionView.m */; };
 		4AE20A8E15D4B4E8003BBE37 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE20A8D15D4B4E8003BBE37 /* StoreKit.framework */; };
 		4AE394B215C2DD9C00D06C61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE394B115C2DD9C00D06C61 /* UIKit.framework */; };
@@ -988,7 +988,7 @@
 		4ADCFE00169D614600A3E979 /* More_SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = More_SettingsViewController.h; sourceTree = "<group>"; };
 		4ADCFE01169D614600A3E979 /* More_SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = More_SettingsViewController.m; sourceTree = "<group>"; };
 		4ADCFE02169D614600A3E979 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
-		4ADCFE03169D614600A3E979 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
+		4ADCFE03169D614600A3E979 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; tabWidth = 3; };
 		4ADCFE05169D614600A3E979 /* Myself_SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Myself_SettingsViewController.h; sourceTree = "<group>"; };
 		4ADCFE06169D614600A3E979 /* Myself_SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Myself_SettingsViewController.m; sourceTree = "<group>"; };
 		4ADCFE07169D614600A3E979 /* MyselfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyselfViewController.h; sourceTree = "<group>"; };
@@ -2668,9 +2668,9 @@
 			isa = PBXGroup;
 			children = (
 				4ADCFDFA169D614600A3E979 /* MakeFriendsViewcontrller */,
-				4ADCFDFD169D614600A3E979 /* MoreViewController */,
 				4ADCFE04169D614600A3E979 /* MyselfViewContrller */,
 				4ADCFE09169D614600A3E979 /* Nuri_SupViewController */,
+				4ADCFDFD169D614600A3E979 /* MoreViewController */,
 				4ADCFE10169D614600A3E979 /* WorkoutViewController */,
 			);
 			name = Entries;

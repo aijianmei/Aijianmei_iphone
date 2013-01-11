@@ -9,16 +9,10 @@
 #import "MoreViewController.h"
 #import "AboutViewController.h"
 #import <Social/Social.h>
-
 #import "More_SettingsViewController.h"
-
-
-
 #import "UserService.h"
-
 #import "ShareToSinaController.h"
 #import "ShareToQQWeiboController.h"
-
 #import "ImageManager.h"
 #import "FontSize.h"
 
@@ -28,7 +22,6 @@ enum actionsheetNumber{
     LANGUAGE_SELECTION=0,
     RECOMMENDATION,
 };
-
 
 typedef enum {
     ACCOUNT_MANAGEMENT = 0,
@@ -55,11 +48,9 @@ typedef enum {
     
 }
 
-
 -(void)initUI{
     
     ////Set the background Image
-    
     [self setBackgroundImageName:@"BackGround.png"];
     [self showBackgroundImage];
 
@@ -69,19 +60,31 @@ typedef enum {
                           fontSize:FONT_SIZE
                          imageName:@"setting.png"
                             action:@selector(clickSettingsButton:)];
-    
-
-
 }
 
+- (void)initOptionList
+{
+    NSArray *array = [[NSArray alloc] initWithObjects:@"账号管理", @"分享", @"推荐给好友", @"信息反馈",@"喜欢我们,打分鼓励", @"关于我们",  nil];
+    self.listData = array;
+    [array release];
+}
+
+-(void)clickSettingsButton:(id)sender{
+    
+    More_SettingsViewController *vc = [[More_SettingsViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
+}
+
+#pragma mark -lifeCycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.    
-    [self optionListInit];
-
+	// Do any additional setup after loading the view.
     
+    
+    [self initOptionList];
     [self initUI];
     
     
@@ -101,27 +104,10 @@ typedef enum {
 }
 
 
--(void)clickSettingsButton:(id)sender{
-    
-    More_SettingsViewController *vc = [[More_SettingsViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
-}
-
-
-- (void)optionListInit
-{
-    
-    NSArray *array = [[NSArray alloc] initWithObjects:@"账号管理", @"信息反馈", @"分享", @"推荐给好友", @"打分鼓励", @"关于我们", @"客户端更新",  nil];
-    
-
-    self.listData = array;
-    [array release];
-}
-
-
 #pragma mark -
-#pragma mark delegates
+#pragma mark tableView delegates
+
+
 
 
 
@@ -130,13 +116,47 @@ typedef enum {
     return 43.0f;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.listData count];
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+
+
+    return 3;
+    
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    
+    switch (section) {
+        case 0:
+        {
+            PPDebug(@"Section one");
+            
+            return [self.listData count];
+
+        }
+            break;
+        case 1:
+        {
+            PPDebug(@"Section two");
+            
+            return 2;
+        }
+            break;
+        case 2:
+        {
+            PPDebug(@"Section three");
+//            @"客户端更新",@"推荐应用",@"退出客户端"
+            return 1;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -144,22 +164,74 @@ typedef enum {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreViewController"];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MoreViewController"] autorelease];
-        cell.textLabel.text = [self.listData objectAtIndex:indexPath.row];
+
         [cell.textLabel setFont:[UIFont systemFontOfSize:14]];
-        cell.textLabel.textColor=[UIColor colorWithRed:0x46/255.0 green:0x46/255.0 blue:0x46/255.0 alpha:1.0];
+        
         
         UIImage* image = [UIImage imageNamed:@"szicon_a.png"];
         UIImageView* cellAccessoryView = [[UIImageView alloc] initWithImage:image];
         cell.accessoryView = cellAccessoryView;
         [cellAccessoryView release];
         
-//        cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:cell.frame] autorelease];
-//        cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:0x2F/255.0 green:0x76/255.0 blue:0xB9/255.0 alpha:1.0];
+}
+    
+    if (indexPath.section ==0) {
         
+        cell.textLabel.text = [self.listData objectAtIndex:indexPath.row];
+        
+    }else if(indexPath.section==1){
+        // @"客户端更新",@"推荐应用",@"退出客户端"
+        if (indexPath.row == 0) {
+            cell.textLabel.text = @"客户端更新";
+        }else {
+            cell.textLabel.text  = @"推荐应用";
+        }
+        
+    }else {
+        cell.textLabel.text = @"退出客户端";
+        cell.backgroundColor = [UIColor redColor];
         
     }
     
+
+    
+    
+//
+//    //set backgroudView
+//    UIImageView *imageView = nil;
+//    if (indexPath.section  ==0) {
+//    
+//        if (0 == [indexPath row] )
+//            imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_cell_background.png"]];
+//        else if (5 == [indexPath row])
+//            imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottom_cell_background.png"]];
+//        else
+//            imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"middle_cell_background.png"]];
+//        
+//              
+//    }else if(indexPath.section==1){
+//        
+//        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_cell_background.png"]];
+//        
+//    }else{
+//        
+//        if (0==indexPath.row) {
+//            
+//            imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_cell_background.png"]];
+//            
+//        }
+//    }
+//    
+//    cell.backgroundView=imageView;
+//    
+//    [imageView release];
+//
+    
+    
+    
+    
     UIImage *image = nil;
+    
     switch ([indexPath row]) {
         case ACCOUNT_MANAGEMENT:
             image = [UIImage imageNamed:@"social_networks.png"];
@@ -188,86 +260,104 @@ typedef enum {
     
     cell.imageView.image = image;
     cell.textLabel.backgroundColor = [UIColor clearColor];
-//    cell.contentView.backgroundColor = [UIColor clearColor];
     
     
-    //set backgroudView
-    UIImageView *imageView = nil;
     
-    if (0 == [indexPath row] )
-        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_cell_background.png"]];
-    else if (6 == [indexPath row])
-        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottom_cell_background.png"]];
-    else
-        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"middle_cell_background.png"]];
     
-    cell.backgroundView=imageView;
-    
-    [imageView release];
-    
+        
     return cell;
     
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSUInteger row = [indexPath row];
-    switch (row) {
-        case ACCOUNT_MANAGEMENT:
-        {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"确定要更换账号吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"更换", nil];
-            [alert show];
-            [alert release];
-                        
+    if (indexPath.section==0) {
+        NSUInteger row = [indexPath row];
+        switch (row) {
+            case ACCOUNT_MANAGEMENT:
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"确定要更换账号吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"更换", nil];
+                [alert show];
+                [alert release];
+                
+            }
+                break;
+            case FEEDBACK:
+            {
+                [self accountManagement];
+            }
+                break;
+            case  SHARES :
+            {
+                [self shareToSocialnetWorks];
+            }
+                break;
+            case RECOMMEN_TO_FRIENDS:
+            {
+                [self shareToYourFriends];
+            }
+                break;
+            case RATE_AT_APPLE_STORE:
+            {
+                [self showFeedback];
+            }
+                break;
+            case ABOUT:
+            {
+                [self likeUs];
+            }
+                break;
+            case UPDATE:
+            {
+                [self showAboutView];
+            }
+                break;
+            default:
+                break;
         }
-            break;
-        case FEEDBACK:
-            [self showFeedback];
-            break;
-        case  SHARES :
-            [self showShare];
-            break;
-        case RECOMMEN_TO_FRIENDS:
-            break;
-        case RATE_AT_APPLE_STORE:
-            break;
-        case ABOUT:
-            [self showAboutView];
-            break;
-        case UPDATE:
-           [self updateApplication];
-            break;
-        default:
-            break;
+    }else if (indexPath.section==1){
+        
+        NSUInteger row = [indexPath row];
+        switch (row) {
+            case 0:
+            {
+                [self updateApplication];
+            }
+                break;
+            case 1:
+            {
+                [self recommmendedApps];
+                
+            }
+                break;
+                
+            default:
+                break;
+        }
+    
+    
+    }else {
+        
+             [self logout];
     }
     
-
+   
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
--(void)askFriendsToGoToWorkout{
-    
+
+
+#pragma mark --Controller Methods
+
+
+
+-(void)accountManagement{
+
+    PPDebug(@"user goes to accountManagement");
 }
 
--(void)findACoach{
-    NSLog(@"find a coach");
-    [self performSegueWithIdentifier:@"CoachSegue" sender:self];
-}
-
--(void)showFeedback{
-    
-    [self performSegueWithIdentifier:@"FeedbackSegue" sender:self];
-    
-}
-
--(void)showWorkoutPlans{
-    
-       
-}
-
-
--(void)showShare
+-(void)shareToSocialnetWorks
 {
     
     UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
@@ -275,50 +365,67 @@ typedef enum {
                                               cancelButtonTitle:NSLS(@"取消")
                                          destructiveButtonTitle:NSLS(@"分享到新浪微博")
                                               otherButtonTitles:NSLS(@"分享到腾讯微博"),NSLS(@"通过邮箱"),NSLS(@"通过短信"),nil];
-    
-  
     [share showFromTabBar:self.tabBarController.tabBar];
     [share release];
-
+    
 }
 
-- (void)showRecommendation
+- (void)shareToYourFriends
 {
     whichAcctionSheet = RECOMMENDATION;
-    [self showShare];
-
+    [self shareToSocialnetWorks];
+    PPDebug(@"Users share to his friends");
+    
 }
 
+-(void)showFeedback{
+    
+    [self performSegueWithIdentifier:@"FeedbackSegue" sender:self];
+    PPDebug(@"Users show feedback");
+    
+}
+
+-(void)likeUs{
+
+    PPDebug(@"Users likes us !");
+
+}
 
 -(void)showAboutView{
     
     [self performSegueWithIdentifier:@"AboutViewControllerSegue" sender:self];
-    
     UITabBarController *tabbarController = [self.navigationController tabBarController];
     [tabbarController hidesBottomBarWhenPushed];
+    PPDebug(@"Users Trying to show the aboutView");
+}
+
+-(void)updateApplication{
     
+    [[UserService defaultService] queryVersion:self];
+    PPDebug(@"Users are trying to upgrad the app");
+}
+
+-(void)recommmendedApps{
+    
+    PPDebug(@"Show me the recommended Apps");
+}
+-(void)logout{
+    
+    PPDebug(@"User is trying to logout");
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"确定要退出账号吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+    [alert release];
+
 }
 
 
+
+
+#pragma mark --actionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     
-//    
-//    if (LANGUAGE_SELECTION == whichAcctionSheet)
-//    {
-//        if (buttonIndex == actionSheet.cancelButtonIndex){
-//            return;
-//        }
-//        
-////        [LanguageManager setLanguage:buttonIndex];
-////        [((FootballScoreAppDelegate *)[UIApplication sharedApplication].delegate) setSeletedTabbarIndex:TAB_REALTIME_SCORE];
-////        [self popupHappyMessage:FNS(@"请刷新查看") title:nil];
-//    
-//    }
-//    
-    
-    
-     if (  whichAcctionSheet == RECOMMENDATION )
+    if (  whichAcctionSheet == RECOMMENDATION )
     {
         NSString *bodyStringBegin = @"朋友，我正在使用爱健美客户端，学习如何健身，分享，很方便很好用，下载地址是";
         NSString *bodyStringWebsite = @"http://www.aijianmei.com";
@@ -338,7 +445,7 @@ typedef enum {
         NSInteger BUTTON_INDEX ;
         BUTTON_INDEX  = buttonIndex;
         
-
+        
         switch (BUTTON_INDEX) {
             case SEND_SINA_WEIBO:
             {
@@ -348,7 +455,7 @@ typedef enum {
                 [sc release];
                 
             }
-               break;
+                break;
             case SEND_TENGXUN_WEIBO:
             {
                 ShareToQQWeiboController *sc = [[ShareToQQWeiboController alloc]init];
@@ -356,7 +463,7 @@ typedef enum {
                 [sc release];
                 
             }
-               break;
+                break;
             case SEND_EMAIL:
                 
             {
@@ -388,26 +495,9 @@ typedef enum {
     }
 }
 
-
-
--(void)updateApplication{
-
-//    [self popupHappyMessage:@"已经是最新版本" title:nil];
-    
-    [[UserService defaultService] queryVersion:self];
-
-}
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
- #pragma mark - UIAlertViewDelegate
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 1) {
-    }
-}
 
-
-
-@end
+ @end

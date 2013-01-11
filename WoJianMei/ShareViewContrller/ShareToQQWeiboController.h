@@ -16,7 +16,4 @@
 - (IBAction)backgroundTap:(id)sender;
 -(void)logout;
 
-
--(void)addView:(UIView *)view;
-
 @end

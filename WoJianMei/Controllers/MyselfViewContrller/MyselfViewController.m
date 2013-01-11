@@ -62,8 +62,7 @@ const double URLCacheInterval = 86400.0;
 - (void) initUI;
 - (void) displayImageWithURL:(NSURL *)theURL;
 - (void) displayCachedImage;
-- (void) initCache;
-- (void) clearCache;
+
 
 @end
     
@@ -83,7 +82,6 @@ const double URLCacheInterval = 86400.0;
 
 @synthesize avatarImage;
 @synthesize headerVImageButton=_headerVImageButton;
-@synthesize myFooterView;
 @synthesize myHeaderView =_myHeaderView;
 @synthesize userNameLabel=_userNameLabel;
 @synthesize mottoLabel = _mottoLabel;
@@ -91,13 +89,6 @@ const double URLCacheInterval = 86400.0;
 @synthesize user =_user;
 
 
-
-
-
-@synthesize dataPath;
-@synthesize filePath;
-@synthesize fileDate;
-@synthesize urlArray;
 
 
 
@@ -115,7 +106,6 @@ const double URLCacheInterval = 86400.0;
     [_footerVImageV release];
     [_avatarImage  release];
     [_myHeaderView release];
-    [myFooterView release];
     [_userNameLabel release];
     [_mottoLabel release];
     [_userGenderLabel release];
@@ -123,10 +113,6 @@ const double URLCacheInterval = 86400.0;
     [sina_userInfo release], sina_userInfo = nil;
     
     
-    [dataPath release];
-	[filePath release];
-	[fileDate release];
-	[urlArray release];
     [_user release];
 
     
@@ -331,10 +317,10 @@ const double URLCacheInterval = 86400.0;
     
     }else
     {
-        UIAlertView *alerView  = [[UIAlertView alloc]initWithTitle:@"授权" message:@"是否解除与新浪微博的绑定？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alerView show];
-        [alerView release];
-        [alerView setTag:SINA_WEIBO_ACCOUNT];
+        UIAlertView *alerView1  = [[UIAlertView alloc]initWithTitle:@"授权" message:@"是否解除与新浪微博的绑定？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alerView1 show];
+        [alerView1 release];
+        [alerView1 setTag:SINA_WEIBO_ACCOUNT];
     }
 }
 
@@ -350,10 +336,10 @@ const double URLCacheInterval = 86400.0;
 
     }else
     {
-        UIAlertView *alerView  = [[UIAlertView alloc]initWithTitle:@"授权" message:@"是否解除与新浪微博的绑定？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alerView show];
-        [alerView release];
-        [alerView setTag:TENGXUN_QQ_ACOUNT];
+        UIAlertView *alerView2  = [[UIAlertView alloc]initWithTitle:@"授权" message:@"是否解除与新浪微博的绑定？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alerView2 show];
+        [alerView2 release];
+        [alerView2 setTag:TENGXUN_QQ_ACOUNT];
         
         PPDebug(@" tencent qq  off ");
     }
@@ -380,10 +366,10 @@ const double URLCacheInterval = 86400.0;
     }else
     {
         
-        UIAlertView *alerView  = [[UIAlertView alloc]initWithTitle:@"解除绑定" message:@"是否解除与腾讯微博的绑定？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alerView show];
-        [alerView release];
-        [alerView setTag:TENGXUN_WEIBO_ACCOUNT];
+        UIAlertView *alerView3  = [[UIAlertView alloc]initWithTitle:@"解除绑定" message:@"是否解除与腾讯微博的绑定？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alerView3 show];
+        [alerView3 release];
+        [alerView3 setTag:TENGXUN_WEIBO_ACCOUNT];
         
     }
 }
@@ -431,8 +417,6 @@ const double URLCacheInterval = 86400.0;
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     
-
-    
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     if (image != nil){
         
@@ -443,7 +427,6 @@ const double URLCacheInterval = 86400.0;
         [self storeUserInfo];
         
     }];
-    
     
     }
 }
@@ -472,10 +455,16 @@ const double URLCacheInterval = 86400.0;
 #pragma mark - UIAlertViewDelegate
 
 // Called when a button is clicked. The view will be automatically dismissed after this call returns
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
 
+-(void)alertView:(UIAlertView *)_alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+
+{
+
+    self.alertView = _alertView;
+    
+    
 ////根据alerview 的类型来确定。
-    switch (alertView.tag) {
+    switch (self.alertView.tag) {
         case SINA_WEIBO_ACCOUNT:
             
         {
@@ -533,37 +522,6 @@ const double URLCacheInterval = 86400.0;
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;    // fixed font style. use custom view (UILabel) if you want something different
 {
-//    
-//    switch (section) {
-//        case 0:
-//        {
-//            return @"绑定账号";
-//
-//        }
-//            break;
-//        case 1:
-//        {
-//            return @"section 1";
-//            
-//        }
-//            break;
-//        case 2:
-//        {
-//            return @"section 2";
-//            
-//        }
-//            break;
-//        case 3:
-//        {
-//            return @"section 3";
-//            
-//        }
-//            break;
-//            
-//        default:
-//            break;
-//    }
-//    
     return nil;
 }
 
@@ -1068,6 +1026,27 @@ const double URLCacheInterval = 86400.0;
     NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.user];
     [[NSUserDefaults standardUserDefaults] setObject:userData forKey:USER];
     
+}
+
+
+#pragma mark-- SinaWeiboAuthorizeViewDelegate
+
+
+- (void)authorizeView:(SinaWeiboAuthorizeView *)authView
+didRecieveAuthorizationCode:(NSString *)code{
+    
+    
+
+}
+- (void)authorizeView:(SinaWeiboAuthorizeView *)authView
+ didFailWithErrorInfo:(NSDictionary *)errorInfo{
+    
+    
+    
+}
+- (void)authorizeViewDidCancel:(SinaWeiboAuthorizeView *)authView{
+
+
 }
 
 

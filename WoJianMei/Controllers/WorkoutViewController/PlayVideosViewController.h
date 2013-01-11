@@ -31,8 +31,6 @@
 
 
 
-- (void)clickSegControl:(id)sender;
-
 - (void)didDetectDoubleTap:(UITapGestureRecognizer *)tap;
 
 

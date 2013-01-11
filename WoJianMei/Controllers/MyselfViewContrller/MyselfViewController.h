@@ -31,7 +31,6 @@
     BOOL                     shouldLoadAvatar;
     
     UIButton                *_headerVImageButton;
-    UIImageView                *_footerVImageV;
     UIImage                     *_avatarImage;
     
     UIView                      *_myHeaderView;
@@ -53,13 +52,7 @@
     NSDictionary *sina_userInfo;
     NSDictionary *user_info;
     
-
-    NSString *dataPath;
-	NSString *filePath;
-	NSDate *fileDate;
-	NSMutableArray *urlArray;
     
-    NSError *cache_error;
     
     User *_user;
 }
@@ -81,15 +74,12 @@
 @property (nonatomic, retain)   NSMutableDictionary    *imageDictionary;
 
 @property (nonatomic, retain)  UIView *myHeaderView;
-@property (nonatomic, retain)  UIView *myFooterView;
 @property (nonatomic, retain)  UILabel *userNameLabel;
 @property (nonatomic, retain)  UILabel *mottoLabel;
 @property (nonatomic, retain)  UILabel *userGenderLabel;
 
 
-@property (nonatomic, copy) NSString *dataPath;
-@property (nonatomic, copy) NSString *filePath;
-@property (nonatomic, retain) NSDate *fileDate;
+
 @property (nonatomic, retain) NSMutableArray *urlArray;
 
 @property (nonatomic,retain) User *user;
@@ -102,7 +92,6 @@
 
 
 - (SinaweiboManager *)sinaweiboManager;
-- (TencentWeiboManager*)tengxunWeiboManager;
 
 
 @end

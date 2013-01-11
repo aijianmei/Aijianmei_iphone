@@ -22,9 +22,4 @@
 
 @property (nonatomic, retain) NSArray *listData;
 
-- (IBAction)sinaWeiBlogshareButton:(id)sender;
-
--(void)showShare;
-
-
 @end

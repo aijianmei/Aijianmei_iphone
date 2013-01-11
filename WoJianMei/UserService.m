@@ -10,6 +10,7 @@
 #import "CommonService.h"
 #import "FitnessNetworkConstants.h"
 #import "FitnessNetworkRequest.h"
+#import "JSON.h"
 
 
 @implementation UserService
@@ -50,6 +51,9 @@ static UserService* _defaultUserService = nil;
         });
     });
 }
+
+
+
 
 
 @end
