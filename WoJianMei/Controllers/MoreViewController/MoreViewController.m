@@ -164,16 +164,17 @@ typedef enum {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreViewController"];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MoreViewController"] autorelease];
+    }
+    
+    [cell.textLabel setFont:[UIFont systemFontOfSize:14]];    
+    UIImage* image_icon = [UIImage imageNamed:@"szicon_a.png"];
+    UIImageView* cellAccessoryView = [[UIImageView alloc] initWithImage:image_icon];
+    cell.accessoryView = cellAccessoryView;
+    cell.backgroundColor = [UIColor whiteColor];
 
-        [cell.textLabel setFont:[UIFont systemFontOfSize:14]];
-        
-        
-        UIImage* image = [UIImage imageNamed:@"szicon_a.png"];
-        UIImageView* cellAccessoryView = [[UIImageView alloc] initWithImage:image];
-        cell.accessoryView = cellAccessoryView;
-        [cellAccessoryView release];
-        
-}
+    [cellAccessoryView release];
+    
+    
     
     if (indexPath.section ==0) {
         
