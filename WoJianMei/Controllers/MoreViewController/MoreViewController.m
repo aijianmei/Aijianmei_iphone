@@ -174,18 +174,28 @@ typedef enum {
 
     [cellAccessoryView release];
     
-    
-    
+    // set backgroudView
+    UIImageView *imageView = nil;
     if (indexPath.section ==0) {
         
         cell.textLabel.text = [self.listData objectAtIndex:indexPath.row];
+        
+        if (0 == [indexPath row] )
+        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_cell_background.png"]];
+        else if (5 == [indexPath row])
+        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottom_cell_background.png"]];
+        else
+        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"middle_cell_background.png"]];
         
     }else if(indexPath.section==1){
         // @"客户端更新",@"推荐应用",@"退出客户端"
         if (indexPath.row == 0) {
             cell.textLabel.text = @"客户端更新";
+         imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_cell_background.png"]];
         }else {
             cell.textLabel.text  = @"推荐应用";
+         imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottom_cell_background.png"]];
+            
         }
         
     }else {
@@ -195,42 +205,10 @@ typedef enum {
     }
     
 
+        cell.backgroundView=imageView;
+        [imageView release];
     
-    
-//
-//    //set backgroudView
-//    UIImageView *imageView = nil;
-//    if (indexPath.section  ==0) {
-//    
-//        if (0 == [indexPath row] )
-//            imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_cell_background.png"]];
-//        else if (5 == [indexPath row])
-//            imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottom_cell_background.png"]];
-//        else
-//            imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"middle_cell_background.png"]];
-//        
-//              
-//    }else if(indexPath.section==1){
-//        
-//        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_cell_background.png"]];
-//        
-//    }else{
-//        
-//        if (0==indexPath.row) {
-//            
-//            imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_cell_background.png"]];
-//            
-//        }
-//    }
-//    
-//    cell.backgroundView=imageView;
-//    
-//    [imageView release];
-//
-    
-    
-    
-    
+
     UIImage *image = nil;
     
     switch ([indexPath row]) {
@@ -262,10 +240,6 @@ typedef enum {
     cell.imageView.image = image;
     cell.textLabel.backgroundColor = [UIColor clearColor];
     
-    
-    
-    
-        
     return cell;
     
 }
