@@ -80,7 +80,6 @@ const double URLCacheInterval = 86400.0;
 
 
 
-@synthesize avatarImage;
 @synthesize headerVImageButton=_headerVImageButton;
 @synthesize myHeaderView =_myHeaderView;
 @synthesize userNameLabel=_userNameLabel;
@@ -104,7 +103,6 @@ const double URLCacheInterval = 86400.0;
     
     [_headerVImageButton release];
     [_footerVImageV release];
-    [_avatarImage  release];
     [_myHeaderView release];
     [_userNameLabel release];
     [_mottoLabel release];
@@ -127,9 +125,9 @@ const double URLCacheInterval = 86400.0;
 {
 	    
 
-      NSData *userData  =[[NSUserDefaults standardUserDefaults] objectForKey:USER];
-      self.user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
-     [self.headerVImageButton setBackgroundImage:[self.user avatarImage] forState:UIControlStateNormal];
+    NSData *userData  =[[NSUserDefaults standardUserDefaults] objectForKey:USER];
+    self.user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+    [self.headerVImageButton setBackgroundImage:[self.user avatarImage] forState:UIControlStateNormal];
 
     
     NSString *userName = [self.user name];

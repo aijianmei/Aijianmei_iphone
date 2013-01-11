@@ -25,12 +25,14 @@ enum actionsheetNumber{
 
 typedef enum {
     ACCOUNT_MANAGEMENT = 0,
+    SHARE_To_SOCIAL_NET_WORKS,
+    SHARE_TO_FRIENDS,
     FEEDBACK,
-    SHARES,
-    RECOMMEN_TO_FRIENDS,
-    RATE_AT_APPLE_STORE,
-    ABOUT,
-    UPDATE
+    LIKE_US,
+    SHOW_ABOUT_VIEW,
+    UPDATE_APP,
+    REMMOMED_APPS,
+    LOGOUT
 } MORE_SELECTION;
 
 
@@ -134,7 +136,7 @@ typedef enum {
         {
             PPDebug(@"Section one");
             
-            return [self.listData count];
+            return 6;
 
         }
             break;
@@ -171,8 +173,8 @@ typedef enum {
     UIImageView* cellAccessoryView = [[UIImageView alloc] initWithImage:image_icon];
     cell.accessoryView = cellAccessoryView;
     cell.backgroundColor = [UIColor whiteColor];
-
     [cellAccessoryView release];
+    
     
     // set backgroudView
     UIImageView *imageView = nil;
@@ -200,45 +202,42 @@ typedef enum {
         
     }else {
         cell.textLabel.text = @"退出客户端";
-        cell.backgroundColor = [UIColor redColor];
-        
+        cell.accessoryView = nil;
+        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottom_cell_background.png"]];
+        [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
     }
     
 
-        cell.backgroundView=imageView;
-        [imageView release];
+    cell.backgroundView=imageView;
+    [imageView release];
     
 
+
     UIImage *image = nil;
-    
     switch ([indexPath row]) {
         case ACCOUNT_MANAGEMENT:
             image = [UIImage imageNamed:@"social_networks.png"];
             break;
-        case FEEDBACK:
+        case SHARE_To_SOCIAL_NET_WORKS:
             image = [UIImage imageNamed:@"share_social.png"];
             break;
-        case SHARES :
+        case SHARE_TO_FRIENDS :
             image = [UIImage imageNamed:@"share_with_firends.png"];
             break;
-        case RECOMMEN_TO_FRIENDS:
+        case FEEDBACK:
             image = [UIImage imageNamed:@"Rate_Us.png"];
             break;
-        case RATE_AT_APPLE_STORE:
+        case LIKE_US:
             image = [UIImage imageNamed:@"about_us.png"];
             break;
-        case ABOUT:
+        case SHOW_ABOUT_VIEW:
             image = [UIImage imageNamed:@"update_app.png"];
             break;
-        case UPDATE:
-            image = [UIImage imageNamed:@"unknown.png"];
-            break;
-        default:
+            default:
             break;
     }
     
     cell.imageView.image = image;
-    cell.textLabel.backgroundColor = [UIColor clearColor];
     
     return cell;
     
@@ -246,43 +245,38 @@ typedef enum {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+
     if (indexPath.section==0) {
         NSUInteger row = [indexPath row];
         switch (row) {
             case ACCOUNT_MANAGEMENT:
             {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"确定要更换账号吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"更换", nil];
-                [alert show];
-                [alert release];
+                [self accountManagement];
                 
             }
                 break;
-            case FEEDBACK:
-            {
-                [self accountManagement];
-            }
-                break;
-            case  SHARES :
+            case SHARE_To_SOCIAL_NET_WORKS:
             {
                 [self shareToSocialnetWorks];
             }
                 break;
-            case RECOMMEN_TO_FRIENDS:
+            case SHARE_TO_FRIENDS:
             {
                 [self shareToYourFriends];
             }
                 break;
-            case RATE_AT_APPLE_STORE:
+            case FEEDBACK:
             {
                 [self showFeedback];
             }
                 break;
-            case ABOUT:
+            case LIKE_US:
             {
                 [self likeUs];
             }
                 break;
-            case UPDATE:
+            case SHOW_ABOUT_VIEW:
             {
                 [self showAboutView];
             }
@@ -369,8 +363,7 @@ typedef enum {
 -(void)showAboutView{
     
     [self performSegueWithIdentifier:@"AboutViewControllerSegue" sender:self];
-    UITabBarController *tabbarController = [self.navigationController tabBarController];
-    [tabbarController hidesBottomBarWhenPushed];
+    
     PPDebug(@"Users Trying to show the aboutView");
 }
 

@@ -23,15 +23,8 @@
 @interface MyselfViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,MyselfTableViewCellDelegate,UINavigationControllerDelegate,SinaWeiboDelegate,SinaWeiboAuthorizeViewDelegate,SinaWeiboRequestDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,TencentSessionDelegate>
 
 {
-
-
-    
-    BOOL                  shouldShowIndicator;
-    BOOL                           shouldLoad;
-    BOOL                     shouldLoadAvatar;
     
     UIButton                *_headerVImageButton;
-    UIImage                     *_avatarImage;
     
     UIView                      *_myHeaderView;
 	UIView                      *myFooterView;
@@ -68,7 +61,6 @@
 @property (retain, nonatomic) UIButton *headerVImageButton;
 @property (retain, nonatomic) UIImageView *footerVImageV;
 
-@property (nonatomic, retain) UIImage                     *avatarImage;
 @property (nonatomic,retain)  NSString                         *userID;
 @property (nonatomic, retain)   NSMutableArray             *statuesArr;
 @property (nonatomic, retain)   NSMutableDictionary    *imageDictionary;

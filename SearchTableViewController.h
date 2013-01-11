@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface SearchTableViewController : UITableViewController
+#import "PPTableViewController.h"
+@interface SearchTableViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate>
 
 @end
