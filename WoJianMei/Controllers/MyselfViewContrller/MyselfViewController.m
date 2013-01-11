@@ -147,8 +147,6 @@ const double URLCacheInterval = 86400.0;
         
     }
     
-    
-    
     NSLog(@"This is Tom ma ????? %@",self.user.name);
     NSString *description = [self.user description];
     [self.mottoLabel setText:description];
