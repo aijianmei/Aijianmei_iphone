@@ -275,6 +275,8 @@
 		4AC391EB16A0465100F7D0C2 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC391EA16A0465000F7D0C2 /* SearchTableViewController.m */; };
 		4AD66B1415CFCEEC000F7CB8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD66B1315CFCEEC000F7CB8 /* MapKit.framework */; };
 		4AD8E031169BD46B00EE04F9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8E030169BD46A00EE04F9 /* User.m */; };
+		4AD9FC3216A0F82900BA766D /* singleCellBackgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AD9FC3116A0F82900BA766D /* singleCellBackgroud.png */; };
+		4AD9FC3516A1082300BA766D /* SinaUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9FC3416A1082300BA766D /* SinaUsersViewController.m */; };
 		4ADCFE19169D614600A3E979 /* MakeFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFDFC169D614600A3E979 /* MakeFriendsViewController.m */; };
 		4ADCFE1A169D614600A3E979 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFDFF169D614600A3E979 /* AboutViewController.m */; };
 		4ADCFE1B169D614600A3E979 /* More_SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE01169D614600A3E979 /* More_SettingsViewController.m */; };
@@ -339,15 +341,12 @@
 		4ADCFEFE169D62C400A3E979 /* live_menu_3_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE88169D62C400A3E979 /* live_menu_3_on@2x.png */; };
 		4ADCFEFF169D62C400A3E979 /* live_menu_8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE89169D62C400A3E979 /* live_menu_8@2x.png */; };
 		4ADCFF00169D62C400A3E979 /* live_menu_9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE8A169D62C400A3E979 /* live_menu_9@2x.png */; };
-		4ADCFF01169D62C400A3E979 /* loginWeibo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE8B169D62C400A3E979 /* loginWeibo.png */; };
 		4ADCFF07169D62C400A3E979 /* LOGO副本.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE91169D62C400A3E979 /* LOGO副本.png */; };
 		4ADCFF08169D62C400A3E979 /* Lower-Back-Exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE92169D62C400A3E979 /* Lower-Back-Exercises.jpg */; };
 		4ADCFF09169D62C400A3E979 /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE93169D62C400A3E979 /* menu-icon.png */; };
 		4ADCFF0A169D62C400A3E979 /* menu-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE94169D62C400A3E979 /* menu-icon@2x.png */; };
 		4ADCFF0B169D62C400A3E979 /* middle_cell_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE95169D62C400A3E979 /* middle_cell_background.png */; };
 		4ADCFF0C169D62C400A3E979 /* Muscle-Exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE96169D62C400A3E979 /* Muscle-Exercises.jpg */; };
-		4ADCFF0D169D62C400A3E979 /* music-tab.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE97169D62C400A3E979 /* music-tab.png */; };
-		4ADCFF0E169D62C400A3E979 /* music-tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE98169D62C400A3E979 /* music-tab@2x.png */; };
 		4ADCFF0F169D62C400A3E979 /* neck_exercises_s.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE99169D62C400A3E979 /* neck_exercises_s.jpg */; };
 		4ADCFF10169D62C400A3E979 /* Oblique-abdominal-exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE9A169D62C400A3E979 /* Oblique-abdominal-exercises.jpg */; };
 		4ADCFF11169D62C400A3E979 /* page_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE9B169D62C400A3E979 /* page_button@2x.png */; };
@@ -984,6 +983,9 @@
 		4AD66B1315CFCEEC000F7CB8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4AD8E02F169BD46A00EE04F9 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		4AD8E030169BD46A00EE04F9 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		4AD9FC3116A0F82900BA766D /* singleCellBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = singleCellBackgroud.png; sourceTree = "<group>"; };
+		4AD9FC3316A1082200BA766D /* SinaUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SinaUsersViewController.h; path = ../../../SinaUsersViewController.h; sourceTree = "<group>"; };
+		4AD9FC3416A1082300BA766D /* SinaUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SinaUsersViewController.m; path = ../../../SinaUsersViewController.m; sourceTree = "<group>"; };
 		4ADCFDFB169D614600A3E979 /* MakeFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeFriendsViewController.h; sourceTree = "<group>"; };
 		4ADCFDFC169D614600A3E979 /* MakeFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeFriendsViewController.m; sourceTree = "<group>"; };
 		4ADCFDFE169D614600A3E979 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -1067,15 +1069,12 @@
 		4ADCFE88169D62C400A3E979 /* live_menu_3_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "live_menu_3_on@2x.png"; sourceTree = "<group>"; };
 		4ADCFE89169D62C400A3E979 /* live_menu_8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "live_menu_8@2x.png"; sourceTree = "<group>"; };
 		4ADCFE8A169D62C400A3E979 /* live_menu_9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "live_menu_9@2x.png"; sourceTree = "<group>"; };
-		4ADCFE8B169D62C400A3E979 /* loginWeibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginWeibo.png; sourceTree = "<group>"; };
 		4ADCFE91169D62C400A3E979 /* LOGO副本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LOGO副本.png"; sourceTree = "<group>"; };
 		4ADCFE92169D62C400A3E979 /* Lower-Back-Exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Lower-Back-Exercises.jpg"; sourceTree = "<group>"; };
 		4ADCFE93169D62C400A3E979 /* menu-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon.png"; sourceTree = "<group>"; };
 		4ADCFE94169D62C400A3E979 /* menu-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon@2x.png"; sourceTree = "<group>"; };
 		4ADCFE95169D62C400A3E979 /* middle_cell_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = middle_cell_background.png; sourceTree = "<group>"; };
 		4ADCFE96169D62C400A3E979 /* Muscle-Exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Muscle-Exercises.jpg"; sourceTree = "<group>"; };
-		4ADCFE97169D62C400A3E979 /* music-tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music-tab.png"; sourceTree = "<group>"; };
-		4ADCFE98169D62C400A3E979 /* music-tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music-tab@2x.png"; sourceTree = "<group>"; };
 		4ADCFE99169D62C400A3E979 /* neck_exercises_s.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = neck_exercises_s.jpg; sourceTree = "<group>"; };
 		4ADCFE9A169D62C400A3E979 /* Oblique-abdominal-exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Oblique-abdominal-exercises.jpg"; sourceTree = "<group>"; };
 		4ADCFE9B169D62C400A3E979 /* page_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "page_button@2x.png"; sourceTree = "<group>"; };
@@ -2679,6 +2678,20 @@
 			name = Entries;
 			sourceTree = "<group>";
 		};
+		4AD9FC3016A0F81200BA766D /* MoreView */ = {
+			isa = PBXGroup;
+			children = (
+				4ADCFE6E169D62C400A3E979 /* BackGround.png */,
+				4ADCFE66169D62C400A3E979 /* about_us@2x.png */,
+				4AD9FC3116A0F82900BA766D /* singleCellBackgroud.png */,
+				4ADCFE6A169D62C400A3E979 /* artist-tab.png */,
+				4ADCFE6B169D62C400A3E979 /* artist-tab@2x.png */,
+				4ADCFE72169D62C400A3E979 /* bottom_bg@2x.png */,
+				4ADCFE73169D62C400A3E979 /* bottom_cell_background.png */,
+			);
+			name = MoreView;
+			sourceTree = "<group>";
+		};
 		4ADCFDFA169D614600A3E979 /* MakeFriendsViewcontrller */ = {
 			isa = PBXGroup;
 			children = (
@@ -2714,6 +2727,8 @@
 				4ADCFE08169D614600A3E979 /* MyselfViewController.m */,
 				4AC391E916A0465000F7D0C2 /* SearchTableViewController.h */,
 				4AC391EA16A0465000F7D0C2 /* SearchTableViewController.m */,
+				4AD9FC3316A1082200BA766D /* SinaUsersViewController.h */,
+				4AD9FC3416A1082300BA766D /* SinaUsersViewController.m */,
 			);
 			name = MyselfViewContrller;
 			path = Controllers/MyselfViewContrller;
@@ -2781,6 +2796,7 @@
 		4ADCFE56169D62C300A3E979 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4AD9FC3016A0F81200BA766D /* MoreView */,
 				4ADCFE57169D62C400A3E979 /* 1.jpg */,
 				4ADCFE5A169D62C400A3E979 /* 2.jpg */,
 				4ADCFE5D169D62C400A3E979 /* 3.jpg */,
@@ -2788,20 +2804,14 @@
 				4ADCFE63169D62C400A3E979 /* 5.jpg */,
 				4ADCFE64169D62C400A3E979 /* 57.png */,
 				4ADCFE65169D62C400A3E979 /* 6.jpg */,
-				4ADCFE66169D62C400A3E979 /* about_us@2x.png */,
 				4ADCFE67169D62C400A3E979 /* Abs-Exercises_s.jpg */,
 				4ADCFE68169D62C400A3E979 /* adductor-exercises.jpg */,
 				4ADCFE69169D62C400A3E979 /* all_page_bg2@2x.jpg */,
-				4ADCFE6A169D62C400A3E979 /* artist-tab.png */,
-				4ADCFE6B169D62C400A3E979 /* artist-tab@2x.png */,
 				4ADCFE6C169D62C400A3E979 /* Back-Exercises.jpg */,
 				4ADCFE6D169D62C400A3E979 /* back@2x.png */,
-				4ADCFE6E169D62C400A3E979 /* BackGround.png */,
 				4ADCFE6F169D62C400A3E979 /* Biceps-Exercises.jpg */,
 				4ADCFE70169D62C400A3E979 /* book_bg@2x.png */,
 				4ADCFE71169D62C400A3E979 /* bookself_button@2x.png */,
-				4ADCFE72169D62C400A3E979 /* bottom_bg@2x.png */,
-				4ADCFE73169D62C400A3E979 /* bottom_cell_background.png */,
 				4ADCFE74169D62C400A3E979 /* buttocks-exercises.jpg */,
 				4ADCFE75169D62C400A3E979 /* calf-exercises.jpg */,
 				4ADCFE76169D62C400A3E979 /* Chest-Exercises_s.jpg */,
@@ -2823,15 +2833,12 @@
 				4ADCFE88169D62C400A3E979 /* live_menu_3_on@2x.png */,
 				4ADCFE89169D62C400A3E979 /* live_menu_8@2x.png */,
 				4ADCFE8A169D62C400A3E979 /* live_menu_9@2x.png */,
-				4ADCFE8B169D62C400A3E979 /* loginWeibo.png */,
 				4ADCFE91169D62C400A3E979 /* LOGO副本.png */,
 				4ADCFE92169D62C400A3E979 /* Lower-Back-Exercises.jpg */,
 				4ADCFE93169D62C400A3E979 /* menu-icon.png */,
 				4ADCFE94169D62C400A3E979 /* menu-icon@2x.png */,
 				4ADCFE95169D62C400A3E979 /* middle_cell_background.png */,
 				4ADCFE96169D62C400A3E979 /* Muscle-Exercises.jpg */,
-				4ADCFE97169D62C400A3E979 /* music-tab.png */,
-				4ADCFE98169D62C400A3E979 /* music-tab@2x.png */,
 				4ADCFE99169D62C400A3E979 /* neck_exercises_s.jpg */,
 				4ADCFE9A169D62C400A3E979 /* Oblique-abdominal-exercises.jpg */,
 				4ADCFE9B169D62C400A3E979 /* page_button@2x.png */,
@@ -3305,15 +3312,12 @@
 				4ADCFEFE169D62C400A3E979 /* live_menu_3_on@2x.png in Resources */,
 				4ADCFEFF169D62C400A3E979 /* live_menu_8@2x.png in Resources */,
 				4ADCFF00169D62C400A3E979 /* live_menu_9@2x.png in Resources */,
-				4ADCFF01169D62C400A3E979 /* loginWeibo.png in Resources */,
 				4ADCFF07169D62C400A3E979 /* LOGO副本.png in Resources */,
 				4ADCFF08169D62C400A3E979 /* Lower-Back-Exercises.jpg in Resources */,
 				4ADCFF09169D62C400A3E979 /* menu-icon.png in Resources */,
 				4ADCFF0A169D62C400A3E979 /* menu-icon@2x.png in Resources */,
 				4ADCFF0B169D62C400A3E979 /* middle_cell_background.png in Resources */,
 				4ADCFF0C169D62C400A3E979 /* Muscle-Exercises.jpg in Resources */,
-				4ADCFF0D169D62C400A3E979 /* music-tab.png in Resources */,
-				4ADCFF0E169D62C400A3E979 /* music-tab@2x.png in Resources */,
 				4ADCFF0F169D62C400A3E979 /* neck_exercises_s.jpg in Resources */,
 				4ADCFF10169D62C400A3E979 /* Oblique-abdominal-exercises.jpg in Resources */,
 				4ADCFF11169D62C400A3E979 /* page_button@2x.png in Resources */,
@@ -3400,6 +3404,7 @@
 				4AE81AF0169D7A8C00D36F3B /* Video.png in Resources */,
 				4AA7ECE9169F107B003E8949 /* pageDot@2x.png in Resources */,
 				4AA7ECEA169F107B003E8949 /* currentPageDot@2x.png in Resources */,
+				4AD9FC3216A0F82900BA766D /* singleCellBackgroud.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3674,6 +3679,7 @@
 				4AE81AFE169D7AD400D36F3B /* WifiViewController.m in Sources */,
 				4AA7ECE5169F0F78003E8949 /* SMPageControl.m in Sources */,
 				4AC391EB16A0465100F7D0C2 /* SearchTableViewController.m in Sources */,
+				4AD9FC3516A1082300BA766D /* SinaUsersViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

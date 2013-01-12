@@ -59,6 +59,7 @@
 {
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     if (image != nil){
+        [self.avatarButton setImage:image forState:UIControlStateNormal];
     }
     
     [self.navigationController dismissModalViewControllerAnimated:YES];

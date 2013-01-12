@@ -14,14 +14,6 @@
 
 @implementation SearchTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -32,6 +24,18 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
+    
+    
+    [self setBackgroundImageName:@"BackGround.png"];
+    [self showBackgroundImage];
+    [self.navigationItem setTitle:@"寻找朋友"];
+    
+    [self.dataTableView setBackgroundColor: [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackGround.png"]]];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,82 +45,147 @@
 }
 
 #pragma mark - Table view data source
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+
+    switch (section) {
+        case 0:
+        {
+          return  @"寻找好友";
+        }
+            break;
+        case 1:
+        {
+            return  @"推荐好友";
+        }
+            break;
+            
+        default:
+            break;
+    }
+
+    return nil;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    
+    switch (section) {
+        case 0:
+        {
+            return 2;
+        
+        }
+            break;
+        case 1:
+        {
+            return 1;
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return 1;
+    
+    
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"SearchCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    
+    
+        
     // Configure the cell...
+    
+    // set backgroudView
+    UIImageView *imageView = nil;
+    
+    switch (indexPath.section) {
+        case 0:
+        {
+            if (indexPath.row==0) {
+                
+                [cell.textLabel setText:@"爱健美站内搜索"];
+                imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_cell_background.png"]];
+
+                
+            }else{
+            
+                [cell.textLabel setText:@"新浪微博上"];
+                imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottom_cell_background.png"]];
+            }
+        }
+            break;
+        case 1:
+        {
+                [cell.textLabel setText:@"热门健身爱好者"];
+                imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"singleCellBackgroud.png"]];
+
+
+        }
+            break;
+            
+
+        default:
+            break;
+    }
+    
+    [imageView release];
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    
+    switch (indexPath.section) {
+        case 0:
+        {
+            if (indexPath.row ==0) {
+           ////section 0  row 0 
+                
+                
+                
+                
+            }else{
+          ////section 1  row 0
+  
+            [self performSegueWithIdentifier:@"SinaUsers" sender:self];
+                
+            
+            }
+        }
+            break;
+            
+        case 1:
+        {
+          ////section 1  row 0
+
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+       
 }
 
 @end

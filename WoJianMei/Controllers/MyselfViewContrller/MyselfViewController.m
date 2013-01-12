@@ -30,6 +30,7 @@
 
 
 
+
 #define USER @"user"
 
 
@@ -123,8 +124,6 @@ const double URLCacheInterval = 86400.0;
 
 - (void)upgradeUI
 {
-	    
-
     NSData *userData  =[[NSUserDefaults standardUserDefaults] objectForKey:USER];
     self.user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
     [self.headerVImageButton setBackgroundImage:[self.user avatarImage] forState:UIControlStateNormal];
@@ -152,6 +151,15 @@ const double URLCacheInterval = 86400.0;
     
 }
 
+-(void)test{
+    
+    
+    [self performSegueWithIdentifier:@"SearchViewController" sender:self];
+    
+    
+
+}
+
 
 
 
@@ -164,7 +172,7 @@ const double URLCacheInterval = 86400.0;
     ///set the right buttons
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(clickSettingsButton:)];
     ////set the left buttons
-    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc]initWithTitle:@"搜索" style:UIBarButtonItemStyleBordered target:self action:@selector(clickSettingsButton:)];
+    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc]initWithTitle:@"搜索" style:UIBarButtonItemStyleBordered target:self action:@selector(test)];
     
     [self.navigationItem setLeftBarButtonItem:leftBarButton];
     [self.navigationItem setRightBarButtonItem:rightBarButton];
@@ -232,6 +240,13 @@ const double URLCacheInterval = 86400.0;
     tencentWeiboManager =[TencentWeiboManager defaultManager];
     
     
+    
+    
+    
+    [self setBackgroundImageName:@"BackGround.png"];
+//    [self showBackgroundImage];
+
+    
 }
 
 
@@ -276,13 +291,7 @@ const double URLCacheInterval = 86400.0;
     }
 }
 
-    
-    
-    
-    
-    [self setBackgroundImageName:@"BackGround.png"];
-    [self showBackgroundImage];
-    
+
 }
 -(void)clickSettingsButton:(id)sender{
     

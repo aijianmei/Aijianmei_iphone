@@ -179,6 +179,8 @@ typedef enum {
     
     // set backgroudView
     UIImageView *imageView = nil;
+    imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_cell_background.png"]];
+
     if (indexPath.section ==0) {
         
         cell.textLabel.text = [self.listData objectAtIndex:indexPath.row];

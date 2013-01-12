@@ -8,6 +8,6 @@
 
 #import "PPTableViewController.h"
 
-@interface SinaUsersViewController : PPTableViewController
+@interface SinaUsersViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate>
 
 @end
