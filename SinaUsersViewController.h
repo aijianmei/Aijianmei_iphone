@@ -13,12 +13,16 @@
 
 #import "SinaWeiboAuthorizeView.h"
 
+@class SinaUser;
+
 @interface SinaUsersViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,SinaWeiboRequestDelegate,SinaUserCellDelegate,SinaWeiboAuthorizeViewDelegate>{
 
 
 
     NSMutableDictionary *_userAvatarDic;
-    NSArray *_sinaUserArr;
+    
+    SinaUser *_user;
+
     
     BOOL _shouldReloadTable;
 
@@ -26,7 +30,7 @@
 
 }
 @property (nonatomic,retain) NSMutableDictionary *userAvatarDic;
-@property (nonatomic,retain) NSArray *sinaUserArr;
+@property (nonatomic,retain) SinaUser *user;
 
 
 

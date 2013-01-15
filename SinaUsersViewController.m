@@ -15,7 +15,10 @@
 #import "SinaweiboManager.h"
 #import "SinaUser.h"
 #import "HHNetDataCacheManager.h"
+#import "EGORefreshTableHeaderView.h"
 
+
+#define USER_STORE_USER_ID          @"SinaUserID"
 
 
 @interface SinaUsersViewController ()
@@ -34,14 +37,13 @@
 @implementation SinaUsersViewController
 @synthesize sina_userInfo   =_sina_userInfo;
 @synthesize  userAvatarDic =_userAvatarDic;
-@synthesize sinaUserArr =_sinaUserArr;
-
+@synthesize  user =_user;
 
 -(void)dealloc{
     
     [_userAvatarDic release]; _userAvatarDic = nil;
     [_sina_userInfo release];_sina_userInfo = nil;
-    [_sinaUserArr release]; _sinaUserArr = nil;
+    [_user  release]; _user = nil;
     [super dealloc];
     
 }
@@ -55,6 +57,11 @@
     }
     return _userAvatarDic;
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:NO];
+    [self loadData];
+}
+
 
 -(void)viewDidUnload{
     
@@ -63,7 +70,6 @@
     [notifCenter removeObserver:self name:HHNetDataCacheNotification object:nil];
     [super viewDidUnload];
 
-    
 }
 
 - (void)viewDidLoad
@@ -75,10 +81,23 @@
     [self setBackgroundImageName:@"BackGround.png"];
     [self showBackgroundImage];
     [self.navigationItem setTitle:@" 新浪好友"];
+
+    
+    
+    [self setSupportRefreshHeader:YES];
+
+    
+    EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc]initWithFrame:CGRectMake(0, 0, 320, 150)];
+    [self setRefreshHeaderView:view];
+    [view release];
+    [self setReloadVisibleCellTimerInterval:4];
+    
+    
+    
     
     ///用户头像加载方式的优化
+    
     _shouldReloadTable = YES;
-
     
     _userAvatarDic = [[NSMutableDictionary alloc] initWithCapacity:0];
     NSNotificationCenter *notifCenter = [NSNotificationCenter defaultCenter];
@@ -86,8 +105,6 @@
 
     
     
-    
-    [self sinaweiboManager];
     
     SinaWeibo *sinaweibo = [[self sinaweiboManager] sinaweibo];
     BOOL authValid = sinaweibo.isAuthValid;
@@ -133,7 +150,7 @@
                                          httpMethod:@"POST"
                                            delegate:self];
 
-        [self showActivity];
+        [self showActivityWithText:@"发送中..."];
     } else {
         [[[self sinaweiboManager] sinaweibo] logInInView:self.view];
     }
@@ -141,10 +158,10 @@
 
 -(void)gotAvatar:(NSNotification*)sender
 {
-    
+//    
 //    if (_shouldReloadTable == NO) {
 //        return;
-//    }
+//   }
     
     NSDictionary * dic = sender.object;
     NSString * url          = [dic objectForKey:HHNetDataCacheURLKey];
@@ -153,16 +170,16 @@
     NSData *data            = [dic objectForKey:HHNetDataCacheData];
     
     if (indexNumber == nil || index == -1) {
-        NSLog(@"indexNumber = nil");
+        PPDebug(@"indexNumber = nil");
         return;
     }
     
-    if (index >= [_sinaUserArr count]) {
-        //        NSLog(@"follow cell error ,index = %d,count = %d",index,[_userArr count]);
+    if (index >= [self.dataList count]) {
+        PPDebug(@"follow cell error ,index = %d,count = %d",index,[self.dataList count]);
         return;
     }
     
-    SinaUser *user = [_sinaUserArr objectAtIndex:index];
+    SinaUser *user = [self.dataList objectAtIndex:index];
     
     //得到的是头像图片
     if ([url isEqualToString:user.profileImageUrl])
@@ -177,29 +194,24 @@
         }
     }
     
-    //reload table
-//     NSIndexPath *indexPath  = [NSIndexPath indexPathForRow:index inSection:0];
-//     NSArray     *arr        = [NSArray arrayWithObject:indexPath];
-//     [self.dataTableView reloadRowsAtIndexPaths:arr withRowAnimation:NO];
-    
-    [self.dataTableView reloadData];
+//    //reload table
+     NSIndexPath *indexPath  = [NSIndexPath indexPathForRow:index inSection:0];
+     NSArray     *arr        = [NSArray arrayWithObject:indexPath];
+     [self.dataTableView reloadRowsAtIndexPaths:arr withRowAnimation:YES];
     
 }
 
 -(void)getAvatars
 {
-    for(int i=0;i<[_sinaUserArr count];i++)
+    
+    for(int i=0;i<[self.dataList count];i++)
     {
-        SinaUser *user=[_sinaUserArr objectAtIndex:i];
+        SinaUser *user=[self.dataList objectAtIndex:i];
         
         //下载头像图片
         [[HHNetDataCacheManager getInstance] getDataWithURL:user.profileImageUrl withIndex:i];
     }
 }
-
-
-
-
 
 
 
@@ -233,7 +245,6 @@
         PPDebug(@"%@",[_sina_userInfo description]);
         PPDebug(@"%d",[_sina_userInfo count]);
         
-        
         //获取用户粉丝列表
        NSArray *arr =[_sina_userInfo objectForKey:@"users"];
       NSMutableArray *userArr = [[NSMutableArray alloc]initWithCapacity:0];
@@ -242,28 +253,31 @@
             [userArr addObject:user];
             [user release];
             
-            
-            
-        ///获取数据之后再重新load 数据。
-             self.dataList = userArr;
-            _sinaUserArr = userArr;
-            
-            SinaUser *tempUser = [userArr lastObject];
-            SinaUser *lastUser = [self.dataList lastObject];
-            if (![tempUser.screenName isEqualToString:lastUser.screenName]) {
-                self.dataList = userArr;
-                [self.dataTableView reloadData];
-
-            }
-            else {
-                _shouldReloadTable = NO;
-            }
-            
-    
-            ///开始加载用户头像的数据了。
-            [self getAvatars];
         }
+        
+        
+        SinaUser *tempUser = [userArr lastObject];
+        SinaUser *lastUser = [self.dataList lastObject];
+        
+        /// 当新数据和旧数据不一样的时候，就要重新load 数据。
+        if (![tempUser.screenName isEqualToString:lastUser.screenName]) {
+            self.dataList = userArr;
+            [userArr release];
+            [self.dataTableView reloadData];
+            
+        }
+        else {
+            _shouldReloadTable = NO;
+        }
+        
+        
+        ///开始加载用户头像的数据了。
+        [self getAvatars];
+        [self hideActivity];
     }
+    
+
+
     if ([request.url hasSuffix:@"statuses/update.json"]){
     
         PPDebug(@"邀请朋友下载app成功！");
@@ -323,7 +337,6 @@
     
     
     SinaUser *sinaUser  = [self.dataList objectAtIndex:indexPath.row];
-    
     NSNumber *indexNum = [NSNumber numberWithInt:indexPath.row];
     if ([_userAvatarDic objectForKey:indexNum] != [NSNull null]) {
         sinaUser.avatarImage =[_userAvatarDic objectForKey:indexNum];
@@ -332,7 +345,6 @@
 
  
     [cell setCellInfo:sinaUser indexPath:indexPath];
-
 
     
     return cell;
@@ -347,6 +359,39 @@
     // Navigation logic may go here. Create and push another view controller.
 }
 
+
+- (void)refresh
+{
+    [self loadData];
+}
+
+-(void)loadData
+{
+    _shouldReloadTable = YES;
+    
+    
+    SinaWeibo *sinaweibo = [[self sinaweiboManager] sinaweibo];
+    BOOL authValid = sinaweibo.isAuthValid;
+    if (authValid) {
+        
+        //        friendships/friends.json
+        //https://api.weibo.com/2/friendships/friends/bilateral.json
+        [sinaweibo requestWithURL:@"friendships/friends/bilateral.json"
+                           params:nil
+                       httpMethod:@"GET"
+                         delegate:self];
+        
+    }else {
+        
+        [sinaweibo logInInView:self.view];
+    }
+    
+    
+        if (self.dataList == nil) {
+                        
+            [self showActivityWithText:@"正在载入，请稍后..."];
+    }
+}
 
 
 #pragma mark - SinaUserCellDelegate
@@ -368,22 +413,12 @@ didRecieveAuthorizationCode:(NSString *)code{
     
     PPDebug(@"SinaWeiboAuthorizeView %@",code );
 //////当用户重新授权成功的时候。
-    SinaWeibo *sinaweibo = [[self sinaweiboManager] sinaweibo];
-    BOOL authValid = sinaweibo.isAuthValid;
-    if (authValid) {
-        
-        //        friendships/friends.json
-        //https://api.weibo.com/2/friendships/friends/bilateral.json
-        [sinaweibo requestWithURL:@"friendships/friends/bilateral.json"
-                           params:nil
-                       httpMethod:@"GET"
-                         delegate:self];
-        
-    }else {
-        
-        [sinaweibo logInInView:self.view];
-    }
+  
 
+    [self loadData];
+    
+    
+    
 }
 - (void)authorizeView:(SinaWeiboAuthorizeView *)authView
  didFailWithErrorInfo:(NSDictionary *)errorInfo{
