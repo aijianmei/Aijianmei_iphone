@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-
+#import "PPApplication.h"
 #import "SinaweiboManager.h"
 
 @class SinaweiboManager;
@@ -22,7 +21,7 @@ enum
 };
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,UITabBarControllerDelegate,SinaWeiboDelegate>
+@interface AppDelegate : PPApplication <UIApplicationDelegate,UITabBarControllerDelegate,SinaWeiboDelegate>
 
 {
       PPTabBarController	*_tabBarController;
@@ -41,6 +40,9 @@ enum
 
 
 @property (nonatomic, retain)   PPTabBarController	*tabBarController;
+
+
+
 
 
 @end

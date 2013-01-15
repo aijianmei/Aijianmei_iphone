@@ -8,13 +8,16 @@
 
 #import "MoreViewController.h"
 #import "AboutViewController.h"
-#import <Social/Social.h>
 #import "More_SettingsViewController.h"
 #import "UserService.h"
 #import "ShareToSinaController.h"
 #import "ShareToQQWeiboController.h"
 #import "ImageManager.h"
 #import "FontSize.h"
+
+#import "DeviceDetection.h"
+
+#import "AppDelegate.h"
 
 
 
@@ -36,7 +39,7 @@ typedef enum {
 } MORE_SELECTION;
 
 
-@interface MoreViewController ()
+@interface MoreViewController ()<UIActionSheetDelegate,AWActionSheetDelegate>
 
 @end
 
@@ -362,12 +365,59 @@ typedef enum {
     
 }
 
+
+/////only avaiable at ios 6
+- (void)showAWSheet
+{
+    AWActionSheet *sheet = [[AWActionSheet alloc] initwithIconSheetDelegate:self ItemCount:[self numberOfItemsInActionSheet]];
+    
+//    [sheet showFromTabBar:self.tabBarController.tabBar];
+    [sheet showInView:self.view];
+    [sheet release];
+}
+
+-(int)numberOfItemsInActionSheet
+{
+    return 13;
+}
+
+-(AWActionSheetCell *)cellForActionAtIndex:(NSInteger)index
+{
+    AWActionSheetCell* cell = [[[AWActionSheetCell alloc] init] autorelease];
+    
+    [[cell iconView] setBackgroundColor:
+     [UIColor colorWithRed:rand()%255/255.0f
+                     green:rand()%255/255.0f
+                      blue:rand()%255/255.0f
+                     alpha:1]];
+    [[cell titleLabel] setText:[NSString stringWithFormat:@"item %d",index]];
+    [[cell iconView] setImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
+    cell.index = index;
+    return cell;
+}
+
+-(void)DidTapOnItemAtIndex:(NSInteger)index
+{
+    PPDebug(@"tap on %d",index);
+    
+}
+
+
+
 - (void)shareToYourFriends
 {
-    whichAcctionSheet = RECOMMENDATION;
-    [self shareToSocialnetWorks];
-    PPDebug(@"Users share to his friends");
     
+    if ([DeviceDetection isOS6]){
+        
+        [self showAWSheet];
+    }
+    else{
+        whichAcctionSheet = RECOMMENDATION;
+        [self shareToSocialnetWorks];
+        PPDebug(@"Users share to his friends");
+    
+    }
+        
 }
 
 -(void)showFeedback{

@@ -236,6 +236,8 @@
 		4A66C1C016A58A1E00A2F22E /* SLNumberPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1BC16A58A1E00A2F22E /* SLNumberPickerView.xib */; };
 		4A66C1C316A58A4700A2F22E /* NumberPickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A66C1C216A58A4700A2F22E /* NumberPickViewController.m */; };
 		4A66C1C916A5963C00A2F22E /* account_management@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1C816A5963000A2F22E /* account_management@2x.png */; };
+		4A66C1F216A59E0000A2F22E /* AWActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A66C1E216A59E0000A2F22E /* AWActionSheet.m */; };
+		4A66C1FB16A59E0000A2F22E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A66C1F016A59E0000A2F22E /* ViewController.m */; };
 		4A7CF99215D74EF000206B14 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */; };
 		4A873B7E16A5301E005BDA45 /* touxiang_40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A873B7C16A5301D005BDA45 /* touxiang_40x40.png */; };
 		4A873B7F16A5301E005BDA45 /* touxiang_40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A873B7D16A5301E005BDA45 /* touxiang_40x40@2x.png */; };
@@ -933,6 +935,10 @@
 		4A66C1C116A58A4700A2F22E /* NumberPickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberPickViewController.h; sourceTree = "<group>"; };
 		4A66C1C216A58A4700A2F22E /* NumberPickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberPickViewController.m; sourceTree = "<group>"; };
 		4A66C1C816A5963000A2F22E /* account_management@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_management@2x.png"; sourceTree = "<group>"; };
+		4A66C1E116A59E0000A2F22E /* AWActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWActionSheet.h; sourceTree = "<group>"; };
+		4A66C1E216A59E0000A2F22E /* AWActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWActionSheet.m; sourceTree = "<group>"; };
+		4A66C1EF16A59E0000A2F22E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4A66C1F016A59E0000A2F22E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4A873B7C16A5301D005BDA45 /* touxiang_40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touxiang_40x40.png; sourceTree = "<group>"; };
 		4A873B7D16A5301E005BDA45 /* touxiang_40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "touxiang_40x40@2x.png"; sourceTree = "<group>"; };
@@ -2514,6 +2520,17 @@
 			path = SLNumberPicker;
 			sourceTree = "<group>";
 		};
+		4A66C1DE16A59DFF00A2F22E /* AWIconSheet */ = {
+			isa = PBXGroup;
+			children = (
+				4A66C1E116A59E0000A2F22E /* AWActionSheet.h */,
+				4A66C1E216A59E0000A2F22E /* AWActionSheet.m */,
+				4A66C1EF16A59E0000A2F22E /* ViewController.h */,
+				4A66C1F016A59E0000A2F22E /* ViewController.m */,
+			);
+			path = AWIconSheet;
+			sourceTree = "<group>";
+		};
 		4A873B8916A54AD2005BDA45 /* areapicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -2996,6 +3013,7 @@
 		4ADCFF50169D69F500A3E979 /* Common iphone */ = {
 			isa = PBXGroup;
 			children = (
+				4A66C1DE16A59DFF00A2F22E /* AWIconSheet */,
 				4A66C1B716A58A1E00A2F22E /* SLNumberPicker */,
 				4A873B8916A54AD2005BDA45 /* areapicker */,
 				4AA7ECEB169F1597003E8949 /* SMPageControll */,
@@ -3788,6 +3806,8 @@
 				4A873BA616A54AD2005BDA45 /* Citypicker.m in Sources */,
 				4A66C1BF16A58A1E00A2F22E /* SLNumberPickerView.m in Sources */,
 				4A66C1C316A58A4700A2F22E /* NumberPickViewController.m in Sources */,
+				4A66C1F216A59E0000A2F22E /* AWActionSheet.m in Sources */,
+				4A66C1FB16A59E0000A2F22E /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

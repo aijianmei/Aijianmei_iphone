@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
 #import "UserService.h"
+#import "AWActionSheet.h"
 
-@interface MoreViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIAlertViewDelegate,UserServiceDelegate>
+
+@interface MoreViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UserServiceDelegate>
 
 {
  
