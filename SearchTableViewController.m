@@ -32,10 +32,7 @@
     [self showBackgroundImage];
     [self.navigationItem setTitle:@"寻找朋友"];
     
-    [self.dataTableView setBackgroundColor: [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackGround.png"]]];
-    
-    
-    
+        
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,6 +40,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
 
 #pragma mark - Table view data source
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -102,11 +102,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"SearchCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier ];
     
     
-    
+    if (cell == nil) {
         
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle  reuseIdentifier:CellIdentifier];
+        
+    }
     // Configure the cell...
     
     // set backgroudView
@@ -123,7 +126,7 @@
                 
             }else{
             
-                [cell.textLabel setText:@"新浪微博上"];
+                [cell.textLabel setText:@"新浪微博好友"];
                 imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottom_cell_background.png"]];
             }
         }

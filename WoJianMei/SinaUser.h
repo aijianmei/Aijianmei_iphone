@@ -6,7 +6,7 @@ typedef enum {
     GenderFemale,
 } Gender;
 
-@interface User : NSObject
+@interface SinaUser : NSObject
 {
 	long long    userId; //用户UID
 	NSNumber		*userKey;
@@ -57,7 +57,7 @@ typedef enum {
 @property (nonatomic, assign) BOOL		geoEnabled;
 @property (nonatomic, retain) UIImage*    avatarImage;
 
-- (User*)initWithJsonDictionary:(NSDictionary*)dic;
+- (SinaUser*)initWithJsonDictionary:(NSDictionary*)dic;
 - (void)updateWithJSonDictionary:(NSDictionary*)dic;
-+ (User*)userWithJsonDictionary:(NSDictionary*)dic;
++ (SinaUser*)userWithJsonDictionary:(NSDictionary*)dic;
 @end

@@ -224,6 +224,8 @@
 		4A4992BF168556700073E682 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4992BE168556700073E682 /* AVFoundation.framework */; };
 		4A4992C1168556D00073E682 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4992C0168556D00073E682 /* libz.1.1.3.dylib */; };
 		4A4992D3168589E40073E682 /* UserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4992D2168589E40073E682 /* UserService.m */; };
+		4A604E3B16A43A4D00D7C8DC /* SinaUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A604E3A16A43A4D00D7C8DC /* SinaUser.m */; };
+		4A604E3E16A44A8B00D7C8DC /* HHNetDataCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A604E3D16A44A8B00D7C8DC /* HHNetDataCacheManager.m */; };
 		4A7CF99215D74EF000206B14 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */; };
 		4A9599A5168ED997006F1317 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4A9597F9168ED995006F1317 /* .gitignore */; };
 		4A9599A6168ED997006F1317 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9597FA168ED995006F1317 /* libMobClickLibrary.a */; };
@@ -277,6 +279,7 @@
 		4AD8E031169BD46B00EE04F9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8E030169BD46A00EE04F9 /* User.m */; };
 		4AD9FC3216A0F82900BA766D /* singleCellBackgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AD9FC3116A0F82900BA766D /* singleCellBackgroud.png */; };
 		4AD9FC3516A1082300BA766D /* SinaUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9FC3416A1082300BA766D /* SinaUsersViewController.m */; };
+		4AD9FC3816A114AF00BA766D /* SinaUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9FC3716A114AF00BA766D /* SinaUserCell.m */; };
 		4ADCFE19169D614600A3E979 /* MakeFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFDFC169D614600A3E979 /* MakeFriendsViewController.m */; };
 		4ADCFE1A169D614600A3E979 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFDFF169D614600A3E979 /* AboutViewController.m */; };
 		4ADCFE1B169D614600A3E979 /* More_SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE01169D614600A3E979 /* More_SettingsViewController.m */; };
@@ -898,6 +901,10 @@
 		4A4992C0168556D00073E682 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		4A4992D1168589E40073E682 /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserService.h; sourceTree = "<group>"; };
 		4A4992D2168589E40073E682 /* UserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserService.m; sourceTree = "<group>"; };
+		4A604E3916A43A4D00D7C8DC /* SinaUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaUser.h; sourceTree = "<group>"; };
+		4A604E3A16A43A4D00D7C8DC /* SinaUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaUser.m; sourceTree = "<group>"; };
+		4A604E3C16A44A8A00D7C8DC /* HHNetDataCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHNetDataCacheManager.h; sourceTree = "<group>"; };
+		4A604E3D16A44A8B00D7C8DC /* HHNetDataCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHNetDataCacheManager.m; sourceTree = "<group>"; };
 		4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4A9597F9168ED995006F1317 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4A9597FA168ED995006F1317 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
@@ -986,6 +993,8 @@
 		4AD9FC3116A0F82900BA766D /* singleCellBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = singleCellBackgroud.png; sourceTree = "<group>"; };
 		4AD9FC3316A1082200BA766D /* SinaUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SinaUsersViewController.h; path = ../../../SinaUsersViewController.h; sourceTree = "<group>"; };
 		4AD9FC3416A1082300BA766D /* SinaUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SinaUsersViewController.m; path = ../../../SinaUsersViewController.m; sourceTree = "<group>"; };
+		4AD9FC3616A114AE00BA766D /* SinaUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaUserCell.h; sourceTree = "<group>"; };
+		4AD9FC3716A114AF00BA766D /* SinaUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaUserCell.m; sourceTree = "<group>"; };
 		4ADCFDFB169D614600A3E979 /* MakeFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeFriendsViewController.h; sourceTree = "<group>"; };
 		4ADCFDFC169D614600A3E979 /* MakeFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeFriendsViewController.m; sourceTree = "<group>"; };
 		4ADCFDFE169D614600A3E979 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -2416,6 +2425,8 @@
 				4A3D0BA515CB73CC008F6639 /* Video.m */,
 				4AD8E02F169BD46A00EE04F9 /* User.h */,
 				4AD8E030169BD46A00EE04F9 /* User.m */,
+				4A604E3916A43A4D00D7C8DC /* SinaUser.h */,
+				4A604E3A16A43A4D00D7C8DC /* SinaUser.m */,
 				4A3D0BCF15CB9F38008F6639 /* VideoManager.h */,
 				4A3D0BD015CB9F38008F6639 /* VideoManager.m */,
 				4A3D0BB815CB7CF1008F6639 /* WorkOut.h */,
@@ -2729,6 +2740,10 @@
 				4AC391EA16A0465000F7D0C2 /* SearchTableViewController.m */,
 				4AD9FC3316A1082200BA766D /* SinaUsersViewController.h */,
 				4AD9FC3416A1082300BA766D /* SinaUsersViewController.m */,
+				4A604E3C16A44A8A00D7C8DC /* HHNetDataCacheManager.h */,
+				4A604E3D16A44A8B00D7C8DC /* HHNetDataCacheManager.m */,
+				4AD9FC3616A114AE00BA766D /* SinaUserCell.h */,
+				4AD9FC3716A114AF00BA766D /* SinaUserCell.m */,
 			);
 			name = MyselfViewContrller;
 			path = Controllers/MyselfViewContrller;
@@ -3680,6 +3695,9 @@
 				4AA7ECE5169F0F78003E8949 /* SMPageControl.m in Sources */,
 				4AC391EB16A0465100F7D0C2 /* SearchTableViewController.m in Sources */,
 				4AD9FC3516A1082300BA766D /* SinaUsersViewController.m in Sources */,
+				4AD9FC3816A114AF00BA766D /* SinaUserCell.m in Sources */,
+				4A604E3B16A43A4D00D7C8DC /* SinaUser.m in Sources */,
+				4A604E3E16A44A8B00D7C8DC /* HHNetDataCacheManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

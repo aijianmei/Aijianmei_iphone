@@ -42,7 +42,7 @@
     TencentWeiboManager *tencentWeiboManager;
     
     
-    NSDictionary *sina_userInfo;
+    NSDictionary *_sina_userInfo;
     NSDictionary *user_info;
     
     
@@ -54,25 +54,14 @@
 @property (nonatomic, retain) UISwitch *sinaModeSwitch;
 @property (nonatomic, retain) UISwitch *tenCentQQModeSwitch;
 @property (nonatomic, retain) UISwitch *tenCentWeiboModeSwitch;
-
-
-
-
 @property (retain, nonatomic) UIButton *headerVImageButton;
 @property (retain, nonatomic) UIImageView *footerVImageV;
-
-@property (nonatomic,retain)  NSString                         *userID;
-@property (nonatomic, retain)   NSMutableArray             *statuesArr;
-@property (nonatomic, retain)   NSMutableDictionary    *imageDictionary;
-
 @property (nonatomic, retain)  UIView *myHeaderView;
 @property (nonatomic, retain)  UILabel *userNameLabel;
 @property (nonatomic, retain)  UILabel *mottoLabel;
 @property (nonatomic, retain)  UILabel *userGenderLabel;
+@property (nonatomic,retain)   NSDictionary *sina_userInfo;
 
-
-
-@property (nonatomic, retain) NSMutableArray *urlArray;
 
 @property (nonatomic,retain) User *user;
 

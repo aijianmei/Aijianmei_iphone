@@ -599,13 +599,18 @@
                                         </view>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Xx6-Ol-siI" id="fZa-Dc-rcU"/>
+                                    <outlet property="delegate" destination="Xx6-Ol-siI" id="Cgh-1Y-4iV"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="JCV-op-s4K"/>
                     <connections>
-                        <outlet property="dataTableView" destination="xdB-uf-gxc" id="lWb-I6-q60"/>
+                        <outlet property="dataTableView" destination="xdB-uf-gxc" id="glQ-up-lWs"/>
+                        <outlet property="view" destination="CK9-RD-uox" id="Nk8-Vn-YtY"/>
                         <segue destination="NbY-xu-H1A" kind="push" identifier="SinaUsers" id="uRs-JQ-rBk"/>
                     </connections>
                 </viewController>
@@ -626,14 +631,55 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SinaUser" rowHeight="74" id="6xD-jd-h2d">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SinaUser" rowHeight="74" id="6xD-jd-h2d" customClass="SinaUserCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="74"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rvd-wT-se5">
+                                                    <rect key="frame" x="6" y="5" width="67" height="61"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="TomCallon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2gL-DO-cxe">
+                                                    <rect key="frame" x="96" y="21" width="101" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mzM-nx-OMf">
+                                                    <rect key="frame" x="278" y="20" width="30" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="clickInvitedButton:" destination="6xD-jd-h2d" eventType="touchUpInside" id="EeY-sC-1b0"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <outlet property="avatarButton" destination="rvd-wT-se5" id="j0W-s8-JAA"/>
+                                            <outlet property="inviteButton" destination="mzM-nx-OMf" id="8Ho-sX-Eaa"/>
+                                            <outlet property="nameLabel" destination="2gL-DO-cxe" id="IyD-TK-jGj"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -651,7 +697,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0wa-xa-ecv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3592" y="-4711"/>
+            <point key="canvasLocation" x="3430" y="-4532"/>
         </scene>
     </scenes>
     <resources>
@@ -690,6 +736,9 @@
         <class className="PPTabBarController" superclassName="UITabBarController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PPTabBarController.h"/>
         </class>
+        <class className="PPTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPTableViewCell.h"/>
+        </class>
         <class className="PPTableViewController" superclassName="PPViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PPTableViewController.h"/>
             <relationships>
@@ -701,6 +750,15 @@
         </class>
         <class className="SearchTableViewController" superclassName="PPTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchTableViewController.h"/>
+        </class>
+        <class className="SinaUserCell" superclassName="PPTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SinaUserCell.h"/>
+            <relationships>
+                <relationship kind="action" name="clickInvitedButton:"/>
+                <relationship kind="outlet" name="avatarButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="inviteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="SinaUsersViewController" superclassName="PPTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SinaUsersViewController.h"/>

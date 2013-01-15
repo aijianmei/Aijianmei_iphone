@@ -1,6 +1,11 @@
-#import "User.h"
+
+
+#import "SinaUser.h"
 #import "StringUtil.h"
-@implementation User
+#import "NSString+TKCategory.h"
+
+
+@implementation SinaUser
 
 @synthesize userId;
 @synthesize screenName;
@@ -27,7 +32,7 @@
 @synthesize avatarImage;
 
 
-- (User*)initWithJsonDictionary:(NSDictionary*)dic
+- (SinaUser*)initWithJsonDictionary:(NSDictionary*)dic
 {
 	self = [super init];
     
@@ -117,12 +122,12 @@
 }
 
 
-+ (User*)userWithJsonDictionary:(NSDictionary*)dic
++ (SinaUser*)userWithJsonDictionary:(NSDictionary*)dic
 {
 	//int userId = [[dic objectForKey:@"id"] intValue];
-    User *u;
+    SinaUser *u;
     
-    u = [[User alloc] initWithJsonDictionary:dic];
+    u = [[SinaUser alloc] initWithJsonDictionary:dic];
     return [u autorelease];
 }
 

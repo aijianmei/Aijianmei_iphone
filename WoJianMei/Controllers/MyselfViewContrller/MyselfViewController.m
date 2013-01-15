@@ -8,24 +8,14 @@
 
 #import "MyselfViewController.h"
 #import "MyselfTableViewCell.h"
-
 #import "ImageManager.h"
-
 #import "Myself_SettingsViewController.h"
-
-
 #import "ShareToSinaController.h"
 #import "ShareToQQWeiboController.h"
 #import "ShareToQQViewController.h"
-
-
-
 #import "SinaweiboManager.h"
 #import "TencentWeiboManager.h"
-
-
 #import "AppDelegate.h"
-
 #import "User.h"
 
 
@@ -78,14 +68,13 @@ const double URLCacheInterval = 86400.0;
 @synthesize sinaModeSwitch = _sinaModeSwitch;
 @synthesize tenCentQQModeSwitch =_tenCentQQModeSwitch;
 @synthesize tenCentWeiboModeSwitch =_tenCentWeiboModeSwitch;
-
-
-
 @synthesize headerVImageButton=_headerVImageButton;
 @synthesize myHeaderView =_myHeaderView;
 @synthesize userNameLabel=_userNameLabel;
 @synthesize mottoLabel = _mottoLabel;
 @synthesize userGenderLabel = _userGenderLabel;
+
+@synthesize sina_userInfo =_sina_userInfo;
 @synthesize user =_user;
 
 
@@ -109,7 +98,7 @@ const double URLCacheInterval = 86400.0;
     [_mottoLabel release];
     [_userGenderLabel release];
     
-    [sina_userInfo release], sina_userInfo = nil;
+    [_sina_userInfo release], _sina_userInfo = nil;
     
     
     [_user release];
@@ -244,7 +233,7 @@ const double URLCacheInterval = 86400.0;
     
     
     [self setBackgroundImageName:@"BackGround.png"];
-//    [self showBackgroundImage];
+    [self showBackgroundImage];
 
     
 }
@@ -280,7 +269,7 @@ const double URLCacheInterval = 86400.0;
 
         
         
-        if (sina_userInfo) {
+        if (_sina_userInfo) {
             
             
                     
@@ -976,7 +965,7 @@ const double URLCacheInterval = 86400.0;
 {
     if ([request.url hasSuffix:@"users/show.json"])
     {
-        [sina_userInfo release], sina_userInfo = nil;
+        [_sina_userInfo release], _sina_userInfo = nil;
     }
    
 }
@@ -985,13 +974,13 @@ const double URLCacheInterval = 86400.0;
 {
     if ([request.url hasSuffix:@"users/show.json"])
     {
-        [sina_userInfo release];
-         sina_userInfo = [result retain];
-        PPDebug(@"The userinfo %@",[sina_userInfo description]);
+        [_sina_userInfo release];
+         _sina_userInfo = [result retain];
+        PPDebug(@"The userinfo %@",[_sina_userInfo description]);
     }
     
     
-    [self storeSinaweiboDatas:sina_userInfo];
+    [self storeSinaweiboDatas:_sina_userInfo];
     
     
     
