@@ -23,13 +23,13 @@
 @interface SinaUserCell : PPTableViewCell
 {
     
-    UIButton *_avatarButton ;
+    UIImageView *_avatarImageView ;
     UILabel *_nameLabel;
     UIButton *_inviteButton;
     
    
 }
-@property (nonatomic,retain) IBOutlet UIButton *avatarButton ;
+@property (nonatomic,retain) IBOutlet UIImageView *avatarImageView;
 @property (nonatomic,retain) IBOutlet UILabel *nameLabel;
 @property (nonatomic,retain) IBOutlet UIButton *inviteButton;
 

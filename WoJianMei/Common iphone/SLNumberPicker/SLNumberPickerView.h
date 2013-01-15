@@ -20,12 +20,12 @@
 
 + (SLNumberPickerView*)numberPickerView;
 
-@property (strong, nonatomic) IBOutlet UIScrollView *number1;
-@property (strong, nonatomic) IBOutlet UIScrollView *number2;
-@property (strong, nonatomic) IBOutlet UIScrollView *number3;
+@property (retain, nonatomic) IBOutlet UIScrollView *number1;
+@property (retain, nonatomic) IBOutlet UIScrollView *number2;
+@property (retain, nonatomic) IBOutlet UIScrollView *number3;
 
 @property (readonly) NSInteger value;
 
-@property (nonatomic, weak) IBOutlet id <SLNumberPickerViewDelegate> delegate;
+@property (nonatomic, assign) id <SLNumberPickerViewDelegate> delegate;
 
 @end

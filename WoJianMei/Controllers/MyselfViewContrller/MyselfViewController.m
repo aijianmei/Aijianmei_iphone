@@ -22,6 +22,10 @@
 
 
 #define USER @"user"
+#define USER_NAME @"screen_name"
+#define USER_DESCRIPTION @"description"
+#define USER_AVATAR_IMAGE @"avatar_large"
+#define USER_GENDER @"gender"
 
 
 
@@ -115,6 +119,7 @@ const double URLCacheInterval = 86400.0;
 {
     NSData *userData  =[[NSUserDefaults standardUserDefaults] objectForKey:USER];
     self.user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+    
     [self.headerVImageButton setBackgroundImage:[self.user avatarImage] forState:UIControlStateNormal];
 
     
@@ -133,7 +138,6 @@ const double URLCacheInterval = 86400.0;
         
     }
     
-    NSLog(@"This is Tom ma ????? %@",self.user.name);
     NSString *description = [self.user description];
     [self.mottoLabel setText:description];
     
@@ -288,6 +292,7 @@ const double URLCacheInterval = 86400.0;
    
     Myself_SettingsViewController *vc = [[Myself_SettingsViewController alloc]init];
     [self.navigationController pushViewController :vc animated:YES];
+     vc.user = self.user;
     [vc release];
     
     
@@ -385,7 +390,7 @@ const double URLCacheInterval = 86400.0;
 
     [super viewWillAppear:YES];
     [self.dataTableView reloadData];
-        
+    [self upgradeUI];
     [self hideActivity];
     
 }
@@ -396,10 +401,14 @@ const double URLCacheInterval = 86400.0;
 
 -(void)clickVatarButton:(id)sender{
     
-    PPDebug(@"i am the avatarButton ");
-    
-    [self takePhoto];
-    
+    UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"取消"
+                                         destructiveButtonTitle:@"照相"
+                                              otherButtonTitles:@"相册",nil];
+    [share showFromTabBar:self.tabBarController.tabBar];
+    [share release];
+
 }
 
 
@@ -411,7 +420,7 @@ const double URLCacheInterval = 86400.0;
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     if (image != nil){
         
         
@@ -455,8 +464,6 @@ const double URLCacheInterval = 86400.0;
 {
 
     self.alertView = _alertView;
-    
-    
 ////根据alerview 的类型来确定。
     switch (self.alertView.tag) {
         case SINA_WEIBO_ACCOUNT:
@@ -588,9 +595,6 @@ const double URLCacheInterval = 86400.0;
 
     }
     
-
-    
-       
     if (indexPath.section==0) {
         switch ([indexPath row]) {
             case 0:
@@ -989,20 +993,12 @@ const double URLCacheInterval = 86400.0;
 - (void) storeSinaweiboDatas :(NSDictionary *)dataDictionary{
 
     
-#define USER_NAME @"screen_name"
-#define USER_DESCRIPTION @"description"
-#define USER_AVATAR_IMAGE @"avatar_large"
-#define USER_GENDER @"gender"
-
-    
-    
-
      NSString *sinaUserName =  [dataDictionary objectForKey:USER_NAME];
      NSString *description = [dataDictionary objectForKey:USER_DESCRIPTION];
      NSData *data = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:[dataDictionary objectForKey:USER_AVATAR_IMAGE]]];
      UIImage *image = [UIImage imageWithData:data];
      [data release];
-    NSString *gender = [dataDictionary objectForKey:USER_GENDER];
+     NSString *gender = [dataDictionary objectForKey:USER_GENDER];
     
     
     self.user.name = sinaUserName;
@@ -1042,6 +1038,38 @@ didRecieveAuthorizationCode:(NSString *)code{
 
 
 }
+
+
+
+#pragma mark --actionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    switch (buttonIndex) {
+        case 0:
+        {
+            NSLog(@"Button index :%d",buttonIndex);
+            [self takePhoto];
+        }
+            break;
+        case 1:
+        {
+            NSLog(@"Button index :%d",buttonIndex);
+            [self  selectPhoto];
+            
+        }
+            break;
+        case 2:
+            
+        {
+            NSLog(@"Button index :%d",buttonIndex);
+        }
+            break;
+        default:
+            break;
+    }
+}
+
 
 
 - (void)didReceiveMemoryWarning

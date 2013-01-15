@@ -47,6 +47,20 @@
 
 @synthesize delegate = _delegate;
 
+
+
+-(void)dealloc{
+
+    
+    [_number1 release];
+    [_number2 release];
+    [_number3 release];
+
+    [super dealloc];
+    
+    
+}
+
 // Adapted from a technique from Yang Meyer:
 // https://blog.compeople.eu/apps/?p=142
 - (id) awakeAfterUsingCoder:(NSCoder*)aDecoder {

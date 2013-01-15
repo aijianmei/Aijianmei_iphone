@@ -11,7 +11,7 @@
 
 
 @implementation SinaUserCell
-@synthesize avatarButton =_avatarButton;
+@synthesize  avatarImageView =_avatarImageView;
 @synthesize nameLabel =_nameLabel;
 @synthesize inviteButton =_inviteButton;
 
@@ -19,7 +19,7 @@
 -(void)dealloc{
 
     
-    [_avatarButton release];
+    [_avatarImageView release];
     [_nameLabel release];
     [_inviteButton release];
     [super dealloc];
@@ -43,14 +43,14 @@
 
 + (CGFloat)getCellHeight
 {
-    return 74.0f;
+    return 56.0f;
 }
 
 - (void)setCellInfo:(SinaUser *)sinaUser indexPath:(NSIndexPath *)aIndexPath;
 {
     
     self.indexPath = aIndexPath;
-    [self.avatarButton setImage:sinaUser.avatarImage forState:UIControlStateNormal];
+    [self.avatarImageView setImage:sinaUser.avatarImage];
     [self.nameLabel setText:sinaUser.screenName];
     [self.inviteButton setImage:[UIImage imageNamed:@"menu-icon.png"] forState:UIControlStateNormal];
     

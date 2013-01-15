@@ -128,7 +128,8 @@ static HHNetDataCacheManager * instance;
 //下载进度
 - (void)setProgress:(ASIHTTPRequest *)request newProgress:(float)newProgress
 {
-//    NSLog(@"progress = %f",newProgress);
+    
+    NSLog(@"progress = %f",newProgress);
 }
 
 

@@ -81,22 +81,13 @@
     [self setBackgroundImageName:@"BackGround.png"];
     [self showBackgroundImage];
     [self.navigationItem setTitle:@" 新浪好友"];
+    
+   
 
-    
-    
-    [self setSupportRefreshHeader:YES];
-
-    
-    EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc]initWithFrame:CGRectMake(0, 0, 320, 150)];
-    [self setRefreshHeaderView:view];
-    [view release];
-    [self setReloadVisibleCellTimerInterval:4];
-    
     
     
     
     ///用户头像加载方式的优化
-    
     _shouldReloadTable = YES;
     
     _userAvatarDic = [[NSMutableDictionary alloc] initWithCapacity:0];
@@ -139,18 +130,16 @@
 - (void)sendSinaWeibo:(NSString *)text
 {
     
-    NSString *invitedString =[NSString stringWithFormat:@"@%@ 我正在使用爱健美客户端,里边内容很精彩，你也下载一个啦！下载连接可以在 www.aijianmei.com 找到。",text];
+    NSString *invitedString =[NSString stringWithFormat:@"@%@ 我正在使用爱健美客户端,里边内容很精彩，你也下载一个啦！下载连接是: www.aijianmei.com。",text];
     
     if ([[[self sinaweiboManager] sinaweibo] isAuthValid]) {
         //发送微博
-       
-        
         [[self sinaweiboManager].sinaweibo requestWithURL:@"statuses/update.json"
                                              params:[NSMutableDictionary dictionaryWithObjectsAndKeys:invitedString, @"status", nil]
                                          httpMethod:@"POST"
                                            delegate:self];
 
-        [self showActivityWithText:@"发送中..."];
+        [self showActivityWithText:@"发送中，请稍后..."];
     } else {
         [[[self sinaweiboManager] sinaweibo] logInInView:self.view];
     }
@@ -162,7 +151,7 @@
 //    if (_shouldReloadTable == NO) {
 //        return;
 //   }
-    
+//    
     NSDictionary * dic = sender.object;
     NSString * url          = [dic objectForKey:HHNetDataCacheURLKey];
     NSNumber *indexNumber   = [dic objectForKey:HHNetDataCacheIndex];
@@ -197,7 +186,8 @@
 //    //reload table
      NSIndexPath *indexPath  = [NSIndexPath indexPathForRow:index inSection:0];
      NSArray     *arr        = [NSArray arrayWithObject:indexPath];
-     [self.dataTableView reloadRowsAtIndexPaths:arr withRowAnimation:YES];
+     [self.dataTableView reloadRowsAtIndexPaths:arr withRowAnimation:NO];
+    
     
 }
 
@@ -247,7 +237,7 @@
         
         //获取用户粉丝列表
        NSArray *arr =[_sina_userInfo objectForKey:@"users"];
-      NSMutableArray *userArr = [[NSMutableArray alloc]initWithCapacity:0];
+       NSMutableArray *userArr = [[NSMutableArray alloc]initWithCapacity:0];
         for (id item in arr) {
             SinaUser *user = [[SinaUser alloc]initWithJsonDictionary:item];
             [userArr addObject:user];
@@ -263,6 +253,7 @@
         if (![tempUser.screenName isEqualToString:lastUser.screenName]) {
             self.dataList = userArr;
             [userArr release];
+            
             [self.dataTableView reloadData];
             
         }
@@ -270,20 +261,21 @@
             _shouldReloadTable = NO;
         }
         
+        [self hideActivity];
+
         
         ///开始加载用户头像的数据了。
         [self getAvatars];
-        [self hideActivity];
     }
     
 
 
     if ([request.url hasSuffix:@"statuses/update.json"]){
-    
         PPDebug(@"邀请朋友下载app成功！");
-        
         [self hideActivity];
     }
+  
+    
     
 }
 
@@ -299,12 +291,6 @@
 
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    
-        
-    return @"邀请新浪好友";
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
@@ -316,9 +302,7 @@
     // Return the number of rows in the section.
     
        return [self.dataList count];
-    
-    
-    
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -346,7 +330,6 @@
  
     [cell setCellInfo:sinaUser indexPath:indexPath];
 
-    
     return cell;
 }
 
@@ -367,9 +350,8 @@
 
 -(void)loadData
 {
+    
     _shouldReloadTable = YES;
-    
-    
     SinaWeibo *sinaweibo = [[self sinaweiboManager] sinaweibo];
     BOOL authValid = sinaweibo.isAuthValid;
     if (authValid) {
@@ -406,7 +388,6 @@
 
 
 #pragma mark -  SinaWeiboAuthorizeViewDelegate 
-
 - (void)authorizeView:(SinaWeiboAuthorizeView *)authView
 didRecieveAuthorizationCode:(NSString *)code{
     
@@ -416,8 +397,6 @@ didRecieveAuthorizationCode:(NSString *)code{
   
 
     [self loadData];
-    
-    
     
 }
 - (void)authorizeView:(SinaWeiboAuthorizeView *)authView

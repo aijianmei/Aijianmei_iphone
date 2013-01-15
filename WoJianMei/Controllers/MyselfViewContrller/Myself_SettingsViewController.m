@@ -7,6 +7,13 @@
 //
 
 #import "Myself_SettingsViewController.h"
+#import "User.h"
+#import "Citypicker.h"
+#import "NumberPickViewController.h"
+
+
+#define USER @"user"
+
 
 
 @interface Myself_SettingsViewController ()
@@ -26,7 +33,7 @@
 @implementation Myself_SettingsViewController
 @synthesize airplaneModeSwitch = _airplaneModeSwitch;
 @synthesize avatarButton =_avatarButton;
-
+@synthesize user= _user;
 
 
 - (id) init {
@@ -34,7 +41,7 @@
     if (!self) return nil;
     
 	self.title = NSLocalizedString(@"Settings", @"Settings");
-    
+    didSave =NO;
 	return self;
 }
 
@@ -45,10 +52,28 @@
 }
 
 
--(void)save{
- 
+-(void)storeUserInfo{
     
-    NSLog(@"Try to save the channges");
+    NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.user];
+    [[NSUserDefaults standardUserDefaults] setObject:userData forKey:USER];
+    
+}
+
+-(void)didClickBackButton{
+    
+    if (didSave ==NO) {
+     
+        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"保存修改" message:@"您当前修改数据没有保存" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"保存", nil];
+        
+        [av show];
+    }
+}
+
+
+-(void)save{
+    
+    [self storeUserInfo];
+     didSave =YES;
 
 }
 
@@ -59,7 +84,10 @@
 {
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     if (image != nil){
-        [self.avatarButton setImage:image forState:UIControlStateNormal];
+        
+        self.user.avatarImage = image;
+        [self.avatarButton setImage:self.user.avatarImage forState:UIControlStateNormal];
+        [self storeUserInfo];
     }
     
     [self.navigationController dismissModalViewControllerAnimated:YES];
@@ -110,12 +138,22 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.title = NSLocalizedString(@"编辑个人资料", @"Settings");
     
-    
+    didSave =NO;
+
     UIBarButtonItem *barButton  = [[UIBarButtonItem alloc]initWithTitle:@"保存" style:UIBarButtonItemStyleDone target:self action:@selector(save)];
     self.navigationItem.rightBarButtonItem = barButton;
     [barButton release];
 
     
+    
+    
+    UIViewController *vc  = [self.navigationController topViewController];
+     UIBarButtonItem *back  = [[UIBarButtonItem alloc]initWithTitle:@"back" style:UIBarButtonItemStyleDone target:self action:@selector(didClickBackButton)];
+    
+    vc.navigationItem.backBarButtonItem = back;
+    [back release];
+    
+     
     
     self.airplaneModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
     ////////add a section now 
@@ -145,9 +183,13 @@
              [staticContentCell setCellHeight:50];
              cell.detailTextLabel.text = NSLocalizedString(@"更换头像", @"iamtheinternet");
 
-              self.avatarButton =[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
-             [self.avatarButton setBackgroundColor:[UIColor redColor]];
-             [self.avatarButton setImage:[UIImage imageNamed:@"AirplaneMode"] forState:UIControlStateNormal];
+              self.avatarButton =[[UIButton alloc]initWithFrame:CGRectMake(17, 6, 40, 40)];
+             
+             
+             [self.avatarButton setBackgroundColor:[UIColor clearColor]];
+             [self.avatarButton setImage:self.user.avatarImage forState:UIControlStateNormal];
+             
+        
              [cell addSubview:self.avatarButton];
          } whenSelected:^(NSIndexPath *indexPath) {
              
@@ -189,18 +231,52 @@
               [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
 			cell.textLabel.text = NSLocalizedString(@"性别", @"Sounds");
             
-            UIButton *femaleButton  = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            [femaleButton setFrame:CGRectMake(120, 10, 30, 30)];
-            [femaleButton setImage:[UIImage imageNamed:@"pageDot.png"] forState:UIControlStateNormal];
-            [cell addSubview:femaleButton];
-            
-            UIButton *maleButton  = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            [maleButton setFrame:CGRectMake(180, 10, 30, 30)];
-            [maleButton setImage:[UIImage imageNamed:@"pageDot.png"] forState:UIControlStateNormal];
-            [cell addSubview:maleButton];
-            
-            
+                  
+            if ([self.user.gender isEqualToString:@"m"]) {
+                      
 
+                    
+            }else{
+
+                  
+                  
+                  }
+                  
+            UIButton *femaleButton  = [UIButton buttonWithType:UIButtonTypeCustom];
+            [femaleButton setFrame:CGRectMake(120, 10, 25, 25)];
+            [femaleButton setImage:[UIImage imageNamed:@"gender_on.png"]
+                          forState:UIControlStateSelected];
+            [femaleButton setImage:[UIImage imageNamed:@"gender_off.png"]
+                                forState:UIControlStateNormal];
+
+                  
+            [cell addSubview:femaleButton];
+                  
+            UILabel *femaleLabel =[[UILabel alloc]initWithFrame:CGRectMake(90, 10, 30, 30)];
+            [femaleLabel setText:@"女"];
+            [femaleLabel setBackgroundColor:[UIColor clearColor]];
+            [cell addSubview:femaleLabel];
+            [femaleLabel release];
+                  
+            
+            UIButton *maleButton  = [UIButton buttonWithType:UIButtonTypeCustom];
+            [maleButton setFrame:CGRectMake(210, 10, 25, 25)];
+            [maleButton setImage:[UIImage imageNamed:@"gender_on.png"]
+                                forState:UIControlEventTouchUpInside];
+            [maleButton setImage:[UIImage imageNamed:@"gender_off.png"]
+                                forState:UIControlStateNormal];
+
+            [cell addSubview:maleButton];
+                  
+            UILabel *maleLabel =[[UILabel alloc]initWithFrame:CGRectMake(180, 10, 30, 30)];
+            [maleLabel setText:@"男"];
+            [maleLabel setBackgroundColor:[UIColor clearColor]];
+                  
+            [cell addSubview:maleLabel];
+            [maleLabel release];
+            
+            
+                  
             
             
 //			cell.imageView.image = [UIImage imageNamed:@"Sounds"];
@@ -218,7 +294,11 @@
             cell.detailTextLabel.text  = @"更换地区";
 //			cell.imageView.image = [UIImage imageNamed:@"Brightness"];
 		} whenSelected:^(NSIndexPath *indexPath) {
-			//TODO
+			
+            Citypicker *cp  = [[Citypicker alloc]init];
+            [self.navigationController pushViewController:cp animated:YES];
+            [cp release];
+            
 		}];
         
 		[section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
@@ -228,7 +308,11 @@
             cell.detailTextLabel.text =@"180cm";
                         
 		} whenSelected:^(NSIndexPath *indexPath) {
-			//TODO
+            //TODO
+
+            NumberPickViewController *cp  = [[NumberPickViewController alloc]init];
+            [self.navigationController pushViewController:cp animated:YES];
+            [cp release];
 		}];
         
         [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
@@ -238,7 +322,11 @@
             cell.detailTextLabel.text =@"70kg";
 
 		} whenSelected:^(NSIndexPath *indexPath) {
-			//TODO
+            
+            //TODO
+            NumberPickViewController *cp  = [[NumberPickViewController alloc]init];
+            [self.navigationController pushViewController:cp animated:YES];
+            [cp release];
 		}];
         
         
@@ -396,25 +484,20 @@
     self.airplaneModeSwitch = nil;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+
+    if (buttonIndex==0) {
+     
+        NSLog(@"0");
+    }else {
+        NSLog(@"1");
+
+    
+    }
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

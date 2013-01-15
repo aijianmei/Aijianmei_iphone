@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "SLNumberPickerView.h"
 
-@interface ViewController : UIViewController <SLNumberPickerViewDelegate>
+@interface NumberPickViewController : UIViewController <SLNumberPickerViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel *valueLabel;
+@property (retain, nonatomic)  UILabel *valueLabel;
 
 @end

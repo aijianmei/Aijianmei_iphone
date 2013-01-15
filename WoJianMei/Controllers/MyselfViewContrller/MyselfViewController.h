@@ -20,7 +20,7 @@
 @class TencentWeiboManager;
 @class User;
 
-@interface MyselfViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,MyselfTableViewCellDelegate,UINavigationControllerDelegate,SinaWeiboDelegate,SinaWeiboAuthorizeViewDelegate,SinaWeiboRequestDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,TencentSessionDelegate>
+@interface MyselfViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,MyselfTableViewCellDelegate,UINavigationControllerDelegate,SinaWeiboDelegate,SinaWeiboAuthorizeViewDelegate,SinaWeiboRequestDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,TencentSessionDelegate,UIActionSheetDelegate>
 
 {
     
@@ -61,15 +61,7 @@
 @property (nonatomic, retain)  UILabel *mottoLabel;
 @property (nonatomic, retain)  UILabel *userGenderLabel;
 @property (nonatomic,retain)   NSDictionary *sina_userInfo;
-
-
 @property (nonatomic,retain) User *user;
-
-
-
-
-
-
 
 
 - (SinaweiboManager *)sinaweiboManager;

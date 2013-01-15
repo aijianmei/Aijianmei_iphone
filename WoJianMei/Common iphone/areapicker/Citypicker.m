@@ -6,10 +6,10 @@
 //  Copyright (c) 2012年 clouddai.com. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "Citypicker.h"
 #import "HZAreaPickerView.h"
 
-@interface ViewController () <UITextFieldDelegate, HZAreaPickerDelegate>
+@interface  Citypicker() <UITextFieldDelegate, HZAreaPickerDelegate>
 
 @property (retain, nonatomic) IBOutlet UITextField *areaText;
 @property (retain, nonatomic) IBOutlet UITextField *cityText;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation ViewController
+@implementation Citypicker
 @synthesize areaText;
 @synthesize cityText;
 @synthesize areaValue=_areaValue, cityValue=_cityValue;
