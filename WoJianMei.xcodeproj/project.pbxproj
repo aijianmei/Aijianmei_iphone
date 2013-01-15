@@ -228,13 +228,14 @@
 		4A604E3E16A44A8B00D7C8DC /* HHNetDataCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A604E3D16A44A8B00D7C8DC /* HHNetDataCacheManager.m */; };
 		4A66C1AC16A57FAD00A2F22E /* gender_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1AA16A57FAD00A2F22E /* gender_on.png */; };
 		4A66C1AD16A57FAD00A2F22E /* gender_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1AB16A57FAD00A2F22E /* gender_off.png */; };
-		4A66C1B116A5808A00A2F22E /* quit_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1AF16A5808A00A2F22E /* quit_app.png */; };
-		4A66C1B216A5808A00A2F22E /* more_apps.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1B016A5808A00A2F22E /* more_apps.png */; };
+		4A66C1B116A5808A00A2F22E /* quit_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1AF16A5808A00A2F22E /* quit_app@2x.png */; };
+		4A66C1B216A5808A00A2F22E /* more_apps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1B016A5808A00A2F22E /* more_apps@2x.png */; };
 		4A66C1BD16A58A1E00A2F22E /* SLNumberPickerTicks.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1B816A58A1E00A2F22E /* SLNumberPickerTicks.png */; };
 		4A66C1BE16A58A1E00A2F22E /* SLNumberPickerTicks@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1B916A58A1E00A2F22E /* SLNumberPickerTicks@2x.png */; };
 		4A66C1BF16A58A1E00A2F22E /* SLNumberPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A66C1BB16A58A1E00A2F22E /* SLNumberPickerView.m */; };
 		4A66C1C016A58A1E00A2F22E /* SLNumberPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1BC16A58A1E00A2F22E /* SLNumberPickerView.xib */; };
 		4A66C1C316A58A4700A2F22E /* NumberPickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A66C1C216A58A4700A2F22E /* NumberPickViewController.m */; };
+		4A66C1C916A5963C00A2F22E /* account_management@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1C816A5963000A2F22E /* account_management@2x.png */; };
 		4A7CF99215D74EF000206B14 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */; };
 		4A873B7E16A5301E005BDA45 /* touxiang_40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A873B7C16A5301D005BDA45 /* touxiang_40x40.png */; };
 		4A873B7F16A5301E005BDA45 /* touxiang_40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A873B7D16A5301E005BDA45 /* touxiang_40x40@2x.png */; };
@@ -334,10 +335,7 @@
 		4ADCFEDD169D62C400A3E979 /* Abs-Exercises_s.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE67169D62C400A3E979 /* Abs-Exercises_s.jpg */; };
 		4ADCFEDE169D62C400A3E979 /* adductor-exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE68169D62C400A3E979 /* adductor-exercises.jpg */; };
 		4ADCFEDF169D62C400A3E979 /* all_page_bg2@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE69169D62C400A3E979 /* all_page_bg2@2x.jpg */; };
-		4ADCFEE0169D62C400A3E979 /* artist-tab.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE6A169D62C400A3E979 /* artist-tab.png */; };
-		4ADCFEE1169D62C400A3E979 /* artist-tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE6B169D62C400A3E979 /* artist-tab@2x.png */; };
 		4ADCFEE2169D62C400A3E979 /* Back-Exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE6C169D62C400A3E979 /* Back-Exercises.jpg */; };
-		4ADCFEE3169D62C400A3E979 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE6D169D62C400A3E979 /* back@2x.png */; };
 		4ADCFEE4169D62C400A3E979 /* BackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE6E169D62C400A3E979 /* BackGround.png */; };
 		4ADCFEE5169D62C400A3E979 /* Biceps-Exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE6F169D62C400A3E979 /* Biceps-Exercises.jpg */; };
 		4ADCFEE6169D62C400A3E979 /* book_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE70169D62C400A3E979 /* book_bg@2x.png */; };
@@ -347,8 +345,6 @@
 		4ADCFEEA169D62C400A3E979 /* buttocks-exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE74169D62C400A3E979 /* buttocks-exercises.jpg */; };
 		4ADCFEEB169D62C400A3E979 /* calf-exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE75169D62C400A3E979 /* calf-exercises.jpg */; };
 		4ADCFEEC169D62C400A3E979 /* Chest-Exercises_s.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE76169D62C400A3E979 /* Chest-Exercises_s.jpg */; };
-		4ADCFEED169D62C400A3E979 /* clock-tab.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE77169D62C400A3E979 /* clock-tab.png */; };
-		4ADCFEEE169D62C400A3E979 /* clock-tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE78169D62C400A3E979 /* clock-tab@2x.png */; };
 		4ADCFEEF169D62C400A3E979 /* data_menu_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE79169D62C400A3E979 /* data_menu_1@2x.png */; };
 		4ADCFEF0169D62C400A3E979 /* data_menu_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE7A169D62C400A3E979 /* data_menu_2@2x.png */; };
 		4ADCFEF1169D62C400A3E979 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE7B169D62C400A3E979 /* Default-568h@2x.png */; };
@@ -375,8 +371,7 @@
 		4ADCFF10169D62C400A3E979 /* Oblique-abdominal-exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE9A169D62C400A3E979 /* Oblique-abdominal-exercises.jpg */; };
 		4ADCFF11169D62C400A3E979 /* page_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE9B169D62C400A3E979 /* page_button@2x.png */; };
 		4ADCFF12169D62C400A3E979 /* page_button_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE9C169D62C400A3E979 /* page_button_press@2x.png */; };
-		4ADCFF13169D62C400A3E979 /* podcast-tab.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE9D169D62C400A3E979 /* podcast-tab.png */; };
-		4ADCFF14169D62C400A3E979 /* podcast-tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE9E169D62C400A3E979 /* podcast-tab@2x.png */; };
+		4ADCFF13169D62C400A3E979 /* account_management.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE9D169D62C400A3E979 /* account_management.png */; };
 		4ADCFF18169D62C400A3E979 /* qq.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEA2169D62C400A3E979 /* qq.png */; };
 		4ADCFF19169D62C400A3E979 /* QQWeibo_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEA3169D62C400A3E979 /* QQWeibo_logo@2x.png */; };
 		4ADCFF1A169D62C400A3E979 /* quadriceps-exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEA4169D62C400A3E979 /* quadriceps-exercises.jpg */; };
@@ -414,7 +409,7 @@
 		4ADCFF3A169D62C400A3E979 /* topmenu_btn_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEC5169D62C400A3E979 /* topmenu_btn_right@2x.png */; };
 		4ADCFF3B169D62C400A3E979 /* Triceps-Exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEC6169D62C400A3E979 /* Triceps-Exercises.jpg */; };
 		4ADCFF3C169D62C400A3E979 /* tu_39-15.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEC7169D62C400A3E979 /* tu_39-15.png */; };
-		4ADCFF3D169D62C400A3E979 /* unknown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEC8169D62C400A3E979 /* unknown@2x.png */; };
+		4ADCFF3D169D62C400A3E979 /* feed_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEC8169D62C400A3E979 /* feed_back@2x.png */; };
 		4ADCFF3E169D62C400A3E979 /* update_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEC9169D62C400A3E979 /* update_app@2x.png */; };
 		4ADCFF3F169D62C400A3E979 /* 01.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFECB169D62C400A3E979 /* 01.m4v */; };
 		4ADCFF40169D62C400A3E979 /* weiboicon24.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFECC169D62C400A3E979 /* weiboicon24.png */; };
@@ -928,8 +923,8 @@
 		4A604E3D16A44A8B00D7C8DC /* HHNetDataCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHNetDataCacheManager.m; sourceTree = "<group>"; };
 		4A66C1AA16A57FAD00A2F22E /* gender_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gender_on.png; sourceTree = "<group>"; };
 		4A66C1AB16A57FAD00A2F22E /* gender_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gender_off.png; sourceTree = "<group>"; };
-		4A66C1AF16A5808A00A2F22E /* quit_app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quit_app.png; sourceTree = "<group>"; };
-		4A66C1B016A5808A00A2F22E /* more_apps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more_apps.png; sourceTree = "<group>"; };
+		4A66C1AF16A5808A00A2F22E /* quit_app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quit_app@2x.png"; sourceTree = "<group>"; };
+		4A66C1B016A5808A00A2F22E /* more_apps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more_apps@2x.png"; sourceTree = "<group>"; };
 		4A66C1B816A58A1E00A2F22E /* SLNumberPickerTicks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SLNumberPickerTicks.png; sourceTree = "<group>"; };
 		4A66C1B916A58A1E00A2F22E /* SLNumberPickerTicks@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SLNumberPickerTicks@2x.png"; sourceTree = "<group>"; };
 		4A66C1BA16A58A1E00A2F22E /* SLNumberPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLNumberPickerView.h; sourceTree = "<group>"; };
@@ -937,6 +932,7 @@
 		4A66C1BC16A58A1E00A2F22E /* SLNumberPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SLNumberPickerView.xib; sourceTree = "<group>"; };
 		4A66C1C116A58A4700A2F22E /* NumberPickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberPickViewController.h; sourceTree = "<group>"; };
 		4A66C1C216A58A4700A2F22E /* NumberPickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberPickViewController.m; sourceTree = "<group>"; };
+		4A66C1C816A5963000A2F22E /* account_management@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_management@2x.png"; sourceTree = "<group>"; };
 		4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4A873B7C16A5301D005BDA45 /* touxiang_40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touxiang_40x40.png; sourceTree = "<group>"; };
 		4A873B7D16A5301E005BDA45 /* touxiang_40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "touxiang_40x40@2x.png"; sourceTree = "<group>"; };
@@ -1094,10 +1090,7 @@
 		4ADCFE67169D62C400A3E979 /* Abs-Exercises_s.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Abs-Exercises_s.jpg"; sourceTree = "<group>"; };
 		4ADCFE68169D62C400A3E979 /* adductor-exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "adductor-exercises.jpg"; sourceTree = "<group>"; };
 		4ADCFE69169D62C400A3E979 /* all_page_bg2@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "all_page_bg2@2x.jpg"; sourceTree = "<group>"; };
-		4ADCFE6A169D62C400A3E979 /* artist-tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "artist-tab.png"; sourceTree = "<group>"; };
-		4ADCFE6B169D62C400A3E979 /* artist-tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "artist-tab@2x.png"; sourceTree = "<group>"; };
 		4ADCFE6C169D62C400A3E979 /* Back-Exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Back-Exercises.jpg"; sourceTree = "<group>"; };
-		4ADCFE6D169D62C400A3E979 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		4ADCFE6E169D62C400A3E979 /* BackGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackGround.png; sourceTree = "<group>"; };
 		4ADCFE6F169D62C400A3E979 /* Biceps-Exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Biceps-Exercises.jpg"; sourceTree = "<group>"; };
 		4ADCFE70169D62C400A3E979 /* book_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "book_bg@2x.png"; sourceTree = "<group>"; };
@@ -1107,8 +1100,6 @@
 		4ADCFE74169D62C400A3E979 /* buttocks-exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "buttocks-exercises.jpg"; sourceTree = "<group>"; };
 		4ADCFE75169D62C400A3E979 /* calf-exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "calf-exercises.jpg"; sourceTree = "<group>"; };
 		4ADCFE76169D62C400A3E979 /* Chest-Exercises_s.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Chest-Exercises_s.jpg"; sourceTree = "<group>"; };
-		4ADCFE77169D62C400A3E979 /* clock-tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-tab.png"; sourceTree = "<group>"; };
-		4ADCFE78169D62C400A3E979 /* clock-tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-tab@2x.png"; sourceTree = "<group>"; };
 		4ADCFE79169D62C400A3E979 /* data_menu_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "data_menu_1@2x.png"; sourceTree = "<group>"; };
 		4ADCFE7A169D62C400A3E979 /* data_menu_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "data_menu_2@2x.png"; sourceTree = "<group>"; };
 		4ADCFE7B169D62C400A3E979 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -1135,8 +1126,7 @@
 		4ADCFE9A169D62C400A3E979 /* Oblique-abdominal-exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Oblique-abdominal-exercises.jpg"; sourceTree = "<group>"; };
 		4ADCFE9B169D62C400A3E979 /* page_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "page_button@2x.png"; sourceTree = "<group>"; };
 		4ADCFE9C169D62C400A3E979 /* page_button_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "page_button_press@2x.png"; sourceTree = "<group>"; };
-		4ADCFE9D169D62C400A3E979 /* podcast-tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "podcast-tab.png"; sourceTree = "<group>"; };
-		4ADCFE9E169D62C400A3E979 /* podcast-tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "podcast-tab@2x.png"; sourceTree = "<group>"; };
+		4ADCFE9D169D62C400A3E979 /* account_management.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account_management.png; sourceTree = "<group>"; };
 		4ADCFEA2169D62C400A3E979 /* qq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qq.png; sourceTree = "<group>"; };
 		4ADCFEA3169D62C400A3E979 /* QQWeibo_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QQWeibo_logo@2x.png"; sourceTree = "<group>"; };
 		4ADCFEA4169D62C400A3E979 /* quadriceps-exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "quadriceps-exercises.jpg"; sourceTree = "<group>"; };
@@ -1174,7 +1164,7 @@
 		4ADCFEC5169D62C400A3E979 /* topmenu_btn_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topmenu_btn_right@2x.png"; sourceTree = "<group>"; };
 		4ADCFEC6169D62C400A3E979 /* Triceps-Exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Triceps-Exercises.jpg"; sourceTree = "<group>"; };
 		4ADCFEC7169D62C400A3E979 /* tu_39-15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tu_39-15.png"; sourceTree = "<group>"; };
-		4ADCFEC8169D62C400A3E979 /* unknown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unknown@2x.png"; sourceTree = "<group>"; };
+		4ADCFEC8169D62C400A3E979 /* feed_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed_back@2x.png"; sourceTree = "<group>"; };
 		4ADCFEC9169D62C400A3E979 /* update_app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "update_app@2x.png"; sourceTree = "<group>"; };
 		4ADCFECB169D62C400A3E979 /* 01.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = 01.m4v; sourceTree = "<group>"; };
 		4ADCFECC169D62C400A3E979 /* weiboicon24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weiboicon24.png; sourceTree = "<group>"; };
@@ -2771,13 +2761,13 @@
 		4AD9FC3016A0F81200BA766D /* MoreView */ = {
 			isa = PBXGroup;
 			children = (
-				4A66C1AF16A5808A00A2F22E /* quit_app.png */,
-				4A66C1B016A5808A00A2F22E /* more_apps.png */,
+				4ADCFEC8169D62C400A3E979 /* feed_back@2x.png */,
+				4ADCFEC9169D62C400A3E979 /* update_app@2x.png */,
+				4A66C1AF16A5808A00A2F22E /* quit_app@2x.png */,
+				4A66C1B016A5808A00A2F22E /* more_apps@2x.png */,
 				4ADCFE6E169D62C400A3E979 /* BackGround.png */,
 				4ADCFE66169D62C400A3E979 /* about_us@2x.png */,
 				4AD9FC3116A0F82900BA766D /* singleCellBackgroud.png */,
-				4ADCFE6A169D62C400A3E979 /* artist-tab.png */,
-				4ADCFE6B169D62C400A3E979 /* artist-tab@2x.png */,
 				4ADCFE72169D62C400A3E979 /* bottom_bg@2x.png */,
 				4ADCFE73169D62C400A3E979 /* bottom_cell_background.png */,
 				4ADCFEA5169D62C400A3E979 /* Rate_Us@2x.png */,
@@ -2913,15 +2903,12 @@
 				4ADCFE68169D62C400A3E979 /* adductor-exercises.jpg */,
 				4ADCFE69169D62C400A3E979 /* all_page_bg2@2x.jpg */,
 				4ADCFE6C169D62C400A3E979 /* Back-Exercises.jpg */,
-				4ADCFE6D169D62C400A3E979 /* back@2x.png */,
 				4ADCFE6F169D62C400A3E979 /* Biceps-Exercises.jpg */,
 				4ADCFE70169D62C400A3E979 /* book_bg@2x.png */,
 				4ADCFE71169D62C400A3E979 /* bookself_button@2x.png */,
 				4ADCFE74169D62C400A3E979 /* buttocks-exercises.jpg */,
 				4ADCFE75169D62C400A3E979 /* calf-exercises.jpg */,
 				4ADCFE76169D62C400A3E979 /* Chest-Exercises_s.jpg */,
-				4ADCFE77169D62C400A3E979 /* clock-tab.png */,
-				4ADCFE78169D62C400A3E979 /* clock-tab@2x.png */,
 				4ADCFE79169D62C400A3E979 /* data_menu_1@2x.png */,
 				4ADCFE7A169D62C400A3E979 /* data_menu_2@2x.png */,
 				4ADCFE7B169D62C400A3E979 /* Default-568h@2x.png */,
@@ -2948,8 +2935,8 @@
 				4ADCFE9A169D62C400A3E979 /* Oblique-abdominal-exercises.jpg */,
 				4ADCFE9B169D62C400A3E979 /* page_button@2x.png */,
 				4ADCFE9C169D62C400A3E979 /* page_button_press@2x.png */,
-				4ADCFE9D169D62C400A3E979 /* podcast-tab.png */,
-				4ADCFE9E169D62C400A3E979 /* podcast-tab@2x.png */,
+				4ADCFE9D169D62C400A3E979 /* account_management.png */,
+				4A66C1C816A5963000A2F22E /* account_management@2x.png */,
 				4ADCFEA2169D62C400A3E979 /* qq.png */,
 				4ADCFEA3169D62C400A3E979 /* QQWeibo_logo@2x.png */,
 				4ADCFEA4169D62C400A3E979 /* quadriceps-exercises.jpg */,
@@ -2975,8 +2962,6 @@
 				4ADCFEC5169D62C400A3E979 /* topmenu_btn_right@2x.png */,
 				4ADCFEC6169D62C400A3E979 /* Triceps-Exercises.jpg */,
 				4ADCFEC7169D62C400A3E979 /* tu_39-15.png */,
-				4ADCFEC8169D62C400A3E979 /* unknown@2x.png */,
-				4ADCFEC9169D62C400A3E979 /* update_app@2x.png */,
 				4ADCFECA169D62C400A3E979 /* videos */,
 				4ADCFECC169D62C400A3E979 /* weiboicon24.png */,
 			);
@@ -3385,10 +3370,7 @@
 				4ADCFEDD169D62C400A3E979 /* Abs-Exercises_s.jpg in Resources */,
 				4ADCFEDE169D62C400A3E979 /* adductor-exercises.jpg in Resources */,
 				4ADCFEDF169D62C400A3E979 /* all_page_bg2@2x.jpg in Resources */,
-				4ADCFEE0169D62C400A3E979 /* artist-tab.png in Resources */,
-				4ADCFEE1169D62C400A3E979 /* artist-tab@2x.png in Resources */,
 				4ADCFEE2169D62C400A3E979 /* Back-Exercises.jpg in Resources */,
-				4ADCFEE3169D62C400A3E979 /* back@2x.png in Resources */,
 				4ADCFEE4169D62C400A3E979 /* BackGround.png in Resources */,
 				4ADCFEE5169D62C400A3E979 /* Biceps-Exercises.jpg in Resources */,
 				4ADCFEE6169D62C400A3E979 /* book_bg@2x.png in Resources */,
@@ -3398,8 +3380,6 @@
 				4ADCFEEA169D62C400A3E979 /* buttocks-exercises.jpg in Resources */,
 				4ADCFEEB169D62C400A3E979 /* calf-exercises.jpg in Resources */,
 				4ADCFEEC169D62C400A3E979 /* Chest-Exercises_s.jpg in Resources */,
-				4ADCFEED169D62C400A3E979 /* clock-tab.png in Resources */,
-				4ADCFEEE169D62C400A3E979 /* clock-tab@2x.png in Resources */,
 				4ADCFEEF169D62C400A3E979 /* data_menu_1@2x.png in Resources */,
 				4ADCFEF0169D62C400A3E979 /* data_menu_2@2x.png in Resources */,
 				4ADCFEF1169D62C400A3E979 /* Default-568h@2x.png in Resources */,
@@ -3426,8 +3406,7 @@
 				4ADCFF10169D62C400A3E979 /* Oblique-abdominal-exercises.jpg in Resources */,
 				4ADCFF11169D62C400A3E979 /* page_button@2x.png in Resources */,
 				4ADCFF12169D62C400A3E979 /* page_button_press@2x.png in Resources */,
-				4ADCFF13169D62C400A3E979 /* podcast-tab.png in Resources */,
-				4ADCFF14169D62C400A3E979 /* podcast-tab@2x.png in Resources */,
+				4ADCFF13169D62C400A3E979 /* account_management.png in Resources */,
 				4ADCFF18169D62C400A3E979 /* qq.png in Resources */,
 				4ADCFF19169D62C400A3E979 /* QQWeibo_logo@2x.png in Resources */,
 				4ADCFF1A169D62C400A3E979 /* quadriceps-exercises.jpg in Resources */,
@@ -3465,7 +3444,7 @@
 				4ADCFF3A169D62C400A3E979 /* topmenu_btn_right@2x.png in Resources */,
 				4ADCFF3B169D62C400A3E979 /* Triceps-Exercises.jpg in Resources */,
 				4ADCFF3C169D62C400A3E979 /* tu_39-15.png in Resources */,
-				4ADCFF3D169D62C400A3E979 /* unknown@2x.png in Resources */,
+				4ADCFF3D169D62C400A3E979 /* feed_back@2x.png in Resources */,
 				4ADCFF3E169D62C400A3E979 /* update_app@2x.png in Resources */,
 				4ADCFF3F169D62C400A3E979 /* 01.m4v in Resources */,
 				4ADCFF40169D62C400A3E979 /* weiboicon24.png in Resources */,
@@ -3520,11 +3499,12 @@
 				4A873BA816A54BD7005BDA45 /* Citypicker.xib in Resources */,
 				4A66C1AC16A57FAD00A2F22E /* gender_on.png in Resources */,
 				4A66C1AD16A57FAD00A2F22E /* gender_off.png in Resources */,
-				4A66C1B116A5808A00A2F22E /* quit_app.png in Resources */,
-				4A66C1B216A5808A00A2F22E /* more_apps.png in Resources */,
+				4A66C1B116A5808A00A2F22E /* quit_app@2x.png in Resources */,
+				4A66C1B216A5808A00A2F22E /* more_apps@2x.png in Resources */,
 				4A66C1BD16A58A1E00A2F22E /* SLNumberPickerTicks.png in Resources */,
 				4A66C1BE16A58A1E00A2F22E /* SLNumberPickerTicks@2x.png in Resources */,
 				4A66C1C016A58A1E00A2F22E /* SLNumberPickerView.xib in Resources */,
+				4A66C1C916A5963C00A2F22E /* account_management@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

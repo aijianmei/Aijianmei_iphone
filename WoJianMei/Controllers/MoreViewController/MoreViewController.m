@@ -166,6 +166,8 @@ typedef enum {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreViewController"];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MoreViewController"] autorelease];
+        cell.imageView.image = nil;
+
     }
     
     [cell.textLabel setFont:[UIFont systemFontOfSize:14]];
@@ -215,29 +217,49 @@ typedef enum {
 
 
     UIImage *image = nil;
-    switch ([indexPath row]) {
-        case ACCOUNT_MANAGEMENT:
-            image = [UIImage imageNamed:@"social_networks.png"];
-            break;
-        case SHARE_To_SOCIAL_NET_WORKS:
-            image = [UIImage imageNamed:@"share_social.png"];
-            break;
-        case SHARE_TO_FRIENDS :
-            image = [UIImage imageNamed:@"share_with_firends.png"];
-            break;
-        case FEEDBACK:
-            image = [UIImage imageNamed:@"Rate_Us.png"];
-            break;
-        case LIKE_US:
-            image = [UIImage imageNamed:@"about_us.png"];
-            break;
-        case SHOW_ABOUT_VIEW:
-            image = [UIImage imageNamed:@"update_app.png"];
-            break;
+    if (indexPath.section ==0) {
+        
+        switch ([indexPath row] ) {
+            case ACCOUNT_MANAGEMENT:
+                image = [UIImage imageNamed:@"social_networks.png"];
+                break;
+            case SHARE_To_SOCIAL_NET_WORKS:
+                image = [UIImage imageNamed:@"share_social.png"];
+                break;
+            case SHARE_TO_FRIENDS :
+                image = [UIImage imageNamed:@"share_with_firends.png"];
+                break;
+            case FEEDBACK:
+                image = [UIImage imageNamed:@"feed_back.png"];
+                break;
+            case LIKE_US:
+                image = [UIImage imageNamed:@"Rate_Us.png"];
+                break;
+            case SHOW_ABOUT_VIEW:
+                image = [UIImage imageNamed:@"about_us.png"];
+                break;
             default:
-            break;
+                break;
+        }
+
+    }else if(indexPath.section ==1){
+        
+        switch ([indexPath row] ) {
+            case 0:
+                image = [UIImage imageNamed:@"update_app.png"];
+                break;
+            case 1:
+                image = [UIImage imageNamed:@"more_apps.png"];
+                break;
+            default:
+                break;
+
+        }
+    }else{
+        image = [UIImage imageNamed:@"quit_app.png"];
     }
     
+       
     cell.imageView.image = image;
     
     return cell;
