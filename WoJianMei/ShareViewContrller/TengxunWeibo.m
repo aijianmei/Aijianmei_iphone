@@ -60,33 +60,6 @@
 }
 
 
-- (void)authorizeQQWeibo
-
-{
-    
-//
-//    UIWebView *webView= [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-//
-//    
-//    self.authWebView = webView;
-//    self.authWebView.delegate = self;
-//    [webView release];
-//    
-//
-//    if (delegate && [delegate respondsToSelector:@selector(addView:)]) {
-//        
-//        [delegate addView:self.authWebView];
-//    }
-//    
-//    
-//    NSString *url = [NSString stringWithFormat:@"%@%@", VERIFY_URL, requestTokenKey];
-//	NSURL *requestUrl = [NSURL URLWithString:url];
-//	NSURLRequest *request = [NSURLRequest requestWithURL:requestUrl];
-//	[authWebView loadRequest:request];
-    
-}
-
-
 
 - (void)loadDefaultKey {
 	self.accessTokenKey = [[NSUserDefaults standardUserDefaults] valueForKey:kQQAccessTokenKey];

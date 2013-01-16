@@ -169,7 +169,6 @@ typedef enum {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreViewController"];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MoreViewController"] autorelease];
-        cell.imageView.image = nil;
 
     }
     

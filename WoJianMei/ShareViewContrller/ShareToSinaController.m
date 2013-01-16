@@ -170,54 +170,6 @@
     self.wordsNumberLabel.text = [NSString stringWithFormat:@"%d",[textView.text length]];
 }
 
-//#pragma -mark WBEngineDelegate
-//- (void)engineAlreadyLoggedIn:(WBEngine *)engine
-//{
-//    NSLog(@"已登录");
-//}
-//
-//- (void)engineDidLogIn:(WBEngine *)engine
-//{
-//    NSLog(@"登录成功");
-//}
-//
-//- (void)engine:(WBEngine *)engine didFailToLogInWithError:(NSError *)error
-//{
-//    NSLog(@"登录错误,错误代码:%@",error);
-//}
-//
-//- (void)engineDidLogOut:(WBEngine *)engine
-//{
-//    NSLog(@"退出成功");
-//}
-//
-//- (void)engineNotAuthorized:(WBEngine *)engine
-//{
-//    NSLog(@"没有授权");
-//    [self hideActivity];
-//    [sinaWeiBoEngine logIn];
-//}
-//
-//- (void)engineAuthorizeExpired:(WBEngine *)engine
-//{
-//    NSLog(@"授权过期");
-//    [self hideActivity];
-//    [sinaWeiBoEngine logIn];
-//}
-//
-//- (void)engine:(WBEngine *)engine requestDidFailWithError:(NSError *)error
-//{
-//    NSLog(@"发送失败,error:%@",error);
-//    [self hideActivity];
-//    [self popupUnhappyMessage:NSLS(@"发送失败") title:nil];
-//}
-//
-//- (void)engine:(WBEngine *)engine requestDidSucceedWithResult:(id)result
-//{
-//    NSLog(@"发送成功");
-//    [self hideActivity];
-//    [self popupHappyMessage:NSLS(@"发送成功") title:nil];
-//}
 
 #pragma mark - 
 #pragma SinaWeiboDelegate methods

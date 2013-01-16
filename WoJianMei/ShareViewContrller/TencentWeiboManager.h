@@ -23,7 +23,7 @@
 @property (nonatomic, retain) NSString *qqWeiBoAppSecret;
 
 - (void)sendQQWeibo:(id)sender;
-- (NSString*)valueForKey:(NSString *)key ofQuery:(NSString*)query;
+//- (NSString*)valueForKey:(NSString *)key ofQuery:(NSString*)query;
 - (void)loadDefaultKey;
 -(void)saveDefaultKey;
 

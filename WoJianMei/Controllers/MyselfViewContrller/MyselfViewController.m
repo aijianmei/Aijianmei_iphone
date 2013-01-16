@@ -983,16 +983,11 @@ const double URLCacheInterval = 86400.0;
         PPDebug(@"The userinfo %@",[_sina_userInfo description]);
     }
     
-    
     [self storeSinaweiboDatas:_sina_userInfo];
-    
-    
-    
 }
 
 - (void) storeSinaweiboDatas :(NSDictionary *)dataDictionary{
 
-    
      NSString *sinaUserName =  [dataDictionary objectForKey:USER_NAME];
      NSString *description = [dataDictionary objectForKey:USER_DESCRIPTION];
      NSData *data = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:[dataDictionary objectForKey:USER_AVATAR_IMAGE]]];
@@ -1017,28 +1012,6 @@ const double URLCacheInterval = 86400.0;
     [[NSUserDefaults standardUserDefaults] setObject:userData forKey:USER];
     
 }
-
-
-#pragma mark-- SinaWeiboAuthorizeViewDelegate
-
-
-- (void)authorizeView:(SinaWeiboAuthorizeView *)authView
-didRecieveAuthorizationCode:(NSString *)code{
-    
-    
-
-}
-- (void)authorizeView:(SinaWeiboAuthorizeView *)authView
- didFailWithErrorInfo:(NSDictionary *)errorInfo{
-    
-    
-    
-}
-- (void)authorizeViewDidCancel:(SinaWeiboAuthorizeView *)authView{
-
-
-}
-
 
 
 #pragma mark --actionSheetDelegate

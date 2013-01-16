@@ -8,8 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "JMStaticContentTableViewController.h"
+#import "SinaweiboManager.h"
 
-@interface More_SettingsViewController: JMStaticContentTableViewController
+
+@class HZActivityIndicatorView;
+@interface More_SettingsViewController: JMStaticContentTableViewController<SinaWeiboDelegate,SinaWeiboRequestDelegate,UIAlertViewDelegate>
+
+{
+    
+    SinaweiboManager     *sinaweiboManager ;
+    
+    BOOL isLoginingInSinaWeibo;
+    
+    HZActivityIndicatorView *indictorView;
+}
 
 
 

@@ -7,8 +7,15 @@
 //
 
 #import "More_SettingsViewController.h"
-#import "WifiViewController.h"
-#import "NotificationsViewController.h"
+#import "AppDelegate.h"
+
+#import "SinaweiboManager.h"
+#import "SinaWeibo.h"
+#import "SinaWeiboAuthorizeView.h"
+#import "SinaWeiboRequest.h"
+
+
+#import "HZActivityIndicatorView.h"
 
 
 @interface More_SettingsViewController ()
@@ -58,6 +65,112 @@
 
 
 
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+ 
+    switch (buttonIndex) {
+        case 0:
+        {
+            NSLog(@"取消");
+        
+        }
+            break;
+        case 1:
+        {
+            
+            if ([alertView.message hasSuffix:@"新浪微博吗？"]) {
+                [self logOutSinaWeibo];
+                
+                NSLog(@"logout  : [%@]",alertView.message);
+                
+
+            } else if ([alertView.message hasSuffix:@" "]) {
+                [self logOutSinaWeibo];
+                
+                NSLog(@"logout the 腾讯");
+                
+                
+            }else if ([alertView.message hasSuffix:@"QQ"]) {
+                [self logOutSinaWeibo];
+                
+                NSLog(@"logout the QQ");
+                
+                
+            }else
+                
+            {
+                
+                NSLog(@"logout the renren");
+                
+                
+            }
+
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+
+-(void)showAlertViewWithMessage :(NSString *)message{
+
+    UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"退出绑定" message:message  delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [al show];
+    [al release];
+    
+    
+}
+
+
+
+
+
+-(void)loginSinaweibo{
+
+    [[self sinaweiboManager].sinaweibo logIn] ;
+
+}
+
+
+
+-(void)logOutSinaWeibo{
+    
+    
+    SinaWeibo *sinaweibo = [[self sinaweiboManager] sinaweibo];
+    BOOL isLoggedIn = sinaweibo.isLoggedIn;
+    
+    if (isLoggedIn) {
+        [sinaweibo logOut];
+        [[self sinaweiboManager] removeAuthData];
+    }
+    
+    [self.tableView reloadData];
+  
+}
+
+
+-(BOOL)isSinaWeiboAuthValid{
+
+    SinaWeibo *sinaweibo = [[self sinaweiboManager] sinaweibo];
+    BOOL authValid = sinaweibo.isAuthValid;
+    
+    return authValid;
+}
+
+
+- (SinaweiboManager *)sinaweiboManager
+{
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.sinaWeiboManager.sinaweibo setDelegate:self];
+        
+    return appDelegate.sinaWeiboManager;
+}
+
+
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -84,6 +197,11 @@
     self.sinaModeSwitch = nil;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+
+    [super viewWillAppear:YES];
+    [self.tableView reloadData];
+}
 
 
 
@@ -100,20 +218,39 @@
          [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
              staticContentCell.cellStyle = UITableViewCellStyleValue1;
              staticContentCell.reuseIdentifier = @"DetailTextCell";
-             
-             cell.selectionStyle = UITableViewCellSelectionStyleNone;
              cell.textLabel.text = NSLocalizedString(@"新浪微博", @"Wi-Fi");
              
-             cell.detailTextLabel.text  =NSLocalizedString(@"已绑定", @"Airplane Mode");
+             
+             cell.detailTextLabel.text  =NSLocalizedString(@"未绑定", @"Airplane Mode");
+             cell.detailTextLabel.textColor = [UIColor redColor];
+
+                    
+             
+             if ([self isSinaWeiboAuthValid]) {
+                 cell.detailTextLabel.textColor = [UIColor greenColor];
+                 cell.detailTextLabel.text  =NSLocalizedString(@"已绑定", @"Airplane Mode");
+             }
+
+            
+             
+             
              cell.imageView.image = [UIImage imageNamed:@"AirplaneMode"];
              
              
          }whenSelected:^(NSIndexPath *indexPath){
              ///TODO
-             [self.navigationController pushViewController:[[WifiViewController alloc] init] animated:YES];
+          
+             if ([self isSinaWeiboAuthValid]) {
+                 
+                 [self showAlertViewWithMessage:@"你确定要解除绑定新浪微博吗？"];
+                                
+             }
              
              
-         }];
+               [self loginSinaweibo];
+        
+          
+           }];
          
          //// add a row at the section one
          [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
@@ -124,8 +261,31 @@
              
              cell.textLabel.text = NSLocalizedString(@"腾讯微博", @"Wi-Fi");
              cell.detailTextLabel.text = NSLocalizedString(@"未绑定", @"iamtheinternet");
+             
+             if ([self isSinaWeiboAuthValid]) {
+                 
+                 cell.detailTextLabel.text = NSLocalizedString(@"已绑定", @"iamtheinternet");
+                 
+                 [cell.detailTextLabel setTextColor:[UIColor greenColor]];
+
+        
+             }
+             
+             
+             
          } whenSelected:^(NSIndexPath *indexPath) {
-             [self.navigationController pushViewController:[[WifiViewController alloc] init] animated:YES];
+             
+             
+             if ([self isSinaWeiboAuthValid]) {
+                 
+                 [self showAlertViewWithMessage:@"你确定要杰出绑定腾讯微博吗？"];
+                 
+             }
+             
+             
+             [self loginSinaweibo];
+             
+             
          }];
          
          //// add a row at the section one
@@ -134,10 +294,39 @@
              staticContentCell.reuseIdentifier = @"DetailTextCell";
              
              cell.textLabel.text = NSLocalizedString(@"QQ账号", @"Notifications");
+             
+             
+             
              cell.detailTextLabel.text = NSLocalizedString(@"未绑定", @"iamtheinternet");
+             
+             [cell.detailTextLabel setTextColor:[UIColor redColor]];
+             
+
+             
+             if ([self isSinaWeiboAuthValid]) {
+                 
+                 cell.detailTextLabel.text = NSLocalizedString(@"已绑定", @"iamtheinternet");
+                 
+                 [cell.detailTextLabel setTextColor:[UIColor greenColor]];
+                 
+                 
+                 
+             }
+
              cell.imageView.image = [UIImage imageNamed:@"Notifications"];
          } whenSelected:^(NSIndexPath *indexPath) {
-             [self.navigationController pushViewController:[[NotificationsViewController alloc] init] animated:YES];
+             
+             
+             
+             if ([self isSinaWeiboAuthValid]) {
+                 
+                 [self showAlertViewWithMessage:@"你确定要解除绑定QQ吗？"];
+                 
+             }
+             
+             
+             [self loginSinaweibo];
+             
          }];
          
          //// add a row at the section one
@@ -148,8 +337,24 @@
              cell.textLabel.text = NSLocalizedString(@"人人网", @"Location Services");
              cell.imageView.image = [UIImage imageNamed:@"Notifications"];
              cell.detailTextLabel.text = NSLocalizedString(@"未绑定", @"On");
+             [cell.detailTextLabel setTextColor:[UIColor redColor]];
+
+             
+             if ( [self isSinaWeiboAuthValid]) {
+                 
+                 cell.detailTextLabel.text = NSLocalizedString(@"已绑定", @"iamtheinternet");
+                 
+                 [cell.detailTextLabel setTextColor:[UIColor greenColor]];
+             }
+             
+            
+             
+
          } whenSelected:^(NSIndexPath *indexPath) {
              //TODO
+             
+             
+             
          }];
      }];
 }
@@ -287,6 +492,50 @@
     
     
 }
+
+#pragma mark -
+#pragma SinaWeiboDelegate methods
+- (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
+{
+    PPDebug(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
+    
+    [sinaweiboManager storeAuthData];
+    [self.tableView reloadData];
+
+    
+    
+}
+
+- (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
+{
+    PPDebug(@"sinaweiboDidLogOut");
+    [sinaweiboManager removeAuthData];
+    [self.tableView reloadData];
+    
+}
+
+- (void)sinaweiboLogInDidCancel:(SinaWeibo *)sinaweibo
+{
+    PPDebug(@"sinaweiboLogInDidCancel");
+    [self.tableView reloadData];
+    
+}
+
+- (void)sinaweibo:(SinaWeibo *)sinaweibo logInDidFailWithError:(NSError *)error
+{
+    PPDebug(@"sinaweibo logInDidFailWithError %@", error);
+    [self.tableView reloadData];
+}
+
+- (void)sinaweibo:(SinaWeibo *)sinaweibo accessTokenInvalidOrExpired:(NSError *)error
+{
+    PPDebug(@"sinaweiboAccessTokenInvalidOrExpired %@", error);
+    [sinaweiboManager removeAuthData];
+    [self.tableView reloadData];
+}
+
+
+
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
