@@ -483,6 +483,7 @@
 		4AE81AFE169D7AD400D36F3B /* WifiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE81AFA169D7AD400D36F3B /* WifiViewController.m */; };
 		4AEE4DEC16A63FD700B13161 /* about_us@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE4DEB16A63FD700B13161 /* about_us@2x.png */; };
 		4AEE4DFC16A6574D00B13161 /* HZActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE4DFB16A6574D00B13161 /* HZActivityIndicatorView.m */; };
+		4AEE4DFF16A67E4200B13161 /* TencentOAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE4DFE16A67E4100B13161 /* TencentOAuthManager.m */; };
 		4AEE95AF15FB7F26005A66DC /* BookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE95AD15FB7F26005A66DC /* BookController.m */; };
 		4AEE95B015FB7F26005A66DC /* BookController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE95AE15FB7F26005A66DC /* BookController.xib */; };
 		4AEE95B715FB7F5A005A66DC /* LeavesCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE95B215FB7F5A005A66DC /* LeavesCache.m */; };
@@ -1272,6 +1273,8 @@
 		4AEE4DEB16A63FD700B13161 /* about_us@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_us@2x.png"; sourceTree = "<group>"; };
 		4AEE4DFA16A6574D00B13161 /* HZActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZActivityIndicatorView.h; sourceTree = "<group>"; };
 		4AEE4DFB16A6574D00B13161 /* HZActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZActivityIndicatorView.m; sourceTree = "<group>"; };
+		4AEE4DFD16A67E4000B13161 /* TencentOAuthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TencentOAuthManager.h; sourceTree = "<group>"; };
+		4AEE4DFE16A67E4100B13161 /* TencentOAuthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TencentOAuthManager.m; sourceTree = "<group>"; };
 		4AEE95AC15FB7F26005A66DC /* BookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookController.h; sourceTree = "<group>"; };
 		4AEE95AD15FB7F26005A66DC /* BookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookController.m; sourceTree = "<group>"; };
 		4AEE95AE15FB7F26005A66DC /* BookController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookController.xib; sourceTree = "<group>"; };
@@ -2889,6 +2892,8 @@
 			children = (
 				4ADCFE27169D619500A3E979 /* ShareToQQViewController.h */,
 				4ADCFE28169D619500A3E979 /* ShareToQQViewController.m */,
+				4AEE4DFD16A67E4000B13161 /* TencentOAuthManager.h */,
+				4AEE4DFE16A67E4100B13161 /* TencentOAuthManager.m */,
 				4ADCFE29169D619500A3E979 /* ShareToQQViewController.xib */,
 				4ADCFE2A169D619500A3E979 /* ShareToQQWeiboController.h */,
 				4ADCFE2B169D619500A3E979 /* ShareToQQWeiboController.m */,
@@ -3822,6 +3827,7 @@
 				4A66C1F216A59E0000A2F22E /* AWActionSheet.m in Sources */,
 				4A66C1FB16A59E0000A2F22E /* ViewController.m in Sources */,
 				4AEE4DFC16A6574D00B13161 /* HZActivityIndicatorView.m in Sources */,
+				4AEE4DFF16A67E4200B13161 /* TencentOAuthManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,8 +11,8 @@
 
 #import "SinaweiboManager.h"
 #import "SinaWeibo.h"
-#import "SinaWeiboAuthorizeView.h"
 #import "SinaWeiboRequest.h"
+#import "TencentOAuthManager.h"
 
 
 #import "HZActivityIndicatorView.h"
@@ -128,12 +128,6 @@
 
 
 
--(void)loginSinaweibo{
-
-    [[self sinaweiboManager].sinaweibo logIn] ;
-
-}
-
 
 
 -(void)logOutSinaWeibo{
@@ -150,7 +144,11 @@
     [self.tableView reloadData];
   
 }
-
+-(void)loginSinaweibo{
+    
+    [[self sinaweiboManager].sinaweibo logIn] ;
+    
+}
 
 -(BOOL)isSinaWeiboAuthValid{
 
@@ -160,14 +158,44 @@
     return authValid;
 }
 
-
 - (SinaweiboManager *)sinaweiboManager
 {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate.sinaWeiboManager.sinaweibo setDelegate:self];
+    [appDelegate.sinaWeiboManager setDelegate:self];
         
     return appDelegate.sinaWeiboManager;
 }
+
+
+
+-(void)loginTencentQQ{
+    
+    NSArray *permissionArray =  [[NSArray arrayWithObjects:
+                                  @"get_user_info",@"add_share", @"add_topic",@"add_one_blog", @"list_album",
+                                  @"upload_pic",@"list_photo", @"add_album", @"check_page_fans",nil] retain];
+    
+    
+    [[[self tencentOAuthManager] tencentOAuth]  authorize:permissionArray  localAppId:@"100328471" inSafari:NO];
+    
+    
+    
+}
+
+-(BOOL)isTencentQQAuthValid{
+    
+    TencentOAuth *tencentOAuth = [[self tencentOAuthManager] tencentOAuth];
+    BOOL authValid = tencentOAuth.isSessionValid;
+    
+    return authValid;
+}
+
+- (TencentOAuthManager *)tencentOAuthManager
+{
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.tencentOAuthManager setDelegate:self];
+    return appDelegate.tencentOAuthManager;
+}
+
 
 
 
@@ -245,11 +273,8 @@
                  [self showAlertViewWithMessage:@"你确定要解除绑定新浪微博吗？"];
                                 
              }
-             
-             
-               [self loginSinaweibo];
-        
-          
+            
+             [self loginSinaweibo];
            }];
          
          //// add a row at the section one
@@ -259,16 +284,14 @@
              
              cell.imageView.image = [UIImage imageNamed:@"AirplaneMode"];
              
-             cell.textLabel.text = NSLocalizedString(@"腾讯微博", @"Wi-Fi");
-             cell.detailTextLabel.text = NSLocalizedString(@"未绑定", @"iamtheinternet");
+             cell.textLabel.text = @"腾讯微博";
+             cell.detailTextLabel.text = @"未绑定";
+             cell.detailTextLabel.textColor = [UIColor redColor];
              
              if ([self isSinaWeiboAuthValid]) {
                  
-                 cell.detailTextLabel.text = NSLocalizedString(@"已绑定", @"iamtheinternet");
-                 
+                 cell.detailTextLabel.text = @"已绑定";
                  [cell.detailTextLabel setTextColor:[UIColor greenColor]];
-
-        
              }
              
              
@@ -297,36 +320,33 @@
              
              
              
-             cell.detailTextLabel.text = NSLocalizedString(@"未绑定", @"iamtheinternet");
+             cell.detailTextLabel.text = @"未绑定";
              
              [cell.detailTextLabel setTextColor:[UIColor redColor]];
              
+             
+             
+             tencentOAuthManager = [TencentOAuthManager defaultManager];
 
              
-             if ([self isSinaWeiboAuthValid]) {
-                 
-                 cell.detailTextLabel.text = NSLocalizedString(@"已绑定", @"iamtheinternet");
-                 
+             if ([[tencentOAuthManager tencentOAuth ] isSessionValid]) {
+                 cell.detailTextLabel.text = @"已绑定";
                  [cell.detailTextLabel setTextColor:[UIColor greenColor]];
-                 
-                 
-                 
              }
-
+             
              cell.imageView.image = [UIImage imageNamed:@"Notifications"];
+             
          } whenSelected:^(NSIndexPath *indexPath) {
              
-             
-             
-             if ([self isSinaWeiboAuthValid]) {
+             if ([[[self tencentOAuthManager] tencentOAuth] isSessionValid]) {
                  
                  [self showAlertViewWithMessage:@"你确定要解除绑定QQ吗？"];
                  
+             }else{
+                 
+                 [self loginTencentQQ];
+                              
              }
-             
-             
-             [self loginSinaweibo];
-             
          }];
          
          //// add a row at the section one
@@ -501,9 +521,6 @@
     
     [sinaweiboManager storeAuthData];
     [self.tableView reloadData];
-
-    
-    
 }
 
 - (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
@@ -533,6 +550,49 @@
     [sinaweiboManager removeAuthData];
     [self.tableView reloadData];
 }
+
+
+
+
+#pragma mark -
+#pragma TencentLoginDeleate methods
+
+/**
+ * Called when the user successfully logged in.
+ */
+- (void)tencentDidLogin {
+	// 登录成功
+	
+	NSLog(@"QQ  did login ");
+}
+
+/**
+ * Called when the user dismissed the dialog without logging in.
+ */
+- (void)tencentDidNotLogin:(BOOL)cancelled
+{
+	if (cancelled){
+		NSLog(@"用户取消登录");
+
+	}
+	else {
+        NSLog(@"登录失败");
+
+	}
+}
+
+-(void)tencentDidLogout{
+    
+}
+
+/**
+ * Called when the notNewWork.
+ */
+-(void)tencentDidNotNetWork
+{
+	NSLog(@"无网络连接，请设置网络") ;
+}
+
 
 
 

@@ -9,17 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "JMStaticContentTableViewController.h"
 #import "SinaweiboManager.h"
-
+#import "TencentOAuthManager.h"
 
 @class HZActivityIndicatorView;
-@interface More_SettingsViewController: JMStaticContentTableViewController<SinaWeiboDelegate,SinaWeiboRequestDelegate,UIAlertViewDelegate>
+@interface More_SettingsViewController: JMStaticContentTableViewController<SinaWeiboDelegate,SinaWeiboRequestDelegate,UIAlertViewDelegate,TencentSessionDelegate>
 
 {
     
-    SinaweiboManager     *sinaweiboManager ;
-    
-    BOOL isLoginingInSinaWeibo;
-    
+    SinaweiboManager     *sinaweiboManager;
+    TencentOAuthManager *tencentOAuthManager;
+
     HZActivityIndicatorView *indictorView;
 }
 

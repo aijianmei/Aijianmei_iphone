@@ -108,6 +108,20 @@ static TencentWeiboManager* _globalTengxunweiboManager = nil;
     
 }
 
+- (NSString*)valueForKey:(NSString *)key ofQuery:(NSString*)query
+{
+	NSArray *pairs = [query componentsSeparatedByString:@"&"];
+	for(NSString *aPair in pairs){
+		NSArray *keyAndValue = [aPair componentsSeparatedByString:@"="];
+		if([keyAndValue count] != 2) continue;
+		if([[keyAndValue objectAtIndex:0] isEqualToString:key]){
+			return [keyAndValue objectAtIndex:1];
+		}
+	}
+	return nil;
+}
+
+
 
 - (void)storeAuthData{
 

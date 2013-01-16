@@ -23,11 +23,8 @@
 #define kQQAccessTokenKey       @"QQAccessTokenKey"
 #define kQQAccessTokenSecret	@"QQAccessTokenSecret"
 
-
 #define VERIFY_URL      @"http://open.t.qq.com/cgi-bin/authorize?oauth_token="
 
-//#define UMENG_ONLINE_QQ_WEIBO_APP_KEY       @"qq_weibo_app_key"
-//#define UMENG_ONLINE_QQ_WEIBO_APP_SECRET    @"qq_weibo_app_secret"
 
 @interface ShareToQQWeiboController ()
 {

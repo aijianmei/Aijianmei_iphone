@@ -43,8 +43,9 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize sinaWeiboManager;
-@synthesize tengxunWeiboManager;
+@synthesize sinaWeiboManager =_sinaWeiboManager;
+@synthesize tengxunWeiboManager =_tengxunWeiboManager;
+@synthesize tencentOAuthManager =_tencentOAuthManager;
 @synthesize navigationController =_navigationController;
 @synthesize tabBarController=_tabBarController ;
 
@@ -53,8 +54,9 @@
 - (void)dealloc
 {
     [_tabBarController release];
-    [sinaWeiboManager release];
-    [tengxunWeiboManager release];
+    [_sinaWeiboManager release];
+    [_tengxunWeiboManager release];
+    [_tencentOAuthManager release];
     [_navigationController release];
     [_window release];
     [super dealloc];
@@ -181,17 +183,36 @@
     [self.window makeKeyAndVisible];
     
     
-    
+    /////sinaweibo
     NSString *appKey = @"239725454";
     NSString *appSecret = @"e2064ac8fab9d889a9eccecc5babad11";
-    
-    
-    sinaWeiboManager = [SinaweiboManager defaultManager];
-    [sinaWeiboManager createSinaweiboWithAppKey:appKey appSecret:appSecret appRedirectURI:kAppRedirectURI delegate:self];
+     _sinaWeiboManager = [SinaweiboManager defaultManager];
+    [_sinaWeiboManager createSinaweiboWithAppKey:appKey appSecret:appSecret appRedirectURI:kAppRedirectURI delegate:self];
 
     
+    ////tencentqqq
     
     
+    NSArray *permissionArray =  [[NSArray arrayWithObjects:
+                                  @"get_user_info",@"add_share", @"add_topic",@"add_one_blog", @"list_album",
+                                  @"upload_pic",@"list_photo", @"add_album", @"check_page_fans",nil] retain];
+    //
+    //    /////移动应用 非社区应用。
+    //    _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"100328471"
+    //                                            andDelegate:self];
+    //
+    //    [_tencentOAuth authorize:_permissions inSafari:NO];
+    //	_tencentOAuth.redirectURI = @"www.qq.com";
+    //
+    
+    
+     _tencentOAuthManager = [TencentOAuthManager defaultManager];
+     [_tencentOAuthManager createTencentQQWithAppId: @"100328471" appPermission:permissionArray appRedirectURI:@"www.qq.com" isInSafari:NO delegate:self];
+    
+    
+    
+    
+
     MySideMenueViewController *mySideMenuViewController = [[MySideMenueViewController alloc] init];
 
     MenuOptions options = MenuButtonEnabled|BackButtonEnabled;

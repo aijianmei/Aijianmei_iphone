@@ -10,6 +10,7 @@
 #import "QFObject.h"
 #import "FontSize.h"
 #import "ImageManager.h"
+#import "TencentOAuthManager.h"
 
 
 
@@ -54,27 +55,27 @@
     
     [self createSendView];
     
+    
     _permissions =  [[NSArray arrayWithObjects:
 					  @"get_user_info",@"add_share", @"add_topic",@"add_one_blog", @"list_album",
 					  @"upload_pic",@"list_photo", @"add_album", @"check_page_fans",nil] retain];
-//    
-//    _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"100266567" andDelegate:self];
     
     /////移动应用 非社区应用。
     _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"100328471"
                                             andDelegate:self];
     
     [_tencentOAuth authorize:_permissions inSafari:NO];
-	_tencentOAuth.redirectURI = @"www.qq.com";
+    _tencentOAuth.redirectURI = @"www.qq.com";
+
     
+   
+//    
+//    TencentOAuthManager * tencentOAuthManager = [TencentOAuthManager defaultManager];
+//    [tencentOAuthManager createTencentQQWithAppId: @"100328471" appPermission:_permissions appRedirectURI:@"www.qq.com" isInSafari:NO delegate:self];
+    
+    
+
 }
-
--(void)getuserInfos
-{
-    [_tencentOAuth getUserInfo];
-
-}
-
 
 #define WEIBO_LOGO_WIDTH    98
 #define WEIBO_LOGO_HEIGHT   30
@@ -119,6 +120,8 @@
     self.wordsNumberLabel.text = [NSString stringWithFormat:@"%d",[contentTextView.text length]];
 }
 
+
+
 - (void)sendSinaWeibo:(id)sender
 {
     [contentTextView resignFirstResponder];
@@ -133,12 +136,9 @@
 								   @"4",@"source",
 								   nil];
 	
-	[_tencentOAuth addShareWithParams:params];
+	 [_tencentOAuth addShareWithParams:params];
 
-    
-    
-    
- 
+
 }
 
 #pragma -mark UITextViewDelegate
@@ -146,6 +146,20 @@
 {
     self.wordsNumberLabel.text = [NSString stringWithFormat:@"%d",[textView.text length]];
 }
+
+
+
+
+
+
+
+
+-(void)getuserInfos
+{
+    
+    [_tencentOAuth getUserInfo];
+}
+
 
 
 
@@ -158,8 +172,8 @@
 	PPDebug(@"登陆成功");
 	
 	NSLog(@"QQ  did login ");
-    
     [self getuserInfos];
+
 }
 
 /**

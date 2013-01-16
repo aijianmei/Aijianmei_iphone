@@ -17,6 +17,7 @@
 #import "TencentWeiboManager.h"
 #import "AppDelegate.h"
 #import "User.h"
+#import "TencentOAuthManager.h"
 
 
 
@@ -326,7 +327,6 @@ const double URLCacheInterval = 86400.0;
 -(void)switchTencentQQModeSwitch:(id)sender{
     
     self.tenCentQQModeSwitch = (UISwitch *)sender;
-    
     if ( [self.tenCentQQModeSwitch isOn]) {
                 
         PPDebug(@" tencent qq  on ");
@@ -489,8 +489,7 @@ const double URLCacheInterval = 86400.0;
                 return;
             }
             
-            [sinaweiboManager.sinaweibo logOut];
-            
+            [[[ TencentOAuthManager defaultManager] tencentOAuth] logout:self];
             
             [self.sinaModeSwitch setOn:NO animated:YES];
             
@@ -779,7 +778,7 @@ const double URLCacheInterval = 86400.0;
                 self.tenCentQQModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
                 [self.tenCentQQModeSwitch addTarget: self action: @selector(switchTencentQQModeSwitch:) forControlEvents:UIControlEventValueChanged];
                 
-                if ([sinaweiboManager.sinaweibo isLoggedIn]) {
+                if ([[[TencentOAuthManager defaultManager] tencentOAuth] isSessionValid]) {
                     
                     [self.tenCentQQModeSwitch setOn:YES animated:NO];
                     
@@ -861,10 +860,12 @@ const double URLCacheInterval = 86400.0;
 }
 
 -(void)loginQQAccount{
-    [self showActivityWithText:@"请稍后"];
-    ShareToQQViewController *vc = [[ShareToQQViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
+    
+        [self showActivityWithText:@"请稍后"];
+        ShareToQQViewController *vc = [[ShareToQQViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        [vc release];
+    
     
 }
 
