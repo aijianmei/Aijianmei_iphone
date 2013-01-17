@@ -61,11 +61,10 @@ static TencentOAuthManager* _globalTencentOAuthManager = nil;
     TencentOAuth *tencent = [[TencentOAuth alloc] initWithAppId:appId
                                             andDelegate:delegate];
     
-    
-    [_tencentOAuth authorize:permissions inSafari:inSafari];
-	 _tencentOAuth.redirectURI = appRedirectURI;
-    
-    
+     [tencent authorize:permissions inSafari:inSafari];
+     tencent.redirectURI = appRedirectURI;
+
+
     self.tencentOAuth =tencent;
     [tencent release];
     

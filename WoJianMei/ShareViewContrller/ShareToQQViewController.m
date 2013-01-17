@@ -61,17 +61,17 @@
 					  @"upload_pic",@"list_photo", @"add_album", @"check_page_fans",nil] retain];
     
     /////移动应用 非社区应用。
-    _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"100328471"
-                                            andDelegate:self];
-    
-    [_tencentOAuth authorize:_permissions inSafari:NO];
-    _tencentOAuth.redirectURI = @"www.qq.com";
+//    _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"100328471"
+//                                            andDelegate:self];
+//    
+//    [_tencentOAuth authorize:_permissions inSafari:NO];
+//    _tencentOAuth.redirectURI = @"www.qq.com";
 
     
    
-//    
-//    TencentOAuthManager * tencentOAuthManager = [TencentOAuthManager defaultManager];
-//    [tencentOAuthManager createTencentQQWithAppId: @"100328471" appPermission:_permissions appRedirectURI:@"www.qq.com" isInSafari:NO delegate:self];
+    
+    TencentOAuthManager * tencentOAuthManager = [TencentOAuthManager defaultManager];
+    [tencentOAuthManager createTencentQQWithAppId: @"100328471" appPermission:_permissions appRedirectURI:@"www.qq.com" isInSafari:NO delegate:self];
     
     
 
@@ -157,7 +157,10 @@
 -(void)getuserInfos
 {
     
-    [_tencentOAuth getUserInfo];
+    
+    [ [[TencentOAuthManager defaultManager] tencentOAuth] getUserInfo];
+    
+    
 }
 
 
@@ -262,6 +265,9 @@
 			return;
 		}
 	}
+    
+    
+    
 };
 
 

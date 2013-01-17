@@ -41,18 +41,15 @@
          andDelegate:(id<UIWebViewDelegate>)_delegate;
 
 
-- (void)authorizeQQWeibo;
+-(void)authorizeQQWeibo;
 -(void)saveDefaultKey;
-- (void)loadDefaultKey ;
-
+-(void)loadDefaultKey ;
 -(void)removeAuthData;
 
-- (void)authorizeQQWeibo ;
 
 
-
--(void)logout;
--(void)login;
+//-(void)logout;
+//-(void)login;
 
 
 

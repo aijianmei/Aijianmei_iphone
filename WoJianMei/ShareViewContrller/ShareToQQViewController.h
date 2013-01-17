@@ -14,7 +14,7 @@
 
  
 
-@interface ShareToQQViewController : PPViewController<TencentSessionDelegate,UIAlertViewDelegate,UITextViewDelegate>
+@interface ShareToQQViewController : PPViewController<TencentSessionDelegate,UIAlertViewDelegate,UITextViewDelegate,TencentRequestDelegate>
 
 
 {

@@ -193,9 +193,9 @@
     ////tencentqqq
     
     
-    NSArray *permissionArray =  [[NSArray arrayWithObjects:
-                                  @"get_user_info",@"add_share", @"add_topic",@"add_one_blog", @"list_album",
-                                  @"upload_pic",@"list_photo", @"add_album", @"check_page_fans",nil] retain];
+//    NSArray *permissionArray =  [[NSArray arrayWithObjects:
+//                                  @"get_user_info",@"add_share", @"add_topic",@"add_one_blog", @"list_album",
+//                                  @"upload_pic",@"list_photo", @"add_album", @"check_page_fans",nil] retain];
     //
     //    /////移动应用 非社区应用。
     //    _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"100328471"
@@ -206,8 +206,8 @@
     //
     
     
-     _tencentOAuthManager = [TencentOAuthManager defaultManager];
-     [_tencentOAuthManager createTencentQQWithAppId: @"100328471" appPermission:permissionArray appRedirectURI:@"www.qq.com" isInSafari:NO delegate:self];
+      _tencentOAuthManager = [TencentOAuthManager defaultManager];
+//     [_tencentOAuthManager createTencentQQWithAppId: @"100328471" appPermission:permissionArray appRedirectURI:@"www.qq.com" isInSafari:NO delegate:self];
     
     
     

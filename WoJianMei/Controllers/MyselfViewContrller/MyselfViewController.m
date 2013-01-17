@@ -17,7 +17,9 @@
 #import "TencentWeiboManager.h"
 #import "AppDelegate.h"
 #import "User.h"
+
 #import "TencentOAuthManager.h"
+
 
 
 
@@ -146,12 +148,9 @@ const double URLCacheInterval = 86400.0;
 }
 
 -(void)test{
-    
-    
+
     [self performSegueWithIdentifier:@"SearchViewController" sender:self];
     
-    
-
 }
 
 
@@ -276,7 +275,6 @@ const double URLCacheInterval = 86400.0;
         
         if (_sina_userInfo) {
             
-            
                     
     }else {
     
@@ -289,8 +287,6 @@ const double URLCacheInterval = 86400.0;
 }
 -(void)clickSettingsButton:(id)sender{
     
-    
-   
     Myself_SettingsViewController *vc = [[Myself_SettingsViewController alloc]init];
     [self.navigationController pushViewController :vc animated:YES];
      vc.user = self.user;
@@ -448,11 +444,20 @@ const double URLCacheInterval = 86400.0;
 {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
-   [appDelegate.sinaWeiboManager.sinaweibo setDelegate:self];
+   [appDelegate.sinaWeiboManager setDelegate:self];
     
     
     return appDelegate.sinaWeiboManager;
 }
+
+- (TencentOAuthManager *)tencentOAuthManager
+{
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    [appDelegate.tencentOAuthManager setDelegate:self];
+    return appDelegate.tencentOAuthManager;
+}
+
 
 #pragma mark -
 #pragma mark - UIAlertViewDelegate
@@ -490,7 +495,6 @@ const double URLCacheInterval = 86400.0;
             }
             
             [[[ TencentOAuthManager defaultManager] tencentOAuth] logout:self];
-            
             [self.sinaModeSwitch setOn:NO animated:YES];
             
         }
@@ -778,7 +782,9 @@ const double URLCacheInterval = 86400.0;
                 self.tenCentQQModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
                 [self.tenCentQQModeSwitch addTarget: self action: @selector(switchTencentQQModeSwitch:) forControlEvents:UIControlEventValueChanged];
                 
-                if ([[[TencentOAuthManager defaultManager] tencentOAuth] isSessionValid]) {
+                
+                
+                if ([[TencentOAuthManager defaultManager] tencentOAuth].accessToken && [[TencentOAuthManager defaultManager] tencentOAuth].expirationDate) {
                     
                     [self.tenCentQQModeSwitch setOn:YES animated:NO];
                     
@@ -849,17 +855,19 @@ const double URLCacheInterval = 86400.0;
     sinaweiboManager = [self sinaweiboManager];
     
     if ([sinaweiboManager.sinaweibo isLoggedIn]) {
-        NSLog(@"Current weibo account is avaiable");
         return;
     }
     
     if (![sinaweiboManager.sinaweibo isAuthValid]) {
         [sinaweiboManager.sinaweibo logIn];
-        NSLog(@"The sina weibo authou is not avaiable");
     }
 }
 
 -(void)loginQQAccount{
+    
+        [self showActivityWithText:@"请稍后"];
+
+      
     
         [self showActivityWithText:@"请稍后"];
         ShareToQQViewController *vc = [[ShareToQQViewController alloc]init];
