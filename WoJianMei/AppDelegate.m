@@ -205,11 +205,11 @@
     //	_tencentOAuth.redirectURI = @"www.qq.com";
     //
     
-    
-      _tencentOAuthManager = [TencentOAuthManager defaultManager];
+//    
+//      _tencentOAuthManager = [TencentOAuthManager defaultManager];
 //     [_tencentOAuthManager createTencentQQWithAppId: @"100328471" appPermission:permissionArray appRedirectURI:@"www.qq.com" isInSafari:NO delegate:self];
-    
-    
+//    
+//    
     
     
 

@@ -232,7 +232,11 @@ const double URLCacheInterval = 86400.0;
     sinaweiboManager = [self sinaweiboManager];
     tencentWeiboManager =[TencentWeiboManager defaultManager];
     
+    NSArray *_permissions =  [[NSArray arrayWithObjects:
+					  @"get_user_info",@"add_share", @"add_topic",@"add_one_blog", @"list_album",
+					  @"upload_pic",@"list_photo", @"add_album", @"check_page_fans",nil] retain];
     
+    [[TencentOAuthManager defaultManager] createTencentQQWithAppId: @"100328471" appPermission:_permissions appRedirectURI:@"www.qq.com" isInSafari:NO delegate:self];
     
     
     
@@ -415,10 +419,8 @@ const double URLCacheInterval = 86400.0;
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     if (image != nil){
-        
         
     [self.navigationController  dismissViewControllerAnimated:YES completion:^{
         [self.headerVImageButton setImage:image forState:UIControlStateNormal];
@@ -426,8 +428,7 @@ const double URLCacheInterval = 86400.0;
         [self storeUserInfo];
         
     }];
-    
-    }
+  }
 }
 
 

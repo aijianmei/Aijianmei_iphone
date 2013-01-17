@@ -11,7 +11,6 @@
 
 @protocol TengxunWeiboDelegate ;
 
-
 @interface TengxunWeibo : NSObject
 
 {
@@ -46,10 +45,8 @@
 -(void)loadDefaultKey ;
 -(void)removeAuthData;
 
-
-
-//-(void)logout;
-//-(void)login;
+-(void)logout;
+-(void)login;
 
 
 

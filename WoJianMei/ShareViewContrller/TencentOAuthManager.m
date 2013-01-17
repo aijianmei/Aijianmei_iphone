@@ -46,6 +46,7 @@ static TencentOAuthManager* _globalTencentOAuthManager = nil;
         _globalTencentOAuthManager = [[TencentOAuthManager alloc] init];
     }
     
+  
     return _globalTencentOAuthManager;
 }
 
@@ -61,15 +62,54 @@ static TencentOAuthManager* _globalTencentOAuthManager = nil;
     TencentOAuth *tencent = [[TencentOAuth alloc] initWithAppId:appId
                                             andDelegate:delegate];
     
-     [tencent authorize:permissions inSafari:inSafari];
-     tencent.redirectURI = appRedirectURI;
 
+         
+    [self loadAuthData];
+    
+    
+    
+    if (_tencentOAuth.accessToken ==nil && _tencentOAuth.expirationDate ==nil && _tencentOAuth.openId ==nil) {
+        
+       
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSDictionary *tencentQQInfo = [defaults objectForKey:@"tencentQQAuthData"];
+        
+        if ([tencentQQInfo objectForKey:@"AccessTokenKey"] && [tencentQQInfo objectForKey:@"ExpirationDateKey"] && [tencentQQInfo objectForKey:@"openId"])
+        {
+            _tencentOAuth.accessToken = [tencentQQInfo objectForKey:@"AccessTokenKey"];
+            _tencentOAuth.expirationDate = [tencentQQInfo objectForKey:@"ExpirationDateKey"];
+            _tencentOAuth.openId = [tencentQQInfo objectForKey:@"OpenId"];
+            
+        }
 
+        
+
+    }
+    
+    
+    [tencent authorize:permissions inSafari:inSafari];
+    
+    
+       tencent.redirectURI = appRedirectURI;
+    
+
+    
     self.tencentOAuth =tencent;
     [tencent release];
+
     
     
-        
+}
+
+- (void)setDelegate:(id<TencentSessionDelegate>)delegate{
+    
+    self.tencentOAuth.sessionDelegate = delegate;
+
+}
+
+-(void)loadAuthData {
+    
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *tencentQQInfo = [defaults objectForKey:@"tencentQQAuthData"];
     
@@ -81,13 +121,6 @@ static TencentOAuthManager* _globalTencentOAuthManager = nil;
         
     }
     
-    
-}
-
-- (void)setDelegate:(id<TencentSessionDelegate>)delegate{
-    
-    self.tencentOAuth.sessionDelegate = delegate;
-
 }
 
 
