@@ -33,21 +33,14 @@
 
 
 typedef enum SOCIAL_NET_WORK {
+    
     SINA_WEIBO_ACCOUNT = 0,
     TENGXUN_QQ_ACOUNT = 1,
-//    RENREN_ACOUNT = 2,
     TENGXUN_WEIBO_ACCOUNT,
-//    DOUBAN_ACOUNT = 4,
-//    YOUR_EMAIL_ACOUNT=5
+
     
 }SOCIAL_NET_WORK;
 
-
-
-enum ALERT_VIEW_TYPE {
-    CHOOSE_IMAGE =0,
-    
-};
 
 
 
@@ -228,9 +221,12 @@ const double URLCacheInterval = 86400.0;
     
     
     
-//   Get the sinaweibomanger
+     //   新浪微博 
     sinaweiboManager = [self sinaweiboManager];
+     //    腾讯微博
     tencentWeiboManager =[TencentWeiboManager defaultManager];
+    
+    //  腾讯QQ
     
     NSArray *_permissions =  [[NSArray arrayWithObjects:
 					  @"get_user_info",@"add_share", @"add_topic",@"add_one_blog", @"list_album",
@@ -239,7 +235,7 @@ const double URLCacheInterval = 86400.0;
     [[TencentOAuthManager defaultManager] createTencentQQWithAppId: @"100328471" appPermission:_permissions appRedirectURI:@"www.qq.com" isInSafari:NO delegate:self];
     
     
-    
+
     [self setBackgroundImageName:@"BackGround.png"];
     [self showBackgroundImage];
 
@@ -299,48 +295,119 @@ const double URLCacheInterval = 86400.0;
     
 }
 
+#pragma mark -
+#pragma mark - UIAlertViewDelegate
 
+// Called when a button is clicked. The view will be automatically dismissed after this call returns
+
+-(void)alertView:(UIAlertView *)_alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+
+{
+    
+    self.alertView = _alertView;
+    ////根据alerview 的类型来确定。
+    switch (self.alertView.tag) {
+        case SINA_WEIBO_ACCOUNT:
+            
+        {
+            if (buttonIndex==0) {
+                [self.sinaModeSwitch setOn:YES animated:YES];
+                return;
+            }
+            
+            [sinaweiboManager.sinaweibo logOut];
+            [self.sinaModeSwitch setOn:NO animated:YES];
+            
+        }
+            break;
+            
+        case TENGXUN_QQ_ACOUNT:
+        {
+            if (buttonIndex==0) {
+                PPDebug(@"TENGXUN_QQ_ACOUNT Cancle logout");
+                [self.tenCentQQModeSwitch setOn:YES animated:YES];
+                return;
+            }
+            
+            [[TencentOAuthManager defaultManager] removeAuthData];
+            [self.tenCentQQModeSwitch setOn:NO animated:YES];
+            
+        }
+            break;
+            
+        case TENGXUN_WEIBO_ACCOUNT:
+        {
+            
+            if (buttonIndex==0) {
+                PPDebug(@"TENGXUN_WEIBO_ACCOUNT Cancle logout");
+                [self.tenCentWeiboModeSwitch setOn:YES animated:YES];
+                return;
+            }
+            
+            [tencentWeiboManager removeAuthData];
+            [self.tenCentWeiboModeSwitch setOn:NO animated:YES];
+        }
+        default:
+            break;
+    }
+}
+
+
+-(void)showAlerViewWithMessage:(NSString *)message withAlerViewTag:(NSInteger)tag
+
+{
+    
+    NSString *string = nil;
+    switch (tag) {
+        case SINA_WEIBO_ACCOUNT:
+        {
+            string = message;
+        }
+            break;
+        case TENGXUN_QQ_ACOUNT:
+        {
+            string = message;
+        }
+            break;
+        case TENGXUN_WEIBO_ACCOUNT:
+        {
+            string = message;
+        }
+            break;
+            
+        default:
+            break;
+    }
+   
+    UIAlertView *alerView  = [[UIAlertView alloc]initWithTitle:@"授权" message:string delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alerView show];
+    [alerView release];
+    
+}
 
 -(void)switchsinaModeSwitch:(id)sender{
     
     self.sinaModeSwitch = (UISwitch *)sender;
     
     if ( [self.sinaModeSwitch isOn]) {
-        NSLog(@"Sina switch is on  ");
-    
-        sinaweiboManager = [self sinaweiboManager];
-        
-        if ([sinaweiboManager.sinaweibo isLoggedIn]) {
-            return;
-        }
+       
         [sinaweiboManager.sinaweibo logIn];
     
-    }else
-    {
-        UIAlertView *alerView1  = [[UIAlertView alloc]initWithTitle:@"授权" message:@"是否解除与新浪微博的绑定？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alerView1 show];
-        [alerView1 release];
-        [alerView1 setTag:SINA_WEIBO_ACCOUNT];
+    }else{
+        
+      [self showAlerViewWithMessage:@"是否解除与新浪微博的绑定？" withAlerViewTag:SINA_WEIBO_ACCOUNT];
     }
 }
 
 -(void)switchTencentQQModeSwitch:(id)sender{
-    
     self.tenCentQQModeSwitch = (UISwitch *)sender;
     if ( [self.tenCentQQModeSwitch isOn]) {
-                
-        PPDebug(@" tencent qq  on ");
-        
+                        
         [self loginQQAccount];
 
     }else
     {
-        UIAlertView *alerView2  = [[UIAlertView alloc]initWithTitle:@"授权" message:@"是否解除与新浪微博的绑定？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alerView2 show];
-        [alerView2 release];
-        [alerView2 setTag:TENGXUN_QQ_ACOUNT];
-        
-        PPDebug(@" tencent qq  off ");
+        [self showAlerViewWithMessage:@"是否解除腾讯QQ的绑定？" withAlerViewTag:TENGXUN_QQ_ACOUNT];
     }
 }
 
@@ -350,32 +417,15 @@ const double URLCacheInterval = 86400.0;
     
     if ( [self.tenCentWeiboModeSwitch isOn]) {
         
-        if (tencentWeiboManager.tengxunWeibo.accessTokenKey && tencentWeiboManager.tengxunWeibo.accessTokenSecret) {
-            
-            [self.tenCentWeiboModeSwitch setOn:YES animated:YES];
-            
-            return;
-        }
-        
-        else{
-        [self showActivityWithText:@"请稍后"];
         [self loginTengxunWeiboAccount];
-            
-        }
+    
     }else
     {
         
-        UIAlertView *alerView3  = [[UIAlertView alloc]initWithTitle:@"解除绑定" message:@"是否解除与腾讯微博的绑定？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alerView3 show];
-        [alerView3 release];
-        [alerView3 setTag:TENGXUN_WEIBO_ACCOUNT];
+        [self showAlerViewWithMessage:@"是否解除与腾讯微博的绑定？" withAlerViewTag:TENGXUN_WEIBO_ACCOUNT];
         
     }
 }
-
-
-
-
 
 
 -(void)viewDidUnload{
@@ -458,69 +508,6 @@ const double URLCacheInterval = 86400.0;
     [appDelegate.tencentOAuthManager setDelegate:self];
     return appDelegate.tencentOAuthManager;
 }
-
-
-#pragma mark -
-#pragma mark - UIAlertViewDelegate
-
-// Called when a button is clicked. The view will be automatically dismissed after this call returns
-
--(void)alertView:(UIAlertView *)_alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-
-{
-
-    self.alertView = _alertView;
-////根据alerview 的类型来确定。
-    switch (self.alertView.tag) {
-        case SINA_WEIBO_ACCOUNT:
-            
-        {
-            if (buttonIndex==0) {
-                PPDebug(@"SINA_WEIBO_ACCOUNT Cancle logout");
-                [self.sinaModeSwitch setOn:YES animated:YES];
-                return;
-            } 
-            
-            [sinaweiboManager.sinaweibo logOut];
-            [self.sinaModeSwitch setOn:NO animated:YES];
-
-        }
-            break;
-            
-            case TENGXUN_QQ_ACOUNT:
-        {
-            if (buttonIndex==0) {
-                PPDebug(@"TENGXUN_QQ_ACOUNT Cancle logout");
-                [self.tenCentQQModeSwitch setOn:YES animated:YES];
-                return;
-            }
-            
-            [[[ TencentOAuthManager defaultManager] tencentOAuth] logout:self];
-            [self.sinaModeSwitch setOn:NO animated:YES];
-            
-        }
-            break;
-            
-        case TENGXUN_WEIBO_ACCOUNT:
-        {
-          
-            if (buttonIndex==0) {
-                PPDebug(@"TENGXUN_WEIBO_ACCOUNT Cancle logout");
-                [self.tenCentWeiboModeSwitch setOn:YES animated:YES];
-                return;
-            }
-            
-            [tencentWeiboManager removeAuthData];
-            [self.tenCentWeiboModeSwitch setOn:NO animated:YES];
-        }
-        default:
-            break;
-    }
-
-}
-
-
-
 
 #pragma mark ----------------------------------------————————————————
 #pragma mark  tableviewDelegate Method
@@ -785,7 +772,9 @@ const double URLCacheInterval = 86400.0;
                 
                 
                 
-                if ([[TencentOAuthManager defaultManager] tencentOAuth].accessToken && [[TencentOAuthManager defaultManager] tencentOAuth].expirationDate) {
+              
+                
+                if ( [[[TencentOAuthManager defaultManager] tencentOAuth] isSessionValid]) {
                     
                     [self.tenCentQQModeSwitch setOn:YES animated:NO];
                     
@@ -849,82 +838,28 @@ const double URLCacheInterval = 86400.0;
     return cell;
 }
 
+
+
 #pragma mark-
 -(void)loginSinaAccount
 {
+
     [self showActivityWithText:@"请稍后"];
-    sinaweiboManager = [self sinaweiboManager];
+    [[self sinaweiboManager].sinaweibo logIn];
     
-    if ([sinaweiboManager.sinaweibo isLoggedIn]) {
-        return;
-    }
-    
-    if (![sinaweiboManager.sinaweibo isAuthValid]) {
-        [sinaweiboManager.sinaweibo logIn];
-    }
 }
 
 -(void)loginQQAccount{
     
-        [self showActivityWithText:@"请稍后"];
-
-      
+   [[TencentOAuthManager defaultManager].tencentOAuth login];
     
-        [self showActivityWithText:@"请稍后"];
-        ShareToQQViewController *vc = [[ShareToQQViewController alloc]init];
-        [self.navigationController pushViewController:vc animated:YES];
-        [vc release];
-    
-    
-}
-
--(void)loginRenrenAccount{
-    
-       
 }
 
 -(void)loginTengxunWeiboAccount{
     
-    [self showActivityWithText:@"请稍后"];
     ShareToQQWeiboController *vc  = [[ShareToQQWeiboController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
-}
-
--(void)loginDoubanAccount{
-    
-}
-
--(void)loginYouremailAccount{
-    
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (indexPath.section ==0) {
-        switch (indexPath.row) {
-            case SINA_WEIBO_ACCOUNT:
-//                [self loginSinaAccount];
-                break;
-            case TENGXUN_QQ_ACOUNT:
-//                [self loginQQAccount];
-                break;
-//            case RENREN_ACOUNT:
-//                [self loginRenrenAccount];
-//                break;
-            case TENGXUN_WEIBO_ACCOUNT:
-//                [self loginTengxunWeiboAccount];
-                break;
-//            case DOUBAN_ACOUNT:
-//                [self loginDoubanAccount];
-//                break;
-//            case YOUR_EMAIL_ACOUNT:
-//                [self loginYouremailAccount];
-//                break;
-            default:
-                break;
-        }
-    }
 }
 
 

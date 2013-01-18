@@ -90,6 +90,9 @@ static TencentWeiboManager* _globalTengxunweiboManager = nil;
         NSDictionary *params = [NSURL parseURLQueryString:retString];
          self.tengxunWeibo.requestTokenKey = [params objectForKey:@"oauth_token"];
          self.tengxunWeibo.requestTokenSecret = [params objectForKey:@"oauth_token_secret"];
+        
+        
+        ////进行授权页面的载入
         [self.tengxunWeibo authorizeQQWeibo];
     }
 }
@@ -103,8 +106,13 @@ static TencentWeiboManager* _globalTengxunweiboManager = nil;
 - (void)loadAuthData{
     
     
-    self.tengxunWeibo.accessTokenKey = [[NSUserDefaults standardUserDefaults] valueForKey:kQQAccessTokenKey];
-    self.tengxunWeibo.accessTokenSecret = [[NSUserDefaults standardUserDefaults] valueForKey:kQQAccessTokenSecret];
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:kQQAccessTokenKey] && [[NSUserDefaults standardUserDefaults] valueForKey:kQQAccessTokenSecret]) {
+        
+        self.tengxunWeibo.accessTokenKey = [[NSUserDefaults standardUserDefaults] valueForKey:kQQAccessTokenKey];
+        self.tengxunWeibo.accessTokenSecret = [[NSUserDefaults standardUserDefaults] valueForKey:kQQAccessTokenSecret];
+        
+    }
+    
     
 }
 
@@ -132,6 +140,7 @@ static TencentWeiboManager* _globalTengxunweiboManager = nil;
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kQQAccessTokenKey];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kQQAccessTokenSecret];
+
     
     [[NSUserDefaults standardUserDefaults] synchronize];
     
@@ -145,8 +154,6 @@ static TencentWeiboManager* _globalTengxunweiboManager = nil;
     }
     
 }
-
-
 
 
 @end
