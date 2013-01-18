@@ -208,10 +208,7 @@ const double URLCacheInterval = 86400.0;
     [self.dataTableView setTableHeaderView:self.myHeaderView];
     
 
-    
-    
-    
-    
+
      //   新浪微博 
     sinaweiboManager = [self sinaweiboManager];
      //    腾讯微博

@@ -16,10 +16,7 @@
 #define kQQAccessTokenSecret	@"QQAccessTokenSecret"
 
 
-
-
 static TencentWeiboManager* _globalTengxunweiboManager = nil;
-
 
 
 @implementation TencentWeiboManager
@@ -27,7 +24,6 @@ static TencentWeiboManager* _globalTengxunweiboManager = nil;
 @synthesize connection;
 @synthesize qqWeiBoAppKey;
 @synthesize qqWeiBoAppSecret;
-
 
 
 -(void)dealloc{
