@@ -11,7 +11,6 @@
 #import "ImageManager.h"
 #import "Myself_SettingsViewController.h"
 #import "ShareToSinaController.h"
-#import "ShareToQQWeiboController.h"
 #import "ShareToQQViewController.h"
 #import "SinaweiboManager.h"
 #import "TencentWeiboManager.h"
@@ -86,25 +85,17 @@ const double URLCacheInterval = 86400.0;
     
     
     [super dealloc];
-    
     [_sinaModeSwitch release];
     [_tenCentWeiboModeSwitch release];
     [_tenCentQQModeSwitch release];
-    
     [_headerVImageButton release];
     [_footerVImageV release];
     [_myHeaderView release];
     [_userNameLabel release];
     [_mottoLabel release];
     [_userGenderLabel release];
-    
     [_sina_userInfo release], _sina_userInfo = nil;
-    
-    
     [_user release];
-
-    
-
 }
 
 
@@ -225,6 +216,9 @@ const double URLCacheInterval = 86400.0;
     sinaweiboManager = [self sinaweiboManager];
      //    腾讯微博
     tencentWeiboManager =[TencentWeiboManager defaultManager];
+    [tencentWeiboManager createTengxunweiboWithAppKey:nil appSecret:nil requestTokenKey:nil requestTokenSecret:nil andDelegate:self];
+    
+    
     
     //  腾讯QQ
     
@@ -253,8 +247,6 @@ const double URLCacheInterval = 86400.0;
     /* prepare to use our own on-disk cache */
    
     [self upgradeUI];
-
-//    self.dataList = [NSArray arrayWithObjects:@"新浪微博",@"QQ账号",@"人人网账号",@"腾讯微博账号",@"豆瓣网账号",@"我的邮箱账号",@"", nil];
     self.dataList = [NSArray arrayWithObjects:@"新浪微博",@"QQ登陆",@"腾讯微博账号", nil];
    
 
@@ -329,7 +321,9 @@ const double URLCacheInterval = 86400.0;
                 return;
             }
             
-            [[TencentOAuthManager defaultManager] removeAuthData];
+           [[TencentOAuthManager defaultManager].tencentOAuth logOut];
+            
+            
             [self.tenCentQQModeSwitch setOn:NO animated:YES];
             
         }
@@ -362,6 +356,7 @@ const double URLCacheInterval = 86400.0;
         case SINA_WEIBO_ACCOUNT:
         {
             string = message;
+            
         }
             break;
         case TENGXUN_QQ_ACOUNT:
@@ -380,6 +375,7 @@ const double URLCacheInterval = 86400.0;
     }
    
     UIAlertView *alerView  = [[UIAlertView alloc]initWithTitle:@"授权" message:string delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    alerView.tag = tag;
     [alerView show];
     [alerView release];
     
@@ -771,10 +767,8 @@ const double URLCacheInterval = 86400.0;
                 [self.tenCentQQModeSwitch addTarget: self action: @selector(switchTencentQQModeSwitch:) forControlEvents:UIControlEventValueChanged];
                 
                 
-                
-              
-                
-                if ( [[[TencentOAuthManager defaultManager] tencentOAuth] isSessionValid]) {
+            
+                if ( [[[TencentOAuthManager defaultManager] tencentOAuth] isLogIn]) {
                     
                     [self.tenCentQQModeSwitch setOn:YES animated:NO];
                     
@@ -809,7 +803,6 @@ const double URLCacheInterval = 86400.0;
                 }else
                     
                 {
-                    
                     [self.tenCentWeiboModeSwitch setOn:NO animated:NO];
                     
                 }
@@ -843,23 +836,16 @@ const double URLCacheInterval = 86400.0;
 #pragma mark-
 -(void)loginSinaAccount
 {
-
     [self showActivityWithText:@"请稍后"];
     [[self sinaweiboManager].sinaweibo logIn];
-    
 }
 
 -(void)loginQQAccount{
-    
    [[TencentOAuthManager defaultManager].tencentOAuth login];
-    
 }
 
 -(void)loginTengxunWeiboAccount{
     
-    ShareToQQWeiboController *vc  = [[ShareToQQWeiboController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
 }
 
 
@@ -903,6 +889,37 @@ const double URLCacheInterval = 86400.0;
     [self.dataTableView reloadData];
 }
 
+
+#pragma mark -
+#pragma TencentQQDelegate methods
+
+-(void)tencentDidLogin{
+    
+    PPDebug(@"TencentQQ login");
+    [[TencentOAuthManager defaultManager] storeAuthData];
+    [self.dataTableView reloadData];
+
+}
+
+-(void)tencentDidLogout{
+    
+    PPDebug(@"TencentQQ logout");
+    [[TencentOAuthManager defaultManager] removeAuthData];
+    [self.dataTableView reloadData];
+
+}
+
+-(void)tencentDidNotLogin:(BOOL)cancelled{
+
+}
+
+
+- (void)tencent:(TencentOAuth *)tencentOAuth accessTokenInvalidOrExpired:(NSError *)error
+{
+    PPDebug(@"sinaweiboAccessTokenInvalidOrExpired %@", error);
+    [[TencentOAuthManager defaultManager] removeAuthData];
+    [self.dataTableView reloadData];
+}
 
 
 

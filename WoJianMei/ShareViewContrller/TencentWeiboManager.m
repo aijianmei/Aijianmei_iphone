@@ -7,9 +7,9 @@
 //
 
 #import "TencentWeiboManager.h"
-#import "QWeiboSyncApi.h"
-#import "QWeiboAsyncApi.h"
-#import "NSURL+QAdditions.h"
+//#import "QWeiboSyncApi.h"
+//#import "QWeiboAsyncApi.h"
+//#import "NSURL+QAdditions.h"
 
 
 #define kQQAccessTokenKey       @"QQAccessTokenKey"
@@ -42,19 +42,6 @@ static TencentWeiboManager* _globalTengxunweiboManager = nil;
 }
 
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-    
-        TengxunWeibo *object = [[TengxunWeibo alloc]init];
-        self.tengxunWeibo = object;
-        [object release];
-        [self loadAuthData];
-    }
-
-    return self;
-}
 
 + (TencentWeiboManager *)defaultManager
 {
@@ -79,21 +66,23 @@ static TencentWeiboManager* _globalTengxunweiboManager = nil;
     self.tengxunWeibo = tempTengxunWeibo;    
     [tempTengxunWeibo release];
     
-    [self.tengxunWeibo loadDefaultKey];
+     [self.tengxunWeibo loadDefaultKey];
+    
     
     if (self.tengxunWeibo.accessTokenKey == nil || self.tengxunWeibo.accessTokenSecret ==nil) {
         //获取request_token
-        QWeiboSyncApi *api = [[[QWeiboSyncApi alloc] init] autorelease];
-        NSString *retString = [api getRequestTokenWithConsumerKey:self.qqWeiBoAppKey consumerSecret:self.qqWeiBoAppSecret];
-       
-        ///已经获取了request_Token_Key  and  request_Token_Secret 
-        NSDictionary *params = [NSURL parseURLQueryString:retString];
-         self.tengxunWeibo.requestTokenKey = [params objectForKey:@"oauth_token"];
-         self.tengxunWeibo.requestTokenSecret = [params objectForKey:@"oauth_token_secret"];
-        
-        
-        ////进行授权页面的载入
-        [self.tengxunWeibo authorizeQQWeibo];
+//        QWeiboSyncApi *api = [[[QWeiboSyncApi alloc] init] autorelease];
+//        NSString *retString = [api getRequestTokenWithConsumerKey:self.qqWeiBoAppKey consumerSecret:self.qqWeiBoAppSecret];
+//       
+//        ///已经获取了request_Token_Key  and  request_Token_Secret  and expiredDate
+//        NSDictionary *params = [NSURL parseURLQueryString:retString];
+//         self.tengxunWeibo.requestTokenKey = [params objectForKey:@"oauth_token"];
+//         self.tengxunWeibo.requestTokenSecret = [params objectForKey:@"oauth_token_secret"];
+//        NSString *expiredDate = [params objectForKey:@"expires_in"];
+//        NSLog(@"Tell me about the %@",expiredDate);
+//        
+//        ////进行授权页面的载入
+//        [self.tengxunWeibo authorizeQQWeibo];
     }
 }
 

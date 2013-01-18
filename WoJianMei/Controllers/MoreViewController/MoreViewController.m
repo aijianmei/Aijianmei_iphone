@@ -11,7 +11,6 @@
 #import "More_SettingsViewController.h"
 #import "UserService.h"
 #import "ShareToSinaController.h"
-#import "ShareToQQWeiboController.h"
 #import "ImageManager.h"
 #import "FontSize.h"
 
@@ -498,9 +497,9 @@ typedef enum {
                 break;
             case SEND_TENGXUN_WEIBO:
             {
-                ShareToQQWeiboController *sc = [[ShareToQQWeiboController alloc]init];
-                [self.navigationController pushViewController:sc animated:YES];
-                [sc release];
+//                ShareToQQWeiboController *sc = [[ShareToQQWeiboController alloc]init];
+//                [self.navigationController pushViewController:sc animated:YES];
+//                [sc release];
                 
             }
                 break;

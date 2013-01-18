@@ -39,23 +39,6 @@ static TencentOAuthManager* _globalTencentOAuthManager = nil;
     
 }
 
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        
-        TencentOAuth *object = [[TencentOAuth alloc]init];
-        self.tencentOAuth = object;
-        [object release];
-        [self loadAuthData];
-    }
-    
-    return self;
-}
-
-
-
 + (TencentOAuthManager *)defaultManager
 {
     if (_globalTencentOAuthManager == nil) {
@@ -85,21 +68,25 @@ static TencentOAuthManager* _globalTencentOAuthManager = nil;
     self.tencentOAuth =tencent;
     [tencent release];
 
-    [self loadAuthData];
     
     if (_tencentOAuth.accessToken ==nil && _tencentOAuth.expirationDate ==nil && _tencentOAuth.openId ==nil) {
         
        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSDictionary *tencentQQInfo = [defaults objectForKey:@"tencentQQAuthData"];
+//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//        NSDictionary *tencentQQInfo = [defaults objectForKey:@"tencentQQAuthData"];
+//        
+//        if ([tencentQQInfo objectForKey:@"AccessTokenKey"] && [tencentQQInfo objectForKey:@"ExpirationDateKey"] && [tencentQQInfo objectForKey:@"openId"])
+//        {
+//            _tencentOAuth.accessToken = [tencentQQInfo objectForKey:@"AccessTokenKey"];
+//            _tencentOAuth.expirationDate = [tencentQQInfo objectForKey:@"ExpirationDateKey"];
+//            _tencentOAuth.openId = [tencentQQInfo objectForKey:@"OpenId"];
+//            
+//        }
         
-        if ([tencentQQInfo objectForKey:@"AccessTokenKey"] && [tencentQQInfo objectForKey:@"ExpirationDateKey"] && [tencentQQInfo objectForKey:@"openId"])
-        {
-            _tencentOAuth.accessToken = [tencentQQInfo objectForKey:@"AccessTokenKey"];
-            _tencentOAuth.expirationDate = [tencentQQInfo objectForKey:@"ExpirationDateKey"];
-            _tencentOAuth.openId = [tencentQQInfo objectForKey:@"OpenId"];
-            
-        }
+        
+        
+        [self loadAuthData];
+
     }
 }
 
@@ -139,6 +126,17 @@ static TencentOAuthManager* _globalTencentOAuthManager = nil;
 - (void)removeAuthData{
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"tencentQQAuthData"];
+    
+     NSDictionary *dictinary =  [[NSUserDefaults standardUserDefaults] objectForKey:@"tencentQQAuthData"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    
+    NSLog(@"%@",[dictinary description]);
+    
+    
 }
+
+
+
 
 @end
