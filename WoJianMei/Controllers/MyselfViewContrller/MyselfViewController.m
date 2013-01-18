@@ -16,11 +16,12 @@
 #import "TencentWeiboManager.h"
 #import "AppDelegate.h"
 #import "User.h"
-
 #import "TencentOAuthManager.h"
 
-
-
+#import "TCWBGlobalUtil.h"
+#import "FileStreame.h"
+#import "key.h"
+#import <CoreText/CoreText.h>
 
 
 #define USER @"user"
@@ -30,37 +31,26 @@
 #define USER_GENDER @"gender"
 
 
+#ifndef WiressSDKDemoAppKey
+#error
+#endif
+
+#ifndef WiressSDKDemoAppSecret
+#error
+#endif
+
+#define TCWBAlertViewLogOutTag          100
+#define TCWBAlertViewLogInTag           101
+
 
 typedef enum SOCIAL_NET_WORK {
-    
     SINA_WEIBO_ACCOUNT = 0,
     TENGXUN_QQ_ACOUNT = 1,
     TENGXUN_WEIBO_ACCOUNT,
-
-    
 }SOCIAL_NET_WORK;
 
 
-
-
-
-/* cache update interval in seconds */
-const double URLCacheInterval = 86400.0;
-
-@interface NSObject (PrivateMethods)
-
-- (void) initUI;
-- (void) displayImageWithURL:(NSURL *)theURL;
-- (void) displayCachedImage;
-
-
-@end
-    
-    
-    
 @interface MyselfViewController ()
-
-
 @end
 
 @implementation MyselfViewController
@@ -72,19 +62,15 @@ const double URLCacheInterval = 86400.0;
 @synthesize userNameLabel=_userNameLabel;
 @synthesize mottoLabel = _mottoLabel;
 @synthesize userGenderLabel = _userGenderLabel;
-
 @synthesize sina_userInfo =_sina_userInfo;
 @synthesize user =_user;
-
-
-
+@synthesize weiboEngine;
 
 
 
 -(void)dealloc{
     
     
-    [super dealloc];
     [_sinaModeSwitch release];
     [_tenCentWeiboModeSwitch release];
     [_tenCentQQModeSwitch release];
@@ -96,6 +82,26 @@ const double URLCacheInterval = 86400.0;
     [_userGenderLabel release];
     [_sina_userInfo release], _sina_userInfo = nil;
     [_user release];
+    [weiboEngine release],weiboEngine = nil;
+    [super dealloc];
+}
+
+-(void)viewDidUnload{
+    
+    [super viewDidUnload];
+    self.headerVImageButton =nil;
+    self.userNameLabel = nil;
+    self.mottoLabel = nil;
+    self.sinaModeSwitch =nil;
+    self.tenCentWeiboModeSwitch=nil;
+    self.tenCentQQModeSwitch =nil;
+    self.headerVImageButton =nil;
+    self.footerVImageV =nil;
+    self.myHeaderView =nil;
+    self.userNameLabel =nil;
+    self.mottoLabel =nil;
+    self.userGenderLabel =nil;
+    
 }
 
 
@@ -136,10 +142,6 @@ const double URLCacheInterval = 86400.0;
     [self performSegueWithIdentifier:@"SearchViewController" sender:self];
     
 }
-
-
-
-
 
 -(void)initUI{
     
@@ -189,10 +191,7 @@ const double URLCacheInterval = 86400.0;
     [self.myHeaderView addSubview:self.userGenderLabel];
     
     
-    
-    
-    
-    
+
  //////set the motto 
     self.mottoLabel = [[UILabel alloc]initWithFrame:CGRectMake(120, 70, 200, 30)];
     [_mottoLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:12]];
@@ -211,11 +210,6 @@ const double URLCacheInterval = 86400.0;
 
      //   新浪微博 
     sinaweiboManager = [self sinaweiboManager];
-     //    腾讯微博
-    tencentWeiboManager =[TencentWeiboManager defaultManager];
-    [tencentWeiboManager createTengxunweiboWithAppKey:nil appSecret:nil requestTokenKey:nil requestTokenSecret:nil andDelegate:self];
-    
-    
     
     //  腾讯QQ
     
@@ -245,35 +239,325 @@ const double URLCacheInterval = 86400.0;
    
     [self upgradeUI];
     self.dataList = [NSArray arrayWithObjects:@"新浪微博",@"QQ登陆",@"腾讯微博账号", nil];
-   
-
-    
     sinaweiboManager = [self sinaweiboManager] ;
     
-    SinaWeibo *sinaweibo = [sinaweiboManager sinaweibo];
-    BOOL authValid = sinaweibo.isAuthValid;
+    TCWBEngine *engine = [[TCWBEngine alloc] initWithAppKey:WiressSDKDemoAppKey andSecret:WiressSDKDemoAppSecret andRedirectUrl:@"http://www.aijianmei.com"];
+    [engine setRootViewController:self];
+    //[engine setRedirectURI:@"http://www.ying7wang7.com"];
+    self.weiboEngine = engine;
+    [engine release];
 
-    if (authValid) {
-        
-        [sinaweibo requestWithURL:@"users/show.json"
-                           params:[NSMutableDictionary dictionaryWithObject:sinaweibo.userID forKey:@"uid"]
-                       httpMethod:@"GET"
-                         delegate:self];
-
-        
-        
-        if (_sina_userInfo) {
-            
-                    
-    }else {
-    
-        [sinaweibo logInInView:self.view];
-        
     }
+
+#ifdef USE_UI_TWEET
+//点击一键分享(自带登录功能)
+- (void)onLogInOAuthButtonPressed
+{
+    // 分享(自带登录功能)
+    [self.weiboEngine UIBroadCastMsgWithContent:@"qq"
+                                       andImage:[UIImage imageNamed:@"test.png"]
+                                    parReserved:nil
+                                       delegate:self
+                                    onPostStart:@selector(postStart)
+                                  onPostSuccess:@selector(createSuccess:)
+                                  onPostFailure:@selector(createFail:)];
+    
 }
 
+#endif
 
+
+
+
+
+#pragma mark ----------------------------------------————————————————
+#pragma mark  tableviewDelegate Method
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 4;
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    
+    switch (section) {
+        case 0:
+        {
+            return 2;
+        }
+            break;
+        case 1:
+        {
+            return 2;
+        }
+            break;
+        case 2:
+        {
+            return 2;
+        }
+            break;
+        case 3:
+        {
+            return 3;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    NSString *CellIdentifier = [MyselfTableViewCell getCellIdentifier];
+    
+    MyselfTableViewCell *cell = (MyselfTableViewCell *)[self.dataTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    // Configure the cell...
+    
+    if (cell) {
+        cell = [[[MyselfTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        
+        cell.textLabel.text = [self.dataList objectAtIndex:indexPath.row];
+        [cell.textLabel setFont:[UIFont systemFontOfSize:14]];
+        cell.textLabel.textColor=[UIColor colorWithRed:0x46/255.0 green:0x46/255.0 blue:0x46/255.0 alpha:1.0];
+    }
+    
+    if (indexPath.section==0) {
+        switch ([indexPath row]) {
+            case 0:
+            {
+                
+                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
+                [leftButton setTitle:@"私信" forState:UIControlStateNormal];
+                [leftButton addTarget:self
+                               action:@selector(theActionYouWant:)
+                     forControlEvents:UIControlEventTouchUpInside];
+                [cell addSubview:leftButton];
+                
+                
+                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
+                [rightButton setTitle:@"预约" forState:UIControlStateNormal];
+                [rightButton addTarget:self
+                                action:@selector(theActionYouWant:)
+                      forControlEvents:UIControlEventTouchDragOutside];
+                [cell addSubview:rightButton];
+                
+            }
+                
+                break;
+            case 1:
+            {
+                
+                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
+                [leftButton setTitle:@"评论" forState:UIControlStateNormal];
+                [leftButton addTarget:self
+                               action:@selector(theActionYouWant:)
+                     forControlEvents:UIControlEventTouchUpInside];
+                [cell addSubview:leftButton];
+                
+                
+                
+                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
+                [rightButton setTitle:@"@我" forState:UIControlStateNormal];
+                [rightButton addTarget:self
+                                action:@selector(theActionYouWant:)
+                      forControlEvents:UIControlEventTouchDragOutside];
+                [cell addSubview:rightButton];
+                
+            }
+                
+                break;
+            default:
+                break;
+        }
+    }
+    
+    
+    if (indexPath.section==1) {
+        switch ([indexPath row]) {
+            case 0:
+            {
+                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
+                [leftButton setTitle:@"相册" forState:UIControlStateNormal];
+                [leftButton addTarget:self
+                               action:@selector(theActionYouWant:)
+                     forControlEvents:UIControlEventTouchUpInside];
+                [cell addSubview:leftButton];
+                
+                
+                
+                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
+                [rightButton setTitle:@"收藏" forState:UIControlStateNormal];
+                [rightButton addTarget:self
+                                action:@selector(theActionYouWant:)
+                      forControlEvents:UIControlEventTouchDragOutside];
+                [cell addSubview:rightButton];
+            }                break;
+            case 1:
+            {
+                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
+                [leftButton setTitle:@"好友" forState:UIControlStateNormal];
+                [leftButton addTarget:self
+                               action:@selector(theActionYouWant:)
+                     forControlEvents:UIControlEventTouchUpInside];
+                [cell addSubview:leftButton];
+                
+                
+                
+                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
+                [rightButton setTitle:@"粉丝" forState:UIControlStateNormal];
+                [rightButton addTarget:self
+                                action:@selector(theActionYouWant:)
+                      forControlEvents:UIControlEventTouchDragOutside];
+                [cell addSubview:rightButton];
+                
+            }
+                break;
+            default:
+                break;
+        }
+    }
+    
+    if (indexPath.section==2) {
+        switch ([indexPath row]) {
+            case 0:
+            {
+                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
+                [leftButton setTitle:@"消息" forState:UIControlStateNormal];
+                [leftButton addTarget:self
+                               action:@selector(theActionYouWant:)
+                     forControlEvents:UIControlEventTouchUpInside];
+                [cell addSubview:leftButton];
+                
+                
+                
+                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
+                [rightButton setTitle:@"消息" forState:UIControlStateNormal];
+                [rightButton addTarget:self
+                                action:@selector(theActionYouWant:)
+                      forControlEvents:UIControlEventTouchDragOutside];
+                [cell addSubview:rightButton];
+                
+                
+                
+            }
+                break;
+            case 1:
+            {
+                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
+                [leftButton setTitle:@"消息" forState:UIControlStateNormal];
+                [leftButton addTarget:self
+                               action:@selector(theActionYouWant:)
+                     forControlEvents:UIControlEventTouchUpInside];
+                [cell addSubview:leftButton];
+                
+                
+                
+                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
+                [rightButton setTitle:@"消息" forState:UIControlStateNormal];
+                [rightButton addTarget:self
+                                action:@selector(theActionYouWant:)
+                      forControlEvents:UIControlEventTouchDragOutside];
+                [cell addSubview:rightButton];
+                
+            }
+                break;
+            default:
+                break;
+        }
+    }
+    
+    if (indexPath.section==3) {
+        switch ([indexPath row]) {
+            case SINA_WEIBO_ACCOUNT:
+                cell.imageView.image =[ImageManager weiboImage];
+                cell.textLabel.text =@"新浪微博";
+                
+                self.sinaModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+                [self.sinaModeSwitch addTarget: self action: @selector(switchsinaModeSwitch:) forControlEvents:UIControlEventValueChanged];
+                
+                if ([sinaweiboManager.sinaweibo isLoggedIn]) {
+                    [self.sinaModeSwitch setOn:YES animated:NO];
+                }else
+                    
+                {
+                    [self.sinaModeSwitch setOn:NO animated:NO];
+                }
+                cell.accessoryView = self.sinaModeSwitch;
+                
+                break;
+            case TENGXUN_QQ_ACOUNT:
+                cell.textLabel.text =@"QQ账号";
+                [cell.detailTextLabel setText: @"未绑定"];
+                cell.imageView.image =[ImageManager qqImage];
+                self.tenCentQQModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+                [self.tenCentQQModeSwitch addTarget: self action: @selector(switchTencentQQModeSwitch:) forControlEvents:UIControlEventValueChanged];
+                
+                
+                
+                if ( [[[TencentOAuthManager defaultManager] tencentOAuth] isLogIn]) {
+                    
+                    [self.tenCentQQModeSwitch setOn:YES animated:NO];
+                    
+                }else
+                    
+                {
+                    [self.tenCentQQModeSwitch setOn:NO animated:NO];
+                }
+                
+                cell.accessoryView = self.tenCentQQModeSwitch;
+                break;
+            case TENGXUN_WEIBO_ACCOUNT:
+                cell.textLabel.text =@"腾讯微博账号";
+                cell.detailTextLabel.text =@"未绑定";
+                cell.imageView.image =[ImageManager tengxunWeiboImage];
+                
+                self.tenCentWeiboModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+                [self.tenCentWeiboModeSwitch addTarget: self action: @selector(switchTencentWeiboModeSwitch:) forControlEvents:UIControlEventValueChanged];
+                
+                
+                if (tencentWeiboManager.tengxunWeibo.accessTokenKey && tencentWeiboManager.tengxunWeibo.accessTokenSecret) {
+                    
+                    [self.tenCentWeiboModeSwitch setOn:YES animated:NO];
+                    
+                    
+                }else
+                    
+                {
+                    [self.tenCentWeiboModeSwitch setOn:NO animated:NO];
+                    
+                }
+                cell.accessoryView = self.tenCentWeiboModeSwitch;
+                break;
+            default:
+                break;
+        }
+    }
+    
+    
+    return cell;
+}
+
 -(void)clickSettingsButton:(id)sender{
     
     Myself_SettingsViewController *vc = [[Myself_SettingsViewController alloc]init];
@@ -330,12 +614,10 @@ const double URLCacheInterval = 86400.0;
         {
             
             if (buttonIndex==0) {
-                PPDebug(@"TENGXUN_WEIBO_ACCOUNT Cancle logout");
                 [self.tenCentWeiboModeSwitch setOn:YES animated:YES];
                 return;
             }
             
-            [tencentWeiboManager removeAuthData];
             [self.tenCentWeiboModeSwitch setOn:NO animated:YES];
         }
         default:
@@ -421,14 +703,6 @@ const double URLCacheInterval = 86400.0;
 }
 
 
--(void)viewDidUnload{
-
-    [super viewDidUnload];
-    self.headerVImageButton =nil;
-    self.userNameLabel = nil;
-    self.mottoLabel = nil;
-    
-}
 -(void)viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:YES];
@@ -476,13 +750,8 @@ const double URLCacheInterval = 86400.0;
 
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
-    
-    PPDebug(@"This si call");
     [self.navigationController dismissModalViewControllerAnimated:YES];
-
-
 }
-
 
 - (SinaweiboManager *)sinaweiboManager
 {
@@ -502,334 +771,6 @@ const double URLCacheInterval = 86400.0;
     return appDelegate.tencentOAuthManager;
 }
 
-#pragma mark ----------------------------------------————————————————
-#pragma mark  tableviewDelegate Method
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;    // fixed font style. use custom view (UILabel) if you want something different
-{
-    return nil;
-}
-
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 4;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    
-    switch (section) {
-        case 0:
-        {
-            return 2;
-        }
-            break;
-        case 1:
-        {
-            return 2;
-        }
-            break;
-        case 2:
-        {
-            return 2;
-        }
-            break;
-        case 3:
-        {
-            return 3;
-        }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return 3;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-     NSString *CellIdentifier = [MyselfTableViewCell getCellIdentifier];
-
-    MyselfTableViewCell *cell = (MyselfTableViewCell *)[self.dataTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    // Configure the cell...
-    
-    if (cell) {
-        cell = [[[MyselfTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        
-        cell.textLabel.text = [self.dataList objectAtIndex:indexPath.row];
-        [cell.textLabel setFont:[UIFont systemFontOfSize:14]];
-        cell.textLabel.textColor=[UIColor colorWithRed:0x46/255.0 green:0x46/255.0 blue:0x46/255.0 alpha:1.0];
-        
-//        UIImage* image = [UIImage imageNamed:@"szicon_a.png"];
-//        UIImageView* cellAccessoryView = [[UIImageView alloc] initWithImage:image];
-//        cell.accessoryView = cellAccessoryView;
-//        [cellAccessoryView release];
-        
-              
-//        cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:cell.frame] autorelease];
-//        cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:0x2F/255.0 green:0x76/255.0 blue:0xB9/255.0 alpha:1.0];
-        
-    
-
-    }
-    
-    if (indexPath.section==0) {
-        switch ([indexPath row]) {
-            case 0:
-            {
-               
-                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
-                [leftButton setTitle:@"私信" forState:UIControlStateNormal];
-                [leftButton addTarget:self
-                      action:@selector(theActionYouWant:)
-            forControlEvents:UIControlEventTouchUpInside];
-                [cell addSubview:leftButton];
-            
-                
-                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
-                [rightButton setTitle:@"预约" forState:UIControlStateNormal];
-                [rightButton addTarget:self
-                                action:@selector(theActionYouWant:)
-                      forControlEvents:UIControlEventTouchDragOutside];
-                [cell addSubview:rightButton];
-
-            }
-                
-                break;
-            case 1:
-            {
-                
-                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
-                [leftButton setTitle:@"评论" forState:UIControlStateNormal];
-                [leftButton addTarget:self
-                               action:@selector(theActionYouWant:)
-                     forControlEvents:UIControlEventTouchUpInside];
-                [cell addSubview:leftButton];
-
-                
-                
-                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
-                [rightButton setTitle:@"@我" forState:UIControlStateNormal];
-                [rightButton addTarget:self
-                      action:@selector(theActionYouWant:)
-            forControlEvents:UIControlEventTouchDragOutside];
-                [cell addSubview:rightButton];
-                
-            }
-                
-                
-                break;
-                default:
-                break;
-        }
-    }
-    
-    
-    if (indexPath.section==1) {
-        switch ([indexPath row]) {
-            case 0:
-            {
-                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
-                [leftButton setTitle:@"相册" forState:UIControlStateNormal];
-                [leftButton addTarget:self
-                               action:@selector(theActionYouWant:)
-                     forControlEvents:UIControlEventTouchUpInside];
-                [cell addSubview:leftButton];
-                
-                
-                
-                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
-                [rightButton setTitle:@"收藏" forState:UIControlStateNormal];
-                [rightButton addTarget:self
-                                action:@selector(theActionYouWant:)
-                      forControlEvents:UIControlEventTouchDragOutside];
-                [cell addSubview:rightButton];
-}                break;
-            case 1:
-            {
-                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
-                [leftButton setTitle:@"好友" forState:UIControlStateNormal];
-                [leftButton addTarget:self
-                               action:@selector(theActionYouWant:)
-                     forControlEvents:UIControlEventTouchUpInside];
-                [cell addSubview:leftButton];
-                
-                
-                
-                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
-                [rightButton setTitle:@"粉丝" forState:UIControlStateNormal];
-                [rightButton addTarget:self
-                                action:@selector(theActionYouWant:)
-                      forControlEvents:UIControlEventTouchDragOutside];
-                [cell addSubview:rightButton];
-
-            }
-                break;
-            default:
-                break;
-        }
-    }
-    
-    if (indexPath.section==2) {
-        switch ([indexPath row]) {
-            case 0:
-            {
-                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];                
-                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
-                [leftButton setTitle:@"消息" forState:UIControlStateNormal];
-                [leftButton addTarget:self
-                               action:@selector(theActionYouWant:)
-                     forControlEvents:UIControlEventTouchUpInside];
-                [cell addSubview:leftButton];
-                
-                
-                
-                 UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
-                [rightButton setTitle:@"消息" forState:UIControlStateNormal];
-                [rightButton addTarget:self
-                                action:@selector(theActionYouWant:)
-                      forControlEvents:UIControlEventTouchDragOutside];
-                [cell addSubview:rightButton];
-                
-            
-
-            }
-                break;
-            case 1:
-            {
-                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                [leftButton setFrame:CGRectMake(9, 0, 151, 55)];
-                [leftButton setTitle:@"消息" forState:UIControlStateNormal];
-                [leftButton addTarget:self
-                               action:@selector(theActionYouWant:)
-                     forControlEvents:UIControlEventTouchUpInside];
-                [cell addSubview:leftButton];
-                
-                
-                
-                UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                [rightButton setFrame:CGRectMake(160, 0, 151, 55)];
-                [rightButton setTitle:@"消息" forState:UIControlStateNormal];
-                [rightButton addTarget:self
-                                action:@selector(theActionYouWant:)
-                      forControlEvents:UIControlEventTouchDragOutside];
-                [cell addSubview:rightButton];
-
-            }
-                break;
-            default:
-                break;
-        }
-    }
-    
-    if (indexPath.section==3) {
-        switch ([indexPath row]) {
-            case SINA_WEIBO_ACCOUNT:
-                cell.imageView.image =[ImageManager weiboImage];
-                cell.textLabel.text =@"新浪微博";
-                
-                self.sinaModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-                [self.sinaModeSwitch addTarget: self action: @selector(switchsinaModeSwitch:) forControlEvents:UIControlEventValueChanged];
-                
-                if ([sinaweiboManager.sinaweibo isLoggedIn]) {
-                    [self.sinaModeSwitch setOn:YES animated:NO];
-                }else
-                    
-                {
-                    [self.sinaModeSwitch setOn:NO animated:NO];
-                }
-                cell.accessoryView = self.sinaModeSwitch;
-                
-                break;
-            case TENGXUN_QQ_ACOUNT:
-                cell.textLabel.text =@"QQ账号";
-                [cell.detailTextLabel setText: @"未绑定"];
-                cell.imageView.image =[ImageManager qqImage];
-                self.tenCentQQModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-                [self.tenCentQQModeSwitch addTarget: self action: @selector(switchTencentQQModeSwitch:) forControlEvents:UIControlEventValueChanged];
-                
-                
-            
-                if ( [[[TencentOAuthManager defaultManager] tencentOAuth] isLogIn]) {
-                    
-                    [self.tenCentQQModeSwitch setOn:YES animated:NO];
-                    
-                }else
-                    
-                {
-                    [self.tenCentQQModeSwitch setOn:NO animated:NO];
-                }
-                
-                cell.accessoryView = self.tenCentQQModeSwitch;
-                
-                break;
-                //            case RENREN_ACOUNT:
-                //                cell.textLabel.text =@"人人账号";
-                //                cell.detailTextLabel.text =@"未绑定";
-                //                cell.imageView.image =[ImageManager renrenImage];
-                //                break;
-            case TENGXUN_WEIBO_ACCOUNT:
-                cell.textLabel.text =@"腾讯微博账号";
-                cell.detailTextLabel.text =@"未绑定";
-                cell.imageView.image =[ImageManager tengxunWeiboImage];
-                
-                self.tenCentWeiboModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-                [self.tenCentWeiboModeSwitch addTarget: self action: @selector(switchTencentWeiboModeSwitch:) forControlEvents:UIControlEventValueChanged];
-                
-                
-                if (tencentWeiboManager.tengxunWeibo.accessTokenKey && tencentWeiboManager.tengxunWeibo.accessTokenSecret) {
-                    
-                    [self.tenCentWeiboModeSwitch setOn:YES animated:NO];
-                    
-                    
-                }else
-                    
-                {
-                    [self.tenCentWeiboModeSwitch setOn:NO animated:NO];
-                    
-                }
-                
-                cell.accessoryView = self.tenCentWeiboModeSwitch;
-                
-                
-                
-                break;
-                //            case DOUBAN_ACOUNT:
-                //                cell.textLabel.text =@"豆瓣账号";
-                //                cell.detailTextLabel.text =@"未绑定";
-                //                cell.imageView.image =[ImageManager doubanImage];
-                //                break;
-                //            case YOUR_EMAIL_ACOUNT:
-                //                cell.textLabel.text =@"你的邮箱";
-                //                cell.detailTextLabel.text =@"未绑定";
-                //                cell.imageView.image =[ImageManager loginEmailImage];
-                //                break;
-            default:
-                break;
-        }
-    }
-
-    
-    return cell;
-}
-
-
-
 #pragma mark-
 -(void)loginSinaAccount
 {
@@ -843,7 +784,59 @@ const double URLCacheInterval = 86400.0;
 
 -(void)loginTengxunWeiboAccount{
     
+    
+    [self onLogin];
+    
 }
+
+//点击登录按钮
+- (void)onLogin {
+    [weiboEngine logInWithDelegate:self
+                         onSuccess:@selector(onSuccessLogin)
+                         onFailure:@selector(onFailureLogin:)];
+}
+- (void)onLogout {
+    // 注销授权
+    if ([weiboEngine logOut]) {
+        PPDebug( @"登出成功！");
+    }else {
+        PPDebug(@"登出失败！");
+    }
+}
+#pragma mark - login callback
+
+//登录成功回调
+- (void)onSuccessLogin
+{
+    
+    PPDebug(@"登陆成功.");
+}
+
+//登录失败回调
+- (void)onFailureLogin:(NSError *)error
+{
+    NSString *message = [[NSString alloc] initWithFormat:@"%@",[NSNumber numberWithInteger:[error code]]];
+    UIAlertView *myalertView = [[UIAlertView alloc] initWithTitle:[error domain]
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+    [myalertView show];
+    [myalertView release];
+    [message release];
+}
+
+//授权成功回调
+- (void)onSuccessAuthorizeLogin
+{
+
+}
+
+- (void)didRequestMutualList:(id)result{
+    
+    
+}
+
 
 
 
@@ -980,13 +973,11 @@ const double URLCacheInterval = 86400.0;
     switch (buttonIndex) {
         case 0:
         {
-            NSLog(@"Button index :%d",buttonIndex);
             [self takePhoto];
         }
             break;
         case 1:
         {
-            NSLog(@"Button index :%d",buttonIndex);
             [self  selectPhoto];
             
         }
