@@ -8,6 +8,16 @@
 
 #import "SinaWeiboManager.h"
 
+
+#define SinaWeiboAuthData     @"SinaWeiboAuthData"
+
+#define AccessTokenKey        @"AccessTokenKey"
+#define ExpirationDateKey     @"ExpirationDateKey"
+#define UserIDKey             @"UserIDKey"
+#define refresh_token         @"refresh_token"
+
+
+
 static SinaweiboManager* _globalSinaweiboManager = nil;
 
 
@@ -53,13 +63,14 @@ static SinaweiboManager* _globalSinaweiboManager = nil;
     [tempSinaWeibo release];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *sinaweiboInfo = [defaults objectForKey:@"SinaWeiboAuthData"];
+    NSDictionary *sinaweiboInfo = [defaults objectForKey:SinaWeiboAuthData];
     
-    if ([sinaweiboInfo objectForKey:@"AccessTokenKey"] && [sinaweiboInfo objectForKey:@"ExpirationDateKey"] && [sinaweiboInfo objectForKey:@"UserIDKey"])
+    if ([sinaweiboInfo objectForKey:AccessTokenKey] && [sinaweiboInfo objectForKey:ExpirationDateKey] && [sinaweiboInfo objectForKey:UserIDKey])
     {
-        _sinaweibo.accessToken = [sinaweiboInfo objectForKey:@"AccessTokenKey"];
-        _sinaweibo.expirationDate = [sinaweiboInfo objectForKey:@"ExpirationDateKey"];
-        _sinaweibo.userID = [sinaweiboInfo objectForKey:@"UserIDKey"];
+        _sinaweibo.accessToken = [sinaweiboInfo objectForKey:AccessTokenKey];
+        _sinaweibo.expirationDate = [sinaweiboInfo objectForKey:ExpirationDateKey];
+        _sinaweibo.userID = [sinaweiboInfo objectForKey:UserIDKey];
+        
     }
 }
 
@@ -71,19 +82,21 @@ static SinaweiboManager* _globalSinaweiboManager = nil;
 - (void)storeAuthData
 {
     SinaWeibo *sinaweibo = [self sinaweibo];
-    
     NSDictionary *authData = [NSDictionary dictionaryWithObjectsAndKeys:
-                              sinaweibo.accessToken, @"AccessTokenKey",
-                              sinaweibo.expirationDate, @"ExpirationDateKey",
-                              sinaweibo.userID, @"UserIDKey",
-                              sinaweibo.refreshToken, @"refresh_token", nil];
-    [[NSUserDefaults standardUserDefaults] setObject:authData forKey:@"SinaWeiboAuthData"];
+                              sinaweibo.accessToken,AccessTokenKey,
+                              sinaweibo.expirationDate, ExpirationDateKey,
+                              sinaweibo.userID, UserIDKey,
+                               nil];
+    [[NSUserDefaults standardUserDefaults] setObject:authData forKey:SinaWeiboAuthData];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)removeAuthData
 {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"SinaWeiboAuthData"];
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:SinaWeiboAuthData];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
 }
 
 

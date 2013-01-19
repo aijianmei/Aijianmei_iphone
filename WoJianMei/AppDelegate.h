@@ -10,9 +10,11 @@
 #import "PPApplication.h"
 #import "SinaweiboManager.h"
 #import "TencentOAuthManager.h"
+#import "TCWBEngine.h"
+
 
 @class SinaweiboManager;
-@class TengxunWeiboManager;
+@class TCWBEngine;
 @class PPTabBarController;
 
 
@@ -29,20 +31,16 @@ enum
       UINavigationController *_navigationController;
     
       SinaweiboManager    *_sinaWeiboManager;
-      TengxunWeiboManager *_tengxunWeiboManager;
       TencentOAuthManager *_tencentOAuthManager;
-
+      TCWBEngine          *_tCWBEngine;
 
 }
 
-@property (strong, nonatomic) UIWindow *window;
-@property (readonly, nonatomic) SinaweiboManager *sinaWeiboManager;
-@property (readonly,nonatomic)  TengxunWeiboManager *tengxunWeiboManager;
+@property (retain, nonatomic)  UIWindow *window;
+@property (readonly,nonatomic) SinaweiboManager *sinaWeiboManager;
+@property (retain,nonatomic)   TCWBEngine  *tCWBEngine;
 @property (readonly,nonatomic)  TencentOAuthManager *tencentOAuthManager;
-
-@property (nonatomic,retain) UINavigationController *navigationController;
-
-
+@property (nonatomic,retain)     UINavigationController *navigationController;
 @property (nonatomic, retain)   PPTabBarController	*tabBarController;
 
 

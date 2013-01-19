@@ -82,9 +82,7 @@ static TencentOAuthManager* _globalTencentOAuthManager = nil;
 //            _tencentOAuth.openId = [tencentQQInfo objectForKey:@"OpenId"];
 //            
 //        }
-        
-        
-        
+    
         [self loadAuthData];
 
     }

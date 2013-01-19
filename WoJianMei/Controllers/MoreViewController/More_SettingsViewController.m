@@ -13,6 +13,7 @@
 #import "SinaWeibo.h"
 #import "SinaWeiboRequest.h"
 #import "TencentOAuthManager.h"
+#import "TCWBEngine.h"
 
 
 #import "HZActivityIndicatorView.h"
@@ -124,12 +125,6 @@
     
 }
 
-
-
-
-
-
-
 -(void)logOutSinaWeibo{
     
     
@@ -147,14 +142,11 @@
 -(void)loginSinaweibo{
     
     [[self sinaweiboManager].sinaweibo logIn] ;
-    
 }
 
 -(BOOL)isSinaWeiboAuthValid{
-
     SinaWeibo *sinaweibo = [[self sinaweiboManager] sinaweibo];
     BOOL authValid = sinaweibo.isAuthValid;
-    
     return authValid;
 }
 
@@ -164,6 +156,20 @@
     [appDelegate.sinaWeiboManager setDelegate:self];
         
     return appDelegate.sinaWeiboManager;
+}
+
+- (TencentOAuthManager *)tencentOAuthManager
+{
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.tencentOAuthManager setDelegate:self];
+    return appDelegate.tencentOAuthManager;
+}
+
+- (TCWBEngine *)tCWBEngine
+{
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.tCWBEngine setRootViewController:self];
+    return appDelegate.tCWBEngine;
 }
 
 
@@ -189,15 +195,6 @@
     return authValid;
 }
 
-- (TencentOAuthManager *)tencentOAuthManager
-{
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate.tencentOAuthManager setDelegate:self];
-    return appDelegate.tencentOAuthManager;
-}
-
-
-
 
 #pragma mark - View lifecycle
 
@@ -213,6 +210,12 @@
 
     [self initSocialNetWorkAccountSection];
     [self changePasswords];
+    
+    sinaweiboManager = [self sinaweiboManager];
+    tencentQQManager = [self tencentQQManager];
+    tencentWeiBoManager = [self tencentWeiboModeSwitch];
+    
+    
     
 }
 
@@ -259,9 +262,7 @@
                  cell.detailTextLabel.text  =NSLocalizedString(@"已绑定", @"Airplane Mode");
              }
 
-            
-             
-             
+        
              cell.imageView.image = [UIImage imageNamed:@"AirplaneMode"];
              
              
@@ -288,7 +289,7 @@
              cell.detailTextLabel.text = @"未绑定";
              cell.detailTextLabel.textColor = [UIColor redColor];
              
-             if ([self isSinaWeiboAuthValid]) {
+             if (![tencentWeiBoManager isAuthorizeExpired]) {
                  
                  cell.detailTextLabel.text = @"已绑定";
                  [cell.detailTextLabel setTextColor:[UIColor greenColor]];
@@ -299,14 +300,15 @@
          } whenSelected:^(NSIndexPath *indexPath) {
              
              
-             if ([self isSinaWeiboAuthValid]) {
+             if (![tencentWeiBoManager isAuthorizeExpired]) {
                  
                  [self showAlertViewWithMessage:@"你确定要杰出绑定腾讯微博吗？"];
                  
              }
              
              
-             [self loginSinaweibo];
+             [tencentWeiBoManager logOut];
+             
              
              
          }];
@@ -326,7 +328,7 @@
              
              
              
-             tencentOAuthManager = [TencentOAuthManager defaultManager];
+             
 
              
              if ([[tencentOAuthManager tencentOAuth ] isSessionValid]) {

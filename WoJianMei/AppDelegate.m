@@ -8,27 +8,16 @@
 
 #import "AppDelegate.h"
 #import "PPTabBarController.h"
-
-
 #import "WorkoutViewController.h"
 #import "MyselfViewController.h"
 #import "Nutri_SupViewController.h"
 #import "MakeFriendsViewController.h"
 #import "MoreViewController.h"
-
-
-
 #import "PlayVideosViewController.h"
-
-
 #import "MySideMenueViewController.h"
 #import "MFSideMenu.h"
-
 #import "UIUtils.h"
-
 #import "SinaweiboManager.h"
-
-
 #import "DeviceDetection.h"
 #import "ImageManager.h"
 #import "UINavigationBarExt.h"
@@ -44,7 +33,7 @@
 
 @synthesize window = _window;
 @synthesize sinaWeiboManager =_sinaWeiboManager;
-@synthesize tengxunWeiboManager =_tengxunWeiboManager;
+@synthesize tCWBEngine =_tCWBEngine;
 @synthesize tencentOAuthManager =_tencentOAuthManager;
 @synthesize navigationController =_navigationController;
 @synthesize tabBarController=_tabBarController ;
@@ -55,7 +44,7 @@
 {
     [_tabBarController release];
     [_sinaWeiboManager release];
-    [_tengxunWeiboManager release];
+    [_tCWBEngine release];
     [_tencentOAuthManager release];
     [_navigationController release];
     [_window release];
@@ -136,18 +125,11 @@
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu_arrow.png"]];
     [self.tabBarController setTopImageView:imageView down:1.0 animated:YES];
-    [imageView release];
-    
-    
-    
-   [controllers release];
-    
-    
-    
-   
+    self.tabBarController.hidesBottomBarWhenPushed =YES;
 
-    
-    
+    [imageView release];
+   [controllers release];
+
 }
 
 
@@ -166,16 +148,9 @@
     // Override point for customization after application launch.
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
-    
-    
    [self initTabViewControllers];
-    
-        
-//    UINavigationController *nv = [[UINavigationController alloc]initWithRootViewController:self.tabBarController];
-//    self.navigationController = nv;
-//    [nv release];
+
     
     
     [self.window setRootViewController:self.tabBarController];
@@ -191,25 +166,17 @@
 
     
     ////tencentqqq
+    NSArray *permissionArray =  [[NSArray arrayWithObjects:
+                                  @"get_user_info",@"add_share", @"add_topic",@"add_one_blog", @"list_album",
+                                  @"upload_pic",@"list_photo", @"add_album", @"check_page_fans",nil] retain];
+    _tencentOAuthManager = [TencentOAuthManager defaultManager];
+    [_tencentOAuthManager createTencentQQWithAppId: @"100328471" appPermission:permissionArray appRedirectURI:@"www.qq.com" isInSafari:NO delegate:self];
+    
+
+    ///腾讯微博
+    self.tCWBEngine = [[TCWBEngine alloc] initWithAppKey:WiressSDKDemoAppKey andSecret:WiressSDKDemoAppSecret andRedirectUrl:@"http://www.aijianmei.com"];
     
     
-//    NSArray *permissionArray =  [[NSArray arrayWithObjects:
-//                                  @"get_user_info",@"add_share", @"add_topic",@"add_one_blog", @"list_album",
-//                                  @"upload_pic",@"list_photo", @"add_album", @"check_page_fans",nil] retain];
-    //
-    //    /////移动应用 非社区应用。
-    //    _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"100328471"
-    //                                            andDelegate:self];
-    //
-    //    [_tencentOAuth authorize:_permissions inSafari:NO];
-    //	_tencentOAuth.redirectURI = @"www.qq.com";
-    //
-    
-//    
-//      _tencentOAuthManager = [TencentOAuthManager defaultManager];
-//     [_tencentOAuthManager createTencentQQWithAppId: @"100328471" appPermission:permissionArray appRedirectURI:@"www.qq.com" isInSafari:NO delegate:self];
-//    
-//    
     
     
 

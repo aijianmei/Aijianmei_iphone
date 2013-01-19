@@ -18,6 +18,7 @@
 #import "User.h"
 #import "TencentOAuthManager.h"
 
+#import "TCWBEngine.h"
 #import "TCWBGlobalUtil.h"
 #import "FileStreame.h"
 #import "key.h"
@@ -64,7 +65,6 @@ typedef enum SOCIAL_NET_WORK {
 @synthesize userGenderLabel = _userGenderLabel;
 @synthesize sina_userInfo =_sina_userInfo;
 @synthesize user =_user;
-@synthesize weiboEngine;
 
 
 
@@ -82,7 +82,6 @@ typedef enum SOCIAL_NET_WORK {
     [_userGenderLabel release];
     [_sina_userInfo release], _sina_userInfo = nil;
     [_user release];
-    [weiboEngine release],weiboEngine = nil;
     [super dealloc];
 }
 
@@ -208,6 +207,9 @@ typedef enum SOCIAL_NET_WORK {
     
 
 
+    
+    
+    
      //   新浪微博 
     sinaweiboManager = [self sinaweiboManager];
     
@@ -217,7 +219,7 @@ typedef enum SOCIAL_NET_WORK {
 					  @"get_user_info",@"add_share", @"add_topic",@"add_one_blog", @"list_album",
 					  @"upload_pic",@"list_photo", @"add_album", @"check_page_fans",nil] retain];
     
-    [[TencentOAuthManager defaultManager] createTencentQQWithAppId: @"100328471" appPermission:_permissions appRedirectURI:@"www.qq.com" isInSafari:NO delegate:self];
+    [tencentQQManager createTencentQQWithAppId: @"100328471" appPermission:_permissions appRedirectURI:@"www.qq.com" isInSafari:NO delegate:self];
     
     
 
@@ -227,48 +229,46 @@ typedef enum SOCIAL_NET_WORK {
     
 }
 
+- (SinaweiboManager *)sinaweiboManager
+{
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.sinaWeiboManager setDelegate:self];
+    return appDelegate.sinaWeiboManager;
+}
 
-   
+- (TencentOAuthManager *)tencentOAuthManager
+{
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.tencentOAuthManager setDelegate:self];
+    return appDelegate.tencentOAuthManager;
+}
+
+
+- (TCWBEngine *)tCWBEngine
+{
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.tCWBEngine setRootViewController:self];
+    return appDelegate.tCWBEngine;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    sinaweiboManager    = [self   sinaweiboManager];
+    tencentWeiboManager = [self         tCWBEngine];
+    tencentQQManager    = [self tencentOAuthManager];
+
     [self initUI];
     /* prepare to use our own on-disk cache */
    
     [self upgradeUI];
     self.dataList = [NSArray arrayWithObjects:@"新浪微博",@"QQ登陆",@"腾讯微博账号", nil];
-    sinaweiboManager = [self sinaweiboManager] ;
     
-    TCWBEngine *engine = [[TCWBEngine alloc] initWithAppKey:WiressSDKDemoAppKey andSecret:WiressSDKDemoAppSecret andRedirectUrl:@"http://www.aijianmei.com"];
-    [engine setRootViewController:self];
-    //[engine setRedirectURI:@"http://www.ying7wang7.com"];
-    self.weiboEngine = engine;
-    [engine release];
-
-    }
-
-#ifdef USE_UI_TWEET
-//点击一键分享(自带登录功能)
-- (void)onLogInOAuthButtonPressed
-{
-    // 分享(自带登录功能)
-    [self.weiboEngine UIBroadCastMsgWithContent:@"qq"
-                                       andImage:[UIImage imageNamed:@"test.png"]
-                                    parReserved:nil
-                                       delegate:self
-                                    onPostStart:@selector(postStart)
-                                  onPostSuccess:@selector(createSuccess:)
-                                  onPostFailure:@selector(createFail:)];
+       
     
 }
-
-#endif
-
-
-
-
 
 #pragma mark ----------------------------------------————————————————
 #pragma mark  tableviewDelegate Method
@@ -515,7 +515,7 @@ typedef enum SOCIAL_NET_WORK {
                 
                 
                 
-                if ( [[[TencentOAuthManager defaultManager] tencentOAuth] isLogIn]) {
+                if ( [[tencentQQManager tencentOAuth] isLogIn]) {
                     
                     [self.tenCentQQModeSwitch setOn:YES animated:NO];
                     
@@ -536,7 +536,7 @@ typedef enum SOCIAL_NET_WORK {
                 [self.tenCentWeiboModeSwitch addTarget: self action: @selector(switchTencentWeiboModeSwitch:) forControlEvents:UIControlEventValueChanged];
                 
                 
-                if (tencentWeiboManager.tengxunWeibo.accessTokenKey && tencentWeiboManager.tengxunWeibo.accessTokenSecret) {
+                if (![tencentWeiboManager isAuthorizeExpired]) {
                     
                     [self.tenCentWeiboModeSwitch setOn:YES animated:NO];
                     
@@ -603,8 +603,6 @@ typedef enum SOCIAL_NET_WORK {
             }
             
            [[TencentOAuthManager defaultManager].tencentOAuth logOut];
-            
-            
             [self.tenCentQQModeSwitch setOn:NO animated:YES];
             
         }
@@ -618,7 +616,12 @@ typedef enum SOCIAL_NET_WORK {
                 return;
             }
             
-            [self.tenCentWeiboModeSwitch setOn:NO animated:YES];
+            [tencentWeiboManager logOut];
+            if ([tencentWeiboManager logOut]) {
+                [self.tenCentWeiboModeSwitch setOn:NO animated:YES];
+
+            }
+            
         }
         default:
             break;
@@ -692,7 +695,10 @@ typedef enum SOCIAL_NET_WORK {
     
     if ( [self.tenCentWeiboModeSwitch isOn]) {
         
-        [self loginTengxunWeiboAccount];
+        if ([tencentWeiboManager isAuthorizeExpired]) {
+            [self loginTengxunWeiboAccount];
+        }
+        
     
     }else
     {
@@ -753,28 +759,9 @@ typedef enum SOCIAL_NET_WORK {
     [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
-- (SinaweiboManager *)sinaweiboManager
-{
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-   [appDelegate.sinaWeiboManager setDelegate:self];
-    
-    
-    return appDelegate.sinaWeiboManager;
-}
-
-- (TencentOAuthManager *)tencentOAuthManager
-{
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    [appDelegate.tencentOAuthManager setDelegate:self];
-    return appDelegate.tencentOAuthManager;
-}
-
 #pragma mark-
 -(void)loginSinaAccount
 {
-    [self showActivityWithText:@"请稍后"];
     [[self sinaweiboManager].sinaweibo logIn];
 }
 
@@ -784,20 +771,20 @@ typedef enum SOCIAL_NET_WORK {
 
 -(void)loginTengxunWeiboAccount{
     
-    
+    [self showActivityWithText:@"请稍后"];
     [self onLogin];
     
 }
 
 //点击登录按钮
 - (void)onLogin {
-    [weiboEngine logInWithDelegate:self
+    [tencentWeiboManager logInWithDelegate:self
                          onSuccess:@selector(onSuccessLogin)
                          onFailure:@selector(onFailureLogin:)];
 }
 - (void)onLogout {
     // 注销授权
-    if ([weiboEngine logOut]) {
+    if ([tencentWeiboManager logOut]) {
         PPDebug( @"登出成功！");
     }else {
         PPDebug(@"登出失败！");
@@ -808,8 +795,8 @@ typedef enum SOCIAL_NET_WORK {
 //登录成功回调
 - (void)onSuccessLogin
 {
-    
     PPDebug(@"登陆成功.");
+    [self hideActivity];
 }
 
 //登录失败回调
@@ -824,17 +811,6 @@ typedef enum SOCIAL_NET_WORK {
     [myalertView show];
     [myalertView release];
     [message release];
-}
-
-//授权成功回调
-- (void)onSuccessAuthorizeLogin
-{
-
-}
-
-- (void)didRequestMutualList:(id)result{
-    
-    
 }
 
 

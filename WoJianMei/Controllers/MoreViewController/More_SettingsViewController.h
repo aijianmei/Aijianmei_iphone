@@ -10,15 +10,22 @@
 #import "JMStaticContentTableViewController.h"
 #import "SinaweiboManager.h"
 #import "TencentOAuthManager.h"
+#import "TCWBEngine.h"
 
 @class HZActivityIndicatorView;
+@class SinaweiboManager;
+@class TCWBEngine;
+@class TencentOAuthManager;
+
 @interface More_SettingsViewController: JMStaticContentTableViewController<SinaWeiboDelegate,SinaWeiboRequestDelegate,UIAlertViewDelegate,TencentSessionDelegate>
 
 {
     
-    SinaweiboManager     *sinaweiboManager;
-    TencentOAuthManager *tencentOAuthManager;
-
+    SinaweiboManager         *sinaweiboManager;
+    TencentOAuthManager      *tencentQQManager;
+    TCWBEngine            *tencentWeiBoManager;
+    
+    
     HZActivityIndicatorView *indictorView;
 }
 
