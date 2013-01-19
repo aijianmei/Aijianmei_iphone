@@ -29,15 +29,24 @@
 	// Do any additional setup after loading the view.
     
     
-    UIViewController *nv =[self.navigationController topViewController];
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(sendPost:)];
-     UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc]initWithTitle:@"写消息" style:UIBarButtonItemStyleBordered target:self action:@selector(sendPost:)];
+    
+    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 26)];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"refreshButton@2x.png"] forState:UIControlStateNormal];
+    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    
+    [self.navigationItem setRightBarButtonItem:rightBarButton];
     
     
-    [nv.navigationItem setLeftBarButtonItem:leftBarButton];
-    [nv.navigationItem setRightBarButtonItem:rightBarButton];
     
-    [nv.navigationController.navigationBar.backItem setBackBarButtonItem:rightBarButton];
+    
+     UIButton *leftButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 70, 40)];
+    
+    [leftButton setBackgroundImage:[UIImage imageNamed:@"refreshButton@2x.png"] forState:UIControlStateNormal];
+    
+    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
+    
+    [self.navigationItem setRightBarButtonItem:leftBarButton];
+
     
     [self setBackgroundImageName:@"BackGround.png"];
     [self showBackgroundImage];
@@ -50,13 +59,7 @@
 
 -(void)sendPost:(id)sender{
 
-//    ComposeRootViewController *vc = [[ComposeRootViewController alloc]init];
-//    [self presentModalViewController:vc animated:YES];
-//    [vc release];
-    
-    
-    
-    
+
 
 }
 
