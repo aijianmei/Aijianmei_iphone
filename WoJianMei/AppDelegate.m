@@ -177,8 +177,6 @@
     self.tCWBEngine = [[TCWBEngine alloc] initWithAppKey:WiressSDKDemoAppKey andSecret:WiressSDKDemoAppSecret andRedirectUrl:@"http://www.aijianmei.com"];
     
     
-    
-    
 
     MySideMenueViewController *mySideMenuViewController = [[MySideMenueViewController alloc] init];
 

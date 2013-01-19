@@ -13,7 +13,6 @@
 #import "ShareToSinaController.h"
 #import "ShareToQQViewController.h"
 #import "SinaweiboManager.h"
-#import "TencentWeiboManager.h"
 #import "AppDelegate.h"
 #import "User.h"
 #import "TencentOAuthManager.h"
@@ -25,11 +24,11 @@
 #import <CoreText/CoreText.h>
 
 
-#define USER @"user"
-#define USER_NAME @"screen_name"
-#define USER_DESCRIPTION @"description"
-#define USER_AVATAR_IMAGE @"avatar_large"
-#define USER_GENDER @"gender"
+#define USER                          @"user"
+#define USER_NAME                     @"screen_name"
+#define USER_DESCRIPTION              @"description"
+#define USER_AVATAR_IMAGE             @"avatar_large"
+#define USER_GENDER                   @"gender"
 
 
 #ifndef WiressSDKDemoAppKey
@@ -878,15 +877,6 @@ typedef enum SOCIAL_NET_WORK {
 -(void)tencentDidNotLogin:(BOOL)cancelled{
 
 }
-
-
-- (void)tencent:(TencentOAuth *)tencentOAuth accessTokenInvalidOrExpired:(NSError *)error
-{
-    PPDebug(@"sinaweiboAccessTokenInvalidOrExpired %@", error);
-    [[TencentOAuthManager defaultManager] removeAuthData];
-    [self.dataTableView reloadData];
-}
-
 
 
 /////微博请求的delegate 返回数据
