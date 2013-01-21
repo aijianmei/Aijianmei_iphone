@@ -36,10 +36,11 @@
     NSArray *array  = [NSArray arrayWithObjects:@"微博",@"爱问",@"预约", nil] ;
     [self createDefaultNavigationTitleToolbar: array defaultSelectIndex:0];
     
-   
+
     
-    [self setNavigationLeftButton:@"返回" action:@selector(didClickBackButton:)];
-    [self setNavigationRightButton:@"发送" action:@selector(didClickBackButton:)];
+    [self setNavigationLeftButton:@"返回" imageName:@"back_composeView.png" action:@selector(didClickBackButton:)];
+    
+    [self setNavigationRightButton:@"发送" imageName:@"setting.png" action:@selector(didClickBackButton:)];
     
     
     
@@ -61,17 +62,64 @@
 
 - (IBAction)tappedMe:(id)sender {
     
-    // When the accessory view button is tapped, add a suitable string to the text view.
-    NSMutableString *text = [textView.text mutableCopy];
-    NSRange selectedRange = textView.selectedRange;
+//    // When the accessory view button is tapped, add a suitable string to the text view.
+//    NSMutableString *text = [textView.text mutableCopy];
+//    NSRange selectedRange = textView.selectedRange;
+//    
+//    [text replaceCharactersInRange:selectedRange withString:@"You tapped me.\n"];
+//    textView.text = text;
+//    [text release];
     
-    [text replaceCharactersInRange:selectedRange withString:@"You tapped me.\n"];
-    textView.text = text;
-    [text release];
+    UIButton *button = (UIButton *)sender;
+    NSArray *textViewSubviews = [textView subviews];
+    NSLog(@"This is the Button %@ at index %d",[textViewSubviews objectAtIndex:[button tag]],[button tag]);
+    
+    enum BUTTON_TYPE {
+        
+        BUTTON_TYPE_ONE = 0, 
+        BUTTON_TYPE_TWO,
+        BUTTON_TYPE_THREE, 
+        BUTTON_TYPE_FOUR,
+        BUTTON_TYPE_FIVE
+    };
+    
+    NSInteger  BUTTON_TYPE = [button tag];
+    switch (BUTTON_TYPE) {
+        case BUTTON_TYPE_ONE:
+        {
+            PPDebug(@"Button %d",[button tag]);
+            [self didclickChooseImagesButotn];
+            
+        }
+            break;
+        case BUTTON_TYPE_TWO:
+        {
+            PPDebug(@"Button %d",[button tag]);
+
+        }
+            break;
+        case BUTTON_TYPE_THREE:
+        {
+            PPDebug(@"Button %d",[button tag]);
+
+        }
+            break;
+        case BUTTON_TYPE_FOUR:
+        {
+            PPDebug(@"Button %d",[button tag]);
+
+        }
+            break;
+        case BUTTON_TYPE_FIVE:
+        {
+            PPDebug(@"Button %d",[button tag]);
+            [textView resignFirstResponder];
+        }
+            break;
+        default:
+            break;
+    }
 }
-
-
-
 
 - (void)viewDidUnload {
     [super viewDidUnload];
@@ -170,14 +218,85 @@
     NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
     NSTimeInterval animationDuration;
     [animationDurationValue getValue:&animationDuration];
-    
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:animationDuration];
-    
     textView.frame = self.view.bounds;
-    
     [UIView commitAnimations];
 }
+
+
+
+
+
+
+#pragma mark -
+#pragma mark - ImagePickerControllerDelegate
+-(void)didclickChooseImagesButotn{
+    
+    UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"取消"
+                                         destructiveButtonTitle:@"照相"
+                                              otherButtonTitles:@"相册",nil];
+//    [share showFromTabBar:self.tabBarController.tabBar];
+    [share showInView:self.view];
+    [share release];
+    
+}
+
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    if (image != nil){
+        
+        PPDebug(@"You have chosen a image ");
+    }
+    
+    [self.navigationController dismissModalViewControllerAnimated:YES
+     ];
+}
+
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
+
+#pragma mark --actionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    enum ACTION_SHEET_ACTION_TYPE {
+        TAKE_PICTURES =0,
+        CHOOSE_FROM_ALBLUM
+        
+    };
+    
+    NSInteger ACTION_SHEET_ACTION_TYPE = buttonIndex;
+    switch (ACTION_SHEET_ACTION_TYPE) {
+        case TAKE_PICTURES:
+        {
+            [self takePhoto];
+        }
+            break;
+        case CHOOSE_FROM_ALBLUM:
+        {
+            [self  selectPhoto];
+            
+        }
+            break;
+        case 2:
+            
+        {
+            NSLog(@"Button index :%d",buttonIndex);
+        }
+            break;
+        default:
+            break;
+    }
+}
+
 
 
 - (void)didReceiveMemoryWarning

@@ -8,7 +8,7 @@
 
 #import "PPViewController.h"
 
-@interface CompostViewController : PPViewController<UITextViewDelegate>
+@interface CompostViewController : PPViewController<UITextViewDelegate,UIActionSheetDelegate>
 
 {
     UITextView *textView;

@@ -232,7 +232,7 @@
 		4A572F2816ACE3C000F4A104 /* 13.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EEE16ACE3C000F4A104 /* 13.png */; };
 		4A572F2916ACE3C000F4A104 /* tick_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EEF16ACE3C000F4A104 /* tick_frame.png */; };
 		4A572F2A16ACE3C000F4A104 /* tick.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EF016ACE3C000F4A104 /* tick.png */; };
-		4A572F2B16ACE3C000F4A104 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EF116ACE3C000F4A104 /* back.png */; };
+		4A572F2B16ACE3C000F4A104 /* back_composeView@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EF116ACE3C000F4A104 /* back_composeView@2x.png */; };
 		4A572F2D16ACE3C000F4A104 /* @.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EF316ACE3C000F4A104 /* @.png */; };
 		4A572F2E16ACE3C000F4A104 /* choose_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EF416ACE3C000F4A104 /* choose_image.png */; };
 		4A572F2F16ACE3C000F4A104 /* message_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EF516ACE3C000F4A104 /* message_frame.png */; };
@@ -991,7 +991,7 @@
 		4A572EEE16ACE3C000F4A104 /* 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13.png; sourceTree = "<group>"; };
 		4A572EEF16ACE3C000F4A104 /* tick_frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tick_frame.png; sourceTree = "<group>"; };
 		4A572EF016ACE3C000F4A104 /* tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tick.png; sourceTree = "<group>"; };
-		4A572EF116ACE3C000F4A104 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		4A572EF116ACE3C000F4A104 /* back_composeView@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_composeView@2x.png"; sourceTree = "<group>"; };
 		4A572EF316ACE3C000F4A104 /* @.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "@.png"; sourceTree = "<group>"; };
 		4A572EF416ACE3C000F4A104 /* choose_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = choose_image.png; sourceTree = "<group>"; };
 		4A572EF516ACE3C000F4A104 /* message_frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message_frame.png; sourceTree = "<group>"; };
@@ -2590,14 +2590,14 @@
 		4A572EE716ACE3C000F4A104 /* compostView */ = {
 			isa = PBXGroup;
 			children = (
-				4A572EE816ACE3C000F4A104 /* 微博 */,
-				4A572EFB16ACE3C000F4A104 /* 爱问 */,
-				4A572F0F16ACE3C000F4A104 /* 预约 */,
+				4A572EE816ACE3C000F4A104 /* weibo */,
+				4A572EFB16ACE3C000F4A104 /* question */,
+				4A572F0F16ACE3C000F4A104 /* book */,
 			);
 			path = compostView;
 			sourceTree = "<group>";
 		};
-		4A572EE816ACE3C000F4A104 /* 微博 */ = {
+		4A572EE816ACE3C000F4A104 /* weibo */ = {
 			isa = PBXGroup;
 			children = (
 				4A572EE916ACE3C000F4A104 /* 01.png */,
@@ -2608,7 +2608,7 @@
 				4A572EEE16ACE3C000F4A104 /* 13.png */,
 				4A572EEF16ACE3C000F4A104 /* tick_frame.png */,
 				4A572EF016ACE3C000F4A104 /* tick.png */,
-				4A572EF116ACE3C000F4A104 /* back.png */,
+				4A572EF116ACE3C000F4A104 /* back_composeView@2x.png */,
 				4A572EF316ACE3C000F4A104 /* @.png */,
 				4A572EF416ACE3C000F4A104 /* choose_image.png */,
 				4A572EF516ACE3C000F4A104 /* message_frame.png */,
@@ -2618,10 +2618,11 @@
 				4A572EF916ACE3C000F4A104 /* tou_ban.png */,
 				4A572EFA16ACE3C000F4A104 /* 微博.jpg */,
 			);
+			name = weibo;
 			path = "微博";
 			sourceTree = "<group>";
 		};
-		4A572EFB16ACE3C000F4A104 /* 爱问 */ = {
+		4A572EFB16ACE3C000F4A104 /* question */ = {
 			isa = PBXGroup;
 			children = (
 				4A572EFC16ACE3C000F4A104 /* 01.png */,
@@ -2644,10 +2645,11 @@
 				4A572F0D16ACE3C000F4A104 /* 18.png */,
 				4A572F0E16ACE3C000F4A104 /* 爱问.jpg */,
 			);
+			name = question;
 			path = "爱问";
 			sourceTree = "<group>";
 		};
-		4A572F0F16ACE3C000F4A104 /* 预约 */ = {
+		4A572F0F16ACE3C000F4A104 /* book */ = {
 			isa = PBXGroup;
 			children = (
 				4A572F1016ACE3C000F4A104 /* 01.png */,
@@ -2670,6 +2672,7 @@
 				4A572F2116ACE3C000F4A104 /* 18.png */,
 				4A572F2216ACE3C000F4A104 /* 预约.jpg */,
 			);
+			name = book;
 			path = "预约";
 			sourceTree = "<group>";
 		};
@@ -3791,7 +3794,7 @@
 				4A572F2816ACE3C000F4A104 /* 13.png in Resources */,
 				4A572F2916ACE3C000F4A104 /* tick_frame.png in Resources */,
 				4A572F2A16ACE3C000F4A104 /* tick.png in Resources */,
-				4A572F2B16ACE3C000F4A104 /* back.png in Resources */,
+				4A572F2B16ACE3C000F4A104 /* back_composeView@2x.png in Resources */,
 				4A572F2D16ACE3C000F4A104 /* @.png in Resources */,
 				4A572F2E16ACE3C000F4A104 /* choose_image.png in Resources */,
 				4A572F2F16ACE3C000F4A104 /* message_frame.png in Resources */,
