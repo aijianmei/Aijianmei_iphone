@@ -30,38 +30,36 @@
     
     
     
-    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 26)];
-    [rightButton setBackgroundImage:[UIImage imageNamed:@"refreshButton@2x.png"] forState:UIControlStateNormal];
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
-    
-    [self.navigationItem setRightBarButtonItem:rightBarButton];
-    
-    
-    
-    
-     UIButton *leftButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 70, 40)];
-    
-    [leftButton setBackgroundImage:[UIImage imageNamed:@"refreshButton@2x.png"] forState:UIControlStateNormal];
-    
-    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
-    
-    [self.navigationItem setRightBarButtonItem:leftBarButton];
+    [self setNavigationLeftButton:nil imageName:@"postButton.png" action:@selector(clickPostButton:)];
 
-    
+   [self setNavigationRightButton:nil imageName:@"refreshButton.png" action:@selector(clickPostButton:)];
+      
     [self setBackgroundImageName:@"BackGround.png"];
     [self showBackgroundImage];
 
     
 
+    
 
 }
 
 
--(void)sendPost:(id)sender{
-
-
+-(void)clickPostButton:(id)sender{
+    
+    PPDebug(@"PostButton was clicked !");
+    
+    [self performSegueWithIdentifier:@"PostSegue" sender:self];
+    
 
 }
+-(void)clickRefreshButton:(id)sender{
+    
+    PPDebug(@"RefreshButton was clicked !");
+    
+}
+
+
+
 
 - (void)didReceiveMemoryWarning
 {

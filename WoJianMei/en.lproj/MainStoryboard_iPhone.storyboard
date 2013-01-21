@@ -571,10 +571,43 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="JT6-Ww-gl7"/>
+                    <connections>
+                        <segue destination="Yd8-l4-UBZ" kind="modal" identifier="PostSegue" id="rUh-uG-smb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZL-8w-6VZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2690" y="-2749"/>
+        </scene>
+        <!--Compost View Controller-->
+        <scene sceneID="EYP-la-Y3z">
+            <objects>
+                <viewController id="wyj-87-lpj" customClass="CompostViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bTB-X9-E4d">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="jKx-4Y-9oF">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="wyj-87-lpj" id="Od1-wj-pKT"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nt0-bm-skI"/>
+                    <connections>
+                        <outlet property="textView" destination="jKx-4Y-9oF" id="pEb-3w-hUJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="de7-gz-YDe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3500" y="-2916"/>
         </scene>
         <!--Search Table View Controller-->
         <scene sceneID="5WF-2J-khd">
@@ -699,6 +732,24 @@
             </objects>
             <point key="canvasLocation" x="3430" y="-4532"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9An-0s-EMs">
+            <objects>
+                <navigationController id="Yd8-l4-UBZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d3W-vh-Amx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wyj-87-lpj" kind="relationship" relationship="rootViewController" id="Kd7-qP-jAu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vcs-7k-ADy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3121" y="-2916"/>
+        </scene>
     </scenes>
     <resources>
         <image name="5.jpg" width="270" height="180"/>
@@ -712,6 +763,14 @@
     <classes>
         <class className="AboutViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
+        </class>
+        <class className="CompostViewController" superclassName="PPViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CompostViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="tappedMe:"/>
+                <relationship kind="outlet" name="accessoryView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+            </relationships>
         </class>
         <class className="MakeFriendsViewController" superclassName="PPTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MakeFriendsViewController.h"/>

@@ -8,6 +8,19 @@
 
 #import "PPViewController.h"
 
-@interface CompostViewController : PPViewController
+@interface CompostViewController : PPViewController<UITextViewDelegate>
+
+{
+    UITextView *textView;
+	UIView *accessoryView;
+
+
+}
+
+@property (nonatomic, retain) IBOutlet UITextView *textView;
+@property (nonatomic, retain) IBOutlet UIView *accessoryView;
+
+- (IBAction)tappedMe:(id)sender;
+
 
 @end
