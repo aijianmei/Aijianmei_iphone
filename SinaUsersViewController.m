@@ -308,8 +308,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
-    
     SinaUserCell *cell = [self.dataTableView dequeueReusableCellWithIdentifier:[SinaUserCell getCellIdentifier]];
     
     if (cell == nil) {

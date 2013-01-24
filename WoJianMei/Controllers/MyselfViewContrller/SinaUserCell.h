@@ -18,8 +18,6 @@
 
 @end
 
-
-
 @interface SinaUserCell : PPTableViewCell
 {
     

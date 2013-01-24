@@ -7,13 +7,16 @@
 //
 
 #import "CompostViewController.h"
+#import "ComposeViewCell.h"
+#import "ComposeViewCellInfo.h"
+
 
 @interface CompostViewController ()
 
 @end
 
 @implementation CompostViewController
-@synthesize textView, accessoryView;
+@synthesize textView, textAccessoryView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,7 +32,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    [self initDatas];
     [self setBackgroundImageName:@"BackGround.png"];
     [self showBackgroundImage];
     
@@ -44,6 +47,8 @@
     
     
     
+
+    
     
     // Observe keyboard hide and show notifications to resize the text view appropriately.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -51,6 +56,8 @@
    
     textView.delegate = self;
     
+    
+
 }
 
 
@@ -125,7 +132,7 @@
     [super viewDidUnload];
     
     self.textView = nil;
-    self.accessoryView = nil;
+    self.textAccessoryView = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
@@ -134,7 +141,7 @@
     
     // Make the keyboard appear when the application launches.
     [super viewWillAppear:animated];
-    [textView becomeFirstResponder];
+//    [textView becomeFirstResponder];
     
     
 }
@@ -152,12 +159,12 @@
     if (textView.inputAccessoryView == nil) {
         [[NSBundle mainBundle] loadNibNamed:@"AccessoryView" owner:self options:nil];
 
-        textView.inputAccessoryView = accessoryView;
+        textView.inputAccessoryView = textAccessoryView;
 
         // Loading the AccessoryView nib file sets the accessoryView outlet.
 //        textView.inputAccessoryView = accessoryView;
         // After setting the accessory view for the text view, we no longer need a reference to the accessory view.
-        self.accessoryView = nil;
+        self.textAccessoryView = nil;
     }
     
     return YES;
@@ -296,6 +303,84 @@
             break;
     }
 }
+
+#pragma mark --
+#pragma mark --UITableViewDeleageMethod
+
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+
+
+}
+
+
+-(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+  
+    return  [ComposeViewCell getCellHeight];
+    
+    
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return [self.dataList count];;
+
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    ComposeViewCell *cell = (ComposeViewCell *)[self.dataTableView dequeueReusableCellWithIdentifier:     [ComposeViewCell getCellIdentifier]];
+    
+    // Configure the cell...
+    
+    if (cell) {
+        cell = [[[ComposeViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[ComposeViewCell getCellIdentifier]] autorelease];
+        
+            
+    }
+    
+    cell.delegate = self;
+    ComposeViewCellInfo *info  =[self.dataList objectAtIndex:indexPath.row];
+    [cell setCellInfo:info indexPath:indexPath];
+
+    
+    return cell;
+    
+}
+
+-(void)initDatas{
+    
+    ComposeViewCellInfo *sinaInfo = [[ComposeViewCellInfo alloc]init];
+    sinaInfo.name = @"同步到新浪微博";
+    sinaInfo.avatarImageName =@"sina_weibo.png";
+    sinaInfo.connectButtonName = @"tick_frame.png";
+    
+    ComposeViewCellInfo *tencentQQInfo = [[ComposeViewCellInfo alloc]init];
+    tencentQQInfo.name = @"同步到腾讯QQ";
+    tencentQQInfo.avatarImageName =@"sina_weibo.png";
+    tencentQQInfo.connectButtonName = @"tick_frame.png";
+    
+    ComposeViewCellInfo *tencentWeiBoInfo = [[ComposeViewCellInfo alloc]init];
+    tencentWeiBoInfo.name = @"同步到腾讯微博";
+    tencentWeiBoInfo.avatarImageName =@"sina_weibo.png";
+    tencentWeiBoInfo.connectButtonName = @"tick_frame.png";
+    
+    
+    NSMutableArray *array = [[NSMutableArray  alloc]initWithCapacity:3];
+    
+    [array         addObject:sinaInfo];
+    [array    addObject:tencentQQInfo];
+    [array addObject:tencentWeiBoInfo];
+    
+    [sinaInfo         release];
+    [tencentQQInfo    release];
+    [tencentWeiBoInfo release];
+    
+    self.dataList = array;
+    [array release];
+
+}
+
 
 
 

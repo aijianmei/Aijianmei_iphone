@@ -224,12 +224,14 @@
 		4A4992BF168556700073E682 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4992BE168556700073E682 /* AVFoundation.framework */; };
 		4A4992C1168556D00073E682 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4992C0168556D00073E682 /* libz.1.1.3.dylib */; };
 		4A4992D3168589E40073E682 /* UserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4992D2168589E40073E682 /* UserService.m */; };
+		4A4EE73016AD3D92005C3ADA /* ComposeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EE72F16AD3D92005C3ADA /* ComposeViewCell.m */; };
+		4A4EE73316AD43D7005C3ADA /* ComposeViewCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EE73216AD43D7005C3ADA /* ComposeViewCellInfo.m */; };
 		4A572F2316ACE3C000F4A104 /* 01.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EE916ACE3C000F4A104 /* 01.png */; };
 		4A572F2416ACE3C000F4A104 /* 02.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EEA16ACE3C000F4A104 /* 02.png */; };
 		4A572F2516ACE3C000F4A104 /* 03.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EEB16ACE3C000F4A104 /* 03.png */; };
 		4A572F2616ACE3C000F4A104 /* 05.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EEC16ACE3C000F4A104 /* 05.png */; };
 		4A572F2716ACE3C000F4A104 /* 06.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EED16ACE3C000F4A104 /* 06.png */; };
-		4A572F2816ACE3C000F4A104 /* 13.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EEE16ACE3C000F4A104 /* 13.png */; };
+		4A572F2816ACE3C000F4A104 /* background_compose.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EEE16ACE3C000F4A104 /* background_compose.png */; };
 		4A572F2916ACE3C000F4A104 /* tick_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EEF16ACE3C000F4A104 /* tick_frame.png */; };
 		4A572F2A16ACE3C000F4A104 /* tick.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EF016ACE3C000F4A104 /* tick.png */; };
 		4A572F2B16ACE3C000F4A104 /* back_composeView@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A572EF116ACE3C000F4A104 /* back_composeView@2x.png */; };
@@ -983,12 +985,16 @@
 		4A4992C0168556D00073E682 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		4A4992D1168589E40073E682 /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserService.h; sourceTree = "<group>"; };
 		4A4992D2168589E40073E682 /* UserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserService.m; sourceTree = "<group>"; };
+		4A4EE72E16AD3D92005C3ADA /* ComposeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComposeViewCell.h; path = ../MyselfViewContrller/ComposeViewCell.h; sourceTree = "<group>"; };
+		4A4EE72F16AD3D92005C3ADA /* ComposeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComposeViewCell.m; path = ../MyselfViewContrller/ComposeViewCell.m; sourceTree = "<group>"; };
+		4A4EE73116AD43D7005C3ADA /* ComposeViewCellInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewCellInfo.h; sourceTree = "<group>"; };
+		4A4EE73216AD43D7005C3ADA /* ComposeViewCellInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewCellInfo.m; sourceTree = "<group>"; };
 		4A572EE916ACE3C000F4A104 /* 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01.png; sourceTree = "<group>"; };
 		4A572EEA16ACE3C000F4A104 /* 02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02.png; sourceTree = "<group>"; };
 		4A572EEB16ACE3C000F4A104 /* 03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03.png; sourceTree = "<group>"; };
 		4A572EEC16ACE3C000F4A104 /* 05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 05.png; sourceTree = "<group>"; };
 		4A572EED16ACE3C000F4A104 /* 06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 06.png; sourceTree = "<group>"; };
-		4A572EEE16ACE3C000F4A104 /* 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13.png; sourceTree = "<group>"; };
+		4A572EEE16ACE3C000F4A104 /* background_compose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_compose.png; sourceTree = "<group>"; };
 		4A572EEF16ACE3C000F4A104 /* tick_frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tick_frame.png; sourceTree = "<group>"; };
 		4A572EF016ACE3C000F4A104 /* tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tick.png; sourceTree = "<group>"; };
 		4A572EF116ACE3C000F4A104 /* back_composeView@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_composeView@2x.png"; sourceTree = "<group>"; };
@@ -2605,7 +2611,7 @@
 				4A572EEB16ACE3C000F4A104 /* 03.png */,
 				4A572EEC16ACE3C000F4A104 /* 05.png */,
 				4A572EED16ACE3C000F4A104 /* 06.png */,
-				4A572EEE16ACE3C000F4A104 /* 13.png */,
+				4A572EEE16ACE3C000F4A104 /* background_compose.png */,
 				4A572EEF16ACE3C000F4A104 /* tick_frame.png */,
 				4A572EF016ACE3C000F4A104 /* tick.png */,
 				4A572EF116ACE3C000F4A104 /* back_composeView@2x.png */,
@@ -3048,6 +3054,10 @@
 				4ADCFDFC169D614600A3E979 /* MakeFriendsViewController.m */,
 				4ACE239A16AB0F2E002E41D1 /* CompostViewController.h */,
 				4ACE239B16AB0F2E002E41D1 /* CompostViewController.m */,
+				4A4EE72E16AD3D92005C3ADA /* ComposeViewCell.h */,
+				4A4EE72F16AD3D92005C3ADA /* ComposeViewCell.m */,
+				4A4EE73116AD43D7005C3ADA /* ComposeViewCellInfo.h */,
+				4A4EE73216AD43D7005C3ADA /* ComposeViewCellInfo.m */,
 				4ACE23A116AB168D002E41D1 /* AccessoryView.xib */,
 			);
 			name = MakeFriendsViewcontrller;
@@ -3791,7 +3801,7 @@
 				4A572F2516ACE3C000F4A104 /* 03.png in Resources */,
 				4A572F2616ACE3C000F4A104 /* 05.png in Resources */,
 				4A572F2716ACE3C000F4A104 /* 06.png in Resources */,
-				4A572F2816ACE3C000F4A104 /* 13.png in Resources */,
+				4A572F2816ACE3C000F4A104 /* background_compose.png in Resources */,
 				4A572F2916ACE3C000F4A104 /* tick_frame.png in Resources */,
 				4A572F2A16ACE3C000F4A104 /* tick.png in Resources */,
 				4A572F2B16ACE3C000F4A104 /* back_composeView@2x.png in Resources */,
@@ -4123,6 +4133,8 @@
 				4A9449A216A9484E00A96815 /* TCWBEngine.m in Sources */,
 				4A9449A316A9484E00A96815 /* TCWBRequest.m in Sources */,
 				4ACE239C16AB0F2E002E41D1 /* CompostViewController.m in Sources */,
+				4A4EE73016AD3D92005C3ADA /* ComposeViewCell.m in Sources */,
+				4A4EE73316AD43D7005C3ADA /* ComposeViewCellInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

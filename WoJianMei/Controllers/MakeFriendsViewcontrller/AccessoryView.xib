@@ -42,7 +42,7 @@
 					<object class="IBUIButton" id="132451787">
 						<reference key="NSNextResponder" ref="795231795"/>
 						<int key="NSvFlags">293</int>
-						<string key="NSFrame">{{7, 0}, {58, 31}}</string>
+						<string key="NSFrameSize">{65, 31}</string>
 						<reference key="NSSuperview" ref="795231795"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="367994306"/>
@@ -158,6 +158,7 @@
 						<string key="NSFrame">{{259, 0}, {61, 31}}</string>
 						<reference key="NSSuperview" ref="795231795"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUITag">4</int>
@@ -199,11 +200,11 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">accessoryView</string>
+						<string key="label">textAccessoryView</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="795231795"/>
 					</object>
-					<int key="connectionID">35</int>
+					<int key="connectionID">47</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -354,14 +355,14 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">43</int>
+			<int key="maxID">47</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
 					<string key="className">CompostViewController</string>
-					<string key="superclassName">PPViewController</string>
+					<string key="superclassName">PPTableViewController</string>
 					<object class="NSMutableDictionary" key="actions">
 						<string key="NS.key.0">tappedMe:</string>
 						<string key="NS.object.0">id</string>
@@ -377,7 +378,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>accessoryView</string>
+							<string>textAccessoryView</string>
 							<string>textView</string>
 						</object>
 						<object class="NSArray" key="dict.values">
@@ -390,13 +391,13 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>accessoryView</string>
+							<string>textAccessoryView</string>
 							<string>textView</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
-								<string key="name">accessoryView</string>
+								<string key="name">textAccessoryView</string>
 								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
@@ -408,6 +409,25 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/CompostViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">PPTableViewController</string>
+					<string key="superclassName">PPViewController</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">dataTableView</string>
+						<string key="NS.object.0">UITableView</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">dataTableView</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">dataTableView</string>
+							<string key="candidateClassName">UITableView</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/PPTableViewController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

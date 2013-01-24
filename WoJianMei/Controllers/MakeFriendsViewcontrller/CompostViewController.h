@@ -6,19 +6,19 @@
 //
 //
 
-#import "PPViewController.h"
+#import "PPTableViewController.h"
 
-@interface CompostViewController : PPViewController<UITextViewDelegate,UIActionSheetDelegate>
+@interface CompostViewController :PPTableViewController<UITextViewDelegate,UIActionSheetDelegate,UITableViewDataSource,UITableViewDelegate>
 
 {
     UITextView *textView;
-	UIView *accessoryView;
+	UIView *textAccessoryView;
 
 
 }
 
 @property (nonatomic, retain) IBOutlet UITextView *textView;
-@property (nonatomic, retain) IBOutlet UIView *accessoryView;
+@property (nonatomic, retain) IBOutlet UIView *textAccessoryView;
 
 - (IBAction)tappedMe:(id)sender;
 
