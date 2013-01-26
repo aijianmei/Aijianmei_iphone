@@ -332,7 +332,6 @@
     ComposeViewCell *cell = (ComposeViewCell *)[self.dataTableView dequeueReusableCellWithIdentifier:     [ComposeViewCell getCellIdentifier]];
     
     // Configure the cell...
-    
     if (cell) {
         cell = [[[ComposeViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[ComposeViewCell getCellIdentifier]] autorelease];
         
@@ -342,7 +341,8 @@
     cell.delegate = self;
     ComposeViewCellInfo *info  =[self.dataList objectAtIndex:indexPath.row];
     [cell setCellInfo:info indexPath:indexPath];
-
+    
+    [cell.textLabel setText:@"hi"];
     
     return cell;
     

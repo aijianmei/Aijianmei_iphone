@@ -17,7 +17,6 @@
 
 @end
 
-
 @interface ComposeViewCell : PPTableViewCell
 
 {
@@ -25,6 +24,10 @@
     UIImageView       *_avatarImageView;
     UILabel                 *_nameLabel;
     UIButton             *_connectButton;
+    
+//    id<ComposeViewCellDelegate>delegate;
+
+    
     
 }
 @property (nonatomic,retain) IBOutlet UIImageView *avatarImageView;
