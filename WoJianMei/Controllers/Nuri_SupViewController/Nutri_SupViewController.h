@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
-
-
 ///实现类似cover flow 效果。
 #import "iCarousel.h"
 
@@ -27,7 +25,6 @@
 
 }
 @property (nonatomic,retain) IBOutlet UIScrollView *buttonScrollView;
-
 @property (nonatomic, retain)  UIView *myHeaderView;
 @property (nonatomic, retain)  iCarousel *carousel;
 

@@ -11,14 +11,14 @@
 @interface CompostViewController :PPTableViewController<UITextViewDelegate,UIActionSheetDelegate,UITableViewDataSource,UITableViewDelegate>
 
 {
-    UITextView *textView;
-	UIView *textAccessoryView;
+    UITextView      *textView;
+	UIView          *textAccessoryView;
 
 
 }
 
 @property (nonatomic, retain) IBOutlet UITextView *textView;
-@property (nonatomic, retain) IBOutlet UIView *textAccessoryView;
+@property (nonatomic, retain) IBOutlet UIView     *textAccessoryView;
 
 - (IBAction)tappedMe:(id)sender;
 

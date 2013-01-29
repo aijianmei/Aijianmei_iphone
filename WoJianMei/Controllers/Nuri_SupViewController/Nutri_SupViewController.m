@@ -8,14 +8,7 @@
 
 #import "Nutri_SupViewController.h"
 #import "NutritionDetailCell.h"
-
-#import "BookController.h"
 #import "NutritionInfo.h"
-
-
-
-
-#import "ReflectionView.h"
 #import "iCarousel.h"
 ///// the setings of the iCarousel
 #define NUMBER_OF_ITEMS 13
@@ -43,11 +36,7 @@
     _carousel.delegate = nil;
     _carousel.dataSource = nil;
     [_carousel release];
-    
     [_myHeaderView release];
-
-    
-
     [_buttonScrollView release];
     [super dealloc];
 }
@@ -102,6 +91,8 @@
     // Configure the cell...
  
     NutritionInfo *nutrition = [dataList objectAtIndex:indexPath.row];
+    [cell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"table_header_bg@2x.png"]]];
+    
     [cell setCellInfo:nutrition];
 
     return cell;
@@ -114,9 +105,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    BookController *bc = [[BookController alloc] init];
-    [self.navigationController pushViewController:bc animated:YES];
-    [bc release];
+   //TODO
 }
 
 
@@ -214,18 +203,18 @@
 -(void)initDatas{
     
     NutritionInfo *nutrition1 = [[NutritionInfo alloc]initWithNutritionId:
-                                 @"1" nutritionTitle:@"下午茶喝一杯咖啡 瘦身又抵饿"imageName:@"1.jpg" creatdDate:@"2012年9月13日" clickedNumber:@"243"];
+                                 @"1" nutritionTitle:@"下午茶喝一杯咖啡 瘦身又抵饿"imageName:@"1.jpg" creatdDate:@"2012年9月13日" clickedNumber:@"243" commentsNumber:@"23"];
     
     NutritionInfo *nutrition2 = [[NutritionInfo alloc]initWithNutritionId:
-                                 @"2" nutritionTitle:@"鱼鳞可预防骨质疏松防衰老"imageName:@"2.jpg" creatdDate:@"2012年3月13日" clickedNumber:@"2753"];
+                                 @"2" nutritionTitle:@"鱼鳞可预防骨质疏松防衰老"imageName:@"2.jpg" creatdDate:@"2012年3月13日" clickedNumber:@"2753" commentsNumber:@"23" ];
     NutritionInfo *nutrition3 = [[NutritionInfo alloc]initWithNutritionId:
-                                 @"3" nutritionTitle:@"辣辣更健康 六种日常调味品吃出美丽"imageName:@"3.jpg" creatdDate:@"2012年2月13日" clickedNumber:@"23"];
+                                 @"3" nutritionTitle:@"辣辣更健康 六种日常调味品吃出美丽"imageName:@"3.jpg" creatdDate:@"2012年2月13日" clickedNumber:@"23" commentsNumber:@"23"];
     NutritionInfo *nutrition4 = [[NutritionInfo alloc]initWithNutritionId:
-                                 @"4" nutritionTitle:@"营养不良的严重危害"imageName:@"4.jpg" creatdDate:@"2012年1月13日" clickedNumber:@"233"];
+                                 @"4" nutritionTitle:@"营养不良的严重危害"imageName:@"4.jpg" creatdDate:@"2012年1月13日" clickedNumber:@"233" commentsNumber:@"23"];
     NutritionInfo *nutrition5 = [[NutritionInfo alloc]initWithNutritionId:
-                                 @"5" nutritionTitle:@"煮鸡蛋 营养吸收百分百"imageName:@"5.jpg" creatdDate:@"2012年4月13日" clickedNumber:@"233"];
+                                 @"5" nutritionTitle:@"煮鸡蛋 营养吸收百分百"imageName:@"5.jpg" creatdDate:@"2012年4月13日" clickedNumber:@"233" commentsNumber:@"23"];
     NutritionInfo *nutrition6 = [[NutritionInfo alloc]initWithNutritionId:
-                                 @"6" nutritionTitle:@"排毒养颜 越吃越美丽"imageName:@"6.jpg" creatdDate:@"2012年6月3日" clickedNumber:@"3323"];
+                                 @"6" nutritionTitle:@"排毒养颜 越吃越美丽"imageName:@"6.jpg" creatdDate:@"2012年6月3日" clickedNumber:@"3323" commentsNumber:@"23"];
     
     
     
@@ -320,8 +309,6 @@
     [self.dataTableView setTableHeaderView:self.myHeaderView];
     
     
-    
-
     [self setBackgroundImageName:@"BackGround.png"];
     [self showBackgroundImage];
     

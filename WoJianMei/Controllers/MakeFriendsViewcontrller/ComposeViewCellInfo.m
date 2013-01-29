@@ -9,8 +9,8 @@
 #import "ComposeViewCellInfo.h"
 
 @implementation ComposeViewCellInfo
-@synthesize avatarImageName =_avatarImageName;
-@synthesize name =_name;
+@synthesize avatarImageName   =_avatarImageName;
+@synthesize name              =_name;
 @synthesize connectButtonName =_connectButtonName;
 
 

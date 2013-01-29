@@ -24,11 +24,6 @@
     UIImageView       *_avatarImageView;
     UILabel                 *_nameLabel;
     UIButton             *_connectButton;
-    
-//    id<ComposeViewCellDelegate>delegate;
-
-    
-    
 }
 @property (nonatomic,retain) IBOutlet UIImageView *avatarImageView;
 @property (nonatomic,retain) IBOutlet UILabel           *nameLabel;
@@ -36,6 +31,8 @@
 
 
 - (void)setCellInfo:(ComposeViewCellInfo *)composeViewCellInfo indexPath:(NSIndexPath *)aIndexPath;
+
++ (CGFloat)getCellHeight;
 
 - (IBAction)clickConnectButton:(id)sender ;
 

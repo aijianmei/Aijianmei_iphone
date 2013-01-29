@@ -29,14 +29,14 @@
     id<NutritionDetailCellDelegate>delegate;
     
     UIButton *_introductionImageButton;
-    UILabel  *_creatdDateLabel;
+    UILabel  *_commentNumberLabel;
     UILabel  *_clickedNumberLabel;
 
     
 }
 @property (nonatomic, assign) id<NutritionDetailCellDelegate>delegate;
 @property (nonatomic, retain) IBOutlet      UIButton *introductionImageButton;
-@property (nonatomic, retain) IBOutlet      UILabel  *creatdDateLabel;
+@property (nonatomic, retain) IBOutlet      UILabel  *commentNumberLabel;
 @property (nonatomic, retain) IBOutlet      UILabel  *clickedNumberLabel;
 
 

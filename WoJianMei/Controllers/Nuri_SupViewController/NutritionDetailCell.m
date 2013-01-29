@@ -11,9 +11,9 @@
 
 @implementation NutritionDetailCell
 @synthesize delegate;
-@synthesize introductionImageButton=_introductionImageButton;
-@synthesize creatdDateLabel=_creatdDateLabel;
-@synthesize clickedNumberLabel=_clickedNumberLabel;
+@synthesize introductionImageButton =_introductionImageButton;
+@synthesize commentNumberLabel      =_commentNumberLabel;
+@synthesize clickedNumberLabel      =_clickedNumberLabel;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -27,10 +27,12 @@
 
 
 -(void)dealloc{
-    [super dealloc];
+    
     [_introductionImageButton release];
     [_clickedNumberLabel release];
-    [_creatdDateLabel release];
+    [_commentNumberLabel release];
+    [super dealloc];
+   
 
 }
 
@@ -46,7 +48,7 @@
 }
 + (CGFloat)getCellHeight{
     
-    return 100;
+    return 81.0f;
 }
 
 - (void)setCellInfo:(NutritionInfo *)nutritionInfo{
@@ -54,13 +56,8 @@
     
     [self.introductionImageButton setImage:[UIImage imageNamed:nutritionInfo.imageName] forState:UIControlStateNormal];
     
-    /////set the title label's color
-//    self.nutritionTitleLabel.text = nutritionInfo.nutritionTitle;
-//    [self.nutritionTitleLabel setTextColor:[UIColor redColor]];
-//    [self.nutritionTitleLabel setTextAlignment:UITextAlignmentLeft];
-//    [self.nutritionTitleLabel setFont:[UIFont systemFontOfSize:12]];
-    
-    self.creatdDateLabel.text=nutritionInfo.creatdDate;
+    NSString *commentString = [NSString stringWithFormat:@"%@次评论",nutritionInfo.commentsNumber ];
+    self.commentNumberLabel.text=commentString;
     self.clickedNumberLabel.text=nutritionInfo.clickedNumber;
   
 }

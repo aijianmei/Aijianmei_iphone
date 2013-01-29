@@ -10,6 +10,15 @@
 #import "ComposeViewCell.h"
 #import "ComposeViewCellInfo.h"
 
+enum BUTTON_TYPE {
+    
+    BUTTON_TYPE_ONE = 0,
+    BUTTON_TYPE_TWO,
+    BUTTON_TYPE_THREE,
+    BUTTON_TYPE_FOUR,
+    BUTTON_TYPE_FIVE
+};
+
 
 @interface CompostViewController ()
 
@@ -37,27 +46,19 @@
     [self showBackgroundImage];
     
     NSArray *array  = [NSArray arrayWithObjects:@"微博",@"爱问",@"预约", nil] ;
+    
+    
     [self createDefaultNavigationTitleToolbar: array defaultSelectIndex:0];
-    
 
-    
     [self setNavigationLeftButton:@"返回" imageName:@"back_composeView.png" action:@selector(didClickBackButton:)];
     
     [self setNavigationRightButton:@"发送" imageName:@"setting.png" action:@selector(didClickBackButton:)];
-    
-    
-    
-
-    
     
     // Observe keyboard hide and show notifications to resize the text view appropriately.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
    
     textView.delegate = self;
-    
-    
-
 }
 
 
@@ -69,26 +70,9 @@
 
 - (IBAction)tappedMe:(id)sender {
     
-//    // When the accessory view button is tapped, add a suitable string to the text view.
-//    NSMutableString *text = [textView.text mutableCopy];
-//    NSRange selectedRange = textView.selectedRange;
-//    
-//    [text replaceCharactersInRange:selectedRange withString:@"You tapped me.\n"];
-//    textView.text = text;
-//    [text release];
-    
     UIButton *button = (UIButton *)sender;
     NSArray *textViewSubviews = [textView subviews];
     NSLog(@"This is the Button %@ at index %d",[textViewSubviews objectAtIndex:[button tag]],[button tag]);
-    
-    enum BUTTON_TYPE {
-        
-        BUTTON_TYPE_ONE = 0, 
-        BUTTON_TYPE_TWO,
-        BUTTON_TYPE_THREE, 
-        BUTTON_TYPE_FOUR,
-        BUTTON_TYPE_FIVE
-    };
     
     NSInteger  BUTTON_TYPE = [button tag];
     switch (BUTTON_TYPE) {
@@ -141,7 +125,7 @@
     
     // Make the keyboard appear when the application launches.
     [super viewWillAppear:animated];
-//    [textView becomeFirstResponder];
+//     [textView becomeFirstResponder];
     
     
 }
@@ -245,7 +229,6 @@
                                               cancelButtonTitle:@"取消"
                                          destructiveButtonTitle:@"照相"
                                               otherButtonTitles:@"相册",nil];
-//    [share showFromTabBar:self.tabBarController.tabBar];
     [share showInView:self.view];
     [share release];
     
@@ -329,20 +312,17 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    ComposeViewCell *cell = (ComposeViewCell *)[self.dataTableView dequeueReusableCellWithIdentifier:     [ComposeViewCell getCellIdentifier]];
+    ComposeViewCell *cell = [self.dataTableView dequeueReusableCellWithIdentifier:[ComposeViewCell getCellIdentifier]];
     
     // Configure the cell...
     if (cell) {
-        cell = [[[ComposeViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[ComposeViewCell getCellIdentifier]] autorelease];
         
-            
+        cell = [[[ComposeViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle  reuseIdentifier:[ComposeViewCell getCellIdentifier]] autorelease];
+                       
     }
     
     cell.delegate = self;
-    ComposeViewCellInfo *info  =[self.dataList objectAtIndex:indexPath.row];
-    [cell setCellInfo:info indexPath:indexPath];
-    
-    [cell.textLabel setText:@"hi"];
+    [cell.textLabel setText:@"hihihihiihihihihhi"];
     
     return cell;
     

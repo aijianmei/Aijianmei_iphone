@@ -50,20 +50,7 @@
 + (VideoListCell*) createCell:(id)delegate
 {
     
-    //////in ios 5 because you are using the storyboard so you dont have to use this method anymore 
-//    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"ProductDetailCell" owner:self options:nil];
-//    
-//    // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).  
-//    if (topLevelObjects == nil || [topLevelObjects count] <= 0){
-//        NSLog(@"create <ProductDetailCell> but cannot find cell object from Nib");
-//        return nil;
-//    }
-//    
-//    ((ProductDetailCell*)[topLevelObjects objectAtIndex:0]).delegate = delegate;
-//    
-//    return (ProductDetailCell*)[topLevelObjects objectAtIndex:0];
-        
-    return  nil;
+     return  nil;
     
     
 }
