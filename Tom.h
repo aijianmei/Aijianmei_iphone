@@ -12,7 +12,10 @@
 
 {
     UIButton *button;
-    UIButton  *asdbuttoasdfn;
+    UIButton *button2;
+    UIButton *button4;
+    UIButton *buttondd4;
+
 
     
 }
