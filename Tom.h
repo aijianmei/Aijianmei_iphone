@@ -12,7 +12,6 @@
 
 {
     UIButton *button;
-    UIView *view;
     
 }
 
