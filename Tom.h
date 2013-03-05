@@ -12,6 +12,9 @@
 
 {
     UIButton *button;
+    UIButton *buttoasdfn;
+
+
     
 }
 
