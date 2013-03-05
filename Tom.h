@@ -11,7 +11,6 @@
 @interface Tom : NSObject
 
 {
-    UIButton *button4;
     UIButton *buttongitMaster;
     UIButton *buttongitMasasdfsadfasdter;
 
