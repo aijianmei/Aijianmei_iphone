@@ -11,6 +11,8 @@
 @interface Tom : NSObject
 
 {
+    UIButton *button;
+    UIView *view;
     
 }
 
