@@ -11,7 +11,6 @@
 @interface Tom : NSObject
 
 {
-    UIButton *button;
     UIButton *button2;
     UIButton *button4;
     UIButton *buttondd4;
