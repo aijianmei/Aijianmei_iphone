@@ -1,10 +1,10 @@
 //
 //  AppDelegate.h
 //  WoJianMei
+//
 //  Created by Tom Callon on 7/27/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//adfasd Tom Callon branch  asdfa sf 
-
+//
 
 #import <UIKit/UIKit.h>
 #import "PPApplication.h"
