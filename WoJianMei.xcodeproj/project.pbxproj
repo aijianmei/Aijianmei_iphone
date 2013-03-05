@@ -350,6 +350,7 @@
 		4A965CD0168F6AF600FF34CE /* FitnessNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A965CCE168F6AF600FF34CE /* FitnessNetworkRequest.m */; };
 		4A965CD4168F6B9100FF34CE /* MyselfTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A965CD3168F6B9100FF34CE /* MyselfTableViewCell.m */; };
 		4A98E51416E592EE00D7D3DE /* Tom.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E51316E592EE00D7D3DE /* Tom.m */; };
+		4A98E51716E5958B00D7D3DE /* testinggit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E51616E5958B00D7D3DE /* testinggit.m */; };
 		4AA7ECE5169F0F78003E8949 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA7ECE4169F0F78003E8949 /* SMPageControl.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4AA7ECE9169F107B003E8949 /* pageDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA7ECE7169F107B003E8949 /* pageDot@2x.png */; };
 		4AA7ECEA169F107B003E8949 /* currentPageDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA7ECE8169F107B003E8949 /* currentPageDot@2x.png */; };
@@ -1153,6 +1154,8 @@
 		4A965CD3168F6B9100FF34CE /* MyselfTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyselfTableViewCell.m; path = ../../MyselfTableViewCell.m; sourceTree = "<group>"; };
 		4A98E51216E592EE00D7D3DE /* Tom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tom.h; sourceTree = "<group>"; };
 		4A98E51316E592EE00D7D3DE /* Tom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tom.m; sourceTree = "<group>"; };
+		4A98E51516E5958B00D7D3DE /* testinggit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testinggit.h; sourceTree = "<group>"; };
+		4A98E51616E5958B00D7D3DE /* testinggit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testinggit.m; sourceTree = "<group>"; };
 		4AA7ECE3169F0F78003E8949 /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPageControl.h; sourceTree = "<group>"; };
 		4AA7ECE4169F0F78003E8949 /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPageControl.m; sourceTree = "<group>"; };
 		4AA7ECE7169F107B003E8949 /* pageDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pageDot@2x.png"; sourceTree = "<group>"; };
@@ -3394,6 +3397,8 @@
 			children = (
 				4A98E51216E592EE00D7D3DE /* Tom.h */,
 				4A98E51316E592EE00D7D3DE /* Tom.m */,
+				4A98E51516E5958B00D7D3DE /* testinggit.h */,
+				4A98E51616E5958B00D7D3DE /* testinggit.m */,
 				4A959679168ED995006F1317 /* 3PP-SDK */,
 				4A498F9B168553A20073E682 /* Core */,
 				4A498D711685500F0073E682 /* Component-Service */,
@@ -4123,6 +4128,7 @@
 				4A4EE73016AD3D92005C3ADA /* ComposeViewCell.m in Sources */,
 				4A4EE73316AD43D7005C3ADA /* ComposeViewCellInfo.m in Sources */,
 				4A98E51416E592EE00D7D3DE /* Tom.m in Sources */,
+				4A98E51716E5958B00D7D3DE /* testinggit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
