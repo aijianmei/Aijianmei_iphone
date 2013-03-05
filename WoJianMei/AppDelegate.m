@@ -4,7 +4,6 @@
 //
 //  Created by Tom Callon on 7/27/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//啊删掉发生的
 
 #import "AppDelegate.h"
 #import "PPTabBarController.h"
