@@ -10,4 +10,9 @@
 
 @interface Tom : NSObject
 
+{
+    
+    UIButton *button ;
+}
+
 @end
