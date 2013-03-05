@@ -14,10 +14,6 @@
     UIButton *button4;
     UIButton *buttondd4;
     UIButton *buttongitMaster;
-    UIButton *sdafsadfsdafasdfsfdafasfa;
-
-    
-
 
     
 }
