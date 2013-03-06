@@ -14,6 +14,8 @@
     UIButton *buttongitMaster;
     UIButton *buttongitMasasdfsadfasdter;
 
+    
+    UIButton *button ;
 
     
 }
