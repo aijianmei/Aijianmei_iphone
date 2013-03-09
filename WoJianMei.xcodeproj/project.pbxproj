@@ -308,6 +308,7 @@
 		4A873BA416A54AD2005BDA45 /* HZLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A873B9816A54AD2005BDA45 /* HZLocation.m */; };
 		4A873BA616A54AD2005BDA45 /* Citypicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A873B9B16A54AD2005BDA45 /* Citypicker.m */; };
 		4A873BA816A54BD7005BDA45 /* Citypicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A873BA716A54BD7005BDA45 /* Citypicker.xib */; };
+		4A8D203B16EB2ABE0053E1CF /* Tom.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D203A16EB2ABE0053E1CF /* Tom.m */; };
 		4A94499A16A9484E00A96815 /* Language.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4A94497E16A9484E00A96815 /* Language.strings */; };
 		4A94499B16A9484E00A96815 /* GetIPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A94498216A9484E00A96815 /* GetIPAddress.m */; };
 		4A94499C16A9484E00A96815 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A94498416A9484E00A96815 /* ImageDownloader.m */; };
@@ -1076,6 +1077,8 @@
 		4A873B9A16A54AD2005BDA45 /* Citypicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Citypicker.h; sourceTree = "<group>"; };
 		4A873B9B16A54AD2005BDA45 /* Citypicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Citypicker.m; sourceTree = "<group>"; };
 		4A873BA716A54BD7005BDA45 /* Citypicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Citypicker.xib; sourceTree = "<group>"; };
+		4A8D203916EB2ABE0053E1CF /* Tom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tom.h; path = WoJianMei/Controllers/MoreViewController/Tom.h; sourceTree = "<group>"; };
+		4A8D203A16EB2ABE0053E1CF /* Tom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tom.m; path = WoJianMei/Controllers/MoreViewController/Tom.m; sourceTree = "<group>"; };
 		4A94497F16A9484E00A96815 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Language.strings; sourceTree = "<group>"; };
 		4A94498116A9484E00A96815 /* GetIPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetIPAddress.h; sourceTree = "<group>"; };
 		4A94498216A9484E00A96815 /* GetIPAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetIPAddress.m; sourceTree = "<group>"; };
@@ -3379,6 +3382,8 @@
 		4AE394A215C2DD9C00D06C61 = {
 			isa = PBXGroup;
 			children = (
+				4A8D203916EB2ABE0053E1CF /* Tom.h */,
+				4A8D203A16EB2ABE0053E1CF /* Tom.m */,
 				4A959679168ED995006F1317 /* 3PP-SDK */,
 				4A498F9B168553A20073E682 /* Core */,
 				4A498D711685500F0073E682 /* Component-Service */,
@@ -4105,6 +4110,7 @@
 				4ACE239C16AB0F2E002E41D1 /* CompostViewController.m in Sources */,
 				4A4EE73016AD3D92005C3ADA /* ComposeViewCell.m in Sources */,
 				4A4EE73316AD43D7005C3ADA /* ComposeViewCellInfo.m in Sources */,
+				4A8D203B16EB2ABE0053E1CF /* Tom.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
