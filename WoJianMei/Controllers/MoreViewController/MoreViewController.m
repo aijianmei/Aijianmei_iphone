@@ -368,9 +368,7 @@ typedef enum {
 - (void)showAWSheet
 {
     AWActionSheet *sheet = [[AWActionSheet alloc] initwithIconSheetDelegate:self ItemCount:[self numberOfItemsInActionSheet]];
-    
-//    [sheet showFromTabBar:self.tabBarController.tabBar];
-    [sheet showInView:self.view];
+    [sheet showFromTabBar:self.tabBarController.tabBar];
     [sheet release];
 }
 
@@ -391,12 +389,16 @@ typedef enum {
     [[cell titleLabel] setText:[NSString stringWithFormat:@"item %d",index]];
     [[cell iconView] setImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
     cell.index = index;
+    
     return cell;
 }
 
 -(void)DidTapOnItemAtIndex:(NSInteger)index
 {
     PPDebug(@"tap on %d",index);
+    
+    PPDebug(@"i changed something !!");
+    
     
 }
 

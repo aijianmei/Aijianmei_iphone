@@ -62,8 +62,6 @@
     self.tabBarController = tbController;
     
     self.tabBarController.delegate = self;
-    
-    
 
 	NSMutableArray* controllers = [[NSMutableArray alloc] init];
     
