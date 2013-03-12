@@ -481,9 +481,7 @@ typedef enum {
             SEND_MESSAGE ,
             CANCLE_BUTTON
         };
-        
-        NSLog(@"i made this pictures");
-        
+                
         NSInteger BUTTON_INDEX ;
         BUTTON_INDEX  = buttonIndex;
         
