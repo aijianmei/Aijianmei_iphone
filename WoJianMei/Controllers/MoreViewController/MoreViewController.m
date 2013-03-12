@@ -485,9 +485,6 @@ typedef enum {
         NSInteger BUTTON_INDEX ;
         BUTTON_INDEX  = buttonIndex;
         
-        NSLog(@"This tisasfsadfd");
-        
-        
         
         switch (BUTTON_INDEX) {
             case SEND_SINA_WEIBO:
