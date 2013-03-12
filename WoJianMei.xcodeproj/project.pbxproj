@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4A071A21169D989D00F50D90 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A071A20169D989D00F50D90 /* MobileCoreServices.framework */; };
 		4A071A23169D991F00F50D90 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A071A22169D991F00F50D90 /* MediaPlayer.framework */; };
-		4A27046116EF054B00AC88A9 /* Tom.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27046016EF054B00AC88A9 /* Tom.m */; };
 		4A3D0BA615CB73CC008F6639 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BA515CB73CC008F6639 /* Video.m */; };
 		4A3D0BBA15CB7CF2008F6639 /* WorkOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BB915CB7CF2008F6639 /* WorkOut.m */; };
 		4A3D0BD115CB9F39008F6639 /* VideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BD015CB9F38008F6639 /* VideoManager.m */; };
@@ -561,8 +560,6 @@
 /* Begin PBXFileReference section */
 		4A071A20169D989D00F50D90 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4A071A22169D991F00F50D90 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		4A27045F16EF054B00AC88A9 /* Tom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tom.h; sourceTree = "<group>"; };
-		4A27046016EF054B00AC88A9 /* Tom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tom.m; sourceTree = "<group>"; };
 		4A3D0BA415CB73CC008F6639 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
 		4A3D0BA515CB73CC008F6639 /* Video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
 		4A3D0BB815CB7CF1008F6639 /* WorkOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOut.h; sourceTree = "<group>"; };
@@ -3389,8 +3386,6 @@
 				4AE394B715C2DD9C00D06C61 /* WoJianMei */,
 				4AE394C015C2DD9C00D06C61 /* AppDelegate.h */,
 				4AE394C115C2DD9C00D06C61 /* AppDelegate.m */,
-				4A27045F16EF054B00AC88A9 /* Tom.h */,
-				4A27046016EF054B00AC88A9 /* Tom.m */,
 				4AE394C315C2DD9C00D06C61 /* MainStoryboard_iPhone.storyboard */,
 				4AE394C615C2DD9C00D06C61 /* MainStoryboard_iPad.storyboard */,
 				4AE394B015C2DD9C00D06C61 /* Frameworks */,
@@ -4110,7 +4105,6 @@
 				4ACE239C16AB0F2E002E41D1 /* CompostViewController.m in Sources */,
 				4A4EE73016AD3D92005C3ADA /* ComposeViewCell.m in Sources */,
 				4A4EE73316AD43D7005C3ADA /* ComposeViewCellInfo.m in Sources */,
-				4A27046116EF054B00AC88A9 /* Tom.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
