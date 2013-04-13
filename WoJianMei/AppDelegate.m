@@ -24,6 +24,11 @@
 
 
 
+//#define WeChatId @"wxd930ea5d5a258f4f"
+
+///aijianmei
+#define WeChatId @"wxc996cdfc0f512dd7"
+
 
 #define kAppRedirectURI     @"http://aijianmei.com"
 
@@ -39,6 +44,14 @@
 @synthesize tabBarController=_tabBarController ;
 
 
+- (id)init{
+    if(self = [super init]){
+        _scene = WXSceneSession;
+    }
+    
+    return self;
+
+}
 
 - (void)dealloc
 {
@@ -201,6 +214,11 @@
     
 //    [application setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
     
+    // Register to WeChat   wxd930ea5d5a258f4f
+    // aijianmei  :
+    [WXApi registerApp:WeChatId];
+    
+    
     return YES;
 }
 							
@@ -249,13 +267,62 @@
 //for ios version below 4.2
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    return [self.sinaWeiboManager.sinaweibo handleOpenURL:url] ;
+    
+    
+//    switch (<#expression#>) {
+//        case <#constant#>:
+//            <#statements#>
+//            break;
+//            
+//        default:
+//            break;
+//    }
+    
+    
+//    return [self.sinaWeiboManager.sinaweibo handleOpenURL:url] ;
+    
+    return  [WXApi handleOpenURL:url delegate:self];
+
+    
 }
 
 //for ios version is or above 4.2
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    return [self.sinaWeiboManager.sinaweibo handleOpenURL:url];
+//    return [self.sinaWeiboManager.sinaweibo handleOpenURL:url];
+    return  [WXApi handleOpenURL:url delegate:self];
+
 }
+
+#define BUFFER_SIZE 1024 * 100
+- (void) sendAppContent
+{
+    // Send content to WeChat
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.title = @"爱健美ios客户端测试！！！";
+    message.description = @"爱健美，推广健身文化，传播健康理念！！！";
+    [message setThumbImage:[UIImage imageNamed:@"QQWeibo_logo@2x.png"]];
+    
+    WXAppExtendObject *ext = [WXAppExtendObject object];
+    ext.extInfo = @"<xml>test</xml>";
+    ext.url = @"http://www.aijianmei.com";
+    
+    Byte* pBuffer = (Byte *)malloc(BUFFER_SIZE);
+    memset(pBuffer, 0, BUFFER_SIZE);
+    NSData* data = [NSData dataWithBytes:pBuffer length:BUFFER_SIZE];
+    free(pBuffer);
+    
+    ext.fileData = data;
+    
+    message.mediaObject = ext;
+    
+    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+    req.bText = NO;
+    req.message = message;
+    req.scene = _scene;
+    
+    [WXApi sendReq:req];
+}
+
 
 @end

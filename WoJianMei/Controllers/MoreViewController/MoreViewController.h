@@ -12,6 +12,16 @@
 #import "AWActionSheet.h"
 
 
+#import "WXApiObject.h"
+
+@protocol sendMsgToWeChatViewDelegate <NSObject>
+- (void) sendTextContent:(NSString*)nsText;
+- (void) sendAppContent;
+- (void) sendImageContent;
+@end
+
+
+
 @interface MoreViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UserServiceDelegate>
 
 {
@@ -23,5 +33,6 @@
 }
 
 @property (nonatomic, retain) NSArray *listData;
+@property (nonatomic, assign) id<sendMsgToWeChatViewDelegate> delegate;
 
 @end
