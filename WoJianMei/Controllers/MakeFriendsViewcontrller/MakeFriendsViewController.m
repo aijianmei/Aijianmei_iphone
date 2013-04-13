@@ -30,10 +30,12 @@
     
     
     
-    [self setNavigationLeftButton:nil imageName:@"postButton.png" action:@selector(clickPostButton:)];
-
-   [self setNavigationRightButton:nil imageName:@"refreshButton.png" action:@selector(clickPostButton:)];
-      
+    
+    
+//    [self setNavigationLeftButton:nil imageName:@"postButton.png" action:@selector(clickPostButton:)];
+//
+//   [self setNavigationRightButton:nil imageName:@"refreshButton.png" action:@selector(clickPostButton:)];
+    
     [self setBackgroundImageName:@"BackGround.png"];
     [self showBackgroundImage];
 

@@ -13,6 +13,9 @@
 #import "TCWBEngine.h"
 
 
+#import "WXApi.h"
+
+
 @class SinaweiboManager;
 @class TCWBEngine;
 @class PPTabBarController;
@@ -24,7 +27,7 @@ enum
 };
 
 
-@interface AppDelegate : PPApplication <UIApplicationDelegate,UITabBarControllerDelegate,SinaWeiboDelegate,TencentSessionDelegate>
+@interface AppDelegate : PPApplication <UIApplicationDelegate,UITabBarControllerDelegate,SinaWeiboDelegate,WXApiDelegate,TencentSessionDelegate>
 
 {
       PPTabBarController	*_tabBarController;
@@ -33,6 +36,9 @@ enum
       SinaweiboManager    *_sinaWeiboManager;
       TencentOAuthManager *_tencentOAuthManager;
       TCWBEngine          *_tCWBEngine;
+    
+       enum WXScene _scene;
+
 
 }
 

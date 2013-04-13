@@ -13,9 +13,7 @@
 #import "ShareToSinaController.h"
 #import "ImageManager.h"
 #import "FontSize.h"
-
 #import "DeviceDetection.h"
-
 #import "AppDelegate.h"
 
 
@@ -28,7 +26,6 @@ enum actionsheetNumber{
 typedef enum {
     ACCOUNT_MANAGEMENT = 0,
     SHARE_To_SOCIAL_NET_WORKS,
-    SHARE_TO_FRIENDS,
     FEEDBACK,
     LIKE_US,
     SHOW_ABOUT_VIEW,
@@ -44,6 +41,8 @@ typedef enum {
 
 @implementation MoreViewController
 @synthesize listData =_listData;
+@synthesize delegate = _delegate;
+
 
 -(void)dealloc{
     
@@ -68,7 +67,7 @@ typedef enum {
 
 - (void)initOptionList
 {
-    NSArray *array = [[NSArray alloc] initWithObjects:@"账号管理", @"分享", @"推荐给好友", @"信息反馈",@"喜欢我们,打分鼓励", @"关于我们",  nil];
+    NSArray *array = [[NSArray alloc] initWithObjects:@"账号管理", @"分享", @"信息反馈",@"喜欢我们,打分鼓励", @"关于我们",  nil];
     self.listData = array;
     [array release];
 }
@@ -110,11 +109,6 @@ typedef enum {
 
 #pragma mark -
 #pragma mark tableView delegates
-
-
-
-
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 43.0f;
@@ -131,14 +125,12 @@ typedef enum {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    
     switch (section) {
         case 0:
         {
             PPDebug(@"Section one");
             
-            return 6;
+            return 5;
 
         }
             break;
@@ -152,7 +144,6 @@ typedef enum {
         case 2:
         {
             PPDebug(@"Section three");
-//            @"客户端更新",@"推荐应用",@"退出客户端"
             return 1;
         }
             break;
@@ -203,7 +194,6 @@ typedef enum {
         }else {
             cell.textLabel.text  = @"推荐应用";
          imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottom_cell_background.png"]];
-            
         }
         
     }else {
@@ -215,8 +205,6 @@ typedef enum {
     cell.backgroundView=imageView;
     [imageView release];
     
-
-
     UIImage *image = nil;
     if (indexPath.section ==0) {
         
@@ -226,9 +214,6 @@ typedef enum {
                 break;
             case SHARE_To_SOCIAL_NET_WORKS:
                 image = [UIImage imageNamed:@"share_social.png"];
-                break;
-            case SHARE_TO_FRIENDS :
-                image = [UIImage imageNamed:@"share_with_firends.png"];
                 break;
             case FEEDBACK:
                 image = [UIImage imageNamed:@"feed_back.png"];
@@ -285,11 +270,6 @@ typedef enum {
                 [self shareToSocialnetWorks];
             }
                 break;
-            case SHARE_TO_FRIENDS:
-            {
-                [self shareToYourFriends];
-            }
-                break;
             case FEEDBACK:
             {
                 [self showFeedback];
@@ -343,8 +323,6 @@ typedef enum {
 
 #pragma mark --Controller Methods
 
-
-
 -(void)accountManagement{
 
     PPDebug(@"user goes to accountManagement");
@@ -357,7 +335,7 @@ typedef enum {
                                                        delegate:self
                                               cancelButtonTitle:NSLS(@"取消")
                                          destructiveButtonTitle:NSLS(@"分享到新浪微博")
-                                              otherButtonTitles:NSLS(@"分享到腾讯微博"),NSLS(@"通过邮箱"),NSLS(@"通过短信"),nil];
+                                              otherButtonTitles:NSLS(@"分享给微信好友"),NSLS(@"分享到微信朋友圈"),NSLS(@"通过邮箱"),NSLS(@"通过短信"),nil];
     [share showFromTabBar:self.tabBarController.tabBar];
     [share release];
     
@@ -401,8 +379,6 @@ typedef enum {
     
     
 }
-
-
 
 - (void)shareToYourFriends
 {
@@ -476,7 +452,8 @@ typedef enum {
         enum BUTTON_INDEX {
             
             SEND_SINA_WEIBO= 0,
-            SEND_TENGXUN_WEIBO,
+            SEND_WECHAT_SOCIAL,
+            SEND_WECHAT_FRIENDS,
             SEND_EMAIL ,
             SEND_MESSAGE ,
             CANCLE_BUTTON
@@ -484,8 +461,7 @@ typedef enum {
                 
         NSInteger BUTTON_INDEX ;
         BUTTON_INDEX  = buttonIndex;
-        NSLog(@"asdfasd");
-        
+
         switch (BUTTON_INDEX) {
             case SEND_SINA_WEIBO:
             {
@@ -496,12 +472,14 @@ typedef enum {
                 
             }
                 break;
-            case SEND_TENGXUN_WEIBO:
+            case SEND_WECHAT_SOCIAL:
             {
-//                ShareToQQWeiboController *sc = [[ShareToQQWeiboController alloc]init];
-//                [self.navigationController pushViewController:sc animated:YES];
-//                [sc release];
                 
+            }
+            case SEND_WECHAT_FRIENDS:
+            {
+                ///调用微信接口
+                [self sendAppContent];
             }
                 break;
             case SEND_EMAIL:
@@ -534,6 +512,18 @@ typedef enum {
         }
     }
 }
+
+////Wechat
+
+- (void)sendAppContent
+{
+    if (_delegate)
+    {
+        [_delegate sendAppContent];
+    }
+}
+
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
