@@ -330,6 +330,7 @@ typedef enum {
 
 -(void)shareToSocialnetWorks
 {
+    whichAcctionSheet = RECOMMENDATION;
     
     UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
                                                        delegate:self
@@ -355,6 +356,7 @@ typedef enum {
     return 13;
 }
 
+
 -(AWActionSheetCell *)cellForActionAtIndex:(NSInteger)index
 {
     AWActionSheetCell* cell = [[[AWActionSheetCell alloc] init] autorelease];
@@ -374,18 +376,16 @@ typedef enum {
 -(void)DidTapOnItemAtIndex:(NSInteger)index
 {
     PPDebug(@"tap on %d",index);
-    
-    PPDebug(@"i changed something !!");
-    
-    
+
 }
 
 - (void)shareToYourFriends
 {
     
     if ([DeviceDetection isOS6]){
-        
+
         [self showAWSheet];
+        
     }
     else{
         whichAcctionSheet = RECOMMENDATION;
@@ -442,7 +442,7 @@ typedef enum {
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     
-    if (  whichAcctionSheet == RECOMMENDATION )
+    if (whichAcctionSheet == RECOMMENDATION )
     {
         NSString *bodyStringBegin = @"朋友，我正在使用爱健美客户端，学习如何健身，分享，很方便很好用，下载地址是";
         NSString *bodyStringWebsite = @"http://www.aijianmei.com";
@@ -511,15 +511,21 @@ typedef enum {
                 break;
         }
     }
+    
+    
 }
 
-////Wechat
 
+
+////Wechat
 - (void)sendAppContent
 {
-    if (_delegate)
+    
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(sendAppContent)])
     {
         [_delegate sendAppContent];
+        PPDebug(@"I am about to share the app infos");
     }
 }
 

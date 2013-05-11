@@ -266,12 +266,7 @@
                                     isFollow:NO
                                      workOut:workOut];
     //////Middle  Area
-    //    Pectoral ( chest ) >
-    //    Abs ( abdomen ) >
-    //    Oblique Abs ( lateral abdomen ) >
-    //    Dorsal ( back ) >
-    //    Lumbar ( lower back ) >
-    
+        
     
     
     Video *video6 = [[Video alloc]initWithId:@"6"

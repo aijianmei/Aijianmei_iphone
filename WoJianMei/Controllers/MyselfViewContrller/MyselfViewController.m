@@ -136,7 +136,7 @@ typedef enum SOCIAL_NET_WORK {
 
 -(void)test{
 
-    [self performSegueWithIdentifier:@"SearchViewController" sender:self];
+//    [self performSegueWithIdentifier:@"SearchViewController" sender:self];
     
 }
 
@@ -275,7 +275,7 @@ typedef enum SOCIAL_NET_WORK {
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 4;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -283,11 +283,11 @@ typedef enum SOCIAL_NET_WORK {
     // Return the number of rows in the section.
     
     switch (section) {
-//        case 0:
-//        {
-//            return 2;
-//        }
-//            break;
+          case 0:
+        {
+            return 1;
+        }
+            break;
 //        case 1:
 //        {
 //            return 2;
@@ -327,6 +327,10 @@ typedef enum SOCIAL_NET_WORK {
         [cell.textLabel setFont:[UIFont systemFontOfSize:14]];
         cell.textLabel.textColor=[UIColor colorWithRed:0x46/255.0 green:0x46/255.0 blue:0x46/255.0 alpha:1.0];
     }
+    
+    
+    
+    [cell.textLabel setText:@"爱健美历程"];
     
 //    if (indexPath.section==0) {
 //        switch ([indexPath row]) {
