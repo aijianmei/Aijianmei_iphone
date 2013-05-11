@@ -107,8 +107,12 @@ typedef enum SOCIAL_NET_WORK {
 
 - (void)upgradeUI
 {
+    
+    
     NSData *userData  =[[NSUserDefaults standardUserDefaults] objectForKey:USER];
-    self.user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+    
+    
+   self.user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
     
     [self.headerVImageButton setBackgroundImage:[self.user avatarImage] forState:UIControlStateNormal];
 
@@ -203,10 +207,6 @@ typedef enum SOCIAL_NET_WORK {
     [self.myHeaderView addSubview:self.headerVImageButton];
     [self.dataTableView setTableHeaderView:self.myHeaderView];
     
-
-
-    
-    
     
      //   新浪微博 
     sinaweiboManager = [self sinaweiboManager];
@@ -262,6 +262,7 @@ typedef enum SOCIAL_NET_WORK {
     /* prepare to use our own on-disk cache */
    
     [self upgradeUI];
+    
     self.dataList = [NSArray arrayWithObjects:@"新浪微博",@"QQ登陆",@"腾讯微博账号", nil];
     
        
@@ -331,6 +332,7 @@ typedef enum SOCIAL_NET_WORK {
     
     
     [cell.textLabel setText:@"爱健美历程"];
+    [cell.detailTextLabel setText:@"查看你的健身历程"];
     
 //    if (indexPath.section==0) {
 //        switch ([indexPath row]) {
@@ -908,6 +910,7 @@ typedef enum SOCIAL_NET_WORK {
 }
 
 - (void) storeSinaweiboDatas :(NSDictionary *)dataDictionary{
+    
 
      NSString *sinaUserName =  [dataDictionary objectForKey:USER_NAME];
      NSString *description = [dataDictionary objectForKey:USER_DESCRIPTION];
@@ -915,6 +918,7 @@ typedef enum SOCIAL_NET_WORK {
      UIImage *image = [UIImage imageWithData:data];
      [data release];
      NSString *gender = [dataDictionary objectForKey:USER_GENDER];
+    
     
     
     self.user.name = sinaUserName;
