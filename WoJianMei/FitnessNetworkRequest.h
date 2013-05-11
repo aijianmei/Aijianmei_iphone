@@ -11,12 +11,13 @@
 #import "PPNetworkRequest.h"
 #import "FitnessNetworkConstants.h"
 
-typedef void (^TravelNetworkResponseBlock)(NSDictionary* jsonDictionary, NSData* data, int resultCode);
+typedef void (^FitnessNetworkResponseBlock)(NSDictionary* jsonDictionary, NSData* data, int resultCode);
 
 @interface FitnessNetworkRequest : NSObject
 
 
 
-+ (CommonNetworkOutput*)queryVersion;
++ (CommonNetworkOutput *)queryVersion;
++ (CommonNetworkOutput *)login;
 
 @end

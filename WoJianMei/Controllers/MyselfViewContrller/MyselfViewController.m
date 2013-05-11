@@ -110,11 +110,9 @@ typedef enum SOCIAL_NET_WORK {
     
     
     NSData *userData  =[[NSUserDefaults standardUserDefaults] objectForKey:USER];
+    self.user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
     
-    
-   self.user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
-    
-    [self.headerVImageButton setBackgroundImage:[self.user avatarImage] forState:UIControlStateNormal];
+    [self.headerVImageButton setBackgroundImage:self.user.avatarImage forState:UIControlStateNormal];
 
     
     NSString *userName = [self.user name];
@@ -750,6 +748,7 @@ typedef enum SOCIAL_NET_WORK {
     if (image != nil){
         
     [self.navigationController  dismissViewControllerAnimated:YES completion:^{
+        
         [self.headerVImageButton setImage:image forState:UIControlStateNormal];
          self.user.avatarImage = image;
         [self storeUserInfo];
@@ -933,8 +932,10 @@ typedef enum SOCIAL_NET_WORK {
 
 -(void)storeUserInfo{
     
-    NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.user];
+     NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.user];
     [[NSUserDefaults standardUserDefaults] setObject:userData forKey:USER];
+    
+    [self upgradeUI];
     
 }
 

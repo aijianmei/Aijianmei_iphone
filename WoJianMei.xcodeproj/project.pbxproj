@@ -363,7 +363,6 @@
 		4AC4BB5F16AB01B00069EDA7 /* postButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC4BB5616AB01B00069EDA7 /* postButton@2x.png */; };
 		4AC4BB6016AB01B00069EDA7 /* refreshButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC4BB5716AB01B00069EDA7 /* refreshButton@2x.png */; };
 		4AC4BB6116AB01B00069EDA7 /* repost.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC4BB5816AB01B00069EDA7 /* repost.png */; };
-		4AC4BB6216AB01B00069EDA7 /* 交友互动.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4AC4BB5916AB01B00069EDA7 /* 交友互动.jpg */; };
 		4ACE239C16AB0F2E002E41D1 /* CompostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE239B16AB0F2E002E41D1 /* CompostViewController.m */; };
 		4ACE23A216AB168D002E41D1 /* AccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ACE23A116AB168D002E41D1 /* AccessoryView.xib */; };
 		4AD66B1415CFCEEC000F7CB8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD66B1315CFCEEC000F7CB8 /* MapKit.framework */; };
@@ -474,7 +473,6 @@
 		4ADCFF3C169D62C400A3E979 /* tu_39-15.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEC7169D62C400A3E979 /* tu_39-15.png */; };
 		4ADCFF3D169D62C400A3E979 /* feed_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEC8169D62C400A3E979 /* feed_back@2x.png */; };
 		4ADCFF3E169D62C400A3E979 /* update_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEC9169D62C400A3E979 /* update_app@2x.png */; };
-		4ADCFF3F169D62C400A3E979 /* 01.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFECB169D62C400A3E979 /* 01.m4v */; };
 		4ADCFF40169D62C400A3E979 /* weiboicon24.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFECC169D62C400A3E979 /* weiboicon24.png */; };
 		4ADCFFA9169D69F700A3E979 /* JMStaticContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFF54169D69F600A3E979 /* JMStaticContentTableViewCell.m */; };
 		4ADCFFAA169D69F700A3E979 /* JMStaticContentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFF56169D69F600A3E979 /* JMStaticContentTableViewController.m */; };
@@ -1164,7 +1162,6 @@
 		4AC4BB5616AB01B00069EDA7 /* postButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "postButton@2x.png"; sourceTree = "<group>"; };
 		4AC4BB5716AB01B00069EDA7 /* refreshButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refreshButton@2x.png"; sourceTree = "<group>"; };
 		4AC4BB5816AB01B00069EDA7 /* repost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = repost.png; sourceTree = "<group>"; };
-		4AC4BB5916AB01B00069EDA7 /* 交友互动.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "交友互动.jpg"; sourceTree = "<group>"; };
 		4ACE239A16AB0F2E002E41D1 /* CompostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompostViewController.h; sourceTree = "<group>"; };
 		4ACE239B16AB0F2E002E41D1 /* CompostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompostViewController.m; sourceTree = "<group>"; };
 		4ACE23A116AB168D002E41D1 /* AccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccessoryView.xib; sourceTree = "<group>"; };
@@ -1246,7 +1243,6 @@
 		4ADCFE88169D62C400A3E979 /* live_menu_3_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "live_menu_3_on@2x.png"; sourceTree = "<group>"; };
 		4ADCFE89169D62C400A3E979 /* live_menu_8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "live_menu_8@2x.png"; sourceTree = "<group>"; };
 		4ADCFE8A169D62C400A3E979 /* live_menu_9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "live_menu_9@2x.png"; sourceTree = "<group>"; };
-		4ADCFE91169D62C400A3E979 /* LOGO副本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LOGO副本.png"; sourceTree = "<group>"; };
 		4ADCFE92169D62C400A3E979 /* Lower-Back-Exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Lower-Back-Exercises.jpg"; sourceTree = "<group>"; };
 		4ADCFE93169D62C400A3E979 /* menu-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon.png"; sourceTree = "<group>"; };
 		4ADCFE94169D62C400A3E979 /* menu-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon@2x.png"; sourceTree = "<group>"; };
@@ -1296,7 +1292,6 @@
 		4ADCFEC7169D62C400A3E979 /* tu_39-15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tu_39-15.png"; sourceTree = "<group>"; };
 		4ADCFEC8169D62C400A3E979 /* feed_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed_back@2x.png"; sourceTree = "<group>"; };
 		4ADCFEC9169D62C400A3E979 /* update_app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "update_app@2x.png"; sourceTree = "<group>"; };
-		4ADCFECB169D62C400A3E979 /* 01.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = 01.m4v; sourceTree = "<group>"; };
 		4ADCFECC169D62C400A3E979 /* weiboicon24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weiboicon24.png; sourceTree = "<group>"; };
 		4ADCFF52169D69F600A3E979 /* JMStaticContentTableViewBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMStaticContentTableViewBlocks.h; sourceTree = "<group>"; };
 		4ADCFF53169D69F600A3E979 /* JMStaticContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMStaticContentTableViewCell.h; sourceTree = "<group>"; };
@@ -2993,7 +2988,6 @@
 				4AC4BB5616AB01B00069EDA7 /* postButton@2x.png */,
 				4AC4BB5716AB01B00069EDA7 /* refreshButton@2x.png */,
 				4AC4BB5816AB01B00069EDA7 /* repost.png */,
-				4AC4BB5916AB01B00069EDA7 /* 交友互动.jpg */,
 			);
 			path = MakingFriends;
 			sourceTree = "<group>";
@@ -3169,7 +3163,6 @@
 				4ADCFE88169D62C400A3E979 /* live_menu_3_on@2x.png */,
 				4ADCFE89169D62C400A3E979 /* live_menu_8@2x.png */,
 				4ADCFE8A169D62C400A3E979 /* live_menu_9@2x.png */,
-				4ADCFE91169D62C400A3E979 /* LOGO副本.png */,
 				4ADCFE92169D62C400A3E979 /* Lower-Back-Exercises.jpg */,
 				4ADCFE93169D62C400A3E979 /* menu-icon.png */,
 				4ADCFE94169D62C400A3E979 /* menu-icon@2x.png */,
@@ -3227,7 +3220,6 @@
 		4ADCFECA169D62C400A3E979 /* videos */ = {
 			isa = PBXGroup;
 			children = (
-				4ADCFECB169D62C400A3E979 /* 01.m4v */,
 			);
 			path = videos;
 			sourceTree = "<group>";
@@ -3695,7 +3687,6 @@
 				4ADCFF3C169D62C400A3E979 /* tu_39-15.png in Resources */,
 				4ADCFF3D169D62C400A3E979 /* feed_back@2x.png in Resources */,
 				4ADCFF3E169D62C400A3E979 /* update_app@2x.png in Resources */,
-				4ADCFF3F169D62C400A3E979 /* 01.m4v in Resources */,
 				4ADCFF40169D62C400A3E979 /* weiboicon24.png in Resources */,
 				4ADCFFAE169D69F700A3E979 /* DemoViewController.xib in Resources */,
 				4ADCFFB5169D69F700A3E979 /* LICENSE in Resources */,
@@ -3764,7 +3755,6 @@
 				4AC4BB5F16AB01B00069EDA7 /* postButton@2x.png in Resources */,
 				4AC4BB6016AB01B00069EDA7 /* refreshButton@2x.png in Resources */,
 				4AC4BB6116AB01B00069EDA7 /* repost.png in Resources */,
-				4AC4BB6216AB01B00069EDA7 /* 交友互动.jpg in Resources */,
 				4ACE23A216AB168D002E41D1 /* AccessoryView.xib in Resources */,
 				4A572F2316ACE3C000F4A104 /* 01.png in Resources */,
 				4A572F2416ACE3C000F4A104 /* 02.png in Resources */,

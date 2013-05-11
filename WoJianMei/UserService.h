@@ -31,6 +31,17 @@
 
 + (UserService*)defaultService;
 
+///获取新版本
 - (void)queryVersion:(id<UserServiceDelegate>)delegate;
+
+// 用户登陆
+- (void)login:(id<UserServiceDelegate>)delegate;
+
+
+
+
+
+
+
 
 @end

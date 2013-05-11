@@ -19,11 +19,9 @@
 
 @implementation FitnessNetworkRequest
 
-
-
 + (CommonNetworkOutput*)sendRequest:(NSString*)baseURL
                 constructURLHandler:(ConstructURLBlock)constructURLHandler
-                    responseHandler:(TravelNetworkResponseBlock)responseHandler
+                    responseHandler:(FitnessNetworkResponseBlock)responseHandler
                        outputFormat:(int)outputFormat
                              output:(CommonNetworkOutput*)output
 {
@@ -75,7 +73,7 @@
                 [[request rawResponseData] length], [[request responseData] length]);
 #endif
         
-        if (outputFormat == FORMAT_TRAVEL_PB){
+        if (outputFormat == FORMAT_FITNESS_PB){
             responseHandler(nil, [request responseData], output.resultCode);
             output.responseData = [request responseData];
         }
@@ -101,7 +99,7 @@
 
 
 
-
+////更新版本
 + (CommonNetworkOutput*)queryVersion
 {
     CommonNetworkOutput* output = [[[CommonNetworkOutput alloc] init] autorelease];
@@ -111,22 +109,84 @@
         return str;
     };
     
-    TravelNetworkResponseBlock responseHandler = ^(NSDictionary* jsonDictionary, NSData* data, int resultCode) {
+    FitnessNetworkResponseBlock responseHandler = ^(NSDictionary* jsonDictionary, NSData* data, int resultCode) {
         return;
     };
     
-    return [FitnessNetworkRequest sendRequest:URL_TRAVEL_QUERY_VERSION
+    return [FitnessNetworkRequest sendRequest:URL_FITNESS_QUERY_VERSION
                          constructURLHandler:constructURLHandler
                              responseHandler:responseHandler
-                                outputFormat:FORMAT_TRAVEL_JSON
+                                outputFormat:FORMAT_FITNESS_JSON
                                       output:output];
     
-    NSLog(@"%@ the url of the update ",[[FitnessNetworkRequest sendRequest:URL_TRAVEL_QUERY_VERSION
+    NSLog(@"%@ the url of the update ",[[FitnessNetworkRequest sendRequest:URL_FITNESS_QUERY_VERSION
                                                       constructURLHandler:constructURLHandler
                                                           responseHandler:responseHandler
-                                                             outputFormat:FORMAT_TRAVEL_JSON
+                                                             outputFormat:FORMAT_FITNESS_JSON
                                                                    output:output] description]);
 }
+
+
++ (CommonNetworkOutput*)login{
+    
+//    CommonNetworkOutput* output = [[[CommonNetworkOutput alloc] init] autorelease];
+//    
+//    ConstructURLBlock constructURLHandler = ^NSString *(NSString *baseURL)  {
+//        NSString* str = [NSString stringWithString:baseURL];
+//        return str;
+//    };
+//    
+//    FitnessNetworkResponseBlock responseHandler = ^(NSDictionary* jsonDictionary, NSData* data, int resultCode) {
+//        return;
+//    };
+//    
+//    return [FitnessNetworkRequest sendRequest:URL_FITNESS_QUERY_VERSION
+//                          constructURLHandler:constructURLHandler
+//                              responseHandler:responseHandler
+//                                 outputFormat:FORMAT_FITNESS_JSON
+//                                       output:output];
+//    
+//    NSLog(@"%@ the url of the update ",[[FitnessNetworkRequest sendRequest:URL_FITNESS_QUERY_VERSION
+//                                                       constructURLHandler:constructURLHandler
+//                                                           responseHandler:responseHandler
+//                                                              outputFormat:FORMAT_FITNESS_JSON
+//                                                                    output:output] description]);
+//
+//
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @end

@@ -38,11 +38,11 @@ static UserService* _defaultUserService = nil;
         dispatch_async(dispatch_get_main_queue(), ^{
             if (output.resultCode == ERROR_SUCCESS) {
                 NSDictionary* jsonDict = [output.textData JSONValue];
-                NSString *app_version = (NSString*)[jsonDict objectForKey:PARA_TRAVEL_APP_VERSION];
-                NSString *app_data_version = (NSString*)[jsonDict objectForKey:PARA_TRAVEL_APP_DATA_VERSION];
+                NSString *app_version = (NSString*)[jsonDict objectForKey:PARA_FITNESS_APP_VERSION];
+                NSString *app_data_version = (NSString*)[jsonDict objectForKey:PARA_FITNESS_APP_DATA_VERSION];
                 
-                NSString *app_update_title = (NSString *)[jsonDict objectForKey:PARA_TRAVEL_APP_UPDATE_TITLE];
-                NSString *app_update_content = (NSString *)[jsonDict objectForKey:PARA_TRAVEL_APP_UPDATE_CONTENT];
+                NSString *app_update_title = (NSString *)[jsonDict objectForKey:PARA_FITNESS_APP_UPDATE_TITLE];
+                NSString *app_update_content = (NSString *)[jsonDict objectForKey:PARA_FITNESS_APP_UPDATE_CONTENT];
                 
                 if (delegate && [delegate respondsToSelector:@selector(queryVersionFinish:dataVersion:title:content:)]) {
                     [delegate queryVersionFinish:app_version dataVersion:app_data_version title:app_update_title content:app_update_content];
@@ -50,6 +50,35 @@ static UserService* _defaultUserService = nil;
             }
         });
     });
+}
+
+
+- (void)login:(id<UserServiceDelegate>)delegate{
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        CommonNetworkOutput *output = [FitnessNetworkRequest login];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (output.resultCode == ERROR_SUCCESS) {
+//                
+//                NSDictionary* jsonDict = [output.textData JSONValue];
+//                NSString *app_version = (NSString*)[jsonDict objectForKey:PARA_FITNESS_APP_VERSION];
+//                NSString *app_data_version = (NSString*)[jsonDict objectForKey:PARA_FITNESS_APP_DATA_VERSION];
+//                
+//                NSString *app_update_title = (NSString *)[jsonDict objectForKey:PARA_FITNESS_APP_UPDATE_TITLE];
+//                NSString *app_update_content = (NSString *)[jsonDict objectForKey:PARA_FITNESS_APP_UPDATE_CONTENT];
+                
+//                if (delegate && [delegate respondsToSelector:@selector(queryVersionFinish:dataVersion:title:content:)]) {
+//                    [delegate queryVersionFinish:app_version dataVersion:app_data_version title:app_update_title content:app_update_content];
+//                }
+                
+                
+            }
+        });
+    });
+    
+    
 }
 
 
