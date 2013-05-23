@@ -13,15 +13,21 @@
 {
 
     UIImage  *_avatarImage;
+    UIImage  *_avatarBackGroundImage;
+    
     NSString *_name;
+    NSString *_motto;
+    
     NSString *_description;
     NSString *_gender;
     
     
 }
-
 @property (retain, nonatomic)  UIImage *avatarImage;
+@property (retain, nonatomic)  UIImage *avatarBackGroundImage;
 @property (retain ,nonatomic)  NSString *name;
+@property (retain ,nonatomic)  NSString *motto;
+
 @property (retain, nonatomic)  NSString *description;
 @property (retain, nonatomic)  NSString *gender;
 

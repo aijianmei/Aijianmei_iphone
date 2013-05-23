@@ -4255,6 +4255,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = WoJianMei;
+				SHARED_PRECOMPS_DIR = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4275,6 +4276,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = WoJianMei;
+				SHARED_PRECOMPS_DIR = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

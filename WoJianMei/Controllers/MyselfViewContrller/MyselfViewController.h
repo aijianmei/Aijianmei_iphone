@@ -35,15 +35,8 @@
     UILabel                      *_userNameLabel;
     UILabel                         *_mottoLabel;
     UILabel                    *_userGenderLabel;
-    UISwitch                    *_sinaModeSwitch;
-    UISwitch            *_tenCentWeiboModeSwitch;
-    UISwitch               *_tenCentQQModeSwitch;
     
-    SinaweiboManager           *sinaweiboManager; //sina
-    TencentOAuthManager        *tencentQQManager;//qq
-    TCWBEngine              *tencentWeiboManager; //weibo
-
-    
+      
     NSDictionary                 *_sina_userInfo;
     NSDictionary                      *user_info;
 
@@ -51,9 +44,6 @@
 }
 
 
-@property (nonatomic,retain) UISwitch         *sinaModeSwitch;
-@property (nonatomic,retain) UISwitch    *tenCentQQModeSwitch;
-@property (nonatomic,retain) UISwitch *tenCentWeiboModeSwitch;
 @property (nonatomic,retain) UIButton     *headerVImageButton;
 @property (nonatomic,retain) UIImageView       *footerVImageV;
 @property (nonatomic,retain) UIView             *myHeaderView;
