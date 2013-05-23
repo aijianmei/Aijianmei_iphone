@@ -58,7 +58,6 @@
     [_mainArray release];
     [_myFollowButton release];
     [_selectedButton release];
-//    [_myFollowCountView  release];
     [_showBigImageViewController release];
     
     self.userID = nil;
@@ -104,6 +103,13 @@
     
     [self initWorkOutDatas];
     [self clickButtons:self.selectedButton];
+    
+    
+    
+    
+
+    
+    
     
     
 }

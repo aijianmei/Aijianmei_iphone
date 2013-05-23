@@ -27,7 +27,23 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    UIBarButtonItem *bar = [[UIBarButtonItem alloc]initWithImage:nil style:UIBarButtonItemStyleBordered target:self action:@selector(clickCancleButton:)];
+    [bar setTitle:@"取消"];
+    [self.navigationItem setRightBarButtonItem:bar];
+    [bar release];
+
+    
 }
+
+-(void)clickCancleButton:(UIButton *)sender{
+
+    [self dismissModalViewControllerAnimated:YES];
+
+}
+
+
+
 
 - (void)didReceiveMemoryWarning
 {

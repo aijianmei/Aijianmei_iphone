@@ -18,7 +18,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wfm-lo-lcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3126" y="-2516"/>
+            <point key="canvasLocation" x="2670" y="-2004"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="oGG-M3-FWy">
@@ -61,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aj2-pd-5uU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3550" y="-2516"/>
+            <point key="canvasLocation" x="3102" y="-2500"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="phe-nc-tB2">
@@ -148,7 +148,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xXH-LY-GsM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4030" y="-2586"/>
+            <point key="canvasLocation" x="3958" y="-2126"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="jJh-Pz-33p">
+            <objects>
+                <viewController id="ggH-Ur-he6" customClass="LoginViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Des-hA-COl">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fB0-kX-iF0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4V1-jv-YEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3439" y="-5619"/>
         </scene>
         <!--Workout View Controller - 视频-->
         <scene sceneID="KKm-98-eaU">
@@ -360,11 +375,12 @@
                     <connections>
                         <outlet property="dataTableView" destination="NtN-xg-TPp" id="PiG-EZ-ml2"/>
                         <outlet property="view" destination="eIO-mw-WJo" id="e4G-4o-C3a"/>
+                        <segue destination="Nga-zL-67n" kind="modal" identifier="LoginSegue" id="R94-th-lBa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbY-3i-Lwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2592" y="-5568"/>
+            <point key="canvasLocation" x="2258" y="-5796"/>
         </scene>
         <!--Nutri Sup View Controller - Item-->
         <scene sceneID="mSZ-Ga-IYS">
@@ -559,7 +575,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="doW-v4-jiV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2573" y="-2516"/>
+            <point key="canvasLocation" x="1981" y="-2468"/>
         </scene>
         <!--Make Friends View Controller-->
         <scene sceneID="VlY-SH-fVL">
@@ -722,6 +738,21 @@
             </objects>
             <point key="canvasLocation" x="3058" y="-4532"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xqL-Wb-r74">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="Nga-zL-67n" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nxe-m2-Ehc">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ggH-Ur-he6" kind="relationship" relationship="rootViewController" id="EbF-cy-yGp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Gz-7Z-3Cg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2916" y="-5723"/>
+        </scene>
         <!--Sina Users View Controller-->
         <scene sceneID="Xlm-RU-jSh">
             <objects>
@@ -829,6 +860,9 @@
                 <relationship kind="outlet" name="textAccessoryView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
             </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
         </class>
         <class className="MakeFriendsViewController" superclassName="PPTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MakeFriendsViewController.h"/>

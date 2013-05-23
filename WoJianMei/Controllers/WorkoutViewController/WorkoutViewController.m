@@ -161,6 +161,14 @@
     
      self.dataList = [[VideoManager defaultManager]  videoList];
     
+    
+    
+    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+
+    
+    
+    
+    
 }
 
 
