@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SignUpViewController : UIViewController
+@interface SignUpViewController : UIViewController<UIWebViewDelegate>
+
+{
+    
+
+       UIWebView *_signupWebView;
+    
+    
+}
+
+
+@property (retain, nonatomic) IBOutlet UIWebView *signupWebView;
 
 @end
