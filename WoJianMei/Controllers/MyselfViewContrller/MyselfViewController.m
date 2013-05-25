@@ -343,6 +343,11 @@
             break;
         case 1:
             NSLog(@"I did click %@",@"我的健身小助手");
+            
+        ////for testing
+            
+            [self performSegueWithIdentifier:@"" sender:self];
+            
             break;
         case 2:
             NSLog(@"I did click %@",@"标签");
