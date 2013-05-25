@@ -45,10 +45,28 @@
     
 }
 
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    
+
+    return YES;
+
+}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     NSLog(@"finished download");
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+
+    NSLog(@"I did start loading !");
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    
+    
+    NSLog(@"%@",error);
+    
+
 }
 
 

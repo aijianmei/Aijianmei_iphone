@@ -7,6 +7,8 @@
 //
 
 #import "LoginViewController.h"
+#import "ShareToSinaController.h"
+#import "ShareToQQViewController.h"
 
 @interface LoginViewController ()
 
@@ -49,6 +51,38 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+
+
+- (void)dealloc {
+    
+    [super dealloc];
+}
+- (void)viewDidUnload {
+    
+    [super viewDidUnload];
+}
+
+- (IBAction)clickSinaWeiboButton:(UIButton *)sender {
+    
+    
+    
+    ShareToSinaController *vc = [[ShareToSinaController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
+    
+}
+
+- (IBAction)clickQQShareButton:(UIButton *)sender {
+    
+        
+    ShareToQQViewController *vc = [[ShareToQQViewController alloc]init];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
+    
 }
 
 @end

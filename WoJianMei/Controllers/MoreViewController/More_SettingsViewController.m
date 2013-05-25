@@ -128,7 +128,7 @@
     BOOL isLoggedIn = sinaweibo.isLoggedIn;
     
     if (isLoggedIn) {
-        [sinaweibo logOut];
+        [sinaweibo logOut];        
     }
     [self.tableView reloadData];
   

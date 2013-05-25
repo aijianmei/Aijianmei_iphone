@@ -48,7 +48,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[[ImageManager defaultManager] allBackgroundImage]]];
     
     [self setNavigationLeftButton:NSLS(@" 返回") 
@@ -68,14 +67,15 @@
 //    NSString *appKey = [MobClick getConfigParams:UMENG_ONLINE_SINA_WEIBO_APP_KEY];
 //    NSString *appSecret = [MobClick getConfigParams:UMENG_ONLINE_SINA_WEIBO_APP_SECRET];
    
+    _sinaweiboManager = [self sinaweiboManager];
     
-    
-      _sinaweiboManager = [self sinaweiboManager];
-    
+    ///当新浪微博授权不可用的时候，调用一下方法
     if (![_sinaweiboManager.sinaweibo isAuthValid]) {
         [self.navigationItem.rightBarButtonItem setEnabled:NO];
         [_sinaweiboManager.sinaweibo logInInView:self.view];
     }
+    
+    
 }
 
 
@@ -178,8 +178,7 @@
     PPDebug(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
     
     [_sinaweiboManager storeAuthData];
-    [self.navigationItem.rightBarButtonItem setEnabled:YES];
-    
+    [self.navigationItem.rightBarButtonItem setEnabled:YES];    
 }
 
 - (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo

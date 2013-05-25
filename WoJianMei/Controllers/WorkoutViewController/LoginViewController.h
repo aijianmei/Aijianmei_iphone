@@ -10,4 +10,9 @@
 
 @interface LoginViewController : UIViewController
 
+- (IBAction)clickSinaWeiboButton:(UIButton *)sender;
+
+- (IBAction)clickQQShareButton:(UIButton *)sender;
+
+
 @end

@@ -188,6 +188,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="clickQQShareButton:" destination="ggH-Ur-he6" eventType="touchUpInside" id="avK-Bd-Khf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5Km-iT-jq5">
                                         <rect key="frame" x="63" y="277" width="132" height="44"/>
@@ -200,6 +203,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="clickSinaWeiboButton:" destination="ggH-Ur-he6" eventType="touchUpInside" id="RtF-jA-XLN"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </scrollView>
@@ -222,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4V1-jv-YEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3392" y="-5606"/>
+            <point key="canvasLocation" x="3330" y="-5686"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="96l-pa-39P">
@@ -462,7 +468,7 @@
                     <connections>
                         <outlet property="dataTableView" destination="NtN-xg-TPp" id="PiG-EZ-ml2"/>
                         <outlet property="view" destination="eIO-mw-WJo" id="e4G-4o-C3a"/>
-                        <segue destination="Nga-zL-67n" kind="modal" identifier="LoginSegue" id="R94-th-lBa"/>
+                        <segue destination="Nga-zL-67n" kind="modal" identifier="LoginSegue" id="gsm-3L-Jlj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbY-3i-Lwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -950,6 +956,10 @@
         </class>
         <class className="LoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="clickQQShareButton:" candidateClass="UIButton"/>
+                <relationship kind="action" name="clickSinaWeiboButton:" candidateClass="UIButton"/>
+            </relationships>
         </class>
         <class className="MakeFriendsViewController" superclassName="PPTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MakeFriendsViewController.h"/>
