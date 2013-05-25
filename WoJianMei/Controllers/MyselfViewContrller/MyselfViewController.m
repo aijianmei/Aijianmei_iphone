@@ -436,6 +436,8 @@
     [share showFromTabBar:self.tabBarController.tabBar];
     [share release];
 
+    
+    
 }
 
 

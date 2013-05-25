@@ -18,6 +18,7 @@
 
 @implementation RootViewController
 @synthesize workoutNoteButton =_workoutNoteButton;
+@synthesize workoutImageButton = _workoutImageButton;
 @synthesize scrollView =_scrollView;
 
 
@@ -49,10 +50,11 @@
     
     
     self.workoutNoteButton = workoutNoteButton;
+    self.workoutImageButton = workoutImageButton;
 
     
     [scView addSubview:_workoutNoteButton];
-    [scView addSubview:workoutImageButton];
+    [scView addSubview:_workoutImageButton];
     [scView addSubview:workoutDatasButton];
     
     
@@ -112,30 +114,30 @@
     notecomposeViewController.text = @"亲，写下你的健身心得吧！";
     [self presentViewController:notecomposeViewController animated:YES completion:nil];
     
-    // Alternative use with REComposeViewControllerCompletionHandler
-    notecomposeViewController.completionHandler = ^(REComposeResult result) {
-        if (result == REComposeResultCancelled) {
-            NSLog(@"Cancelled");
-        }
-        
-        if (result == REComposeResultPosted) {
-            NSLog(@"Text = %@", notecomposeViewController.text);
-        
-            [self.workoutNoteButton setTitle:notecomposeViewController.text forState:UIControlStateNormal];
-            [self upgradeUI];
-            
-        }
-    };
 }
 
 - (void)workoutImageButtonPressed
 {
-    REComposeViewController *composeViewController = [[REComposeViewController alloc] init];
-    composeViewController.title = @"健身图片";
-    composeViewController.hasAttachment = YES;
-    composeViewController.attachmentImage = [UIImage imageNamed:@"Flower.jpg"];
-    composeViewController.delegate = self;
-    [self presentViewController:composeViewController animated:YES completion:nil];
+//    REComposeViewController *composeViewController = [[REComposeViewController alloc] init];
+//    composeViewController.title = @"健身图片";
+//    composeViewController.hasAttachment = YES;
+//    composeViewController.text = @"点击添加图片！！！";
+//    composeViewController.attachmentImage = [UIImage imageNamed:@"Flower.jpg"];
+//    composeViewController.delegate = self;
+//    [self presentViewController:composeViewController animated:YES completion:nil];
+    
+    
+    UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"取消"
+                                         destructiveButtonTitle:@"照相"
+                                              otherButtonTitles:@"相册",nil];
+    [share showFromTabBar:self.tabBarController.tabBar];
+    [share release];
+    
+    
+    
+    
 }
 
 - (void)workoutDatasButtonPressed
@@ -202,14 +204,77 @@
         NSLog(@"Text = %@", composeViewController.text);
     
     }
+    
+    
+    
+    
+    [self.workoutNoteButton setTitle:composeViewController.text forState:UIControlStateNormal];
+    
+    
+    
 }
 
 
 -(void)upgradeUI{
     
-    
 
 }
+
+
+#pragma mark --actionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    switch (buttonIndex) {
+        case 0:
+        {
+            [self takePhoto];
+        }
+            break;
+        case 1:
+        {
+            [self selectPhoto];
+            
+        }
+            break;
+        case 2:
+            
+        {
+            NSLog(@"Button index :%d",buttonIndex);
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+
+
+#pragma mark -
+#pragma mark - ImagePickerControllerDelegate
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    if (image != nil){
+        
+        [self.navigationController  dismissViewControllerAnimated:YES completion:^{
+            
+            [self.workoutImageButton setImage:image forState:UIControlStateNormal];
+            
+        }];
+    }
+}
+
+
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+    
+}
+
+
 
 
 @end

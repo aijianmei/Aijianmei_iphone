@@ -9,15 +9,21 @@
 #import <UIKit/UIKit.h>
 #import "REComposeViewController.h"
 
-@interface RootViewController : UIViewController <REComposeViewControllerDelegate>
+#import "PPViewController.h"
+
+@interface RootViewController : PPViewController <REComposeViewControllerDelegate,UIActionSheetDelegate>
 
 {
     UIButton *_workoutNoteButton;
+    UIButton *_workoutImageButton;
+
     
     UIScrollView *_scrollView;
 }
 
 @property (retain,nonatomic) UIButton *workoutNoteButton;
+@property (retain,nonatomic) UIButton *workoutImageButton;
+
 @property (retain,nonatomic) UIScrollView *scrollView;
 
 
