@@ -7,6 +7,8 @@
 //
 
 #import "MyselfViewController.h"
+#import "RootViewController.h"
+
 #import "MyselfTableViewCell.h"
 #import "ImageManager.h"
 #import "Myself_SettingsViewController.h"
@@ -360,12 +362,16 @@
             switch (indexPath.row) {
                 case 0:
                     NSLog(@"this is %@",@"性别");
-                    ////for testing
-                    
+                    ////for testing by Tom Callon 
                     [self performSegueWithIdentifier:@"WorkoutDatasViewSegue" sender:self];
                     break;
                 case 1:
                     NSLog(@"this is %@",@"年龄");
+                    
+                    RootViewController *rvController = [[RootViewController alloc]init];
+                    
+                    [self.navigationController pushViewController:rvController animated:YES];
+                    
                     break;
                 case 2:
                     NSLog(@"this is %@",@"身高");

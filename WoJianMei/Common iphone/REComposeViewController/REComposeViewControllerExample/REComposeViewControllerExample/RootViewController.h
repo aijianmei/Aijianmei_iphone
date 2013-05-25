@@ -8,18 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "REComposeViewController.h"
-#import "MFSlidingView.h"
 
-
-@interface ComposeRootViewController: UIViewController <REComposeViewControllerDelegate>
-
-{
-
-    
-    IBOutlet UIView *view1;
-    IBOutlet UIView *view2;
-    
-    
-}
+@interface RootViewController : UIViewController <REComposeViewControllerDelegate>
 
 @end

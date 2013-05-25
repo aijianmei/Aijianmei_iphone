@@ -6,14 +6,14 @@
 //  Copyright (c) 2012 Roman Efimov. All rights reserved.
 //
 
-#import "ComposeRootViewController.h"
+#import "RootViewController.h"
 #import "REComposeViewController.h"
 
-@interface ComposeRootViewController ()
+@interface RootViewController ()
 
 @end
 
-@implementation ComposeRootViewController
+@implementation RootViewController
 
 
 - (void)viewDidLoad
@@ -23,73 +23,42 @@
     
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
     
+    UIButton *socialExampleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    socialExampleButton.frame = CGRectMake(60, 10, 200, 40);
+    [socialExampleButton addTarget:self action:@selector(socialExampleButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [socialExampleButton setTitle:@"Some social network" forState:UIControlStateNormal];
+    [self.view addSubview:socialExampleButton];
     
+    UIButton *tumblrExampleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    tumblrExampleButton.frame = CGRectMake(60, 60, 200, 40);
+    [tumblrExampleButton addTarget:self action:@selector(tumblrExampleButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [tumblrExampleButton setTitle:@"Tumblr" forState:UIControlStateNormal];
+    [self.view addSubview:tumblrExampleButton];
     
-    
-    
-    
-    ///// add dismiss view controller button
-//    
-//    UIButton *canlcleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    canlcleButton.frame = CGRectMake(240, 10, 70, 40);
-//    [canlcleButton addTarget:self action:@selector(cancleButton:) forControlEvents:UIControlEventTouchUpInside];
-//    [canlcleButton setTitle:@"返回" forState:UIControlStateNormal];
-//    [self.view addSubview:canlcleButton];
-    
-    
-    
-    [MFSlidingView slideView:view1 intoView:self.view
-            onScreenPosition:MiddleOfScreen offScreenPosition:LeftOfScreen];
-    
-    
-    
-//    UIButton *socialExampleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    socialExampleButton.frame = CGRectMake(60, 10 + 80, 200, 40);
-//    [socialExampleButton addTarget:self action:@selector(socialExampleButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-//    [socialExampleButton setTitle:@"发微博" forState:UIControlStateNormal];
-//    [self.view addSubview:socialExampleButton];
-//    
-//    UIButton *tumblrExampleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    tumblrExampleButton.frame = CGRectMake(60, 60 + 80, 200, 40);
-//    [tumblrExampleButton addTarget:self action:@selector(tumblrExampleButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-//    [tumblrExampleButton setTitle:@"提问" forState:UIControlStateNormal];
-//    [self.view addSubview:tumblrExampleButton];
-//    
-//    UIButton *foursquareExampleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    foursquareExampleButton.frame = CGRectMake(60, 110 + 80, 200, 40);
-//    [foursquareExampleButton addTarget:self action:@selector(foursquareExampleButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-//    [foursquareExampleButton setTitle:@"预约" forState:UIControlStateNormal];
-//    [self.view addSubview:foursquareExampleButton];
-    
+    UIButton *foursquareExampleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    foursquareExampleButton.frame = CGRectMake(60, 110, 200, 40);
+    [foursquareExampleButton addTarget:self action:@selector(foursquareExampleButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [foursquareExampleButton setTitle:@"Foursquare" forState:UIControlStateNormal];
+    [self.view addSubview:foursquareExampleButton];
 }
 
 #pragma mark -
 #pragma mark Button actions
 
-
--(void)cancleButton:(id)sender{
-
-  
-    [self dismissModalViewControllerAnimated:YES];
-    
-}
-
-
-
 - (void)socialExampleButtonPressed
 {
     REComposeViewController *composeViewController = [[REComposeViewController alloc] init];
-    composeViewController.title = @"微博";
+    composeViewController.title = @"Social Network";
     composeViewController.hasAttachment = YES;
     composeViewController.delegate = self;
-    composeViewController.text = @"我热爱健身!";
+    composeViewController.text = @"Test";
     [self presentViewController:composeViewController animated:YES completion:nil];
 }
 
 - (void)tumblrExampleButtonPressed
 {
     REComposeViewController *composeViewController = [[REComposeViewController alloc] init];
-    composeViewController.title = @"提问";
+    composeViewController.title = @"Tumblr";
     composeViewController.hasAttachment = YES;
     composeViewController.attachmentImage = [UIImage imageNamed:@"Flower.jpg"];
     composeViewController.delegate = self;
