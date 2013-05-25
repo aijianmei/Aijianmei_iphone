@@ -847,10 +847,10 @@
             </objects>
             <point key="canvasLocation" x="2916" y="-5723"/>
         </scene>
-        <!--View Controller-->
+        <!--Work Out Process View Controller-->
         <scene sceneID="8JA-RT-lZG">
             <objects>
-                <viewController id="96c-6V-RW1" sceneMemberID="viewController">
+                <viewController id="96c-6V-RW1" customClass="WorkOutProcessViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Gg-jV-ANr">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -860,7 +860,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FVd-uI-KxB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2863" y="-4351"/>
+            <point key="canvasLocation" x="3037" y="-4381"/>
         </scene>
         <!--Sina Users View Controller-->
         <scene sceneID="Xlm-RU-jSh">
@@ -949,6 +949,111 @@
         <image name="touxiang_40x40.png" width="50" height="50"/>
         <image name="touxiang_40x40@2x.png" width="100" height="100"/>
     </resources>
+    <classes>
+        <class className="AboutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
+        </class>
+        <class className="ComposeViewCell" superclassName="PPTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ComposeViewCell.h"/>
+            <relationships>
+                <relationship kind="action" name="clickConnectButton:"/>
+                <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="connectButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CompostViewController" superclassName="PPTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CompostViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="tappedMe:"/>
+                <relationship kind="outlet" name="textAccessoryView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="clickQQShareButton:" candidateClass="UIButton"/>
+                <relationship kind="action" name="clickSinaWeiboButton:" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="MakeFriendsViewController" superclassName="PPTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MakeFriendsViewController.h"/>
+        </class>
+        <class className="MoreViewController" superclassName="PPTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MoreViewController.h"/>
+        </class>
+        <class className="MyselfViewController" superclassName="PPTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyselfViewController.h"/>
+        </class>
+        <class className="Nutri_SupViewController" superclassName="PPTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Nutri_SupViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="buttonScrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="NutritionDetailCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NutritionDetailCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="clickedNumberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="commentNumberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="introductionImageButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="PPTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPTabBarController.h"/>
+        </class>
+        <class className="PPTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPTableViewCell.h"/>
+        </class>
+        <class className="PPTableViewController" superclassName="PPViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dataTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="PPViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPViewController.h"/>
+        </class>
+        <class className="SignUpViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SignUpViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="signupWebView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="SinaUserCell" superclassName="PPTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SinaUserCell.h"/>
+            <relationships>
+                <relationship kind="action" name="clickInvitedButton:"/>
+                <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="inviteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="VideoListCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VideoListCell.h"/>
+            <relationships>
+                <relationship kind="action" name="clickBuyButton:"/>
+                <relationship kind="action" name="clickFollowButton:"/>
+                <relationship kind="action" name="clickShowBigImage:"/>
+                <relationship kind="action" name="clickSinaWeiBlogButton:"/>
+                <relationship kind="outlet" name="downLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="productImageButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="repeatTimesLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="setsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLeghtLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="upLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="WorkOutProcessViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkOutProcessViewController.h"/>
+        </class>
+        <class className="WorkoutViewController" superclassName="PPTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
