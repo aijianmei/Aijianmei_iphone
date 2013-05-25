@@ -339,6 +339,7 @@
     switch (indexPath.section) {
         case 0:
             NSLog(@"I did click %@",@"我的健身历程");
+            [self performSegueWithIdentifier:@"WorkoutProcessSegue" sender:self];
             break;
         case 1:
             NSLog(@"I did click %@",@"我的健身小助手");
