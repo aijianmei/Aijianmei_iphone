@@ -361,7 +361,6 @@
                 case 0:
                     NSLog(@"this is %@",@"性别");
                     ////for testing
-                    
                     [self performSegueWithIdentifier:@"WorkoutDatasViewSegue" sender:self];
                     break;
                 case 1:
