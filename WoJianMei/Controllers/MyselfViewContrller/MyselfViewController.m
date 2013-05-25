@@ -360,7 +360,7 @@
             switch (indexPath.row) {
                 case 0:
                     NSLog(@"this is %@",@"性别");
-                    ////for testing
+                    ////for testing by Tom Callon 
                     [self performSegueWithIdentifier:@"WorkoutDatasViewSegue" sender:self];
                     break;
                 case 1:
