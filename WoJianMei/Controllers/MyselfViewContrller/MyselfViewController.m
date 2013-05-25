@@ -70,7 +70,11 @@
     
 }
 
-
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self hidesBottomBarWhenPushed];
+}
 
 /* display new or existing cached image */
 

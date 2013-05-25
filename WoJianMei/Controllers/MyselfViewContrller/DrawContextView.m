@@ -23,26 +23,46 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
+    
+    [super drawRect:rect];
+    
+    [self drawCircleAtPoint:CGPointMake(60, 170) radius:20 withText:@"30s"];
+    [self drawCircleAtPoint:CGPointMake(150, 240) radius:20 withText:@"40"];
+    [self addLineFromPoint:CGPointMake(60, 170) to:CGPointMake(150, 240)];
+    
+    }
+
+- (void)addLineFromPoint:(CGPoint)start to:(CGPoint)end
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, 5.0);
+    CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
+    CGContextSetStrokeColorWithColor(context, [UIColor blueColor].CGColor);
+    CGContextMoveToPoint(context, start.x+40, start.y+20+5);
+    CGContextAddLineToPoint(context, end.x, end.y+20-5);
+    CGContextStrokePath(context);
+    CGColorSpaceRelease(colorspace);
+
+}
+
+- (void)drawCircleAtPoint:(CGPoint)point radius:(CGFloat)radius withText:(NSString*)text
+{
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 2.0);
     CGContextSetStrokeColorWithColor(context, [UIColor blueColor].CGColor);
-    CGRect rectangle = CGRectMake(60,170,40,40);
+    CGRect rectangle = CGRectMake(point.x, point.y, 2*radius, 2*radius);
     CGContextAddEllipseInRect(context, rectangle);
     CGContextStrokePath(context);
     
     CGContextSetFillColorWithColor(context, [UIColor blueColor].CGColor);
     CGContextFillEllipseInRect(context, rectangle);
     
-    
-    NSString *text = @"30";
-    UIFont *font = [UIFont systemFontOfSize:15];
-    //在指定x，y点位置画文字，宽度为18
-    [text drawAtPoint:CGPointMake(80, 190) forWidth:18 withFont:font minFontSize:8 actualFontSize:NULL
+    CGContextSetLineWidth(context, 1.0);
+    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
+    UIFont *font = [UIFont boldSystemFontOfSize:15];
+    [text drawAtPoint:CGPointMake(point.x+radius/2, point.y+radius/2) forWidth:radius+radius/2 withFont:font minFontSize:15 actualFontSize:NULL
         lineBreakMode:UILineBreakModeTailTruncation
-        baselineAdjustment:UIBaselineAdjustmentAlignBaselines];
-    
-    [super drawRect:rect];
-
+   baselineAdjustment:UIBaselineAdjustmentAlignCenters];
 }
 
 
