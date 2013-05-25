@@ -189,7 +189,7 @@
     
 
     ///腾讯微博
-    self.tCWBEngine = [[TCWBEngine alloc] initWithAppKey:WiressSDKDemoAppKey andSecret:WiressSDKDemoAppSecret andRedirectUrl:@"http://www.aijianmei.com"];
+//    self.tCWBEngine = [[TCWBEngine alloc] initWithAppKey:WiressSDKDemoAppKey andSecret:WiressSDKDemoAppSecret andRedirectUrl:@"http://www.aijianmei.com"];
     
     
 

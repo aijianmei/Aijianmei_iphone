@@ -343,14 +343,26 @@
             break;
         case 1:
             NSLog(@"I did click %@",@"我的健身小助手");
+            
+        ////for testing
+            
+            [self performSegueWithIdentifier:@"WorkoutNoteViewSegue" sender:self];
+            
             break;
         case 2:
             NSLog(@"I did click %@",@"标签");
+            ////for testing
+            
+            [self performSegueWithIdentifier:@"WorkoutImageViewSegue" sender:self];
+            
             break;
         case 3:
             switch (indexPath.row) {
                 case 0:
                     NSLog(@"this is %@",@"性别");
+                    ////for testing
+                    
+                    [self performSegueWithIdentifier:@"WorkoutDatasViewSegue" sender:self];
                     break;
                 case 1:
                     NSLog(@"this is %@",@"年龄");
