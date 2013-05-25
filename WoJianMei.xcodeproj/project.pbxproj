@@ -21,15 +21,8 @@
 		4A3AB83D1750722D0045729D /* REComposeSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB81F1750722C0045729D /* REComposeSheetView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4A3AB83E1750722D0045729D /* REComposeViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A3AB8201750722C0045729D /* REComposeViewController.bundle */; };
 		4A3AB83F1750722D0045729D /* REComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB8221750722C0045729D /* REComposeViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		4A3AB8411750722D0045729D /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3AB8271750722C0045729D /* bg@2x.png */; };
-		4A3AB8421750722D0045729D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3AB8281750722C0045729D /* Default-568h@2x.png */; };
-		4A3AB8431750722D0045729D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3AB8291750722C0045729D /* Default.png */; };
-		4A3AB8441750722D0045729D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3AB82A1750722C0045729D /* Default@2x.png */; };
-		4A3AB8451750722D0045729D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4A3AB82B1750722C0045729D /* InfoPlist.strings */; };
-		4A3AB8461750722D0045729D /* Flower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A3AB82D1750722C0045729D /* Flower.jpg */; };
-		4A3AB8471750722D0045729D /* foursquare-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3AB82E1750722C0045729D /* foursquare-logo@2x.png */; };
-		4A3AB8491750722D0045729D /* REComposeViewControllerExample-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A3AB8301750722C0045729D /* REComposeViewControllerExample-Info.plist */; };
 		4A3AB84B1750722D0045729D /* Screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3AB8371750722D0045729D /* Screenshot.png */; };
+		4A3AB851175096B80045729D /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB850175096B70045729D /* RootViewController.m */; };
 		4A3D0BA615CB73CC008F6639 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BA515CB73CC008F6639 /* Video.m */; };
 		4A3D0BBA15CB7CF2008F6639 /* WorkOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BB915CB7CF2008F6639 /* WorkOut.m */; };
 		4A3D0BD115CB9F39008F6639 /* VideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BD015CB9F38008F6639 /* VideoManager.m */; };
@@ -514,16 +507,6 @@
 		4AEE95CB15FB8291005A66DC /* test.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE95CA15FB8291005A66DC /* test.txt */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		4A3AB84D1750722D0045729D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4A3AB8341750722C0045729D /* REComposeViewControllerExample.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 30118CC71631D0DD00B82F14;
-			remoteInfo = REComposeViewControllerExample;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		4A071A20169D989D00F50D90 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4A071A22169D991F00F50D90 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -548,22 +531,9 @@
 		4A3AB8201750722C0045729D /* REComposeViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = REComposeViewController.bundle; sourceTree = "<group>"; };
 		4A3AB8211750722C0045729D /* REComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REComposeViewController.h; sourceTree = "<group>"; };
 		4A3AB8221750722C0045729D /* REComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REComposeViewController.m; sourceTree = "<group>"; };
-		4A3AB8251750722C0045729D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		4A3AB8261750722C0045729D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4A3AB8271750722C0045729D /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
-		4A3AB8281750722C0045729D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		4A3AB8291750722C0045729D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		4A3AB82A1750722C0045729D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		4A3AB82C1750722C0045729D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4A3AB82D1750722C0045729D /* Flower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Flower.jpg; sourceTree = "<group>"; };
-		4A3AB82E1750722C0045729D /* foursquare-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "foursquare-logo@2x.png"; sourceTree = "<group>"; };
-		4A3AB82F1750722C0045729D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4A3AB8301750722C0045729D /* REComposeViewControllerExample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "REComposeViewControllerExample-Info.plist"; sourceTree = "<group>"; };
-		4A3AB8311750722C0045729D /* REComposeViewControllerExample-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "REComposeViewControllerExample-Prefix.pch"; sourceTree = "<group>"; };
-		4A3AB8321750722C0045729D /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		4A3AB8331750722C0045729D /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		4A3AB8341750722C0045729D /* REComposeViewControllerExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = REComposeViewControllerExample.xcodeproj; sourceTree = "<group>"; };
 		4A3AB8371750722D0045729D /* Screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot.png; sourceTree = "<group>"; };
+		4A3AB84F175096B70045729D /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		4A3AB850175096B70045729D /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		4A3D0BA415CB73CC008F6639 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
 		4A3D0BA515CB73CC008F6639 /* Video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
 		4A3D0BB815CB7CF1008F6639 /* WorkOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOut.h; sourceTree = "<group>"; };
@@ -1392,7 +1362,6 @@
 				4A3AB8151750722C0045729D /* LICENSE */,
 				4A3AB8161750722C0045729D /* README.md */,
 				4A3AB8171750722C0045729D /* REComposeViewController */,
-				4A3AB8231750722C0045729D /* REComposeViewControllerExample */,
 				4A3AB8371750722D0045729D /* Screenshot.png */,
 			);
 			path = REComposeViewController;
@@ -1414,44 +1383,6 @@
 				4A3AB8221750722C0045729D /* REComposeViewController.m */,
 			);
 			path = REComposeViewController;
-			sourceTree = "<group>";
-		};
-		4A3AB8231750722C0045729D /* REComposeViewControllerExample */ = {
-			isa = PBXGroup;
-			children = (
-				4A3AB8241750722C0045729D /* REComposeViewControllerExample */,
-				4A3AB8341750722C0045729D /* REComposeViewControllerExample.xcodeproj */,
-			);
-			path = REComposeViewControllerExample;
-			sourceTree = "<group>";
-		};
-		4A3AB8241750722C0045729D /* REComposeViewControllerExample */ = {
-			isa = PBXGroup;
-			children = (
-				4A3AB8251750722C0045729D /* AppDelegate.h */,
-				4A3AB8261750722C0045729D /* AppDelegate.m */,
-				4A3AB8271750722C0045729D /* bg@2x.png */,
-				4A3AB8281750722C0045729D /* Default-568h@2x.png */,
-				4A3AB8291750722C0045729D /* Default.png */,
-				4A3AB82A1750722C0045729D /* Default@2x.png */,
-				4A3AB82B1750722C0045729D /* InfoPlist.strings */,
-				4A3AB82D1750722C0045729D /* Flower.jpg */,
-				4A3AB82E1750722C0045729D /* foursquare-logo@2x.png */,
-				4A3AB82F1750722C0045729D /* main.m */,
-				4A3AB8301750722C0045729D /* REComposeViewControllerExample-Info.plist */,
-				4A3AB8311750722C0045729D /* REComposeViewControllerExample-Prefix.pch */,
-				4A3AB8321750722C0045729D /* RootViewController.h */,
-				4A3AB8331750722C0045729D /* RootViewController.m */,
-			);
-			path = REComposeViewControllerExample;
-			sourceTree = "<group>";
-		};
-		4A3AB8351750722C0045729D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4A3AB84E1750722D0045729D /* REComposeViewControllerExample.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		4A498D711685500F0073E682 /* Component-Service */ = {
@@ -2987,6 +2918,8 @@
 				4ADCFE06169D614600A3E979 /* Myself_SettingsViewController.m */,
 				4ADCFE07169D614600A3E979 /* MyselfViewController.h */,
 				4ADCFE08169D614600A3E979 /* MyselfViewController.m */,
+				4A3AB84F175096B70045729D /* RootViewController.h */,
+				4A3AB850175096B70045729D /* RootViewController.m */,
 				4A3AB805175060F10045729D /* WorkOutProcessViewController.h */,
 				4A3AB806175060F10045729D /* WorkOutProcessViewController.m */,
 				4A3AB8081750631E0045729D /* WorkoutNoteViewController.h */,
@@ -3455,28 +3388,12 @@
 			mainGroup = 4AE394A215C2DD9C00D06C61;
 			productRefGroup = 4AE394AE15C2DD9C00D06C61 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 4A3AB8351750722C0045729D /* Products */;
-					ProjectRef = 4A3AB8341750722C0045729D /* REComposeViewControllerExample.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				4AE394AC15C2DD9C00D06C61 /* WoJianMei */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		4A3AB84E1750722D0045729D /* REComposeViewControllerExample.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = REComposeViewControllerExample.app;
-			remoteRef = 4A3AB84D1750722D0045729D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4AE394AB15C2DD9C00D06C61 /* Resources */ = {
@@ -3680,14 +3597,6 @@
 				4A3AB8381750722D0045729D /* LICENSE in Resources */,
 				4A3AB8391750722D0045729D /* README.md in Resources */,
 				4A3AB83E1750722D0045729D /* REComposeViewController.bundle in Resources */,
-				4A3AB8411750722D0045729D /* bg@2x.png in Resources */,
-				4A3AB8421750722D0045729D /* Default-568h@2x.png in Resources */,
-				4A3AB8431750722D0045729D /* Default.png in Resources */,
-				4A3AB8441750722D0045729D /* Default@2x.png in Resources */,
-				4A3AB8451750722D0045729D /* InfoPlist.strings in Resources */,
-				4A3AB8461750722D0045729D /* Flower.jpg in Resources */,
-				4A3AB8471750722D0045729D /* foursquare-logo@2x.png in Resources */,
-				4A3AB8491750722D0045729D /* REComposeViewControllerExample-Info.plist in Resources */,
 				4A3AB84B1750722D0045729D /* Screenshot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3976,20 +3885,13 @@
 				4A3AB83C1750722D0045729D /* REComposeBackgroundView.m in Sources */,
 				4A3AB83D1750722D0045729D /* REComposeSheetView.m in Sources */,
 				4A3AB83F1750722D0045729D /* REComposeViewController.m in Sources */,
+				4A3AB851175096B80045729D /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4A3AB82B1750722C0045729D /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4A3AB82C1750722C0045729D /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		4A498FDB168553A20073E682 /* NSDate+TKCategory.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

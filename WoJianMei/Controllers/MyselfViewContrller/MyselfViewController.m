@@ -7,6 +7,8 @@
 //
 
 #import "MyselfViewController.h"
+#import "RootViewController.h"
+
 #import "MyselfTableViewCell.h"
 #import "ImageManager.h"
 #import "Myself_SettingsViewController.h"
@@ -365,6 +367,11 @@
                     break;
                 case 1:
                     NSLog(@"this is %@",@"年龄");
+                    
+                    RootViewController *rvController = [[RootViewController alloc]init];
+                    
+                    [self.navigationController pushViewController:rvController animated:YES];
+                    
                     break;
                 case 2:
                     NSLog(@"this is %@",@"身高");

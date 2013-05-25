@@ -11,4 +11,15 @@
 
 @interface RootViewController : UIViewController <REComposeViewControllerDelegate>
 
+{
+    UIButton *_workoutNoteButton;
+    
+    UIScrollView *_scrollView;
+}
+
+@property (retain,nonatomic) UIButton *workoutNoteButton;
+@property (retain,nonatomic) UIScrollView *scrollView;
+
+
+
 @end

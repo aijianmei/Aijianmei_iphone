@@ -6,8 +6,11 @@
 //
 //
 
-#import <UIKit/UIKit.h>
 
-@interface WorkoutNoteViewController : UIViewController
+#import <UIKit/UIKit.h>
+#import "REComposeViewController.h"
+
+
+@interface WorkoutNoteViewController : REComposeViewController
 
 @end
