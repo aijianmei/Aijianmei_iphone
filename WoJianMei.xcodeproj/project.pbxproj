@@ -10,6 +10,9 @@
 		4A071A21169D989D00F50D90 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A071A20169D989D00F50D90 /* MobileCoreServices.framework */; };
 		4A071A23169D991F00F50D90 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A071A22169D991F00F50D90 /* MediaPlayer.framework */; };
 		4A3AB807175060F20045729D /* WorkOutProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB806175060F10045729D /* WorkOutProcessViewController.m */; };
+		4A3AB80A1750631E0045729D /* WorkoutNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB8091750631E0045729D /* WorkoutNoteViewController.m */; };
+		4A3AB80D175063370045729D /* WorkoutImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB80C175063370045729D /* WorkoutImageViewController.m */; };
+		4A3AB810175063690045729D /* WorkoutDatasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB80F175063690045729D /* WorkoutDatasViewController.m */; };
 		4A3D0BA615CB73CC008F6639 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BA515CB73CC008F6639 /* Video.m */; };
 		4A3D0BBA15CB7CF2008F6639 /* WorkOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BB915CB7CF2008F6639 /* WorkOut.m */; };
 		4A3D0BD115CB9F39008F6639 /* VideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BD015CB9F38008F6639 /* VideoManager.m */; };
@@ -508,6 +511,12 @@
 		4A071A22169D991F00F50D90 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4A3AB805175060F10045729D /* WorkOutProcessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOutProcessViewController.h; sourceTree = "<group>"; };
 		4A3AB806175060F10045729D /* WorkOutProcessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOutProcessViewController.m; sourceTree = "<group>"; };
+		4A3AB8081750631E0045729D /* WorkoutNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutNoteViewController.h; sourceTree = "<group>"; };
+		4A3AB8091750631E0045729D /* WorkoutNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutNoteViewController.m; sourceTree = "<group>"; };
+		4A3AB80B175063370045729D /* WorkoutImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutImageViewController.h; sourceTree = "<group>"; };
+		4A3AB80C175063370045729D /* WorkoutImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutImageViewController.m; sourceTree = "<group>"; };
+		4A3AB80E175063690045729D /* WorkoutDatasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDatasViewController.h; sourceTree = "<group>"; };
+		4A3AB80F175063690045729D /* WorkoutDatasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutDatasViewController.m; sourceTree = "<group>"; };
 		4A3D0BA415CB73CC008F6639 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
 		4A3D0BA515CB73CC008F6639 /* Video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
 		4A3D0BB815CB7CF1008F6639 /* WorkOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOut.h; sourceTree = "<group>"; };
@@ -2878,6 +2887,12 @@
 				4ADCFE07169D614600A3E979 /* MyselfViewController.h */,
 				4ADCFE08169D614600A3E979 /* MyselfViewController.m */,
 				4A3AB805175060F10045729D /* WorkOutProcessViewController.h */,
+				4A3AB8081750631E0045729D /* WorkoutNoteViewController.h */,
+				4A3AB8091750631E0045729D /* WorkoutNoteViewController.m */,
+				4A3AB80B175063370045729D /* WorkoutImageViewController.h */,
+				4A3AB80C175063370045729D /* WorkoutImageViewController.m */,
+				4A3AB80E175063690045729D /* WorkoutDatasViewController.h */,
+				4A3AB80F175063690045729D /* WorkoutDatasViewController.m */,
 				4A3AB806175060F10045729D /* WorkOutProcessViewController.m */,
 				4AD9FC3616A114AE00BA766D /* SinaUserCell.h */,
 				4AD9FC3716A114AF00BA766D /* SinaUserCell.m */,
@@ -3862,6 +3877,9 @@
 				4A8A7226174E10FF00BD3AAE /* LoginViewController.m in Sources */,
 				4A8A7229174E557700BD3AAE /* SignUpViewController.m in Sources */,
 				4A3AB807175060F20045729D /* WorkOutProcessViewController.m in Sources */,
+				4A3AB80A1750631E0045729D /* WorkoutNoteViewController.m in Sources */,
+				4A3AB80D175063370045729D /* WorkoutImageViewController.m in Sources */,
+				4A3AB810175063690045729D /* WorkoutDatasViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
