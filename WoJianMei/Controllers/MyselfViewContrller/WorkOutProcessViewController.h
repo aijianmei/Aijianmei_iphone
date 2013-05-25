@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPViewController.h"
+#import "DrawContextView.h"
 
-@interface WorkOutProcessViewController : UIViewController
+@interface WorkOutProcessViewController : PPViewController
+{
+    DrawContextView *drawView;
+}
+
+@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 
 @end

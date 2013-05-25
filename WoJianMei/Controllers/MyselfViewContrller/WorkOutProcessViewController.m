@@ -7,6 +7,7 @@
 //
 
 #import "WorkOutProcessViewController.h"
+#import "DrawContextView.h"
 
 @interface WorkOutProcessViewController ()
 
@@ -26,7 +27,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    drawView = [[DrawContextView alloc] initWithFrame:CGRectMake(0, 30, 320, [UIScreen mainScreen ].bounds.size.height-20-44-30-49)];
+    drawView.backgroundColor = [UIColor clearColor];
+    [self.scrollView addSubview:drawView];
 }
 
 - (void)didReceiveMemoryWarning
