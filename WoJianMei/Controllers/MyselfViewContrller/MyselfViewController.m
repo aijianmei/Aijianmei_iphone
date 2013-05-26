@@ -438,6 +438,23 @@
     
 }
 
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    
+    if ([segue.identifier isEqualToString:@"WorkoutProcessSegue"])
+    {
+        [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
+        
+        UIViewController *vc = segue.destinationViewController;
+        
+        vc.hidesBottomBarWhenPushed = YES;
+    }
+
+        
+}
+
 -(void)clickSettingsButton:(id)sender{
     
     Myself_SettingsViewController *vc = [[Myself_SettingsViewController alloc]init];

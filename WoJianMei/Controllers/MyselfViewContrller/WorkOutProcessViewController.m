@@ -37,6 +37,7 @@
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate hideTabBar:isHide];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
