@@ -438,17 +438,6 @@
     
 }
 
-
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    
-    
-        
-}
-
-
-
 -(void)clickSettingsButton:(id)sender{
     
     Myself_SettingsViewController *vc = [[Myself_SettingsViewController alloc]init];

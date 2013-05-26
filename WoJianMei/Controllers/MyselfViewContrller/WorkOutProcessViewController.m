@@ -30,7 +30,6 @@
 {
     [super viewDidLoad];
     
-<<<<<<< HEAD
 }
 
 
@@ -38,13 +37,6 @@
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate hideTabBar:isHide];
-=======
-    
-    [self hideTabBar];
-
-    
-    
->>>>>>> a4f4effcab3a472f0c7bc37199f54d725c9b0b48
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -55,18 +47,13 @@
     
     [self hideTabBar:YES];
     [super viewDidAppear:animated];
-<<<<<<< HEAD
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [self hideTabBar:NO];
     [super viewDidDisappear:animated];
-=======
-    drawView = [[DrawContextView alloc] initWithFrame:CGRectMake(0, 30, 320, [UIScreen mainScreen ].bounds.size.height-20-44-30-49)];
-    drawView.backgroundColor = [UIColor clearColor];
-    [self.scrollView addSubview:drawView];
->>>>>>> a4f4effcab3a472f0c7bc37199f54d725c9b0b48
+
 }
 
 
