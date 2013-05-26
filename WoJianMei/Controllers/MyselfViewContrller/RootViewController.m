@@ -18,10 +18,12 @@
 
 @implementation RootViewController
 @synthesize workoutNoteButton =_workoutNoteButton;
-@synthesize workoutImageButton = _workoutImageButton;
+@synthesize workoutImageButton =_workoutImageButton;
+@synthesize workoutDatasButton =_workoutDatasButton;
+
+
+
 @synthesize scrollView =_scrollView;
-
-
 
 
 
@@ -49,13 +51,13 @@
     [scView setContentSize:CGSizeMake(320, 1300)];
     
     
-    self.workoutNoteButton = workoutNoteButton;
-    self.workoutImageButton = workoutImageButton;
-
+    self.workoutNoteButton  =workoutNoteButton;
+    self.workoutImageButton =workoutImageButton;
+    self.workoutDatasButton =workoutDatasButton;
     
     [scView addSubview:_workoutNoteButton];
     [scView addSubview:_workoutImageButton];
-    [scView addSubview:workoutDatasButton];
+    [scView addSubview:_workoutDatasButton];
     
     
     
@@ -99,6 +101,14 @@
 
     
     NSLog(@"I did click the Edit Button ");
+    
+    [self.workoutNoteButton  setBackgroundColor:[UIColor redColor]];
+    
+    [self.workoutNoteButton setFrame:CGRectMake(0, 0, 70, 90)];
+    
+    [self.workoutImageButton setBackgroundColor:[UIColor redColor]];
+    [self.workoutDatasButton setBackgroundColor:[UIColor redColor]];
+    
     
 }
 

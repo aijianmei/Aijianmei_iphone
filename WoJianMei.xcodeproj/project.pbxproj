@@ -1365,8 +1365,8 @@
 		C6016B7317523D2D00BA5E63 /* sj_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sj_1.png; sourceTree = "<group>"; };
 		C6C0CD1B17509DA400A825AB /* DrawContextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawContextView.h; sourceTree = "<group>"; };
 		C6C0CD1C17509DA400A825AB /* DrawContextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawContextView.m; sourceTree = "<group>"; };
-		C6C0CD211750F0B200A825AB /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = WoJianMei/Controllers/MyselfViewContrller/RootViewController.h; sourceTree = "<group>"; };
-		C6C0CD221750F0B200A825AB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = WoJianMei/Controllers/MyselfViewContrller/RootViewController.m; sourceTree = "<group>"; };
+		C6C0CD211750F0B200A825AB /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		C6C0CD221750F0B200A825AB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2935,6 +2935,8 @@
 				4ADCFE06169D614600A3E979 /* Myself_SettingsViewController.m */,
 				4ADCFE07169D614600A3E979 /* MyselfViewController.h */,
 				4ADCFE08169D614600A3E979 /* MyselfViewController.m */,
+				C6C0CD211750F0B200A825AB /* RootViewController.h */,
+				C6C0CD221750F0B200A825AB /* RootViewController.m */,
 				4A3AB805175060F10045729D /* WorkOutProcessViewController.h */,
 				4A3AB806175060F10045729D /* WorkOutProcessViewController.m */,
 				4A3AB8081750631E0045729D /* WorkoutNoteViewController.h */,
@@ -3250,8 +3252,6 @@
 		4AE394A215C2DD9C00D06C61 = {
 			isa = PBXGroup;
 			children = (
-				C6C0CD211750F0B200A825AB /* RootViewController.h */,
-				C6C0CD221750F0B200A825AB /* RootViewController.m */,
 				4ADB6AC31720265E00DAC19C /* 114x114.png */,
 				4ADB6AC11720265700DAC19C /* 57X57.png */,
 				4ADB6ABF1720264500DAC19C /* 144x144.png */,

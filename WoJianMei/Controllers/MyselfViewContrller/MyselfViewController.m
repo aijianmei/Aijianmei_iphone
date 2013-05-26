@@ -571,13 +571,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{    
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{    
 //    if ([segue.identifier isEqualToString:@"WorkoutProcessSegue"]) {
 //        [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
 //        [((AppDelegate*)[[UIApplication sharedApplication] delegate]) hideTabbar];        
 //    }
 //    [super prepareForSegue:segue sender:sender];
-}
+//}
 
 @end
