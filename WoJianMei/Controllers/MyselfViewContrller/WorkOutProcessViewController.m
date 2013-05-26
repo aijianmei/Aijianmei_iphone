@@ -8,6 +8,7 @@
 
 #import "WorkOutProcessViewController.h"
 #import "DrawContextView.h"
+#import "AppDelegate.h"
 
 @interface WorkOutProcessViewController ()
 
@@ -28,24 +29,37 @@
 {
     [super viewDidLoad];
     
-    
-    
+}
+
+
+- (void)hideTabBar:(BOOL)isHide
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate hideTabBar:isHide];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    //    drawView = [[DrawContextView alloc] initWithFrame:CGRectMake(0, 30, 320, [UIScreen mainScreen ].bounds.size.height-20-44-30-49)];
+    //    drawView.backgroundColor = [UIColor clearColor];
+    //    [self.scrollView addSubview:drawView];
+    
+    [self hideTabBar:YES];
     [super viewDidAppear:animated];
-    self.hidesBottomBarWhenPushed = YES;
-
-    drawView = [[DrawContextView alloc] initWithFrame:CGRectMake(0, 30, 320, [UIScreen mainScreen ].bounds.size.height-20-44-30-49)];
-    drawView.backgroundColor = [UIColor clearColor];
-    [self.scrollView addSubview:drawView];
 }
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self hideTabBar:NO];
+    [super viewDidDisappear:animated];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

@@ -18,7 +18,7 @@
 #import "FileStreame.h"
 #import "key.h"
 #import <CoreText/CoreText.h>
-
+#import "WorkOutProcessViewController.h"
 
 #define USER                          @"user"
 #define USER_NAME                     @"screen_name"
@@ -345,6 +345,7 @@
     switch (indexPath.section) {
         case 0:
             NSLog(@"I did click %@",@"我的健身历程");
+        
             [self performSegueWithIdentifier:@"WorkoutProcessSegue" sender:self];
             break;
         case 1:
@@ -518,6 +519,15 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{    
+//    if ([segue.identifier isEqualToString:@"WorkoutProcessSegue"]) {
+//        [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
+//        [((AppDelegate*)[[UIApplication sharedApplication] delegate]) hideTabbar];        
+//    }
+//    [super prepareForSegue:segue sender:sender];
 }
 
 @end

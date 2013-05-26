@@ -163,7 +163,7 @@
     
     
     
-    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+//    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
 
     
     

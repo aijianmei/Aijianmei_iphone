@@ -70,9 +70,10 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     PPTabBarController *tbController = [storyboard instantiateViewControllerWithIdentifier:@"PPTabBarController"];
-
     
     self.tabBarController = tbController;
+    
+    [tbController release];
     
     self.tabBarController.delegate = self;
 
@@ -134,13 +135,18 @@
     
     
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu_arrow.png"]];
-    [self.tabBarController setTopImageView:imageView down:1.0 animated:YES];
-    self.tabBarController.hidesBottomBarWhenPushed =NO;
-
-    [imageView release];
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu_arrow.png"]];
+//    [self.tabBarController setTopImageView:imageView down:1.0 animated:YES];
+//    self.tabBarController.hidesBottomBarWhenPushed =NO;
+//
+//    [imageView release];
    [controllers release];
 
+}
+
+- (void)hideTabBar:(BOOL)isHide
+{
+    [self.tabBarController hideCustomTabBarView:isHide];
 }
 
 

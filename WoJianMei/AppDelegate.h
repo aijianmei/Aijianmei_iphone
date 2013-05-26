@@ -51,7 +51,6 @@ enum
 @property (nonatomic, retain )  PPTabBarController	*tabBarController;
 
 
-
-
+- (void)hideTabBar:(BOOL)isHide;
 
 @end
