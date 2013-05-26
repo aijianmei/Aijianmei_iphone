@@ -140,6 +140,7 @@
 //    self.tabBarController.hidesBottomBarWhenPushed =NO;
 //
 //    [imageView release];
+    
    [controllers release];
 
 }
