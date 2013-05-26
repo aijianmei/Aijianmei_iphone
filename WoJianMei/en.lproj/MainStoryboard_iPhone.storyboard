@@ -566,7 +566,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="IkO-V6-Ni3">
             <objects>
-                <tabBarController storyboardIdentifier="PPTabBarController" id="QpV-gh-90h" customClass="PPTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="PPTabBarController" autoresizesArchivedViewToFullSize="NO" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" id="QpV-gh-90h" customClass="PPTabBarController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Y9V-RD-kF6">
@@ -582,7 +582,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1BK-2C-Rk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1930" y="-3650"/>
+            <point key="canvasLocation" x="1694" y="-4076"/>
         </scene>
         <!--Myself View Controller - 我健身-->
         <scene sceneID="xtx-sc-xHk">

@@ -20,6 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -29,14 +30,15 @@
     [super viewDidLoad];
     
     
+    [self hideTabBar];
+
+    
     
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.hidesBottomBarWhenPushed = YES;
-
     drawView = [[DrawContextView alloc] initWithFrame:CGRectMake(0, 30, 320, [UIScreen mainScreen ].bounds.size.height-20-44-30-49)];
     drawView.backgroundColor = [UIColor clearColor];
     [self.scrollView addSubview:drawView];

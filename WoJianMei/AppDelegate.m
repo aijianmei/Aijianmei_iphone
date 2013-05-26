@@ -135,8 +135,10 @@
     
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu_arrow.png"]];
+    
     [self.tabBarController setTopImageView:imageView down:1.0 animated:YES];
-    self.tabBarController.hidesBottomBarWhenPushed =NO;
+    
+    self.tabBarController.hidesBottomBarWhenPushed =YES;
 
     [imageView release];
    [controllers release];
