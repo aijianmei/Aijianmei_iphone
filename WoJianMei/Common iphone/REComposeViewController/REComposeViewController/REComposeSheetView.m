@@ -33,12 +33,12 @@
 ////Tom Callons methods
 -(void)addButtons{
     
-    
     int positionX = 50;
     int positionY = 10;
     
     int x;
-    for (x=1; x <=5; x++)
+    
+    for (x=1; x <=7; x++)
     
     {
         
@@ -167,7 +167,7 @@
         
     
         ////Overwrite the UIScollView 
-        _scrollView = [[DEComposeBackgroundScrollView alloc] initWithFrame:CGRectMake(40, 40, frame.size.width, frame.size.height - 47)];
+        _scrollView = [[DEComposeBackgroundScrollView alloc] initWithFrame:CGRectMake(40, 20, frame.size.width, frame.size.height - 47)];
         _scrollView.backgroundColor = [UIColor whiteColor];
 //        _scrollView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
 //        _scrollView.bounces = YES;
