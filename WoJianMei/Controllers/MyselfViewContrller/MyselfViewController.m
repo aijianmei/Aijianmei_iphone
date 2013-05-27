@@ -206,6 +206,8 @@
 
     [self.myHeaderView addSubview:self.headerVImageButton];
     [self.dataTableView setTableHeaderView:self.myHeaderView];
+    
+    
     [self setBackgroundImageName:@"gobal_background"];
     [self showBackgroundImage];
 
@@ -236,7 +238,7 @@
     [user1 release];
     
     [self upgradeUI];
- 
+     
     
 }
 
@@ -349,10 +351,8 @@
             break;
         case 1:
             NSLog(@"I did click %@",@"我的健身小助手");
-            
-        ////for testing
-            
-            [self performSegueWithIdentifier:@"WorkoutNoteViewSegue" sender:self];
+                
+            [self performSegueWithIdentifier:@"WorkoutImageViewSegue" sender:self];
             
             break;
         case 2:
@@ -367,7 +367,7 @@
                 case 0:
                     NSLog(@"this is %@",@"性别");
                     ////for testing by Tom Callon 
-                    [self performSegueWithIdentifier:@"WorkoutDatasViewSegue" sender:self];
+                    [self performSegueWithIdentifier:@"WorkoutImageViewSegue" sender:self];
                     break;
                 case 1:
                     NSLog(@"this is %@",@"年龄");
@@ -448,7 +448,7 @@
         
         UIViewController *vc = segue.destinationViewController;
         
-        vc.hidesBottomBarWhenPushed = YES;
+       vc.hidesBottomBarWhenPushed = YES;
     }
 
         

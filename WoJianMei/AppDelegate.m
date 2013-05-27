@@ -64,80 +64,7 @@
     [super dealloc];
 }
 
-- (void)initTabViewControllers
-{
-    
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    PPTabBarController *tbController = [storyboard instantiateViewControllerWithIdentifier:@"PPTabBarController"];
-    
-    self.tabBarController = tbController;
-    
-    [tbController release];
-    
-    self.tabBarController.delegate = self;
 
-	NSMutableArray* controllers = [[NSMutableArray alloc] init];
-    
-	WorkoutViewController* workoutViewController = (WorkoutViewController*)[storyboard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
-    [UIUtils addViewControllerFromStoryBoard: workoutViewController
-					 viewTitle:@""
-					 viewImage:@"b_menu_1.png"
-			  hasNavController:YES
-			   viewControllers:controllers];
-    
-    Nutri_SupViewController * nutri_SupViewController = (Nutri_SupViewController*)[storyboard instantiateViewControllerWithIdentifier:@"Nutri_SupViewController"];
-    [UIUtils addViewControllerFromStoryBoard:nutri_SupViewController
-                     viewTitle:@""
-                     viewImage:@"b_menu_2.png"
-              hasNavController:YES
-               viewControllers:controllers];
-
-    MyselfViewController *myselfViewController = (MyselfViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
-    [UIUtils addViewControllerFromStoryBoard:myselfViewController
-                                   viewTitle:@""
-                                   viewImage:@"b_menu_3.png"
-                            hasNavController:YES
-                             viewControllers:controllers];
-
-    
-    MakeFriendsViewController *makeFriendsViewController =(MakeFriendsViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MakeFriendsViewController"];
-    
-    
-	[UIUtils addViewControllerFromStoryBoard:makeFriendsViewController
-					 viewTitle:@""
-					 viewImage:@"b_menu_4.png"
-			  hasNavController:YES
-			   viewControllers:controllers];
-    
-    
-    MoreViewController *moreViewController =(MoreViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MoreViewController"];
-	[UIUtils addViewControllerFromStoryBoard:moreViewController
-                                   viewTitle:@""
-                                   viewImage:@"b_menu_5.png"
-                            hasNavController:YES
-                             viewControllers:controllers];
-    
-    
-    self.tabBarController.viewControllers = controllers;
-
-    
-    [self.tabBarController setSelectedImageArray:[NSArray arrayWithObjects:
-                                                  @"b_menu_1s.png",
-                                                  @"b_menu_2s.png",
-                                                  @"b_menu_3s.png",
-                                                  @"b_menu_4s.png",
-                                                  @"b_menu_5s.png",
-                                                  nil]];
-    
-    self.tabBarController.selectedIndex = TAB_REALTIME_SCORE;
-    
-    
-   [self.tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"bottom_bg.png"]];
-        
-   [controllers release];
-
-}
 
 - (void)hideTabBar:(BOOL)isHide
 {
@@ -145,27 +72,55 @@
 }
 
 
-- (void)customizeInterface
-{
-    
-    UIImage* tabBarBackground = [UIImage imageNamed:@"bottom_bg.png"];
-    [[UITabBar appearance] setBackgroundImage:tabBarBackground];
-    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"selection-tab.png"]];
-    
-}
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+
     
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
-   [self initTabViewControllers];    
-    [self.window setRootViewController:self.tabBarController];
+    // Assign tab bar item with titles
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UITabBar *tabBar = tabBarController.tabBar;
+    UITabBarItem *tabBarItem1 = [tabBar.items objectAtIndex:0];
+    UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
+    UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
+    UITabBarItem *tabBarItem4 = [tabBar.items objectAtIndex:3];
+    UITabBarItem *tabBarItem5= [tabBar.items objectAtIndex:4];
+
+//    
+    tabBarItem1.title = @"锻炼";
+    tabBarItem2.title = @"营养补充";
+    tabBarItem3.title = @"我";
+    tabBarItem4.title = @"交友互动";
+    tabBarItem5.title = @"更多";
+
     
-    [self.window makeKeyAndVisible];
+    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"home_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"home.png"]];
+    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"maps_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"maps.png"]];
+    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"myplan_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"myplan.png"]];
+    [tabBarItem4 setFinishedSelectedImage:[UIImage imageNamed:@"settings_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"settings.png"]];
     
+    [tabBarItem5 setFinishedSelectedImage:[UIImage imageNamed:@"home_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"home.png"]];
+    
+    
+    
+    // Change the tab bar background
+    UIImage* tabBarBackground = [UIImage imageNamed:@"bottom_bg@2x.png"];
+    [[UITabBar appearance] setBackgroundImage:tabBarBackground];
+    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar_selected.png"]];
+    
+    // Change the title color of tab bar items
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                       [UIColor whiteColor], UITextAttributeTextColor,
+                                                       nil] forState:UIControlStateNormal];
+    UIColor *titleHighlightedColor = [UIColor colorWithRed:153/255.0 green:192/255.0 blue:48/255.0 alpha:1.0];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                       titleHighlightedColor, UITextAttributeTextColor,
+                                                       nil] forState:UIControlStateHighlighted];
+    
+
+    
+   
     
     /////sinaweibo
     NSString *appKey = @"239725454";
