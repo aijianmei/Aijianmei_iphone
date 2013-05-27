@@ -123,6 +123,7 @@
     ////set the left buttons
     UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc]initWithTitle:@"智能配件" style:UIBarButtonItemStyleBordered target:self action:@selector(test)];
     
+    
     [self.navigationItem setLeftBarButtonItem:leftBarButton];
     [self.navigationItem setRightBarButtonItem:rightBarButton];
 
@@ -132,7 +133,7 @@
     
     
     
-    [self setNavigationRightButton:@"man" image:[UIImage imageNamed:@"touxiang_40x40.png"] action:@selector(test) hasEdgeInSet:NO];
+    [self setNavigationRightButton:@"a" imageName:@"settings.png" action:@selector(test)];
     
 
     
