@@ -141,10 +141,37 @@
     _userNameLabel.backgroundColor =[UIColor clearColor];
    [_userNameLabel setTextAlignment:NSTextAlignmentRight];
     _userNameLabel.textColor = [UIColor whiteColor];
+    
+      
+    
+    
     [self.myHeaderView addSubview:self.userNameLabel];
     
     
 
+    
+    
+    self.headerVImageButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+    [_headerVImageButton addTarget:self action:@selector(clickVatarButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _headerVImageButton.layer.borderWidth = 4.0f;
+    _headerVImageButton.layer.cornerRadius = 8.0f;
+    _headerVImageButton.layer.borderColor = [UIColor clearColor].CGColor;
+    
+    
+    [_headerVImageButton setFrame:CGRectMake(250, 115, 70, 70)];
+    [_headerVImageButton setBackgroundColor:[UIColor clearColor]];
+    [_headerVImageButton setImage:[ImageManager avatarbackgroundImage] forState:UIControlStateNormal];
+    
+    
+    //// descritpin broundground
+    UIImageView *imageview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"description_bround.png"]];
+    
+    
+    [imageview setFrame:CGRectMake(0, 160, 320, 50)];
+    
+    [self.myHeaderView addSubview:imageview];
+    [imageview release];
     
     //////set the motto
     
@@ -166,27 +193,9 @@
     
     self.mottoLabel = label;
     [self.mottoLabel setTextAlignment:NSTextAlignmentLeft];
+    [self.mottoLabel setBackgroundColor:[UIColor clearColor]];
     [self.mottoLabel  setLineBreakMode:NSLineBreakByTruncatingTail];
     [_myHeaderView addSubview:self.mottoLabel];
-    
-   
-    
-    
-    
-    
-    
-    self.headerVImageButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
-    [_headerVImageButton addTarget:self action:@selector(clickVatarButton:) forControlEvents:UIControlEventTouchUpInside];
-    
-    _headerVImageButton.layer.borderWidth = 4.0f;
-    _headerVImageButton.layer.cornerRadius = 8.0f;
-    _headerVImageButton.layer.borderColor = [UIColor clearColor].CGColor;
-
-    
-    [_headerVImageButton setFrame:CGRectMake(250, 115, 70, 70)];
-    [_headerVImageButton setBackgroundColor:[UIColor clearColor]];
-    [_headerVImageButton setImage:[ImageManager avatarbackgroundImage] forState:UIControlStateNormal];
-    
     
     
     ////// set the User Gender
@@ -197,9 +206,7 @@
 
     [self.myHeaderView addSubview:self.headerVImageButton];
     [self.dataTableView setTableHeaderView:self.myHeaderView];
-
-
-    [self setBackgroundImageName:@"BackGround.png"];
+    [self setBackgroundImageName:@"gobal_background"];
     [self showBackgroundImage];
 
     
