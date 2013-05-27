@@ -14,55 +14,67 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        _dataList1 = [[NSMutableArray alloc] init];
+        _dataList2 = [[NSMutableArray alloc] init];
+        _dataList3 = [[NSMutableArray alloc] init];
+
     }
     return self;
 }
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
+- (void)addToList1:(UIButton*)button
+{
+    [_dataList1 addObject:button];
+}
+
+- (void)addToList2:(UIButton*)button
+{
+    [_dataList2 addObject:button];
+}
+
+- (void)addToList3:(UIButton*)button
+{
+    [_dataList3 addObject:button];
+}
 - (void)drawRect:(CGRect)rect
 {
     
     [super drawRect:rect];
     
-    [self drawCircleAtPoint:CGPointMake(60, 170) radius:20 withText:@"30s"];
-    [self drawCircleAtPoint:CGPointMake(150, 240) radius:20 withText:@"40"];
-    [self addLineFromPoint:CGPointMake(60, 170) to:CGPointMake(150, 240)];
-    
+    for(int i=0; i<[_dataList1 count]-1; i++) {
+        UIButton *btn = (UIButton*)[_dataList1 objectAtIndex:i];
+        CGPoint point1 = CGPointMake(btn.frame.origin.x, btn.frame.origin.y);
+        btn = (UIButton*)[_dataList1 objectAtIndex:i+1];
+        CGPoint point2 = CGPointMake(btn.frame.origin.x, btn.frame.origin.y);
+        [self addLineFromPoint:point1 to:point2 withColor:[UIColor redColor].CGColor];
     }
-
-- (void)addLineFromPoint:(CGPoint)start to:(CGPoint)end
-{
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetLineWidth(context, 5.0);
-    CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
-    CGContextSetStrokeColorWithColor(context, [UIColor blueColor].CGColor);
-    CGContextMoveToPoint(context, start.x+40, start.y+20+5);
-    CGContextAddLineToPoint(context, end.x, end.y+20-5);
-    CGContextStrokePath(context);
-    CGColorSpaceRelease(colorspace);
-
+    
+    for(int i=0; i<[_dataList2 count]-1; i++) {
+        UIButton *btn = (UIButton*)[_dataList2 objectAtIndex:i];
+        CGPoint point1 = CGPointMake(btn.frame.origin.x, btn.frame.origin.y);
+        btn = (UIButton*)[_dataList2 objectAtIndex:i+1];
+        CGPoint point2 = CGPointMake(btn.frame.origin.x, btn.frame.origin.y);
+        [self addLineFromPoint:point1 to:point2 withColor:[UIColor greenColor].CGColor];
+    }
+    
+    for(int i=0; i<[_dataList3 count]-1; i++) {
+        UIButton *btn = (UIButton*)[_dataList3 objectAtIndex:i];
+        CGPoint point1 = CGPointMake(btn.frame.origin.x, btn.frame.origin.y);
+        btn = (UIButton*)[_dataList3 objectAtIndex:i+1];
+        CGPoint point2 = CGPointMake(btn.frame.origin.x, btn.frame.origin.y);
+        [self addLineFromPoint:point1 to:point2 withColor:[UIColor blueColor].CGColor];
+    }
+    
 }
 
-- (void)drawCircleAtPoint:(CGPoint)point radius:(CGFloat)radius withText:(NSString*)text
+- (void)addLineFromPoint:(CGPoint)start to:(CGPoint)end withColor:(CGColorRef)color
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetLineWidth(context, 2.0);
-    CGContextSetStrokeColorWithColor(context, [UIColor blueColor].CGColor);
-    CGRect rectangle = CGRectMake(point.x, point.y, 2*radius, 2*radius);
-    CGContextAddEllipseInRect(context, rectangle);
+    CGContextSetLineWidth(context, 10.0);
+    CGContextSetStrokeColorWithColor(context, color);
+    CGContextMoveToPoint(context, start.x+23, start.y+23);
+    CGContextAddLineToPoint(context, end.x+23, end.y+23);
     CGContextStrokePath(context);
-    
-    CGContextSetFillColorWithColor(context, [UIColor blueColor].CGColor);
-    CGContextFillEllipseInRect(context, rectangle);
-    
-    CGContextSetLineWidth(context, 1.0);
-    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
-    UIFont *font = [UIFont boldSystemFontOfSize:15];
-    [text drawAtPoint:CGPointMake(point.x+radius/2, point.y+radius/2) forWidth:radius+radius/2 withFont:font minFontSize:15 actualFontSize:NULL
-        lineBreakMode:UILineBreakModeTailTruncation
-   baselineAdjustment:UIBaselineAdjustmentAlignCenters];
 }
 
 
