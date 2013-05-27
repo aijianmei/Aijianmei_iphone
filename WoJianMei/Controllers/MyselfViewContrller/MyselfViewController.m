@@ -118,25 +118,12 @@
     
     [self setTitle:@"我"];
     
-    ///set the right buttons
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(clickSettingsButton:)];
-    ////set the left buttons
-    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc]initWithTitle:@"智能配件" style:UIBarButtonItemStyleBordered target:self action:@selector(test)];
-    
-    
-    [self.navigationItem setLeftBarButtonItem:leftBarButton];
-    [self.navigationItem setRightBarButtonItem:rightBarButton];
-
-    [rightBarButton release];
-    [leftBarButton release];
-    
-    
-    
-    
-    [self setNavigationRightButton:@"a" imageName:@"settings.png" action:@selector(test)];
+    [self setNavigationRightButton:@"设置" imageName:@"settings.png" action:@selector(test)];
+    [self setNavigationLeftButton:@"智能设备" imageName:@"settings.png" action:@selector(test)];
     
 
     
+    self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@""] forBarMetrics:<#(UIBarMetrics)#>
     
      //////// Set the headerView of the buttons  
     
