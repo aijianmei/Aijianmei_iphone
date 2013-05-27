@@ -122,8 +122,7 @@
     [self setNavigationLeftButton:@"智能设备" imageName:@"settings.png" action:@selector(test)];
     
 
-    
-    self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@""] forBarMetrics:<#(UIBarMetrics)#>
+
     
      //////// Set the headerView of the buttons  
     
