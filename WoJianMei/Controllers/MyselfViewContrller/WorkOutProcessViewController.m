@@ -50,7 +50,7 @@
     [super viewDidAppear:animated];
     [self hideTabBar:YES];
 
-    drawView = [[DrawContextView alloc] initWithFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen ].bounds.size.height-20-44-30-49)];
+    drawView = [[DrawContextView alloc] initWithFrame:CGRectMake(0, 30, 320-30, [UIScreen mainScreen ].bounds.size.height-20-44-30)];
     drawView.backgroundColor = [UIColor clearColor];
     
     CGRect point0 = CGRectMake(-30, 210, 1, 1);

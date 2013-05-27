@@ -65,6 +65,7 @@
         [self addLineFromPoint:point1 to:point2 withColor:[UIColor blueColor].CGColor];
     }
     
+    [self addTabText];
 }
 
 - (void)addLineFromPoint:(CGPoint)start to:(CGPoint)end withColor:(CGColorRef)color
@@ -72,9 +73,26 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 10.0);
     CGContextSetStrokeColorWithColor(context, color);
-    CGContextMoveToPoint(context, start.x+23, start.y+23);
-    CGContextAddLineToPoint(context, end.x+23, end.y+23);
+    CGContextMoveToPoint(context, start.x+23, start.y+23-30);
+    CGContextAddLineToPoint(context, end.x+23, end.y+23-30);
     CGContextStrokePath(context);
+}
+
+- (void)addTabText
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [UIColor grayColor].CGColor);
+    CGContextSetLineWidth(context, 10.0);
+    CGContextSetStrokeColorWithColor(context, [UIColor blueColor].CGColor);
+    NSString *text = @"22";
+    [text drawAtPoint:CGPointMake(37, 350) withFont:[UIFont systemFontOfSize:22]];
+    
+    text = @"23";
+    [text drawAtPoint:CGPointMake(137, 350) withFont:[UIFont systemFontOfSize:22]];
+
+    text = @"24";
+    [text drawAtPoint:CGPointMake(237, 350) withFont:[UIFont systemFontOfSize:22]];
+    
 }
 
 
