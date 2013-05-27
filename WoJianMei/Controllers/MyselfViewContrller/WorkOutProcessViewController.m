@@ -30,12 +30,13 @@
 {
     [super viewDidLoad];
     
-    
-    
-    
-    
-    
-    
+    [self setNavigationRightButton:@"添加" imageName:@"settings.png" action:@selector(clickAddButton:)];
+//    [self setNavigationLeftButton:@"返回" imageName:@"fh_1" action:@selector(clickSettingsButton:)];
+}
+
+- (void)clickAddButton:(id)sender
+{
+    return;
 }
 
 - (void)hideTabBar:(BOOL)isHide
