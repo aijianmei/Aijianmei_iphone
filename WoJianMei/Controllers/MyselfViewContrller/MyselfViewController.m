@@ -464,7 +464,7 @@
      vc.user = self.user;
     [vc release];
     
-    
+    [self hideTabBar];
 }
 
 
@@ -473,12 +473,8 @@
     [super viewWillAppear:YES];
     [self.dataTableView reloadData];
     [self upgradeUI];
-    
-    
-    [self hideActivity];
-            
+    [self showTabBar];
 }
-
 
 
 
