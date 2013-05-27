@@ -127,20 +127,20 @@
      //////// Set the headerView of the buttons  
     
     self.myHeaderView  =[[UIView alloc]init];
-    [_myHeaderView setFrame: CGRectMake(0, 0, 100, 170)];
+    [_myHeaderView setFrame: CGRectMake(0, 0, 100, 220)];
     [_myHeaderView setBackgroundColor:[UIColor clearColor]];
     
-    UIImageView *backGroundImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 120)];
-    [backGroundImageView setImage:[UIImage imageNamed:@"Default@2x.png"]];
+    UIImageView *backGroundImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160)];
+    [backGroundImageView setImage:[UIImage imageNamed:@"profile_backgroud.png"]];
     [_myHeaderView addSubview:backGroundImageView];
     [backGroundImageView release];
     
     
     ////// set the Username
-    self.userNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(100, 90, 145, 30)];
+    self.userNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(100, 130, 145, 30)];
     _userNameLabel.backgroundColor =[UIColor clearColor];
-  [_userNameLabel setTextAlignment:NSTextAlignmentRight];
-
+   [_userNameLabel setTextAlignment:NSTextAlignmentRight];
+    _userNameLabel.textColor = [UIColor whiteColor];
     [self.myHeaderView addSubview:self.userNameLabel];
     
     
@@ -149,7 +149,7 @@
     //////set the motto
     
     //初始化label
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 120, 250, 50)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 147, 250, 50)];
     //设置自动行数与字符换行
     [label setNumberOfLines:2];
     label.lineBreakMode = UILineBreakModeWordWrap;
@@ -161,13 +161,10 @@
     
     //计算实际frame大小，并将label的frame变成实际大小
      CGSize labelsize = [s sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
-    [label setFrame:CGRectMake(0, 120, labelsize.width, labelsize.height)];
+    [label setFrame:CGRectMake(0, 160, labelsize.width, labelsize.height)];
     
     
     self.mottoLabel = label;
-    
-//    self.mottoLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 120, 250, 50)];
-     _mottoLabel.backgroundColor = [UIColor redColor];
     [self.mottoLabel setTextAlignment:NSTextAlignmentLeft];
     [self.mottoLabel  setLineBreakMode:NSLineBreakByTruncatingTail];
     [_myHeaderView addSubview:self.mottoLabel];
@@ -186,14 +183,14 @@
     _headerVImageButton.layer.borderColor = [UIColor clearColor].CGColor;
 
     
-    [_headerVImageButton setFrame:CGRectMake(250, 88, 70, 70)];
+    [_headerVImageButton setFrame:CGRectMake(250, 115, 70, 70)];
     [_headerVImageButton setBackgroundColor:[UIColor clearColor]];
     [_headerVImageButton setImage:[ImageManager avatarbackgroundImage] forState:UIControlStateNormal];
     
     
     
     ////// set the User Gender
-    self.userGenderLabel  = [[UILabel alloc]initWithFrame:CGRectMake(250, 30, 100, 30)];
+    self.userGenderLabel  = [[UILabel alloc]initWithFrame:CGRectMake(265, 190, 100, 30)];
     _userGenderLabel.backgroundColor =[UIColor clearColor];
     [self.myHeaderView addSubview:self.userGenderLabel];
     
@@ -224,8 +221,8 @@
     user1.description = @"我非常喜欢健身运动！！！如果你都喜欢，你就告诉我啦！哈哈哈哈哈哈";
     user1.name = @"TomCallon";
     user1.gender = @"m";
-    user1.avatarBackGroundImage = [UIImage imageNamed:@"Default@2x.png"];
-    user1.avatarImage = [UIImage imageNamed:@"114x114.png"];
+    user1.avatarBackGroundImage = [UIImage imageNamed:@"profile_backgroud.png"];
+    user1.avatarImage = [UIImage imageNamed:@"user_image.png"];
     
     
     self.user = user1;
@@ -466,10 +463,10 @@
     [super viewWillAppear:YES];
     [self.dataTableView reloadData];
     [self upgradeUI];
+    
+    
     [self hideActivity];
-    
-    [self hideTabBar];
-    
+        
 }
 
 
@@ -566,13 +563,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{    
-//    if ([segue.identifier isEqualToString:@"WorkoutProcessSegue"]) {
-//        [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
-//        [((AppDelegate*)[[UIApplication sharedApplication] delegate]) hideTabbar];        
-//    }
-//    [super prepareForSegue:segue sender:sender];
-//}
+
 
 @end

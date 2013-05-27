@@ -133,13 +133,7 @@
     self.tabBarController.selectedIndex = TAB_REALTIME_SCORE;
     
     
-    
-    
-//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu_arrow.png"]];
-//    [self.tabBarController setTopImageView:imageView down:1.0 animated:YES];
-//    self.tabBarController.hidesBottomBarWhenPushed =NO;
-//
-//    [imageView release];
+   [self.tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"bottom_bg@2x.png"]];
     
    [controllers release];
 
@@ -154,7 +148,7 @@
 - (void)customizeInterface
 {
     
-    UIImage* tabBarBackground = [UIImage imageNamed:@"tabbar.png"];
+    UIImage* tabBarBackground = [UIImage imageNamed:@"bottom_bg@2x.png"];
     [[UITabBar appearance] setBackgroundImage:tabBarBackground];
     [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"selection-tab.png"]];
     
@@ -169,7 +163,7 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
    [self initTabViewControllers];
 
-    
+    [self customizeInterface];
     
     [self.window setRootViewController:self.tabBarController];
     
