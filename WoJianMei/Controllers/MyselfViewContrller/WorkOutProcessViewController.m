@@ -26,12 +26,53 @@
     return self;
 }
 
+
+#pragma mark -
+#pragma mark Hide and Show TabBar Methods
+
+- (void)showTabBar {
+    UITabBar *tabBar = self.tabBarController.tabBar;
+    UIView *parent = tabBar.superview; // UILayoutContainerView
+    UIView *content = [parent.subviews objectAtIndex:0]; // UITransitionView
+    UIView *window = parent.superview;
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         CGRect tabFrame = tabBar.frame;
+                         tabFrame.origin.y = CGRectGetMaxY(window.bounds) - CGRectGetHeight(tabBar.frame);
+                         tabBar.frame = tabFrame;
+                         CGRect contentFrame = content.frame;
+                         contentFrame.size.height -= tabFrame.size.height;
+                     }];
+}
+
+
+- (void)hideTabBar {
+    UITabBar *tabBar = self.tabBarController.tabBar;
+    UIView *parent = tabBar.superview; // UILayoutContainerView
+    UIView *content = [parent.subviews objectAtIndex:0];  // UITransitionView
+    UIView *window = parent.superview;
+    
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         CGRect tabFrame = tabBar.frame;
+                         tabFrame.origin.y = CGRectGetMaxY(window.bounds);
+                         tabBar.frame = tabFrame;
+                         content.frame = window.bounds;
+                     }];
+    
+}
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     [self setNavigationRightButton:@"添加" imageName:@"settings.png" action:@selector(clickAddButton:)];
 //    [self setNavigationLeftButton:@"返回" imageName:@"fh_1" action:@selector(clickSettingsButton:)];
+    
+    [self hideTabBar];
+    
 }
 
 - (void)clickAddButton:(id)sender
@@ -49,7 +90,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {    
     [super viewDidAppear:animated];
-    [self hideTabBar:YES];
+//    [self hideTabBar:YES];
 
     drawView = [[DrawContextView alloc] initWithFrame:CGRectMake(0, 30, 320-30, [UIScreen mainScreen ].bounds.size.height-20-44-30)];
     drawView.backgroundColor = [UIColor clearColor];
@@ -100,7 +141,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    [self hideTabBar:NO];
+//    [self hideTabBar:NO];
     [super viewDidDisappear:animated];
 
 }
