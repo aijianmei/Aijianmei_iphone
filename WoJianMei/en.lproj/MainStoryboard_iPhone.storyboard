@@ -473,7 +473,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbY-3i-Lwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1576" y="-5617"/>
+            <point key="canvasLocation" x="1728" y="-5649"/>
         </scene>
         <!--Nutri Sup View Controller - Item-->
         <scene sceneID="mSZ-Ga-IYS">
@@ -629,7 +629,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXF-0Z-5yh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1718" y="-5014"/>
+            <point key="canvasLocation" x="1866" y="-5014"/>
         </scene>
         <!--More View Controller-->
         <scene sceneID="8Dd-af-kE8">
@@ -691,7 +691,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZL-8w-6VZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2270" y="-3709"/>
+            <point key="canvasLocation" x="2318" y="-4069"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VKb-vg-t85">
@@ -834,7 +834,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAv-9e-sCD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3190" y="-4830"/>
+            <point key="canvasLocation" x="3238" y="-5098"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xqL-Wb-r74">
@@ -1034,7 +1034,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8V-Ah-xej" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2780" y="-4695"/>
+            <point key="canvasLocation" x="2924" y="-4983"/>
         </scene>
         <!--Workout Image View Controller-->
         <scene sceneID="gOW-g7-HUB">
@@ -1049,7 +1049,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sPI-UR-vDP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2851" y="-4479"/>
+            <point key="canvasLocation" x="3123" y="-4591"/>
         </scene>
         <!--Workout Note View Controller-->
         <scene sceneID="s4P-Wr-FY1">
@@ -1064,7 +1064,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q7Z-KE-2la" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3083" y="-3949"/>
+            <point key="canvasLocation" x="2899" y="-3953"/>
         </scene>
         <!--Sina Users View Controller-->
         <scene sceneID="Xlm-RU-jSh">
@@ -1152,9 +1152,9 @@
         <image name="data_m_2@2x.png" width="16" height="16"/>
         <image name="fgx_1.png" width="640" height="2"/>
         <image name="fgx_2.png" width="2" height="674"/>
-        <image name="fl_1.png" width="88" height="44"/>
+        <image name="fl_1.png" width="43" height="26"/>
         <image name="fl_2.png" width="640" height="56"/>
-        <image name="fl_3.png" width="43" height="26"/>
+        <image name="fl_3.png" width="88" height="44"/>
         <image name="fz_1.png" width="65" height="98"/>
         <image name="fz_1s.png" width="65" height="98"/>
         <image name="fz_2.png" width="65" height="98"/>

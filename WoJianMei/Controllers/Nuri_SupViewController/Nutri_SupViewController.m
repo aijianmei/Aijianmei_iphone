@@ -241,7 +241,7 @@
 -(void)initUI{
     
     
-    [self.navigationItem setTitle:@"营养与补充"];
+//    [self.navigationItem setTitle:@"营养与补充"];
 
     
     

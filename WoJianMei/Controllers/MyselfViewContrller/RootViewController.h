@@ -26,7 +26,6 @@
 @property (retain,nonatomic) UIButton *workoutNoteButton;
 @property (retain,nonatomic) UIButton *workoutImageButton;
 @property (retain,nonatomic) UIButton *workoutDatasButton;
-
 @property (retain,nonatomic) UIScrollView *scrollView;
 
 

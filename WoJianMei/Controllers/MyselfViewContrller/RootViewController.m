@@ -8,8 +8,10 @@
 
 #import "RootViewController.h"
 #import "REComposeViewController.h"
-#import "WorkoutNoteViewController.h"
 
+
+#import "WorkoutNoteViewController.h"
+#import "WorkoutDatasViewController.h"
 
 
 @interface RootViewController ()
@@ -29,17 +31,19 @@
 
 -(void)setButtons{
     
-    UIButton *workoutNoteButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *workoutNoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
     workoutNoteButton.frame = CGRectMake(30, 10, 240, 150);
     [workoutNoteButton addTarget:self action:@selector(workoutNoteButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [workoutNoteButton setTitle:@"健身日记" forState:UIControlStateNormal];
+
     
-    UIButton *workoutImageButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    
+    UIButton *workoutImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     workoutImageButton.frame = CGRectMake(30, 190, 240, 150);
     [workoutImageButton addTarget:self action:@selector(workoutImageButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [workoutImageButton setTitle:@"健身图片" forState:UIControlStateNormal];
     
-    UIButton *workoutDatasButton= [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *workoutDatasButton= [UIButton buttonWithType:UIButtonTypeCustom];
     workoutDatasButton.frame = CGRectMake(30, 380, 240, 150);
     [workoutDatasButton addTarget:self action:@selector(workoutDatasButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [workoutDatasButton setTitle:@"健身数据" forState:UIControlStateNormal];
@@ -91,16 +95,24 @@
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(clickEditButton:)];
     [self.navigationItem setRightBarButtonItem:rightBarButton];
    
+    [self setNavigationRightButton:@"设置" imageName:@"settings.png" action:@selector(clickEditButton:)];
     
     
     
+   
+    
+    ///set the gobal  backbutton 
+    UIImage *btnTrnspBgrImg30 = [[UIImage imageNamed:@"top_bar_backButton.png"]resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:btnTrnspBgrImg30      forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    
+    
+    [self upgradeUI];
 }
 
 
 -(void)clickEditButton:(UIButton *)sender {
 
-    
-    NSLog(@"I did click the Edit Button ");
     
     [self.workoutNoteButton  setBackgroundColor:[UIColor redColor]];
     
@@ -152,29 +164,28 @@
 
 - (void)workoutDatasButtonPressed
 {
-    REComposeViewController *composeViewController = [[REComposeViewController alloc] init];
-    composeViewController.title = @"健身数据";
-    composeViewController.hasAttachment = YES;
-    composeViewController.attachmentImage = [UIImage imageNamed:@"Flower.jpg"];
+    WorkoutDatasViewController *datasVC = [[WorkoutDatasViewController alloc] init];
+    datasVC.title = @"健身数据";
+    datasVC.hasAttachment = YES;
+    datasVC.attachmentImage = [UIImage imageNamed:@"Flower.jpg"];
 
     UIImageView *titleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"foursquare-logo"]];
     titleImageView.frame = CGRectMake(0, 0, 110, 30);
-    composeViewController.navigationItem.titleView = titleImageView;
+    datasVC.navigationItem.titleView = titleImageView;
     
     // UIApperance setup
-    
-    [composeViewController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg"] forBarMetrics:UIBarMetricsDefault];
-    composeViewController.navigationItem.leftBarButtonItem.tintColor = [UIColor colorWithRed:60/255.0 green:165/255.0 blue:194/255.0 alpha:1];
-    composeViewController.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:29/255.0 green:118/255.0 blue:143/255.0 alpha:1];
+    [datasVC.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg"] forBarMetrics:UIBarMetricsDefault];
+    datasVC.navigationItem.leftBarButtonItem.tintColor = [UIColor colorWithRed:60/255.0 green:165/255.0 blue:194/255.0 alpha:1];
+    datasVC.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:29/255.0 green:118/255.0 blue:143/255.0 alpha:1];
     
     // Alternative use with REComposeViewControllerCompletionHandler
-    composeViewController.completionHandler = ^(REComposeResult result) {
+    datasVC.completionHandler = ^(REComposeResult result) {
         if (result == REComposeResultCancelled) {
             NSLog(@"Cancelled");
         }
         
         if (result == REComposeResultPosted) {
-            NSLog(@"Text = %@", composeViewController.text);
+            NSLog(@"Text = %@", datasVC.text);
             
             
         }
@@ -216,8 +227,6 @@
     }
     
     
-    
-    
     [self.workoutNoteButton setTitle:composeViewController.text forState:UIControlStateNormal];
     
     
@@ -227,8 +236,27 @@
 
 -(void)upgradeUI{
     
+    
+    
+   ///set the note button
+    UIImage *noteBG = [UIImage imageNamed:@"note_background.png"];
+    [self.workoutNoteButton setBackgroundImage:noteBG forState:UIControlStateNormal];
+    
+    ///set the image button 
+    UIImage *imageBG = [UIImage imageNamed:@"image_background.png"];
+    [self.workoutImageButton setBackgroundImage:imageBG forState:UIControlStateNormal];
+    
+    ///set the note button
+    UIImage *datasBG = [UIImage imageNamed:@"note_background.png"];
+    [self.workoutDatasButton setBackgroundImage:datasBG forState:UIControlStateNormal];
+    
+    
+
+    
 
 }
+
+
 
 
 #pragma mark --actionSheetDelegate
@@ -283,12 +311,6 @@
     [self.navigationController dismissModalViewControllerAnimated:YES];
     
 }
-
-
-
-
-
-
 
 
 @end
