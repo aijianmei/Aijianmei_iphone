@@ -73,7 +73,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self hidesBottomBarWhenPushed];
+//    [self hidesBottomBarWhenPushed];
 }
 
 /* display new or existing cached image */
@@ -238,7 +238,8 @@
     [user1 release];
     
     [self upgradeUI];
-     
+    
+    
     
 }
 
@@ -444,11 +445,13 @@
     
     if ([segue.identifier isEqualToString:@"WorkoutProcessSegue"])
     {
-        [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
+//        [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
+//        
+//        UIViewController *vc = segue.destinationViewController;
+//        
+//       vc.hidesBottomBarWhenPushed = YES;
         
-        UIViewController *vc = segue.destinationViewController;
         
-       vc.hidesBottomBarWhenPushed = YES;
     }
 
         
@@ -473,7 +476,7 @@
     
     
     [self hideActivity];
-        
+            
 }
 
 

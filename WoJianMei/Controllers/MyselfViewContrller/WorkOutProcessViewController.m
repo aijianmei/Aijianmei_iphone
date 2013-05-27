@@ -72,7 +72,7 @@
 //    [self setNavigationLeftButton:@"返回" imageName:@"fh_1" action:@selector(clickSettingsButton:)];
     
     [self hideTabBar];
-    
+
 }
 
 - (void)clickAddButton:(id)sender
@@ -90,7 +90,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {    
     [super viewDidAppear:animated];
-//    [self hideTabBar:YES];
+    
+    [self hideTabBar];
 
     drawView = [[DrawContextView alloc] initWithFrame:CGRectMake(0, 30, 320-30, [UIScreen mainScreen ].bounds.size.height-20-44-30)];
     drawView.backgroundColor = [UIColor clearColor];
@@ -141,9 +142,15 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-//    [self hideTabBar:NO];
     [super viewDidDisappear:animated];
 
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+
+    [self showTabBar];
+    [super viewWillDisappear:animated];
+    
 }
 
 - (UIButton*)createButtonWithFrame:(CGRect)frame image:(UIImage*)image text:(NSString*)text
