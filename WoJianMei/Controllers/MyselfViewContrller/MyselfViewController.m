@@ -129,6 +129,14 @@
     [rightBarButton release];
     [leftBarButton release];
     
+    
+    
+    
+    [self setNavigationRightButton:@"man" image:[UIImage imageNamed:@"touxiang_40x40.png"] action:@selector(test) hasEdgeInSet:NO];
+    
+
+    
+    
      //////// Set the headerView of the buttons  
     
     self.myHeaderView  =[[UIView alloc]init];
