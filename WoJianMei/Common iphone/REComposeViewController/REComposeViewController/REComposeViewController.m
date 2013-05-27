@@ -59,8 +59,10 @@
     
     
     _containerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 202)];
+
     _containerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     _backView = [[UIView alloc] initWithFrame:CGRectMake(4, 0, self.currentWidth - 8, 202)];
+
     _backView.layer.cornerRadius = _cornerRadius;
     _backView.layer.shadowOpacity = 0.7;
     _backView.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -71,11 +73,14 @@
     _sheetView.clipsToBounds = YES;
     _sheetView.delegate = self;
     
+
+    
     [self.view addSubview:_backgroundView];
     [_containerView addSubview:_backView];
     [self.view addSubview:_containerView];
     [_backView addSubview:_sheetView];
     
+  ////那个夹子的位置
     _paperclipView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 77, 60, 79, 34)];
     _paperclipView.image = [UIImage imageNamed:@"REComposeViewController.bundle/PaperClip"];
     [_containerView addSubview:_paperclipView];
@@ -90,6 +95,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    _sheetView.textView.backgroundColor = [UIColor redColor];
+
     [_sheetView.textView becomeFirstResponder];
     
     [UIView animateWithDuration:0.4 animations:^{

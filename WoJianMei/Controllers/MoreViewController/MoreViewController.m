@@ -58,7 +58,7 @@ typedef enum {
     [self showBackgroundImage];
 
     ///Set the right bar button 
-    [self setTitle:@"更多"];
+//    [self setTitle:@"更多"];
     [self setNavigationRightButton:@"设置"
                           fontSize:FONT_SIZE
                          imageName:@"setting.png"

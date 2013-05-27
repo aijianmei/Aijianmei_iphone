@@ -26,10 +26,15 @@
 #import <UIKit/UIKit.h>
 #import "DEComposeTextView.h"
 
+#import "DEComposeBackgroundScrollView.h"
+
+
 @protocol REComposeSheetViewDelegate;
 
 @interface REComposeSheetView : UIView {
     UIImageView *_attachmentContainerView;
+    
+    int count;
 }
 
 @property (readonly, nonatomic) UIView *attachmentView;
@@ -39,6 +44,9 @@
 @property (readonly, nonatomic) UINavigationBar *navigationBar;
 @property (readonly, nonatomic) UIView *textViewContainer;
 @property (readonly, nonatomic) DEComposeTextView *textView;
+
+////TomCallon's method
+@property (readonly,nonatomic) DEComposeBackgroundScrollView * scrollView;
 
 @end
 

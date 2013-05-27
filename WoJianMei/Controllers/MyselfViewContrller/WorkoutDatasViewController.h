@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "REComposeViewController.h"
 
-@interface WorkoutDatasViewController : UIViewController
+@interface WorkoutDatasViewController : REComposeViewController
 
 @end

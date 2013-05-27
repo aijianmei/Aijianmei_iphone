@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="QpV-gh-90h">
     <dependencies>
         <deployment version="1280" identifier="iOS"/>
@@ -474,7 +473,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbY-3i-Lwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2258" y="-5796"/>
+            <point key="canvasLocation" x="1728" y="-5649"/>
         </scene>
         <!--Nutri Sup View Controller - Item-->
         <scene sceneID="mSZ-Ga-IYS">
@@ -562,14 +561,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DWo-RK-C4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2922" y="-3797"/>
+            <point key="canvasLocation" x="2114" y="-4365"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="IkO-V6-Ni3">
             <objects>
-                <tabBarController storyboardIdentifier="PPTabBarController" autoresizesArchivedViewToFullSize="NO" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" id="QpV-gh-90h" customClass="PPTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="PPTabBarController" id="QpV-gh-90h" customClass="PPTabBarController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Y9V-RD-kF6">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -584,12 +583,12 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1BK-2C-Rk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1694" y="-4076"/>
+            <point key="canvasLocation" x="934" y="-5290"/>
         </scene>
-        <!--Myself View Controller - 我健身-->
+        <!--Myself View Controller-->
         <scene sceneID="xtx-sc-xHk">
             <objects>
-                <viewController storyboardIdentifier="MyselfViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SQ4-9u-AZl" customClass="MyselfViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyselfViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SQ4-9u-AZl" customClass="MyselfViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NHW-lm-GR8">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -617,7 +616,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="我健身" id="AWc-xO-oD3"/>
+                    <tabBarItem key="tabBarItem" title="" id="AWc-xO-oD3"/>
                     <connections>
                         <outlet property="dataTableView" destination="sFc-dy-A0a" id="dim-Zu-OGu"/>
                         <outlet property="view" destination="NHW-lm-GR8" id="2KV-t5-9rG"/>
@@ -630,7 +629,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXF-0Z-5yh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2168" y="-4686"/>
+            <point key="canvasLocation" x="1866" y="-5014"/>
         </scene>
         <!--More View Controller-->
         <scene sceneID="8Dd-af-kE8">
@@ -674,7 +673,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="doW-v4-jiV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1981" y="-2468"/>
+            <point key="canvasLocation" x="1171" y="-4406"/>
         </scene>
         <!--Make Friends View Controller-->
         <scene sceneID="VlY-SH-fVL">
@@ -692,7 +691,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZL-8w-6VZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2690" y="-3109"/>
+            <point key="canvasLocation" x="2318" y="-4069"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VKb-vg-t85">
@@ -835,7 +834,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAv-9e-sCD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3190" y="-4830"/>
+            <point key="canvasLocation" x="3238" y="-5098"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xqL-Wb-r74">
@@ -855,7 +854,7 @@
         <!--Work Out Process View Controller-->
         <scene sceneID="8JA-RT-lZG">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="96c-6V-RW1" customClass="WorkOutProcessViewController" sceneMemberID="viewController">
+                <viewController id="96c-6V-RW1" customClass="WorkOutProcessViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Gg-jV-ANr">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1020,7 +1019,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FVd-uI-KxB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2679" y="-5135"/>
+            <point key="canvasLocation" x="2403" y="-5335"/>
         </scene>
         <!--Workout Datas View Controller-->
         <scene sceneID="8Tp-aY-T8Q">
@@ -1035,7 +1034,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8V-Ah-xej" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2611" y="-4141"/>
+            <point key="canvasLocation" x="2924" y="-4983"/>
         </scene>
         <!--Workout Image View Controller-->
         <scene sceneID="gOW-g7-HUB">
@@ -1050,7 +1049,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sPI-UR-vDP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3095" y="-4101"/>
+            <point key="canvasLocation" x="3123" y="-4591"/>
         </scene>
         <!--Workout Note View Controller-->
         <scene sceneID="s4P-Wr-FY1">
@@ -1065,7 +1064,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q7Z-KE-2la" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2993" y="-4491"/>
+            <point key="canvasLocation" x="2899" y="-3953"/>
         </scene>
         <!--Sina Users View Controller-->
         <scene sceneID="Xlm-RU-jSh">
@@ -1141,28 +1140,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0wa-xa-ecv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3494" y="-4538"/>
+            <point key="canvasLocation" x="3654" y="-4234"/>
         </scene>
     </scenes>
     <resources>
         <image name="5.jpg" width="270" height="180"/>
         <image name="@2x.png" width="16" height="16"/>
-        <image name="bj_1.png" width="16" height="16"/>
-        <image name="bj_2.png" width="16" height="16"/>
+        <image name="bj_1.png" width="212" height="674"/>
+        <image name="bj_2.png" width="212" height="674"/>
         <image name="data_m_1.png" width="16" height="16"/>
         <image name="data_m_2@2x.png" width="16" height="16"/>
-        <image name="fgx_1.png" width="16" height="16"/>
-        <image name="fgx_2.png" width="16" height="16"/>
-        <image name="fl_1.png" width="16" height="16"/>
-        <image name="fl_2.png" width="16" height="16"/>
-        <image name="fl_3.png" width="16" height="16"/>
-        <image name="fz_1.png" width="16" height="16"/>
-        <image name="fz_1s.png" width="16" height="16"/>
-        <image name="fz_2.png" width="16" height="16"/>
-        <image name="fz_2s.png" width="16" height="16"/>
-        <image name="fz_3.png" width="16" height="16"/>
-        <image name="fz_3s.png" width="16" height="16"/>
-        <image name="rq_1.png" width="16" height="16"/>
+        <image name="fgx_1.png" width="640" height="2"/>
+        <image name="fgx_2.png" width="2" height="674"/>
+        <image name="fl_1.png" width="43" height="26"/>
+        <image name="fl_2.png" width="640" height="56"/>
+        <image name="fl_3.png" width="43" height="26"/>
+        <image name="fz_1.png" width="65" height="98"/>
+        <image name="fz_1s.png" width="65" height="98"/>
+        <image name="fz_2.png" width="65" height="98"/>
+        <image name="fz_2s.png" width="65" height="98"/>
+        <image name="fz_3.png" width="65" height="98"/>
+        <image name="fz_3s.png" width="65" height="98"/>
+        <image name="rq_1.png" width="640" height="100"/>
         <image name="sina_weibo.png" width="63" height="57"/>
         <image name="tick_frame.png" width="35" height="35"/>
         <image name="touxiang_40x40.png" width="50" height="50"/>
