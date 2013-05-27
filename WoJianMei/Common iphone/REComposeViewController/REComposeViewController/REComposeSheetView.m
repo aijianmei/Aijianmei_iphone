@@ -34,33 +34,30 @@
 -(void)addButtons{
     
     
-    int positionX = 30;
+    int positionX = 50;
     int positionY = 10;
-
     
-    
-    int x = 1;
-    
-    
-    
-    
-    for (x=1; x <=3; x++)
+    int x;
+    for (x=1; x <=5; x++)
     
     {
         
     UIButton *numberButton = [UIButton buttonWithType:UIButtonTypeCustom];
     numberButton.backgroundColor = [UIColor redColor];
-    numberButton.frame = CGRectMake(60 + positionX * x, 10, 30, 30);
-    [numberButton setTitle:@"1" forState:UIControlStateNormal];
+    numberButton.frame = CGRectMake(positionX * x -40, positionY -10, 30, 30);
+        
+        
+    NSString *number = [NSString stringWithFormat:@"%i",x] ;
+    [numberButton setTitle:number forState:UIControlStateNormal];
 
     
-    UITextField *textField1 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x, positionY * 1, 50, 30)];
+    UITextField *textField1 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x -40, positionY  + 20, 40, 30)];
     [textField1 setBackground:[UIImage imageNamed:@"data_button"]];
     
-    UITextField *textField2 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x, positionY * 2, 50, 30)];
+    UITextField *textField2 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x -40, positionY + 50, 40, 30)];
     [textField2 setBackground:[UIImage imageNamed:@"data_button"]];
     
-    UITextField *textField3 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x , positionY * 3, 50, 30)];
+    UITextField *textField3 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x -40 , positionY + 80, 40, 30)];
     [textField3 setBackground:[UIImage imageNamed:@"data_button"]];
    
         [_scrollView addSubview:numberButton];
