@@ -379,10 +379,10 @@
 		4AABA22F1753C1EC000C4F68 /* myplan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AABA21B1753C1EC000C4F68 /* myplan@2x.png */; };
 		4AABA2301753C1EC000C4F68 /* myplan_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AABA21C1753C1EC000C4F68 /* myplan_selected.png */; };
 		4AABA2311753C1EC000C4F68 /* myplan_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AABA21D1753C1EC000C4F68 /* myplan_selected@2x.png */; };
-		4AABA2321753C1EC000C4F68 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AABA21E1753C1EC000C4F68 /* settings.png */; };
-		4AABA2331753C1EC000C4F68 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AABA21F1753C1EC000C4F68 /* settings@2x.png */; };
-		4AABA2341753C1EC000C4F68 /* settings_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AABA2201753C1EC000C4F68 /* settings_selected.png */; };
-		4AABA2351753C1EC000C4F68 /* settings_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AABA2211753C1EC000C4F68 /* settings_selected@2x.png */; };
+		4AABA2321753C1EC000C4F68 /* asettings.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AABA21E1753C1EC000C4F68 /* asettings.png */; };
+		4AABA2331753C1EC000C4F68 /* asettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AABA21F1753C1EC000C4F68 /* asettings@2x.png */; };
+		4AABA2341753C1EC000C4F68 /* asettings_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AABA2201753C1EC000C4F68 /* asettings_selected.png */; };
+		4AABA2351753C1EC000C4F68 /* asettings_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AABA2211753C1EC000C4F68 /* asettings_selected@2x.png */; };
 		4AABA2361753C1EC000C4F68 /* tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AABA2221753C1EC000C4F68 /* tabbar.png */; };
 		4AABA2371753C1EC000C4F68 /* tabbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AABA2231753C1EC000C4F68 /* tabbar@2x.png */; };
 		4AABA2381753C1EC000C4F68 /* tabbar_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AABA2241753C1EC000C4F68 /* tabbar_selected.png */; };
@@ -1197,10 +1197,10 @@
 		4AABA21B1753C1EC000C4F68 /* myplan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myplan@2x.png"; sourceTree = "<group>"; };
 		4AABA21C1753C1EC000C4F68 /* myplan_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myplan_selected.png; sourceTree = "<group>"; };
 		4AABA21D1753C1EC000C4F68 /* myplan_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myplan_selected@2x.png"; sourceTree = "<group>"; };
-		4AABA21E1753C1EC000C4F68 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
-		4AABA21F1753C1EC000C4F68 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
-		4AABA2201753C1EC000C4F68 /* settings_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_selected.png; sourceTree = "<group>"; };
-		4AABA2211753C1EC000C4F68 /* settings_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_selected@2x.png"; sourceTree = "<group>"; };
+		4AABA21E1753C1EC000C4F68 /* asettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asettings.png; sourceTree = "<group>"; };
+		4AABA21F1753C1EC000C4F68 /* asettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "asettings@2x.png"; sourceTree = "<group>"; };
+		4AABA2201753C1EC000C4F68 /* asettings_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asettings_selected.png; sourceTree = "<group>"; };
+		4AABA2211753C1EC000C4F68 /* asettings_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "asettings_selected@2x.png"; sourceTree = "<group>"; };
 		4AABA2221753C1EC000C4F68 /* tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar.png; sourceTree = "<group>"; };
 		4AABA2231753C1EC000C4F68 /* tabbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar@2x.png"; sourceTree = "<group>"; };
 		4AABA2241753C1EC000C4F68 /* tabbar_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_selected.png; sourceTree = "<group>"; };
@@ -3023,10 +3023,10 @@
 				4AABA21B1753C1EC000C4F68 /* myplan@2x.png */,
 				4AABA21C1753C1EC000C4F68 /* myplan_selected.png */,
 				4AABA21D1753C1EC000C4F68 /* myplan_selected@2x.png */,
-				4AABA21E1753C1EC000C4F68 /* settings.png */,
-				4AABA21F1753C1EC000C4F68 /* settings@2x.png */,
-				4AABA2201753C1EC000C4F68 /* settings_selected.png */,
-				4AABA2211753C1EC000C4F68 /* settings_selected@2x.png */,
+				4AABA21E1753C1EC000C4F68 /* asettings.png */,
+				4AABA21F1753C1EC000C4F68 /* asettings@2x.png */,
+				4AABA2201753C1EC000C4F68 /* asettings_selected.png */,
+				4AABA2211753C1EC000C4F68 /* asettings_selected@2x.png */,
 				4AABA2221753C1EC000C4F68 /* tabbar.png */,
 				4AABA2231753C1EC000C4F68 /* tabbar@2x.png */,
 				4AABA2241753C1EC000C4F68 /* tabbar_selected.png */,
@@ -3854,10 +3854,10 @@
 				4AABA22F1753C1EC000C4F68 /* myplan@2x.png in Resources */,
 				4AABA2301753C1EC000C4F68 /* myplan_selected.png in Resources */,
 				4AABA2311753C1EC000C4F68 /* myplan_selected@2x.png in Resources */,
-				4AABA2321753C1EC000C4F68 /* settings.png in Resources */,
-				4AABA2331753C1EC000C4F68 /* settings@2x.png in Resources */,
-				4AABA2341753C1EC000C4F68 /* settings_selected.png in Resources */,
-				4AABA2351753C1EC000C4F68 /* settings_selected@2x.png in Resources */,
+				4AABA2321753C1EC000C4F68 /* asettings.png in Resources */,
+				4AABA2331753C1EC000C4F68 /* asettings@2x.png in Resources */,
+				4AABA2341753C1EC000C4F68 /* asettings_selected.png in Resources */,
+				4AABA2351753C1EC000C4F68 /* asettings_selected@2x.png in Resources */,
 				4AABA2361753C1EC000C4F68 /* tabbar.png in Resources */,
 				4AABA2371753C1EC000C4F68 /* tabbar@2x.png in Resources */,
 				4AABA2381753C1EC000C4F68 /* tabbar_selected.png in Resources */,
