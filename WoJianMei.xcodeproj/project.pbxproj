@@ -378,6 +378,7 @@
 		4AA7ECE5169F0F78003E8949 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA7ECE4169F0F78003E8949 /* SMPageControl.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4AA7ECE9169F107B003E8949 /* pageDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA7ECE7169F107B003E8949 /* pageDot@2x.png */; };
 		4AA7ECEA169F107B003E8949 /* currentPageDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA7ECE8169F107B003E8949 /* currentPageDot@2x.png */; };
+		4AABA20E1753907B000C4F68 /* DEComposeBackgroundScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AABA20D1753907B000C4F68 /* DEComposeBackgroundScrollView.m */; };
 		4ABD0DA115D7F4EB00B08DDA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABD0DA015D7F4EB00B08DDA /* CFNetwork.framework */; };
 		4ABD0DAE15D7F86200B08DDA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABD0DAD15D7F86200B08DDA /* MessageUI.framework */; };
 		4ABD0DB015D7F8FD00B08DDA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABD0DAF15D7F8FC00B08DDA /* QuartzCore.framework */; };
@@ -1186,6 +1187,8 @@
 		4AA7ECE7169F107B003E8949 /* pageDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pageDot@2x.png"; sourceTree = "<group>"; };
 		4AA7ECE8169F107B003E8949 /* currentPageDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "currentPageDot@2x.png"; sourceTree = "<group>"; };
 		4AA945F91686DD4E00022B2D /* FontSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontSize.h; sourceTree = "<group>"; };
+		4AABA20C1753907B000C4F68 /* DEComposeBackgroundScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEComposeBackgroundScrollView.h; sourceTree = "<group>"; };
+		4AABA20D1753907B000C4F68 /* DEComposeBackgroundScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEComposeBackgroundScrollView.m; sourceTree = "<group>"; };
 		4ABD0DA015D7F4EB00B08DDA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		4ABD0DAD15D7F86200B08DDA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		4ABD0DAF15D7F8FC00B08DDA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -3281,6 +3284,8 @@
 				4ADCFF70169D69F600A3E979 /* DEComposeRuledView.h */,
 				4ADCFF71169D69F600A3E979 /* DEComposeRuledView.m */,
 				4ADCFF72169D69F600A3E979 /* DEComposeTextView.h */,
+				4AABA20C1753907B000C4F68 /* DEComposeBackgroundScrollView.h */,
+				4AABA20D1753907B000C4F68 /* DEComposeBackgroundScrollView.m */,
 				4ADCFF73169D69F600A3E979 /* DEComposeTextView.m */,
 				4ADCFF74169D69F600A3E979 /* REComposeBackgroundView.h */,
 				4ADCFF75169D69F600A3E979 /* REComposeBackgroundView.m */,
@@ -4106,6 +4111,7 @@
 				4A3AB810175063690045729D /* WorkoutDatasViewController.m in Sources */,
 				C6C0CD1D17509DA400A825AB /* DrawContextView.m in Sources */,
 				C6C0CD231750F0B200A825AB /* RootViewController.m in Sources */,
+				4AABA20E1753907B000C4F68 /* DEComposeBackgroundScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

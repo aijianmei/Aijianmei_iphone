@@ -28,24 +28,52 @@
 
 @implementation REComposeSheetView
 
+
+
 ////Tom Callons methods
 -(void)addButtons{
     
+    
+    int positionX = 30;
+    int positionY = 10;
 
-    UITextField *textField1 = [[UITextField alloc]initWithFrame:CGRectMake(50, 10, 50, 30)];
+    
+    
+    int x = 1;
+    
+    
+    
+    
+    for (x=1; x <=3; x++)
+    
+    {
+        
+    UIButton *numberButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    numberButton.backgroundColor = [UIColor redColor];
+    numberButton.frame = CGRectMake(60 + positionX * x, 10, 30, 30);
+    [numberButton setTitle:@"1" forState:UIControlStateNormal];
+
+    
+    UITextField *textField1 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x, positionY * 1, 50, 30)];
     [textField1 setBackground:[UIImage imageNamed:@"data_button"]];
     
-    UITextField *textField2 = [[UITextField alloc]initWithFrame:CGRectMake(50, 50, 50, 30)];
+    UITextField *textField2 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x, positionY * 2, 50, 30)];
     [textField2 setBackground:[UIImage imageNamed:@"data_button"]];
     
-    UITextField *textField3 = [[UITextField alloc]initWithFrame:CGRectMake(50, 90, 50, 30)];
+    UITextField *textField3 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x , positionY * 3, 50, 30)];
     [textField3 setBackground:[UIImage imageNamed:@"data_button"]];
    
+        [_scrollView addSubview:numberButton];
+        [_scrollView addSubview:textField1];
+        [_scrollView addSubview:textField2];
+        [_scrollView addSubview:textField3];
+           
+   }
     
+        
     
-    [_textViewContainer addSubview:textField1];
-    [_textViewContainer addSubview:textField2];
-    [_textViewContainer addSubview:textField3];
+
+    
 
 }
 
@@ -134,14 +162,33 @@
         
         
         /////Overwirte the textView's location
-        _textView = [[DEComposeTextView alloc] initWithFrame:CGRectMake(40, 40, frame.size.width, frame.size.height - 47)];
-        _textView.backgroundColor = [UIColor whiteColor];
-        _textView.font = [UIFont systemFontOfSize:21];
-        _textView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
-        _textView.bounces = YES;
+//        _textView = [[DEComposeTextView alloc] initWithFrame:CGRectMake(40, 40, frame.size.width, frame.size.height - 47)];
+//        _textView.backgroundColor = [UIColor whiteColor];
+//        _textView.font = [UIFont systemFontOfSize:21];
+//        _textView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
+//        _textView.bounces = YES;
         
-        [_textViewContainer addSubview:_textView];
+    
+        ////Overwrite the UIScollView 
+        _scrollView = [[DEComposeBackgroundScrollView alloc] initWithFrame:CGRectMake(40, 40, frame.size.width, frame.size.height - 47)];
+        _scrollView.backgroundColor = [UIColor whiteColor];
+//        _scrollView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
+//        _scrollView.bounces = YES;
+        
+        
+        [_scrollView setShowsHorizontalScrollIndicator:YES];
+        [_scrollView setContentSize:CGSizeMake(1000, 100)];
+        
+        [_textViewContainer addSubview:_scrollView];
+        
+        
+        
+        
         [self addSubview:_textViewContainer];
+        
+        
+        
+        
         
         _attachmentView = [[UIView alloc] initWithFrame:CGRectMake(frame.size.width - 84, 54, 84, 79)];
         [self addSubview:_attachmentView];
