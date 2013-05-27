@@ -301,8 +301,8 @@
 		4A634E1417533DE100453C0D /* jz_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A634E0C17533DE100453C0D /* jz_1.png */; };
 		4A634E1517533DE100453C0D /* image_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A634E0D17533DE100453C0D /* image_background.png */; };
 		4A634E1617533DE100453C0D /* note_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A634E0E17533DE100453C0D /* note_background.png */; };
-		4A634E1717533DE100453C0D /* srk_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A634E0F17533DE100453C0D /* srk_1.png */; };
-		4A634E1817533DE100453C0D /* tjzs_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A634E1017533DE100453C0D /* tjzs_1.png */; };
+		4A634E1717533DE100453C0D /* data_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A634E0F17533DE100453C0D /* data_button.png */; };
+		4A634E1817533DE100453C0D /* add_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A634E1017533DE100453C0D /* add_button.png */; };
 		4A634E1917533DE100453C0D /* tpbj_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A634E1117533DE100453C0D /* tpbj_1.png */; };
 		4A634E1D1753431E00453C0D /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A634E1A1753431C00453C0D /* bg@2x.png */; };
 		4A634E1E1753431E00453C0D /* Flower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A634E1B1753431D00453C0D /* Flower.jpg */; };
@@ -1067,8 +1067,8 @@
 		4A634E0C17533DE100453C0D /* jz_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jz_1.png; sourceTree = "<group>"; };
 		4A634E0D17533DE100453C0D /* image_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_background.png; sourceTree = "<group>"; };
 		4A634E0E17533DE100453C0D /* note_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_background.png; sourceTree = "<group>"; };
-		4A634E0F17533DE100453C0D /* srk_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = srk_1.png; sourceTree = "<group>"; };
-		4A634E1017533DE100453C0D /* tjzs_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tjzs_1.png; sourceTree = "<group>"; };
+		4A634E0F17533DE100453C0D /* data_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = data_button.png; sourceTree = "<group>"; };
+		4A634E1017533DE100453C0D /* add_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_button.png; sourceTree = "<group>"; };
 		4A634E1117533DE100453C0D /* tpbj_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tpbj_1.png; sourceTree = "<group>"; };
 		4A634E1A1753431C00453C0D /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg@2x.png"; path = "REComposeViewControllerExample/REComposeViewControllerExample/bg@2x.png"; sourceTree = "<group>"; };
 		4A634E1B1753431D00453C0D /* Flower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Flower.jpg; path = REComposeViewControllerExample/REComposeViewControllerExample/Flower.jpg; sourceTree = "<group>"; };
@@ -2732,8 +2732,8 @@
 				4A634E0C17533DE100453C0D /* jz_1.png */,
 				4A634E0D17533DE100453C0D /* image_background.png */,
 				4A634E0E17533DE100453C0D /* note_background.png */,
-				4A634E0F17533DE100453C0D /* srk_1.png */,
-				4A634E1017533DE100453C0D /* tjzs_1.png */,
+				4A634E0F17533DE100453C0D /* data_button.png */,
+				4A634E1017533DE100453C0D /* add_button.png */,
 				4A634E1117533DE100453C0D /* tpbj_1.png */,
 			);
 			path = posting;
@@ -3811,8 +3811,8 @@
 				4A634E1417533DE100453C0D /* jz_1.png in Resources */,
 				4A634E1517533DE100453C0D /* image_background.png in Resources */,
 				4A634E1617533DE100453C0D /* note_background.png in Resources */,
-				4A634E1717533DE100453C0D /* srk_1.png in Resources */,
-				4A634E1817533DE100453C0D /* tjzs_1.png in Resources */,
+				4A634E1717533DE100453C0D /* data_button.png in Resources */,
+				4A634E1817533DE100453C0D /* add_button.png in Resources */,
 				4A634E1917533DE100453C0D /* tpbj_1.png in Resources */,
 				4A634E1D1753431E00453C0D /* bg@2x.png in Resources */,
 				4A634E1E1753431E00453C0D /* Flower.jpg in Resources */,

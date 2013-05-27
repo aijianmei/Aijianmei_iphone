@@ -131,7 +131,7 @@
 {
     WorkoutNoteViewController *notecomposeViewController = [[WorkoutNoteViewController alloc] init];
     notecomposeViewController.title = @"健身日记";
-    notecomposeViewController.hasAttachment = NO;
+    notecomposeViewController.hasAttachment = YES;
     notecomposeViewController.delegate = self;
     notecomposeViewController.text = @"亲，写下你的健身心得吧！";
     [self presentViewController:notecomposeViewController animated:YES completion:nil];
@@ -191,7 +191,7 @@
         }
     };
     
-    [self presentViewController:composeViewController animated:YES completion:nil];
+    [self presentViewController:datasVC animated:YES completion:nil];
 }
 
 #pragma mark -
