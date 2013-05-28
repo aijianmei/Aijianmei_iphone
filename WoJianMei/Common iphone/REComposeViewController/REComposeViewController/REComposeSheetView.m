@@ -35,8 +35,7 @@
     
     int positionX = 50;
     int positionY = 10;
-    
-    
+
     count++;
     
     NSLog(@"%d",count);
@@ -52,19 +51,19 @@
     UITextField *textField1 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * count -40, positionY  + 20, 40, 30)];
     [textField1 setBackground:[UIImage imageNamed:@"data_button"]];
         
-    [textField1 setTag:1];
+    [textField1 setTag:  1 + 3 * (count - 1)];
     [textField1 setDelegate:self];
     
     UITextField *textField2 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * count -40, positionY + 50, 40, 30)];
     [textField2 setBackground:[UIImage imageNamed:@"data_button"]];
-    [textField2 setTag:2];
+    [textField2 setTag:2 + 3 * (count - 1)];
     [textField2 setDelegate:self];
 
 
     
     UITextField *textField3 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * count -40 , positionY + 80, 40, 30)];
     [textField3 setBackground:[UIImage imageNamed:@"data_button"]];
-    [textField3 setTag:3];
+    [textField3 setTag: 3 + 3 * (count - 1)];
     [textField3 setDelegate:self];
 
    
@@ -80,22 +79,7 @@
 /////
 #pragma UITextFieldDelegate Methods
 -(BOOL)textFieldShouldBeginEditing:(UITextField*)textField {
-    
-    switch (textField.tag) {
-        case 1:
-            NSLog(@"textField:%i",textField.tag);
-            break;
-        case 2:
-            NSLog(@"textField:%i",textField.tag);
-            break;
-        case 3:
-            NSLog(@"textField:%i",textField.tag);
-            break;
-            
-        default:
-            break;
-    }
-    
+        
     return YES;
 }
 
@@ -103,22 +87,22 @@
     
     // return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
     
-    
-    switch (textField.tag) {
-        case 1:
-            NSLog(@"TextField text :%@",textField.text);
-            break;
-        case 2:
-            NSLog(@"TextField text :%@",textField.text);
-            break;
-        case 3:
-            NSLog(@"TextField text :%@",textField.text);
-            break;
-            
-        default:
-            break;
-    }
-
+//    
+//    switch (textField.tag) {
+//        case 1:
+//            NSLog(@"TextField text :%@",textField.text);
+//            break;
+//        case 2:
+//            NSLog(@"TextField text :%@",textField.text);
+//            break;
+//        case 3:
+//            NSLog(@"TextField text :%@",textField.text);
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//
 
     return YES;
 
@@ -128,29 +112,82 @@
 {
    // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
     
-   
+//    switch (textField.tag) {
+//        case 1:
+//            NSLog(@"TextField text :%@",textField.text);
+//            [_data setObject:textField.text forKey:@"Intensity"];
+//            break;
+//        case 2:
+//            NSLog(@"TextField text :%@",textField.text);
+//            [_data setObject:textField.text forKey:@"Amount"];
+//            break;
+//        case 3:
+//            NSLog(@"TextField text :%@",textField.text);
+//            [_data setObject:textField.text forKey:@"TimeLenght"];
+//            break;
+//            
+//        default:
+//            break;
+//    }
+    
+
+
+        
+    ////add the datas .
+    ////列
+    NSMutableArray *aa = [[NSMutableArray alloc]initWithCapacity:100];
+    
+    NSMutableDictionary *dataArray  = [[NSMutableDictionary alloc]init];
+    
+    ////计算当前是第x行
+    ///时间
+    if (textField.tag%3 == 0) {
+        
+        NSLog(@"3333333");
+        
+       //计算是第x列数据
+        int column = (textField.tag -3)/3  + 1;
+        
+        NSLog(@"what coloum is %i",column);
+     
+       [dataArray setObject:textField.text forKey:@"TimeLenght"];
+       [aa insertObject:dataArray atIndex:column];
+
     
     
-    switch (textField.tag) {
-        case 1:
-            NSLog(@"TextField text :%@",textField.text);
-            [_data setObject:textField.text forKey:@"Intensity"];
-            break;
-        case 2:
-            NSLog(@"TextField text :%@",textField.text);
-            [_data setObject:textField.text forKey:@"Amount"];
-            break;
-        case 3:
-            NSLog(@"TextField text :%@",textField.text);
-            [_data setObject:textField.text forKey:@"TimeLenght"];
-            break;
-            
-        default:
-            break;
+
+        
+    }
+    if (textField.tag%3 == 1) {
+        NSLog(@"111111");
+        
+        //计算是第x列数据
+        int column = (textField.tag -1)/3  + 1;
+        
+        NSLog(@"what coloum is %i",column);
+        
+        
+        [dataArray setObject:textField.text forKey:@"Intensity"];
+        [aa insertObject:dataArray atIndex:column];
+
+
+        
+    }
+    if (textField.tag%3 == 2) {
+        NSLog(@"222222");
+        //计算是第x列数据
+        int column = (textField.tag -2)/3  + 1;
+        
+        NSLog(@"what coloum is %i",column);
+        
+        [dataArray setObject:textField.text forKey:@"Amount"];
+
+        [aa insertObject:dataArray atIndex:column];
+
+
+        
     }
     
-     
-      NSLog(@"Show me the datas :%@",[_data description]);
     
 }
 
@@ -161,12 +198,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
-        
-       ////add the datas .
-        NSMutableDictionary *dataArray  = [[NSMutableDictionary alloc]init];
-        self.data =dataArray;
-        
+                
         count =0;
         
         
