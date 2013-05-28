@@ -78,6 +78,11 @@
     // Override point for customization after application launch.
 
     
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
+    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+
+    
     // Assign tab bar item with titles
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
     UITabBar *tabBar = tabBarController.tabBar;

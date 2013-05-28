@@ -31,11 +31,15 @@
 
 @protocol REComposeSheetViewDelegate;
 
-@interface REComposeSheetView : UIView {
+@interface REComposeSheetView : UIView<UITextFieldDelegate> {
     UIImageView *_attachmentContainerView;
     
-    int count;
+    NSMutableDictionary *_data;
 }
+
+
+///表格数据
+@property (retain,nonatomic) NSMutableDictionary *data;
 
 @property (readonly, nonatomic) UIView *attachmentView;
 @property (readonly, nonatomic) UIImageView *attachmentImageView;

@@ -37,28 +37,41 @@
     int positionY = 10;
     
     int x;
+
     
-    for (x=1; x <=7; x++)
     
+    // CGRect frame = CGRectMake(100, 100, 100, 100);
+    
+    for (x=1; x <=1; x++)
+        
     {
         
     UIButton *numberButton = [UIButton buttonWithType:UIButtonTypeCustom];
     numberButton.backgroundColor = [UIColor redColor];
     numberButton.frame = CGRectMake(positionX * x -40, positionY -10, 30, 30);
         
-        
     NSString *number = [NSString stringWithFormat:@"%i",x] ;
     [numberButton setTitle:number forState:UIControlStateNormal];
-
     
     UITextField *textField1 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x -40, positionY  + 20, 40, 30)];
     [textField1 setBackground:[UIImage imageNamed:@"data_button"]];
+        
+    [textField1 setTag:1];
+    [textField1 setDelegate:self];
     
     UITextField *textField2 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x -40, positionY + 50, 40, 30)];
     [textField2 setBackground:[UIImage imageNamed:@"data_button"]];
+    [textField2 setTag:2];
+    [textField2 setDelegate:self];
+
+
     
     UITextField *textField3 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x -40 , positionY + 80, 40, 30)];
     [textField3 setBackground:[UIImage imageNamed:@"data_button"]];
+    [textField3 setTag:3];
+    [textField3 setDelegate:self];
+
+
    
         [_scrollView addSubview:numberButton];
         [_scrollView addSubview:textField1];
@@ -67,18 +80,101 @@
            
    }
     
-        
-    
+}
 
+
+/////
+
+#pragma UITextFieldDelegate Methods
+-(BOOL)textFieldShouldBeginEditing:(UITextField*)textField {
     
+    switch (textField.tag) {
+        case 1:
+            NSLog(@"textField:%i",textField.tag);
+            break;
+        case 2:
+            NSLog(@"textField:%i",textField.tag);
+            break;
+        case 3:
+            NSLog(@"textField:%i",textField.tag);
+            break;
+            
+        default:
+            break;
+    }
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    
+    // return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
+    
+    
+    switch (textField.tag) {
+        case 1:
+            NSLog(@"TextField text :%@",textField.text);
+            break;
+        case 2:
+            NSLog(@"TextField text :%@",textField.text);
+            break;
+        case 3:
+            NSLog(@"TextField text :%@",textField.text);
+            break;
+            
+        default:
+            break;
+    }
+
+
+    return YES;
 
 }
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+   // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
+    
+   
+    
+    
+    switch (textField.tag) {
+        case 1:
+            NSLog(@"TextField text :%@",textField.text);
+            [_data setObject:textField.text forKey:@"Intensity"];
+            break;
+        case 2:
+            NSLog(@"TextField text :%@",textField.text);
+            [_data setObject:textField.text forKey:@"Amount"];
+            break;
+        case 3:
+            NSLog(@"TextField text :%@",textField.text);
+            [_data setObject:textField.text forKey:@"TimeLenght"];
+            break;
+            
+        default:
+            break;
+    }
+    
+     
+      NSLog(@"Show me the datas :%@",[_data description]);
+    
+}
+
+
 
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        
+       ////add the datas .
+        NSMutableDictionary *dataArray  = [[NSMutableDictionary alloc]init];
+        self.data =dataArray;
+        
+        
         self.backgroundColor = [UIColor whiteColor];
         
         _navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 44)];
@@ -119,27 +215,23 @@
         
 
         UIButton * setsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        setsButton.frame = CGRectMake(5, 10, 50, 30);
+        setsButton.frame = CGRectMake(2, 5, 50, 30);
         [setsButton setTitle:@"组数" forState:UIControlStateNormal];
         
         
     
         UIButton *weightButton =  [UIButton buttonWithType:UIButtonTypeCustom];
-        weightButton.frame = CGRectMake(5, 50, 50, 30);
+        weightButton.frame = CGRectMake(0, 35, 50, 30);
         [weightButton setTitle:@"强度" forState:UIControlStateNormal];
         
         UIButton *numbersButton =  [UIButton buttonWithType:UIButtonTypeCustom];
-         [numbersButton setFrame: CGRectMake(5, 90, 50, 30)];
+         [numbersButton setFrame: CGRectMake(0, 75, 50, 30)];
         [numbersButton setTitle:@"数量" forState:UIControlStateNormal];
 
         UIButton *timeButton =  [UIButton buttonWithType:UIButtonTypeCustom];
-         [timeButton setFrame: CGRectMake(5,130,50,30)];
+         [timeButton setFrame: CGRectMake(0,115,50,30)];
          [timeButton setTitle:@"时间" forState:UIControlStateNormal];
-        
-        
-        
-        
-        
+    
         
         [_textViewContainer addSubview:addButton];
         [_textViewContainer addSubview:setsButton];
@@ -199,6 +291,9 @@
         _attachmentContainerView.image = [UIImage imageNamed:@"REComposeViewController.bundle/AttachmentFrame"];
         [_attachmentView addSubview:_attachmentContainerView];
         _attachmentView.hidden = YES;
+        
+        
+    
     
         [self addSubview:_navigationBar];
     }
