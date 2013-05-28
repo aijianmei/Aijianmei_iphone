@@ -36,41 +36,36 @@
     int positionX = 50;
     int positionY = 10;
     
-    int x;
-
     
+    count++;
+    
+    NSLog(@"%d",count);
     
     // CGRect frame = CGRectMake(100, 100, 100, 100);
-    
-    for (x=1; x <=1; x++)
-        
-    {
-        
     UIButton *numberButton = [UIButton buttonWithType:UIButtonTypeCustom];
     numberButton.backgroundColor = [UIColor redColor];
-    numberButton.frame = CGRectMake(positionX * x -40, positionY -10, 30, 30);
+    numberButton.frame = CGRectMake(positionX * count -40, positionY -10, 30, 30);
         
-    NSString *number = [NSString stringWithFormat:@"%i",x] ;
+    NSString *number = [NSString stringWithFormat:@"%i",count] ;
     [numberButton setTitle:number forState:UIControlStateNormal];
     
-    UITextField *textField1 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x -40, positionY  + 20, 40, 30)];
+    UITextField *textField1 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * count -40, positionY  + 20, 40, 30)];
     [textField1 setBackground:[UIImage imageNamed:@"data_button"]];
         
     [textField1 setTag:1];
     [textField1 setDelegate:self];
     
-    UITextField *textField2 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x -40, positionY + 50, 40, 30)];
+    UITextField *textField2 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * count -40, positionY + 50, 40, 30)];
     [textField2 setBackground:[UIImage imageNamed:@"data_button"]];
     [textField2 setTag:2];
     [textField2 setDelegate:self];
 
 
     
-    UITextField *textField3 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x -40 , positionY + 80, 40, 30)];
+    UITextField *textField3 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * count -40 , positionY + 80, 40, 30)];
     [textField3 setBackground:[UIImage imageNamed:@"data_button"]];
     [textField3 setTag:3];
     [textField3 setDelegate:self];
-
 
    
         [_scrollView addSubview:numberButton];
@@ -78,13 +73,11 @@
         [_scrollView addSubview:textField2];
         [_scrollView addSubview:textField3];
            
-   }
     
 }
 
 
 /////
-
 #pragma UITextFieldDelegate Methods
 -(BOOL)textFieldShouldBeginEditing:(UITextField*)textField {
     
@@ -174,6 +167,9 @@
         NSMutableDictionary *dataArray  = [[NSMutableDictionary alloc]init];
         self.data =dataArray;
         
+        count =0;
+        
+        
         
         self.backgroundColor = [UIColor whiteColor];
         
@@ -202,9 +198,7 @@
         
         
         ///addebutton
-        
-        
-        
+    
         UIButton * addButton = [UIButton buttonWithType:UIButtonTypeCustom];
         addButton.frame = CGRectMake(120, 2, 50, 30);
         [addButton setTitle:@"添加" forState:UIControlStateNormal];

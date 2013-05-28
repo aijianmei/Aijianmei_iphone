@@ -35,6 +35,8 @@
     UIImageView *_attachmentContainerView;
     
     NSMutableDictionary *_data;
+    
+    int count;
 }
 
 
