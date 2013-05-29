@@ -38,6 +38,7 @@
     if (self) {
         _cornerRadius = 10;
         _sheetView = [[REComposeSheetView alloc] initWithFrame:CGRectMake(0, 0, self.currentWidth - 8, 202)];
+        
     }
     return self;
 }
@@ -73,12 +74,20 @@
     _sheetView.clipsToBounds = YES;
     _sheetView.delegate = self;
     
+    
 
     
     [self.view addSubview:_backgroundView];
     [_containerView addSubview:_backView];
     [self.view addSubview:_containerView];
+    
+    
+    
+    
     [_backView addSubview:_sheetView];
+        
+    
+    
     
   ////那个夹子的位置
     _paperclipView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 77, 60, 79, 34)];
@@ -90,13 +99,15 @@
         _attachmentImage = [UIImage imageNamed:@"REComposeViewController.bundle/URLAttachment"];
     
     _sheetView.attachmentImageView.image = _attachmentImage;
+    
+    
+
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    _sheetView.textView.backgroundColor = [UIColor redColor];
-
     [_sheetView.textView becomeFirstResponder];
     
     [UIView animateWithDuration:0.4 animations:^{

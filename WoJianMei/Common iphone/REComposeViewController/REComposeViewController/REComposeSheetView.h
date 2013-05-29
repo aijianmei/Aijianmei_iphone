@@ -25,7 +25,6 @@
 
 #import <UIKit/UIKit.h>
 #import "DEComposeTextView.h"
-
 #import "DEComposeBackgroundScrollView.h"
 
 
@@ -33,16 +32,7 @@
 
 @interface REComposeSheetView : UIView<UITextFieldDelegate> {
     UIImageView *_attachmentContainerView;
-    
-    NSMutableDictionary *_data;
-    
-    int count;
 }
-
-
-///表格数据
-@property (retain,nonatomic) NSMutableDictionary *data;
-
 @property (readonly, nonatomic) UIView *attachmentView;
 @property (readonly, nonatomic) UIImageView *attachmentImageView;
 @property (weak, readwrite, nonatomic) UIViewController <REComposeSheetViewDelegate> *delegate;
@@ -51,8 +41,6 @@
 @property (readonly, nonatomic) UIView *textViewContainer;
 @property (readonly, nonatomic) DEComposeTextView *textView;
 
-////TomCallon's method
-@property (readonly,nonatomic) DEComposeBackgroundScrollView * scrollView;
 
 @end
 

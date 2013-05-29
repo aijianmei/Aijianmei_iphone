@@ -38,7 +38,9 @@ typedef void (^REComposeViewControllerCompletionHandler)(REComposeResult result)
 @protocol REComposeViewControllerDelegate;
 
 @interface REComposeViewController : UIViewController <REComposeSheetViewDelegate> {
+    
     REComposeSheetView *_sheetView;
+    
     REComposeBackgroundView *_backgroundView;
     UIView *_backView;
     UIView *_containerView;

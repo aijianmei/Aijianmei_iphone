@@ -8,10 +8,8 @@
 
 #import "RootViewController.h"
 #import "REComposeViewController.h"
-
-
 #import "WorkoutNoteViewController.h"
-#import "WorkoutDatasViewController.h"
+#import "WorkoutDataComposeViewController.h"
 
 
 @interface RootViewController ()
@@ -166,7 +164,7 @@
 
 - (void)workoutDatasButtonPressed
 {
-    WorkoutDatasViewController *datasVC = [[WorkoutDatasViewController alloc] init];
+    WorkoutDataComposeViewController *datasVC = [[WorkoutDataComposeViewController alloc] init];
     datasVC.title = @"健身数据";
     datasVC.hasAttachment = YES;
     datasVC.attachmentImage = [UIImage imageNamed:@"Flower.jpg"];
@@ -181,12 +179,12 @@
     datasVC.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:29/255.0 green:118/255.0 blue:143/255.0 alpha:1];
     
     // Alternative use with REComposeViewControllerCompletionHandler
-    datasVC.completionHandler = ^(REComposeResult result) {
-        if (result == REComposeResultCancelled) {
+    datasVC.completionHandler = ^(WorkoutDataComposeResult result) {
+        if (result == WorkoutDataComposeResultCancelled) {
             NSLog(@"Cancelled");
         }
         
-        if (result == REComposeResultPosted) {
+        if (result == WorkoutDataComposeResultPosted) {
             NSLog(@"Text = %@", datasVC.text);
             
             
@@ -234,6 +232,32 @@
     
     
 }
+
+#pragma mark -
+#pragma mark WorkoutDataComposeViewControllerDelegate
+- (void)dataComposeViewController:(WorkoutDataComposeViewController *)composeViewController didFinishWithResult:(WorkoutDataComposeResult)result
+{
+    if (result == WorkoutDataComposeResultCancelled) {
+        NSLog(@"Cancelled");
+    }
+    
+    if (result == WorkoutDataComposeResultPosted) {
+        NSLog(@"Text = %@", composeViewController.text);
+        
+    }
+    
+    
+    [self.workoutNoteButton setTitle:composeViewController.text forState:UIControlStateNormal];
+    
+    
+    
+}
+
+
+
+
+
+
 
 
 -(void)upgradeUI{
