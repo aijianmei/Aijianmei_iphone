@@ -8,61 +8,87 @@
 
 #import "DrawContextView.h"
 
+#define DAY_AMOUNT 2
+
 @implementation DrawContextView
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _dataList1 = [[NSMutableArray alloc] init];
-        _dataList2 = [[NSMutableArray alloc] init];
-        _dataList3 = [[NSMutableArray alloc] init];
+        _amountList = [[NSMutableArray alloc] init];
+        _timeList = [[NSMutableArray alloc] init];
+        _intensityList = [[NSMutableArray alloc] init];
+        
+        for (int i=0; i<DAY_AMOUNT;i++) {
+            [_amountList addObject:[[NSMutableArray alloc] init]];
+        }
+        
+        for (int i=0; i<DAY_AMOUNT;i++) {
+            [_timeList addObject:[[NSMutableArray alloc] init]];
+        }
+        
+        for (int i=0; i<DAY_AMOUNT;i++) {
+            [_intensityList addObject:[[NSMutableArray alloc] init]];
+        }
 
     }
     return self;
 }
 
-- (void)addToList1:(UIButton*)button
+- (void)addAmount:(UIButton*)button dayIndex:(int)dayIndex
 {
-    [_dataList1 addObject:button];
+    [[_amountList objectAtIndex:dayIndex] addObject:button];
 }
 
-- (void)addToList2:(UIButton*)button
+
+- (void)addTime:(UIButton *)button dayIndex:(int)dayIndex
 {
-    [_dataList2 addObject:button];
+    [[_timeList objectAtIndex:dayIndex] addObject:button];
 }
 
-- (void)addToList3:(UIButton*)button
+- (void)addIntensity:(UIButton *)button dayIndex:(int)dayIndex
 {
-    [_dataList3 addObject:button];
+    [[_intensityList objectAtIndex:dayIndex] addObject:button];
 }
+
 - (void)drawRect:(CGRect)rect
 {
     
     [super drawRect:rect];
     
-    for(int i=0; i<[_dataList1 count]-1; i++) {
-        UIButton *btn = (UIButton*)[_dataList1 objectAtIndex:i];
-        CGPoint point1 = CGPointMake(btn.frame.origin.x, btn.frame.origin.y);
-        btn = (UIButton*)[_dataList1 objectAtIndex:i+1];
-        CGPoint point2 = CGPointMake(btn.frame.origin.x, btn.frame.origin.y);
+    int day = [_amountList count];//天数，横坐标
+    int index = 0;//第几组数据
+    
+    
+    for (int i=0; i<day-1; i++) {
+        UIButton *btn1 = (UIButton*)[[_amountList objectAtIndex:i] objectAtIndex:index];
+        CGPoint point1 = CGPointMake(btn1.frame.origin.x, btn1.frame.origin.y);
+        UIButton *btn2 = (UIButton*)[[_amountList objectAtIndex:i+1] objectAtIndex:index];
+        CGPoint point2 = CGPointMake(btn2.frame.origin.x, btn2.frame.origin.y);
         [self addLineFromPoint:point1 to:point2 withColor:[UIColor redColor].CGColor];
+        [self addSubview:btn1];
+        [self addSubview:btn2];
     }
     
-    for(int i=0; i<[_dataList2 count]-1; i++) {
-        UIButton *btn = (UIButton*)[_dataList2 objectAtIndex:i];
-        CGPoint point1 = CGPointMake(btn.frame.origin.x, btn.frame.origin.y);
-        btn = (UIButton*)[_dataList2 objectAtIndex:i+1];
-        CGPoint point2 = CGPointMake(btn.frame.origin.x, btn.frame.origin.y);
+    for (int i=0; i<day-1; i++) {
+        UIButton *btn1 = (UIButton*)[[_timeList objectAtIndex:i] objectAtIndex:index];
+        CGPoint point1 = CGPointMake(btn1.frame.origin.x, btn1.frame.origin.y);
+        UIButton *btn2 = (UIButton*)[[_timeList objectAtIndex:i+1] objectAtIndex:index];
+        CGPoint point2 = CGPointMake(btn2.frame.origin.x, btn2.frame.origin.y);
         [self addLineFromPoint:point1 to:point2 withColor:[UIColor greenColor].CGColor];
+        [self addSubview:btn1];
+        [self addSubview:btn2];
     }
     
-    for(int i=0; i<[_dataList3 count]-1; i++) {
-        UIButton *btn = (UIButton*)[_dataList3 objectAtIndex:i];
-        CGPoint point1 = CGPointMake(btn.frame.origin.x, btn.frame.origin.y);
-        btn = (UIButton*)[_dataList3 objectAtIndex:i+1];
-        CGPoint point2 = CGPointMake(btn.frame.origin.x, btn.frame.origin.y);
+    for (int i=0; i<day-1; i++) {
+        UIButton *btn1 = (UIButton*)[[_intensityList objectAtIndex:i] objectAtIndex:index];
+        CGPoint point1 = CGPointMake(btn1.frame.origin.x, btn1.frame.origin.y);
+        UIButton *btn2 = (UIButton*)[[_intensityList objectAtIndex:i+1] objectAtIndex:index];
+        CGPoint point2 = CGPointMake(btn2.frame.origin.x, btn2.frame.origin.y);
         [self addLineFromPoint:point1 to:point2 withColor:[UIColor blueColor].CGColor];
+        [self addSubview:btn1];
+        [self addSubview:btn2];
     }
     
     [self addTabText];
@@ -73,8 +99,8 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 10.0);
     CGContextSetStrokeColorWithColor(context, color);
-    CGContextMoveToPoint(context, start.x+23, start.y+23-30);
-    CGContextAddLineToPoint(context, end.x+23, end.y+23-30);
+    CGContextMoveToPoint(context, start.x+23, start.y+23);
+    CGContextAddLineToPoint(context, end.x+23, end.y+23);
     CGContextStrokePath(context);
 }
 
