@@ -382,37 +382,32 @@
         [_textViewContainer addSubview:numbersButton];
         [_textViewContainer addSubview:timeButton];
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         
         
         /////Overwirte the textView's location
-        //        _textView = [[DEComposeTextView alloc] initWithFrame:CGRectMake(40, 40, frame.size.width, frame.size.height - 47)];
-        //        _textView.backgroundColor = [UIColor whiteColor];
-        //        _textView.font = [UIFont systemFontOfSize:21];
-        //        _textView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
-        //        _textView.bounces = YES;
+//        _textView = [[DEComposeTextView alloc] initWithFrame:CGRectMake(40, 40, frame.size.width, frame.size.height - 47)];
+//        _textView.backgroundColor = [UIColor greenColor];
+//        _textView.font = [UIFont systemFontOfSize:21];
+//        _textView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
+//        _textView.bounces = YES;
+//        [_scrollView addSubview:_textView];
+
+        
+        
         
         
         ////Overwrite the UIScollView
         _scrollView = [[DEComposeBackgroundScrollView alloc] initWithFrame:CGRectMake(40, 5, frame.size.width, frame.size.height - 47)];
-        _scrollView.backgroundColor = [UIColor whiteColor];
-        //        _scrollView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
-        //        _scrollView.bounces = YES;
+//        _scrollView.backgroundColor = [UIColor greenColor];
+//        _scrollView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
+//        _scrollView.bounces = YES;
         
         
         [_scrollView setShowsHorizontalScrollIndicator:YES];
-        [_scrollView setContentSize:CGSizeMake(1000, 100)];
+        [_scrollView setContentSize:CGSizeMake(1000, 200)];
         
         [_textViewContainer addSubview:_scrollView];
-        
         
         
         
