@@ -15,6 +15,7 @@
 		<string>72x72.png</string>
 		<string>144x144.png</string>
 		<string>114x114.png</string>
+		<string>57X57.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -27,6 +28,7 @@
 				<string>72x72.png</string>
 				<string>144x144.png</string>
 				<string>114x114.png</string>
+				<string>57X57.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>
@@ -71,13 +73,22 @@
 		<string>armv6</string>
 	</array>
 	<key>UIStatusBarHidden</key>
-	<true/>
+	<false/>
 	<key>UIStatusBarTintParameters</key>
 	<dict>
 		<key>UINavigationBar</key>
 		<dict>
 			<key>Style</key>
 			<string>UIBarStyleDefault</string>
+			<key>TintColor</key>
+			<dict>
+				<key>Blue</key>
+				<real>1</real>
+				<key>Green</key>
+				<real>0.0</real>
+				<key>Red</key>
+				<real>0.0</real>
+			</dict>
 			<key>Translucent</key>
 			<false/>
 		</dict>
