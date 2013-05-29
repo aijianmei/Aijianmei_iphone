@@ -405,7 +405,7 @@
         
         
         [_scrollView setShowsHorizontalScrollIndicator:YES];
-        [_scrollView setContentSize:CGSizeMake(1000, 200)];
+        [_scrollView setContentSize:CGSizeMake(800, 100)];
         
         [_textViewContainer addSubview:_scrollView];
         
