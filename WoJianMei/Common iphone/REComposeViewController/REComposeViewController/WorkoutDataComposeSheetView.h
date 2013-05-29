@@ -25,26 +25,41 @@
 
 #import <UIKit/UIKit.h>
 #import "DEComposeTextView.h"
+
 #import "DEComposeBackgroundScrollView.h"
 
 
-@protocol REComposeSheetViewDelegate;
+@protocol WorkoutDataComposeSheetViewDelegate;
 
-@interface REComposeSheetView : UIView<UITextFieldDelegate> {
+@interface WorkoutDataComposeSheetView : UIView<UITextFieldDelegate> {
     UIImageView *_attachmentContainerView;
+    
+    NSMutableArray *_dataArray;
+    
+    UIButton *_addButton;
+    
+    int count;
 }
+
+
+///表格数据
+@property (retain,nonatomic) NSMutableArray *dataArray;
+@property (retain,nonatomic) UIButton *addButton;
+
 @property (readonly, nonatomic) UIView *attachmentView;
 @property (readonly, nonatomic) UIImageView *attachmentImageView;
-@property (weak, readwrite, nonatomic) UIViewController <REComposeSheetViewDelegate> *delegate;
+@property (weak, readwrite, nonatomic) UIViewController <WorkoutDataComposeSheetViewDelegate> *delegate;
 @property (readonly, nonatomic) UINavigationItem *navigationItem;
 @property (readonly, nonatomic) UINavigationBar *navigationBar;
 @property (readonly, nonatomic) UIView *textViewContainer;
 @property (readonly, nonatomic) DEComposeTextView *textView;
 
+////TomCallon's method
+@property (readonly,nonatomic) DEComposeBackgroundScrollView * scrollView;
 
 @end
 
-@protocol REComposeSheetViewDelegate <NSObject>
+@protocol WorkoutDataComposeSheetViewDelegate <NSObject>
 
 - (void)cancelButtonPressed;
 - (void)postButtonPressed;

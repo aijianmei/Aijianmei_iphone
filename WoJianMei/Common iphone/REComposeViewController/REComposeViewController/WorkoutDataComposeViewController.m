@@ -23,21 +23,21 @@
 // THE SOFTWARE.
 //
 
-#import "REComposeViewController.h"
+#import "WorkoutDataComposeViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface REComposeViewController ()
+@interface WorkoutDataComposeViewController ()
 
 @end
 
-@implementation REComposeViewController
+@implementation WorkoutDataComposeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _cornerRadius = 10;
-        _sheetView = [[REComposeSheetView alloc] initWithFrame:CGRectMake(0, 0, self.currentWidth - 8, 202)];
+        _sheetView = [[WorkoutDataComposeSheetView alloc] initWithFrame:CGRectMake(0, 0, self.currentWidth - 8, 202)];
         
     }
     return self;
@@ -60,10 +60,10 @@
     
     
     _containerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 202)];
-
+    
     _containerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     _backView = [[UIView alloc] initWithFrame:CGRectMake(4, 0, self.currentWidth - 8, 202)];
-
+    
     _backView.layer.cornerRadius = _cornerRadius;
     _backView.layer.shadowOpacity = 0.7;
     _backView.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -75,7 +75,7 @@
     _sheetView.delegate = self;
     
     
-
+    
     
     [self.view addSubview:_backgroundView];
     [_containerView addSubview:_backView];
@@ -85,11 +85,11 @@
     
     
     [_backView addSubview:_sheetView];
-        
     
     
     
-  ////那个夹子的位置
+    
+    ////那个夹子的位置
     _paperclipView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 77, 60, 79, 34)];
     _paperclipView.image = [UIImage imageNamed:@"REComposeViewController.bundle/PaperClip"];
     [_containerView addSubview:_paperclipView];
@@ -101,14 +101,15 @@
     _sheetView.attachmentImageView.image = _attachmentImage;
     
     
-
-
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [_sheetView.textView becomeFirstResponder];
+   
     
     [UIView animateWithDuration:0.4 animations:^{
         if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
@@ -122,8 +123,8 @@
                           delay:0.1
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
-        _backgroundView.alpha = 1;
-    } completion:nil];
+                         _backgroundView.alpha = 1;
+                     } completion:nil];
 }
 
 - (void)layoutWithOrientation:(UIInterfaceOrientation)interfaceOrientation width:(NSInteger)width height:(NSInteger)height
@@ -248,16 +249,29 @@
     _sheetView.textView.text = text;
 }
 
+/// get the data
+- (NSMutableArray *)dataArray{
+    
+    return  _sheetView.dataArray;
+
+}
+- (void)setDataArray:(NSMutableArray *)array{
+    
+    _sheetView.dataArray =array;
+}
+
+
+
 #pragma mark -
 #pragma mark REComposeSheetViewDelegate
 
 - (void)cancelButtonPressed
 {
     if (_delegate && [_delegate respondsToSelector:@selector(composeViewController:didFinishWithResult:)]) {
-        [_delegate composeViewController:self didFinishWithResult:REComposeResultCancelled];
+        [_delegate dataComposeViewController:self didFinishWithResult:WorkoutDataComposeResultCancelled];
     }
     if (_completionHandler) {
-        _completionHandler(REComposeResultCancelled);
+        _completionHandler(WorkoutDataComposeResultCancelled);
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -265,10 +279,10 @@
 - (void)postButtonPressed
 {
     if (_delegate && [_delegate respondsToSelector:@selector(composeViewController:didFinishWithResult:)]) {
-        [_delegate composeViewController:self didFinishWithResult:REComposeResultPosted];
+        [_delegate dataComposeViewController:self didFinishWithResult:WorkoutDataComposeResultPosted];
     }
     if (_completionHandler) {
-        _completionHandler(REComposeResultPosted);
+        _completionHandler(WorkoutDataComposeResultPosted);
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }

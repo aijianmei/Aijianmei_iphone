@@ -24,22 +24,23 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "REComposeSheetView.h"
 #import "REComposeBackgroundView.h"
+#import "WorkoutDataComposeSheetView.h"
 
-enum REComposeResult {
-    REComposeResultCancelled,
-    REComposeResultPosted
+
+enum WorkoutDataComposeResult {
+    WorkoutDataComposeResultCancelled,
+    WorkoutDataComposeResultPosted
 };
-typedef enum REComposeResult REComposeResult;
+typedef enum WorkoutDataComposeResult WorkoutDataComposeResult;
 
-typedef void (^REComposeViewControllerCompletionHandler)(REComposeResult result);
+typedef void (^WorkoutDataComposeViewControllerCompletionHandler)(WorkoutDataComposeResult result);
 
-@protocol REComposeViewControllerDelegate;
+@protocol WorkoutDataComposeViewControllerDelegate;
 
-@interface REComposeViewController : UIViewController <REComposeSheetViewDelegate> {
+@interface WorkoutDataComposeViewController : UIViewController <WorkoutDataComposeSheetViewDelegate> {
     
-    REComposeSheetView *_sheetView;
+    WorkoutDataComposeSheetView *_sheetView;
     
     REComposeBackgroundView *_backgroundView;
     UIView *_backView;
@@ -54,20 +55,28 @@ typedef void (^REComposeViewControllerCompletionHandler)(REComposeResult result)
 - (NSString *)text;
 - (void)setText:(NSString *)text;
 
+
+/// get the data 
+- (NSMutableArray *)dataArray;
+- (void)setDataArray:(NSMutableArray *)array;
+
+
+
+
 - (BOOL)hasAttachment;
 - (void)setHasAttachment:(BOOL)hasAttachment;
 
 - (UIImage *)attachmentImage;
 - (void)setAttachmentImage:(UIImage *)attachmentImage;
 
-@property (copy, nonatomic) REComposeViewControllerCompletionHandler completionHandler;
-@property (weak, nonatomic) id <REComposeViewControllerDelegate> delegate;
+@property (copy, nonatomic) WorkoutDataComposeViewControllerCompletionHandler completionHandler;
+@property (weak, nonatomic) id <WorkoutDataComposeViewControllerDelegate> delegate;
 @property (assign, readwrite, nonatomic) NSInteger cornerRadius;
 
 @end
 
-@protocol REComposeViewControllerDelegate <NSObject>
+@protocol WorkoutDataComposeViewControllerDelegate <NSObject>
 
-- (void)composeViewController:(REComposeViewController *)composeViewController didFinishWithResult:(REComposeResult)result;
+- (void)dataComposeViewController:(WorkoutDataComposeViewController *)composeViewController didFinishWithResult:(WorkoutDataComposeResult)result;
 
 @end

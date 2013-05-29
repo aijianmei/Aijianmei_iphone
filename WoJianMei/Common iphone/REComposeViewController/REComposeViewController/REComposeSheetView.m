@@ -25,156 +25,16 @@
 
 #import "REComposeSheetView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIBarButtonItemExt.h"
+
 
 @implementation REComposeSheetView
-
-
-
-////Tom Callons methods
--(void)addButtons{
-    
-    int positionX = 50;
-    int positionY = 10;
-    
-    int x;
-
-    
-    
-    // CGRect frame = CGRectMake(100, 100, 100, 100);
-    
-    for (x=1; x <=1; x++)
-        
-    {
-        
-    UIButton *numberButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    numberButton.backgroundColor = [UIColor redColor];
-    numberButton.frame = CGRectMake(positionX * x -40, positionY -10, 30, 30);
-        
-    NSString *number = [NSString stringWithFormat:@"%i",x] ;
-    [numberButton setTitle:number forState:UIControlStateNormal];
-    
-    UITextField *textField1 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x -40, positionY  + 20, 40, 30)];
-    [textField1 setBackground:[UIImage imageNamed:@"data_button"]];
-        
-    [textField1 setTag:1];
-    [textField1 setDelegate:self];
-    
-    UITextField *textField2 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x -40, positionY + 50, 40, 30)];
-    [textField2 setBackground:[UIImage imageNamed:@"data_button"]];
-    [textField2 setTag:2];
-    [textField2 setDelegate:self];
-
-
-    
-    UITextField *textField3 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * x -40 , positionY + 80, 40, 30)];
-    [textField3 setBackground:[UIImage imageNamed:@"data_button"]];
-    [textField3 setTag:3];
-    [textField3 setDelegate:self];
-
-
-   
-        [_scrollView addSubview:numberButton];
-        [_scrollView addSubview:textField1];
-        [_scrollView addSubview:textField2];
-        [_scrollView addSubview:textField3];
-           
-   }
-    
-}
-
-
-/////
-
-#pragma UITextFieldDelegate Methods
--(BOOL)textFieldShouldBeginEditing:(UITextField*)textField {
-    
-    switch (textField.tag) {
-        case 1:
-            NSLog(@"textField:%i",textField.tag);
-            break;
-        case 2:
-            NSLog(@"textField:%i",textField.tag);
-            break;
-        case 3:
-            NSLog(@"textField:%i",textField.tag);
-            break;
-            
-        default:
-            break;
-    }
-    
-    return YES;
-}
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
-    
-    // return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
-    
-    
-    switch (textField.tag) {
-        case 1:
-            NSLog(@"TextField text :%@",textField.text);
-            break;
-        case 2:
-            NSLog(@"TextField text :%@",textField.text);
-            break;
-        case 3:
-            NSLog(@"TextField text :%@",textField.text);
-            break;
-            
-        default:
-            break;
-    }
-
-
-    return YES;
-
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-   // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
-    
-   
-    
-    
-    switch (textField.tag) {
-        case 1:
-            NSLog(@"TextField text :%@",textField.text);
-            [_data setObject:textField.text forKey:@"Intensity"];
-            break;
-        case 2:
-            NSLog(@"TextField text :%@",textField.text);
-            [_data setObject:textField.text forKey:@"Amount"];
-            break;
-        case 3:
-            NSLog(@"TextField text :%@",textField.text);
-            [_data setObject:textField.text forKey:@"TimeLenght"];
-            break;
-            
-        default:
-            break;
-    }
-    
-     
-      NSLog(@"Show me the datas :%@",[_data description]);
-    
-}
-
-
-
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
-        
-       ////add the datas .
-        NSMutableDictionary *dataArray  = [[NSMutableDictionary alloc]init];
-        self.data =dataArray;
-        
-        
+                
         self.backgroundColor = [UIColor whiteColor];
         
         _navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 44)];
@@ -185,93 +45,54 @@
         _navigationItem = [[UINavigationItem alloc] initWithTitle:@""];
         _navigationBar.items = @[_navigationItem];
         
-        UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"Cancel") style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
-        _navigationItem.leftBarButtonItem = cancelButtonItem;
+//        UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"取消", @"Cancel") style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
+//        _navigationItem.leftBarButtonItem = cancelButtonItem;
+//        
+//        UIBarButtonItem *postButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"保存", @"Post") style:UIBarButtonItemStyleBordered target:self action:@selector(postButtonPressed)];
+//        _navigationItem.rightBarButtonItem = postButtonItem;
         
-        UIBarButtonItem *postButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Post", @"Post") style:UIBarButtonItemStyleBordered target:self action:@selector(postButtonPressed)];
-        _navigationItem.rightBarButtonItem = postButtonItem;
+        
+               
+        UIBarButtonItem* cancleBarButtonItem = [[UIBarButtonItem alloc]
+                                          initWithCustomView:[UIBarButtonItem getButtonWithTitle:@"取消"
+                                                                                       imageName:@"settings.png"
+                                                                                          target:self
+                                                                                          action:@selector(cancelButtonPressed)]
+                                          ];
+        _navigationItem.leftBarButtonItem = cancleBarButtonItem;
+
+        
+        UIBarButtonItem* postBarButtonItem = [[UIBarButtonItem alloc]
+                                          initWithCustomView:[UIBarButtonItem getButtonWithTitle:@"保存"
+                                                                                       imageName:@"settings.png"
+                                                                                          target:self
+                                                                                          action:@selector(postButtonPressed)]
+                                              ];
+    _navigationItem.rightBarButtonItem = postBarButtonItem;
+
+        
+        
+        
+        
         
         
         _textViewContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 44, frame.size.width, frame.size.height - 44)];
         
         /////Overwrite the textView
-        _textViewContainer.backgroundColor = [UIColor greenColor];
+//        _textViewContainer.backgroundColor = [UIColor greenColor];
         _textViewContainer.clipsToBounds = YES;
         _textViewContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         
-        
-        
-        ///addebutton
-        
-        
-        
-        UIButton * addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        addButton.frame = CGRectMake(120, 2, 50, 30);
-        [addButton setTitle:@"添加" forState:UIControlStateNormal];
-        [addButton setImage:[UIImage imageNamed:@"add_button.png"] forState:UIControlStateNormal];
-        
-        [addButton addTarget:self action:@selector(addButtons) forControlEvents:UIControlEventTouchUpInside];
-        
-        
-
-        UIButton * setsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        setsButton.frame = CGRectMake(2, 5, 50, 30);
-        [setsButton setTitle:@"组数" forState:UIControlStateNormal];
-        
-        
-    
-        UIButton *weightButton =  [UIButton buttonWithType:UIButtonTypeCustom];
-        weightButton.frame = CGRectMake(0, 35, 50, 30);
-        [weightButton setTitle:@"强度" forState:UIControlStateNormal];
-        
-        UIButton *numbersButton =  [UIButton buttonWithType:UIButtonTypeCustom];
-         [numbersButton setFrame: CGRectMake(0, 75, 50, 30)];
-        [numbersButton setTitle:@"数量" forState:UIControlStateNormal];
-
-        UIButton *timeButton =  [UIButton buttonWithType:UIButtonTypeCustom];
-         [timeButton setFrame: CGRectMake(0,115,50,30)];
-         [timeButton setTitle:@"时间" forState:UIControlStateNormal];
-    
-        
-        [_textViewContainer addSubview:addButton];
-        [_textViewContainer addSubview:setsButton];
-        [_textViewContainer addSubview:weightButton];
-        [_textViewContainer addSubview:numbersButton];
-        [_textViewContainer addSubview:timeButton];
+                /////Overwirte the textView's location
+        _textView = [[DEComposeTextView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height - 47)];
+        _textView.backgroundColor = [UIColor whiteColor];
+        _textView.font = [UIFont systemFontOfSize:21];
+        _textView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
+        _textView.bounces = YES;
         
         
         
-         
-        
-        
-        
-        
-        
-        
-        
-        
-        /////Overwirte the textView's location
-//        _textView = [[DEComposeTextView alloc] initWithFrame:CGRectMake(40, 40, frame.size.width, frame.size.height - 47)];
-//        _textView.backgroundColor = [UIColor whiteColor];
-//        _textView.font = [UIFont systemFontOfSize:21];
-//        _textView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
-//        _textView.bounces = YES;
-        
-    
-        ////Overwrite the UIScollView 
-        _scrollView = [[DEComposeBackgroundScrollView alloc] initWithFrame:CGRectMake(40, 20, frame.size.width, frame.size.height - 47)];
-        _scrollView.backgroundColor = [UIColor whiteColor];
-//        _scrollView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
-//        _scrollView.bounces = YES;
-        
-        
-        [_scrollView setShowsHorizontalScrollIndicator:YES];
-        [_scrollView setContentSize:CGSizeMake(1000, 100)];
-        
-        [_textViewContainer addSubview:_scrollView];
-        
-        
-        
+        [_textViewContainer addSubview:_textView];
         
         [self addSubview:_textViewContainer];
         
@@ -293,9 +114,11 @@
         _attachmentView.hidden = YES;
         
         
-    
-    
+        
+        
         [self addSubview:_navigationBar];
+        
+        
     }
     return self;
 }

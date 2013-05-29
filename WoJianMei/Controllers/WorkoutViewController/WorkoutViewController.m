@@ -74,8 +74,8 @@
     [self setBackgroundImageName:@"BackGround.png"];
     [self showBackgroundImage];
     
-    [self.navigationItem setTitle:@"健身视频"];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bottom_bg.png"] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationItem setTitle:@"健身视频"];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topmenu_bg.png"] forBarMetrics:UIBarMetricsDefault];
     
     
     

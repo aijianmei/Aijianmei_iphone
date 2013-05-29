@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "REComposeViewController.h"
-
+#import "WorkoutDataComposeViewController.h"
 #import "PPViewController.h"
 
-@interface RootViewController : PPViewController <REComposeViewControllerDelegate,UIActionSheetDelegate>
+@interface RootViewController : PPViewController <REComposeViewControllerDelegate,WorkoutDataComposeViewControllerDelegate,UIActionSheetDelegate>
 
 {
     UIButton *_workoutNoteButton;
