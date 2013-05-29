@@ -99,21 +99,21 @@
 - (IBAction)clickButton1:(id)sender
 {
     _dataIndex = 0;
-    [_drawView setNeedsDisplay];
+    [self showData];
 }
 
 
 - (IBAction)clickButton2:(id)sender
 {
-    _dataIndex = 0;
-    [_drawView setNeedsDisplay];
+    _dataIndex = 1;
+    [self showData];
 }
 
 
 - (IBAction)clickButton3
 {
-    _dataIndex = 0;
-    [_drawView setNeedsDisplay];
+    _dataIndex = 2;
+    [self showData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -124,19 +124,33 @@
 
     _drawView = [[DrawContextView alloc] initWithFrame:CGRectMake(0, 30, 320-30, [UIScreen mainScreen ].bounds.size.height-20-44-30)];
     _drawView.backgroundColor = [UIColor clearColor];
+        
+    [self showData];
     
+    [self.scrollView addSubview:_drawView];
+}
+
+- (void)showData
+{
+    [self removeOldData];
+    int amount =[((NSString*)[_amountList objectAtIndex:_dataIndex])intValue];
+    int intensity = [((NSString*)[_intensityList objectAtIndex:_dataIndex])intValue];
+    int time = [((NSString*)[_timeList objectAtIndex:_dataIndex])intValue];
     
-   
+    //把 amount, intensity, time 转换成pts值
+    //演示怎样添加数据并画图
+    //22号对应的三组数据 dayIndex控制要显示哪一天的数据
     CGRect point1_0 = CGRectMake(40, 190, 46, 46);
     UIButton *amountButton1 = [self createButtonWithFrame: point1_0 image:[UIImage imageNamed:@"gs_1"] text:@"12个"];
     CGRect point1_1 = CGRectMake(40, 100, 46, 46);
-    UIButton *timeButton1 = [self createButtonWithFrame: point1_1 image:[UIImage imageNamed:@"sj_1"] text:@"65s"];    
+    UIButton *timeButton1 = [self createButtonWithFrame: point1_1 image:[UIImage imageNamed:@"sj_1"] text:@"65s"];
     CGRect point1_2 = CGRectMake(40, 250, 46, 46);
     UIButton *intensityButton1 = [self createButtonWithFrame: point1_2 image:[UIImage imageNamed:@"qd_1"] text:@"48kg"];
     [_drawView addAmount:amountButton1 dayIndex:0];
     [_drawView addTime:timeButton1 dayIndex:0];
     [_drawView addIntensity:intensityButton1 dayIndex:0];
     
+    //23号对应的三组数据
     CGRect point2_0 = CGRectMake(120, 120, 46, 46);
     UIButton *amountButton2 = [self createButtonWithFrame: point2_0 image:[UIImage imageNamed:@"gs_1"] text:@"15个"];
     CGRect point2_1 = CGRectMake(120, 200, 46, 46);
@@ -147,7 +161,8 @@
     [_drawView addTime:timeButton2 dayIndex:1];
     [_drawView addIntensity:intensityButton2 dayIndex:1];
     
-    [self.scrollView addSubview:_drawView];
+    [_drawView setNeedsDisplay];
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated
