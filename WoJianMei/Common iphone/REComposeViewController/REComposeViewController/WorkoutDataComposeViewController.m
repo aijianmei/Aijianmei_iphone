@@ -109,6 +109,7 @@
 {
     [super viewWillAppear:animated];
     [_sheetView.textView becomeFirstResponder];
+   
     
     [UIView animateWithDuration:0.4 animations:^{
         if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {

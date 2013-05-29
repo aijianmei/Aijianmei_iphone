@@ -16,6 +16,7 @@
 		<string>144x144.png</string>
 		<string>114x114.png</string>
 		<string>57X57.png</string>
+		<string>74x74.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -29,6 +30,7 @@
 				<string>144x144.png</string>
 				<string>114x114.png</string>
 				<string>57X57.png</string>
+				<string>74x74.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>
