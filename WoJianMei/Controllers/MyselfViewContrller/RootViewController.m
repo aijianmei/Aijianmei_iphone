@@ -227,6 +227,9 @@
     }
     
     if (result == REComposeResultPosted) {
+        
+        ////健身日记数据接口
+
         NSLog(@"Text = %@", composeViewController.text);
     
     }
@@ -248,7 +251,7 @@
     
     if (result == WorkoutDataComposeResultPosted) {
         
-        /////数据接口
+   ////健身数据数据接口
   /*
    
     第1行数据  强度         1 4 7 10 13
@@ -259,14 +262,14 @@
           
         
         NSLog(@"第一行数据 = %@", [composeViewController.dataArray objectAtIndex:0]);
-        /////第1行数据  强度         1 4 7 10 13
+        /////第1行数据  强度        x 1 4 7 10 13   从第二个数据开始
         
         NSLog(@"第二行数据 %@", [composeViewController.dataArray objectAtIndex:1]);
-       /////第2行数据   数量         2 5 8 11 14
+       /////第2行数据   数量        x 2 5 8 11 14   从第二个数据开始
 
         
         NSLog(@"第三行数据 %@", [composeViewController.dataArray objectAtIndex:2]);
-        /////第3行数据  时间         3 6 9 12 15
+        /////第3行数据  时间        x 3 6 9 12 15   从第二个数据开始
 
         
         

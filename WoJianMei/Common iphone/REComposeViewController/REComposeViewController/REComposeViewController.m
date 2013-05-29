@@ -90,7 +90,7 @@
     
     
   ////那个夹子的位置
-    _paperclipView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 77, 60, 79, 34)];
+    _paperclipView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 77, 45, 79, 34)];
     _paperclipView.image = [UIImage imageNamed:@"REComposeViewController.bundle/PaperClip"];
     [_containerView addSubview:_paperclipView];
     [_paperclipView setHidden:YES];

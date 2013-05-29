@@ -41,10 +41,11 @@
     UIButton * addButton = [UIButton buttonWithType:UIButtonTypeCustom];
     addButton.frame = CGRectMake(positionX * count
                                  ,3, 30, 30);
-    [addButton setTitle:@"添加" forState:UIControlStateNormal];
     [addButton setImage:[UIImage imageNamed:@"add_button.png"] forState:UIControlStateNormal];
+
     
     [addButton addTarget:self action:@selector(addButtons) forControlEvents:UIControlEventTouchUpInside];
+
     
     self.addButton = addButton;
     
@@ -71,11 +72,15 @@
     
     
     UIButton *numberButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    numberButton.backgroundColor = [UIColor redColor];
     numberButton.frame = CGRectMake(positionX * count -40,positionY -40, 30, 30);
     
     NSString *number = [NSString stringWithFormat:@"%i",count] ;
     [numberButton setTitle:number forState:UIControlStateNormal];
+    
+    [numberButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    numberButton.titleLabel.font = [UIFont systemFontOfSize:12.5];
+    
+    
     
     UITextField *textField1 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * count -40, positionY, 40, 30)];
     [textField1 setBackground:[UIImage imageNamed:@"data_button"]];
@@ -322,7 +327,7 @@
         _textViewContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 44, frame.size.width, frame.size.height - 44)];
         
         /////Overwrite the textView
-        _textViewContainer.backgroundColor = [UIColor greenColor];
+//        _textViewContainer.backgroundColor = [UIColor greenColor];
         _textViewContainer.clipsToBounds = YES;
         _textViewContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         
@@ -336,20 +341,40 @@
         UIButton * setsButton = [UIButton buttonWithType:UIButtonTypeCustom];
         setsButton.frame = CGRectMake(2, 5, 50, 30);
         [setsButton setTitle:@"组数" forState:UIControlStateNormal];
+        [setsButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        setsButton.titleLabel.font = [UIFont systemFontOfSize:12.5];
         
+//        [setsButton setTitleColor:[[UIColor alloc]initWithRed:0.121 green:0.472 blue:0.823 alpha:1] forState:UIControlStateNormal];
+//        [setsButton addTarget:self  action:@selector(emailAction:)  forControlEvents:UIControlEventTouchUpInside];
+
         
         
         UIButton *weightButton =  [UIButton buttonWithType:UIButtonTypeCustom];
         weightButton.frame = CGRectMake(0, 45, 50, 30);
         [weightButton setTitle:@"强度" forState:UIControlStateNormal];
         
+        [weightButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        weightButton.titleLabel.font = [UIFont systemFontOfSize:12.5];
+        
+        
+        
         UIButton *numbersButton =  [UIButton buttonWithType:UIButtonTypeCustom];
         [numbersButton setFrame: CGRectMake(0, 85, 50, 30)];
         [numbersButton setTitle:@"数量" forState:UIControlStateNormal];
         
+        [numbersButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        numbersButton.titleLabel.font = [UIFont systemFontOfSize:12.5];
+        
+
+        
+        
         UIButton *timeButton =  [UIButton buttonWithType:UIButtonTypeCustom];
         [timeButton setFrame: CGRectMake(0,125,50,30)];
         [timeButton setTitle:@"时间" forState:UIControlStateNormal];
+        
+        [timeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        timeButton.titleLabel.font = [UIFont systemFontOfSize:12.5];
+        
         
         
         [_textViewContainer addSubview:setsButton];
@@ -398,16 +423,16 @@
         
         
         _attachmentView = [[UIView alloc] initWithFrame:CGRectMake(frame.size.width - 84, 54, 84, 79)];
-        [self addSubview:_attachmentView];
+//        [self addSubview:_attachmentView];
         
         _attachmentImageView = [[UIImageView alloc] initWithFrame:CGRectMake(6, 2, 72, 72)];
         _attachmentImageView.layer.cornerRadius = 3.0f;
         _attachmentImageView.layer.masksToBounds = YES;
-        [_attachmentView addSubview:_attachmentImageView];
+//        [_attachmentView addSubview:_attachmentImageView];
         
         _attachmentContainerView = [[UIImageView alloc] initWithFrame:_attachmentView.bounds];
         _attachmentContainerView.image = [UIImage imageNamed:@"REComposeViewController.bundle/AttachmentFrame"];
-        [_attachmentView addSubview:_attachmentContainerView];
+//        [_attachmentView addSubview:_attachmentContainerView];
         _attachmentView.hidden = YES;
         
         

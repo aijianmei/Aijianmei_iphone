@@ -10,6 +10,9 @@
 #import "DrawContextView.h"
 #import "AppDelegate.h"
 
+#import "RootViewController.h"
+
+
 @interface WorkOutProcessViewController ()
 
 @end
@@ -77,7 +80,12 @@
 
 - (void)clickAddButton:(id)sender
 {
-    return;
+    RootViewController *vc = [[RootViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
+    
+    
+    
 }
 
 - (void)removeOldData
