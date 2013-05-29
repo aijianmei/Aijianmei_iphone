@@ -112,81 +112,67 @@
 {
    // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
     
-//    switch (textField.tag) {
-//        case 1:
-//            NSLog(@"TextField text :%@",textField.text);
-//            [_data setObject:textField.text forKey:@"Intensity"];
-//            break;
-//        case 2:
-//            NSLog(@"TextField text :%@",textField.text);
-//            [_data setObject:textField.text forKey:@"Amount"];
-//            break;
-//        case 3:
-//            NSLog(@"TextField text :%@",textField.text);
-//            [_data setObject:textField.text forKey:@"TimeLenght"];
-//            break;
-//            
-//        default:
-//            break;
-//    }
-    
-
-
-        
     ////add the datas .
     ////列
-    NSMutableArray *aa = [[NSMutableArray alloc]initWithCapacity:100];
     
     NSMutableDictionary *dataArray  = [[NSMutableDictionary alloc]init];
+    
+    NSMutableArray *mutableArray  = [[NSMutableArray alloc]initWithCapacity:100];
+    
+
     
     ////计算当前是第x行
     ///时间
     if (textField.tag%3 == 0) {
-        
-        NSLog(@"3333333");
-        
+            
        //计算是第x列数据
         int column = (textField.tag -3)/3  + 1;
         
-        NSLog(@"what coloum is %i",column);
+        NSLog(@"The column: %i ,The row : 3 ",column);
      
        [dataArray setObject:textField.text forKey:@"TimeLenght"];
-       [aa insertObject:dataArray atIndex:column];
-
-    
-    
 
         
+        
+       [mutableArray setObject:dataArray atIndexedSubscript:column - 1];
+        
+       NSLog(@"%@",[[mutableArray objectAtIndexedSubscript:column -1]description ]);
+        
     }
+    
+    
     if (textField.tag%3 == 1) {
-        NSLog(@"111111");
         
         //计算是第x列数据
         int column = (textField.tag -1)/3  + 1;
         
-        NSLog(@"what coloum is %i",column);
+        NSLog(@"The column: %i ,The row : 1 ",column);
         
         
         [dataArray setObject:textField.text forKey:@"Intensity"];
-        [aa insertObject:dataArray atIndex:column];
 
 
+        [mutableArray setObject:dataArray atIndexedSubscript:column - 1];
         
+        
+        NSLog(@"%@",[[mutableArray objectAtIndexedSubscript:column -1]description ]);
+
     }
     if (textField.tag%3 == 2) {
-        NSLog(@"222222");
         //计算是第x列数据
         int column = (textField.tag -2)/3  + 1;
         
-        NSLog(@"what coloum is %i",column);
+        NSLog(@"The column: %i ,The row : 2 ",column);
         
         [dataArray setObject:textField.text forKey:@"Amount"];
 
-        [aa insertObject:dataArray atIndex:column];
-
+        [mutableArray setObject:dataArray atIndexedSubscript:column - 1];
+        NSLog(@"%@",[[mutableArray objectAtIndexedSubscript:column -1]description ]);
 
         
     }
+    
+    
     
     
 }

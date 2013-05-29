@@ -100,12 +100,11 @@
     tabBarItem5.title = @"更多";
 
     
-    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"home_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"home.png"]];
-    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"maps_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"maps.png"]];
-    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"myplan_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"myplan.png"]];
-    [tabBarItem4 setFinishedSelectedImage:[UIImage imageNamed:@"asettings_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"asettings.png"]];
-    
-    [tabBarItem5 setFinishedSelectedImage:[UIImage imageNamed:@"home_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"home.png"]];
+    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"workout_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"workout.png"]];
+    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"nutri_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"nutri.png"]];
+    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"myprofile_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"myprofile.png"]];
+    [tabBarItem4 setFinishedSelectedImage:[UIImage imageNamed:@"makefriend_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"makefriend.png"]];
+    [tabBarItem5 setFinishedSelectedImage:[UIImage imageNamed:@"more_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"more.png"]];
     
     
     
