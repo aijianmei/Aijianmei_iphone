@@ -11,6 +11,9 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
 
+#import "RootViewController.h"
+
+
 @interface WorkOutProcessViewController ()
 
 @end
@@ -81,6 +84,7 @@
     RootViewController *rvController = [[[RootViewController alloc]init] autorelease];
     rvController.superViewController = self;
     [self.navigationController pushViewController:rvController animated:YES];
+
 }
 
 - (void)removeOldData

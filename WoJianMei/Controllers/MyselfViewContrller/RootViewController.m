@@ -227,6 +227,9 @@
     }
     
     if (result == REComposeResultPosted) {
+        
+        ////健身日记数据接口
+
         NSLog(@"Text = %@", composeViewController.text);
     
     }
