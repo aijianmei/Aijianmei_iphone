@@ -56,6 +56,7 @@
 {
     
     [super drawRect:rect];
+    NSLog(@"Redraw data.....");
     
     int day = [_amountList count];//天数，横坐标
     int index = 0;//第几组数据

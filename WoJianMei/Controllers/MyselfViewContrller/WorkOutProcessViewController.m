@@ -89,10 +89,31 @@
 
 - (void)removeOldData
 {
-    for (UIView *v in drawView.subviews) {
+    for (UIView *v in _drawView.subviews) {
         [v removeFromSuperview];
     }
-    [drawView removeFromSuperview];
+    [_drawView removeFromSuperview];
+}
+
+
+- (IBAction)clickButton1:(id)sender
+{
+    _dataIndex = 0;
+    [_drawView setNeedsDisplay];
+}
+
+
+- (IBAction)clickButton2:(id)sender
+{
+    _dataIndex = 0;
+    [_drawView setNeedsDisplay];
+}
+
+
+- (IBAction)clickButton3
+{
+    _dataIndex = 0;
+    [_drawView setNeedsDisplay];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -101,8 +122,9 @@
     [self hideTabBar];
     [self removeOldData];
 
-    drawView = [[DrawContextView alloc] initWithFrame:CGRectMake(0, 30, 320-30, [UIScreen mainScreen ].bounds.size.height-20-44-30)];
-    drawView.backgroundColor = [UIColor clearColor];
+    _drawView = [[DrawContextView alloc] initWithFrame:CGRectMake(0, 30, 320-30, [UIScreen mainScreen ].bounds.size.height-20-44-30)];
+    _drawView.backgroundColor = [UIColor clearColor];
+    
     
    
     CGRect point1_0 = CGRectMake(40, 190, 46, 46);
@@ -111,9 +133,9 @@
     UIButton *timeButton1 = [self createButtonWithFrame: point1_1 image:[UIImage imageNamed:@"sj_1"] text:@"65s"];    
     CGRect point1_2 = CGRectMake(40, 250, 46, 46);
     UIButton *intensityButton1 = [self createButtonWithFrame: point1_2 image:[UIImage imageNamed:@"qd_1"] text:@"48kg"];
-    [drawView addAmount:amountButton1 dayIndex:0];
-    [drawView addTime:timeButton1 dayIndex:0];
-    [drawView addIntensity:intensityButton1 dayIndex:0];
+    [_drawView addAmount:amountButton1 dayIndex:0];
+    [_drawView addTime:timeButton1 dayIndex:0];
+    [_drawView addIntensity:intensityButton1 dayIndex:0];
     
     CGRect point2_0 = CGRectMake(120, 120, 46, 46);
     UIButton *amountButton2 = [self createButtonWithFrame: point2_0 image:[UIImage imageNamed:@"gs_1"] text:@"15个"];
@@ -121,11 +143,11 @@
     UIButton *timeButton2 = [self createButtonWithFrame: point2_1 image:[UIImage imageNamed:@"sj_1"] text:@"48s"];
     CGRect point2_2 = CGRectMake(120, 280, 46, 46);
     UIButton *intensityButton2 = [self createButtonWithFrame: point2_2 image:[UIImage imageNamed:@"qd_1"] text:@"40kg"];
-    [drawView addAmount:amountButton2 dayIndex:1];
-    [drawView addTime:timeButton2 dayIndex:1];
-    [drawView addIntensity:intensityButton2 dayIndex:1];
+    [_drawView addAmount:amountButton2 dayIndex:1];
+    [_drawView addTime:timeButton2 dayIndex:1];
+    [_drawView addIntensity:intensityButton2 dayIndex:1];
     
-    [self.scrollView addSubview:drawView];
+    [self.scrollView addSubview:_drawView];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

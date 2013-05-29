@@ -12,7 +12,7 @@
 
 @interface WorkOutProcessViewController : PPViewController
 {
-    DrawContextView *drawView;
+    DrawContextView *_drawView;
 }
 
 @property (nonatomic,retain) IBOutlet UIScrollView *scrollView;
@@ -20,5 +20,8 @@
 @property (nonatomic,retain) NSMutableArray *amountList;
 @property (nonatomic,retain) NSMutableArray *intensityList;
 @property (nonatomic,retain) NSMutableArray *timeList;
+
+//显示第几组数据
+@property (nonatomic,assign) int dataIndex;
 
 @end
