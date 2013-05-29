@@ -10,6 +10,7 @@
 #import "REComposeViewController.h"
 #import "WorkoutDataComposeViewController.h"
 #import "PPViewController.h"
+#import "WorkOutProcessViewController.h"
 
 @interface RootViewController : PPViewController <REComposeViewControllerDelegate,WorkoutDataComposeViewControllerDelegate,UIActionSheetDelegate>
 
@@ -17,12 +18,11 @@
     UIButton *_workoutNoteButton;
     UIButton *_workoutImageButton;
     UIButton *_workoutDatasButton;
-
-
     
     UIScrollView *_scrollView;
 }
 
+@property (retain,nonatomic) WorkOutProcessViewController *superViewController;
 @property (retain,nonatomic) UIButton *workoutNoteButton;
 @property (retain,nonatomic) UIButton *workoutImageButton;
 @property (retain,nonatomic) UIButton *workoutDatasButton;

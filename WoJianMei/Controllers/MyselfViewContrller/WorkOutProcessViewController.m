@@ -9,6 +9,7 @@
 #import "WorkOutProcessViewController.h"
 #import "DrawContextView.h"
 #import "AppDelegate.h"
+#import "RootViewController.h"
 
 @interface WorkOutProcessViewController ()
 
@@ -77,7 +78,9 @@
 
 - (void)clickAddButton:(id)sender
 {
-    return;
+    RootViewController *rvController = [[[RootViewController alloc]init] autorelease];
+    rvController.superViewController = self;
+    [self.navigationController pushViewController:rvController animated:YES];
 }
 
 - (void)removeOldData
@@ -96,6 +99,7 @@
 
     drawView = [[DrawContextView alloc] initWithFrame:CGRectMake(0, 30, 320-30, [UIScreen mainScreen ].bounds.size.height-20-44-30)];
     drawView.backgroundColor = [UIColor clearColor];
+    
    
     CGRect point1_0 = CGRectMake(40, 190, 46, 46);
     UIButton *amountButton1 = [self createButtonWithFrame: point1_0 image:[UIImage imageNamed:@"gs_1"] text:@"12个"];

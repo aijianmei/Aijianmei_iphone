@@ -15,6 +15,10 @@
     DrawContextView *drawView;
 }
 
-@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
+@property (nonatomic,retain) IBOutlet UIScrollView *scrollView;
+
+@property (nonatomic,retain) NSMutableArray *amountList;
+@property (nonatomic,retain) NSMutableArray *intensityList;
+@property (nonatomic,retain) NSMutableArray *timeList;
 
 @end

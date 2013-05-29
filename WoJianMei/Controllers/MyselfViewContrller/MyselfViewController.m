@@ -373,8 +373,7 @@
                 case 1:
                     NSLog(@"this is %@",@"年龄");
                     
-                    RootViewController *rvController = [[RootViewController alloc]init];
-                    
+                    RootViewController *rvController = [[[RootViewController alloc]init] autorelease];
                     [self.navigationController pushViewController:rvController animated:YES];
                     
                     break;
