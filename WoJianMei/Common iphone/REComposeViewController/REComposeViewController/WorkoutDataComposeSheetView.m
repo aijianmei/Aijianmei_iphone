@@ -25,6 +25,8 @@
 
 #import "WorkoutDataComposeSheetView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIBarButtonItemExt.h"
+
 
 @implementation WorkoutDataComposeSheetView
 
@@ -103,6 +105,8 @@
     [self.addButton setFrame:CGRectMake(positionX * count
                                         ,3, 30, 30)];
     
+    
+    
         
 }
 
@@ -111,29 +115,71 @@
 #pragma UITextFieldDelegate Methods
 -(BOOL)textFieldShouldBeginEditing:(UITextField*)textField {
     
-    return YES;
+   return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     
     // return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
     
-    //
-    //    switch (textField.tag) {
-    //        case 1:
-    //            NSLog(@"TextField text :%@",textField.text);
-    //            break;
-    //        case 2:
-    //            NSLog(@"TextField text :%@",textField.text);
-    //            break;
-    //        case 3:
-    //            NSLog(@"TextField text :%@",textField.text);
-    //            break;
-    //
-    //        default:
-    //            break;
-    //    }
-    //
+
+    
+    ////计算当前是第x行
+    ///时间
+//    if (textField.tag%3 == 0) {
+//        
+//        //计算是第x列数据
+//        int column = (textField.tag -3)/3  + 1;
+//        
+//        NSLog(@"The column: %i ,The row : 3 ",column);
+//        
+//        
+//        //存储二维数组 ，第三行数据，在array 中排在2位置；
+//        
+//        [[_dataArray objectAtIndex:2] insertObject:textField.text atIndex:column];
+//        //打印二维数组
+//        
+//        NSLog(@"show me  %@",[[_dataArray objectAtIndex:2] objectAtIndex:column]);
+//        
+//    }
+//    
+//    
+//    if (textField.tag%3 == 1) {
+//        
+//        //计算是第x列数据
+//        int column = (textField.tag -1)/3  + 1;
+//        
+//        NSLog(@"The column: %i ,The row : 1 ",column);
+//        
+//        
+//        //存储二维数组，第二行数据，在array 中排在1位置；
+//        
+//        
+//        [[_dataArray objectAtIndex:1] insertObject:textField.text atIndex:column];
+//        //打印二维数组
+//        
+//        NSLog(@"show me  %@",[[_dataArray objectAtIndex:1] objectAtIndex:column]);
+//        
+//        
+//        
+//    }
+//    if (textField.tag%3 == 2) {
+//        //计算是第x列数据
+//        int column = (textField.tag -2)/3  + 1;
+//        
+//        NSLog(@"The column: %i ,The row : 2 ",column);
+//        
+//        //存储二维数组，第一行数据，在array 中排在0位置；
+//        [[_dataArray objectAtIndex:0] insertObject:textField.text atIndex:column];
+//        //打印二维数组
+//        
+//        NSLog(@"show me  %@",[[_dataArray objectAtIndex:0] objectAtIndex:column]);
+//        
+//    }
+    
+    
+    
+
     
     return YES;
     
@@ -158,6 +204,38 @@
     
     ////计算当前是第x行
     ///时间
+    
+    if (textField.tag%3 == 1) {
+        
+        //计算是第x列数据
+        int column = (textField.tag -1)/3  + 1;
+        
+        NSLog(@"The column: %i ,The row : 1 ",column);
+        
+        
+        //存储二维数组，第1行数据，在array 中排在0位置；
+        [[_dataArray objectAtIndex:0] insertObject:textField.text atIndex:column];
+        //打印二维数组
+        
+        NSLog(@"show me  %@",[[_dataArray objectAtIndex:0] objectAtIndex:column]);
+        
+        
+        
+    }
+    
+       if (textField.tag%3 == 2) {
+        //计算是第x列数据
+        int column = (textField.tag -2)/3  + 1;
+        
+        NSLog(@"The column: %i ,The row : 2 ",column);
+        
+        //存储二维数组，第2行数据，在array 中排在1位置；
+        [[_dataArray objectAtIndex:1] insertObject:textField.text atIndex:column];
+        //打印二维数组
+        
+        NSLog(@"show me  %@",[[_dataArray objectAtIndex:1] objectAtIndex:column]);
+        
+    }
     if (textField.tag%3 == 0) {
         
         //计算是第x列数据
@@ -173,39 +251,7 @@
         NSLog(@"show me  %@",[[_dataArray objectAtIndex:2] objectAtIndex:column]);
         
     }
-    
-    
-    if (textField.tag%3 == 1) {
-        
-        //计算是第x列数据
-        int column = (textField.tag -1)/3  + 1;
-        
-        NSLog(@"The column: %i ,The row : 1 ",column);
-        
-        
-        //存储二维数组，第二行数据，在array 中排在1位置；
-        [[_dataArray objectAtIndex:1] insertObject:textField.text atIndex:column];
-        //打印二维数组
-        
-        NSLog(@"show me  %@",[[_dataArray objectAtIndex:1] objectAtIndex:column]);
-        
-        
-        
-    }
-    if (textField.tag%3 == 2) {
-        //计算是第x列数据
-        int column = (textField.tag -2)/3  + 1;
-        
-        NSLog(@"The column: %i ,The row : 2 ",column);
-        
-        //存储二维数组，第一行数据，在array 中排在0位置；
-        [[_dataArray objectAtIndex:0] insertObject:textField.text atIndex:column];
-        //打印二维数组
-        
-        NSLog(@"show me  %@",[[_dataArray objectAtIndex:0] objectAtIndex:column]);
-        
-    }
-    
+
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -237,11 +283,40 @@
         _navigationItem = [[UINavigationItem alloc] initWithTitle:@""];
         _navigationBar.items = @[_navigationItem];
         
-        UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"Cancel") style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
-        _navigationItem.leftBarButtonItem = cancelButtonItem;
+//        UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"Cancel") style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
+//        _navigationItem.leftBarButtonItem = cancelButtonItem;
+//        
+//        UIBarButtonItem *postButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Post", @"Post") style:UIBarButtonItemStyleBordered target:self action:@selector(postButtonPressed)];
+//        _navigationItem.rightBarButtonItem = postButtonItem;
         
-        UIBarButtonItem *postButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Post", @"Post") style:UIBarButtonItemStyleBordered target:self action:@selector(postButtonPressed)];
-        _navigationItem.rightBarButtonItem = postButtonItem;
+        
+        
+        
+        
+        
+        UIBarButtonItem* cancleBarButtonItem = [[UIBarButtonItem alloc]
+                                                initWithCustomView:[UIBarButtonItem getButtonWithTitle:@"取消"
+                                                                                             imageName:@"settings.png"
+                                                                                                target:self
+                                                                                                action:@selector(cancelButtonPressed)]
+                                                ];
+        _navigationItem.leftBarButtonItem = cancleBarButtonItem;
+        
+        
+        UIBarButtonItem* postBarButtonItem = [[UIBarButtonItem alloc]
+                                              initWithCustomView:[UIBarButtonItem getButtonWithTitle:@"保存"
+                                                                                           imageName:@"settings.png"
+                                                                                              target:self
+                                                                                              action:@selector(postButtonPressed)]
+                                              ];
+        _navigationItem.rightBarButtonItem = postBarButtonItem;
+        
+        
+        
+        
+
+        
+        
         
         
         _textViewContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 44, frame.size.width, frame.size.height - 44)];
@@ -369,6 +444,10 @@
 {
     if ([_delegate respondsToSelector:@selector(postButtonPressed)])
         [_delegate postButtonPressed];
+    
+    [self resignFirstResponder];
+
+    
 }
 
 @end

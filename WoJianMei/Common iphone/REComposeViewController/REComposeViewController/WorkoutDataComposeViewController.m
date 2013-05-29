@@ -249,6 +249,19 @@
     _sheetView.textView.text = text;
 }
 
+/// get the data
+- (NSMutableArray *)dataArray{
+    
+    return  _sheetView.dataArray;
+
+}
+- (void)setDataArray:(NSMutableArray *)array{
+    
+    _sheetView.dataArray =array;
+}
+
+
+
 #pragma mark -
 #pragma mark REComposeSheetViewDelegate
 

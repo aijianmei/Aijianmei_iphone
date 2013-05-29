@@ -55,6 +55,14 @@ typedef void (^WorkoutDataComposeViewControllerCompletionHandler)(WorkoutDataCom
 - (NSString *)text;
 - (void)setText:(NSString *)text;
 
+
+/// get the data 
+- (NSMutableArray *)dataArray;
+- (void)setDataArray:(NSMutableArray *)array;
+
+
+
+
 - (BOOL)hasAttachment;
 - (void)setHasAttachment:(BOOL)hasAttachment;
 

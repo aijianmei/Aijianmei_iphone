@@ -91,9 +91,9 @@
     
     
     
-    ///set the right buttons
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(clickEditButton:)];
-    [self.navigationItem setRightBarButtonItem:rightBarButton];
+//    ///set the right buttons
+//    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(clickEditButton:)];
+//    [self.navigationItem setRightBarButtonItem:rightBarButton];
    
     [self setNavigationRightButton:@"设置" imageName:@"settings.png" action:@selector(clickEditButton:)];
     
@@ -167,16 +167,21 @@
     WorkoutDataComposeViewController *datasVC = [[WorkoutDataComposeViewController alloc] init];
     datasVC.title = @"健身数据";
     datasVC.hasAttachment = YES;
-    datasVC.attachmentImage = [UIImage imageNamed:@"Flower.jpg"];
+    datasVC.delegate = self;
+//    datasVC.attachmentImage = [UIImage imageNamed:@"Flower.jpg"];
 
-    UIImageView *titleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"foursquare-logo"]];
-    titleImageView.frame = CGRectMake(0, 0, 110, 30);
-    datasVC.navigationItem.titleView = titleImageView;
+//    UIImageView *titleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"foursquare-logo"]];
+//    titleImageView.frame = CGRectMake(0, 0, 110, 30);
+//    datasVC.navigationItem.titleView = titleImageView;
     
     // UIApperance setup
-    [datasVC.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg"] forBarMetrics:UIBarMetricsDefault];
-    datasVC.navigationItem.leftBarButtonItem.tintColor = [UIColor colorWithRed:60/255.0 green:165/255.0 blue:194/255.0 alpha:1];
-    datasVC.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:29/255.0 green:118/255.0 blue:143/255.0 alpha:1];
+//    [datasVC.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg"] forBarMetrics:UIBarMetricsDefault];
+//    datasVC.navigationItem.leftBarButtonItem.tintColor = [UIColor colorWithRed:60/255.0 green:165/255.0 blue:194/255.0 alpha:1];
+//    datasVC.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:29/255.0 green:118/255.0 blue:143/255.0 alpha:1];
+    
+    
+    
+    
     
     // Alternative use with REComposeViewControllerCompletionHandler
     datasVC.completionHandler = ^(WorkoutDataComposeResult result) {
@@ -242,15 +247,27 @@
     }
     
     if (result == WorkoutDataComposeResultPosted) {
-        NSLog(@"Text = %@", composeViewController.text);
+        
+        /////数据接口
+  /*
+   
+    第1行数据  强度         1 4 7 10 13
+    第2行数据  数量         2 5 8 11 14
+    第3行数据  时间         3 6 9 12 15
+   
+   */
+          
+        
+        NSLog(@"第一行数据 = %@", [composeViewController.dataArray objectAtIndex:0]);
+        
+        NSLog(@"第二行数据 %@", [composeViewController.dataArray objectAtIndex:1]);
+        
+        NSLog(@"第三行数据 %@", [composeViewController.dataArray objectAtIndex:2]);
+        
+        
+        
         
     }
-    
-    
-    [self.workoutNoteButton setTitle:composeViewController.text forState:UIControlStateNormal];
-    
-    
-    
 }
 
 
