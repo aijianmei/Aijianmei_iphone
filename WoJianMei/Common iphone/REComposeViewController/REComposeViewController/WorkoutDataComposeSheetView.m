@@ -103,6 +103,9 @@
     [self.addButton setFrame:CGRectMake(positionX * count
                                         ,3, 30, 30)];
     
+    
+    [textField1 resignFirstResponder];
+    
 }
 
 
