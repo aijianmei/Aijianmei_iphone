@@ -259,10 +259,15 @@
           
         
         NSLog(@"第一行数据 = %@", [composeViewController.dataArray objectAtIndex:0]);
+        /////第1行数据  强度         1 4 7 10 13
         
         NSLog(@"第二行数据 %@", [composeViewController.dataArray objectAtIndex:1]);
+       /////第2行数据   数量         2 5 8 11 14
+
         
         NSLog(@"第三行数据 %@", [composeViewController.dataArray objectAtIndex:2]);
+        /////第3行数据  时间         3 6 9 12 15
+
         
         
         
