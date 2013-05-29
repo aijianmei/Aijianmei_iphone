@@ -1,18 +1,18 @@
 //
-//  WorkoutDatasViewController.m
+//  WorkDataComposeViewController.m
 //  WoJianMei
 //
-//  Created by Tom Callon  on 5/25/13.
+//  Created by Tom Callon  on 5/29/13.
 //
 //
 
-#import "WorkoutDatasViewController.h"
+#import "WorkDataComposeViewController.h"
 
-@interface WorkoutDatasViewController ()
+@interface WorkDataComposeViewController ()
 
 @end
 
-@implementation WorkoutDatasViewController
+@implementation WorkDataComposeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,16 +27,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
