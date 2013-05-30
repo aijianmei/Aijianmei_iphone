@@ -8,7 +8,7 @@
 
 #import "DrawContextView.h"
 
-#define DAY_AMOUNT 2
+#define DAY_AMOUNT 3
 
 @implementation DrawContextView
 

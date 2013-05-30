@@ -99,21 +99,21 @@
 - (IBAction)clickButton1:(id)sender
 {
     _dataIndex = 0;
-    [self showData];
+//    [self showData];
 }
 
 
 - (IBAction)clickButton2:(id)sender
 {
     _dataIndex = 1;
-    [self showData];
+//    [self showData];
 }
 
 
 - (IBAction)clickButton3
 {
     _dataIndex = 2;
-    [self showData];
+//    [self showData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -128,6 +128,7 @@
     [self showData];
     
     [self.scrollView addSubview:_drawView];
+    [self.scrollView setContentSize:CGSizeMake(320.0,586.0)];
 }
 
 - (void)showData
@@ -140,26 +141,39 @@
     //把 amount, intensity, time 转换成pts值
     //演示怎样添加数据并画图
     //22号对应的三组数据 dayIndex控制要显示哪一天的数据
-    CGRect point1_0 = CGRectMake(40, 190, 46, 46);
+    CGRect point1_0 = CGRectMake(35, 190, 46, 46);
     UIButton *amountButton1 = [self createButtonWithFrame: point1_0 image:[UIImage imageNamed:@"gs_1"] text:@"12个"];
-    CGRect point1_1 = CGRectMake(40, 100, 46, 46);
+    CGRect point1_1 = CGRectMake(35, 100, 46, 46);
     UIButton *timeButton1 = [self createButtonWithFrame: point1_1 image:[UIImage imageNamed:@"sj_1"] text:@"65s"];
-    CGRect point1_2 = CGRectMake(40, 250, 46, 46);
+    CGRect point1_2 = CGRectMake(35, 250, 46, 46);
     UIButton *intensityButton1 = [self createButtonWithFrame: point1_2 image:[UIImage imageNamed:@"qd_1"] text:@"48kg"];
     [_drawView addAmount:amountButton1 dayIndex:0];
     [_drawView addTime:timeButton1 dayIndex:0];
     [_drawView addIntensity:intensityButton1 dayIndex:0];
     
     //23号对应的三组数据
-    CGRect point2_0 = CGRectMake(120, 120, 46, 46);
+    CGRect point2_0 = CGRectMake(135, 120, 46, 46);
     UIButton *amountButton2 = [self createButtonWithFrame: point2_0 image:[UIImage imageNamed:@"gs_1"] text:@"15个"];
-    CGRect point2_1 = CGRectMake(120, 200, 46, 46);
+    CGRect point2_1 = CGRectMake(135, 200, 46, 46);
     UIButton *timeButton2 = [self createButtonWithFrame: point2_1 image:[UIImage imageNamed:@"sj_1"] text:@"48s"];
-    CGRect point2_2 = CGRectMake(120, 280, 46, 46);
+    CGRect point2_2 = CGRectMake(135, 280, 46, 46);
     UIButton *intensityButton2 = [self createButtonWithFrame: point2_2 image:[UIImage imageNamed:@"qd_1"] text:@"40kg"];
     [_drawView addAmount:amountButton2 dayIndex:1];
     [_drawView addTime:timeButton2 dayIndex:1];
     [_drawView addIntensity:intensityButton2 dayIndex:1];
+    
+    //23号对应的三组数据
+    CGRect point3_0 = CGRectMake(235, 70, 46, 46);
+    UIButton *amountButton3 = [self createButtonWithFrame: point3_0 image:[UIImage imageNamed:@"gs_1"] text:@"15个"];
+    CGRect point3_1 = CGRectMake(235, 180, 46, 46);
+    UIButton *timeButton3 = [self createButtonWithFrame: point3_1 image:[UIImage imageNamed:@"sj_1"] text:@"48s"];
+    CGRect point3_2 = CGRectMake(235, 230, 46, 46);
+    UIButton *intensityButton3 = [self createButtonWithFrame: point3_2 image:[UIImage imageNamed:@"qd_1"] text:@"40kg"];
+    [_drawView addAmount:amountButton3 dayIndex:2];
+    [_drawView addTime:timeButton3 dayIndex:2];
+    [_drawView addIntensity:intensityButton3 dayIndex:2];
+    
+    [_drawView setNeedsDisplay];
     
     [_drawView setNeedsDisplay];
 
