@@ -73,11 +73,8 @@
     
     [self setBackgroundImageName:@"BackGround.png"];
     [self showBackgroundImage];
-    
-//    [self.navigationItem setTitle:@"健身视频"];
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topmenu_bg.png"] forBarMetrics:UIBarMetricsDefault];
-    
-    
+  
+
     
     UIBarButtonItem *bar = [[UIBarButtonItem alloc]initWithImage:nil style:UIBarButtonItemStyleBordered target:self action:@selector(iamTomsGirlfriend)];
     [bar setTitle:@"每天锻炼"];
