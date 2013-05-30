@@ -59,6 +59,14 @@
 ////Tom Callons methods
 -(void)addButtons{
     
+    
+    
+    
+    
+    
+    
+    
+    
     int positionX = 50;
     int positionY = 40;
     
@@ -87,11 +95,14 @@
     
     [textField1 setTag:  1 + 3 * (count - 1)];
     [textField1 setDelegate:self];
+    [textField1 setText:@"0"];
+
     
     UITextField *textField2 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * count -40, 2 * positionY , 40, 30)];
     [textField2 setBackground:[UIImage imageNamed:@"data_button"]];
     [textField2 setTag:2 + 3 * (count - 1)];
     [textField2 setDelegate:self];
+    [textField2 setText:@"0"];
     
     
     
@@ -99,6 +110,8 @@
     [textField3 setBackground:[UIImage imageNamed:@"data_button"]];
     [textField3 setTag: 3 + 3 * (count - 1)];
     [textField3 setDelegate:self];
+    [textField3 setText:@"0"];
+
     
     
     [_scrollView addSubview:numberButton];
@@ -120,92 +133,13 @@
 #pragma UITextFieldDelegate Methods
 -(BOOL)textFieldShouldBeginEditing:(UITextField*)textField {
     
+    [textField setText:nil];
    return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     
     // return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
-    
-
-    
-    ////计算当前是第x行
-    ///时间
-//    if (textField.tag%3 == 0) {
-//        
-//        //计算是第x列数据
-//        int column = (textField.tag -3)/3  + 1;
-//        
-//        NSLog(@"The column: %i ,The row : 3 ",column);
-//        
-//        
-//        //存储二维数组 ，第三行数据，在array 中排在2位置；
-//        
-//        [[_dataArray objectAtIndex:2] insertObject:textField.text atIndex:column];
-//        //打印二维数组
-//        
-//        NSLog(@"show me  %@",[[_dataArray objectAtIndex:2] objectAtIndex:column]);
-//        
-//    }
-//    
-//    
-//    if (textField.tag%3 == 1) {
-//        
-//        //计算是第x列数据
-//        int column = (textField.tag -1)/3  + 1;
-//        
-//        NSLog(@"The column: %i ,The row : 1 ",column);
-//        
-//        
-//        //存储二维数组，第二行数据，在array 中排在1位置；
-//        
-//        
-//        [[_dataArray objectAtIndex:1] insertObject:textField.text atIndex:column];
-//        //打印二维数组
-//        
-//        NSLog(@"show me  %@",[[_dataArray objectAtIndex:1] objectAtIndex:column]);
-//        
-//        
-//        
-//    }
-//    if (textField.tag%3 == 2) {
-//        //计算是第x列数据
-//        int column = (textField.tag -2)/3  + 1;
-//        
-//        NSLog(@"The column: %i ,The row : 2 ",column);
-//        
-//        //存储二维数组，第一行数据，在array 中排在0位置；
-//        [[_dataArray objectAtIndex:0] insertObject:textField.text atIndex:column];
-//        //打印二维数组
-//        
-//        NSLog(@"show me  %@",[[_dataArray objectAtIndex:0] objectAtIndex:column]);
-//        
-//    }
-    
-    
-    
-
-    
-    return YES;
-    
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
-    
-    ////add the datas .
-    ////列
-    
-    
-    
-    //    //构造二维数组
-    //    NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
-    //                             [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"", nil],
-    //                             [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"", nil],
-    //                             [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"", nil],
-    //                             nil];
-    
     
     ////计算当前是第x行
     ///时间
@@ -216,29 +150,32 @@
         int column = (textField.tag -1)/3  + 1;
         
         NSLog(@"The column: %i ,The row : 1 ",column);
-        
+    
         
         //存储二维数组，第1行数据，在array 中排在0位置；
-        [[_dataArray objectAtIndex:0] insertObject:textField.text atIndex:column];
+        
+        [[_dataArray objectAtIndex:0] setObject:textField.text atIndex:column -1];
+        [[_dataArray objectAtIndex:0] replaceObjectAtIndex:(column -1)withObject:textField.text];
+
         //打印二维数组
         
-        NSLog(@"show me  %@",[[_dataArray objectAtIndex:0] objectAtIndex:column]);
-        
-        
+        NSLog(@"show me  %@",[[_dataArray objectAtIndex:0] objectAtIndex:(column - 1)]);
         
     }
     
-       if (textField.tag%3 == 2) {
+    if (textField.tag%3 == 2) {
         //计算是第x列数据
         int column = (textField.tag -2)/3  + 1;
         
         NSLog(@"The column: %i ,The row : 2 ",column);
         
         //存储二维数组，第2行数据，在array 中排在1位置；
-        [[_dataArray objectAtIndex:1] insertObject:textField.text atIndex:column];
+        [[_dataArray objectAtIndex:1] setObject:textField.text atIndex:column -1];
+        [[_dataArray objectAtIndex:1] replaceObjectAtIndex:(column -1)withObject:textField.text];
+        
         //打印二维数组
         
-        NSLog(@"show me  %@",[[_dataArray objectAtIndex:1] objectAtIndex:column]);
+        NSLog(@"show me  %@",[[_dataArray objectAtIndex:1] objectAtIndex:column - 1]);
         
     }
     if (textField.tag%3 == 0) {
@@ -250,12 +187,75 @@
         
         
         //存储二维数组 ，第三行数据，在array 中排在2位置；
-        [[_dataArray objectAtIndex:2] insertObject:textField.text atIndex:column];
-        //打印二维数组
         
-        NSLog(@"show me  %@",[[_dataArray objectAtIndex:2] objectAtIndex:column]);
+        [[_dataArray objectAtIndex:2] setObject:textField.text atIndex:column -1];
+        [[_dataArray objectAtIndex:2] replaceObjectAtIndex:(column -1)withObject:textField.text];
+
+        //打印二维数组
+        NSLog(@"show me  %@",[[_dataArray objectAtIndex:2] objectAtIndex:column - 1]);
         
     }
+
+    
+    return YES;
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
+    
+    
+    ////计算当前是第x行
+    ///时间
+    
+//    if (textField.tag%3 == 1) {
+//        
+//        //计算是第x列数据
+//        int column = (textField.tag -1)/3  + 1;
+//        
+//        NSLog(@"The column: %i ,The row : 1 ",column);
+//        
+//        
+//        //存储二维数组，第1行数据，在array 中排在0位置；
+//        [[_dataArray objectAtIndex:0] insertObject:textField.text atIndex:(column -1)];
+//        
+//        //打印二维数组
+//        
+//        NSLog(@"show me  %@",[[_dataArray objectAtIndex:0] objectAtIndex:(column - 1)]);
+//        
+//        
+//        
+//    }
+//    
+//       if (textField.tag%3 == 2) {
+//        //计算是第x列数据
+//        int column = (textField.tag -2)/3  + 1;
+//        
+//        NSLog(@"The column: %i ,The row : 2 ",column);
+//        
+//        //存储二维数组，第2行数据，在array 中排在1位置；
+//        [[_dataArray objectAtIndex:1] insertObject:textField.text atIndex:column -1 ];
+//        //打印二维数组
+//        
+//        NSLog(@"show me  %@",[[_dataArray objectAtIndex:1] objectAtIndex:column - 1]);
+//        
+//    }
+//    if (textField.tag%3 == 0) {
+//        
+//        //计算是第x列数据
+//        int column = (textField.tag -3)/3  + 1;
+//        
+//        NSLog(@"The column: %i ,The row : 3 ",column);
+//        
+//        
+//        //存储二维数组 ，第三行数据，在array 中排在2位置；
+//        [[_dataArray objectAtIndex:2] insertObject:textField.text atIndex:column -1 ];
+//        //打印二维数组
+//        
+//        NSLog(@"show me  %@",[[_dataArray objectAtIndex:2] objectAtIndex:column - 1]);
+//        
+//    }
 
 }
 
@@ -266,17 +266,15 @@
         
         count =0;
         
+        
         //构造二维数组
-        NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
-                                 [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"", nil],
-                                 [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"", nil],
-                                 [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"", nil],
+        NSMutableArray *array = [[NSMutableArray alloc]initWithObjects:
+                                [[NSMutableArray alloc]init],
+                                [[NSMutableArray alloc]init],
+                                [[NSMutableArray alloc]init],
                                  nil];
         
         self.dataArray =array;
-        
-        
-        
         
         self.backgroundColor = [UIColor whiteColor];
         
@@ -464,9 +462,6 @@
 {
     if ([_delegate respondsToSelector:@selector(postButtonPressed)])
         [_delegate postButtonPressed];
-    
-    [self resignFirstResponder];
-
     
 }
 
