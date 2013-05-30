@@ -9,9 +9,9 @@
 #import "WorkOutProcessViewController.h"
 #import "DrawContextView.h"
 #import "AppDelegate.h"
-#import "RootViewController.h"
+#import "WorkOutDataViewController.h"
 
-#import "RootViewController.h"
+#import "WorkOutDataViewController.h"
 
 
 @interface WorkOutProcessViewController ()
@@ -81,7 +81,7 @@
 
 - (void)clickAddButton:(id)sender
 {
-    RootViewController *rvController = [[[RootViewController alloc]init] autorelease];
+    WorkOutDataViewController *rvController = [[[WorkOutDataViewController alloc]init] autorelease];
     rvController.superViewController = self;
     [self.navigationController pushViewController:rvController animated:YES];
 

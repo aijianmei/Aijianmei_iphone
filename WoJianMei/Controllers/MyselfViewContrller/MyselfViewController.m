@@ -7,7 +7,7 @@
 //
 
 #import "MyselfViewController.h"
-#import "RootViewController.h"
+#import "WorkOutDataViewController.h"
 
 #import "MyselfTableViewCell.h"
 #import "ImageManager.h"
@@ -373,7 +373,7 @@
                 case 1:
                     NSLog(@"this is %@",@"年龄");
                     
-                    RootViewController *rvController = [[[RootViewController alloc]init] autorelease];
+                    WorkOutDataViewController *rvController = [[[WorkOutDataViewController alloc]init] autorelease];
                     [self.navigationController pushViewController:rvController animated:YES];
                     
                     break;

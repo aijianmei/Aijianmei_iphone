@@ -6,17 +6,17 @@
 //  Copyright (c) 2012 Roman Efimov. All rights reserved.
 //
 
-#import "RootViewController.h"
+#import "WorkOutDataViewController.h"
 #import "REComposeViewController.h"
 #import "WorkoutNoteViewController.h"
 #import "WorkoutDataComposeViewController.h"
 
 
-@interface RootViewController ()
+@interface WorkOutDataViewController ()
 
 @end
 
-@implementation RootViewController
+@implementation WorkOutDataViewController
 @synthesize workoutNoteButton =_workoutNoteButton;
 @synthesize workoutImageButton =_workoutImageButton;
 @synthesize workoutDatasButton =_workoutDatasButton;

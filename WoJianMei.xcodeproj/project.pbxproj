@@ -567,7 +567,7 @@
 		C6016B8717523D2D00BA5E63 /* rq_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6016B7217523D2D00BA5E63 /* rq_1.png */; };
 		C6016B8817523D2D00BA5E63 /* sj_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6016B7317523D2D00BA5E63 /* sj_1.png */; };
 		C6C0CD1D17509DA400A825AB /* DrawContextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C0CD1C17509DA400A825AB /* DrawContextView.m */; };
-		C6C0CD231750F0B200A825AB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C0CD221750F0B200A825AB /* RootViewController.m */; };
+		C6C0CD231750F0B200A825AB /* WorkOutDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C0CD221750F0B200A825AB /* WorkOutDataViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1447,8 +1447,8 @@
 		C6016B7317523D2D00BA5E63 /* sj_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sj_1.png; sourceTree = "<group>"; };
 		C6C0CD1B17509DA400A825AB /* DrawContextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawContextView.h; sourceTree = "<group>"; };
 		C6C0CD1C17509DA400A825AB /* DrawContextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawContextView.m; sourceTree = "<group>"; };
-		C6C0CD211750F0B200A825AB /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		C6C0CD221750F0B200A825AB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		C6C0CD211750F0B200A825AB /* WorkOutDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOutDataViewController.h; sourceTree = "<group>"; };
+		C6C0CD221750F0B200A825AB /* WorkOutDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOutDataViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3116,8 +3116,8 @@
 				4ADCFE06169D614600A3E979 /* Myself_SettingsViewController.m */,
 				4ADCFE07169D614600A3E979 /* MyselfViewController.h */,
 				4ADCFE08169D614600A3E979 /* MyselfViewController.m */,
-				C6C0CD211750F0B200A825AB /* RootViewController.h */,
-				C6C0CD221750F0B200A825AB /* RootViewController.m */,
+				C6C0CD211750F0B200A825AB /* WorkOutDataViewController.h */,
+				C6C0CD221750F0B200A825AB /* WorkOutDataViewController.m */,
 				4A3AB805175060F10045729D /* WorkOutProcessViewController.h */,
 				4A3AB806175060F10045729D /* WorkOutProcessViewController.m */,
 				4A3AB8081750631E0045729D /* WorkoutNoteViewController.h */,
@@ -4163,7 +4163,7 @@
 				4A3AB80A1750631E0045729D /* WorkoutNoteViewController.m in Sources */,
 				4A3AB80D175063370045729D /* WorkoutImageViewController.m in Sources */,
 				C6C0CD1D17509DA400A825AB /* DrawContextView.m in Sources */,
-				C6C0CD231750F0B200A825AB /* RootViewController.m in Sources */,
+				C6C0CD231750F0B200A825AB /* WorkOutDataViewController.m in Sources */,
 				4AABA20E1753907B000C4F68 /* DEComposeBackgroundScrollView.m in Sources */,
 				4ACA496A1755EF9700CC9886 /* WorkoutDataComposeSheetView.m in Sources */,
 				4ACA496D1755F84300CC9886 /* WorkoutDataComposeViewController.m in Sources */,
