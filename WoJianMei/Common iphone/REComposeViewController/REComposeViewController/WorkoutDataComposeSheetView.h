@@ -35,8 +35,9 @@
     UIImageView *_attachmentContainerView;
     
     NSMutableArray *_dataArray;
-    
     UIButton *_addButton;
+    
+    
     
     int count;
 }
