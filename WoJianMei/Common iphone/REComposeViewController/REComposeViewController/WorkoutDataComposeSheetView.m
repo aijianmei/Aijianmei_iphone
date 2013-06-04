@@ -40,9 +40,7 @@
     [addButton setImage:[UIImage imageNamed:@"add_button.png"] forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(addButtons) forControlEvents:UIControlEventTouchUpInside];
 
-
     self.addButton = addButton;
-
     
     [_scrollView addSubview:self.addButton];
     
@@ -88,7 +86,7 @@
     
     
     UIButton *numberButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    numberButton.frame = CGRectMake(positionX * count -40,positionY -30, 30, 30);
+    numberButton.frame = CGRectMake(positionX * count -40,positionY -35, 30, 30);
     
     NSString *number = [NSString stringWithFormat:@"%i",count] ;
     [numberButton setTitle:number forState:UIControlStateNormal];
@@ -163,12 +161,15 @@
     
     BOOL isTextFieldTag;
     
+    isTextFieldTag = NO;
+    
+    
     if (textField.tag ==20130604) {
         isTextFieldTag = YES;
     }
     
     
-    ////计算当前是第x行
+    ////计算当前是第x行, 以及判断是否应该考虑 textfield ；
     if (textField.tag%3 == 1  && !isTextFieldTag) {
         
         //计算是第x列数据
@@ -237,7 +238,7 @@
                                 [[NSMutableArray alloc]init],
                                 [[NSMutableArray alloc]init],
                                 [[NSMutableArray alloc]init],
-                                 [[NSMutableArray alloc]init],
+                                [[NSMutableArray alloc]init],
                                  nil];
         
         self.dataArray =array;

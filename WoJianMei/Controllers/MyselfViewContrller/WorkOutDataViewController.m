@@ -10,6 +10,7 @@
 #import "REComposeViewController.h"
 #import "WorkoutNoteViewController.h"
 #import "WorkoutDataComposeViewController.h"
+#import "WorkOutInfo.h"
 
 
 @interface WorkOutDataViewController ()
@@ -20,11 +21,25 @@
 @synthesize workoutNoteButton =_workoutNoteButton;
 @synthesize workoutImageButton =_workoutImageButton;
 @synthesize workoutDatasButton =_workoutDatasButton;
-
-
+@synthesize workOutInfo =_workOutInfo;
 
 @synthesize scrollView =_scrollView;
 
+
+
+-(void)dealloc{
+
+  
+    
+    [_workoutNoteButton release];
+    [_workoutImageButton release];
+    [_workoutDatasButton release];
+    [_workOutInfo release];
+
+    
+    
+    [super dealloc];
+}
 
 
 -(void)setButtons{
@@ -34,7 +49,6 @@
     [workoutNoteButton addTarget:self action:@selector(workoutNoteButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [workoutNoteButton setTitle:@"健身日记" forState:UIControlStateNormal];
 
-    
     
     UIButton *workoutImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     workoutImageButton.frame = CGRectMake(30, 190, 240, 150);
@@ -61,7 +75,10 @@
     [scView addSubview:_workoutImageButton];
     [scView addSubview:_workoutDatasButton];
     
-    
+    [workoutNoteButton release];
+    [workoutDatasButton release];
+    [workoutImageButton release];
+
     
     
     
@@ -73,6 +90,7 @@
     [scView setScrollsToTop:YES];
     
     [self.view addSubview:_scrollView];
+    [scView release];
     
         
 }
@@ -177,19 +195,19 @@
     
     
     // Alternative use with REComposeViewControllerCompletionHandler
-    datasVC.completionHandler = ^(WorkoutDataComposeResult result) {
-        if (result == WorkoutDataComposeResultCancelled) {
-            NSLog(@"Cancelled");
-        }
-        
-        if (result == WorkoutDataComposeResultPosted) {
-            NSLog(@"Text = %@", datasVC.text);
-            
-            
-        }
-    };
-    
-    [self presentViewController:datasVC animated:YES completion:nil];
+//    datasVC.completionHandler = ^(WorkoutDataComposeResult result) {
+//        if (result == WorkoutDataComposeResultCancelled) {
+//            NSLog(@"Cancelled");
+//        }
+//        
+//        if (result == WorkoutDataComposeResultPosted) {
+//            NSLog(@"Text = %@", datasVC.text);
+//            
+//            
+//        }
+//    };
+//    
+//    [self presentViewController:datasVC animated:YES completion:nil];
 }
 
 #pragma mark -
@@ -222,13 +240,16 @@
     if (result == REComposeResultPosted) {
         
         ////健身日记数据接口
-
-        NSLog(@"Text = %@", composeViewController.text);
+        NSLog(@"健身日记数据:Text = %@", composeViewController.text);
     
     }
     
     
     [self.workoutNoteButton setTitle:composeViewController.text forState:UIControlStateNormal];
+    
+    
+    ////保存健身日记
+    self.workOutInfo.note = composeViewController.text;
     
     
     
@@ -247,20 +268,27 @@
          第1行数据  强度         1 4 7 10 13
          第2行数据  数量         2 5 8 11 14
          第3行数据  时间         3 6 9 12 15
+         第4行数据  补充文字      你好，今天我健身了！
+
          */
         NSLog(@"第一行数据 = %@", [composeViewController.dataArray objectAtIndex:0]);
-        NSLog(@"第二行数据 %@", [composeViewController.dataArray objectAtIndex:1]);
-        NSLog(@"第三行数据 %@", [composeViewController.dataArray objectAtIndex:2]);
-        NSLog(@"第4行数据 %@",[[composeViewController.dataArray objectAtIndex:3] objectAtIndex:0]);
+        NSLog(@"第二行数据 =%@", [composeViewController.dataArray objectAtIndex:1]);
+        NSLog(@"第三行数据 =%@", [composeViewController.dataArray objectAtIndex:2]);
+        NSLog(@"第四行数据 =%@",[[composeViewController.dataArray objectAtIndex:3] objectAtIndex:0]);
 
         
         
-        self.superViewController.intensityList = [composeViewController.dataArray objectAtIndex:0];
-        self.superViewController.amountList = [composeViewController.dataArray objectAtIndex:1];
-        self.superViewController.timeList = [composeViewController.dataArray objectAtIndex:2];
+//        self.superViewController.intensityList = [composeViewController.dataArray objectAtIndex:0];
+//        self.superViewController.amountList = [composeViewController.dataArray objectAtIndex:1];
+//        self.superViewController.timeList = [composeViewController.dataArray objectAtIndex:2];
+//        
+//        ///获取最后一个，数据框的字符串
+//        self.superViewController.moreNote = [[composeViewController.dataArray objectAtIndex:3] objectAtIndex:0];
         
-        ///获取最后一个，数据框的字符串
-        self.superViewController.moreNote = [[composeViewController.dataArray objectAtIndex:3] objectAtIndex:0];
+        
+        ////保存健身精确数据;
+        
+        [self.workOutInfo setDatas: composeViewController.dataArray];
         
         
     }
@@ -338,6 +366,10 @@
         [self.navigationController  dismissViewControllerAnimated:YES completion:^{
             
             [self.workoutImageButton setImage:image forState:UIControlStateNormal];
+            
+            
+            ////保存健身照片;
+            [self.workOutInfo setImage:image];
             
         }];
     }
