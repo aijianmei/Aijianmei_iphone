@@ -129,6 +129,11 @@
     
     [self.scrollView addSubview:_drawView];
     [self.scrollView setContentSize:CGSizeMake(320.0,586.0)];
+    
+    NSLog(@"%d",[_amountList count]);
+    NSLog(@"%d",[_timeList count]);
+    NSLog(@"%d",[_intensityList count]);
+
 }
 
 - (void)showData

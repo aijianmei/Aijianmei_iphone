@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CommonService.h"
-
-
+#import <RestKit/RestKit.h>
 
 
 @protocol UserServiceDelegate <NSObject>
