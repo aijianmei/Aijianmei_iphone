@@ -223,9 +223,6 @@
         //打印二维数组
         NSLog(@"show me  %@",[[_dataArray objectAtIndex:2] objectAtIndex:column - 1]);
     }
-    
-    
-    
     return YES;
     
 }

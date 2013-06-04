@@ -150,8 +150,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    
-    
+
     [self initUI];
     
     [self initWorkOutDatas];
@@ -159,8 +158,7 @@
      self.dataList = [[VideoManager defaultManager]  videoList];
     
     
-    
-//    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
 
     
     
