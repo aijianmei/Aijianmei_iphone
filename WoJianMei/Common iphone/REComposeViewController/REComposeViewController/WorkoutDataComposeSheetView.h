@@ -35,7 +35,10 @@
     UIImageView *_attachmentContainerView;
     
     NSMutableArray *_dataArray;
+    
     UIButton *_addButton;
+    UITextField *_moreTextField;
+    
     
     
     
@@ -46,6 +49,8 @@
 ///表格数据
 @property (retain,nonatomic) NSMutableArray *dataArray;
 @property (retain,nonatomic) UIButton *addButton;
+@property (retain,nonatomic) UITextField *moreTextField;
+
 
 @property (readonly, nonatomic) UIView *attachmentView;
 @property (readonly, nonatomic) UIImageView *attachmentImageView;

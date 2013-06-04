@@ -113,9 +113,7 @@
 //        [_attachmentView addSubview:_attachmentContainerView];
         _attachmentView.hidden = YES;
         
-        
-        
-        
+
         [self addSubview:_navigationBar];
         
         

@@ -332,10 +332,6 @@
     [accessoryViewButton setImage:mySelectedImage forState:UIControlStateHighlighted];
     
     cell.accessoryView = accessoryViewButton;
-    
-    
-
-    
 
     return cell;
 }

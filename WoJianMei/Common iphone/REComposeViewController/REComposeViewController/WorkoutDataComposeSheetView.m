@@ -30,37 +30,53 @@
 
 @implementation WorkoutDataComposeSheetView
 
-
-
 -(void)initAddButton{
     
     ///addebutton
-    
     int positionX = 50;
-    
     UIButton * addButton = [UIButton buttonWithType:UIButtonTypeCustom];
     addButton.frame = CGRectMake(positionX * count
-                                 ,3, 30, 30);
+                                 ,0, 20, 20);
     [addButton setImage:[UIImage imageNamed:@"add_button.png"] forState:UIControlStateNormal];
-
-    
     [addButton addTarget:self action:@selector(addButtons) forControlEvents:UIControlEventTouchUpInside];
 
-    
+
     self.addButton = addButton;
+
     
     [_scrollView addSubview:self.addButton];
     
-    
-    
 }
+
+
+-(void)initMoreTextField{
+    
+    int positionX = 50;
+    int positionY = 30;
+    
+    UITextField *textField4 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * count -40 ,4 * positionY, 40, 25)];
+    [textField4 setBackground:[UIImage imageNamed:@"data_button"]];
+    [textField4 setDelegate:self];
+    [textField4 setText:@"更多..."];
+    [textField4 setFont:[UIFont systemFontOfSize:10]];
+    [textField4 setTextAlignment:NSTextAlignmentCenter];
+    [textField4 setTextColor:[UIColor grayColor]];
+    [textField4 setTag:20130604];
+    
+    self.moreTextField  = textField4;
+    [_scrollView addSubview:_moreTextField];
+
+
+
+}
+
 
 
 ////Tom Callons methods
 -(void)addButtons{
    
     int positionX = 50;
-    int positionY = 40;
+    int positionY = 30;
     
     count++;
     
@@ -72,7 +88,7 @@
     
     
     UIButton *numberButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    numberButton.frame = CGRectMake(positionX * count -40,positionY -40, 30, 30);
+    numberButton.frame = CGRectMake(positionX * count -40,positionY -30, 30, 30);
     
     NSString *number = [NSString stringWithFormat:@"%i",count] ;
     [numberButton setTitle:number forState:UIControlStateNormal];
@@ -82,42 +98,54 @@
     
     
     
-    UITextField *textField1 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * count -40, positionY, 40, 30)];
+    UITextField *textField1 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * count -40, positionY, 40, 25)];
     [textField1 setBackground:[UIImage imageNamed:@"data_button"]];
     
     [textField1 setTag:  1 + 3 * (count - 1)];
     [textField1 setDelegate:self];
     [textField1 setText:@"0"];
+    [textField1 setTextAlignment:NSTextAlignmentCenter];
+    [textField1 setTextColor:[UIColor grayColor]];
+
 
     
-    UITextField *textField2 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * count -40, 2 * positionY , 40, 30)];
+    UITextField *textField2 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * count -40, 2 * positionY , 40, 25)];
     [textField2 setBackground:[UIImage imageNamed:@"data_button"]];
     [textField2 setTag:2 + 3 * (count - 1)];
     [textField2 setDelegate:self];
     [textField2 setText:@"0"];
+    [textField2 setTextAlignment:NSTextAlignmentCenter];
+    [textField2 setTextColor:[UIColor grayColor]];
+
     
-    
-    
-    UITextField *textField3 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * count -40 ,3 * positionY, 40, 30)];
+    UITextField *textField3 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * count -40 ,3 * positionY, 40, 25)];
     [textField3 setBackground:[UIImage imageNamed:@"data_button"]];
     [textField3 setTag: 3 + 3 * (count - 1)];
     [textField3 setDelegate:self];
     [textField3 setText:@"0"];
-
+    [textField3 setTextAlignment:NSTextAlignmentCenter];
+    [textField3 setTextColor:[UIColor grayColor]];
+    
+  
+    
+    
+    
     
     
     [_scrollView addSubview:numberButton];
     [_scrollView addSubview:textField1];
     [_scrollView addSubview:textField2];
     [_scrollView addSubview:textField3];
+
     
     /// reset the addbutton position
     [self.addButton setFrame:CGRectMake(positionX * count
-                                        ,3, 30, 30)];
+                                        ,0, 20, 20)];
     
     
+    [_moreTextField setFrame:CGRectMake(10,4 * positionY,40 + positionX *count - 50,25)];
     
-        
+    
 }
 
 
@@ -126,61 +154,22 @@
 -(BOOL)textFieldShouldBeginEditing:(UITextField*)textField {
     
    [textField setText:nil];
-    
-//    ////计算当前是第x行
-//    if (textField.tag%3 == 1) {
-//        
-//        //计算是第x列数据
-//        int column = (textField.tag -1)/3  + 1;
-//        
-//        NSLog(@"The column: %i ,The row : 1 ",column);
-//        
-//        //存储二维数组，第1行数据，在array 中排在0位置；
-//        [[_dataArray objectAtIndex:0] setObject:textField.text atIndex:column -1];
-//        [[_dataArray objectAtIndex:0] replaceObjectAtIndex:(column -1)withObject:textField.text];
-//        
-//        //打印二维数组
-//        NSLog(@"show me  %@",[[_dataArray objectAtIndex:0] objectAtIndex:(column - 1)]);
-//    }
-//    
-//    if (textField.tag%3 == 2) {
-//        //计算是第x列数据
-//        int column = (textField.tag -2)/3  + 1;
-//        
-//        NSLog(@"The column: %i ,The row : 2 ",column);
-//        
-//        //存储二维数组，第2行数据，在array 中排在1位置；
-//        [[_dataArray objectAtIndex:1] setObject:textField.text atIndex:column -1];
-//        [[_dataArray objectAtIndex:1] replaceObjectAtIndex:(column -1)withObject:textField.text];
-//        
-//        //打印二维数组
-//        NSLog(@"show me  %@",[[_dataArray objectAtIndex:1] objectAtIndex:column - 1]);
-//        
-//    }
-//    if (textField.tag%3 == 0) {
-//        
-//        //计算是第x列数据
-//        int column = (textField.tag -3)/3  + 1;
-//        
-//        NSLog(@"The column: %i ,The row : 3 ",column);
-//        //存储二维数组 ，第三行数据，在array 中排在2位置；
-//        
-//        [[_dataArray objectAtIndex:2] setObject:textField.text atIndex:column -1];
-//        [[_dataArray objectAtIndex:2] replaceObjectAtIndex:(column -1)withObject:textField.text];
-//        
-//        //打印二维数组
-//        NSLog(@"show me  %@",[[_dataArray objectAtIndex:2] objectAtIndex:column - 1]);
-//    }
-//
-   return YES;
+      return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     
     // return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
     
-    ////计算当前是第x行    
-    if (textField.tag%3 == 1) {
+    BOOL isTextFieldTag;
+    
+    if (textField.tag ==20130604) {
+        isTextFieldTag = YES;
+    }
+    
+    
+    ////计算当前是第x行
+    if (textField.tag%3 == 1  && !isTextFieldTag) {
         
         //计算是第x列数据
         int column = (textField.tag -1)/3  + 1;
@@ -195,7 +184,7 @@
         NSLog(@"show me  %@",[[_dataArray objectAtIndex:0] objectAtIndex:(column - 1)]);
     }
     
-    if (textField.tag%3 == 2) {
+    if (textField.tag%3 == 2 && !isTextFieldTag) {
         //计算是第x列数据
         int column = (textField.tag -2)/3  + 1;
         
@@ -209,7 +198,7 @@
         NSLog(@"show me  %@",[[_dataArray objectAtIndex:1] objectAtIndex:column - 1]);
         
     }
-    if (textField.tag%3 == 0) {
+    if (textField.tag%3 == 0 && !isTextFieldTag) {
         
         //计算是第x列数据
         int column = (textField.tag -3)/3  + 1;
@@ -223,6 +212,9 @@
         //打印二维数组
         NSLog(@"show me  %@",[[_dataArray objectAtIndex:2] objectAtIndex:column - 1]);
     }
+    
+    
+    
     return YES;
     
 }
@@ -245,6 +237,7 @@
                                 [[NSMutableArray alloc]init],
                                 [[NSMutableArray alloc]init],
                                 [[NSMutableArray alloc]init],
+                                 [[NSMutableArray alloc]init],
                                  nil];
         
         self.dataArray =array;
@@ -289,41 +282,54 @@
         _textViewContainer.clipsToBounds = YES;
         _textViewContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         
+        int buttonHeight = 30;
+        
     
         UIButton * setsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        setsButton.frame = CGRectMake(2, 5, 50, 30);
+        setsButton.frame = CGRectMake(0, buttonHeight -buttonHeight , 50, 30);
         [setsButton setTitle:@"组数" forState:UIControlStateNormal];
         [setsButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         setsButton.titleLabel.font = [UIFont systemFontOfSize:12.5];
         
-//        [setsButton setTitleColor:[[UIColor alloc]initWithRed:0.121 green:0.472 blue:0.823 alpha:1] forState:UIControlStateNormal];
-//        [setsButton addTarget:self  action:@selector(emailAction:)  forControlEvents:UIControlEventTouchUpInside];
 
         UIButton *weightButton =  [UIButton buttonWithType:UIButtonTypeCustom];
-        weightButton.frame = CGRectMake(0, 45, 50, 30);
+        weightButton.frame = CGRectMake(0, buttonHeight, 50, 30);
         [weightButton setTitle:@"强度" forState:UIControlStateNormal];
         
         [weightButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         weightButton.titleLabel.font = [UIFont systemFontOfSize:12.5];
         
         UIButton *numbersButton =  [UIButton buttonWithType:UIButtonTypeCustom];
-        [numbersButton setFrame: CGRectMake(0, 85, 50, 30)];
+        [numbersButton setFrame: CGRectMake(0, 2 * buttonHeight, 50, 30)];
         [numbersButton setTitle:@"数量" forState:UIControlStateNormal];
         
         [numbersButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         numbersButton.titleLabel.font = [UIFont systemFontOfSize:12.5];
     
         UIButton *timeButton =  [UIButton buttonWithType:UIButtonTypeCustom];
-        [timeButton setFrame: CGRectMake(0,125,50,30)];
+        [timeButton setFrame: CGRectMake(0,3 * buttonHeight,50,30)];
         [timeButton setTitle:@"时间" forState:UIControlStateNormal];
         
         [timeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         timeButton.titleLabel.font = [UIFont systemFontOfSize:12.5];
         
-        [_textViewContainer addSubview:setsButton];
-        [_textViewContainer addSubview:weightButton];
+        
+        UIButton *moreButton =  [UIButton buttonWithType:UIButtonTypeCustom];
+        [moreButton setFrame: CGRectMake(0,4 * buttonHeight,50,30)];
+        [moreButton setTitle:@"更多" forState:UIControlStateNormal];
+        
+        [moreButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        moreButton.titleLabel.font = [UIFont systemFontOfSize:12.5];
+        
+
+        
+        
+        
+        [_textViewContainer addSubview:   setsButton];
+        [_textViewContainer addSubview: weightButton];
         [_textViewContainer addSubview:numbersButton];
-        [_textViewContainer addSubview:timeButton];
+        [_textViewContainer addSubview:   timeButton];
+        [_textViewContainer addSubview:   moreButton];
     
         
         /////Overwirte the textView's location
@@ -368,6 +374,7 @@
         ////添加按妞以及初始化buttons
         [self addButtons];
         [self initAddButton];
+        [self initMoreTextField];
         
         
     }
@@ -386,10 +393,16 @@
 {
     if ([_delegate respondsToSelector:@selector(cancelButtonPressed)])
         [_delegate cancelButtonPressed];
+    
+    
 }
 
 - (void)postButtonPressed
 {
+    ////保存 more 数据
+    [[_dataArray objectAtIndex:3] setObject:@"more" atIndex:0];
+    [[_dataArray objectAtIndex:3] replaceObjectAtIndex:0 withObject:_moreTextField.text];
+    
     if ([_delegate respondsToSelector:@selector(postButtonPressed)])
         [_delegate postButtonPressed];
     

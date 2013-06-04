@@ -140,14 +140,7 @@
 
 - (void)workoutImageButtonPressed
 {
-//    REComposeViewController *composeViewController = [[REComposeViewController alloc] init];
-//    composeViewController.title = @"健身图片";
-//    composeViewController.hasAttachment = YES;
-//    composeViewController.text = @"点击添加图片！！！";
-//    composeViewController.attachmentImage = [UIImage imageNamed:@"Flower.jpg"];
-//    composeViewController.delegate = self;
-//    [self presentViewController:composeViewController animated:YES completion:nil];
-    
+
     
     UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
                                                        delegate:self
@@ -258,9 +251,17 @@
         NSLog(@"第一行数据 = %@", [composeViewController.dataArray objectAtIndex:0]);
         NSLog(@"第二行数据 %@", [composeViewController.dataArray objectAtIndex:1]);
         NSLog(@"第三行数据 %@", [composeViewController.dataArray objectAtIndex:2]);
+        NSLog(@"第4行数据 %@",[[composeViewController.dataArray objectAtIndex:3] objectAtIndex:0]);
+
+        
+        
         self.superViewController.intensityList = [composeViewController.dataArray objectAtIndex:0];
         self.superViewController.amountList = [composeViewController.dataArray objectAtIndex:1];
         self.superViewController.timeList = [composeViewController.dataArray objectAtIndex:2];
+        
+        ///获取最后一个，数据框的字符串
+        self.superViewController.moreNote = [[composeViewController.dataArray objectAtIndex:3] objectAtIndex:0];
+        
         
     }
 }
