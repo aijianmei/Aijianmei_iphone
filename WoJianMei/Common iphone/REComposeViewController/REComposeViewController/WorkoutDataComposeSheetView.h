@@ -36,11 +36,13 @@
     
     NSMutableArray *_dataArray;
     
-    UIButton *_addButton;
+    UIButton      *_addButton;
     UITextField *_moreTextField;
     
+    UITextField *_lastClickTextField;
+    UITextField *_firstClickTextField;
     
-    
+
     
     int count;
 }
@@ -50,6 +52,11 @@
 @property (retain,nonatomic) NSMutableArray *dataArray;
 @property (retain,nonatomic) UIButton *addButton;
 @property (retain,nonatomic) UITextField *moreTextField;
+@property (retain,nonatomic) UITextField *firstClickTextField;
+
+@property (retain,nonatomic) UITextField *lastClickTextField;
+
+
 
 
 @property (readonly, nonatomic) UIView *attachmentView;

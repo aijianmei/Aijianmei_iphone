@@ -105,7 +105,16 @@
     [textField1 setTextAlignment:NSTextAlignmentCenter];
     [textField1 setTextColor:[UIColor grayColor]];
 
+    
+    if (textField1.tag ==1) {
+        
+        self.firstClickTextField =textField1;
+        
+        [self.firstClickTextField becomeFirstResponder];
+    }
+    
 
+    
     
     UITextField *textField2 = [[UITextField alloc]initWithFrame:CGRectMake(positionX * count -40, 2 * positionY , 40, 25)];
     [textField2 setBackground:[UIImage imageNamed:@"data_button"]];
@@ -152,6 +161,9 @@
 -(BOOL)textFieldShouldBeginEditing:(UITextField*)textField {
     
    [textField setText:nil];
+    
+   self.lastClickTextField = textField;
+
       return YES;
 }
 
@@ -162,6 +174,8 @@
     BOOL isTextFieldTag;
     
     isTextFieldTag = NO;
+    
+    
     
     
     if (textField.tag ==20130604) {
@@ -176,6 +190,12 @@
         int column = (textField.tag -1)/3  + 1;
         
         NSLog(@"The column: %i ,The row : 1 ",column);
+        
+        
+        if ([textField.text isEqual: @""]) {
+            [textField setText:@"0"];
+        }
+        
 
         //存储二维数组，第1行数据，在array 中排在0位置；
         [[_dataArray objectAtIndex:0] setObject:textField.text atIndex:column -1];
@@ -190,6 +210,10 @@
         int column = (textField.tag -2)/3  + 1;
         
         NSLog(@"The column: %i ,The row : 2 ",column);
+        
+        if ([textField.text isEqual: @""]) {
+            [textField setText:@"0"];
+        }
         
         //存储二维数组，第2行数据，在array 中排在1位置；
         [[_dataArray objectAtIndex:1] setObject:textField.text atIndex:column -1];
@@ -206,6 +230,12 @@
         
         NSLog(@"The column: %i ,The row : 3 ",column);
         //存储二维数组 ，第三行数据，在array 中排在2位置；
+        
+        
+        if ([textField.text isEqual: @""]) {
+            [textField setText:@"0"];
+        }
+        
         
         [[_dataArray objectAtIndex:2] setObject:textField.text atIndex:column -1];
         [[_dataArray objectAtIndex:2] replaceObjectAtIndex:(column -1)withObject:textField.text];
@@ -378,6 +408,8 @@
         [self initMoreTextField];
         
         
+        
+        
     }
     return self;
 }
@@ -403,6 +435,71 @@
     ////保存 more 数据
     [[_dataArray objectAtIndex:3] setObject:@"more" atIndex:0];
     [[_dataArray objectAtIndex:3] replaceObjectAtIndex:0 withObject:_moreTextField.text];
+    
+    
+    
+    ////保存最后点击的Text field 数据
+    ////计算当前是第x行, 以及判断是否应该考虑 textfield ；
+    if (self.lastClickTextField.tag%3 == 1 &&self.lastClickTextField.tag != 20130604) {
+        
+        //计算是第x列数据
+        int column = (self.lastClickTextField.tag -1)/3  + 1;
+        
+        NSLog(@"The column: %i ,The row : 1 ",column);
+        
+        if ([self.lastClickTextField.text isEqual: @""]) {
+            [self.lastClickTextField setText:@"0"];
+        }
+        
+        //存储二维数组，第1行数据，在array 中排在0位置；
+        [[_dataArray objectAtIndex:0] setObject:self.lastClickTextField.text atIndex:column -1];
+        [[_dataArray objectAtIndex:0] replaceObjectAtIndex:(column -1)withObject:self.lastClickTextField.text];
+        
+        //打印二维数组
+        NSLog(@"show me  %@",[[_dataArray objectAtIndex:0] objectAtIndex:(column - 1)]);
+    }
+    
+    if (self.lastClickTextField.tag == 2 &&self.lastClickTextField.tag != 20130604) {
+        //计算是第x列数据
+        int column = (self.lastClickTextField.tag -2)/3  + 1;
+        
+        NSLog(@"The column: %i ,The row : 2 ",column);
+        
+        if ([self.lastClickTextField.text isEqual: @""]) {
+            [self.lastClickTextField setText:@"0"];
+        }
+        
+        //存储二维数组，第2行数据，在array 中排在1位置；
+        [[_dataArray objectAtIndex:1] setObject:self.lastClickTextField.text atIndex:column -1];
+        [[_dataArray objectAtIndex:1] replaceObjectAtIndex:(column -1)withObject:self.lastClickTextField.text];
+        
+        //打印二维数组
+        NSLog(@"show me  %@",[[_dataArray objectAtIndex:1] objectAtIndex:column - 1]);
+        
+    }
+    
+    if (self.lastClickTextField.tag%3 == 0 &&self.lastClickTextField.tag != 20130604) {
+        
+        //计算是第x列数据
+        int column = (self.lastClickTextField.tag -3)/3  + 1;
+        
+        NSLog(@"The column: %i ,The row : 3 ",column);
+        //存储二维数组 ，第三行数据，在array 中排在2位置；
+        
+        if ([self.lastClickTextField.text isEqual: @""]) {
+            [self.lastClickTextField setText:@"0"];
+        }
+        
+        [[_dataArray objectAtIndex:2] setObject:self.lastClickTextField.text atIndex:column -1];
+        [[_dataArray objectAtIndex:2] replaceObjectAtIndex:(column -1)withObject:self.lastClickTextField.text];
+        
+        //打印二维数组
+        NSLog(@"show me  %@",[[_dataArray objectAtIndex:2] objectAtIndex:column - 1]);
+    }
+    
+
+        
+    
     
     if ([_delegate respondsToSelector:@selector(postButtonPressed)])
         [_delegate postButtonPressed];
