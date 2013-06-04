@@ -16,6 +16,12 @@
 		4A3D0BA615CB73CC008F6639 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BA515CB73CC008F6639 /* Video.m */; };
 		4A3D0BBA15CB7CF2008F6639 /* WorkOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BB915CB7CF2008F6639 /* WorkOut.m */; };
 		4A3D0BD115CB9F39008F6639 /* VideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BD015CB9F38008F6639 /* VideoManager.m */; };
+		4A429DB8175D7EFD00F018CE /* login_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A429DB3175D7EFD00F018CE /* login_2.png */; };
+		4A429DB9175D7EFD00F018CE /* loin_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A429DB4175D7EFD00F018CE /* loin_3.png */; };
+		4A429DBA175D7EFD00F018CE /* loing_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A429DB5175D7EFD00F018CE /* loing_1.png */; };
+		4A429DBB175D7EFD00F018CE /* loing_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A429DB6175D7EFD00F018CE /* loing_2.png */; };
+		4A429DBC175D7EFD00F018CE /* loing_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A429DB7175D7EFD00F018CE /* loing_4.png */; };
+		4A429DBF175DD1BA00F018CE /* WorkOutInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A429DBE175DD1B900F018CE /* WorkOutInfo.m */; };
 		4A498E7F1685500F0073E682 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A498DAB1685500F0073E682 /* ioapi.c */; };
 		4A498E801685500F0073E682 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A498DAD1685500F0073E682 /* mztools.c */; };
 		4A498E811685500F0073E682 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A498DAF1685500F0073E682 /* unzip.c */; };
@@ -632,6 +638,13 @@
 		4A3D0BB915CB7CF2008F6639 /* WorkOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOut.m; sourceTree = "<group>"; };
 		4A3D0BCF15CB9F38008F6639 /* VideoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoManager.h; sourceTree = "<group>"; };
 		4A3D0BD015CB9F38008F6639 /* VideoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoManager.m; sourceTree = "<group>"; };
+		4A429DB3175D7EFD00F018CE /* login_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_2.png; sourceTree = "<group>"; };
+		4A429DB4175D7EFD00F018CE /* loin_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loin_3.png; sourceTree = "<group>"; };
+		4A429DB5175D7EFD00F018CE /* loing_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loing_1.png; sourceTree = "<group>"; };
+		4A429DB6175D7EFD00F018CE /* loing_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loing_2.png; sourceTree = "<group>"; };
+		4A429DB7175D7EFD00F018CE /* loing_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loing_4.png; sourceTree = "<group>"; };
+		4A429DBD175DD1B900F018CE /* WorkOutInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOutInfo.h; sourceTree = "<group>"; };
+		4A429DBE175DD1B900F018CE /* WorkOutInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOutInfo.m; sourceTree = "<group>"; };
 		4A498DAA1685500F0073E682 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		4A498DAB1685500F0073E682 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
 		4A498DAC1685500F0073E682 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
@@ -1532,6 +1545,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A429DB2175D7EFD00F018CE /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4A429DB3175D7EFD00F018CE /* login_2.png */,
+				4A429DB4175D7EFD00F018CE /* loin_3.png */,
+				4A429DB5175D7EFD00F018CE /* loing_1.png */,
+				4A429DB6175D7EFD00F018CE /* loing_2.png */,
+				4A429DB7175D7EFD00F018CE /* loing_4.png */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		4A498D711685500F0073E682 /* Component-Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -3166,6 +3191,8 @@
 				4ADCFE08169D614600A3E979 /* MyselfViewController.m */,
 				C6C0CD211750F0B200A825AB /* WorkOutDataViewController.h */,
 				C6C0CD221750F0B200A825AB /* WorkOutDataViewController.m */,
+				4A429DBD175DD1B900F018CE /* WorkOutInfo.h */,
+				4A429DBE175DD1B900F018CE /* WorkOutInfo.m */,
 				4A3AB805175060F10045729D /* WorkOutProcessViewController.h */,
 				4A3AB806175060F10045729D /* WorkOutProcessViewController.m */,
 				4A3AB8081750631E0045729D /* WorkoutNoteViewController.h */,
@@ -3243,6 +3270,7 @@
 		4ADCFE56169D62C300A3E979 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4A429DB2175D7EFD00F018CE /* Login */,
 				4A634E0917533DD100453C0D /* posting */,
 				4A634DE617530E7300453C0D /* profile_settings */,
 				4A634DAB1752FF1900453C0D /* Workout */,
@@ -3982,6 +4010,11 @@
 				4ACA49651755BB8600CC9886 /* 57X57.png in Resources */,
 				4ACA49671755BB9300CC9886 /* 114X114.png in Resources */,
 				4A2D60531756214200A92F08 /* 74x74.png in Resources */,
+				4A429DB8175D7EFD00F018CE /* login_2.png in Resources */,
+				4A429DB9175D7EFD00F018CE /* loin_3.png in Resources */,
+				4A429DBA175D7EFD00F018CE /* loing_1.png in Resources */,
+				4A429DBB175D7EFD00F018CE /* loing_2.png in Resources */,
+				4A429DBC175D7EFD00F018CE /* loing_4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4273,6 +4306,7 @@
 				4AABA20E1753907B000C4F68 /* DEComposeBackgroundScrollView.m in Sources */,
 				4ACA496A1755EF9700CC9886 /* WorkoutDataComposeSheetView.m in Sources */,
 				4ACA496D1755F84300CC9886 /* WorkoutDataComposeViewController.m in Sources */,
+				4A429DBF175DD1BA00F018CE /* WorkOutInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

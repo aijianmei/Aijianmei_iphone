@@ -50,9 +50,9 @@
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[[ImageManager defaultManager] allBackgroundImage]]];
     
-    [self setNavigationLeftButton:NSLS(@" 返回") 
+    [self setNavigationLeftButton:NSLS(@"返回") 
                          fontSize:FONT_SIZE
-                        imageName:@"back.png"
+                        imageName:@"top_bar_backButton.png"
                            action:@selector(clickBack:)];
     
     [self setNavigationRightButton:NSLS(@"发送") 

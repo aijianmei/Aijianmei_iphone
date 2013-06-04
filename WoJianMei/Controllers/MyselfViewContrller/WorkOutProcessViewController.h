@@ -21,6 +21,9 @@
 @property (nonatomic,retain) NSMutableArray *intensityList;
 @property (nonatomic,retain) NSMutableArray *timeList;
 
+
+@property (nonatomic ,retain) NSString *moreNote;
+
 //显示第几组数据
 @property (nonatomic,assign) int dataIndex;
 

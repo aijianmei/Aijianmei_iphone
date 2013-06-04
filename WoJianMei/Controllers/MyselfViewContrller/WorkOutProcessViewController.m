@@ -82,7 +82,7 @@
 - (void)clickAddButton:(id)sender
 {
     WorkOutDataViewController *rvController = [[[WorkOutDataViewController alloc]init] autorelease];
-    rvController.superViewController = self;
+//    rvController.superViewController = self;
     [self.navigationController pushViewController:rvController animated:YES];
 
 }
