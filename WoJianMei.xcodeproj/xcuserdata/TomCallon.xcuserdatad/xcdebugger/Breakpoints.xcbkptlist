@@ -38,6 +38,12 @@
          symbolName = ""
          moduleName = "">
       </SymbolicBreakpoint>
+      <AddressBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         symbolName = "*0x992d27d3">
+      </AddressBreakpoint>
    </SymbolicBreakpoints>
    <ExceptionBreakpoints>
       <ExceptionBreakpoint

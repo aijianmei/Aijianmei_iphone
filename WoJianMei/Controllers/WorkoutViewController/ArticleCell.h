@@ -20,40 +20,42 @@
 - (void)didClickSinaWeiBlogButton:(id)sender atIndex:(NSIndexPath *)indexPath;
 - (void)clickShowBigImage:(id)sender atIndex:(NSIndexPath *)indexPath;
 ;
+
+
 @end
 
 
 
-@interface VideoListCell : UITableViewCell
+@interface ArticleCell : UITableViewCell
 {
     id<VideoListCellDelegate>delegate;
     
-     UIButton *_followButton;
     
     
 }
-@property (retain, nonatomic) IBOutlet UIButton *productImageButton;
-@property (retain, nonatomic) IBOutlet UILabel *timeLeghtLabel;
-@property (retain, nonatomic) IBOutlet UILabel *repeatTimesLabel;
-@property (retain, nonatomic) IBOutlet UILabel *setsLabel;
-@property (retain, nonatomic) IBOutlet UILabel *upLabel;
-@property (retain, nonatomic) IBOutlet UILabel *downLabel;
-@property (retain, nonatomic) IBOutlet UILabel *priceLabel;
-@property (retain, nonatomic) IBOutlet UIButton *followButton;
+
+
+
+@property (retain, nonatomic) IBOutlet UILabel *titleLabel;
+
+@property (retain, nonatomic) IBOutlet UILabel *descriptionLabel;
+
+@property (retain, nonatomic) IBOutlet UIButton *ImageButton;
+@property (retain, nonatomic) IBOutlet UILabel  *releasedTimeLabel;
+@property (retain, nonatomic) IBOutlet UILabel  *commentLabel;
+@property (retain, nonatomic) IBOutlet UILabel  *clickTimesLabel;
+
 
 @property (nonatomic, assign) id<VideoListCellDelegate>delegate;
 
-+ (VideoListCell*) createCell:(id)delegate;
++ (ArticleCell*) createCell:(id)delegate;
 + (NSString*)getCellIdentifier;
 + (CGFloat)getCellHeight;
 - (void)setCellInfo:(Video *)Video;
 
 
 
-- (IBAction)clickFollowButton:(id)sender;
-- (IBAction)clickBuyButton:(id)sender;
-- (IBAction)clickSinaWeiBlogButton:(id)sender;
-- (IBAction)clickShowBigImage:(id)sender;
+
 
 
 

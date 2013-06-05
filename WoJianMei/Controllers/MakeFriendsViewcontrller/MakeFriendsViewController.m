@@ -27,21 +27,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    
-    
-    
-    
-//    [self setNavigationLeftButton:nil imageName:@"postButton.png" action:@selector(clickPostButton:)];
-//
-//   [self setNavigationRightButton:nil imageName:@"refreshButton.png" action:@selector(clickPostButton:)];
-    
-    [self setBackgroundImageName:@"BackGround.png"];
+     
+    [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
-
-    
-
-    
 
 }
 

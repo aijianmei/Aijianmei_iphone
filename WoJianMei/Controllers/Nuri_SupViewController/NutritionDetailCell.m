@@ -48,7 +48,7 @@
 }
 + (CGFloat)getCellHeight{
     
-    return 81.0f;
+    return 134.0f;
 }
 
 - (void)setCellInfo:(NutritionInfo *)nutritionInfo{

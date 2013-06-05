@@ -24,7 +24,7 @@
 
 
 }
-@property (nonatomic,retain) IBOutlet UIScrollView *buttonScrollView;
+@property (nonatomic,retain)UIScrollView *buttonScrollView;
 @property (nonatomic, retain)  UIView *myHeaderView;
 @property (nonatomic, retain)  iCarousel *carousel;
 

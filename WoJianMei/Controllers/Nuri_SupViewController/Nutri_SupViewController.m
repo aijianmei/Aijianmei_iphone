@@ -30,9 +30,6 @@
 
 
 -(void)dealloc{
-    
-    
-    
     _carousel.delegate = nil;
     _carousel.dataSource = nil;
     [_carousel release];
@@ -51,10 +48,7 @@
 }
 
 
--(void)buttonClicked:(id)sender{
 
-    NSLog(@"i click the button :%@",[sender description]);
-}
 -(void)viewWillAppear:(BOOL)animated{
   
     [super viewWillAppear:YES];
@@ -236,14 +230,17 @@
 }
 
 #pragma mark -
+#pragma mark  ButtonClicked  Methods
+
+-(void)buttonClicked:(id)sender{
+    
+    NSLog(@"i click the button :%@",[sender description]);
+}
+
+#pragma mark -
 #pragma mark  initUI  Methods
 
 -(void)initUI{
-    
-    
-//    [self.navigationItem setTitle:@"营养与补充"];
-
-    
     
     NSMutableArray *buttonArrays  =[[NSMutableArray alloc]init];
     NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最近更新",@"最热门",@"健身",@"瑜伽",@"增肌",@"减肥",@"瘦身",@"健美操",@"其它", nil];
@@ -251,11 +248,13 @@
     for (NSString *buttonTitle in buttonTitleArray) {
         
         UIButton *button =[[UIButton alloc]initWithFrame:CGRectMake(30, 0, 70, 30)];
+        
+                
         [button setBackgroundColor:[UIColor clearColor]];
         [button.titleLabel setFont:[UIFont systemFontOfSize:12]];
         
-        [button setBackgroundImage:[UIImage imageNamed:@"set.png"] forState:UIControlStateNormal];
-        [button setBackgroundImage:[UIImage imageNamed:@"set2.png"] forState:UIControlStateSelected];
+        [button setBackgroundImage:[UIImage imageNamed:@"button_Image.png"] forState:UIControlStateNormal];
+        [button setBackgroundImage:[UIImage imageNamed:@"button_Image.png"] forState:UIControlStateSelected];
         [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:buttonTitle forState:UIControlStateNormal];
         
@@ -266,37 +265,31 @@
         
     }
     
-    
     UIScrollView *scrollView = [PPViewController createButtonScrollViewByButtonArray:buttonArrays buttonsPerLine:[buttonArrays count] buttonSeparatorY:-1];
     self.buttonScrollView =scrollView;
+    [self.buttonScrollView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"button_BG.png"]]];
     [scrollView release];
     [buttonArrays release];
     
-    
-    
-    
     float buttonHeight = 30;
-    float buttonWidth = 70;
-    //    float buttonSeparatorY = 3;
-    
-    
+    float buttonWidth  = 70;
     
     [[self.view viewWithTag:SCROLL_VIEW_TAG] removeFromSuperview];
     self.buttonScrollView.tag = SCROLL_VIEW_TAG;
-    [self.buttonScrollView setFrame:CGRectMake(0,10, 1220, 30)];
+    [self.buttonScrollView setFrame:CGRectMake(0,150, 1220, 30)];
+    [self.buttonScrollView setShowsHorizontalScrollIndicator:NO];
     
     [self.buttonScrollView setContentSize:CGSizeMake([buttonArrays count] * buttonWidth * 2.6, buttonHeight)];
-    
-    [self.buttonScrollView setShowsHorizontalScrollIndicator:YES];
-    [self.view addSubview:self.buttonScrollView];
-    
-
+        
     
     //configure carousel
     UIView *headerView =[[UIView alloc]init];
-    [headerView setFrame: CGRectMake(0, 0, 320, 140)];
+    [headerView setFrame: CGRectMake(0, 0, 320, 200)];
     self.myHeaderView = headerView;
     [headerView release];
+    
+    [self.myHeaderView addSubview:self.buttonScrollView];
+
     
     
     self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 0, 320, 140)];
@@ -309,7 +302,7 @@
     [self.dataTableView setTableHeaderView:self.myHeaderView];
     
     
-    [self setBackgroundImageName:@"BackGround.png"];
+    [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
     
     

@@ -192,10 +192,7 @@
         NSLog(@"The column: %i ,The row : 1 ",column);
         
         
-        if ([textField.text isEqual: @""]) {
-            [textField setText:@"0"];
-        }
-        
+              
 
         //存储二维数组，第1行数据，在array 中排在0位置；
         [[_dataArray objectAtIndex:0] setObject:textField.text atIndex:column -1];
@@ -211,10 +208,7 @@
         
         NSLog(@"The column: %i ,The row : 2 ",column);
         
-        if ([textField.text isEqual: @""]) {
-            [textField setText:@"0"];
-        }
-        
+               
         //存储二维数组，第2行数据，在array 中排在1位置；
         [[_dataArray objectAtIndex:1] setObject:textField.text atIndex:column -1];
         [[_dataArray objectAtIndex:1] replaceObjectAtIndex:(column -1)withObject:textField.text];
@@ -232,9 +226,7 @@
         //存储二维数组 ，第三行数据，在array 中排在2位置；
         
         
-        if ([textField.text isEqual: @""]) {
-            [textField setText:@"0"];
-        }
+      
         
         
         [[_dataArray objectAtIndex:2] setObject:textField.text atIndex:column -1];
@@ -447,13 +439,14 @@
         
         NSLog(@"The column: %i ,The row : 1 ",column);
         
-        if ([self.lastClickTextField.text isEqual: @""]) {
-            [self.lastClickTextField setText:@"0"];
-        }
+        
+            
         
         //存储二维数组，第1行数据，在array 中排在0位置；
         [[_dataArray objectAtIndex:0] setObject:self.lastClickTextField.text atIndex:column -1];
         [[_dataArray objectAtIndex:0] replaceObjectAtIndex:(column -1)withObject:self.lastClickTextField.text];
+        
+        
         
         //打印二维数组
         NSLog(@"show me  %@",[[_dataArray objectAtIndex:0] objectAtIndex:(column - 1)]);
@@ -465,9 +458,7 @@
         
         NSLog(@"The column: %i ,The row : 2 ",column);
         
-        if ([self.lastClickTextField.text isEqual: @""]) {
-            [self.lastClickTextField setText:@"0"];
-        }
+       
         
         //存储二维数组，第2行数据，在array 中排在1位置；
         [[_dataArray objectAtIndex:1] setObject:self.lastClickTextField.text atIndex:column -1];
@@ -486,9 +477,7 @@
         NSLog(@"The column: %i ,The row : 3 ",column);
         //存储二维数组 ，第三行数据，在array 中排在2位置；
         
-        if ([self.lastClickTextField.text isEqual: @""]) {
-            [self.lastClickTextField setText:@"0"];
-        }
+        
         
         [[_dataArray objectAtIndex:2] setObject:self.lastClickTextField.text atIndex:column -1];
         [[_dataArray objectAtIndex:2] replaceObjectAtIndex:(column -1)withObject:self.lastClickTextField.text];

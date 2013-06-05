@@ -54,7 +54,7 @@ typedef enum {
 -(void)initUI{
     
     ////Set the background Image
-    [self setBackgroundImageName:@"BackGround.png"];
+    [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
 
     ///Set the right bar button 

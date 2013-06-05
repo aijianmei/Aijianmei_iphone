@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VideoListCell.h"
+#import "ArticleCell.h"
 #import "PPTableViewController.h"
 
 @class ShowBigImageViewController;

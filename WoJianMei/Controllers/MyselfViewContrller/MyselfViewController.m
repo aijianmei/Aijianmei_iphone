@@ -208,7 +208,7 @@
     [self.dataTableView setTableHeaderView:self.myHeaderView];
     
     
-    [self setBackgroundImageName:@"gobal_background"];
+    [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
 
     

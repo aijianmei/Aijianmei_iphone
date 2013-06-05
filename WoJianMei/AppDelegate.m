@@ -13,7 +13,6 @@
 #import "Nutri_SupViewController.h"
 #import "MakeFriendsViewController.h"
 #import "MoreViewController.h"
-#import "PlayVideosViewController.h"
 #import "MySideMenueViewController.h"
 #import "MFSideMenu.h"
 #import "UIUtils.h"
@@ -80,16 +79,18 @@
     
     // Assign tab bar item with titles
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    
+    
     UITabBar *tabBar = tabBarController.tabBar;
     UITabBarItem *tabBarItem1 = [tabBar.items objectAtIndex:0];
     UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
     UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
     UITabBarItem *tabBarItem4 = [tabBar.items objectAtIndex:3];
-    UITabBarItem *tabBarItem5= [tabBar.items objectAtIndex:4];
+    UITabBarItem *tabBarItem5 = [tabBar.items objectAtIndex:4];
 
 //    
     tabBarItem1.title = @"锻炼";
-    tabBarItem2.title = @"营养补充";
+    tabBarItem2.title = @"营养与辅助";
     tabBarItem3.title = @"我";
     tabBarItem4.title = @"交友互动";
     tabBarItem5.title = @"更多";
@@ -104,7 +105,7 @@
     
     
     // Change the tab bar background
-    UIImage* tabBarBackground = [UIImage imageNamed:@"bottom_bg@2x.png"];
+    UIImage* tabBarBackground = [UIImage imageNamed:@"bottom_bg.png"];
     [[UITabBar appearance] setBackgroundImage:tabBarBackground];
     [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar_selected.png"]];
     
@@ -144,24 +145,21 @@
     _tencentOAuthManager = [TencentOAuthManager defaultManager];
     [_tencentOAuthManager createTencentQQWithAppId: @"100328471" appPermission:permissionArray appRedirectURI:@"www.qq.com" isInSafari:NO delegate:self];
     
-
-    ///腾讯微博
-//    self.tCWBEngine = [[TCWBEngine alloc] initWithAppKey:WiressSDKDemoAppKey andSecret:WiressSDKDemoAppSecret andRedirectUrl:@"http://www.aijianmei.com"];
     
     
-
-    MySideMenueViewController *mySideMenuViewController = [[MySideMenueViewController alloc] init];
-
-    MenuOptions options = MenuButtonEnabled|BackButtonEnabled;
-
     
-    // make sure to display the navigation controller before calling this
-    [MFSideMenuManager configureWithNavigationController:self.navigationController
-                                      sideMenuController:mySideMenuViewController
-                                                menuSide:MenuLeftHandSide
-                                                 options:options];
-    [mySideMenuViewController release];
-    
+//
+//    MySideMenueViewController *mySideMenuViewController = [[MySideMenueViewController alloc] init];
+//
+//    MenuOptions options = MenuButtonEnabled|BackButtonEnabled;
+//    
+//    // make sure to display the navigation controller before calling this
+//    [MFSideMenuManager configureWithNavigationController:nil
+//                                      sideMenuController:mySideMenuViewController
+//                                                menuSide:MenuLeftHandSide
+//                                                 options:options];
+//    [mySideMenuViewController release];
+//    
     
     
     
