@@ -30,9 +30,12 @@
 @property (nonatomic, retain) NSString       *articleId;
 @property (nonatomic, retain) NSString           *title;
 @property (nonatomic, retain) NSString     *description;
+
 @property (nonatomic, retain) UIImage            *image;
 @property (nonatomic, retain) NSString    *releasedTime;
 @property (nonatomic, retain) NSString         *comment;
+
+@property (nonatomic, retain) NSString      *clickTimes;
 @property (retain, nonatomic) NSNumber       *isRead;
 
 -(id)initWithId:(NSString*)aId
@@ -40,6 +43,7 @@
     description:(NSString*)aDescription
           image:(UIImage *)aImage
    releasedTime:(NSString *)aReleasedTime
+     clickTimes:(NSString*)aClickTimes
         comment:(NSString *)aComment
          isRead:(BOOL)aIsRead;
 
