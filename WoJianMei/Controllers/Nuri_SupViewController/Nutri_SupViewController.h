@@ -8,27 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
-///实现类似cover flow 效果。
 #import "iCarousel.h"
+#import <RestKit/RestKit.h>
 
 
-
-@interface Nutri_SupViewController: PPTableViewController<UITableViewDataSource,UITableViewDelegate,iCarouselDataSource, iCarouselDelegate>
-
-
+@interface Nutri_SupViewController: PPTableViewController<UITableViewDataSource,UITableViewDelegate,iCarouselDataSource, iCarouselDelegate, RKObjectLoaderDelegate>
 {
     UIScrollView *_buttonScrollView;
-    
-    UIView                      *_myHeaderView;
-    iCarousel                   *_carousel;
-
-
+    UIView *_myHeaderView;
+    iCarousel *_carousel;
 }
-@property (nonatomic,retain)UIScrollView *buttonScrollView;
-@property (nonatomic, retain)  UIView *myHeaderView;
-@property (nonatomic, retain)  iCarousel *carousel;
 
-
-
+@property (nonatomic,retain) UIScrollView *buttonScrollView;
+@property (nonatomic, retain) UIView *myHeaderView;
+@property (nonatomic, retain) iCarousel *carousel;
 
 @end

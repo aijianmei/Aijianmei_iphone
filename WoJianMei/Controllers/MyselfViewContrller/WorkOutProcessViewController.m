@@ -238,6 +238,7 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     NSLog(@"***Load objects count: %d", [objects count]);
+    //在这里就可以在controller刷新数据
 }
 
 @end

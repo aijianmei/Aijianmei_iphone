@@ -573,6 +573,7 @@
 		C6A718AE175E3AB40035E0D0 /* ArticleService.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A718AD175E3AB40035E0D0 /* ArticleService.m */; };
 		C6C0CD1D17509DA400A825AB /* DrawContextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C0CD1C17509DA400A825AB /* DrawContextView.m */; };
 		C6C0CD231750F0B200A825AB /* WorkOutDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C0CD221750F0B200A825AB /* WorkOutDataViewController.m */; };
+		C6DB1FF3175F91AC0060BD08 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DB1FF2175F91AC0060BD08 /* JSONKit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1505,6 +1506,8 @@
 		C6C0CD1C17509DA400A825AB /* DrawContextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawContextView.m; sourceTree = "<group>"; };
 		C6C0CD211750F0B200A825AB /* WorkOutDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOutDataViewController.h; sourceTree = "<group>"; };
 		C6C0CD221750F0B200A825AB /* WorkOutDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOutDataViewController.m; sourceTree = "<group>"; };
+		C6DB1FF1175F91AC0060BD08 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		C6DB1FF2175F91AC0060BD08 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3034,6 +3037,7 @@
 		4A9598CE168ED996006F1317 /* SinaWeiBoSDK_sso */ = {
 			isa = PBXGroup;
 			children = (
+				C6DB1FF0175F91AC0060BD08 /* JSONKit */,
 				4A9598D2168ED996006F1317 /* SinaWeibo.bundle */,
 				4A9598D3168ED996006F1317 /* SinaWeibo.h */,
 				4A9598D4168ED996006F1317 /* SinaWeibo.m */,
@@ -3636,6 +3640,15 @@
 				C699BA51175F6DF600F6CD71 /* RestKitResources.bundle */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C6DB1FF0175F91AC0060BD08 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				C6DB1FF1175F91AC0060BD08 /* JSONKit.h */,
+				C6DB1FF2175F91AC0060BD08 /* JSONKit.m */,
+			);
+			path = JSONKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -4291,6 +4304,7 @@
 				4A429DBF175DD1BA00F018CE /* WorkOutInfo.m in Sources */,
 				C6A718A4175E38B80035E0D0 /* Article.m in Sources */,
 				C6A718AE175E3AB40035E0D0 /* ArticleService.m in Sources */,
+				C6DB1FF3175F91AC0060BD08 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4456,8 +4470,8 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
-					"-ObjC",
 					"-all_load",
+					"-ObjC",
 				);
 				PRODUCT_NAME = WoJianMei;
 				SHARED_PRECOMPS_DIR = "";
@@ -4482,8 +4496,8 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
-					"-ObjC",
 					"-all_load",
+					"-ObjC",
 				);
 				PRODUCT_NAME = WoJianMei;
 				SHARED_PRECOMPS_DIR = "";

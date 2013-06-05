@@ -10,14 +10,11 @@
 #import "NutritionDetailCell.h"
 #import "NutritionInfo.h"
 #import "iCarousel.h"
-///// the setings of the iCarousel
+#import "ArticleService.h"
+
 #define NUMBER_OF_ITEMS 13
 #define NUMBER_OF_VISIBLE_ITEMS 18
 #define ITEM_SPACING 220
-
-
-
-
 #define SCROLL_VIEW_TAG 20120913
 
 @interface Nutri_SupViewController ()
@@ -27,9 +24,8 @@
 @implementation Nutri_SupViewController
 @synthesize buttonScrollView =_buttonScrollView;
 
-
-
--(void)dealloc{
+-(void)dealloc
+{
     _carousel.delegate = nil;
     _carousel.dataSource = nil;
     [_carousel release];
@@ -41,19 +37,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 
     [self initUI];
     [self initDatas];
+    
+    //获取网络数据
+//    [[ArticleService sharedService] findArticle:self];
+    
 }
-
-
 
 -(void)viewWillAppear:(BOOL)animated{
   
     [super viewWillAppear:YES];
     
 }
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -308,11 +306,35 @@
     
 }
 
-
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark -
+#pragma mark - RKObjectLoaderDelegate
+
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+    NSLog(@"Response code: %d", [response statusCode]);
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", [error localizedDescription]);
+}
+
+- (void)requestDidStartLoad:(RKRequest *)request
+{
+    NSLog(@"Start load request...");
+    
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
+    NSLog(@"Load objects count: %d", [objects count]);
+    self.dataList = objects;
+    //在这里就可以在controller刷新数据
+    //[self.dataTableView reloadData];
 }
 
 @end
