@@ -94,7 +94,7 @@
 
 //    
     tabBarItem1.title = @"锻炼";
-    tabBarItem2.title = @"营养补充";
+    tabBarItem2.title = @"营养与辅助";
     tabBarItem3.title = @"我";
     tabBarItem4.title = @"交友互动";
     tabBarItem5.title = @"更多";
@@ -156,7 +156,7 @@
 
     
     // make sure to display the navigation controller before calling this
-    [MFSideMenuManager configureWithNavigationController:self.navigationController
+    [MFSideMenuManager configureWithNavigationController:tabBarController
                                       sideMenuController:mySideMenuViewController
                                                 menuSide:MenuLeftHandSide
                                                  options:options];
