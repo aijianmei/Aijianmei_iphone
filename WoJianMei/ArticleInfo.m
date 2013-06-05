@@ -6,11 +6,26 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Video.h"
+#import "ArticleInfo.h"
 
-@implementation Video
+@implementation ArticleInfo
 
-@synthesize  videoId =_videoId;
+
+
+//NSString       *_articleId;
+//NSString     *_description;
+//NSString           *_title;
+//UIImage            *_image;
+//NSString    *_releasedTime;
+//NSString         *_comment;
+//NSString      *_clickTimes;
+//
+//NSNumber          *_isRead;
+
+
+
+
+@synthesize  articleId =_articleId;
 @synthesize image =_image;
 @synthesize title =_title;
 @synthesize timeLenght =_timeLength;
@@ -27,7 +42,7 @@
 {
     self = [super init];
     if (self) {
-        self.videoId =aId;
+        self.articleId =aId;
         self.title = atitle;
         self.timeLenght=aTimeLenght;
         self.image = aImage;
@@ -39,7 +54,7 @@
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
-    [aCoder encodeObject:self.videoId forKey:@"videoId"];
+    [aCoder encodeObject:self.articleId forKey:@"articleId"];
     [aCoder encodeObject:self.title forKey:@"title"];
     [aCoder encodeObject:self.timeLenght forKey:@"timeLenght"];
     [aCoder encodeObject:self.image forKey:@"image"];
@@ -51,7 +66,7 @@
 {
     
     if (self=[super init]) {
-        self.videoId =[aDecoder decodeObjectForKey:@"videoId"];
+        self.articleId =[aDecoder decodeObjectForKey:@"articleId"];
         self.title = [aDecoder decodeObjectForKey:@"title"];
         self.timeLenght =[aDecoder decodeObjectForKey:@"timeLenght"];
         self.image = [aDecoder decodeObjectForKey:@"image"];
@@ -62,20 +77,20 @@
 }
 
 
-- (void)updateByVideo:(Video *)video
+- (void)updateByArticle:(ArticleInfo *)article
 {
-    self.videoId = video.videoId;
-    self.title =video.title;
-    self.timeLenght = video.timeLenght;
-    self.image =video.image;
-    self.workOut = video.workOut;
-    self.isFollow =video.isFollow;
+    self.articleId = article.articleId;
+    self.title =article.title;
+    self.timeLenght = article.timeLenght;
+    self.image =article.image;
+    self.workOut = article.workOut;
+    self.isFollow =article.isFollow;
 
 }
 
 -(void)dealloc{
 
-    [_videoId release];
+    [_articleId release];
     [_image release];
     [_title release];
     [_timeLength release];

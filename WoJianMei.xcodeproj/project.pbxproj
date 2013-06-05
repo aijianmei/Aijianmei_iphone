@@ -13,9 +13,9 @@
 		4A3AB807175060F20045729D /* WorkOutProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB806175060F10045729D /* WorkOutProcessViewController.m */; };
 		4A3AB80A1750631E0045729D /* WorkoutNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB8091750631E0045729D /* WorkoutNoteViewController.m */; };
 		4A3AB80D175063370045729D /* WorkoutImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB80C175063370045729D /* WorkoutImageViewController.m */; };
-		4A3D0BA615CB73CC008F6639 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BA515CB73CC008F6639 /* Video.m */; };
+		4A3D0BA615CB73CC008F6639 /* ArticleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BA515CB73CC008F6639 /* ArticleInfo.m */; };
 		4A3D0BBA15CB7CF2008F6639 /* WorkOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BB915CB7CF2008F6639 /* WorkOut.m */; };
-		4A3D0BD115CB9F39008F6639 /* VideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BD015CB9F38008F6639 /* VideoManager.m */; };
+		4A3D0BD115CB9F39008F6639 /* ArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BD015CB9F38008F6639 /* ArticleManager.m */; };
 		4A429DB8175D7EFD00F018CE /* login_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A429DB3175D7EFD00F018CE /* login_2.png */; };
 		4A429DB9175D7EFD00F018CE /* loin_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A429DB4175D7EFD00F018CE /* loin_3.png */; };
 		4A429DBA175D7EFD00F018CE /* loing_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A429DB5175D7EFD00F018CE /* loing_1.png */; };
@@ -420,7 +420,6 @@
 		4ADCFE20169D614600A3E979 /* NutritionDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE0D169D614600A3E979 /* NutritionDetailCell.m */; };
 		4ADCFE21169D614600A3E979 /* NutritionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE0F169D614600A3E979 /* NutritionInfo.m */; };
 		4ADCFE23169D614600A3E979 /* ArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE14169D614600A3E979 /* ArticleCell.m */; };
-		4ADCFE24169D614600A3E979 /* VideosListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE16169D614600A3E979 /* VideosListViewController.m */; };
 		4ADCFE25169D614600A3E979 /* WorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE18169D614600A3E979 /* WorkoutViewController.m */; };
 		4ADCFE36169D619500A3E979 /* ShareToQQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE28169D619500A3E979 /* ShareToQQViewController.m */; };
 		4ADCFE37169D619500A3E979 /* ShareToQQViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE29169D619500A3E979 /* ShareToQQViewController.xib */; };
@@ -631,12 +630,12 @@
 		4A3AB8091750631E0045729D /* WorkoutNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutNoteViewController.m; sourceTree = "<group>"; };
 		4A3AB80B175063370045729D /* WorkoutImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutImageViewController.h; sourceTree = "<group>"; };
 		4A3AB80C175063370045729D /* WorkoutImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutImageViewController.m; sourceTree = "<group>"; };
-		4A3D0BA415CB73CC008F6639 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
-		4A3D0BA515CB73CC008F6639 /* Video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
+		4A3D0BA415CB73CC008F6639 /* ArticleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleInfo.h; sourceTree = "<group>"; };
+		4A3D0BA515CB73CC008F6639 /* ArticleInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleInfo.m; sourceTree = "<group>"; };
 		4A3D0BB815CB7CF1008F6639 /* WorkOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOut.h; sourceTree = "<group>"; };
 		4A3D0BB915CB7CF2008F6639 /* WorkOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOut.m; sourceTree = "<group>"; };
-		4A3D0BCF15CB9F38008F6639 /* VideoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoManager.h; sourceTree = "<group>"; };
-		4A3D0BD015CB9F38008F6639 /* VideoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoManager.m; sourceTree = "<group>"; };
+		4A3D0BCF15CB9F38008F6639 /* ArticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleManager.h; sourceTree = "<group>"; };
+		4A3D0BD015CB9F38008F6639 /* ArticleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleManager.m; sourceTree = "<group>"; };
 		4A429DB3175D7EFD00F018CE /* login_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_2.png; sourceTree = "<group>"; };
 		4A429DB4175D7EFD00F018CE /* loin_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loin_3.png; sourceTree = "<group>"; };
 		4A429DB5175D7EFD00F018CE /* loing_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loing_1.png; sourceTree = "<group>"; };
@@ -1306,8 +1305,6 @@
 		4ADCFE0F169D614600A3E979 /* NutritionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NutritionInfo.m; sourceTree = "<group>"; };
 		4ADCFE13169D614600A3E979 /* ArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCell.h; sourceTree = "<group>"; };
 		4ADCFE14169D614600A3E979 /* ArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCell.m; sourceTree = "<group>"; };
-		4ADCFE15169D614600A3E979 /* VideosListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideosListViewController.h; sourceTree = "<group>"; };
-		4ADCFE16169D614600A3E979 /* VideosListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideosListViewController.m; sourceTree = "<group>"; };
 		4ADCFE17169D614600A3E979 /* WorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutViewController.h; sourceTree = "<group>"; };
 		4ADCFE18169D614600A3E979 /* WorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutViewController.m; sourceTree = "<group>"; };
 		4ADCFE27169D619500A3E979 /* ShareToQQViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareToQQViewController.h; sourceTree = "<group>"; };
@@ -2700,14 +2697,14 @@
 				4AEE95C015FB7FDF005A66DC /* Link.h */,
 				4AEE95C115FB7FDF005A66DC /* Link.m */,
 				4AE4AB2A15D07FB5008FCAB8 /* VideoContants.h */,
-				4A3D0BA415CB73CC008F6639 /* Video.h */,
-				4A3D0BA515CB73CC008F6639 /* Video.m */,
+				4A3D0BA415CB73CC008F6639 /* ArticleInfo.h */,
+				4A3D0BA515CB73CC008F6639 /* ArticleInfo.m */,
+				4A3D0BCF15CB9F38008F6639 /* ArticleManager.h */,
+				4A3D0BD015CB9F38008F6639 /* ArticleManager.m */,
 				4AD8E02F169BD46A00EE04F9 /* User.h */,
 				4AD8E030169BD46A00EE04F9 /* User.m */,
 				4A604E3916A43A4D00D7C8DC /* SinaUser.h */,
 				4A604E3A16A43A4D00D7C8DC /* SinaUser.m */,
-				4A3D0BCF15CB9F38008F6639 /* VideoManager.h */,
-				4A3D0BD015CB9F38008F6639 /* VideoManager.m */,
 				4A3D0BB815CB7CF1008F6639 /* WorkOut.h */,
 				4A3D0BB915CB7CF2008F6639 /* WorkOut.m */,
 				4AEE95C715FB807F005A66DC /* ImageManager.h */,
@@ -3228,8 +3225,6 @@
 				4ADCFE14169D614600A3E979 /* ArticleCell.m */,
 				4ADCFE17169D614600A3E979 /* WorkoutViewController.h */,
 				4ADCFE18169D614600A3E979 /* WorkoutViewController.m */,
-				4ADCFE15169D614600A3E979 /* VideosListViewController.h */,
-				4ADCFE16169D614600A3E979 /* VideosListViewController.m */,
 				4A8A7224174E10FE00BD3AAE /* LoginViewController.h */,
 				4A8A7225174E10FF00BD3AAE /* LoginViewController.m */,
 				4A8A7227174E557700BD3AAE /* SignUpViewController.h */,
@@ -4024,9 +4019,9 @@
 			files = (
 				4AE394BE15C2DD9C00D06C61 /* main.m in Sources */,
 				4AE394C215C2DD9C00D06C61 /* AppDelegate.m in Sources */,
-				4A3D0BA615CB73CC008F6639 /* Video.m in Sources */,
+				4A3D0BA615CB73CC008F6639 /* ArticleInfo.m in Sources */,
 				4A3D0BBA15CB7CF2008F6639 /* WorkOut.m in Sources */,
-				4A3D0BD115CB9F39008F6639 /* VideoManager.m in Sources */,
+				4A3D0BD115CB9F39008F6639 /* ArticleManager.m in Sources */,
 				4AEE95B715FB7F5A005A66DC /* LeavesCache.m in Sources */,
 				4AEE95B815FB7F5A005A66DC /* LeavesView.m in Sources */,
 				4AEE95B915FB7F5A005A66DC /* LeavesViewController.m in Sources */,
@@ -4240,7 +4235,6 @@
 				4ADCFE20169D614600A3E979 /* NutritionDetailCell.m in Sources */,
 				4ADCFE21169D614600A3E979 /* NutritionInfo.m in Sources */,
 				4ADCFE23169D614600A3E979 /* ArticleCell.m in Sources */,
-				4ADCFE24169D614600A3E979 /* VideosListViewController.m in Sources */,
 				4ADCFE25169D614600A3E979 /* WorkoutViewController.m in Sources */,
 				4ADCFE36169D619500A3E979 /* ShareToQQViewController.m in Sources */,
 				4ADCFE3A169D619500A3E979 /* ShareToSinaController.m in Sources */,

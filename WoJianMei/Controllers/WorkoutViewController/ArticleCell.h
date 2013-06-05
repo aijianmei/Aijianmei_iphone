@@ -10,7 +10,7 @@
 
 
 
-@class Video;
+@class ArticleInfo;
 @class OHAttributedLabel;
 
 @protocol VideoListCellDelegate <NSObject>
@@ -37,9 +37,7 @@
 
 
 @property (retain, nonatomic) IBOutlet UILabel *titleLabel;
-
 @property (retain, nonatomic) IBOutlet UILabel *descriptionLabel;
-
 @property (retain, nonatomic) IBOutlet UIButton *ImageButton;
 @property (retain, nonatomic) IBOutlet UILabel  *releasedTimeLabel;
 @property (retain, nonatomic) IBOutlet UILabel  *commentLabel;
@@ -51,7 +49,7 @@
 + (ArticleCell*) createCell:(id)delegate;
 + (NSString*)getCellIdentifier;
 + (CGFloat)getCellHeight;
-- (void)setCellInfo:(Video *)Video;
+- (void)setCellInfo:(ArticleInfo *)Video;
 
 
 

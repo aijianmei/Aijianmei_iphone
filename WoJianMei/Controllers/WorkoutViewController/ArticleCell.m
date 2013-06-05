@@ -7,7 +7,7 @@
 //
 
 #import "ArticleCell.h"
-#import "Video.h"
+#import "ArticleInfo.h"
 #import "WorkOut.h"
 
 
@@ -36,7 +36,7 @@
     [_ImageButton       release];
     [_releasedTimeLabel release];
     [_commentLabel      release];
-    [_clickTimesLabel       release];
+    [_clickTimesLabel   release];
     
     [super dealloc];
 }
@@ -73,9 +73,23 @@
 
 
 
-- (void)setCellInfo:(Video *)video
+- (void)setCellInfo:(ArticleInfo *)article
 {
-    //set videos cells
+    //set articles cells
+    
+//    @property (retain, nonatomic) IBOutlet UILabel *titleLabel;
+//    
+//    @property (retain, nonatomic) IBOutlet UILabel *descriptionLabel;
+//    
+//    @property (retain, nonatomic) IBOutlet UIButton *ImageButton;
+//    @property (retain, nonatomic) IBOutlet UILabel  *releasedTimeLabel;
+//    @property (retain, nonatomic) IBOutlet UILabel  *commentLabel;
+//    @property (retain, nonatomic) IBOutlet UILabel  *clickTimesLabel;
+    
+    
+    [self.titleLabel setText:article.title];
+    
+    
     
 
 }
