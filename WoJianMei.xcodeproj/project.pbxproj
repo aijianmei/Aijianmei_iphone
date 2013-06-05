@@ -421,8 +421,7 @@
 		4ADCFE1F169D614600A3E979 /* Nutri_SupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE0B169D614600A3E979 /* Nutri_SupViewController.m */; };
 		4ADCFE20169D614600A3E979 /* NutritionDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE0D169D614600A3E979 /* NutritionDetailCell.m */; };
 		4ADCFE21169D614600A3E979 /* NutritionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE0F169D614600A3E979 /* NutritionInfo.m */; };
-		4ADCFE22169D614600A3E979 /* PlayVideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE12169D614600A3E979 /* PlayVideosViewController.m */; };
-		4ADCFE23169D614600A3E979 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE14169D614600A3E979 /* VideoListCell.m */; };
+		4ADCFE23169D614600A3E979 /* ArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE14169D614600A3E979 /* ArticleCell.m */; };
 		4ADCFE24169D614600A3E979 /* VideosListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE16169D614600A3E979 /* VideosListViewController.m */; };
 		4ADCFE25169D614600A3E979 /* WorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE18169D614600A3E979 /* WorkoutViewController.m */; };
 		4ADCFE36169D619500A3E979 /* ShareToQQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE28169D619500A3E979 /* ShareToQQViewController.m */; };
@@ -1307,10 +1306,8 @@
 		4ADCFE0D169D614600A3E979 /* NutritionDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NutritionDetailCell.m; sourceTree = "<group>"; };
 		4ADCFE0E169D614600A3E979 /* NutritionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NutritionInfo.h; sourceTree = "<group>"; };
 		4ADCFE0F169D614600A3E979 /* NutritionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NutritionInfo.m; sourceTree = "<group>"; };
-		4ADCFE11169D614600A3E979 /* PlayVideosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayVideosViewController.h; sourceTree = "<group>"; };
-		4ADCFE12169D614600A3E979 /* PlayVideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayVideosViewController.m; sourceTree = "<group>"; };
-		4ADCFE13169D614600A3E979 /* VideoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListCell.h; sourceTree = "<group>"; };
-		4ADCFE14169D614600A3E979 /* VideoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListCell.m; sourceTree = "<group>"; };
+		4ADCFE13169D614600A3E979 /* ArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCell.h; sourceTree = "<group>"; };
+		4ADCFE14169D614600A3E979 /* ArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCell.m; sourceTree = "<group>"; };
 		4ADCFE15169D614600A3E979 /* VideosListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideosListViewController.h; sourceTree = "<group>"; };
 		4ADCFE16169D614600A3E979 /* VideosListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideosListViewController.m; sourceTree = "<group>"; };
 		4ADCFE17169D614600A3E979 /* WorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutViewController.h; sourceTree = "<group>"; };
@@ -3230,18 +3227,16 @@
 		4ADCFE10169D614600A3E979 /* WorkoutViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4ADCFE11169D614600A3E979 /* PlayVideosViewController.h */,
-				4ADCFE12169D614600A3E979 /* PlayVideosViewController.m */,
-				4ADCFE13169D614600A3E979 /* VideoListCell.h */,
-				4ADCFE14169D614600A3E979 /* VideoListCell.m */,
+				4ADCFE13169D614600A3E979 /* ArticleCell.h */,
+				4ADCFE14169D614600A3E979 /* ArticleCell.m */,
+				4ADCFE17169D614600A3E979 /* WorkoutViewController.h */,
+				4ADCFE18169D614600A3E979 /* WorkoutViewController.m */,
 				4ADCFE15169D614600A3E979 /* VideosListViewController.h */,
 				4ADCFE16169D614600A3E979 /* VideosListViewController.m */,
 				4A8A7224174E10FE00BD3AAE /* LoginViewController.h */,
 				4A8A7225174E10FF00BD3AAE /* LoginViewController.m */,
 				4A8A7227174E557700BD3AAE /* SignUpViewController.h */,
 				4A8A7228174E557700BD3AAE /* SignUpViewController.m */,
-				4ADCFE17169D614600A3E979 /* WorkoutViewController.h */,
-				4ADCFE18169D614600A3E979 /* WorkoutViewController.m */,
 			);
 			name = WorkoutViewController;
 			path = Controllers/WorkoutViewController;
@@ -4239,8 +4234,7 @@
 				4ADCFE1F169D614600A3E979 /* Nutri_SupViewController.m in Sources */,
 				4ADCFE20169D614600A3E979 /* NutritionDetailCell.m in Sources */,
 				4ADCFE21169D614600A3E979 /* NutritionInfo.m in Sources */,
-				4ADCFE22169D614600A3E979 /* PlayVideosViewController.m in Sources */,
-				4ADCFE23169D614600A3E979 /* VideoListCell.m in Sources */,
+				4ADCFE23169D614600A3E979 /* ArticleCell.m in Sources */,
 				4ADCFE24169D614600A3E979 /* VideosListViewController.m in Sources */,
 				4ADCFE25169D614600A3E979 /* WorkoutViewController.m in Sources */,
 				4ADCFE36169D619500A3E979 /* ShareToQQViewController.m in Sources */,

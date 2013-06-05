@@ -7,7 +7,7 @@
 //
 
 #import "WorkoutViewController.h"
-#import "VideoListCell.h"
+#import "ArticleCell.h"
 
 #import "Video.h"
 #import "VideoManager.h"
@@ -238,12 +238,12 @@
 {
     
 
-    NSString *CellIdentifier = [VideoListCell getCellIdentifier];
-    VideoListCell *cell = (VideoListCell*)[self.dataTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NSString *CellIdentifier = [ArticleCell getCellIdentifier];
+    ArticleCell *cell = (ArticleCell*)[self.dataTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     
     if (cell==nil) {
-        cell  = [[[VideoListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell  = [[[ArticleCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
     
@@ -264,7 +264,7 @@
     if (isPad) {
         return 210.f;
     }
-    return  [VideoListCell getCellHeight];
+    return  [ArticleCell getCellHeight];
 }
 
 -(void)initWorkOutDatas{

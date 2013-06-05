@@ -12,8 +12,7 @@
 {
     
     NSString *_nutritionId;
-    
-    
+
     NSString *_nutritionTitle;
     NSString *_imageName;
     NSString *_creatdDate;

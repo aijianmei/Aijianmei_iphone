@@ -9,7 +9,7 @@
 #import <CoreFoundation/CoreFoundation.h>
 
 #import "VideosListViewController.h"
-#import "VideoListCell.h"
+#import "ArticleCell.h"
 #import "Video.h"
 #import "VideoManager.h"
 #import "WorkOut.h"
@@ -179,12 +179,12 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)dataTableView:(UITableView *)thedataTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSString *CellIdentifier = [VideoListCell getCellIdentifier];
-   VideoListCell *cell = (VideoListCell*)[self.dataTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NSString *CellIdentifier = [ArticleCell getCellIdentifier];
+   ArticleCell *cell = (ArticleCell*)[self.dataTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     
     if (!cell) {
-     cell  = [[[VideoListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+     cell  = [[[ArticleCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 ;
     }
     
@@ -210,7 +210,7 @@
     if (isPad) {
         return 210.f;
     }
-    return  [VideoListCell getCellHeight];
+    return  [ArticleCell getCellHeight];
 }
 
 
