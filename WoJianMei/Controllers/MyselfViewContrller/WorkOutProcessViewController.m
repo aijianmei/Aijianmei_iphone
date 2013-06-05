@@ -10,9 +10,7 @@
 #import "DrawContextView.h"
 #import "AppDelegate.h"
 #import "WorkOutDataViewController.h"
-
-#import "WorkOutDataViewController.h"
-
+#import "ArticleService.h"
 
 @interface WorkOutProcessViewController ()
 
@@ -76,6 +74,8 @@
 //    [self setNavigationLeftButton:@"返回" imageName:@"fh_1" action:@selector(clickSettingsButton:)];
     
     [self hideTabBar];
+    
+    [[ArticleService sharedService] findArticle:self];
 
 }
 
@@ -217,5 +217,27 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark -
+#pragma mark - RKObjectLoaderDelegate
+
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+    NSLog(@"Response code: %d", [response statusCode]);
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", [error localizedDescription]);
+}
+
+- (void)requestDidStartLoad:(RKRequest *)request
+{
+    NSLog(@"Start load request...");
+   
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
+    NSLog(@"***Load objects count: %d", [objects count]);
+}
 
 @end

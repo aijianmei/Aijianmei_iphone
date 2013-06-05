@@ -22,17 +22,12 @@
 #import "ImageManager.h"
 #import "UINavigationBarExt.h"
 
-
-
 //#define WeChatId @"wxd930ea5d5a258f4f"
 
 ///aijianmei
 #define WeChatId @"wxc996cdfc0f512dd7"
-
-
 #define kAppRedirectURI     @"http://aijianmei.com"
-
-
+#define kServerUrl @"http://42.96.132.109/wapapi"
 
 @implementation AppDelegate
 
@@ -122,7 +117,12 @@
                                                        titleHighlightedColor, UITextAttributeTextColor,
                                                        nil] forState:UIControlStateHighlighted];
     
-
+    //RestKit
+    RKURL *baseURL = [RKURL URLWithBaseURLString:kServerUrl];
+    RKObjectManager *objectManager = [RKObjectManager objectManagerWithBaseURL:baseURL];
+    objectManager.acceptMIMEType = RKMIMETypeJSON;
+    objectManager.serializationMIMEType = RKMIMETypeJSON;
+    objectManager.client.baseURL = baseURL;
     
    
     

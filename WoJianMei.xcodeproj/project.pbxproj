@@ -366,7 +366,6 @@
 		4A959A11168ED997006F1317 /* SinaWeiboAuthorizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9598D6168ED996006F1317 /* SinaWeiboAuthorizeView.m */; };
 		4A959A12168ED997006F1317 /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9598D9168ED996006F1317 /* SinaWeiboRequest.m */; };
 		4A959A20168ED998006F1317 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A959903168ED996006F1317 /* libWeChatSDK.a */; };
-		4A959A21168ED998006F1317 /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A959904168ED996006F1317 /* libWeChatSDK_armv7_armv7s.a */; };
 		4A965CC9168F6AE400FF34CE /* README in Resources */ = {isa = PBXBuildFile; fileRef = 4A965CC4168F6AE400FF34CE /* README */; };
 		4A965CD0168F6AF600FF34CE /* FitnessNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A965CCE168F6AF600FF34CE /* FitnessNetworkRequest.m */; };
 		4A965CD4168F6B9100FF34CE /* MyselfTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A965CD3168F6B9100FF34CE /* MyselfTableViewCell.m */; };
@@ -572,50 +571,52 @@
 		C6016B8617523D2D00BA5E63 /* qd_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6016B7117523D2D00BA5E63 /* qd_1.png */; };
 		C6016B8717523D2D00BA5E63 /* rq_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6016B7217523D2D00BA5E63 /* rq_1.png */; };
 		C6016B8817523D2D00BA5E63 /* sj_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6016B7317523D2D00BA5E63 /* sj_1.png */; };
-		C6A7189F175E18CB0035E0D0 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A71894175E18AF0035E0D0 /* libRestKit.a */; };
+		C699BA54175F6E0A00F6CD71 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C699BA49175F6DF600F6CD71 /* libRestKit.a */; };
+		C6A718A4175E38B80035E0D0 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A718A3175E38B80035E0D0 /* Article.m */; };
+		C6A718AE175E3AB40035E0D0 /* ArticleService.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A718AD175E3AB40035E0D0 /* ArticleService.m */; };
 		C6C0CD1D17509DA400A825AB /* DrawContextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C0CD1C17509DA400A825AB /* DrawContextView.m */; };
 		C6C0CD231750F0B200A825AB /* WorkOutDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C0CD221750F0B200A825AB /* WorkOutDataViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C6A71893175E18AF0035E0D0 /* PBXContainerItemProxy */ = {
+		C699BA48175F6DF600F6CD71 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C6A7188B175E18AF0035E0D0 /* RestKit.xcodeproj */;
+			containerPortal = C699BA40175F6DF600F6CD71 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 25160D1614564E810060A5C5;
 			remoteInfo = RestKit;
 		};
-		C6A71895175E18AF0035E0D0 /* PBXContainerItemProxy */ = {
+		C699BA4A175F6DF600F6CD71 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C6A7188B175E18AF0035E0D0 /* RestKit.xcodeproj */;
+			containerPortal = C699BA40175F6DF600F6CD71 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 25160D2614564E820060A5C5;
 			remoteInfo = RestKitTests;
 		};
-		C6A71897175E18AF0035E0D0 /* PBXContainerItemProxy */ = {
+		C699BA4C175F6DF600F6CD71 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C6A7188B175E18AF0035E0D0 /* RestKit.xcodeproj */;
+			containerPortal = C699BA40175F6DF600F6CD71 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 25160E62145651060060A5C5;
 			remoteInfo = RestKitFramework;
 		};
-		C6A71899175E18AF0035E0D0 /* PBXContainerItemProxy */ = {
+		C699BA4E175F6DF600F6CD71 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C6A7188B175E18AF0035E0D0 /* RestKit.xcodeproj */;
+			containerPortal = C699BA40175F6DF600F6CD71 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 25160E78145651060060A5C5;
 			remoteInfo = RestKitFrameworkTests;
 		};
-		C6A7189B175E18AF0035E0D0 /* PBXContainerItemProxy */ = {
+		C699BA50175F6DF600F6CD71 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C6A7188B175E18AF0035E0D0 /* RestKit.xcodeproj */;
+			containerPortal = C699BA40175F6DF600F6CD71 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 259C301615128079003066A2;
 			remoteInfo = RestKitResources;
 		};
-		C6A7189D175E18C00035E0D0 /* PBXContainerItemProxy */ = {
+		C699BA52175F6E0300F6CD71 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C6A7188B175E18AF0035E0D0 /* RestKit.xcodeproj */;
+			containerPortal = C699BA40175F6DF600F6CD71 /* RestKit.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 25160D1514564E810060A5C5;
 			remoteInfo = RestKit;
@@ -1232,7 +1233,6 @@
 		4A9598D8168ED996006F1317 /* SinaWeiboRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboRequest.h; sourceTree = "<group>"; };
 		4A9598D9168ED996006F1317 /* SinaWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboRequest.m; sourceTree = "<group>"; };
 		4A959903168ED996006F1317 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
-		4A959904168ED996006F1317 /* libWeChatSDK_armv7_armv7s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK_armv7_armv7s.a; sourceTree = "<group>"; };
 		4A959905168ED996006F1317 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		4A959906168ED996006F1317 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		4A965CC4168F6AE400FF34CE /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
@@ -1504,7 +1504,11 @@
 		C6016B7117523D2D00BA5E63 /* qd_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qd_1.png; sourceTree = "<group>"; };
 		C6016B7217523D2D00BA5E63 /* rq_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rq_1.png; sourceTree = "<group>"; };
 		C6016B7317523D2D00BA5E63 /* sj_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sj_1.png; sourceTree = "<group>"; };
-		C6A7188B175E18AF0035E0D0 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
+		C699BA40175F6DF600F6CD71 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
+		C6A718A2175E38B80035E0D0 /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Article.h; sourceTree = "<group>"; };
+		C6A718A3175E38B80035E0D0 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
+		C6A718AC175E3AB40035E0D0 /* ArticleService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleService.h; sourceTree = "<group>"; };
+		C6A718AD175E3AB40035E0D0 /* ArticleService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleService.m; sourceTree = "<group>"; };
 		C6C0CD1B17509DA400A825AB /* DrawContextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawContextView.h; sourceTree = "<group>"; };
 		C6C0CD1C17509DA400A825AB /* DrawContextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawContextView.m; sourceTree = "<group>"; };
 		C6C0CD211750F0B200A825AB /* WorkOutDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOutDataViewController.h; sourceTree = "<group>"; };
@@ -1516,7 +1520,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6A7189F175E18CB0035E0D0 /* libRestKit.a in Frameworks */,
+				C699BA54175F6E0A00F6CD71 /* libRestKit.a in Frameworks */,
 				4A9449A916A94B5800A96815 /* Security.framework in Frameworks */,
 				4A7CF99215D74EF000206B14 /* SystemConfiguration.framework in Frameworks */,
 				4A9449A716A94B2B00A96815 /* libicucore.dylib in Frameworks */,
@@ -1538,7 +1542,6 @@
 				4AE394B415C2DD9C00D06C61 /* Foundation.framework in Frameworks */,
 				4A9599A6168ED997006F1317 /* libMobClickLibrary.a in Frameworks */,
 				4A959A20168ED998006F1317 /* libWeChatSDK.a in Frameworks */,
-				4A959A21168ED998006F1317 /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2687,6 +2690,8 @@
 			children = (
 				4A4992D1168589E40073E682 /* UserService.h */,
 				4A4992D2168589E40073E682 /* UserService.m */,
+				C6A718AC175E3AB40035E0D0 /* ArticleService.h */,
+				C6A718AD175E3AB40035E0D0 /* ArticleService.m */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -2712,6 +2717,8 @@
 				4A3D0BB915CB7CF2008F6639 /* WorkOut.m */,
 				4AEE95C715FB807F005A66DC /* ImageManager.h */,
 				4AEE95C815FB807F005A66DC /* ImageManager.m */,
+				C6A718A2175E38B80035E0D0 /* Article.h */,
+				C6A718A3175E38B80035E0D0 /* Article.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -3061,7 +3068,6 @@
 			isa = PBXGroup;
 			children = (
 				4A959903168ED996006F1317 /* libWeChatSDK.a */,
-				4A959904168ED996006F1317 /* libWeChatSDK_armv7_armv7s.a */,
 				4A959905168ED996006F1317 /* WXApi.h */,
 				4A959906168ED996006F1317 /* WXApiObject.h */,
 			);
@@ -3501,7 +3507,7 @@
 		4AE394B015C2DD9C00D06C61 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C6A7188B175E18AF0035E0D0 /* RestKit.xcodeproj */,
+				C699BA40175F6DF600F6CD71 /* RestKit.xcodeproj */,
 				4A9449A816A94B5700A96815 /* Security.framework */,
 				4A9449A616A94B2B00A96815 /* libicucore.dylib */,
 				4A9449A416A94B0800A96815 /* CoreText.framework */,
@@ -3641,14 +3647,14 @@
 			path = WorkOutProcess;
 			sourceTree = "<group>";
 		};
-		C6A7188C175E18AF0035E0D0 /* Products */ = {
+		C699BA41175F6DF600F6CD71 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C6A71894175E18AF0035E0D0 /* libRestKit.a */,
-				C6A71896175E18AF0035E0D0 /* RestKitTests.octest */,
-				C6A71898175E18AF0035E0D0 /* RestKit.framework */,
-				C6A7189A175E18AF0035E0D0 /* RestKitFrameworkTests.octest */,
-				C6A7189C175E18AF0035E0D0 /* RestKitResources.bundle */,
+				C699BA49175F6DF600F6CD71 /* libRestKit.a */,
+				C699BA4B175F6DF600F6CD71 /* RestKitTests.octest */,
+				C699BA4D175F6DF600F6CD71 /* RestKit.framework */,
+				C699BA4F175F6DF600F6CD71 /* RestKitFrameworkTests.octest */,
+				C699BA51175F6DF600F6CD71 /* RestKitResources.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3667,7 +3673,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				C6A7189E175E18C00035E0D0 /* PBXTargetDependency */,
+				C699BA53175F6E0300F6CD71 /* PBXTargetDependency */,
 			);
 			name = WoJianMei;
 			productName = WoJianMei;
@@ -3698,8 +3704,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = C6A7188C175E18AF0035E0D0 /* Products */;
-					ProjectRef = C6A7188B175E18AF0035E0D0 /* RestKit.xcodeproj */;
+					ProductGroup = C699BA41175F6DF600F6CD71 /* Products */;
+					ProjectRef = C699BA40175F6DF600F6CD71 /* RestKit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -3710,39 +3716,39 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		C6A71894175E18AF0035E0D0 /* libRestKit.a */ = {
+		C699BA49175F6DF600F6CD71 /* libRestKit.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKit.a;
-			remoteRef = C6A71893175E18AF0035E0D0 /* PBXContainerItemProxy */;
+			remoteRef = C699BA48175F6DF600F6CD71 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C6A71896175E18AF0035E0D0 /* RestKitTests.octest */ = {
+		C699BA4B175F6DF600F6CD71 /* RestKitTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = RestKitTests.octest;
-			remoteRef = C6A71895175E18AF0035E0D0 /* PBXContainerItemProxy */;
+			remoteRef = C699BA4A175F6DF600F6CD71 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C6A71898175E18AF0035E0D0 /* RestKit.framework */ = {
+		C699BA4D175F6DF600F6CD71 /* RestKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = RestKit.framework;
-			remoteRef = C6A71897175E18AF0035E0D0 /* PBXContainerItemProxy */;
+			remoteRef = C699BA4C175F6DF600F6CD71 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C6A7189A175E18AF0035E0D0 /* RestKitFrameworkTests.octest */ = {
+		C699BA4F175F6DF600F6CD71 /* RestKitFrameworkTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = RestKitFrameworkTests.octest;
-			remoteRef = C6A71899175E18AF0035E0D0 /* PBXContainerItemProxy */;
+			remoteRef = C699BA4E175F6DF600F6CD71 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C6A7189C175E18AF0035E0D0 /* RestKitResources.bundle */ = {
+		C699BA51175F6DF600F6CD71 /* RestKitResources.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = RestKitResources.bundle;
-			remoteRef = C6A7189B175E18AF0035E0D0 /* PBXContainerItemProxy */;
+			remoteRef = C699BA50175F6DF600F6CD71 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -4307,16 +4313,18 @@
 				4ACA496A1755EF9700CC9886 /* WorkoutDataComposeSheetView.m in Sources */,
 				4ACA496D1755F84300CC9886 /* WorkoutDataComposeViewController.m in Sources */,
 				4A429DBF175DD1BA00F018CE /* WorkOutInfo.m in Sources */,
+				C6A718A4175E38B80035E0D0 /* Article.m in Sources */,
+				C6A718AE175E3AB40035E0D0 /* ArticleService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C6A7189E175E18C00035E0D0 /* PBXTargetDependency */ = {
+		C699BA53175F6E0300F6CD71 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = RestKit;
-			targetProxy = C6A7189D175E18C00035E0D0 /* PBXContainerItemProxy */;
+			targetProxy = C699BA52175F6E0300F6CD71 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -4471,6 +4479,10 @@
 					"\"$(SRCROOT)/WoJianMei\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = WoJianMei;
 				SHARED_PRECOMPS_DIR = "";
 				WRAPPER_EXTENSION = app;
@@ -4493,6 +4505,10 @@
 					"\"$(SRCROOT)/WoJianMei\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = WoJianMei;
 				SHARED_PRECOMPS_DIR = "";
 				WRAPPER_EXTENSION = app;

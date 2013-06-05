@@ -10,4 +10,6 @@
 
 @implementation Article
 
+@synthesize _id = _id;
+
 @end
