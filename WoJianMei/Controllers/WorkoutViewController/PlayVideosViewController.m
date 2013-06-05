@@ -24,9 +24,6 @@ enum WORKOUT_TIME_TYPE {
    TOP_30
 };
 
-
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -35,7 +32,6 @@ enum WORKOUT_TIME_TYPE {
     }
 
 #pragma mark - View lifecycle
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

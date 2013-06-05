@@ -22,6 +22,9 @@
 #define ITEM_SPACING 220
 
 
+#define SCROLL_VIEW_TAG 20120913
+
+
 
 
 @interface WorkoutViewController ()
@@ -32,6 +35,8 @@
 @synthesize myHeaderView =_myHeaderView;
 @synthesize  carousel =_carousel;
 @synthesize spacePageControl =_spacePageControl;
+@synthesize buttonScrollView =_buttonScrollView;
+
 
 
 
@@ -42,6 +47,9 @@
 }
 
 
+
+
+
 -(void)dealloc{
     
     
@@ -50,7 +58,7 @@
     [_carousel release];
     
     [_spacePageControl release];
-    
+    [_buttonScrollView release];
     [_myHeaderView release];
     [super dealloc];
     
@@ -64,38 +72,61 @@
     
 }
 
-
+#pragma mark -
+#pragma mark  initUI  Methods
 
 //// init the userInterface 
 -(void)initUI{
-
     
     
-    [self setBackgroundImageName:@"BackGround.png"];
-    [self showBackgroundImage];
-  
-
-    
-    UIBarButtonItem *bar = [[UIBarButtonItem alloc]initWithImage:nil style:UIBarButtonItemStyleBordered target:self action:@selector(iamTomsGirlfriend)];
-    [bar setTitle:@"每天锻炼"];
-    [self.navigationItem setRightBarButtonItem:bar];
-    [bar release];
-    
-    UIBarButtonItem *rightbarButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-icon.png"] style:UIBarButtonItemStyleBordered target:self action:nil];
-    [self.navigationItem setLeftBarButtonItem:rightbarButton];
-    
-    
-    
-    
-    
-    //configure carousel
-
-
     UIView *headerView =[[UIView alloc]init];
-    [headerView setFrame: CGRectMake(0, 0, 320, 140)];
+    [headerView setFrame: CGRectMake(0, 0, 320, 200)];
     self.myHeaderView = headerView;
     [headerView release];
+
     
+   ////Configure The ButtonScrollView
+    NSMutableArray *buttonArrays  =[[NSMutableArray alloc]init];
+    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最近更新",@"最热门",@"健身",@"瑜伽",@"增肌",@"减肥",@"瘦身",@"健美操",@"其它", nil];
+    
+    for (NSString *buttonTitle in buttonTitleArray) {
+        
+        UIButton *button =[[UIButton alloc]initWithFrame:CGRectMake(30, 0, 70, 30)];
+        [button setBackgroundColor:[UIColor clearColor]];
+        [button.titleLabel setFont:[UIFont systemFontOfSize:12]];
+        
+        [button setBackgroundImage:[UIImage imageNamed:@"button_Image.png"] forState:UIControlStateNormal];
+        [button setBackgroundImage:[UIImage imageNamed:@"button_Image.png"] forState:UIControlStateSelected];
+        [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [button setTitle:buttonTitle forState:UIControlStateNormal];
+        [buttonArrays addObject:button];
+        
+        [button release];
+        
+        
+    }
+    
+    UIScrollView *scrollView = [PPViewController createButtonScrollViewByButtonArray:buttonArrays buttonsPerLine:[buttonArrays count] buttonSeparatorY:-1];
+    self.buttonScrollView =scrollView;
+    [self.buttonScrollView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"button_BG.png"]]];
+    [scrollView release];
+    [buttonArrays release];
+    
+    float buttonHeight = 30;
+    float buttonWidth  = 70;
+    
+    [[self.view viewWithTag:SCROLL_VIEW_TAG] removeFromSuperview];
+    self.buttonScrollView.tag = SCROLL_VIEW_TAG;
+    [_buttonScrollView setFrame:CGRectMake(0,170, 1220, 30)];
+    [_buttonScrollView setShowsHorizontalScrollIndicator:NO];
+    
+    [_buttonScrollView setContentSize:CGSizeMake([buttonArrays count] * buttonWidth * 2.6, buttonHeight)];
+
+
+    [self.myHeaderView addSubview:_buttonScrollView];
+
+
+    //configure carousel
     
     self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 0, 320, 140)];
     
@@ -106,11 +137,11 @@
     [self.carousel setCenterItemWhenSelected:YES];
     
     [self.myHeaderView addSubview:_carousel];
-   
+       
     
-    
+
     ////The page controll
-    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(10, 127, 300, 20)];
+    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(10, 137, 300, 20)];
     [_spacePageControl setBackgroundColor:[UIColor clearColor]];
     _spacePageControl.numberOfPages = 13;
     [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
@@ -123,9 +154,22 @@
     
     [self.dataTableView setTableHeaderView:self.myHeaderView];
 
+    
+    
+    [self setBackgroundImageName:@"gobal_background.png"];
+    [self showBackgroundImage];
+    
+
+
+}
+
+#pragma mark-- ButtonClicked Method
+
+
+-(void)buttonClicked:(UIButton *)sender {
 
     
-    
+    PPDebug(@"I click button :%d",sender.tag);
 
 }
 
@@ -158,7 +202,7 @@
      self.dataList = [[VideoManager defaultManager]  videoList];
     
     
-    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+//    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
 
     
     
@@ -456,9 +500,6 @@
     [imageView addSubview:label];
     [label release];
         
-      
-        
-        
 	}
 	else
 	{
@@ -475,8 +516,6 @@
     
     /// When it is the reflecttion view we need to implement this method.
 //    [view update];
-    
-    
 	
 	return view;
 }
@@ -487,17 +526,11 @@
 }
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
-  
-    
     PPDebug(@"I did selected the picture of %d",index);
-    
-
 }
 
 -(void)carouselCurrentItemIndexUpdated:(iCarousel *)carousel{
 
-
-    
     PPDebug(@"%d",[carousel currentItemIndex]);
     
     [self.spacePageControl setCurrentPage:[carousel currentItemIndex]];

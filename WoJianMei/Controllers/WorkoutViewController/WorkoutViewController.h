@@ -26,9 +26,16 @@
     UIView                      *_myHeaderView;
     iCarousel                   *_carousel;
     SMPageControl               *_spacePageControl;
+    
+    UIScrollView *_buttonScrollView;
+
 
 
 }
+
+
+@property (nonatomic,retain)UIScrollView *buttonScrollView;
+
 @property (nonatomic, retain)      UIView *myHeaderView;
 @property (nonatomic, retain)     iCarousel *carousel;
 @property (nonatomic, retain)  SMPageControl *spacePageControl;
