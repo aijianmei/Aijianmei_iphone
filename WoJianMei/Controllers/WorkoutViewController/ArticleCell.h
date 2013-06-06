@@ -19,23 +19,17 @@
 - (void)didClickBuyButton:(id)sender atIndex:(NSIndexPath *)indexPath;
 - (void)didClickSinaWeiBlogButton:(id)sender atIndex:(NSIndexPath *)indexPath;
 - (void)clickShowBigImage:(id)sender atIndex:(NSIndexPath *)indexPath;
-;
-
 
 @end
 
 @interface ArticleCell : UITableViewCell
 {
     id<ArticleListCellDelegate>delegate;
-    
-    
 }
-
-
 
 @property (retain, nonatomic) IBOutlet UILabel *titleLabel;
 @property (retain, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (retain, nonatomic) IBOutlet UIButton *ImageButton;
+@property (retain, nonatomic) IBOutlet UIImageView *imgView;
 @property (retain, nonatomic) IBOutlet UILabel  *releasedTimeLabel;
 @property (retain, nonatomic) IBOutlet UILabel  *commentLabel;
 @property (retain, nonatomic) IBOutlet UILabel  *clickTimesLabel;
@@ -46,11 +40,5 @@
 + (NSString*)getCellIdentifier;
 + (CGFloat)getCellHeight;
 - (void)setCellInfo:(Article *)Article;
-
-
-
-
-
-
 
 @end

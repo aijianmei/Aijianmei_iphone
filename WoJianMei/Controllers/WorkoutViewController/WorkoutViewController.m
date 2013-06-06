@@ -8,15 +8,11 @@
 
 #import "WorkoutViewController.h"
 #import "ArticleCell.h"
-
 #import "ArticleInfo.h"
 #import "ArticleManager.h"
 #import "WorkOut.h"
-
-
 #import "ReflectionView.h"
 #import "iCarousel.h"
-
 #import "ArticleService.h"
 #import "Article.h"
 
@@ -25,12 +21,7 @@
 #define NUMBER_OF_ITEMS 13
 #define NUMBER_OF_VISIBLE_ITEMS 8
 #define ITEM_SPACING 220
-
-
 #define SCROLL_VIEW_TAG 20120913
-
-
-
 
 @interface WorkoutViewController ()
 
@@ -51,30 +42,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
-
-
--(void)dealloc{
-    
-    
+-(void)dealloc
+{
     _carousel.delegate = nil;
     _carousel.dataSource = nil;
     [_carousel release];
-    
     [_spacePageControl release];
     [_buttonScrollView release];
     [_myHeaderView release];
     [super dealloc];
-    
-}
-
-
-
--(void)iamTomsGirlfriend{
-    
-    NSLog(@"I am Tom's girlfriend");
-    
 }
 
 #pragma mark -
@@ -82,7 +58,6 @@
 
 //// init the userInterface 
 -(void)initUI{
-    
     
     UIView *headerView =[[UIView alloc]init];
     [headerView setFrame: CGRectMake(0, 0, 320, 200)];
@@ -107,7 +82,6 @@
         [buttonArrays addObject:button];
         
         [button release];
-        
         
     }
     
@@ -154,66 +128,40 @@
     [_spacePageControl addTarget:self action:@selector(pageControl:) forControlEvents:UIControlEventValueChanged];
     [self.myHeaderView addSubview:_spacePageControl];
     
-    
-    
-    
-    [self.dataTableView setTableHeaderView:self.myHeaderView];
-
-    
-    
+    [self.dataTableView setTableHeaderView:self.myHeaderView];    
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
-    
-    
-
-
 }
 
 #pragma mark-- ButtonClicked Method
 
 
 -(void)buttonClicked:(UIButton *)sender {
-
-    
-    
     if ([[sender currentTitle] isEqualToString:@"最近更新"]) {
         PPDebug(@"I click button :%@",[sender currentTitle]);
 
     }
     if ([[sender currentTitle] isEqualToString:@"最热门"]) {
-        PPDebug(@"I click button :%@",[sender currentTitle]);
-
-        
+        PPDebug(@"I click button :%@",[sender currentTitle]);        
     }
     if ([[sender currentTitle] isEqualToString:@"锻炼方法"]) {
         PPDebug(@"I click button :%@",[sender currentTitle]);
-        [dataTableView reloadData];
-
-        
     }
     if ([[sender currentTitle] isEqualToString:@"基础知识"]) {
-        PPDebug(@"I click button :%@",[sender currentTitle]);
-
-        
+        PPDebug(@"I click button :%@",[sender currentTitle]);        
     }
     if ([[sender currentTitle] isEqualToString:@"特定锻炼计划"]) {
         PPDebug(@"I click button :%@",[sender currentTitle]);
-
-        
     }
     if ([[sender currentTitle] isEqualToString:@"..."]) {
-        PPDebug(@"I click button :%@",[sender currentTitle]);
-
-        
+        PPDebug(@"I click button :%@",[sender currentTitle]);        
     }
     if ([[sender currentTitle] isEqualToString:@"..."]) {
-        PPDebug(@"I click button :%@",[sender currentTitle]);
-
-        
+        PPDebug(@"I click button :%@",[sender currentTitle]);        
     }
 }
 
-
+#pragma mark--
 #pragma mark-- PageControl
 
 - (void)pageControl:(id)sender
@@ -225,8 +173,6 @@
 {
 	NSLog(@"Current Page (SMPageControl): %i", sender.currentPage);
 }
-
-
 
 #pragma mark-- 
 #pragma mark-- init articles
@@ -274,79 +220,46 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
 
     [self initUI];
     
 //    [self initArticles];
-    
 //     self.dataList = [[ArticleManager defaultManager] articleList];
-    
-    
 //    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
 
-    
     ////开始下载文章
-    [[ArticleService sharedService] findArticle:self];
-    
-    
+    [[ArticleService sharedService] findArticle:self];    
 }
 
-
--(void)viewDidUnload{
-
-    [super viewDidUnload];
-    self.carousel = nil;
-
-}
-
-#pragma mark ----------------------------------------————————————————
+#pragma mark --
 #pragma mark  tableviewDelegate Method
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    
-    
     return [dataList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-
     NSString *CellIdentifier = [ArticleCell getCellIdentifier];
     ArticleCell *cell = (ArticleCell*)[self.dataTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    
     if (cell==nil) {
         cell  = [[[ArticleCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-    
-    //    cell.indexPath = indexPath;
     Article *article  = [dataList objectAtIndex:indexPath.row];
     if (article) {
         [cell setCellInfo:article];
     }
-    
-//
-    
     return cell;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (isPad) {
-        return 210.f;
-    }
     return  [ArticleCell getCellHeight];
 }
 
@@ -444,8 +357,6 @@
     [self.spacePageControl setCurrentPage:[carousel currentItemIndex]];
 }
 
-
-
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
 
@@ -467,16 +378,10 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
-    NSLog(@"***Load objects count: %d", [objects count]);
-    //在这里就可以在controller刷新数据
-    
-    
-    
-    NSLog(@"How many articles do I have !");
-    self.dataList = objects;
     [self hideActivity];
+    NSLog(@"***Load objects count: %d", [objects count]);
+    self.dataList = objects;
+    [self.dataTableView reloadData];
 }
-
-
 
 @end

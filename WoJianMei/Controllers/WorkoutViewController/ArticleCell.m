@@ -9,38 +9,29 @@
 #import "ArticleCell.h"
 #import "Article.h"
 #import "WorkOut.h"
+#import "UIImageView+WebCache.h"
 
-
+#define isPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
 @implementation ArticleCell
 
-
-
-@synthesize titleLabel           =_titleLabel;
-@synthesize descriptionLabel     =_descriptionLabel;
-@synthesize ImageButton          =_ImageButton;
-@synthesize releasedTimeLabel    =_releasedTimeLabel;
-@synthesize commentLabel         =_commentLabel;
-@synthesize clickTimesLabel      =_clickTimesLabel;
-
-
+@synthesize titleLabel = _titleLabel;
+@synthesize descriptionLabel = _descriptionLabel;
+@synthesize imgView = _imgView;
+@synthesize releasedTimeLabel = _releasedTimeLabel;
+@synthesize commentLabel = _commentLabel;
+@synthesize clickTimesLabel = _clickTimesLabel;
 @synthesize delegate;
 
-
-
 - (void)dealloc {
-    
-    
-    [_titleLabel        release];
-    [_descriptionLabel  release];
-    [_ImageButton       release];
-    [_releasedTimeLabel release];
-    [_commentLabel      release];
-    [_clickTimesLabel   release];
-    
     [super dealloc];
+    [_titleLabel release];
+    [_descriptionLabel release];
+    [_imgView release];
+    [_releasedTimeLabel release];
+    [_commentLabel release];
+    [_clickTimesLabel release];
 }
-
 
 - (void)setCellStyle
 {
@@ -54,10 +45,7 @@
 // just replace ProductDetailCell by the new Cell Class Name
 + (ArticleCell*) createCell:(id)delegate
 {
-    
-     return  nil;
-    
-    
+     return  nil;    
 }
 
 + (NSString*)getCellIdentifier
@@ -68,45 +56,48 @@
 
 + (CGFloat)getCellHeight
 {
+    if (isPad) {
+        return 210.f;
+    }
     return 147.0f;
 }
 
-
-//从网络下载图片
--(UIImage *) getImageFromURL:(NSString *)fileURL {
-    NSLog(@"执行图片下载函数");
-    UIImage * result;
-    
-    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
-    result = [UIImage imageWithData:data];
-    return result;
-}
-
-//将所下载的图片保存到本地
--(void) saveImage:(UIImage *)image
-     withFileName:(NSString *)imageName
-           ofType:(NSString *)extension
-      inDirectory:(NSString *)directoryPath
-{
-    if ([[extension lowercaseString] isEqualToString:@"png"]) {
-        [UIImagePNGRepresentation(image) writeToFile:[directoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@", imageName, @"png"]] options:NSAtomicWrite error:nil];
-    } else if ([[extension lowercaseString] isEqualToString:@"jpg"] || [[extension lowercaseString] isEqualToString:@"jpeg"]) {
-        [UIImageJPEGRepresentation(image, 1.0) writeToFile:[directoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@", imageName, @"jpg"]] options:NSAtomicWrite error:nil];
-    } else {
-        //ALog(@"Image Save Failed\nExtension: (%@) is not recognized, use (PNG/JPG)", extension);
-        NSLog(@"文件后缀不认识");
-    }
-}
-
-//读取本地保存的图片
--(UIImage *) loadImage:(NSString *)fileName
-                ofType:(NSString *)extension
-           inDirectory:(NSString *)directoryPath
-{
-    UIImage * result = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@.%@", directoryPath, fileName, extension]];
-    
-    return result;
-}
+//
+////从网络下载图片
+//-(UIImage *) getImageFromURL:(NSString *)fileURL {
+//    NSLog(@"执行图片下载函数");
+//    UIImage * result;
+//    
+//    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
+//    result = [UIImage imageWithData:data];
+//    return result;
+//}
+//
+////将所下载的图片保存到本地
+//-(void) saveImage:(UIImage *)image
+//     withFileName:(NSString *)imageName
+//           ofType:(NSString *)extension
+//      inDirectory:(NSString *)directoryPath
+//{
+//    if ([[extension lowercaseString] isEqualToString:@"png"]) {
+//        [UIImagePNGRepresentation(image) writeToFile:[directoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@", imageName, @"png"]] options:NSAtomicWrite error:nil];
+//    } else if ([[extension lowercaseString] isEqualToString:@"jpg"] || [[extension lowercaseString] isEqualToString:@"jpeg"]) {
+//        [UIImageJPEGRepresentation(image, 1.0) writeToFile:[directoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@", imageName, @"jpg"]] options:NSAtomicWrite error:nil];
+//    } else {
+//        //ALog(@"Image Save Failed\nExtension: (%@) is not recognized, use (PNG/JPG)", extension);
+//        NSLog(@"文件后缀不认识");
+//    }
+//}
+//
+////读取本地保存的图片
+//-(UIImage *) loadImage:(NSString *)fileName
+//                ofType:(NSString *)extension
+//           inDirectory:(NSString *)directoryPath
+//{
+//    UIImage * result = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@.%@", directoryPath, fileName, extension]];
+//    
+//    return result;
+//}
 
 
 - (void)setCellInfo:(Article *)article
@@ -114,7 +105,7 @@
       //set articles cells
       [self.titleLabel setText:article.title];
       [self.descriptionLabel setText:article.brief];
-      [self.ImageButton setImage:[self getImageFromURL:article.img] forState:UIControlStateNormal];
+      [self.imgView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@"11"]];
       [self.commentLabel setText:article.commentCount];
       [self.releasedTimeLabel setText:article.create_time];
 }
