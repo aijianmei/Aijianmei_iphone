@@ -188,6 +188,50 @@
 
 
 
+-(void)initWorkOutDatas{
+    
+    ArticleInfo *article1 = [[ArticleInfo alloc]initWithId:@"0"
+                                                     title:@"whatsup"
+                                           description:@"youyoyoyasdfasdfasdfasdfsadfasdfasdfasdfasdf"
+                                                     image:[UIImage imageNamed:@""]
+                                              releasedTime:@"三小时前"
+                                                clickTimes:@"12"
+                                                   comment:@"1234"
+                                                    isRead:NO];
+    ArticleInfo *article2 = [[ArticleInfo alloc]initWithId:@"0"
+                                                     title:@"whatsup"
+                                               description:@"youyoyoyasdfasdfasdfasdfsadfasdfasdfasdfasdf"
+                                                     image:[UIImage imageNamed:@""]
+                                              releasedTime:@"三小时前"
+                                                clickTimes:@"12"
+                                                   comment:@"1234"
+                                                    isRead:NO];
+    ArticleInfo *article3 = [[ArticleInfo alloc]initWithId:@"0"
+                                                     title:@"whatsup"
+                                               description:@"youyoyoyasdfasdfasdfasdfsadfasdfasdfasdfasdf"
+                                                     image:[UIImage imageNamed:@""]
+                                              releasedTime:@"三小时前"
+                                                clickTimes:@"12"
+                                                   comment:@"1234"
+                                                    isRead:NO];
+    
+    
+    [[ArticleManager defaultManager] addArticle:article1];
+    [[ArticleManager defaultManager] addArticle:article2];
+    [[ArticleManager defaultManager] addArticle:article3];
+    
+    
+    [article1 release];
+    [article2 release];
+    [article3 release];
+
+    
+    
+    
+    
+    
+}
+
 
 - (void)viewDidLoad
 {
@@ -199,7 +243,7 @@
     
     [self initWorkOutDatas];
     
-     self.dataList = [[ArticleManager defaultManager]  articleList];
+     self.dataList = [[ArticleManager defaultManager] articleList];
     
     
 //    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
@@ -266,182 +310,6 @@
     }
     return  [ArticleCell getCellHeight];
 }
-
--(void)initWorkOutDatas{
-    
-    //    Upper Area
-    //    Trapezius ( neck ) >
-    //    Deltoid ( shoulders ) >
-    //    Biceps ( arms ) >
-    //    Triceps ( arms ) >
-    //    Forearm ( wrists ) >
-    
-    //////Upper Area
-    WorkOut *workOut =[[WorkOut alloc]init];
-    workOut.workOutTimeLength = @"40minutes";
-    workOut.repeatTimes = @"7 -12 次";
-    workOut.sets = @"6-7组";
-    
-//    ArticleInfo *article1 = [[ArticleInfo alloc]initWithId:@"1"
-//                                       title:@"Neck_exercises_s"
-//                                   timeLeght:@"40minutes"
-//                                       image:[UIImage imageNamed:@"neck_exercises_s.jpg"]
-//                                    isFollow:NO
-//                                     workOut:workOut];
-//    ArticleInfo *article2 = [[ArticleInfo alloc]initWithId:@"2"
-//                                       title:@"Shoulder-Exercises"
-//                                   timeLeght:@"40minutes"
-//                                       image:[UIImage imageNamed:@"Shoulder-Exercises.jpg"]
-//                                    isFollow:NO
-//                                     workOut:workOut];
-//    
-//    ArticleInfo *article3 = [[ArticleInfo alloc]initWithId:@"3"
-//                                       title:@"Biceps-Exercises"
-//                                   timeLeght:@"40minutes"
-//                                       image:[UIImage imageNamed:@"Biceps-Exercises.jpg"]
-//                                    isFollow:NO
-//                                     workOut:workOut];
-//    ArticleInfo *article4 = [[ArticleInfo alloc]initWithId:@"4"
-//                                       title:@"Triceps-Exercises"
-//                                   timeLeght:@"40minutes"
-//                                       image:[UIImage imageNamed:@"Triceps-Exercises.jpg"]
-//                                    isFollow:NO
-//                                     workOut:workOut];
-//    ArticleInfo *article5 = [[ArticleInfo alloc]initWithId:@"5"
-//                                       title:@"Forearm-exercises"
-//                                   timeLeght:@"30minutes"
-//                                       image:[UIImage imageNamed:@"forearm-exercises.jpg"]
-//                                    isFollow:NO
-//                                     workOut:workOut];
-//    //////Middle  Area
-//        
-//    
-//    
-//    ArticleInfo *article6 = [[ArticleInfo alloc]initWithId:@"6"
-//                                       title:@"Chest-Exercises_s"
-//                                   timeLeght:@"40minutes"
-//                                       image:[UIImage imageNamed:@"Chest-Exercises_s.jpg"]
-//                                    isFollow:NO
-//                                     workOut:workOut];
-//    ArticleInfo *article7 = [[ArticleInfo alloc]initWithId:@"7"
-//                                       title:@"Abs-Exercises_s"
-//                                   timeLeght:@"20minutes"
-//                                       image:[UIImage imageNamed:@"Abs-Exercises_s.jpg"]
-//                                    isFollow:NO
-//                                     workOut:workOut];
-//    ArticleInfo *article8 = [[ArticleInfo alloc]initWithId:@"8"
-//                                       title:@"Oblique-abdominal-exercises"
-//                                   timeLeght:@"30minutes"
-//                                       image:[UIImage imageNamed:@"Oblique-abdominal-exercises.jpg"]
-//                                    isFollow:NO
-//                                     workOut:workOut];
-//    ArticleInfo *article9 = [[ArticleInfo alloc]initWithId:@"9"
-//                                       title:@"ack-Exercises"
-//                                   timeLeght:@"40minutes"
-//                                       image:[UIImage imageNamed:@"Back-Exercises.jpg"]
-//                                    isFollow:NO
-//                                     workOut:workOut];
-//    ArticleInfo *article10 = [[ArticleInfo alloc]initWithId:@"10"
-//                                        title:@"Lower-Back-Exercises"
-//                                    timeLeght:@"50minutes"
-//                                        image:[UIImage imageNamed:@"Lower-Back-Exercises.jpg"]
-//                                     isFollow:NO
-//                                      workOut:workOut ];
-//    
-//    
-//    
-//    //    Lower Area
-//    //    Gluteus ( buttocks ) >
-//    //    Adductor ( internal thigh ) >
-//    //    Quadriceps ( legs ) >
-//    //    Femoral ( hamstring ) >
-//    //    Calf ( ankles )
-//    
-//    
-//    ArticleInfo *article11= [[ArticleInfo alloc]initWithId:@"11"
-//                                       title:@"buttocks-exercises"
-//                                   timeLeght:@"12minutes"
-//                                       image:[UIImage imageNamed:@"buttocks-exercises.jpg"]
-//                                    isFollow:NO
-//                                     workOut:workOut ];
-//    ArticleInfo *article12 = [[ArticleInfo alloc]initWithId:@"12"
-//                                        title:@"adductor-exercises"
-//                                    timeLeght:@"34minutes"
-//                                        image:[UIImage imageNamed:@"adductor-exercises.jpg"]
-//                                     isFollow:NO
-//                                      workOut:workOut ];
-//    ArticleInfo *article13 = [[ArticleInfo alloc]initWithId:@"13"
-//                                        title:@"Quadriceps-exercises"
-//                                    timeLeght:@"45minutes"
-//                                        image:[UIImage imageNamed:@"quadriceps-exercises.jpg"]
-//                                     isFollow:NO
-//                                      workOut:workOut ];
-//    ArticleInfo *article14 = [[ArticleInfo alloc]initWithId:@"14"
-//                                        title:@"Hamstring-exercises"
-//                                    timeLeght:@"40minutes"
-//                                        image:[UIImage imageNamed:@"hamstring-exercises.jpg"]
-//                                     isFollow:NO
-//                                      workOut:workOut ];
-//    ArticleInfo *article15 = [[ArticleInfo alloc]initWithId:@"15"
-//                                        title:@"Calf-exercises"
-//                                    timeLeght:@"40minutes"
-//                                        image:[UIImage imageNamed:@"calf-exercises.jpg"]
-//                                     isFollow:NO
-//                                      workOut:workOut ];
-//    
-//    [workOut release];
-//    
-//    
-//    
-//    ArticleManager *mangager =[ArticleManager defaultManager];
-//    [mangager addArticle:article1];
-//    [mangager addArticle:article2];
-//    [mangager addArticle:article3];
-//    [mangager addArticle:article4];
-//    [mangager addArticle:article5];
-//    [mangager addArticle:article6];
-//    [mangager addArticle:article7];
-//    [mangager addArticle:article8];
-//    [mangager addArticle:article9];
-//    [mangager addArticle:article10];
-//    [mangager addArticle:article11];
-//    [mangager addArticle:article12];
-//    [mangager addArticle:article13];
-//    [mangager addArticle:article14];
-//    [mangager addArticle:article15];
-//    
-//    [article1 release];
-//    [article2 release];
-//    [article3 release];
-//    [article4 release];
-//    [article5 release];
-//    [article6 release];
-//    [article7 release];
-//    [article8 release];
-//    [article9 release];
-//    [article10 release];
-//    [article11 release];
-//    [article12 release];
-//    [article13 release];
-//    [article14 release];
-//    [article15 release];
-//    
-//    
-//    for (int i =0; i <[mangager.followArticleList  count]; i++) {
-//        ///get all the follow articles
-//        ArticleInfo *article =[[mangager getAllFollowArticle] objectAtIndex:i];
-//        if (article.isFollow) {
-//            ArticleInfo *notFollowArticleInfo =[mangager getArticleById:article.articleId];
-//            notFollowArticleInfo.isFollow =[NSNumber  numberWithBool:YES];
-//            NSLog(@"%d",[article.isFollow intValue]);
-//            NSLog(@"%d",[article.isFollow intValue]);
-//        }
-//    }
-    
-    
-}
-
-
 
 #pragma mark -
 #pragma mark iCarousel methods

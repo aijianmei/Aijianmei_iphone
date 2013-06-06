@@ -36,7 +36,7 @@
 @property (nonatomic, retain) NSString         *comment;
 
 @property (nonatomic, retain) NSString      *clickTimes;
-@property (retain, nonatomic) NSNumber       *isRead;
+@property (nonatomic, retain) NSNumber       *isRead;
 
 -(id)initWithId:(NSString*)aId
           title:(NSString*)atitle
@@ -46,6 +46,8 @@
      clickTimes:(NSString*)aClickTimes
         comment:(NSString *)aComment
          isRead:(BOOL)aIsRead;
+
+
 
 - (void)updateByArticle:(ArticleInfo *)article;
 

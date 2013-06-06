@@ -82,14 +82,15 @@ extern ArticleManager   *GlobalGetArticleManager()
              isFollow:(BOOL)aIsFollow
               workOut:(WorkOut*)aWorkOut{
     
-    ArticleInfo *article = [[ArticleInfo alloc]initWithId:[NSString stringWithFormat:@"%d",[_articleList count]]
-                                      title:aArticleTitle 
-                                  timeLeght:aTimeLenght 
-                                      image:[UIImage imageNamed:aImageName]
-                                   isFollow:NO 
-                                    workOut:aWorkOut];
-    [_articleList addObject:article];
-    [article release];
+//    ArticleInfo *article = [[ArticleInfo alloc]initWithId:[NSString stringWithFormat:@"%d",[_articleList count]]
+//                                      title:aArticleTitle 
+//                                  timeLeght:aTimeLenght 
+//                                      image:[UIImage imageNamed:aImageName]
+//                                   isFollow:NO 
+//                                    workOut:aWorkOut];
+    
+//    [_articleList addObject:article];
+//    [article release];
 
 }
     

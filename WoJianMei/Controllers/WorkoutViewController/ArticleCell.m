@@ -76,18 +76,20 @@
 - (void)setCellInfo:(ArticleInfo *)article
 {
     //set articles cells
-    
-//    @property (retain, nonatomic) IBOutlet UILabel *titleLabel;
-//    
-//    @property (retain, nonatomic) IBOutlet UILabel *descriptionLabel;
-//    
-//    @property (retain, nonatomic) IBOutlet UIButton *ImageButton;
-//    @property (retain, nonatomic) IBOutlet UILabel  *releasedTimeLabel;
-//    @property (retain, nonatomic) IBOutlet UILabel  *commentLabel;
-//    @property (retain, nonatomic) IBOutlet UILabel  *clickTimesLabel;
+ 
     
     
     [self.titleLabel setText:article.title];
+    
+    [self.descriptionLabel setText:article.description];
+    
+    [self.ImageButton setBackgroundImage:article.image forState:UIControlStateNormal];
+    
+    [self.releasedTimeLabel setText:article.releasedTime];
+    
+    [self.commentLabel setText:article.comment];
+    
+    [self.clickTimesLabel setText:article.clickTimes];
     
     
     

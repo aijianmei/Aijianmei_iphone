@@ -13,7 +13,7 @@
 @class ArticleInfo;
 @class OHAttributedLabel;
 
-@protocol VideoListCellDelegate <NSObject>
+@protocol ArticleListCellDelegate <NSObject>
 
 - (void)didClickFollowButton:(id)sender atIndex:(NSIndexPath*)indexPath;
 - (void)didClickBuyButton:(id)sender atIndex:(NSIndexPath *)indexPath;
@@ -24,12 +24,9 @@
 
 @end
 
-
-
 @interface ArticleCell : UITableViewCell
 {
-    id<VideoListCellDelegate>delegate;
-    
+    id<ArticleListCellDelegate>delegate;
     
     
 }
@@ -43,13 +40,12 @@
 @property (retain, nonatomic) IBOutlet UILabel  *commentLabel;
 @property (retain, nonatomic) IBOutlet UILabel  *clickTimesLabel;
 
-
-@property (nonatomic, assign) id<VideoListCellDelegate>delegate;
+@property (nonatomic, assign) id<ArticleListCellDelegate>delegate;
 
 + (ArticleCell*) createCell:(id)delegate;
 + (NSString*)getCellIdentifier;
 + (CGFloat)getCellHeight;
-- (void)setCellInfo:(ArticleInfo *)Video;
+- (void)setCellInfo:(ArticleInfo *)Article;
 
 
 

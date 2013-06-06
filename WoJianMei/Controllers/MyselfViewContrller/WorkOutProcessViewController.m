@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 #import "WorkOutDataViewController.h"
 #import "ArticleService.h"
+#import "Article.h"
+
 
 @interface WorkOutProcessViewController ()
 
@@ -239,6 +241,15 @@
 {
     NSLog(@"***Load objects count: %d", [objects count]);
     //在这里就可以在controller刷新数据
+      
+    Article *myArticle  = nil;
+    
+    myArticle = [objects objectAtIndex:3];
+    
+    NSLog(@"%@",myArticle.img);
+    NSLog(@"%@",myArticle.url);
+
+    
 }
 
 @end

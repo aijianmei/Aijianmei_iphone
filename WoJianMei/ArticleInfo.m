@@ -12,16 +12,15 @@
 
 
 
-//NSString       *_articleId;
-//NSString     *_description;
-//NSString           *_title;
-//UIImage            *_image;
-//NSString    *_releasedTime;
-//NSString         *_comment;
-//NSString      *_clickTimes;
-//
-//NSNumber          *_isRead;
 
+#define ArticleId     @"articleId"
+#define Title         @"title"
+#define Description   @"description"
+#define Image         @"image"
+#define ReleasedTime  @"releasedTime"
+#define ClickTimes    @"clickTimes"
+#define Comment       @"comment"
+#define IsRead        @"isRead"
 
 
 
@@ -35,72 +34,93 @@
 @synthesize isRead =_isRead;
 
 
-//-(id)initWithId:(NSString*)aId
-//          title:(NSString*)atitle 
-//      timeLeght:(NSString *)aTimeLenght 
-//          image:(UIImage *)aImage  
-//       isFollow:(BOOL)aIsFollow
-//        workOut:(WorkOut*)aWorkOut
-//{
-//    self = [super init];
-//    if (self) {
-////        self.articleId =aId;
-////        self.title = atitle;
-////        self.timeLenght=aTimeLenght;
-////        self.image = aImage;
-////        self.workOut = aWorkOut;
-////        self.isFollow = [NSNumber numberWithBool:aIsFollow];
-//    }
-//
-//    return  self;
-//}
+-(id)initWithId:(NSString*)aId
+          title:(NSString*)atitle
+    description:(NSString*)aDescription
+          image:(UIImage *)aImage
+   releasedTime:(NSString *)aReleasedTime
+     clickTimes:(NSString*)aClickTimes
+        comment:(NSString *)aComment
+         isRead:(BOOL)aIsRead
+{
+    self = [super init];
+    if (self) {
+        self.articleId =aId;
+        self.title = atitle;
+        self.description=aDescription;
+        self.image = aImage;
+        self.releasedTime = aReleasedTime;
+        self.clickTimes =aClickTimes;
+        self.comment = aComment;
+        self.isRead = [NSNumber numberWithBool:aIsRead];
+    }
+
+    return  self;
+}
+
+
+
+
+
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
-//    [aCoder encodeObject:self.articleId forKey:@"articleId"];
-//    [aCoder encodeObject:self.title forKey:@"title"];
-//    [aCoder encodeObject:self.timeLenght forKey:@"timeLenght"];
-//    [aCoder encodeObject:self.image forKey:@"image"];
-//    [aCoder encodeObject:self.workOut forKey:@"workOut"];
-//    [aCoder encodeObject:self.isFollow forKey:@"isFollow"];
+
+    
+    [aCoder encodeObject:self.articleId     forKey:ArticleId];
+    [aCoder encodeObject:self.title         forKey:Title];
+    [aCoder encodeObject:self.description   forKey:Description];
+    [aCoder encodeObject:self.image         forKey:Image];
+    [aCoder encodeObject:self.releasedTime  forKey:ReleasedTime];
+    [aCoder encodeObject:self.clickTimes    forKey:ClickTimes];
+    [aCoder encodeObject:self.comment       forKey:Comment];
+    [aCoder encodeObject:self.isRead        forKey:IsRead];
+
+    
 
 }
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     
     if (self=[super init]) {
-//        self.articleId =[aDecoder decodeObjectForKey:@"articleId"];
-//        self.title = [aDecoder decodeObjectForKey:@"title"];
-//        self.timeLenght =[aDecoder decodeObjectForKey:@"timeLenght"];
-//        self.image = [aDecoder decodeObjectForKey:@"image"];
-//        self.workOut = [aDecoder decodeObjectForKey:@"workOut"];
-//        self.isFollow = [aDecoder decodeObjectForKey:@"isFollow"];
+        self.articleId =[aDecoder     decodeObjectForKey:ArticleId];
+        self.title = [aDecoder        decodeObjectForKey:Title];
+        self.description =[aDecoder   decodeObjectForKey:Description];
+        self.image = [aDecoder        decodeObjectForKey:Image];
+        self.releasedTime = [aDecoder decodeObjectForKey:ReleasedTime];
+        self.clickTimes = [aDecoder   decodeObjectForKey:ClickTimes];
+        self.comment = [aDecoder      decodeObjectForKey:Comment];
+        self.isRead = [aDecoder       decodeObjectForKey:IsRead];
     }
     return self;
 }
 
-//
-//- (void)updateByArticle:(ArticleInfo *)article
-//{
-//    self.articleId = article.articleId;
-//    self.title =article.title;
-//    self.timeLenght = article.timeLenght;
-//    self.image =article.image;
-//    self.workOut = article.workOut;
-//    self.isFollow =article.isFollow;
-//
-//}
-//
-//-(void)dealloc{
-//
-//    [_articleId release];
-//    [_image release];
-//    [_title release];
-//    [_timeLength release];
-//    [_workOut release];
-//    [_isFollow release];
-//    [super dealloc];
-//
-//}
+
+- (void)updateByArticle:(ArticleInfo *)article
+{
+    self.articleId = article.articleId;
+    self.title =article.title;
+    self.description = article.description;
+    self.image =article.image;
+    self.releasedTime = article.releasedTime;
+    self.clickTimes = article.clickTimes;
+    self.comment =article.comment;
+    self.isRead =article.isRead;
+}
+
+-(void)dealloc{
+
+    [_articleId        release];
+    [_image            release];
+    [_title            release];
+    [_description      release];
+    [_image            release];
+    [_releasedTime     release];
+    [_clickTimes       release];
+    [_comment          release];
+    [_isRead           release];
+    [super dealloc];
+
+}
 
 
 @end
