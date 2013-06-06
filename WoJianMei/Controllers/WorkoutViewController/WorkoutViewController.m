@@ -92,7 +92,7 @@
     
    ////Configure The ButtonScrollView
     NSMutableArray *buttonArrays  =[[NSMutableArray alloc]init];
-    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最近更新",@"最热门",@"健身",@"瑜伽",@"增肌",@"减肥",@"瘦身",@"健美操",@"其它", nil];
+    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最近更新",@"最热门",@"锻炼方法",@"基础知识",@"特定锻炼计划",@"锻炼视频",@"瘦身",@"健美操",@"其它", nil];
     
     for (NSString *buttonTitle in buttonTitleArray) {
         
@@ -175,8 +175,44 @@
 -(void)buttonClicked:(UIButton *)sender {
 
     
-    PPDebug(@"I click button :%d",sender.tag);
+    
+    if ([[sender currentTitle] isEqualToString:@"最近更新"]) {
+        PPDebug(@"I click button :%@",[sender currentTitle]);
+        
+        [dataTableView reloadData];
 
+        
+    }
+    if ([[sender currentTitle] isEqualToString:@"最热门"]) {
+        PPDebug(@"I click button :%@",[sender currentTitle]);
+
+        
+    }
+    if ([[sender currentTitle] isEqualToString:@"锻炼方法"]) {
+        PPDebug(@"I click button :%@",[sender currentTitle]);
+
+        
+    }
+    if ([[sender currentTitle] isEqualToString:@"基础知识"]) {
+        PPDebug(@"I click button :%@",[sender currentTitle]);
+
+        
+    }
+    if ([[sender currentTitle] isEqualToString:@"特定锻炼计划"]) {
+        PPDebug(@"I click button :%@",[sender currentTitle]);
+
+        
+    }
+    if ([[sender currentTitle] isEqualToString:@"..."]) {
+        PPDebug(@"I click button :%@",[sender currentTitle]);
+
+        
+    }
+    if ([[sender currentTitle] isEqualToString:@"..."]) {
+        PPDebug(@"I click button :%@",[sender currentTitle]);
+
+        
+    }
 }
 
 
@@ -245,9 +281,9 @@
 
     [self initUI];
     
-    [self initArticles];
+//    [self initArticles];
     
-     self.dataList = [[ArticleManager defaultManager] articleList];
+//     self.dataList = [[ArticleManager defaultManager] articleList];
     
     
 //    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
@@ -297,7 +333,7 @@
     
     
     //    cell.indexPath = indexPath;
-    ArticleInfo *article  = [dataList objectAtIndex:indexPath.row];
+    Article *article  = [dataList objectAtIndex:indexPath.row];
     if (article) {
         [cell setCellInfo:article];
     }
@@ -428,6 +464,7 @@
 {
     NSLog(@"Start load request...");
     
+    
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
@@ -438,7 +475,9 @@
     
     
     NSLog(@"How many articles do I have !");
+    self.dataList = objects;
     
+    [[self loadingView] removeFromSuperview];
     
 }
 

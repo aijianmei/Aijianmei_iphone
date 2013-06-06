@@ -113,15 +113,15 @@
         
         NSString *aucode= @"aijianmei";
         NSString *auact = @"au_getinformationlist";
-        NSString *listtype = @"3";
+        NSString *listtype = @"2";
         NSString *category = @"train";
         NSString *type = @"hot";
         NSString *page = @"1";
-        NSString *pnums = @"5";
+        NSString *pnums = @"10";
         NSString *uid = @"265";
                 
         NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:aucode, @"aucode",
-                                         auact, @"auact",
+                                         auact,  @"auact",
                                          listtype, @"listtype",
                                          category, @"category",
                                          type, @"type",

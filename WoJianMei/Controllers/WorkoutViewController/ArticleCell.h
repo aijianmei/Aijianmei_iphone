@@ -10,7 +10,7 @@
 
 
 
-@class ArticleInfo;
+@class Article;
 @class OHAttributedLabel;
 
 @protocol ArticleListCellDelegate <NSObject>
@@ -45,7 +45,7 @@
 + (ArticleCell*) createCell:(id)delegate;
 + (NSString*)getCellIdentifier;
 + (CGFloat)getCellHeight;
-- (void)setCellInfo:(ArticleInfo *)Article;
+- (void)setCellInfo:(Article *)Article;
 
 
 
