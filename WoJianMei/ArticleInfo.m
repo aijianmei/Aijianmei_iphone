@@ -58,14 +58,8 @@
     return  self;
 }
 
-
-
-
-
-
 -(void)encodeWithCoder:(NSCoder *)aCoder{
 
-    
     [aCoder encodeObject:self.articleId     forKey:ArticleId];
     [aCoder encodeObject:self.title         forKey:Title];
     [aCoder encodeObject:self.description   forKey:Description];
@@ -74,9 +68,6 @@
     [aCoder encodeObject:self.clickTimes    forKey:ClickTimes];
     [aCoder encodeObject:self.comment       forKey:Comment];
     [aCoder encodeObject:self.isRead        forKey:IsRead];
-
-    
-
 }
 - (id)initWithCoder:(NSCoder *)aDecoder
 {

@@ -9,6 +9,20 @@
 #import "ArticleService.h"
 #import "Article.h"
 
+
+
+#define Aucode       @"aucode"
+#define Auact        @"auact"
+#define Listtype     @"listtype"
+#define Category     @"category"
+#define Type         @"type"
+#define Page         @"page"
+#define Pnums        @"pnums"
+#define Uid          @"uid"
+
+
+
+
 @implementation ArticleService
 
 
@@ -36,8 +50,18 @@
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     //将json映射到class
     RKObjectMapping *articleMapping =[RKObjectMapping mappingForClass:[Article class]];
-    [articleMapping mapKeyPathsToAttributes: @"id", @"_id", @"title", @"_title", @"brief", @"_brief", @"create_time", @"_create_time", @"img", @"_img",
-        @"clikc", @"_click", @"channel", @"_channel", @"commentCount", @"_commentCount", @"channeltype", @"_channeltype", @"url", @"url", @"shareurl", @"shareurl", nil];
+    [articleMapping mapKeyPathsToAttributes: @"id", @"_id",
+     @"title", @"_title",
+     @"brief", @"_brief",
+     @"create_time", @"_create_time",
+     @"img", @"_img",
+     @"clikc", @"_click",
+     @"channel", @"_channel",
+     @"commentCount",@"_commentCount",
+     @"channeltype",@"_channeltype",
+     @"url", @"url",
+     @"shareurl",@"shareurl", nil];
+    
     [objectManager.mappingProvider setMapping:articleMapping forKeyPath:@""];
 }
 
@@ -56,14 +80,16 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         //传入api接口参数,例如：
         //aucode=aijianmei&auact=au_getinformationlist&listtype=2&category=train&type=hot&page=1&punms=5
-        NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:aucode, @"aucode",
-                                                                                auact, @"auact",
-                                                                             listtype, @"listtype",
-                                                                             category, @"category",
-                                                                                 type, @"type",
-                                                                                 page, @"page",
-                                                                                pnums, @"pnums",
-                                                                                  uid, @"uid", nil];
+        
+        NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:aucode,Aucode,
+                                          auact,Auact,
+                                       listtype,Listtype,
+                                       category,Category,
+                                           type,Type,
+                                           page,Page,
+                                          pnums,Pnums,
+                                            uid,Uid, nil];
+        
         RKObjectManager *objectManager = [RKObjectManager sharedManager];
         RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
         
@@ -94,8 +120,14 @@
         NSString *pnums = @"5";
         NSString *uid = @"265";
                 
-        NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:aucode, @"aucode", auact, @"auact", listtype, @"listtype", category, @"category", type, @"type",
-                                    page, @"page", pnums, @"pnums", uid, @"uid", nil];
+        NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:aucode, @"aucode",
+                                         auact, @"auact",
+                                         listtype, @"listtype",
+                                         category, @"category",
+                                         type, @"type",
+                                         page, @"page",
+                                         pnums, @"pnums",
+                                         uid, @"uid", nil];
         RKObjectManager *objectManager = [RKObjectManager sharedManager];
         RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
         

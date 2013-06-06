@@ -16,12 +16,16 @@
 ///实现类似cover flow 效果。
 #import "iCarousel.h"
 
+////Download datas 
+#import <RestKit/RestKit.h>
+
+
 
 #define isPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
 
 
-@interface WorkoutViewController : PPTableViewController<iCarouselDataSource, iCarouselDelegate>
+@interface WorkoutViewController : PPTableViewController<iCarouselDataSource, iCarouselDelegate,RKObjectLoaderDelegate>
 
 {
     UIView                      *_myHeaderView;

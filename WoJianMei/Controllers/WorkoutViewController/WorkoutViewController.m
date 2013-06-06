@@ -16,6 +16,11 @@
 
 #import "ReflectionView.h"
 #import "iCarousel.h"
+
+#import "ArticleService.h"
+#import "Article.h"
+
+
 ///// the setings of the iCarousel
 #define NUMBER_OF_ITEMS 13
 #define NUMBER_OF_VISIBLE_ITEMS 8
@@ -159,6 +164,7 @@
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
     
+    
 
 
 }
@@ -188,27 +194,30 @@
 
 
 
--(void)initWorkOutDatas{
+#pragma mark-- 
+#pragma mark-- init articles
+-(void)initArticles{
     
     ArticleInfo *article1 = [[ArticleInfo alloc]initWithId:@"0"
-                                                     title:@"whatsup"
-                                           description:@"youyoyoyasdfasdfasdfasdfsadfasdfasdfasdfasdf"
+                                                     title:@"力量训练，拯救你“跑”掉的肌肉"
+                                           description:@"多年来，跑步被认为是健康生活的必须。在任何一间健身房里，你都会发现有人在跑步机上进行中速跑。然而，跑步是否真的如人们所宣称的那样，是减轻体重和保持身材的最佳方法呢？"
                                                      image:[UIImage imageNamed:@""]
                                               releasedTime:@"三小时前"
                                                 clickTimes:@"12"
                                                    comment:@"1234"
                                                     isRead:NO];
-    ArticleInfo *article2 = [[ArticleInfo alloc]initWithId:@"0"
-                                                     title:@"whatsup"
-                                               description:@"youyoyoyasdfasdfasdfasdfsadfasdfasdfasdfasdf"
+    
+    ArticleInfo *article2 = [[ArticleInfo alloc]initWithId:@"1"
+                                                     title:@"懒人最爱！利用身体重量进行训练的八大好处"
+                                               description:@"现代人生活节奏变快，麦当劳、肯德基、真功夫等各式快餐在城市中风行，带来的却是各种各样疾病的日渐增多。在这么一个“快餐时代”里，我们更应该注重饮食健康。而慢餐，就是健康的基本保证。它可以帮助人们降低体重，延缓衰老，真正地享受生活的美好。"
                                                      image:[UIImage imageNamed:@""]
                                               releasedTime:@"三小时前"
                                                 clickTimes:@"12"
                                                    comment:@"1234"
                                                     isRead:NO];
     ArticleInfo *article3 = [[ArticleInfo alloc]initWithId:@"0"
-                                                     title:@"whatsup"
-                                               description:@"youyoyoyasdfasdfasdfasdfsadfasdfasdfasdfasdf"
+                                                     title:@"细嚼慢咽，吃出健康好身材"
+                                               description:@"现代人生活节奏变快，麦当劳、肯德基、真功夫等各式快餐在城市中风行，带来的却是各种各样疾病的日渐增多。在这么一个“快餐时代”里，我们更应该注重饮食健康。而慢餐，就是健康的基本保证。它可以帮助人们降低体重，延缓衰老，真正地享受生活的美好。"
                                                      image:[UIImage imageNamed:@""]
                                               releasedTime:@"三小时前"
                                                 clickTimes:@"12"
@@ -225,11 +234,6 @@
     [article2 release];
     [article3 release];
 
-    
-    
-    
-    
-    
 }
 
 
@@ -241,7 +245,7 @@
 
     [self initUI];
     
-    [self initWorkOutDatas];
+    [self initArticles];
     
      self.dataList = [[ArticleManager defaultManager] articleList];
     
@@ -249,7 +253,8 @@
 //    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
 
     
-    
+    ////开始下载文章
+    [[ArticleService sharedService] findArticle:self];
     
     
 }
@@ -403,10 +408,39 @@
     PPDebug(@"%d",[carousel currentItemIndex]);
     
     [self.spacePageControl setCurrentPage:[carousel currentItemIndex]];
-    
 }
 
 
+
+#pragma mark -
+#pragma mark - RKObjectLoaderDelegate
+
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+    NSLog(@"Response code: %d", [response statusCode]);
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", [error localizedDescription]);
+}
+
+- (void)requestDidStartLoad:(RKRequest *)request
+{
+    NSLog(@"Start load request...");
+    
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
+    NSLog(@"***Load objects count: %d", [objects count]);
+    //在这里就可以在controller刷新数据
+    
+    
+    
+    NSLog(@"How many articles do I have !");
+    
+    
+}
 
 
 
