@@ -228,7 +228,30 @@
 //    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
 
     ////开始下载文章
-    [[ArticleService sharedService] findArticle:self];    
+
+    [[ArticleService sharedService] findArticle:self];
+    
+//    [[ArticleService sharedService] findArticleWithAucode:@""
+//                                                    auact:@""
+//                                                 listtype:@""
+//                                                 category:@""
+//                                                     type:@""
+//                                                     page:@""
+//                                                    pnums:@""
+//                                                   cateid:@""
+//                                                      uid:@""
+//                                                 delegate:self];
+
+    
+    
+}
+
+
+-(void)viewDidUnload{
+
+    [super viewDidUnload];
+    self.carousel = nil;
+
 }
 
 #pragma mark --
@@ -385,6 +408,9 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     NSLog(@"***Load objects count: %d", [objects count]);
+    //在这里就可以在controller刷新数据
+    
+    self.dataList = objects;
     [self hideActivity];
     self.dataList = objects;
     [self.dataTableView reloadData];

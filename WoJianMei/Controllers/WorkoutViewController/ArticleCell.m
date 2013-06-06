@@ -15,15 +15,16 @@
 
 @implementation ArticleCell
 
+<<<<<<< HEAD
 @synthesize titleLabel = _titleLabel;
 @synthesize descriptionLabel = _descriptionLabel;
 @synthesize imgView = _imgView;
 @synthesize releasedTimeLabel = _releasedTimeLabel;
 @synthesize commentLabel = _commentLabel;
 @synthesize clickTimesLabel = _clickTimesLabel;
-@synthesize delegate;
 
 - (void)dealloc {
+
     [super dealloc];
     [_titleLabel release];
     [_descriptionLabel release];
@@ -46,6 +47,7 @@
 + (ArticleCell*) createCell:(id)delegate
 {
      return  nil;    
+
 }
 
 + (NSString*)getCellIdentifier
