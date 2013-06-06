@@ -15,7 +15,6 @@
 
 @implementation ArticleCell
 
-<<<<<<< HEAD
 @synthesize titleLabel = _titleLabel;
 @synthesize descriptionLabel = _descriptionLabel;
 @synthesize imgView = _imgView;
