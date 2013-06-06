@@ -178,10 +178,7 @@
     
     if ([[sender currentTitle] isEqualToString:@"最近更新"]) {
         PPDebug(@"I click button :%@",[sender currentTitle]);
-        
-        [dataTableView reloadData];
 
-        
     }
     if ([[sender currentTitle] isEqualToString:@"最热门"]) {
         PPDebug(@"I click button :%@",[sender currentTitle]);
@@ -190,6 +187,7 @@
     }
     if ([[sender currentTitle] isEqualToString:@"锻炼方法"]) {
         PPDebug(@"I click button :%@",[sender currentTitle]);
+        [dataTableView reloadData];
 
         
     }
@@ -463,8 +461,8 @@
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
-    
-    
+    [self showActivityWithText:@"数据加载中..."];
+
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
@@ -476,9 +474,7 @@
     
     NSLog(@"How many articles do I have !");
     self.dataList = objects;
-    
-    [[self loadingView] removeFromSuperview];
-    
+    [self hideActivity];
 }
 
 

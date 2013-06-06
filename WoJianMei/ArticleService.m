@@ -18,6 +18,7 @@
 #define Type         @"type"
 #define Page         @"page"
 #define Pnums        @"pnums"
+#define Cateid       @"cateid"
 #define Uid          @"uid"
 
 
@@ -72,6 +73,7 @@
                          type:(NSString*)type
                          page:(NSString*)page
                         pnums:(NSString*)pnums
+                       cateid:(NSString*)cateid
                           uid:(NSString*)uid
                      delegate:(id<RKObjectLoaderDelegate>)delegate
 {
@@ -88,7 +90,7 @@
                                            type,Type,
                                            page,Page,
                                           pnums,Pnums,
-                                            uid,Uid, nil];
+                                         cateid,Cateid,                                            uid,Uid, nil];
         
         RKObjectManager *objectManager = [RKObjectManager sharedManager];
         RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
@@ -114,10 +116,11 @@
         NSString *aucode= @"aijianmei";
         NSString *auact = @"au_getinformationlist";
         NSString *listtype = @"2";
-        NSString *category = @"train";
+        NSString *category = @"append";
         NSString *type = @"hot";
         NSString *page = @"1";
         NSString *pnums = @"10";
+        NSString *cateid = @"3";
         NSString *uid = @"265";
                 
         NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:aucode, @"aucode",
@@ -127,6 +130,7 @@
                                          type, @"type",
                                          page, @"page",
                                          pnums, @"pnums",
+                                         cateid,@"cateid",
                                          uid, @"uid", nil];
         RKObjectManager *objectManager = [RKObjectManager sharedManager];
         RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
