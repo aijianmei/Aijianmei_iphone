@@ -582,6 +582,7 @@
 		C6DB20181760CC9E0060BD08 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DB20101760CC9E0060BD08 /* UIImageView+WebCache.m */; };
 		C6DB20251760CDD40060BD08 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6DB20241760CDD40060BD08 /* ImageIO.framework */; };
 		C6DB20271760CDE10060BD08 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6DB20261760CDE00060BD08 /* CoreImage.framework */; };
+		C6DB202D1760D8E40060BD08 /* WorkoutDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DB202C1760D8E40060BD08 /* WorkoutDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1534,6 +1535,8 @@
 		C6DB20101760CC9E0060BD08 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		C6DB20241760CDD40060BD08 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		C6DB20261760CDE00060BD08 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		C6DB202B1760D8E40060BD08 /* WorkoutDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailViewController.h; sourceTree = "<group>"; };
+		C6DB202C1760D8E40060BD08 /* WorkoutDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3260,6 +3263,8 @@
 				4A8A7225174E10FF00BD3AAE /* LoginViewController.m */,
 				4A8A7227174E557700BD3AAE /* SignUpViewController.h */,
 				4A8A7228174E557700BD3AAE /* SignUpViewController.m */,
+				C6DB202B1760D8E40060BD08 /* WorkoutDetailViewController.h */,
+				C6DB202C1760D8E40060BD08 /* WorkoutDetailViewController.m */,
 			);
 			name = WorkoutViewController;
 			path = Controllers/WorkoutViewController;
@@ -4357,6 +4362,7 @@
 				C6DB20161760CC9E0060BD08 /* SDWebImagePrefetcher.m in Sources */,
 				C6DB20171760CC9E0060BD08 /* UIButton+WebCache.m in Sources */,
 				C6DB20181760CC9E0060BD08 /* UIImageView+WebCache.m in Sources */,
+				C6DB202D1760D8E40060BD08 /* WorkoutDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

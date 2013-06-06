@@ -15,7 +15,7 @@
 #import "iCarousel.h"
 #import "ArticleService.h"
 #import "Article.h"
-
+#import "WorkoutDetailViewController.h"
 
 ///// the setings of the iCarousel
 #define NUMBER_OF_ITEMS 13
@@ -257,10 +257,17 @@
     return cell;
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     return  [ArticleCell getCellHeight];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    WorkoutDetailViewController *controller = [[WorkoutDetailViewController alloc] init];
+    controller.article = [self.dataList objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
 }
 
 #pragma mark -
@@ -373,13 +380,12 @@
 {
     NSLog(@"Start load request...");
     [self showActivityWithText:@"数据加载中..."];
-
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
-    [self hideActivity];
     NSLog(@"***Load objects count: %d", [objects count]);
+    [self hideActivity];
     self.dataList = objects;
     [self.dataTableView reloadData];
 }
