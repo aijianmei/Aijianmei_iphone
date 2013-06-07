@@ -8,20 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "JMStaticContentTableViewController.h"
-#import "SinaweiboManager.h"
 #import "TencentOAuthManager.h"
 #import "TCWBEngine.h"
 
 @class HZActivityIndicatorView;
-@class SinaweiboManager;
 @class TCWBEngine;
 @class TencentOAuthManager;
 
-@interface More_SettingsViewController: JMStaticContentTableViewController<SinaWeiboDelegate,SinaWeiboRequestDelegate,UIAlertViewDelegate,TencentSessionDelegate>
+@interface More_SettingsViewController: JMStaticContentTableViewController<UIAlertViewDelegate,TencentSessionDelegate>
 
 {
     
-    SinaweiboManager         *sinaweiboManager;
     TencentOAuthManager      *tencentQQManager;
     TCWBEngine            *tencentWeiBoManager;
     

@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPViewController.h"
 #import "Article.h"
 
-@interface WorkoutDetailViewController : UIViewController
+
+@interface WorkoutDetailViewController :PPViewController
+
+{
+    Article *_article;
+}
 
 @property(nonatomic, retain) Article *article;
+
 
 @end

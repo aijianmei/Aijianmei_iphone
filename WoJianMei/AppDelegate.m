@@ -16,7 +16,6 @@
 #import "MySideMenueViewController.h"
 #import "MFSideMenu.h"
 #import "UIUtils.h"
-#import "SinaweiboManager.h"
 #import "DeviceDetection.h"
 #import "ImageManager.h"
 #import "UINavigationBarExt.h"
@@ -31,7 +30,6 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize sinaWeiboManager =_sinaWeiboManager;
 @synthesize tCWBEngine =_tCWBEngine;
 @synthesize tencentOAuthManager =_tencentOAuthManager;
 @synthesize navigationController =_navigationController;
@@ -50,7 +48,6 @@
 - (void)dealloc
 {
     [_tabBarController release];
-    [_sinaWeiboManager release];
     [_tCWBEngine release];
     [_tencentOAuthManager release];
     [_navigationController release];
@@ -127,12 +124,7 @@
     
    
     
-    /////sinaweibo
-    NSString *appKey = @"239725454";
-    NSString *appSecret = @"e2064ac8fab9d889a9eccecc5babad11";
-     _sinaWeiboManager = [SinaweiboManager defaultManager];
-    [_sinaWeiboManager createSinaweiboWithAppKey:appKey appSecret:appSecret appRedirectURI:kAppRedirectURI delegate:self];
-    
+       
     
     
     

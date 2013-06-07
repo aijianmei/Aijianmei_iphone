@@ -8,9 +8,6 @@
 
 #import "More_SettingsViewController.h"
 #import "AppDelegate.h"
-#import "SinaweiboManager.h"
-#import "SinaWeibo.h"
-#import "SinaWeiboRequest.h"
 #import "TencentOAuthManager.h"
 #import "TCWBEngine.h"
 #import "HZActivityIndicatorView.h"
@@ -77,7 +74,6 @@
         {
             
             if ([alertView.message hasSuffix:@"新浪微博吗？"]) {
-                [self logOutSinaWeibo];
                 
                 NSLog(@"logout  : [%@]",alertView.message);
                 
@@ -89,7 +85,6 @@
                 
                 
             }else if ([alertView.message hasSuffix:@"QQ吗？"]) {
-                [self logOutSinaWeibo];
                 
                 NSLog(@"logout the QQ");
                 
@@ -120,29 +115,6 @@
     
 }
 
-#pragma mark
-#pragma mark --SinaWeiboMethods
--(void)logOutSinaWeibo{
-    
-    SinaWeibo *sinaweibo = [[self sinaweiboManager] sinaweibo];
-    BOOL isLoggedIn = sinaweibo.isLoggedIn;
-    
-    if (isLoggedIn) {
-        [sinaweibo logOut];        
-    }
-    [self.tableView reloadData];
-  
-}
--(void)loginSinaweibo{
-    
-    [[self sinaweiboManager].sinaweibo logIn] ;
-}
-
--(BOOL)isSinaWeiboLoggedIn{
-    
-    return [[self sinaweiboManager].sinaweibo isLoggedIn];
-
-}
 
 #pragma mark 
 #pragma mark --TencentWeiboMethods
@@ -266,14 +238,6 @@
 
 
 
-- (SinaweiboManager *)sinaweiboManager
-{
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate.sinaWeiboManager setDelegate:self];
-        
-    return appDelegate.sinaWeiboManager;
-}
-
 - (TencentOAuthManager *)tencentOAuthManager
 {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -302,7 +266,6 @@
     self.renrenModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
 
 
-    sinaweiboManager =    [self sinaweiboManager];
     tencentQQManager = [self tencentOAuthManager];
     tencentWeiBoManager =       [self tCWBEngine];
     
@@ -349,23 +312,23 @@
              cell.detailTextLabel.text  =NSLocalizedString(@"未绑定", @"Airplane Mode");
              cell.detailTextLabel.textColor = [UIColor redColor];
              
-             if ([self isSinaWeiboLoggedIn]) {
-                 cell.detailTextLabel.textColor = [UIColor greenColor];
-                 cell.detailTextLabel.text  =NSLocalizedString(@"已绑定", @"Airplane Mode");
-             }
+//             if ([self isSinaWeiboLoggedIn]) {
+//                 cell.detailTextLabel.textColor = [UIColor greenColor];
+//                 cell.detailTextLabel.text  =NSLocalizedString(@"已绑定", @"Airplane Mode");
+//             }
 
              cell.imageView.image = [UIImage imageNamed:@"AirplaneMode"];
              
          }whenSelected:^(NSIndexPath *indexPath){
              ///TODO
           
-             if ([self isSinaWeiboLoggedIn]) {
-                 [self showAlertViewWithMessage:@"你确定要解除绑定新浪微博吗？"];
-
-             }else{
-                 
-                 [self loginSinaweibo];
-             }
+//             if ([self isSinaWeiboLoggedIn]) {
+//                 [self showAlertViewWithMessage:@"你确定要解除绑定新浪微博吗？"];
+//
+//             }else{
+//                 
+//                 [self loginSinaweibo];
+//             }
            }];
          
          //// add a row at the section one
@@ -433,10 +396,10 @@
              cell.detailTextLabel.text = @"未绑定";
              [cell.detailTextLabel setTextColor:[UIColor redColor]];
 
-             if ( [self isSinaWeiboLoggedIn]) {
-                 cell.detailTextLabel.text = @"已绑定";
-                 [cell.detailTextLabel setTextColor:[UIColor greenColor]];
-             }
+//             if ( [self isSinaWeiboLoggedIn]) {
+//                 cell.detailTextLabel.text = @"已绑定";
+//                 [cell.detailTextLabel setTextColor:[UIColor greenColor]];
+//             }
              
     
          } whenSelected:^(NSIndexPath *indexPath) {
@@ -580,44 +543,6 @@
 	}];
     
     
-}
-
-#pragma mark -
-#pragma SinaWeiboDelegate methods
-- (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
-{
-    PPDebug(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
-    
-    [sinaweiboManager storeAuthData];
-    [self.tableView reloadData];
-}
-
-- (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
-{
-    PPDebug(@"sinaweiboDidLogOut");
-    [sinaweiboManager removeAuthData];
-    [self.tableView reloadData];
-    
-}
-
-- (void)sinaweiboLogInDidCancel:(SinaWeibo *)sinaweibo
-{
-    PPDebug(@"sinaweiboLogInDidCancel");
-    [self.tableView reloadData];
-    
-}
-
-- (void)sinaweibo:(SinaWeibo *)sinaweibo logInDidFailWithError:(NSError *)error
-{
-    PPDebug(@"sinaweibo logInDidFailWithError %@", error);
-    [self.tableView reloadData];
-}
-
-- (void)sinaweibo:(SinaWeibo *)sinaweibo accessTokenInvalidOrExpired:(NSError *)error
-{
-    PPDebug(@"sinaweiboAccessTokenInvalidOrExpired %@", error);
-    [sinaweiboManager removeAuthData];
-    [self.tableView reloadData];
 }
 
 

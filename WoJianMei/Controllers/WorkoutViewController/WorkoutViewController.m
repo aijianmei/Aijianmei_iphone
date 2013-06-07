@@ -23,6 +23,8 @@
 #define ITEM_SPACING 220
 #define SCROLL_VIEW_TAG 20120913
 
+#define More_BUTTON_TAG 20130607
+
 @interface WorkoutViewController ()
 
 @end
@@ -67,7 +69,7 @@
     
    ////Configure The ButtonScrollView
     NSMutableArray *buttonArrays  =[[NSMutableArray alloc]init];
-    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最近更新",@"最热门",@"锻炼方法",@"基础知识",@"特定锻炼计划",@"锻炼视频",@"瘦身",@"健美操",@"其它", nil];
+    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最新",@"锻炼方法",@"基础知识",@"特定锻炼计划",@"锻炼视频",@"瘦身",@"健美操",@"其它", nil];
     
     for (NSString *buttonTitle in buttonTitleArray) {
         
@@ -96,13 +98,31 @@
     
     [[self.view viewWithTag:SCROLL_VIEW_TAG] removeFromSuperview];
     self.buttonScrollView.tag = SCROLL_VIEW_TAG;
-    [_buttonScrollView setFrame:CGRectMake(0,170, 1220, 30)];
+    [_buttonScrollView setFrame:CGRectMake(0,170, 260, 30)];
     [_buttonScrollView setShowsHorizontalScrollIndicator:NO];
     
     [_buttonScrollView setContentSize:CGSizeMake([buttonArrays count] * buttonWidth * 2.6, buttonHeight)];
 
 
     [self.myHeaderView addSubview:_buttonScrollView];
+    
+    
+    
+    UIButton *moreButotn = [[UIButton alloc]initWithFrame:CGRectMake(270, 170, 40, 30)];
+    [moreButotn.titleLabel setFont:[UIFont systemFontOfSize:12]];
+    
+    [moreButotn setBackgroundImage:[UIImage imageNamed:@"button_Image.png"] forState:UIControlStateNormal];
+    [moreButotn setBackgroundImage:[UIImage imageNamed:@"button_Image.png"] forState:UIControlStateSelected];
+    [moreButotn addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+ 
+    
+    [moreButotn setTag:More_BUTTON_TAG];
+    
+    [_myHeaderView addSubview:moreButotn];
+    [moreButotn release];
+    
+    
+    
 
 
     //configure carousel
@@ -137,12 +157,9 @@
 
 
 -(void)buttonClicked:(UIButton *)sender {
-    if ([[sender currentTitle] isEqualToString:@"最近更新"]) {
+    if ([[sender currentTitle] isEqualToString:@"最新"]) {
         PPDebug(@"I click button :%@",[sender currentTitle]);
 
-    }
-    if ([[sender currentTitle] isEqualToString:@"最热门"]) {
-        PPDebug(@"I click button :%@",[sender currentTitle]);        
     }
     if ([[sender currentTitle] isEqualToString:@"锻炼方法"]) {
         PPDebug(@"I click button :%@",[sender currentTitle]);
@@ -156,8 +173,8 @@
     if ([[sender currentTitle] isEqualToString:@"..."]) {
         PPDebug(@"I click button :%@",[sender currentTitle]);        
     }
-    if ([[sender currentTitle] isEqualToString:@"..."]) {
-        PPDebug(@"I click button :%@",[sender currentTitle]);        
+    if ([sender tag] == More_BUTTON_TAG) {
+        PPDebug(@"I click button More Button");        
     }
 }
 
@@ -172,48 +189,6 @@
 - (void)spacePageControl:(SMPageControl *)sender
 {
 	NSLog(@"Current Page (SMPageControl): %i", sender.currentPage);
-}
-
-#pragma mark-- 
-#pragma mark-- init articles
--(void)initArticles{
-    
-    ArticleInfo *article1 = [[ArticleInfo alloc]initWithId:@"0"
-                                                     title:@"力量训练，拯救你“跑”掉的肌肉"
-                                           description:@"多年来，跑步被认为是健康生活的必须。在任何一间健身房里，你都会发现有人在跑步机上进行中速跑。然而，跑步是否真的如人们所宣称的那样，是减轻体重和保持身材的最佳方法呢？"
-                                                     image:[UIImage imageNamed:@""]
-                                              releasedTime:@"三小时前"
-                                                clickTimes:@"12"
-                                                   comment:@"1234"
-                                                    isRead:NO];
-    
-    ArticleInfo *article2 = [[ArticleInfo alloc]initWithId:@"1"
-                                                     title:@"懒人最爱！利用身体重量进行训练的八大好处"
-                                               description:@"现代人生活节奏变快，麦当劳、肯德基、真功夫等各式快餐在城市中风行，带来的却是各种各样疾病的日渐增多。在这么一个“快餐时代”里，我们更应该注重饮食健康。而慢餐，就是健康的基本保证。它可以帮助人们降低体重，延缓衰老，真正地享受生活的美好。"
-                                                     image:[UIImage imageNamed:@""]
-                                              releasedTime:@"三小时前"
-                                                clickTimes:@"12"
-                                                   comment:@"1234"
-                                                    isRead:NO];
-    ArticleInfo *article3 = [[ArticleInfo alloc]initWithId:@"0"
-                                                     title:@"细嚼慢咽，吃出健康好身材"
-                                               description:@"现代人生活节奏变快，麦当劳、肯德基、真功夫等各式快餐在城市中风行，带来的却是各种各样疾病的日渐增多。在这么一个“快餐时代”里，我们更应该注重饮食健康。而慢餐，就是健康的基本保证。它可以帮助人们降低体重，延缓衰老，真正地享受生活的美好。"
-                                                     image:[UIImage imageNamed:@""]
-                                              releasedTime:@"三小时前"
-                                                clickTimes:@"12"
-                                                   comment:@"1234"
-                                                    isRead:NO];
-    
-    
-    [[ArticleManager defaultManager] addArticle:article1];
-    [[ArticleManager defaultManager] addArticle:article2];
-    [[ArticleManager defaultManager] addArticle:article3];
-    
-    
-    [article1 release];
-    [article2 release];
-    [article3 release];
-
 }
 
 
@@ -287,10 +262,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WorkoutDetailViewController *controller = [[WorkoutDetailViewController alloc] init];
+    
+//    WorkoutDetailViewController *controller =[[WorkoutDetailViewController alloc]init];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    
+    WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
+
     controller.article = [self.dataList objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:controller animated:YES];
-    [controller release];
+
+    
+    
 }
 
 #pragma mark -

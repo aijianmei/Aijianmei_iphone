@@ -7,7 +7,6 @@
 //
 
 #import "LoginViewController.h"
-#import "ShareToSinaController.h"
 #import "ShareToQQViewController.h"
 
 @interface LoginViewController ()
@@ -69,9 +68,6 @@
     
     
     
-    ShareToSinaController *vc = [[ShareToSinaController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
     
 }
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PPApplication.h"
-#import "SinaweiboManager.h"
+//#import "SinaweiboManager.h"
 #import "TencentOAuthManager.h"
 #import "TCWBEngine.h"
 
@@ -17,7 +17,7 @@
 #import "MoreViewController.h"
 
 
-@class SinaweiboManager;
+//@class SinaweiboManager;
 @class TCWBEngine;
 @class PPTabBarController;
 
@@ -28,13 +28,12 @@ enum
 };
 
 
-@interface AppDelegate : PPApplication <UIApplicationDelegate,UITabBarControllerDelegate,SinaWeiboDelegate,WXApiDelegate,TencentSessionDelegate,sendMsgToWeChatViewDelegate>
+@interface AppDelegate : PPApplication <UIApplicationDelegate,UITabBarControllerDelegate,WXApiDelegate,TencentSessionDelegate,sendMsgToWeChatViewDelegate>
 
 {
       PPTabBarController	*_tabBarController;
       UINavigationController *_navigationController;
     
-      SinaweiboManager    *_sinaWeiboManager;
       TencentOAuthManager *_tencentOAuthManager;
       TCWBEngine          *_tCWBEngine;
     
@@ -44,7 +43,6 @@ enum
 }
 
 @property (retain, nonatomic)  UIWindow *window;
-@property (readonly,nonatomic) SinaweiboManager *sinaWeiboManager;
 @property (retain,nonatomic)   TCWBEngine  *tCWBEngine;
 @property (readonly,nonatomic) TencentOAuthManager *tencentOAuthManager;
 @property (nonatomic,retain)   UINavigationController *navigationController;

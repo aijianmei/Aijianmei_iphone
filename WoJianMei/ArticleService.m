@@ -10,7 +10,7 @@
 #import "Article.h"
 
 
-
+////数据
 #define Aucode       @"aucode"
 #define Auact        @"auact"
 #define Listtype     @"listtype"
@@ -21,6 +21,21 @@
 #define Cateid       @"cateid"
 #define Uid          @"uid"
 
+////文章Article 类
+
+//@"id", @"_id",
+//@"title", @"_title",
+//@"brief", @"_brief",
+//@"create_time", @"_create_time",
+//@"img", @"_img",
+//@"clikc", @"_click",
+//@"channel", @"_channel",
+//@"commentCount",@"_commentCount",
+//@"channeltype",@"_channeltype",
+//@"url", @"url",
+//@"shareurl",@"shareurl",
+
+#define id
 
 
 
@@ -51,9 +66,11 @@
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     //将json映射到class
     RKObjectMapping *articleMapping =[RKObjectMapping mappingForClass:[Article class]];
-    [articleMapping mapKeyPathsToAttributes: @"id", @"_id",
+    [articleMapping mapKeyPathsToAttributes:
+     @"id", @"_id",
      @"title", @"_title",
      @"brief", @"_brief",
+//     @"content",@"_content"
      @"create_time", @"_create_time",
      @"img", @"_img",
      @"clikc", @"_click",
@@ -116,11 +133,11 @@
         NSString *aucode= @"aijianmei";
         NSString *auact = @"au_getinformationlist";
         NSString *listtype = @"2";
-        NSString *category = @"append";
+        NSString *category = @"train";
         NSString *type = @"hot";
         NSString *page = @"1";
         NSString *pnums = @"10";
-        NSString *cateid = @"3";
+        NSString *cateid = @"1";
         NSString *uid = @"265";
                 
         NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:aucode, @"aucode",

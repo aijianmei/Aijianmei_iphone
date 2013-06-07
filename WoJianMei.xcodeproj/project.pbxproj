@@ -360,10 +360,6 @@
 		4A9599BF168ED997006F1317 /* TencentOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95982A168ED995006F1317 /* TencentOAuth.m */; };
 		4A9599C0168ED997006F1317 /* TencentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95982C168ED995006F1317 /* TencentRequest.m */; };
 		4A9599C1168ED997006F1317 /* TencentTargetSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95982E168ED995006F1317 /* TencentTargetSelector.m */; };
-		4A959A0F168ED997006F1317 /* SinaWeibo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A9598D2168ED996006F1317 /* SinaWeibo.bundle */; };
-		4A959A10168ED997006F1317 /* SinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9598D4168ED996006F1317 /* SinaWeibo.m */; };
-		4A959A11168ED997006F1317 /* SinaWeiboAuthorizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9598D6168ED996006F1317 /* SinaWeiboAuthorizeView.m */; };
-		4A959A12168ED997006F1317 /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9598D9168ED996006F1317 /* SinaWeiboRequest.m */; };
 		4A959A20168ED998006F1317 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A959903168ED996006F1317 /* libWeChatSDK.a */; };
 		4A965CC9168F6AE400FF34CE /* README in Resources */ = {isa = PBXBuildFile; fileRef = 4A965CC4168F6AE400FF34CE /* README */; };
 		4A965CD0168F6AF600FF34CE /* FitnessNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A965CCE168F6AF600FF34CE /* FitnessNetworkRequest.m */; };
@@ -423,9 +419,6 @@
 		4ADCFE25169D614600A3E979 /* WorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE18169D614600A3E979 /* WorkoutViewController.m */; };
 		4ADCFE36169D619500A3E979 /* ShareToQQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE28169D619500A3E979 /* ShareToQQViewController.m */; };
 		4ADCFE37169D619500A3E979 /* ShareToQQViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE29169D619500A3E979 /* ShareToQQViewController.xib */; };
-		4ADCFE3A169D619500A3E979 /* ShareToSinaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE2E169D619500A3E979 /* ShareToSinaController.m */; };
-		4ADCFE3B169D619500A3E979 /* ShareToSinaController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE2F169D619500A3E979 /* ShareToSinaController.xib */; };
-		4ADCFE3C169D619500A3E979 /* SinaweiboManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE31169D619500A3E979 /* SinaweiboManager.m */; };
 		4ADCFECD169D62C400A3E979 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE57169D62C400A3E979 /* 1.jpg */; };
 		4ADCFED0169D62C400A3E979 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE5A169D62C400A3E979 /* 2.jpg */; };
 		4ADCFED3169D62C400A3E979 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE5D169D62C400A3E979 /* 3.jpg */; };
@@ -1229,14 +1222,6 @@
 		4A95982C168ED995006F1317 /* TencentRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TencentRequest.m; sourceTree = "<group>"; };
 		4A95982D168ED995006F1317 /* TencentTargetSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TencentTargetSelector.h; sourceTree = "<group>"; };
 		4A95982E168ED995006F1317 /* TencentTargetSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TencentTargetSelector.m; sourceTree = "<group>"; };
-		4A9598D2168ED996006F1317 /* SinaWeibo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SinaWeibo.bundle; sourceTree = "<group>"; };
-		4A9598D3168ED996006F1317 /* SinaWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeibo.h; sourceTree = "<group>"; };
-		4A9598D4168ED996006F1317 /* SinaWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeibo.m; sourceTree = "<group>"; };
-		4A9598D5168ED996006F1317 /* SinaWeiboAuthorizeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboAuthorizeView.h; sourceTree = "<group>"; };
-		4A9598D6168ED996006F1317 /* SinaWeiboAuthorizeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboAuthorizeView.m; sourceTree = "<group>"; };
-		4A9598D7168ED996006F1317 /* SinaWeiboConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboConstants.h; sourceTree = "<group>"; };
-		4A9598D8168ED996006F1317 /* SinaWeiboRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboRequest.h; sourceTree = "<group>"; };
-		4A9598D9168ED996006F1317 /* SinaWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboRequest.m; sourceTree = "<group>"; };
 		4A959903168ED996006F1317 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		4A959905168ED996006F1317 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		4A959906168ED996006F1317 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
@@ -1320,11 +1305,6 @@
 		4ADCFE27169D619500A3E979 /* ShareToQQViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareToQQViewController.h; sourceTree = "<group>"; };
 		4ADCFE28169D619500A3E979 /* ShareToQQViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareToQQViewController.m; sourceTree = "<group>"; };
 		4ADCFE29169D619500A3E979 /* ShareToQQViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareToQQViewController.xib; sourceTree = "<group>"; };
-		4ADCFE2D169D619500A3E979 /* ShareToSinaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareToSinaController.h; sourceTree = "<group>"; };
-		4ADCFE2E169D619500A3E979 /* ShareToSinaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareToSinaController.m; sourceTree = "<group>"; };
-		4ADCFE2F169D619500A3E979 /* ShareToSinaController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareToSinaController.xib; sourceTree = "<group>"; };
-		4ADCFE30169D619500A3E979 /* SinaweiboManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaweiboManager.h; sourceTree = "<group>"; };
-		4ADCFE31169D619500A3E979 /* SinaweiboManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaweiboManager.m; sourceTree = "<group>"; };
 		4ADCFE57169D62C400A3E979 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		4ADCFE5A169D62C400A3E979 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		4ADCFE5D169D62C400A3E979 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
@@ -2970,7 +2950,6 @@
 				4A94497D16A9484E00A96815 /* TCWeiBoSDK_20 */,
 				4A9597F8168ED995006F1317 /* MobClick */,
 				4A9597FF168ED995006F1317 /* QQ_Connect_IOS_SDK__V1.2 */,
-				4A9598CE168ED996006F1317 /* SinaWeiBoSDK_sso */,
 				4A959902168ED996006F1317 /* WeixinSDK */,
 			);
 			name = "3PP-SDK";
@@ -3064,21 +3043,6 @@
 				4A959826168ED995006F1317 /* APIResponse.m */,
 			);
 			path = API;
-			sourceTree = "<group>";
-		};
-		4A9598CE168ED996006F1317 /* SinaWeiBoSDK_sso */ = {
-			isa = PBXGroup;
-			children = (
-				4A9598D2168ED996006F1317 /* SinaWeibo.bundle */,
-				4A9598D3168ED996006F1317 /* SinaWeibo.h */,
-				4A9598D4168ED996006F1317 /* SinaWeibo.m */,
-				4A9598D5168ED996006F1317 /* SinaWeiboAuthorizeView.h */,
-				4A9598D6168ED996006F1317 /* SinaWeiboAuthorizeView.m */,
-				4A9598D7168ED996006F1317 /* SinaWeiboConstants.h */,
-				4A9598D8168ED996006F1317 /* SinaWeiboRequest.h */,
-				4A9598D9168ED996006F1317 /* SinaWeiboRequest.m */,
-			);
-			path = SinaWeiBoSDK_sso;
 			sourceTree = "<group>";
 		};
 		4A959902168ED996006F1317 /* WeixinSDK */ = {
@@ -3278,11 +3242,6 @@
 				4AEE4DFD16A67E4000B13161 /* TencentOAuthManager.h */,
 				4AEE4DFE16A67E4100B13161 /* TencentOAuthManager.m */,
 				4ADCFE29169D619500A3E979 /* ShareToQQViewController.xib */,
-				4ADCFE2D169D619500A3E979 /* ShareToSinaController.h */,
-				4ADCFE2E169D619500A3E979 /* ShareToSinaController.m */,
-				4ADCFE2F169D619500A3E979 /* ShareToSinaController.xib */,
-				4ADCFE30169D619500A3E979 /* SinaweiboManager.h */,
-				4ADCFE31169D619500A3E979 /* SinaweiboManager.m */,
 			);
 			path = ShareViewContrller;
 			sourceTree = "<group>";
@@ -3840,10 +3799,8 @@
 				4A9599B9168ED997006F1317 /* closeimg.png in Resources */,
 				4A9599BA168ED997006F1317 /* Thumbs.db in Resources */,
 				4A9599BB168ED997006F1317 /* title_btn.png in Resources */,
-				4A959A0F168ED997006F1317 /* SinaWeibo.bundle in Resources */,
 				4A965CC9168F6AE400FF34CE /* README in Resources */,
 				4ADCFE37169D619500A3E979 /* ShareToQQViewController.xib in Resources */,
-				4ADCFE3B169D619500A3E979 /* ShareToSinaController.xib in Resources */,
 				4ADCFECD169D62C400A3E979 /* 1.jpg in Resources */,
 				4ADCFED0169D62C400A3E979 /* 2.jpg in Resources */,
 				4ADCFED3169D62C400A3E979 /* 3.jpg in Resources */,
@@ -4275,9 +4232,6 @@
 				4A9599BF168ED997006F1317 /* TencentOAuth.m in Sources */,
 				4A9599C0168ED997006F1317 /* TencentRequest.m in Sources */,
 				4A9599C1168ED997006F1317 /* TencentTargetSelector.m in Sources */,
-				4A959A10168ED997006F1317 /* SinaWeibo.m in Sources */,
-				4A959A11168ED997006F1317 /* SinaWeiboAuthorizeView.m in Sources */,
-				4A959A12168ED997006F1317 /* SinaWeiboRequest.m in Sources */,
 				4A965CD0168F6AF600FF34CE /* FitnessNetworkRequest.m in Sources */,
 				4A965CD4168F6B9100FF34CE /* MyselfTableViewCell.m in Sources */,
 				4AD8E031169BD46B00EE04F9 /* User.m in Sources */,
@@ -4293,8 +4247,6 @@
 				4ADCFE23169D614600A3E979 /* ArticleCell.m in Sources */,
 				4ADCFE25169D614600A3E979 /* WorkoutViewController.m in Sources */,
 				4ADCFE36169D619500A3E979 /* ShareToQQViewController.m in Sources */,
-				4ADCFE3A169D619500A3E979 /* ShareToSinaController.m in Sources */,
-				4ADCFE3C169D619500A3E979 /* SinaweiboManager.m in Sources */,
 				4ADCFFA9169D69F700A3E979 /* JMStaticContentTableViewCell.m in Sources */,
 				4ADCFFAA169D69F700A3E979 /* JMStaticContentTableViewController.m in Sources */,
 				4ADCFFAB169D69F700A3E979 /* JMStaticContentTableViewSection.m in Sources */,

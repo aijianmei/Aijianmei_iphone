@@ -10,7 +10,6 @@
 #import "AboutViewController.h"
 #import "More_SettingsViewController.h"
 #import "UserService.h"
-#import "ShareToSinaController.h"
 #import "ImageManager.h"
 #import "FontSize.h"
 #import "DeviceDetection.h"
@@ -466,10 +465,7 @@ typedef enum {
             case SEND_SINA_WEIBO:
             {
                 
-                ShareToSinaController *sc = [[ShareToSinaController alloc]init];
-                [self.navigationController pushViewController:sc animated:YES];
-                [sc release];
-                
+                                
             }
                 break;
             case SEND_WECHAT_SOCIAL:
