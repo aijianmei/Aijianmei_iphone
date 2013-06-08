@@ -14,44 +14,45 @@
 
 
     NSString       *_articleId;
-    NSString     *_description;
     NSString           *_title;
-    UIImage            *_image;
+    NSString          *_author;
+    NSString     *_description;
+    NSString         *_content;
+    NSString           *_image;
+    NSString            *_like;
     NSString    *_releasedTime;
-    NSString         *_comment;
     NSString      *_clickTimes;
-
-    NSNumber          *_isRead;
-
+    NSString         *_comment;
+    NSArray      *_commentList;
     
-    
-    
+//    NSNumber          *_isRead;
 }
-@property (nonatomic, retain) NSString       *articleId;
-@property (nonatomic, retain) NSString           *title;
-@property (nonatomic, retain) NSString     *description;
-
-@property (nonatomic, retain) UIImage            *image;
-@property (nonatomic, retain) NSString    *releasedTime;
-@property (nonatomic, retain) NSString         *comment;
-
-@property (nonatomic, retain) NSString      *clickTimes;
-@property (nonatomic, retain) NSNumber       *isRead;
+@property (nonatomic, copy) NSString     *articleId;
+@property (nonatomic, copy) NSString     *title;
+@property (nonatomic, copy) NSString     *author;
+@property (nonatomic, copy) NSString     *description;
+@property (nonatomic, copy) NSString     *content;
+@property (nonatomic, copy) NSString     *image;
+@property (nonatomic, copy) NSString     *like;
+@property (nonatomic, copy) NSString     *releasedTime;
+@property (nonatomic, copy) NSString     *clickTimes;
+@property (nonatomic, copy) NSString     *comment;
+@property (nonatomic,retain)NSArray      *commentList;
+//@property (nonatomic, retain) NSNumber       *isRead;
 
 -(id)initWithId:(NSString*)aId
           title:(NSString*)atitle
+         author:(NSString*)aAuthor
     description:(NSString*)aDescription
-          image:(UIImage *)aImage
-   releasedTime:(NSString *)aReleasedTime
+        content:(NSString*)aContent
+          image:(NSString*)aImage
+           like:(NSString*)aLike
+   releasedTime:(NSString*)aReleasedTime
      clickTimes:(NSString*)aClickTimes
-        comment:(NSString *)aComment
-         isRead:(BOOL)aIsRead;
-
-
+        comment:(NSString*)aComment
+    commentList:(NSArray*)aCommnetList;
+//         isRead:(BOOL)aIsRead;
 
 - (void)updateByArticle:(ArticleInfo *)article;
-
-
-
 
 @end

@@ -202,22 +202,27 @@
 //     self.dataList = [[ArticleManager defaultManager] articleList];
 //    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
 
-    ////开始下载文章
-
-    [[ArticleService sharedService] findArticle:self];
+    ////开始下载文章    
+    NSString *aucode= @"aijianmei";
+    NSString *auact = @"au_getinformationlist";
+    NSString *listtype = @"2";
+    NSString *category = @"train";
+    NSString *type = @"hot";
+    NSString *page = @"1";
+    NSString *pnums = @"10";
+    NSString *cateid = @"1";
+    NSString *uid = @"265";
     
-//    [[ArticleService sharedService] findArticleWithAucode:@""
-//                                                    auact:@""
-//                                                 listtype:@""
-//                                                 category:@""
-//                                                     type:@""
-//                                                     page:@""
-//                                                    pnums:@""
-//                                                   cateid:@""
-//                                                      uid:@""
-//                                                 delegate:self];
-
-    
+    [[ArticleService sharedService] findArticleWithAucode:aucode
+                                                    auact:auact
+                                                 listtype:listtype
+                                                 category:category
+                                                     type:type
+                                                     page:page
+                                                    pnums:pnums
+                                                   cateid:cateid
+                                                      uid:uid
+                                                delegate:self];
     
 }
 
