@@ -67,7 +67,7 @@
         CGPoint point1 = CGPointMake(btn1.frame.origin.x, btn1.frame.origin.y);
         UIButton *btn2 = (UIButton*)[[_amountList objectAtIndex:i+1] objectAtIndex:index];
         CGPoint point2 = CGPointMake(btn2.frame.origin.x, btn2.frame.origin.y);
-        [self addLineFromPoint:point1 to:point2 withColor:[UIColor redColor].CGColor];
+        [self addLineFromPoint:point1 to:point2 withColor:[UIColor colorWithRed:255/255 green:51/155 blue:0 alpha:1.0].CGColor];
         [self addSubview:btn1];
         [self addSubview:btn2];
     }
@@ -77,7 +77,7 @@
         CGPoint point1 = CGPointMake(btn1.frame.origin.x, btn1.frame.origin.y);
         UIButton *btn2 = (UIButton*)[[_timeList objectAtIndex:i+1] objectAtIndex:index];
         CGPoint point2 = CGPointMake(btn2.frame.origin.x, btn2.frame.origin.y);
-        [self addLineFromPoint:point1 to:point2 withColor:[UIColor greenColor].CGColor];
+        [self addLineFromPoint:point1 to:point2 withColor:[UIColor colorWithRed:52/255 green:188/155 blue:78/255 alpha:1.0].CGColor];
         [self addSubview:btn1];
         [self addSubview:btn2];
     }
@@ -87,7 +87,7 @@
         CGPoint point1 = CGPointMake(btn1.frame.origin.x, btn1.frame.origin.y);
         UIButton *btn2 = (UIButton*)[[_intensityList objectAtIndex:i+1] objectAtIndex:index];
         CGPoint point2 = CGPointMake(btn2.frame.origin.x, btn2.frame.origin.y);
-        [self addLineFromPoint:point1 to:point2 withColor:[UIColor blueColor].CGColor];
+        [self addLineFromPoint:point1 to:point2 withColor:[UIColor colorWithRed:26/255 green:82/155 blue:193 alpha:1.0].CGColor];
         [self addSubview:btn1];
         [self addSubview:btn2];
     }

@@ -24,6 +24,14 @@
                           uid:(NSString*)uid
                      delegate:(id<RKObjectLoaderDelegate>)delegate;
 
+- (void)findArticleInfoWithAucode:(NSString*)aucode
+                            auact:(NSString*)auact
+                        articleId:(NSString*)_id
+                          channel:(NSString*)channel
+                      channelType:(NSString*)channelType
+                              uid:(NSString*)uid
+                         delegate:(id<RKObjectLoaderDelegate>)delegate;
+
 - (void)findArticle:(id<RKObjectLoaderDelegate>)delegate;
 
 @end

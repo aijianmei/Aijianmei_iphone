@@ -7,6 +7,7 @@
 //
 
 #import "WorkoutDetailViewController.h"
+#import "ArticleService.h"
 
 @interface WorkoutDetailViewController ()
 
@@ -26,7 +27,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    _webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height)];
+    [self.view addSubview:_webview];    
+    
+    //just for test
+	[[ArticleService sharedService] findArticleInfoWithAucode:@"aijianmei" auact:@"au_getinformationdetail" articleId:_article._id channel:@" " channelType:@" " uid:@"" delegate:self];
+}
+
+- (void)dealloc
+{
+    [super dealloc];
+    [_article release];
+    [_articleDetail release];
+    [_webview release];
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,5 +47,33 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark -
+#pragma mark - RKObjectLoaderDelegate
+
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+    NSLog(@"Response code: %d", [response statusCode]);
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", [error localizedDescription]);
+}
+
+- (void)requestDidStartLoad:(RKRequest *)request
+{
+    NSLog(@"Start load request...");
+    [self showActivityWithText:@"数据加载中..."];
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
+    NSLog(@"***Load objects count: %d", [objects count]);
+    [self hideActivity];
+    _articleDetail = [objects objectAtIndex:0];
+    [_webview loadHTMLString:_articleDetail.content baseURL:nil];
+
+}
+
 
 @end

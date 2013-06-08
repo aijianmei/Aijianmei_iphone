@@ -8,7 +8,7 @@
 
 #import "ArticleService.h"
 #import "Article.h"
-
+#import "ArticleDetail.h"
 
 
 #define Aucode       @"aucode"
@@ -45,7 +45,7 @@
     return self;
 }
 
-- (void)initObjectMap
+- (void)initArticleMap
 {
     //获取在AppDelegate中生成的第一个RKObjectManager对象
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -56,13 +56,31 @@
      @"brief", @"_brief",
      @"create_time", @"_create_time",
      @"img", @"_img",
-     @"clikc", @"_click",
+     @"click", @"_click",
      @"channel", @"_channel",
      @"commentCount",@"_commentCount",
      @"channeltype",@"_channeltype",
      @"url", @"url",
      @"shareurl",@"shareurl", nil];
     
+    [objectManager.mappingProvider setMapping:articleMapping forKeyPath:@""];
+}
+
+- (void)initArticleDetailMap
+{
+    //获取在AppDelegate中生成的第一个RKObjectManager对象
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    //将json映射到class
+    RKObjectMapping *articleMapping =[RKObjectMapping mappingForClass:[ArticleDetail class]];
+    [articleMapping mapKeyPathsToAttributes: @"id", @"_id",
+     @"title", @"_title",
+     @"author", @"_author",
+     @"content", @"content",
+     @"brief", @"_brief",
+     @"create_time", @"_create_time",
+     @"img", @"_img",
+     @"clikc", @"_click",
+     @"commentsCount",@"_commentsCount",nil];
     [objectManager.mappingProvider setMapping:articleMapping forKeyPath:@""];
 }
 
@@ -77,7 +95,7 @@
                           uid:(NSString*)uid
                      delegate:(id<RKObjectLoaderDelegate>)delegate
 {
-    [self initObjectMap];
+    [self initArticleMap];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         //传入api接口参数,例如：
@@ -106,10 +124,45 @@
 
 }
 
+- (void)findArticleInfoWithAucode:(NSString*)aucode
+                            auact:(NSString*)auact
+                        articleId:(NSString*)_id
+                        channel:(NSString*)channel
+                     channelType:(NSString*)channelType
+                          uid:(NSString*)uid
+                     delegate:(id<RKObjectLoaderDelegate>)delegate
+{
+    [self initArticleDetailMap];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //传入api接口参数,例如：
+        //aucode=aijianmei&auact=au_getinformationlist&listtype=2&category=train&type=hot&page=1&punms=5
+        
+        NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:aucode,@"aucode",
+                                     auact, @"auact",
+                                     _id,@"id",
+                                     channel,@"channel",
+                                     channelType,@"channelType",
+                                     uid, @"uid", nil];
+        
+        RKObjectManager *objectManager = [RKObjectManager sharedManager];
+        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
+        
+        NSLog(@"url: %@", [url absoluteString]);
+        NSLog(@"resourcePath: %@", [url resourcePath]);
+        NSLog(@"query: %@", [url query]);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
+        });
+    });
+    
+}
+
 - (void)findArticle:(id<RKObjectLoaderDelegate>)delegate
 {
     //映射所需类对象
-    [self initObjectMap];
+    [self initArticleMap];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         

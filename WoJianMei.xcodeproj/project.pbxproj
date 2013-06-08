@@ -583,6 +583,8 @@
 		C6DB20251760CDD40060BD08 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6DB20241760CDD40060BD08 /* ImageIO.framework */; };
 		C6DB20271760CDE10060BD08 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6DB20261760CDE00060BD08 /* CoreImage.framework */; };
 		C6DB202D1760D8E40060BD08 /* WorkoutDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DB202C1760D8E40060BD08 /* WorkoutDetailViewController.m */; };
+		C6DB2039176227330060BD08 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DB2038176227330060BD08 /* JSONKit.m */; };
+		C6DB203C176378F40060BD08 /* ArticleDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DB203B176378F40060BD08 /* ArticleDetail.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1537,6 +1539,10 @@
 		C6DB20261760CDE00060BD08 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		C6DB202B1760D8E40060BD08 /* WorkoutDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailViewController.h; sourceTree = "<group>"; };
 		C6DB202C1760D8E40060BD08 /* WorkoutDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutDetailViewController.m; sourceTree = "<group>"; };
+		C6DB2037176227330060BD08 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		C6DB2038176227330060BD08 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		C6DB203A176378F40060BD08 /* ArticleDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleDetail.h; sourceTree = "<group>"; };
+		C6DB203B176378F40060BD08 /* ArticleDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleDetail.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2746,6 +2752,8 @@
 				4AEE95C815FB807F005A66DC /* ImageManager.m */,
 				C6A718A2175E38B80035E0D0 /* Article.h */,
 				C6A718A3175E38B80035E0D0 /* Article.m */,
+				C6DB203A176378F40060BD08 /* ArticleDetail.h */,
+				C6DB203B176378F40060BD08 /* ArticleDetail.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -2967,6 +2975,7 @@
 		4A959679168ED995006F1317 /* 3PP-SDK */ = {
 			isa = PBXGroup;
 			children = (
+				C6DB2036176227330060BD08 /* JSONKit */,
 				4A94497D16A9484E00A96815 /* TCWeiBoSDK_20 */,
 				4A9597F8168ED995006F1317 /* MobClick */,
 				4A9597FF168ED995006F1317 /* QQ_Connect_IOS_SDK__V1.2 */,
@@ -3702,6 +3711,15 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		C6DB2036176227330060BD08 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				C6DB2037176227330060BD08 /* JSONKit.h */,
+				C6DB2038176227330060BD08 /* JSONKit.m */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -4363,6 +4381,8 @@
 				C6DB20171760CC9E0060BD08 /* UIButton+WebCache.m in Sources */,
 				C6DB20181760CC9E0060BD08 /* UIImageView+WebCache.m in Sources */,
 				C6DB202D1760D8E40060BD08 /* WorkoutDetailViewController.m in Sources */,
+				C6DB2039176227330060BD08 /* JSONKit.m in Sources */,
+				C6DB203C176378F40060BD08 /* ArticleDetail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4533,6 +4553,7 @@
 				);
 				PRODUCT_NAME = WoJianMei;
 				SHARED_PRECOMPS_DIR = "";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4559,6 +4580,7 @@
 				);
 				PRODUCT_NAME = WoJianMei;
 				SHARED_PRECOMPS_DIR = "";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
