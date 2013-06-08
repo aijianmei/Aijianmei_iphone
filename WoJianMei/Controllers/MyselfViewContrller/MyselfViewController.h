@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
 #import "MyselfTableViewCell.h"
-
-
-#import "SinaweiboManager.h" // tencent  sina
 #import "TCWBEngine.h"   /// tencent weibo
 #import "TencentOAuth.h"   // tencent qq
 #import "User.h"
@@ -19,13 +16,12 @@
 
 @class TencentOAuthManager;
 @class TCWBEngine;
-@class SinaweiboManager;
 
 
 @class User;
 
 
-@interface MyselfViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,MyselfTableViewCellDelegate,UINavigationControllerDelegate,SinaWeiboDelegate,SinaWeiboRequestDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,TencentSessionDelegate,UIActionSheetDelegate>
+@interface MyselfViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,MyselfTableViewCellDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,TencentSessionDelegate,UIActionSheetDelegate>
 
 {
     

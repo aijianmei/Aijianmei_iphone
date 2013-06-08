@@ -21,8 +21,10 @@
                          type:(NSString*)type
                          page:(NSString*)page
                         pnums:(NSString*)pnums
+                       cateid:(NSString*)cateid
                           uid:(NSString*)uid
                      delegate:(id<RKObjectLoaderDelegate>)delegate;
+
 
 - (void)findArticleInfoWithAucode:(NSString*)aucode
                             auact:(NSString*)auact

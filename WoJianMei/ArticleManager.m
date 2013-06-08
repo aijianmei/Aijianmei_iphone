@@ -122,7 +122,7 @@ extern ArticleManager   *GlobalGetArticleManager()
     if (article == nil)
         return;
     
-    [article setIsFollow:[NSNumber numberWithBool:YES]];
+    [article setIsRead:[NSNumber numberWithBool:YES]];
     if ([_followArticleList objectForKey:article.articleId] == nil){
         [self.followArticleList setObject:article forKey:article.articleId];
         [self saveFollowArticleList];
@@ -137,7 +137,7 @@ extern ArticleManager   *GlobalGetArticleManager()
     if (article == nil)
         return;
     
-    [article setIsFollow:[NSNumber numberWithBool:NO]];
+    [article setIsRead:[NSNumber numberWithBool:NO]];
     [_followArticleList removeObjectForKey:article.articleId];
     [self saveFollowArticleList];
     

@@ -14,6 +14,7 @@
 @end
 
 @implementation WorkoutDetailViewController
+@synthesize article =_article;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,6 +24,8 @@
     }
     return self;
 }
+
+
 
 - (void)viewDidLoad
 {
@@ -34,13 +37,7 @@
 	[[ArticleService sharedService] findArticleInfoWithAucode:@"aijianmei" auact:@"au_getinformationdetail" articleId:_article._id channel:@" " channelType:@" " uid:@"" delegate:self];
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-    [_article release];
-    [_articleDetail release];
-    [_webview release];
-}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -75,5 +72,12 @@
 
 }
 
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    
+    [super viewWillDisappear:YES];
+    
+}
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPViewController.h"
 #import "Article.h"
 #import "ArticleDetail.h"
 #import <RestKit/RestKit.h>
@@ -17,5 +18,6 @@
 @property(nonatomic, retain) Article *article;
 @property(nonatomic, retain) ArticleDetail *articleDetail;
 @property(nonatomic, retain) UIWebView *webview;
+
 
 @end

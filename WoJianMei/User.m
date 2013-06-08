@@ -16,9 +16,6 @@
 @synthesize description=_description;
 @synthesize gender =_gender;
 
-
-
-
 -(id)init{
     
     self = [super init];

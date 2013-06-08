@@ -705,6 +705,8 @@
 		49D275AE14C9F3020090845D /* RKISO8601DateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 49D275AB14C9F3020090845D /* RKISO8601DateFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49D275AF14C9F3020090845D /* RKISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D275AC14C9F3020090845D /* RKISO8601DateFormatter.m */; };
 		49D275B014C9F3020090845D /* RKISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D275AC14C9F3020090845D /* RKISO8601DateFormatter.m */; };
+		4A835A7617617831008E68F6 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A835A7317617831008E68F6 /* JSONKit.h */; };
+		4A835A7717617831008E68F6 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A835A7417617831008E68F6 /* JSONKit.m */; };
 		73D3907414CA1AE00093E3D6 /* parent.json in Resources */ = {isa = PBXBuildFile; fileRef = 73D3907114CA19F90093E3D6 /* parent.json */; };
 		73D3907514CA1AE20093E3D6 /* parent.json in Resources */ = {isa = PBXBuildFile; fileRef = 73D3907114CA19F90093E3D6 /* parent.json */; };
 		73D3907614CA1AE60093E3D6 /* child.json in Resources */ = {isa = PBXBuildFile; fileRef = 73D3907314CA1A4A0093E3D6 /* child.json */; };
@@ -1165,6 +1167,10 @@
 		49D2759C14C9EF1E0090845D /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.txt; path = iso8601parser/README.txt; sourceTree = "<group>"; };
 		49D275AB14C9F3020090845D /* RKISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKISO8601DateFormatter.h; sourceTree = "<group>"; };
 		49D275AC14C9F3020090845D /* RKISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKISO8601DateFormatter.m; sourceTree = "<group>"; };
+		4A835A7217617831008E68F6 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
+		4A835A7317617831008E68F6 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		4A835A7417617831008E68F6 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		4A835A7517617831008E68F6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		7394DF3514CF157A00CE7BCE /* RKManagedObjectCaching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKManagedObjectCaching.h; sourceTree = "<group>"; };
 		7394DF3814CF168C00CE7BCE /* RKFetchRequestManagedObjectCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKFetchRequestManagedObjectCache.h; sourceTree = "<group>"; };
 		7394DF3914CF168C00CE7BCE /* RKFetchRequestManagedObjectCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKFetchRequestManagedObjectCache.m; sourceTree = "<group>"; };
@@ -1544,6 +1550,10 @@
 		25160E8D145652E40060A5C5 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
+=======
+				4A835A7117617831008E68F6 /* JSONKit */,
+>>>>>>> 25c7f1ead416dd26b421787cb483f4cea769ed5d
 				49A66B0614CEFAD800A6F062 /* XMLReader */,
 				49D2759714C9E83E0090845D /* iso8601parser */,
 				25160E8E1456532C0060A5C5 /* cocoa-oauth */,
@@ -2057,6 +2067,20 @@
 			name = iso8601parser;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
+=======
+		4A835A7117617831008E68F6 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				4A835A7217617831008E68F6 /* CHANGELOG.md */,
+				4A835A7317617831008E68F6 /* JSONKit.h */,
+				4A835A7417617831008E68F6 /* JSONKit.m */,
+				4A835A7517617831008E68F6 /* README.md */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
+>>>>>>> 25c7f1ead416dd26b421787cb483f4cea769ed5d
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2193,6 +2217,10 @@
 				257ABAB61511371E00CCAA76 /* NSManagedObject+RKAdditions.h in Headers */,
 				25079C6F151B93DB00266AE7 /* NSEntityDescription+RKAdditions.h in Headers */,
 				252A202D153471380078F8AD /* NSArray+RKAdditions.h in Headers */,
+<<<<<<< HEAD
+=======
+				4A835A7617617831008E68F6 /* JSONKit.h in Headers */,
+>>>>>>> 25c7f1ead416dd26b421787cb483f4cea769ed5d
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2711,6 +2739,10 @@
 				257ABAB81511371E00CCAA76 /* NSManagedObject+RKAdditions.m in Sources */,
 				25079C71151B93DB00266AE7 /* NSEntityDescription+RKAdditions.m in Sources */,
 				252A202E153471380078F8AD /* NSArray+RKAdditions.m in Sources */,
+<<<<<<< HEAD
+=======
+				4A835A7717617831008E68F6 /* JSONKit.m in Sources */,
+>>>>>>> 25c7f1ead416dd26b421787cb483f4cea769ed5d
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
