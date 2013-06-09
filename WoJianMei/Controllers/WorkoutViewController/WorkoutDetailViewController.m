@@ -35,6 +35,8 @@
     
     //just for test
 	[[ArticleService sharedService] findArticleInfoWithAucode:@"aijianmei" auact:@"au_getinformationdetail" articleId:_article._id channel:@" " channelType:@" " uid:@"" delegate:self];
+    
+    [self hideTabBar];
 }
 
 
@@ -75,8 +77,9 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    
+    [self showTabBar];
     [super viewWillDisappear:YES];
+    
     
 }
 
