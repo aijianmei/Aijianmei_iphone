@@ -89,7 +89,8 @@
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     //将json映射到class
     RKObjectMapping *articleMapping =[RKObjectMapping mappingForClass:[ArticleDetail class]];
-    [articleMapping mapKeyPathsToAttributes: @"id", @"_id",
+    [articleMapping mapKeyPathsToAttributes:
+     @"id", @"_id",
      @"title", @"_title",
      @"author", @"_author",
      @"content", @"content",
