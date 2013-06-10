@@ -8,6 +8,7 @@
 
 #import "WorkoutDetailViewController.h"
 #import "ArticleService.h"
+#import "NSString+HTML.h"
 
 @interface WorkoutDetailViewController ()
 
@@ -25,7 +26,40 @@
     return self;
 }
 
+#pragma mark -
+#pragma mark Hide and Show TabBar Methods
 
+- (void)showTabBar {
+    UITabBar *tabBar = self.tabBarController.tabBar;
+    UIView *parent = tabBar.superview; // UILayoutContainerView
+    UIView *content = [parent.subviews objectAtIndex:0]; // UITransitionView
+    UIView *window = parent.superview;
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         CGRect tabFrame = tabBar.frame;
+                         tabFrame.origin.y = CGRectGetMaxY(window.bounds) - CGRectGetHeight(tabBar.frame);
+                         tabBar.frame = tabFrame;
+                         CGRect contentFrame = content.frame;
+                         contentFrame.size.height -= tabFrame.size.height;
+                     }];
+}
+
+
+- (void)hideTabBar {
+    UITabBar *tabBar = self.tabBarController.tabBar;
+    UIView *parent = tabBar.superview; // UILayoutContainerView
+    UIView *content = [parent.subviews objectAtIndex:0];  // UITransitionView
+    UIView *window = parent.superview;
+    
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         CGRect tabFrame = tabBar.frame;
+                         tabFrame.origin.y = CGRectGetMaxY(window.bounds);
+                         tabBar.frame = tabFrame;
+                         content.frame = window.bounds;
+                     }];
+    
+}
 
 - (void)viewDidLoad
 {
@@ -36,15 +70,31 @@
     //just for test
 	[[ArticleService sharedService] findArticleInfoWithAucode:@"aijianmei" auact:@"au_getinformationdetail" articleId:_article._id channel:@" " channelType:@" " uid:@"" delegate:self];
     
-    [self hideTabBar];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self hideTabBar];
+    [super viewWillAppear:YES];
+}
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self showTabBar];
+    [super viewWillDisappear:YES];
+}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)loadWebViewWithHtmlString:(NSString*)htmlString
+{
+    //处理html特殊字符
+    NSString *html = [htmlString stringByDecodingHTMLEntities];
+    [_webview loadHTMLString:html baseURL:nil];
 }
 
 #pragma mark -
@@ -70,16 +120,7 @@
     NSLog(@"***Load objects count: %d", [objects count]);
     [self hideActivity];
     _articleDetail = [objects objectAtIndex:0];
-    [_webview loadHTMLString:_articleDetail.content baseURL:nil];
-
-}
-
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [self showTabBar];
-    [super viewWillDisappear:YES];
-    
+    [self loadWebViewWithHtmlString:_articleDetail.content];
     
 }
 
