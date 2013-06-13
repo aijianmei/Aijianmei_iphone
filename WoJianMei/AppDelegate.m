@@ -10,7 +10,7 @@
 #import "PPTabBarController.h"
 #import "WorkoutViewController.h"
 #import "MyselfViewController.h"
-#import "Nutri_SupViewController.h"
+#import "NutriViewController.h"
 #import "MakeFriendsViewController.h"
 #import "MoreViewController.h"
 #import "MySideMenueViewController.h"

@@ -61,8 +61,8 @@
 - (void)initMoreUI
 {
 
-        _appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        
+//        _appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
         ////leftBtn
         UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
         
@@ -168,7 +168,6 @@
     [_buttonScrollView setShowsHorizontalScrollIndicator:NO];
     
     [_buttonScrollView setContentSize:CGSizeMake(([buttonArrays count]) * buttonWidth * 2.6, buttonHeight)];
-
 
     [self.myHeaderView addSubview:_buttonScrollView];
     

@@ -9,24 +9,12 @@
 #import "AJMLeftSideViewController.h"
 #import "AppDelegate.h"
 #import "AGLeftSideTableCell.h"
-
 #import "WorkoutViewController.h"
-#import "Nutri_SupViewController.h"
+#import "NutriViewController.h"
+#import "SVWebViewController.h"
 
-//#import <AGCommon/UIColor+Common.h>
-//#import <ShareSDK/ShareSDK.h>
-//#import "SVWebViewController.h"
-//#import "AGApiViewController.h"
-//#import "AGAuthViewController.h"
-//#import "QQDemoViewController.h"
-//#import "AGViewController.h"
-//#import "AGLeftSideTableCell.h"
-//#import "AGCustomViewController.h"
-//#import "AGAppDelegate.h"
-//#import "AGSinaWeiboViewController.h"
-//#import "AGGetUserInfoViewController.h"
-//#import "AGGetCredentialViewController.h"
-//#import "AGCallAPIViewController.h"
+
+
 
 #define TABLE_CELL @"tableCell"
 
@@ -95,7 +83,7 @@
 {
     switch (section) {
         case 0:
-            return 10;
+            return 8;
         case 1:
             return 5;
         default:
@@ -155,13 +143,7 @@
                     cell.textLabel.text = @"交友互动";
                     break;
                 case 7:
-                    cell.textLabel.text = @"获取用户信息";
-                    break;
-                case 8:
-                    cell.textLabel.text = @"获取授权信息";
-                    break;
-                case 9:
-                    cell.textLabel.text = @"调用API";
+                    cell.textLabel.text = @"更多";                
                     break;
             }
             break;
@@ -185,7 +167,7 @@
                 case 4:
                 {
                     NSBundle *bundle = [NSBundle mainBundle];
-                    cell.textLabel.text = [NSString stringWithFormat:@"Demo版本 ver%@",[[bundle infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey]];
+                    cell.textLabel.text = [NSString stringWithFormat:@"版本:ver%@",[[bundle infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey]];
                     break;
                 }
                 default:
@@ -203,7 +185,7 @@
     switch (section)
     {
         case 1:
-            return @"更多";
+            return @"关注我们";
         default:
             return nil;
     }
@@ -239,8 +221,6 @@
     
     UIStoryboard * stroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     
-
-    
     switch (indexPath.section)
     {
         case 0:
@@ -250,17 +230,10 @@
             {
                 case 0:
                 {
-                    
-                                        
-
-                    
-                    
-                    
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                                        WorkoutViewController *apiVC = (WorkoutViewController*)[stroyBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
-
-                        apiVC.title = @"接口";
-                        UINavigationController *navApiVC = [[[UINavigationController alloc] initWithRootViewController:apiVC] autorelease];
+                                        WorkoutViewController *workOutVC = (WorkoutViewController *)[stroyBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
+                        workOutVC.title = @"锻炼";
+                        UINavigationController *navApiVC = [[[UINavigationController alloc] initWithRootViewController:workOutVC] autorelease] ;
                         self.viewDeckController.centerController = navApiVC;
                         
                         self.view.userInteractionEnabled = YES;
@@ -270,8 +243,8 @@
                 case 1:
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        UIViewController *authVC = [[[Nutri_SupViewController alloc] init] autorelease];
-                        authVC.title = @"授权";
+                        UIViewController *authVC = [[[NutriViewController alloc] init] autorelease];
+                        authVC.title = @"";
                         UINavigationController *navAuthVC = [[[UINavigationController alloc] initWithRootViewController:authVC] autorelease];
                         self.viewDeckController.centerController = navAuthVC;
                         
@@ -283,7 +256,7 @@
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         
-                        UIViewController *qqVC = [[[Nutri_SupViewController alloc] init] autorelease];
+                        UIViewController *qqVC = [[[NutriViewController alloc] init] autorelease];
                         UINavigationController *navQQVC = [[[UINavigationController alloc] initWithRootViewController:qqVC] autorelease];
                         self.viewDeckController.centerController = navQQVC;
                         
@@ -295,7 +268,7 @@
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         
-                        UIViewController *qqVC = [[[Nutri_SupViewController alloc] init] autorelease];
+                        UIViewController *qqVC = [[[NutriViewController alloc] init] autorelease];
                         UINavigationController *navQQVC = [[[UINavigationController alloc] initWithRootViewController:qqVC] autorelease];
                         self.viewDeckController.centerController = navQQVC;
                         
@@ -347,28 +320,7 @@
                     }];
                     break;
                 }
-                case 8:
-                {
-                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        UIViewController *shareVC = [[[WorkoutViewController alloc] init] autorelease];
-                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
-                        self.viewDeckController.centerController = navShareVC;
-                        
-                        self.view.userInteractionEnabled = YES;
-                    }];
-                    break;
-                }
-                case 9:
-                {
-                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        UIViewController *shareVC = [[[WorkoutViewController alloc] init] autorelease];
-                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
-                        self.viewDeckController.centerController = navShareVC;
-                        
-                        self.view.userInteractionEnabled = YES;
-                    }];
-                    break;
-                }
+                                
                 default:
                     break;
             }
@@ -476,19 +428,19 @@
                 }
                 case 2:
                 {
-//                    [ShareSDK followWeixinUser:@"http://weixin.qq.com/r/HHURHl7EjmDxh099nyA4"];
+//                   [ShareSDK followWeixinUser:@"http://weixin.qq.com/r/HHURHl7EjmDxh099nyA4"];
 //                    break;
                 }
                 case 3:
                 {
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        SVWebViewController *vc = [[SVWebViewController alloc] initWithAddress:@"http://shareSDK.cn"];
-//                        vc.title = @"官方网站";
-//                        UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
-//                        [vc release];
-//                        self.viewDeckController.centerController = navController;
-//                    }];
-//                    break;
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        SVWebViewController *vc = [[SVWebViewController alloc] initWithAddress:@"http://aijianmei.com"];
+                        vc.title = @"官方网站";
+                        UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
+                        [vc release];
+                        self.viewDeckController.centerController = navController;
+                    }];
+                    break;
                 }
                 default:
                     break;

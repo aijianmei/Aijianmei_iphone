@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Nutri_SupViewController.h"
+#import "NutriViewController.h"
 #import "NutritionDetailCell.h"
 #import "NutritionInfo.h"
 #import "iCarousel.h"
@@ -17,11 +17,11 @@
 #define ITEM_SPACING 220
 #define SCROLL_VIEW_TAG 20120913
 
-@interface Nutri_SupViewController ()
+@interface NutriViewController ()
 
 @end
 
-@implementation Nutri_SupViewController
+@implementation NutriViewController
 @synthesize buttonScrollView =_buttonScrollView;
 
 -(void)dealloc

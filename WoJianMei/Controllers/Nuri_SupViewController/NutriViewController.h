@@ -12,7 +12,7 @@
 #import <RestKit/RestKit.h>
 
 
-@interface Nutri_SupViewController: PPTableViewController<UITableViewDataSource,UITableViewDelegate,iCarouselDataSource, iCarouselDelegate, RKObjectLoaderDelegate>
+@interface NutriViewController: PPTableViewController<UITableViewDataSource,UITableViewDelegate,iCarouselDataSource, iCarouselDelegate, RKObjectLoaderDelegate>
 {
     UIScrollView *_buttonScrollView;
     UIView *_myHeaderView;
