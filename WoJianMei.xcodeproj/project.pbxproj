@@ -48,6 +48,10 @@
 		4A488E251769F64700A20EE7 /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A488E241769F64700A20EE7 /* SinaWeiboConnection.framework */; };
 		4A488E271769F65000A20EE7 /* WeChatConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A488E261769F64F00A20EE7 /* WeChatConnection.framework */; };
 		4A488E291769F65900A20EE7 /* TencentWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A488E281769F65900A20EE7 /* TencentWeiboConnection.framework */; };
+		4A488E2C176A013000A20EE7 /* ForumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A488E2B176A012F00A20EE7 /* ForumViewController.m */; };
+		4A488E30176A02D900A20EE7 /* WorkoutPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A488E2F176A02D900A20EE7 /* WorkoutPlanViewController.m */; };
+		4A488E34176A03B200A20EE7 /* SupplementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A488E33176A03B100A20EE7 /* SupplementViewController.m */; };
+		4A488E38176A056900A20EE7 /* LifeStytleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A488E37176A056900A20EE7 /* LifeStytleViewController.m */; };
 		4A498E7F1685500F0073E682 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A498DAB1685500F0073E682 /* ioapi.c */; };
 		4A498E801685500F0073E682 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A498DAD1685500F0073E682 /* mztools.c */; };
 		4A498E811685500F0073E682 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A498DAF1685500F0073E682 /* unzip.c */; };
@@ -713,6 +717,14 @@
 		4A488E241769F64700A20EE7 /* SinaWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SinaWeiboConnection.framework; sourceTree = "<group>"; };
 		4A488E261769F64F00A20EE7 /* WeChatConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WeChatConnection.framework; sourceTree = "<group>"; };
 		4A488E281769F65900A20EE7 /* TencentWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentWeiboConnection.framework; sourceTree = "<group>"; };
+		4A488E2A176A012F00A20EE7 /* ForumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForumViewController.h; path = ../ForumViewController.h; sourceTree = "<group>"; };
+		4A488E2B176A012F00A20EE7 /* ForumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForumViewController.m; path = ../ForumViewController.m; sourceTree = "<group>"; };
+		4A488E2E176A02D900A20EE7 /* WorkoutPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkoutPlanViewController.h; path = ../WorkoutPlanViewController.h; sourceTree = "<group>"; };
+		4A488E2F176A02D900A20EE7 /* WorkoutPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkoutPlanViewController.m; path = ../WorkoutPlanViewController.m; sourceTree = "<group>"; };
+		4A488E32176A03B100A20EE7 /* SupplementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplementViewController.h; sourceTree = "<group>"; };
+		4A488E33176A03B100A20EE7 /* SupplementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplementViewController.m; sourceTree = "<group>"; };
+		4A488E36176A056900A20EE7 /* LifeStytleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LifeStytleViewController.h; path = ../LifeStytleViewController.h; sourceTree = "<group>"; };
+		4A488E37176A056900A20EE7 /* LifeStytleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LifeStytleViewController.m; path = ../LifeStytleViewController.m; sourceTree = "<group>"; };
 		4A498DAA1685500F0073E682 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		4A498DAB1685500F0073E682 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
 		4A498DAC1685500F0073E682 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
@@ -1673,6 +1685,42 @@
 				4A488E0B1769F08D00A20EE7 /* Headers */,
 			);
 			name = Core;
+			sourceTree = "<group>";
+		};
+		4A488E2D176A013B00A20EE7 /* ForumViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4A488E2A176A012F00A20EE7 /* ForumViewController.h */,
+				4A488E2B176A012F00A20EE7 /* ForumViewController.m */,
+			);
+			name = ForumViewController;
+			sourceTree = "<group>";
+		};
+		4A488E31176A02E400A20EE7 /* WorkoutPlanViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4A488E2E176A02D900A20EE7 /* WorkoutPlanViewController.h */,
+				4A488E2F176A02D900A20EE7 /* WorkoutPlanViewController.m */,
+			);
+			name = WorkoutPlanViewController;
+			sourceTree = "<group>";
+		};
+		4A488E35176A03BA00A20EE7 /* SupplementViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4A488E32176A03B100A20EE7 /* SupplementViewController.h */,
+				4A488E33176A03B100A20EE7 /* SupplementViewController.m */,
+			);
+			name = SupplementViewController;
+			sourceTree = "<group>";
+		};
+		4A488E39176A057400A20EE7 /* LifeStytleViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4A488E36176A056900A20EE7 /* LifeStytleViewController.h */,
+				4A488E37176A056900A20EE7 /* LifeStytleViewController.m */,
+			);
+			name = LifeStytleViewController;
 			sourceTree = "<group>";
 		};
 		4A498D711685500F0073E682 /* Component-Service */ = {
@@ -3162,11 +3210,15 @@
 		4ACD190916154F5C00567A24 /* Entries */ = {
 			isa = PBXGroup;
 			children = (
+				4A488E39176A057400A20EE7 /* LifeStytleViewController */,
+				4A488E31176A02E400A20EE7 /* WorkoutPlanViewController */,
+				4A488E35176A03BA00A20EE7 /* SupplementViewController */,
+				4ADCFE09169D614600A3E979 /* NuriViewController */,
+				4ADCFE10169D614600A3E979 /* WorkoutViewController */,
+				4A488E2D176A013B00A20EE7 /* ForumViewController */,
 				4ADCFDFA169D614600A3E979 /* MakeFriendsViewcontrller */,
 				4ADCFE04169D614600A3E979 /* MyselfViewContrller */,
-				4ADCFE09169D614600A3E979 /* NuriViewController */,
 				4ADCFDFD169D614600A3E979 /* MoreViewController */,
-				4ADCFE10169D614600A3E979 /* WorkoutViewController */,
 			);
 			name = Entries;
 			sourceTree = "<group>";
@@ -4399,6 +4451,10 @@
 				4A488E011769EACF00A20EE7 /* SVModalWebViewController.m in Sources */,
 				4A488E031769EACF00A20EE7 /* SVWebViewController.m in Sources */,
 				4A488E231769F15800A20EE7 /* AJMViewDelegate.m in Sources */,
+				4A488E2C176A013000A20EE7 /* ForumViewController.m in Sources */,
+				4A488E30176A02D900A20EE7 /* WorkoutPlanViewController.m in Sources */,
+				4A488E34176A03B200A20EE7 /* SupplementViewController.m in Sources */,
+				4A488E38176A056900A20EE7 /* LifeStytleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
