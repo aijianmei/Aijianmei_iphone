@@ -20,6 +20,4 @@
 - (void)initMoreUI;
 - (void)leftButtonClickHandler:(id)sender;
 - (void)rightButtonClickHandler:(id)sender;
-
-
 @end

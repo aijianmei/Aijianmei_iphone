@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AJM_CommonViewController.h"
 
-@interface ForumViewController : UIViewController
+@interface ForumViewController : AJM_CommonViewController
 
 @end

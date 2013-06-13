@@ -23,10 +23,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-    ///
-    
-    
+
     int point = self.accessoryView.frame.origin.y;
     
     self.accessoryView.frame = CGRectMake(250, point, self.accessoryView.frame.size.width, self.accessoryView.frame.size.height);

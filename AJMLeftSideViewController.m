@@ -44,7 +44,7 @@
         
         // Custom initialization
         _sectionView = [[AGSectionView alloc] initWithFrame:CGRectZero];
-        _sectionView.titleLabel.text = @"更多";
+        _sectionView.titleLabel.text = @"关注爱健美";
     }
     return self;
 }
@@ -196,7 +196,7 @@
     switch (section)
     {
         case 1:
-            return @"asdfasdfasdf";
+            return @"关注爱健美";
         default:
             return nil;
     }

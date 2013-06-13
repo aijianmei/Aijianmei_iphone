@@ -10,6 +10,16 @@
 #import "MFSlidingView.h"
 #import "PPTableViewController.h"
 
-@interface MakeFriendsViewController : PPTableViewController
+@class AppDelegate;
 
+@interface MakeFriendsViewController : PPTableViewController
+{
+    AppDelegate *_appDelegate;
+
+}
+
+
+- (void)initMoreUI;
+- (void)leftButtonClickHandler:(id)sender;
+- (void)rightButtonClickHandler:(id)sender;
 @end

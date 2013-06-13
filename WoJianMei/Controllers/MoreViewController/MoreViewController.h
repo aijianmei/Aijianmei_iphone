@@ -22,17 +22,26 @@
 
 
 
+@class AppDelegate;
+
 @interface MoreViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UserServiceDelegate>
 
 {
  
     NSArray *_listData;
     int whichAcctionSheet;
-
-
+    
+    
+    AppDelegate *_appDelegate;
 }
 
 @property (nonatomic, retain) NSArray *listData;
 @property (nonatomic, assign) id<sendMsgToWeChatViewDelegate> delegate;
+
+
+- (void)initMoreUI;
+- (void)leftButtonClickHandler:(id)sender;
+- (void)rightButtonClickHandler:(id)sender;
+
 
 @end
