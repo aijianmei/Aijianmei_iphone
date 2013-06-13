@@ -6,11 +6,11 @@
 //  Copyright (c) 2013年 vimfung. All rights reserved.
 //
 
-#import "AGViewDelegate.h"
+#import "AJMViewDelegate.h"
 #import <AGCommon/UIDevice+Common.h>
 #import <AGCommon/UINavigationBar+Common.h>
 
-@implementation AGViewDelegate
+@implementation AJMViewDelegate
 
 #pragma mark - ISSShareViewDelegate
 

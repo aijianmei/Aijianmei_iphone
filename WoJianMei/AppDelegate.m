@@ -20,7 +20,7 @@
 #import "ImageManager.h"
 #import "UINavigationBarExt.h"
 #import  "MobClick.h"
-
+#import <ShareSDK/ShareSDK.h>
 #import "AJMLeftSideViewController.h"
 
 
@@ -37,11 +37,13 @@
 
 @synthesize window = _window;
 @synthesize navigationController =_navigationController;
+@synthesize viewDelegate = _viewDelegate;
 
 
 - (id)init{
     if(self = [super init]){
-        _scene = WXSceneSession;
+        _viewDelegate = [[AJMViewDelegate alloc] init];
+
     }
     
     return self;
@@ -51,6 +53,7 @@
 - (void)dealloc
 {
     [_navigationController release];
+    [_viewDelegate release];
     [_window release];
     [super dealloc];
 }
@@ -115,14 +118,6 @@
     
     
     //初始化主视图，  当用户点击左右的导航栏，可以更换；
-//    WorkoutViewController *apiVC = [[[WorkoutViewController alloc]init]autorelease];
-    
-    
-    
-    
-//    WorkoutViewController *apiVC = [[UIStoryboard alloc]instantiateViewControllerWithIdentifier:@"WorkOutViewController"];
-    
-    
     UIStoryboard * stroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     
     WorkoutViewController *apiVC = (WorkoutViewController*)[stroyBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
@@ -153,29 +148,18 @@
     vc.leftSize  = self.window.frame.size.width - (320 - 44.0);
     vc.rightSize = self.window.frame.size.width - (320 - 34.0);
     
-    
-    
+
     self.viewController = vc;
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
 
-    
-    
-    
-
-    
     //RestKit
     RKURL *baseURL = [RKURL URLWithBaseURLString:kServerUrl];
     RKObjectManager *objectManager = [RKObjectManager objectManagerWithBaseURL:baseURL];
     objectManager.acceptMIMEType = RKMIMETypeJSON;
     objectManager.serializationMIMEType = RKMIMETypeJSON;
     objectManager.client.baseURL = baseURL;
-    
 
-
-    
-    
-    
     if ([DeviceDetection isOS5]){
         [[UINavigationBar appearance] setBackgroundImage:[[ImageManager defaultManager] navigationBgImage] forBarMetrics:UIBarMetricsDefault];
     }else{
@@ -187,18 +171,44 @@
     
     // Register to WeChat   wxd930ea5d5a258f4f
     // aijianmei  :
+    
     [WXApi registerApp:WeChatId];
-    
-    
-//    [MobClick startWithAppkey:Mobclick];
-
     [MobClick startWithAppkey:Mobclick reportPolicy:REALTIME channelId:nil];
 
+    /**
+     注册SDK应用，此应用请到http://www.sharesdk.cn中进行注册申请。
+     此方法必须在启动时调用，否则会限制SDK的使用。
+     **/
+    
+    [ShareSDK registerApp:@"488184735e4"];
+    [ShareSDK convertUrlEnabled:NO];
+
+    [self initializePlat];
+    
+    //添加微信应用
+    [ShareSDK connectWeChatWithAppId:@"wxc996cdfc0f512dd7" wechatCls:[WXApi class]];
     
     
     return YES;
 }
-							
+
+
+- (void)initializePlat
+{
+    //添加新浪微博应用
+    [ShareSDK connectSinaWeiboWithAppKey:@"239725454"
+                               appSecret:@"b383e7a0201c154e290cf9b839b95998"
+                             redirectUri:@"http://aijianmei.com"];
+    
+    
+    
+    //添加腾讯微博应用
+    [ShareSDK connectTencentWeiboWithAppKey:@"100669978"
+                                  appSecret:@"b383e7a0201c154e290cf9b839b95998"
+                                redirectUri:@"http://www.sharesdk.cn"];
+    
+
+}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     /*
@@ -248,8 +258,9 @@
     
 //    return [self.sinaWeiboManager.sinaweibo handleOpenURL:url] ;
     
-    return  [WXApi handleOpenURL:url delegate:self];
-
+    return [ShareSDK handleOpenURL:url
+                        wxDelegate:self];
+    
     
 }
 
@@ -257,53 +268,13 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
 //    return [self.sinaWeiboManager.sinaweibo handleOpenURL:url];
-    return  [WXApi handleOpenURL:url delegate:self];
+//    return  [WXApi handleOpenURL:url delegate:self];
+    
+    return [ShareSDK handleOpenURL:url
+                 sourceApplication:sourceApplication
+                        annotation:annotation
+                        wxDelegate:self];
 
 }
-
-#define BUFFER_SIZE 1024 * 100
-- (void) sendAppContent
-{
-    // Send content to WeChat
-    WXMediaMessage *message = [WXMediaMessage message];
-    message.title = @"爱健美ios客户端测试！！！";
-    message.description = @"爱健美，推广健身文化，传播健康理念！！！";
-    [message setThumbImage:[UIImage imageNamed:@"QQWeibo_logo@2x.png"]];
-    
-    WXAppExtendObject *ext = [WXAppExtendObject object];
-    ext.extInfo = @"<xml>test</xml>";
-    ext.url = @"http://www.aijianmei.com";
-    
-    Byte* pBuffer = (Byte *)malloc(BUFFER_SIZE);
-    memset(pBuffer, 0, BUFFER_SIZE);
-    NSData* data = [NSData dataWithBytes:pBuffer length:BUFFER_SIZE];
-    free(pBuffer);
-    
-    ext.fileData = data;
-    
-    message.mediaObject = ext;
-    
-    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
-    req.bText = NO;
-    req.message = message;
-    req.scene = _scene;
-    
-    [WXApi sendReq:req];
-}
-
-- (void)doAuth
-{
-    SendAuthReq* req = [[[SendAuthReq alloc] init] autorelease];
-    req.scope = @"post_timeline";
-    req.state = @"xxx";
-    
-    [WXApi sendReq:req];
-}
-
--(void) changeScene:(NSInteger)scene{
-    _scene = scene;
-}
-
-
 
 @end

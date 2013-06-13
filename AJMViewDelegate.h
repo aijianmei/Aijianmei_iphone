@@ -12,7 +12,7 @@
 /**
  *	@brief	iPhone视图委托
  */
-@interface AGViewDelegate : NSObject <ISSShareViewDelegate>
+@interface AJMViewDelegate : NSObject <ISSShareViewDelegate>
 
 
 @end

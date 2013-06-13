@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AGSectionView.h"
 
-@class AGAppDelegate;
+@class AppDelegate;
 
 @interface AJMLeftSideViewController : UIViewController <UITableViewDataSource,
                                                         UITableViewDelegate>
@@ -17,8 +17,7 @@
 @private
     UITableView *_tableView;
     AGSectionView *_sectionView;
-    
-    AGAppDelegate *_appDelegate;
+    AppDelegate *_appDelegate;
 }
 
 @end

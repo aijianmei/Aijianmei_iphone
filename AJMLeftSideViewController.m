@@ -13,6 +13,9 @@
 #import "NutriViewController.h"
 #import "SVWebViewController.h"
 
+#import <ShareSDK/ShareSDK.h>
+
+
 
 
 
@@ -29,7 +32,7 @@
     self = [super init];
     if (self)
     {
-        _appDelegate = (AGAppDelegate *)[UIApplication sharedApplication].delegate;
+        _appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         
         // Custom initialization
         _sectionView = [[AGSectionView alloc] initWithFrame:CGRectZero];
@@ -330,106 +333,106 @@
     
         case 1:
         {
-//            id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
-//                                                                 allowCallback:YES
-//                                                                 authViewStyle:SSAuthViewStyleFullScreenPopup
-//                                                                  viewDelegate:nil
-//                                                       authManagerViewDelegate:_appDelegate.viewDelegate];
-//            
-//            //在授权页面中添加关注官方微博
-//            [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
-//                                            [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
-//                                            SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
-//                                            [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
-//                                            SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
-//                                            nil]];
+            id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                                 allowCallback:YES
+                                                                 authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                                  viewDelegate:nil
+                                                       authManagerViewDelegate:_appDelegate.viewDelegate];
+            
+            //在授权页面中添加关注官方微博
+            [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                            [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                            SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                            [ShareSDK userFieldWithType:SSUserFieldTypeName valeu:@"ShareSDK"],
+                                            SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                            nil]];
             
             switch (indexPath.row)
             {
                 case 0:
                 {
-//                    [ShareSDK followUserWithType:ShareTypeSinaWeibo
-//                                           field:@"ShareSDK"
-//                                       fieldType:SSUserFieldTypeName
-//                                     authOptions:authOptions
-//                                    viewDelegate:_appDelegate.viewDelegate
-//                                          result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
-//                                              NSString *msg = nil;
-//                                              if (state == SSResponseStateSuccess)
-//                                              {
-//                                                  msg = @"关注成功";
-//                                              }
-//                                              else if (state == SSResponseStateFail)
-//                                              {
-//                                                  switch ([error errorCode])
-//                                                  {
-//                                                      case 20506:
-//                                                          msg = @"已关注";
-//                                                          break;
-//                                                          
-//                                                      default:
-//                                                          msg = [NSString stringWithFormat:@"关注失败:%@", error.errorDescription];
-//                                                          break;
-//                                                  }
-//                                              }
-//                                              
-//                                              if (msg)
-//                                              {
-//                                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-//                                                                                                      message:msg
-//                                                                                                     delegate:nil
-//                                                                                            cancelButtonTitle:@"知道了"
-//                                                                                            otherButtonTitles:nil];
-//                                                  [alertView show];
-//                                                  [alertView release];
-//                                              }
-//                                          }];
-//                    break;
+                    [ShareSDK followUserWithType:ShareTypeSinaWeibo
+                                           field:@"ShareSDK"
+                                       fieldType:SSUserFieldTypeName
+                                     authOptions:authOptions
+                                    viewDelegate:_appDelegate.viewDelegate
+                                          result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                              NSString *msg = nil;
+                                              if (state == SSResponseStateSuccess)
+                                              {
+                                                  msg = @"关注成功";
+                                              }
+                                              else if (state == SSResponseStateFail)
+                                              {
+                                                  switch ([error errorCode])
+                                                  {
+                                                      case 20506:
+                                                          msg = @"已关注";
+                                                          break;
+                                                          
+                                                      default:
+                                                          msg = [NSString stringWithFormat:@"关注失败:%@", error.errorDescription];
+                                                          break;
+                                                  }
+                                              }
+                                              
+                                              if (msg)
+                                              {
+                                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                                      message:msg
+                                                                                                     delegate:nil
+                                                                                            cancelButtonTitle:@"知道了"
+                                                                                            otherButtonTitles:nil];
+                                                  [alertView show];
+                                                  [alertView release];
+                                              }
+                                          }];
+                    break;
                 }
                 case 1:
                 {
-//                    [ShareSDK followUserWithType:ShareTypeTencentWeibo
-//                                           field:@"ShareSDK"
-//                                       fieldType:SSUserFieldTypeName
-//                                     authOptions:authOptions
-//                                    viewDelegate:_appDelegate.viewDelegate
-//                                          result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
-//                                              NSString *msg = nil;
-//                                              if (state == SSResponseStateSuccess)
-//                                              {
-//                                                  msg = @"关注成功";
-//                                              }
-//                                              else if (state == SSResponseStateFail)
-//                                              {
-//                                                  switch ([error errorCode])
-//                                                  {
-//                                                      case 80103:
-//                                                          msg = @"已关注";
-//                                                          break;
-//                                                          
-//                                                      default:
-//                                                          msg = [NSString stringWithFormat:@"关注失败:%@", error.errorDescription];
-//                                                          break;
-//                                                  }
-//                                              }
-//                                              
-//                                              if (msg)
-//                                              {
-//                                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-//                                                                                                      message:msg
-//                                                                                                     delegate:nil
-//                                                                                            cancelButtonTitle:@"知道了"
-//                                                                                            otherButtonTitles:nil];
-//                                                  [alertView show];
-//                                                  [alertView release];
-//                                              }
-//                                          }];
-//                    break;
+                    [ShareSDK followUserWithType:ShareTypeTencentWeibo
+                                           field:@"ShareSDK"
+                                       fieldType:SSUserFieldTypeName
+                                     authOptions:authOptions
+                                    viewDelegate:_appDelegate.viewDelegate
+                                          result:^(SSResponseState state, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                              NSString *msg = nil;
+                                              if (state == SSResponseStateSuccess)
+                                              {
+                                                  msg = @"关注成功";
+                                              }
+                                              else if (state == SSResponseStateFail)
+                                              {
+                                                  switch ([error errorCode])
+                                                  {
+                                                      case 80103:
+                                                          msg = @"已关注";
+                                                          break;
+                    
+                                                      default:
+                                                          msg = [NSString stringWithFormat:@"关注失败:%@", error.errorDescription];
+                                                          break;
+                                                  }
+                                              }
+                                              
+                                              if (msg)
+                                              {
+                                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                                      message:msg
+                                                                                                     delegate:nil
+                                                                                            cancelButtonTitle:@"知道了"
+                                                                                            otherButtonTitles:nil];
+                                                  [alertView show];
+                                                  [alertView release];
+                                              }
+                                          }];
+                    break;
                 }
                 case 2:
                 {
-//                   [ShareSDK followWeixinUser:@"http://weixin.qq.com/r/HHURHl7EjmDxh099nyA4"];
-//                    break;
+                   [ShareSDK followWeixinUser:@"http://weixin.qq.com/r/HHURHl7EjmDxh099nyA4"];
+                    break;
                 }
                 case 3:
                 {

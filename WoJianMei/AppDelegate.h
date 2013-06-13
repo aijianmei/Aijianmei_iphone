@@ -12,10 +12,12 @@
 #import "MoreViewController.h"
 #import "IIViewDeckController.h"
 
+#import "AJMViewDelegate.h"
 
 
 
 
+@class AJMViewDelegate;
 
 enum
 {
@@ -27,18 +29,11 @@ enum
 
 {
       UINavigationController *_navigationController;
-    
-    
-      enum WXScene _scene;
-
-
+      AJMViewDelegate *_viewDelegate;
 }
-
 @property (retain, nonatomic)  UIWindow *window;
 @property (nonatomic,retain)   UINavigationController *navigationController;
-@property (strong, nonatomic) IIViewDeckController *viewController;
-
-
-- (void)hideTabBar:(BOOL)isHide;
+@property (strong, nonatomic)  IIViewDeckController *viewController;
+@property (nonatomic,readonly) AJMViewDelegate *viewDelegate;
 
 @end
