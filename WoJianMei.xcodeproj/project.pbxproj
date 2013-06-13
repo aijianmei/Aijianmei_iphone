@@ -1627,6 +1627,18 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		4A3AE814176A160100A39463 /* ShareSDK */ = {
+			isa = PBXGroup;
+			children = (
+				4A488E281769F65900A20EE7 /* TencentWeiboConnection.framework */,
+				4A488E261769F64F00A20EE7 /* WeChatConnection.framework */,
+				4A488E241769F64700A20EE7 /* SinaWeiboConnection.framework */,
+				4A488E201769F09B00A20EE7 /* Core */,
+				4A488E051769F04B00A20EE7 /* ShareSDK.framework */,
+			);
+			name = ShareSDK;
+			sourceTree = "<group>";
+		};
 		4A429DB2175D7EFD00F018CE /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -3584,11 +3596,6 @@
 		4AE394A215C2DD9C00D06C61 = {
 			isa = PBXGroup;
 			children = (
-				4A488E281769F65900A20EE7 /* TencentWeiboConnection.framework */,
-				4A488E261769F64F00A20EE7 /* WeChatConnection.framework */,
-				4A488E241769F64700A20EE7 /* SinaWeiboConnection.framework */,
-				4A488E201769F09B00A20EE7 /* Core */,
-				4A488E051769F04B00A20EE7 /* ShareSDK.framework */,
 				4A7D541F1754B6B50010348A /* 144x144.png */,
 				4A2D60521756214200A92F08 /* 74x74.png */,
 				4ACA49661755BB9200CC9886 /* 114X114.png */,
@@ -3621,6 +3628,7 @@
 		4AE394B015C2DD9C00D06C61 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A3AE814176A160100A39463 /* ShareSDK */,
 				C6DB2044176386DD0060BD08 /* RestKit.xcodeproj */,
 				C6DB20261760CDE00060BD08 /* CoreImage.framework */,
 				C6DB20241760CDD40060BD08 /* ImageIO.framework */,
