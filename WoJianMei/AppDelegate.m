@@ -218,17 +218,7 @@
 //for ios version below 4.2
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    
-    
-//    switch (<#expression#>) {
-//        case <#constant#>:
-//            <#statements#>
-//            break;
-//            
-//        default:
-//            break;
-//    }
-    
+        
     
 //    return [self.sinaWeiboManager.sinaweibo handleOpenURL:url] ;
     

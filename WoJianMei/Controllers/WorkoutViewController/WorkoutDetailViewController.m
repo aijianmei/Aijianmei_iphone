@@ -65,6 +65,7 @@
 {
     [super viewDidLoad];
     _webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height)];
+    _webview.delegate = self;
     [self.view addSubview:_webview];    
     
     //just for test
@@ -89,6 +90,27 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+#pragma mark -
+#pragma mark UIWebViewDelegate
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    
+    
+	NSString *picName = [[request URL] absoluteString];
+	NSLog(@"picName is %@",picName);
+    
+    
+	if ([picName hasPrefix:@"src"]) {
+//		[self showBigImage:[picName substringFromIndex:4]];
+		return NO;
+	}else {
+		return YES;
+	}
+    
+    
+}
+
 
 - (void)loadWebViewWithHtmlString:(NSString*)htmlString
 {
@@ -121,7 +143,8 @@
     [self hideActivity];
     _articleDetail = [objects objectAtIndex:0];
     [self loadWebViewWithHtmlString:_articleDetail.content];
-    
+    [_webview sizeToFit];
+    PPDebug(@"Article ：%@",_articleDetail.content);
 }
 
 @end

@@ -78,13 +78,15 @@ typedef enum {
     [vc release];
 }
 
+
+
 #pragma mark -lifeCycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+        
     
     [self initOptionList];
     [self initUI];
@@ -476,6 +478,7 @@ typedef enum {
             {
                 ///调用微信接口
                 [self sendAppContent];
+                
             }
                 break;
             case SEND_EMAIL:
@@ -516,8 +519,7 @@ typedef enum {
 ////Wechat
 - (void)sendAppContent
 {
-    
-    
+
     if (_delegate && [_delegate respondsToSelector:@selector(sendAppContent)])
     {
         [_delegate sendAppContent];

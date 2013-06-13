@@ -11,8 +11,6 @@
 //#import "SinaweiboManager.h"
 #import "TencentOAuthManager.h"
 #import "TCWBEngine.h"
-
-
 #import "WXApi.h"
 #import "MoreViewController.h"
 
@@ -37,7 +35,7 @@ enum
       TencentOAuthManager *_tencentOAuthManager;
       TCWBEngine          *_tCWBEngine;
     
-       enum WXScene _scene;
+      enum WXScene _scene;
 
 
 }

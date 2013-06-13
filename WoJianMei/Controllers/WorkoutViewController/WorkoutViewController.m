@@ -208,9 +208,9 @@
     NSString *listtype = @"2";
     NSString *category = @"train";
     NSString *type = @"hot";
-    NSString *page = @"1";
+    NSString *page = @"2";
     NSString *pnums = @"10";
-    NSString *cateid = @"1";
+    NSString *cateid = @"0";
     NSString *uid = @"265";
     
     [[ArticleService sharedService] findArticleWithAucode:aucode

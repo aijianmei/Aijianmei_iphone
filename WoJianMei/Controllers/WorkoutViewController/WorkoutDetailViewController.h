@@ -13,7 +13,7 @@
 #import <RestKit/RestKit.h>
 #import "PPViewController.h"
 
-@interface WorkoutDetailViewController : PPViewController<RKObjectLoaderDelegate>
+@interface WorkoutDetailViewController : PPViewController<RKObjectLoaderDelegate,UIWebViewDelegate>
 
 @property(nonatomic, retain) Article *article;
 @property(nonatomic, retain) ArticleDetail *articleDetail;
