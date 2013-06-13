@@ -27,6 +27,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self hideTabBar];
+    [self setBackgroundImageName:@"gobal_background.png"];
+    [self showBackgroundImage];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+
+    
+    [self  showTabBar];
+    [super viewWillDisappear:YES];
 }
 
 - (void)didReceiveMemoryWarning

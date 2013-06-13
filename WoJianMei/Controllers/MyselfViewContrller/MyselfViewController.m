@@ -14,9 +14,6 @@
 #import "Myself_SettingsViewController.h"
 #import "AppDelegate.h"
 #import "User.h"
-#import "TencentOAuthManager.h"
-#import "FileStreame.h"
-#import "key.h"
 #import <CoreText/CoreText.h>
 #import "WorkOutProcessViewController.h"
 

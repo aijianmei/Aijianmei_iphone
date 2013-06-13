@@ -11,7 +11,7 @@
 
 @class AGAppDelegate;
 
-@interface AGLeftSideViewController : UIViewController <UITableViewDataSource,
+@interface AJMLeftSideViewController : UIViewController <UITableViewDataSource,
                                                         UITableViewDelegate>
 {
 @private

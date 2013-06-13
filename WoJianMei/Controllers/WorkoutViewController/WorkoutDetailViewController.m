@@ -71,6 +71,8 @@
     //just for test
 	[[ArticleService sharedService] findArticleInfoWithAucode:@"aijianmei" auact:@"au_getinformationdetail" articleId:_article._id channel:@" " channelType:@" " uid:@"" delegate:self];
     
+    
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated

@@ -14,6 +14,7 @@
 #import "FontSize.h"
 #import "DeviceDetection.h"
 #import "AppDelegate.h"
+#import "MobClick.h"
 
 
 
@@ -23,8 +24,7 @@ enum actionsheetNumber{
 };
 
 typedef enum {
-    ACCOUNT_MANAGEMENT = 0,
-    SHARE_To_SOCIAL_NET_WORKS,
+    SHARE_To_SOCIAL_NET_WORKS = 0,
     FEEDBACK,
     LIKE_US,
     SHOW_ABOUT_VIEW,
@@ -66,7 +66,7 @@ typedef enum {
 
 - (void)initOptionList
 {
-    NSArray *array = [[NSArray alloc] initWithObjects:@"账号管理", @"分享", @"信息反馈",@"喜欢我们,打分鼓励", @"关于我们",  nil];
+    NSArray *array = [[NSArray alloc] initWithObjects: @"分享", @"信息反馈",@"喜欢我们,打分鼓励", @"关于我们",  nil];
     self.listData = array;
     [array release];
 }
@@ -79,6 +79,23 @@ typedef enum {
 }
 
 
+-(AppDelegate *)appDelegate{
+    
+
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication];
+
+    return appDelegate;
+
+//    - (TencentOAuthManager *)tencentOAuthManager
+//    {
+//        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//        [appDelegate.tencentOAuthManager setDelegate:self];
+//        return appDelegate.tencentOAuthManager;
+//    }
+    
+}
+
+
 
 #pragma mark -lifeCycle
 
@@ -86,10 +103,14 @@ typedef enum {
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-        
     
     [self initOptionList];
     [self initUI];
+    
+    
+    [MobClick event:@"More"];
+
+    
     
     
 }
@@ -101,6 +122,10 @@ typedef enum {
 }
 
 
+-(void)viewWillDisappear:(BOOL)animated{
+
+    [super viewWillDisappear:YES];
+}
 -(void)viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:YES];
@@ -131,7 +156,7 @@ typedef enum {
         {
             PPDebug(@"Section one");
             
-            return 5;
+            return 4;
 
         }
             break;
@@ -182,7 +207,7 @@ typedef enum {
         
         if (0 == [indexPath row] )
         imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_cell_background.png"]];
-        else if (5 == [indexPath row])
+        else if (4 == [indexPath row])
         imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottom_cell_background.png"]];
         else
         imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"middle_cell_background.png"]];
@@ -210,9 +235,6 @@ typedef enum {
     if (indexPath.section ==0) {
         
         switch ([indexPath row] ) {
-            case ACCOUNT_MANAGEMENT:
-                image = [UIImage imageNamed:@"social_networks.png"];
-                break;
             case SHARE_To_SOCIAL_NET_WORKS:
                 image = [UIImage imageNamed:@"share_social.png"];
                 break;
@@ -260,12 +282,6 @@ typedef enum {
     if (indexPath.section==0) {
         NSUInteger row = [indexPath row];
         switch (row) {
-            case ACCOUNT_MANAGEMENT:
-            {
-                [self accountManagement];
-                
-            }
-                break;
             case SHARE_To_SOCIAL_NET_WORKS:
             {
                 [self shareToSocialnetWorks];
@@ -436,9 +452,6 @@ typedef enum {
 
 }
 
-
-
-
 #pragma mark --actionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -514,16 +527,17 @@ typedef enum {
     
 }
 
-
-
 ////Wechat
 - (void)sendAppContent
 {
-
-    if (_delegate && [_delegate respondsToSelector:@selector(sendAppContent)])
+    
+    
+    if (_delegate  && [_delegate respondsToSelector:@selector(sendAppContent)]
+)
     {
+        PPDebug(@"Share to Wechat！");
+
         [_delegate sendAppContent];
-        PPDebug(@"I am about to share the app infos");
     }
 }
 

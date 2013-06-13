@@ -9,19 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
 #import "MyselfTableViewCell.h"
-#import "TCWBEngine.h"   /// tencent weibo
-#import "TencentOAuth.h"   // tencent qq
 #import "User.h"
-
-
-@class TencentOAuthManager;
-@class TCWBEngine;
 
 
 @class User;
 
 
-@interface MyselfViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,MyselfTableViewCellDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,TencentSessionDelegate,UIActionSheetDelegate>
+@interface MyselfViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,MyselfTableViewCellDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
 
 {
     

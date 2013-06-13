@@ -8,20 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "JMStaticContentTableViewController.h"
-#import "TencentOAuthManager.h"
-#import "TCWBEngine.h"
 
 @class HZActivityIndicatorView;
-@class TCWBEngine;
-@class TencentOAuthManager;
 
-@interface More_SettingsViewController: JMStaticContentTableViewController<UIAlertViewDelegate,TencentSessionDelegate>
+@interface More_SettingsViewController: JMStaticContentTableViewController<UIAlertViewDelegate>
 
 {
-    
-    TencentOAuthManager      *tencentQQManager;
-    TCWBEngine            *tencentWeiBoManager;
-    
+        
     
     HZActivityIndicatorView *indictorView;
 }

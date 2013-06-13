@@ -6,9 +6,13 @@
 //  Copyright (c) 2013年 vimfung. All rights reserved.
 //
 
-#import "AGLeftSideViewController.h"
+#import "AJMLeftSideViewController.h"
 #import "AppDelegate.h"
 #import "AGLeftSideTableCell.h"
+
+#import "WorkoutViewController.h"
+#import "Nutri_SupViewController.h"
+
 //#import <AGCommon/UIColor+Common.h>
 //#import <ShareSDK/ShareSDK.h>
 //#import "SVWebViewController.h"
@@ -26,11 +30,11 @@
 
 #define TABLE_CELL @"tableCell"
 
-@interface AGLeftSideViewController ()
+@interface AJMLeftSideViewController ()
 
 @end
 
-@implementation AGLeftSideViewController
+@implementation AJMLeftSideViewController
 
 - (id)init
 {
@@ -130,25 +134,25 @@
             switch (indexPath.row)
             {
                 case 0:
-                    cell.textLabel.text = @"接口";
+                    cell.textLabel.text = @"锻炼";
                     break;
                 case 1:
-                    cell.textLabel.text = @"授权";
+                    cell.textLabel.text = @"健身计划";
                     break;
                 case 2:
-                    cell.textLabel.text = @"微信";
+                    cell.textLabel.text = @"营养";
                     break;
                 case 3:
-                    cell.textLabel.text = @"QQ";
+                    cell.textLabel.text = @"补充";
                     break;
                 case 4:
-                    cell.textLabel.text = @"新浪微博";
+                    cell.textLabel.text = @"生活方式";
                     break;
                 case 5:
-                    cell.textLabel.text = @"演示";
+                    cell.textLabel.text = @"论坛";
                     break;
                 case 6:
-                    cell.textLabel.text = @"自定义分享界面";
+                    cell.textLabel.text = @"交友互动";
                     break;
                 case 7:
                     cell.textLabel.text = @"获取用户信息";
@@ -233,6 +237,10 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    UIStoryboard * stroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    
+
+    
     switch (indexPath.section)
     {
         case 0:
@@ -242,124 +250,132 @@
             {
                 case 0:
                 {
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        UIViewController *apiVC = [[[AGApiViewController alloc] init] autorelease];
-//                        apiVC.title = @"接口";
-//                        UINavigationController *navApiVC = [[[UINavigationController alloc] initWithRootViewController:apiVC] autorelease];
-//                        self.viewDeckController.centerController = navApiVC;
-//                        
-//                        self.view.userInteractionEnabled = YES;
-//                    }];
-//                    break;
+                    
+                                        
+
+                    
+                    
+                    
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                                        WorkoutViewController *apiVC = (WorkoutViewController*)[stroyBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
+
+                        apiVC.title = @"接口";
+                        UINavigationController *navApiVC = [[[UINavigationController alloc] initWithRootViewController:apiVC] autorelease];
+                        self.viewDeckController.centerController = navApiVC;
+                        
+                        self.view.userInteractionEnabled = YES;
+                    }];
+                    break;
                 }
                 case 1:
                 {
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        UIViewController *authVC = [[[AGAuthViewController alloc] init] autorelease];
-//                        authVC.title = @"授权";
-//                        UINavigationController *navAuthVC = [[[UINavigationController alloc] initWithRootViewController:authVC] autorelease];
-//                        self.viewDeckController.centerController = navAuthVC;
-//                        
-//                        self.view.userInteractionEnabled = YES;
-//                    }];
-//                    break;
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        UIViewController *authVC = [[[Nutri_SupViewController alloc] init] autorelease];
+                        authVC.title = @"授权";
+                        UINavigationController *navAuthVC = [[[UINavigationController alloc] initWithRootViewController:authVC] autorelease];
+                        self.viewDeckController.centerController = navAuthVC;
+                        
+                        self.view.userInteractionEnabled = YES;
+                    }];
+                    break;
                 }
                 case 2:
                 {
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        UIViewController *weixinVC = [[[WeChatViewController alloc] init] autorelease];
-//                        ((WeChatViewController *)weixinVC).parentController = self.viewDeckController;
-//                        UINavigationController *navWeiXinVC = [[[UINavigationController alloc] initWithRootViewController:weixinVC] autorelease];
-//
-//                        self.viewDeckController.centerController = navWeiXinVC;
-//                        
-//                        self.view.userInteractionEnabled = YES;
-//                    }];
-//                    break;
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        
+                        UIViewController *qqVC = [[[Nutri_SupViewController alloc] init] autorelease];
+                        UINavigationController *navQQVC = [[[UINavigationController alloc] initWithRootViewController:qqVC] autorelease];
+                        self.viewDeckController.centerController = navQQVC;
+                        
+                        self.view.userInteractionEnabled = YES;
+                    }];
+                    break;
                 }
                 case 3:
                 {
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        
-//                        UIViewController *qqVC = [[[QQDemoViewController alloc] init] autorelease];
-//                        UINavigationController *navQQVC = [[[UINavigationController alloc] initWithRootViewController:qqVC] autorelease];
-//                        self.viewDeckController.centerController = navQQVC;
-//                        
-//                        self.view.userInteractionEnabled = YES;
-//                    }];
-//                    break;
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        
+                        UIViewController *qqVC = [[[Nutri_SupViewController alloc] init] autorelease];
+                        UINavigationController *navQQVC = [[[UINavigationController alloc] initWithRootViewController:qqVC] autorelease];
+                        self.viewDeckController.centerController = navQQVC;
+                        
+                        self.view.userInteractionEnabled = YES;
+                    }];
+                    break;
                 }
                 case 4:
                 {
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        UIViewController *shareVC = [[[AGSinaWeiboViewController alloc] init] autorelease];
-//                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
-//                        self.viewDeckController.centerController = navShareVC;
-//                        
-//                        self.view.userInteractionEnabled = YES;
-//                    }];
-//                    break;
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        UIViewController *shareVC = [[[WorkoutViewController alloc] init] autorelease];
+                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
+                        self.viewDeckController.centerController = navShareVC;
+                        
+                        self.view.userInteractionEnabled = YES;
+                    }];
+                    break;
                 }
                 case 5:
                 {
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        UIViewController *shareVC = [[[AGViewController alloc] init] autorelease];
-//                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
-//                        self.viewDeckController.centerController = navShareVC;
-//                        
-//                        self.view.userInteractionEnabled = YES;
-//                    }];
-//                    break;
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        UIViewController *shareVC = [[[WorkoutViewController alloc] init] autorelease];
+                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
+                        self.viewDeckController.centerController = navShareVC;
+                        
+                        self.view.userInteractionEnabled = YES;
+                    }];
+                    break;
                 }
                 case 6:
                 {
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        UIViewController *shareVC = [[[AGCustomViewController alloc] init] autorelease];
-//                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
-//                        self.viewDeckController.centerController = navShareVC;
-//                        
-//                        self.view.userInteractionEnabled = YES;
-//                    }];
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        UIViewController *shareVC = [[[WorkoutViewController alloc] init] autorelease];
+                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
+                        self.viewDeckController.centerController = navShareVC;
+                        
+                        self.view.userInteractionEnabled = YES;
+                    }];
                     break;
                 }
                 case 7:
                 {
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        UIViewController *shareVC = [[[AGGetUserInfoViewController alloc] init] autorelease];
-//                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
-//                        self.viewDeckController.centerController = navShareVC;
-//                        
-//                        self.view.userInteractionEnabled = YES;
-//                    }];
-//                    break;
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        UIViewController *shareVC = [[[WorkoutViewController alloc] init] autorelease];
+                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
+                        self.viewDeckController.centerController = navShareVC;
+                        
+                        self.view.userInteractionEnabled = YES;
+                    }];
+                    break;
                 }
                 case 8:
                 {
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        UIViewController *shareVC = [[[AGGetCredentialViewController alloc] init] autorelease];
-//                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
-//                        self.viewDeckController.centerController = navShareVC;
-//                        
-//                        self.view.userInteractionEnabled = YES;
-//                    }];
-//                    break;
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        UIViewController *shareVC = [[[WorkoutViewController alloc] init] autorelease];
+                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
+                        self.viewDeckController.centerController = navShareVC;
+                        
+                        self.view.userInteractionEnabled = YES;
+                    }];
+                    break;
                 }
                 case 9:
                 {
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        UIViewController *shareVC = [[[AGCallAPIViewController alloc] init] autorelease];
-//                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
-//                        self.viewDeckController.centerController = navShareVC;
-//                        
-//                        self.view.userInteractionEnabled = YES;
-//                    }];
-//                    break;
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        UIViewController *shareVC = [[[WorkoutViewController alloc] init] autorelease];
+                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
+                        self.viewDeckController.centerController = navShareVC;
+                        
+                        self.view.userInteractionEnabled = YES;
+                    }];
+                    break;
                 }
                 default:
                     break;
             }
             break;
         }
+    
+    
         case 1:
         {
 //            id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES

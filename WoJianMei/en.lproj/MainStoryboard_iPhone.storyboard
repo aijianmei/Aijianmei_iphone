@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="I9w-Cc-akC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="43H-bc-kkW">
     <dependencies>
         <deployment version="1280" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
@@ -10,7 +10,7 @@
             <objects>
                 <viewController id="paO-ES-f48" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tvm-Px-4I2">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -20,12 +20,12 @@
             </objects>
             <point key="canvasLocation" x="3138" y="-2044"/>
         </scene>
-        <!--View Controller-->
+        <!--Feed Back View Controller-->
         <scene sceneID="oGG-M3-FWy">
             <objects>
-                <viewController id="UVk-qa-7pr" sceneMemberID="viewController">
+                <viewController id="UVk-qa-7pr" customClass="FeedBackViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QPO-rH-9LS">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Mtn-fs-rOf">
@@ -61,14 +61,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aj2-pd-5uU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3628" y="-2500"/>
+            <point key="canvasLocation" x="3572" y="-2952"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="phe-nc-tB2">
             <objects>
                 <viewController storyboardIdentifier="AboutViewController" id="Fff-mX-M9L" customClass="AboutViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PDx-WP-yc8">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="当前版本：" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Mji-22-Q3j">
@@ -128,14 +128,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Copyright ©2012 AiJianMei Fitness Corp    All Right Reserved " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="MI3-Ut-WMq">
-                                <rect key="frame" x="26" y="337" width="354" height="21"/>
+                                <rect key="frame" x="26" y="386" width="354" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="爱健美信息科技（广州)有限公司   版权所有" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="2ar-XU-g3G">
-                                <rect key="frame" x="24" y="303" width="326" height="31"/>
+                                <rect key="frame" x="24" y="352" width="326" height="31"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -148,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xXH-LY-GsM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3958" y="-2126"/>
+            <point key="canvasLocation" x="3778" y="-2242"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="jJh-Pz-33p">
@@ -261,11 +261,11 @@
             <objects>
                 <viewController storyboardIdentifier="WorkoutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="43H-bc-kkW" customClass="WorkoutViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eIO-mw-WJo">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="147" sectionHeaderHeight="22" sectionFooterHeight="22" id="NtN-xg-TPp">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="366"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="459"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -332,6 +332,7 @@
                                             <outlet property="_imgView" destination="c0n-BH-LBA" id="p0S-8E-pmi"/>
                                             <outlet property="commentLabel" destination="4HC-mC-GCl" id="xq1-a0-WgK"/>
                                             <outlet property="descriptionLabel" destination="rAc-Ak-FLT" id="PvT-He-gzd"/>
+                                            <outlet property="imgView" destination="c0n-BH-LBA" id="eXZ-E3-VsH"/>
                                             <outlet property="releasedTimeLabel" destination="R4r-jO-tMl" id="iMT-6S-vuI"/>
                                             <outlet property="titleLabel" destination="cdh-11-8LP" id="Y0Z-YM-bz4"/>
                                         </connections>
@@ -348,25 +349,24 @@
                     <navigationItem key="navigationItem" id="Nww-0t-ckY"/>
                     <connections>
                         <outlet property="dataTableView" destination="NtN-xg-TPp" id="PiG-EZ-ml2"/>
-                        <outlet property="view" destination="eIO-mw-WJo" id="e4G-4o-C3a"/>
                         <segue destination="Nga-zL-67n" kind="modal" identifier="LoginSegue" id="gsm-3L-Jlj"/>
                         <segue destination="KLF-YF-C9U" kind="modal" id="d3s-56-9a0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbY-3i-Lwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2338" y="-5946"/>
+            <point key="canvasLocation" x="1907" y="-5897"/>
         </scene>
         <!--Nutri Sup View Controller-->
         <scene sceneID="mSZ-Ga-IYS">
             <objects>
                 <viewController storyboardIdentifier="Nutri_SupViewController" id="mmF-0W-ole" customClass="Nutri_SupViewController" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="7md-Dv-dcB">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="134" sectionHeaderHeight="22" sectionFooterHeight="22" id="K5a-A9-d7K">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="417"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="466"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -462,11 +462,11 @@
             <objects>
                 <viewController storyboardIdentifier="MyselfViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SQ4-9u-AZl" customClass="MyselfViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NHW-lm-GR8">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="sFc-dy-A0a">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="371"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
@@ -508,11 +508,11 @@
             <objects>
                 <viewController storyboardIdentifier="MoreViewController" id="Id0-47-ybR" customClass="MoreViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DvL-Yj-Vjt">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="70" sectionHeaderHeight="10" sectionFooterHeight="10" id="1ws-Tg-GCc">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
@@ -551,7 +551,7 @@
             <objects>
                 <viewController storyboardIdentifier="MakeFriendsViewController" id="Dh2-yJ-LXq" customClass="MakeFriendsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8rO-dD-3n1">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -670,11 +670,11 @@
             <objects>
                 <viewController id="Xx6-Ol-siI" customClass="SearchTableViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CK9-RD-uox">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="xdB-uf-gxc">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
@@ -936,7 +936,7 @@
             <objects>
                 <viewController id="Evp-Ar-1p6" customClass="WorkoutDatasViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hRz-fa-hcv">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -951,7 +951,7 @@
             <objects>
                 <viewController id="tr5-hw-RcC" customClass="WorkoutImageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1uz-8h-m0L">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -966,7 +966,7 @@
             <objects>
                 <viewController id="ytj-Mg-1gh" customClass="WorkoutNoteViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qq5-Mb-R4e">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -981,11 +981,11 @@
             <objects>
                 <viewController id="NbY-xu-H1A" customClass="SinaUsersViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RfK-mX-Lh8">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="62" sectionHeaderHeight="22" sectionFooterHeight="22" id="EXe-qm-Iv0">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1051,25 +1051,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0wa-xa-ecv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5758" y="-4234"/>
-        </scene>
-        <!--Navigation Controller - Item-->
-        <scene sceneID="aEr-eq-Yxb">
-            <objects>
-                <navigationController id="Q0P-Gm-kx0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="NVU-9v-pLp"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="n6q-kp-deU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="43H-bc-kkW" kind="relationship" relationship="rootViewController" id="Jkx-fQ-3kr"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="snd-y5-bRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1624" y="-5781"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="XHU-Xw-5ia">
@@ -1147,29 +1128,6 @@
             </objects>
             <point key="canvasLocation" x="1936" y="-3101"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="5ks-Uw-xzu">
-            <objects>
-                <tabBarController id="I9w-Cc-akC" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="crc-B4-xKm">
-                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="Q0P-Gm-kx0" kind="relationship" relationship="viewControllers" id="opH-kw-Tf4"/>
-                        <segue destination="vgB-Xn-Src" kind="relationship" relationship="viewControllers" id="TDs-s6-nMV"/>
-                        <segue destination="gvV-j6-js0" kind="relationship" relationship="viewControllers" id="dSX-vt-j81"/>
-                        <segue destination="FGJ-Sc-5Yn" kind="relationship" relationship="viewControllers" id="Fe3-Sd-Mlu"/>
-                        <segue destination="UB8-YM-D1R" kind="relationship" relationship="viewControllers" id="lEo-Vz-ZaO"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZQU-aY-Xzt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1030" y="-4790"/>
-        </scene>
     </scenes>
     <resources>
         <image name="11.png" width="200" height="130"/>
@@ -1195,7 +1153,7 @@
         <image name="touxiang_40x40@2x.png" width="100" height="100"/>
     </resources>
     <classes>
-        <class className="AboutViewController" superclassName="UIViewController">
+        <class className="AboutViewController" superclassName="PPViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
         </class>
         <class className="ArticleCell" superclassName="UITableViewCell">
@@ -1225,6 +1183,9 @@
                 <relationship kind="outlet" name="textAccessoryView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
             </relationships>
+        </class>
+        <class className="FeedBackViewController" superclassName="PPViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FeedBackViewController.h"/>
         </class>
         <class className="LoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>

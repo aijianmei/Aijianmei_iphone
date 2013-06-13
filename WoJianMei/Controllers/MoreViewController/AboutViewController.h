@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface AboutViewController : UIViewController
+#import "PPViewController.h"
+@interface AboutViewController : PPViewController
 
 @end

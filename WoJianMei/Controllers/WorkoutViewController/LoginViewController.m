@@ -7,7 +7,6 @@
 //
 
 #import "LoginViewController.h"
-#import "ShareToQQViewController.h"
 
 @interface LoginViewController ()
 
@@ -72,12 +71,6 @@
 }
 
 - (IBAction)clickQQShareButton:(UIButton *)sender {
-    
-        
-    ShareToQQViewController *vc = [[ShareToQQViewController alloc]init];
-    
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
     
 }
 

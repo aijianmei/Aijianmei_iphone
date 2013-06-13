@@ -12,6 +12,9 @@
 #import "iCarousel.h"
 #import <RestKit/RestKit.h>
 
+
+@class AppDelegate;
+
 @interface WorkoutViewController : PPTableViewController<iCarouselDataSource, iCarouselDelegate,RKObjectLoaderDelegate>
 
 {
@@ -19,6 +22,10 @@
     iCarousel                   *_carousel;
     SMPageControl               *_spacePageControl;
     UIScrollView *_buttonScrollView;
+    
+    AppDelegate *_appDelegate;
+    
+    
 }
 
 @property (nonatomic, retain) UIScrollView *buttonScrollView;

@@ -8,16 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "PPApplication.h"
-//#import "SinaweiboManager.h"
-#import "TencentOAuthManager.h"
-#import "TCWBEngine.h"
 #import "WXApi.h"
 #import "MoreViewController.h"
+#import "IIViewDeckController.h"
 
 
-//@class SinaweiboManager;
-@class TCWBEngine;
-@class PPTabBarController;
+
+
 
 
 enum
@@ -26,14 +23,11 @@ enum
 };
 
 
-@interface AppDelegate : PPApplication <UIApplicationDelegate,UITabBarControllerDelegate,WXApiDelegate,TencentSessionDelegate,sendMsgToWeChatViewDelegate>
+@interface AppDelegate : PPApplication <UIApplicationDelegate,UITabBarControllerDelegate,WXApiDelegate,sendMsgToWeChatViewDelegate>
 
 {
-      PPTabBarController	*_tabBarController;
       UINavigationController *_navigationController;
     
-      TencentOAuthManager *_tencentOAuthManager;
-      TCWBEngine          *_tCWBEngine;
     
       enum WXScene _scene;
 
@@ -41,10 +35,8 @@ enum
 }
 
 @property (retain, nonatomic)  UIWindow *window;
-@property (retain,nonatomic)   TCWBEngine  *tCWBEngine;
-@property (readonly,nonatomic) TencentOAuthManager *tencentOAuthManager;
 @property (nonatomic,retain)   UINavigationController *navigationController;
-@property (nonatomic, retain )  PPTabBarController	*tabBarController;
+@property (strong, nonatomic) IIViewDeckController *viewController;
 
 
 - (void)hideTabBar:(BOOL)isHide;

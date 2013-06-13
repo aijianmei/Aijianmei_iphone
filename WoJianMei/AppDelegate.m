@@ -19,6 +19,10 @@
 #import "DeviceDetection.h"
 #import "ImageManager.h"
 #import "UINavigationBarExt.h"
+#import  "MobClick.h"
+
+#import "AJMLeftSideViewController.h"
+
 
 //#define WeChatId @"wxd930ea5d5a258f4f"
 
@@ -27,13 +31,12 @@
 #define kAppRedirectURI     @"http://aijianmei.com"
 #define kServerUrl @"http://42.96.132.109/wapapi"
 
+#define Mobclick @"51b942ae56240bd8cb009671"
+
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize tCWBEngine =_tCWBEngine;
-@synthesize tencentOAuthManager =_tencentOAuthManager;
 @synthesize navigationController =_navigationController;
-@synthesize tabBarController=_tabBarController ;
 
 
 - (id)init{
@@ -47,19 +50,9 @@
 
 - (void)dealloc
 {
-    [_tabBarController release];
-    [_tCWBEngine release];
-    [_tencentOAuthManager release];
     [_navigationController release];
     [_window release];
     [super dealloc];
-}
-
-
-
-- (void)hideTabBar:(BOOL)isHide
-{
-   [self.tabBarController hideCustomTabBarView:isHide];
 }
 
 
@@ -70,50 +63,106 @@
 
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
-    
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
-
+  
+    
     
     // Assign tab bar item with titles
-    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-    
-    
-    UITabBar *tabBar = tabBarController.tabBar;
-    UITabBarItem *tabBarItem1 = [tabBar.items objectAtIndex:0];
-    UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
-    UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
-    UITabBarItem *tabBarItem4 = [tabBar.items objectAtIndex:3];
-    UITabBarItem *tabBarItem5 = [tabBar.items objectAtIndex:4];
-
+//    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
 //    
-    tabBarItem1.title = @"锻炼";
-    tabBarItem2.title = @"营养与辅助";
-    tabBarItem3.title = @"我";
-    tabBarItem4.title = @"交友互动";
-    tabBarItem5.title = @"更多";
+//
+//    
+//    
+//    UITabBar *tabBar = tabBarController.tabBar;
+//    UITabBarItem *tabBarItem1 = [tabBar.items objectAtIndex:0];
+//    UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
+//    UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
+//    UITabBarItem *tabBarItem4 = [tabBar.items objectAtIndex:3];
+//    UITabBarItem *tabBarItem5 = [tabBar.items objectAtIndex:4];
+//
+////    
+//    tabBarItem1.title = @"锻炼";
+//    tabBarItem2.title = @"营养与辅助";
+//    tabBarItem3.title = @"我";
+//    tabBarItem4.title = @"交友互动";
+//    tabBarItem5.title = @"更多";
+//
+//    
+//    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"workout_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"workout.png"]];
+//    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"nutri_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"nutri.png"]];
+//    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"myprofile_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"myprofile.png"]];
+//    [tabBarItem4 setFinishedSelectedImage:[UIImage imageNamed:@"makefriend_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"makefriend.png"]];
+//    [tabBarItem5 setFinishedSelectedImage:[UIImage imageNamed:@"more_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"more.png"]];
+//    
+//    
+//    
+//    // Change the tab bar background
+//    UIImage* tabBarBackground = [UIImage imageNamed:@"bottom_bg.png"];
+//    [[UITabBar appearance] setBackgroundImage:tabBarBackground];
+//    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar_selected.png"]];
+//    
+//    // Change the title color of tab bar items
+//    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+//                                                       [UIColor whiteColor], UITextAttributeTextColor,
+//                                                       nil] forState:UIControlStateNormal];
+//    UIColor *titleHighlightedColor = [UIColor colorWithRed:153/255.0 green:192/255.0 blue:48/255.0 alpha:1.0];
+//    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+//                                                       titleHighlightedColor, UITextAttributeTextColor,
+//                                                       nil] forState:UIControlStateHighlighted];
+//    
+    
+    
+    
+    
+    //初始化主视图，  当用户点击左右的导航栏，可以更换；
+//    WorkoutViewController *apiVC = [[[WorkoutViewController alloc]init]autorelease];
+    
+    
+    
+    
+//    WorkoutViewController *apiVC = [[UIStoryboard alloc]instantiateViewControllerWithIdentifier:@"WorkOutViewController"];
+    
+    
+    UIStoryboard * stroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    
+    WorkoutViewController *apiVC = (WorkoutViewController*)[stroyBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
 
     
-    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"workout_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"workout.png"]];
-    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"nutri_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"nutri.png"]];
-    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"myprofile_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"myprofile.png"]];
-    [tabBarItem4 setFinishedSelectedImage:[UIImage imageNamed:@"makefriend_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"makefriend.png"]];
-    [tabBarItem5 setFinishedSelectedImage:[UIImage imageNamed:@"more_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"more.png"]];
+    apiVC.title = @"锻炼";
+    UINavigationController *navApiVC = [[[UINavigationController alloc] initWithRootViewController:apiVC] autorelease];
+    
+    
+    //左视图
+    AJMLeftSideViewController *leftVC = [[[AJMLeftSideViewController alloc] init] autorelease];
     
     
     
-    // Change the tab bar background
-    UIImage* tabBarBackground = [UIImage imageNamed:@"bottom_bg.png"];
-    [[UITabBar appearance] setBackgroundImage:tabBarBackground];
-    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar_selected.png"]];
+    //右视图
     
-    // Change the title color of tab bar items
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                       [UIColor whiteColor], UITextAttributeTextColor,
-                                                       nil] forState:UIControlStateNormal];
-    UIColor *titleHighlightedColor = [UIColor colorWithRed:153/255.0 green:192/255.0 blue:48/255.0 alpha:1.0];
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                       titleHighlightedColor, UITextAttributeTextColor,
-                                                       nil] forState:UIControlStateHighlighted];
+    MyselfViewController *rightVC = (MyselfViewController*)[stroyBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
+    
+    
+    
+    IIViewDeckController *vc = [[[IIViewDeckController alloc] initWithCenterViewController:navApiVC leftViewController:leftVC] autorelease];
+    
+    
+    
+    vc.rightController =rightVC;
+    
+    
+    vc.leftSize  = self.window.frame.size.width - (320 - 44.0);
+    vc.rightSize = self.window.frame.size.width - (320 - 34.0);
+    
+    
+    
+    self.viewController = vc;
+    self.window.rootViewController = self.viewController;
+    [self.window makeKeyAndVisible];
+
+    
+    
+    
+
     
     //RestKit
     RKURL *baseURL = [RKURL URLWithBaseURLString:kServerUrl];
@@ -122,37 +171,8 @@
     objectManager.serializationMIMEType = RKMIMETypeJSON;
     objectManager.client.baseURL = baseURL;
     
-   
-    
-       
-    
-    
-    
 
-    
-    ////tencentqqq
-    NSArray *permissionArray =  [[NSArray arrayWithObjects:
-                                  @"get_user_info",@"add_share", @"add_topic",@"add_one_blog", @"list_album",
-                                  @"upload_pic",@"list_photo", @"add_album", @"check_page_fans",nil] retain];
-    _tencentOAuthManager = [TencentOAuthManager defaultManager];
-    [_tencentOAuthManager createTencentQQWithAppId: @"100328471" appPermission:permissionArray appRedirectURI:@"www.qq.com" isInSafari:NO delegate:self];
-    
-    
-    
-    
-//
-//    MySideMenueViewController *mySideMenuViewController = [[MySideMenueViewController alloc] init];
-//
-//    MenuOptions options = MenuButtonEnabled|BackButtonEnabled;
-//    
-//    // make sure to display the navigation controller before calling this
-//    [MFSideMenuManager configureWithNavigationController:nil
-//                                      sideMenuController:mySideMenuViewController
-//                                                menuSide:MenuLeftHandSide
-//                                                 options:options];
-//    [mySideMenuViewController release];
-//    
-    
+
     
     
     
@@ -168,6 +188,12 @@
     // Register to WeChat   wxd930ea5d5a258f4f
     // aijianmei  :
     [WXApi registerApp:WeChatId];
+    
+    
+//    [MobClick startWithAppkey:Mobclick];
+
+    [MobClick startWithAppkey:Mobclick reportPolicy:REALTIME channelId:nil];
+
     
     
     return YES;
@@ -264,6 +290,20 @@
     
     [WXApi sendReq:req];
 }
+
+- (void)doAuth
+{
+    SendAuthReq* req = [[[SendAuthReq alloc] init] autorelease];
+    req.scope = @"post_timeline";
+    req.state = @"xxx";
+    
+    [WXApi sendReq:req];
+}
+
+-(void) changeScene:(NSInteger)scene{
+    _scene = scene;
+}
+
 
 
 @end
