@@ -11,6 +11,10 @@
 #import "AGLeftSideTableCell.h"
 #import "WorkoutViewController.h"
 #import "NutriViewController.h"
+#import "MoreViewController.h"
+#import "MakeFriendsViewController.h"
+
+
 #import "SVWebViewController.h"
 
 #import <ShareSDK/ShareSDK.h>
@@ -238,17 +242,17 @@
                         workOutVC.title = @"锻炼";
                         UINavigationController *navApiVC = [[[UINavigationController alloc] initWithRootViewController:workOutVC] autorelease] ;
                         self.viewDeckController.centerController = navApiVC;
-                        
                         self.view.userInteractionEnabled = YES;
+                        
                     }];
                     break;
                 }
                 case 1:
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        UIViewController *authVC = [[[NutriViewController alloc] init] autorelease];
-                        authVC.title = @"";
-                        UINavigationController *navAuthVC = [[[UINavigationController alloc] initWithRootViewController:authVC] autorelease];
+                        NutriViewController *nutriVC = (NutriViewController *)[stroyBoard instantiateViewControllerWithIdentifier:@"NutriViewController"];
+                        nutriVC.title = @"营养";
+                        UINavigationController *navAuthVC = [[[UINavigationController alloc] initWithRootViewController:nutriVC] autorelease];
                         self.viewDeckController.centerController = navAuthVC;
                         
                         self.view.userInteractionEnabled = YES;
@@ -259,9 +263,10 @@
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         
-                        UIViewController *qqVC = [[[NutriViewController alloc] init] autorelease];
-                        UINavigationController *navQQVC = [[[UINavigationController alloc] initWithRootViewController:qqVC] autorelease];
-                        self.viewDeckController.centerController = navQQVC;
+                        NutriViewController *nutriVC = (NutriViewController *)[stroyBoard instantiateViewControllerWithIdentifier:@"NutriViewController"];
+                        nutriVC.title = @"补充";
+                        UINavigationController *navAuthVC = [[[UINavigationController alloc] initWithRootViewController:nutriVC] autorelease];
+                        self.viewDeckController.centerController = navAuthVC;
                         
                         self.view.userInteractionEnabled = YES;
                     }];
@@ -271,8 +276,8 @@
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         
-                        UIViewController *qqVC = [[[NutriViewController alloc] init] autorelease];
-                        UINavigationController *navQQVC = [[[UINavigationController alloc] initWithRootViewController:qqVC] autorelease];
+                       NutriViewController *nutriVC = (NutriViewController *)[stroyBoard instantiateViewControllerWithIdentifier:@"NutriViewController"];
+                        UINavigationController *navQQVC = [[[UINavigationController alloc] initWithRootViewController:nutriVC] autorelease];
                         self.viewDeckController.centerController = navQQVC;
                         
                         self.view.userInteractionEnabled = YES;
@@ -282,8 +287,8 @@
                 case 4:
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        UIViewController *shareVC = [[[WorkoutViewController alloc] init] autorelease];
-                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
+                        NutriViewController *nutriVC = (NutriViewController *)[stroyBoard instantiateViewControllerWithIdentifier:@"NutriViewController"];
+                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:nutriVC] autorelease];
                         self.viewDeckController.centerController = navShareVC;
                         
                         self.view.userInteractionEnabled = YES;
@@ -304,8 +309,8 @@
                 case 6:
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        UIViewController *shareVC = [[[WorkoutViewController alloc] init] autorelease];
-                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
+                        MakeFriendsViewController *mfVC = [stroyBoard  instantiateViewControllerWithIdentifier:@"MakeFriendsViewController"];
+                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:mfVC] autorelease];
                         self.viewDeckController.centerController = navShareVC;
                         
                         self.view.userInteractionEnabled = YES;
@@ -315,8 +320,10 @@
                 case 7:
                 {
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        UIViewController *shareVC = [[[WorkoutViewController alloc] init] autorelease];
-                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:shareVC] autorelease];
+                        MoreViewController *moreVC = [stroyBoard instantiateViewControllerWithIdentifier:@"MoreViewController"];
+                        [moreVC setTitle:@"更多"];
+                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:moreVC] autorelease];
+                        
                         self.viewDeckController.centerController = navShareVC;
                         
                         self.view.userInteractionEnabled = YES;

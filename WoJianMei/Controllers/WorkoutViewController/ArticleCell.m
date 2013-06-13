@@ -20,7 +20,6 @@
 @synthesize imgView = _imgView;
 @synthesize releasedTimeLabel = _releasedTimeLabel;
 @synthesize commentLabel = _commentLabel;
-@synthesize clickTimesLabel = _clickTimesLabel;
 
 - (void)dealloc {
 
@@ -30,7 +29,6 @@
     [_imgView release];
     [_releasedTimeLabel release];
     [_commentLabel release];
-    [_clickTimesLabel release];
 }
 
 - (void)setCellStyle

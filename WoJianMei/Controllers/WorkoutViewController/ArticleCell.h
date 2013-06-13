@@ -32,7 +32,6 @@
 @property (retain, nonatomic) IBOutlet UIImageView *imgView;
 @property (retain, nonatomic) IBOutlet UILabel  *releasedTimeLabel;
 @property (retain, nonatomic) IBOutlet UILabel  *commentLabel;
-@property (retain, nonatomic) IBOutlet UILabel  *clickTimesLabel;
 
 @property (nonatomic, assign) id<ArticleListCellDelegate>delegate;
 
