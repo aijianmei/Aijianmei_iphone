@@ -673,20 +673,20 @@
 		4A488DD61769CB3900A20EE7 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
 		4A488DD71769CB3900A20EE7 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
 		4A488DD81769CB3900A20EE7 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
-		4A488DE01769CBBD00A20EE7 /* AJMLeftSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJMLeftSideViewController.h; sourceTree = "<group>"; };
-		4A488DE11769CBBD00A20EE7 /* AJMLeftSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJMLeftSideViewController.m; sourceTree = "<group>"; };
-		4A488DE61769CC6800A20EE7 /* AGSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSectionView.h; sourceTree = "<group>"; };
-		4A488DE71769CC6800A20EE7 /* AGSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSectionView.m; sourceTree = "<group>"; };
-		4A488DE81769CC6800A20EE7 /* AGLeftSideTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGLeftSideTableCell.h; sourceTree = "<group>"; };
-		4A488DE91769CC6800A20EE7 /* AGLeftSideTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGLeftSideTableCell.m; sourceTree = "<group>"; };
-		4A488DEC1769CCFD00A20EE7 /* IndexLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IndexLine.png; sourceTree = "<group>"; };
-		4A488DED1769CCFD00A20EE7 /* IndexLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndexLine@2x.png"; sourceTree = "<group>"; };
-		4A488DEE1769CCFD00A20EE7 /* IndexBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IndexBG.png; sourceTree = "<group>"; };
-		4A488DEF1769CCFD00A20EE7 /* IndexBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndexBG@2x.png"; sourceTree = "<group>"; };
-		4A488DF01769CCFD00A20EE7 /* NavigationButtonBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavigationButtonBG.png; sourceTree = "<group>"; };
-		4A488DF11769CCFD00A20EE7 /* NavigationButtonBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NavigationButtonBG@2x.png"; sourceTree = "<group>"; };
-		4A488DF21769CCFD00A20EE7 /* LeftSideViewIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LeftSideViewIcon.png; sourceTree = "<group>"; };
-		4A488DF31769CCFD00A20EE7 /* LeftSideViewIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LeftSideViewIcon@2x.png"; sourceTree = "<group>"; };
+		4A488DE01769CBBD00A20EE7 /* AJMLeftSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJMLeftSideViewController.h; path = ../AJMLeftSideViewController.h; sourceTree = "<group>"; };
+		4A488DE11769CBBD00A20EE7 /* AJMLeftSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJMLeftSideViewController.m; path = ../AJMLeftSideViewController.m; sourceTree = "<group>"; };
+		4A488DE61769CC6800A20EE7 /* AGSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGSectionView.h; path = ../AGSectionView.h; sourceTree = "<group>"; };
+		4A488DE71769CC6800A20EE7 /* AGSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGSectionView.m; path = ../AGSectionView.m; sourceTree = "<group>"; };
+		4A488DE81769CC6800A20EE7 /* AGLeftSideTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLeftSideTableCell.h; path = ../AGLeftSideTableCell.h; sourceTree = "<group>"; };
+		4A488DE91769CC6800A20EE7 /* AGLeftSideTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLeftSideTableCell.m; path = ../AGLeftSideTableCell.m; sourceTree = "<group>"; };
+		4A488DEC1769CCFD00A20EE7 /* IndexLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IndexLine.png; path = ../../IndexLine.png; sourceTree = "<group>"; };
+		4A488DED1769CCFD00A20EE7 /* IndexLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IndexLine@2x.png"; path = "../../IndexLine@2x.png"; sourceTree = "<group>"; };
+		4A488DEE1769CCFD00A20EE7 /* IndexBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IndexBG.png; path = ../../IndexBG.png; sourceTree = "<group>"; };
+		4A488DEF1769CCFD00A20EE7 /* IndexBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IndexBG@2x.png"; path = "../../IndexBG@2x.png"; sourceTree = "<group>"; };
+		4A488DF01769CCFD00A20EE7 /* NavigationButtonBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NavigationButtonBG.png; path = ../../NavigationButtonBG.png; sourceTree = "<group>"; };
+		4A488DF11769CCFD00A20EE7 /* NavigationButtonBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NavigationButtonBG@2x.png"; path = "../../NavigationButtonBG@2x.png"; sourceTree = "<group>"; };
+		4A488DF21769CCFD00A20EE7 /* LeftSideViewIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LeftSideViewIcon.png; path = ../../LeftSideViewIcon.png; sourceTree = "<group>"; };
+		4A488DF31769CCFD00A20EE7 /* LeftSideViewIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LeftSideViewIcon@2x.png"; path = "../../LeftSideViewIcon@2x.png"; sourceTree = "<group>"; };
 		4A488DFC1769EACE00A20EE7 /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
 		4A488DFD1769EACE00A20EE7 /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModalWebViewController.m; sourceTree = "<group>"; };
 		4A488DFE1769EACE00A20EE7 /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
@@ -713,8 +713,8 @@
 		4A488E191769F08E00A20EE7 /* SSCKeyDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCKeyDef.h; sourceTree = "<group>"; };
 		4A488E1A1769F08E00A20EE7 /* SSCNotificationDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCNotificationDef.h; sourceTree = "<group>"; };
 		4A488E1B1769F08E00A20EE7 /* SSCTypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCTypeDef.h; sourceTree = "<group>"; };
-		4A488E211769F15800A20EE7 /* AJMViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJMViewDelegate.h; sourceTree = "<group>"; };
-		4A488E221769F15800A20EE7 /* AJMViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJMViewDelegate.m; sourceTree = "<group>"; };
+		4A488E211769F15800A20EE7 /* AJMViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJMViewDelegate.h; path = ../AJMViewDelegate.h; sourceTree = "<group>"; };
+		4A488E221769F15800A20EE7 /* AJMViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJMViewDelegate.m; path = ../AJMViewDelegate.m; sourceTree = "<group>"; };
 		4A488E241769F64700A20EE7 /* SinaWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SinaWeiboConnection.framework; sourceTree = "<group>"; };
 		4A488E261769F64F00A20EE7 /* WeChatConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WeChatConnection.framework; sourceTree = "<group>"; };
 		4A488E281769F65900A20EE7 /* TencentWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentWeiboConnection.framework; sourceTree = "<group>"; };
@@ -1620,6 +1620,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A3AE813176A15A600A39463 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		4A429DB2175D7EFD00F018CE /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -1635,6 +1642,17 @@
 		4A488DDF1769CB3E00A20EE7 /* ViewDeck */ = {
 			isa = PBXGroup;
 			children = (
+				4A3AE813176A15A600A39463 /* Resources */,
+				4A488DEC1769CCFD00A20EE7 /* IndexLine.png */,
+				4A488DED1769CCFD00A20EE7 /* IndexLine@2x.png */,
+				4A488DEE1769CCFD00A20EE7 /* IndexBG.png */,
+				4A488DEF1769CCFD00A20EE7 /* IndexBG@2x.png */,
+				4A488DF01769CCFD00A20EE7 /* NavigationButtonBG.png */,
+				4A488DF11769CCFD00A20EE7 /* NavigationButtonBG@2x.png */,
+				4A488DF21769CCFD00A20EE7 /* LeftSideViewIcon.png */,
+				4A488DF31769CCFD00A20EE7 /* LeftSideViewIcon@2x.png */,
+				4A488E041769EAD700A20EE7 /* AJMWebViewController */,
+				4A488E3D176A145700A20EE7 /* Classes */,
 				4A488DD51769CB3900A20EE7 /* IIViewDeckController.h */,
 				4A488DD61769CB3900A20EE7 /* IIViewDeckController.m */,
 				4A488DD71769CB3900A20EE7 /* IIWrapController.h */,
@@ -1653,6 +1671,7 @@
 				4A488E001769EACF00A20EE7 /* SVWebViewController.m */,
 			);
 			name = AJMWebViewController;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		4A488E0B1769F08D00A20EE7 /* Headers */ = {
@@ -1724,6 +1743,22 @@
 				4A488E37176A056900A20EE7 /* LifeStytleViewController.m */,
 			);
 			name = LifeStytleViewController;
+			sourceTree = "<group>";
+		};
+		4A488E3D176A145700A20EE7 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4A488DE01769CBBD00A20EE7 /* AJMLeftSideViewController.h */,
+				4A488DE11769CBBD00A20EE7 /* AJMLeftSideViewController.m */,
+				4A488DE61769CC6800A20EE7 /* AGSectionView.h */,
+				4A488DE71769CC6800A20EE7 /* AGSectionView.m */,
+				4A488DE81769CC6800A20EE7 /* AGLeftSideTableCell.h */,
+				4A488DE91769CC6800A20EE7 /* AGLeftSideTableCell.m */,
+				4A488E211769F15800A20EE7 /* AJMViewDelegate.h */,
+				4A488E221769F15800A20EE7 /* AJMViewDelegate.m */,
+			);
+			name = Classes;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		4A498D711685500F0073E682 /* Component-Service */ = {
@@ -2912,7 +2947,6 @@
 		4A58805215C52B89005F8415 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4ADCFE26169D619500A3E979 /* ShareViewContrller */,
 				4ACD190916154F5C00567A24 /* Entries */,
 			);
 			name = Controllers;
@@ -3347,13 +3381,6 @@
 			path = Controllers/WorkoutViewController;
 			sourceTree = "<group>";
 		};
-		4ADCFE26169D619500A3E979 /* ShareViewContrller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ShareViewContrller;
-			sourceTree = "<group>";
-		};
 		4ADCFE56169D62C300A3E979 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -3576,23 +3603,6 @@
 				4AE394B715C2DD9C00D06C61 /* WoJianMei */,
 				4AE394C015C2DD9C00D06C61 /* AppDelegate.h */,
 				4AE394C115C2DD9C00D06C61 /* AppDelegate.m */,
-				4A488E041769EAD700A20EE7 /* AJMWebViewController */,
-				4A488DE01769CBBD00A20EE7 /* AJMLeftSideViewController.h */,
-				4A488DE11769CBBD00A20EE7 /* AJMLeftSideViewController.m */,
-				4A488DE61769CC6800A20EE7 /* AGSectionView.h */,
-				4A488DE71769CC6800A20EE7 /* AGSectionView.m */,
-				4A488DE81769CC6800A20EE7 /* AGLeftSideTableCell.h */,
-				4A488DE91769CC6800A20EE7 /* AGLeftSideTableCell.m */,
-				4A488E211769F15800A20EE7 /* AJMViewDelegate.h */,
-				4A488E221769F15800A20EE7 /* AJMViewDelegate.m */,
-				4A488DEC1769CCFD00A20EE7 /* IndexLine.png */,
-				4A488DED1769CCFD00A20EE7 /* IndexLine@2x.png */,
-				4A488DEE1769CCFD00A20EE7 /* IndexBG.png */,
-				4A488DEF1769CCFD00A20EE7 /* IndexBG@2x.png */,
-				4A488DF01769CCFD00A20EE7 /* NavigationButtonBG.png */,
-				4A488DF11769CCFD00A20EE7 /* NavigationButtonBG@2x.png */,
-				4A488DF21769CCFD00A20EE7 /* LeftSideViewIcon.png */,
-				4A488DF31769CCFD00A20EE7 /* LeftSideViewIcon@2x.png */,
 				4AE394C315C2DD9C00D06C61 /* MainStoryboard_iPhone.storyboard */,
 				4AE394C615C2DD9C00D06C61 /* MainStoryboard_iPad.storyboard */,
 				4AE394B015C2DD9C00D06C61 /* Frameworks */,
