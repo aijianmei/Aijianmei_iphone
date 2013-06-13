@@ -60,8 +60,7 @@
 
 - (void)initMoreUI
 {
-
-//        _appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        _appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
         ////leftBtn
         UIButton *leftBtn = [[[UIButton alloc] init] autorelease];

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AJM_CommonViewController.h"
 
-@interface SupplementViewController : UIViewController
+@interface SupplementViewController : AJM_CommonViewController
 
 @end

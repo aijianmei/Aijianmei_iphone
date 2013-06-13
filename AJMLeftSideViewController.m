@@ -196,7 +196,7 @@
     switch (section)
     {
         case 1:
-            return @"关注我们";
+            return @"asdfasdfasdf";
         default:
             return nil;
     }

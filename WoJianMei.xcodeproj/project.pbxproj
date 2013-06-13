@@ -52,6 +52,7 @@
 		4A488E30176A02D900A20EE7 /* WorkoutPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A488E2F176A02D900A20EE7 /* WorkoutPlanViewController.m */; };
 		4A488E34176A03B200A20EE7 /* SupplementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A488E33176A03B100A20EE7 /* SupplementViewController.m */; };
 		4A488E38176A056900A20EE7 /* LifeStytleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A488E37176A056900A20EE7 /* LifeStytleViewController.m */; };
+		4A488E3C176A09AA00A20EE7 /* AJM_CommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A488E3B176A09AA00A20EE7 /* AJM_CommonViewController.m */; };
 		4A498E7F1685500F0073E682 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A498DAB1685500F0073E682 /* ioapi.c */; };
 		4A498E801685500F0073E682 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A498DAD1685500F0073E682 /* mztools.c */; };
 		4A498E811685500F0073E682 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A498DAF1685500F0073E682 /* unzip.c */; };
@@ -725,6 +726,8 @@
 		4A488E33176A03B100A20EE7 /* SupplementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplementViewController.m; sourceTree = "<group>"; };
 		4A488E36176A056900A20EE7 /* LifeStytleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LifeStytleViewController.h; path = ../LifeStytleViewController.h; sourceTree = "<group>"; };
 		4A488E37176A056900A20EE7 /* LifeStytleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LifeStytleViewController.m; path = ../LifeStytleViewController.m; sourceTree = "<group>"; };
+		4A488E3A176A09AA00A20EE7 /* AJM_CommonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJM_CommonViewController.h; sourceTree = "<group>"; };
+		4A488E3B176A09AA00A20EE7 /* AJM_CommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJM_CommonViewController.m; sourceTree = "<group>"; };
 		4A498DAA1685500F0073E682 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		4A498DAB1685500F0073E682 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
 		4A498DAC1685500F0073E682 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
@@ -3210,6 +3213,8 @@
 		4ACD190916154F5C00567A24 /* Entries */ = {
 			isa = PBXGroup;
 			children = (
+				4A488E3A176A09AA00A20EE7 /* AJM_CommonViewController.h */,
+				4A488E3B176A09AA00A20EE7 /* AJM_CommonViewController.m */,
 				4A488E39176A057400A20EE7 /* LifeStytleViewController */,
 				4A488E31176A02E400A20EE7 /* WorkoutPlanViewController */,
 				4A488E35176A03BA00A20EE7 /* SupplementViewController */,
@@ -4455,6 +4460,7 @@
 				4A488E30176A02D900A20EE7 /* WorkoutPlanViewController.m in Sources */,
 				4A488E34176A03B200A20EE7 /* SupplementViewController.m in Sources */,
 				4A488E38176A056900A20EE7 /* LifeStytleViewController.m in Sources */,
+				4A488E3C176A09AA00A20EE7 /* AJM_CommonViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

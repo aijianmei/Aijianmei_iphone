@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AJM_CommonViewController.h"
 
-@interface WorkoutPlanViewController : UIViewController
+@interface WorkoutPlanViewController : AJM_CommonViewController
 
 @end

@@ -8,6 +8,18 @@
 
 #import "PPViewController.h"
 
+
+@class AppDelegate;
+
 @interface AJM_CommonViewController : PPViewController
+{
+    AppDelegate *_appDelegate;
+
+}
+
+- (void)initMoreUI;
+- (void)leftButtonClickHandler:(id)sender;
+- (void)rightButtonClickHandler:(id)sender;
+
 
 @end
