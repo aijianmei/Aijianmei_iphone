@@ -288,7 +288,7 @@ typedef enum {
         }
         
     }else {
-        cell.textLabel.text = @"退出客户端";
+        cell.textLabel.text = @"退出应用";
         imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"singleCellBackgroud.png"]];
     }
     
@@ -419,7 +419,8 @@ typedef enum {
                                               cancelButtonTitle:NSLS(@"取消")
                                          destructiveButtonTitle:NSLS(@"分享到新浪微博")
                                               otherButtonTitles:NSLS(@"分享给微信好友"),NSLS(@"分享到微信朋友圈"),NSLS(@"通过邮箱"),NSLS(@"通过短信"),nil];
-    [share showFromTabBar:self.tabBarController.tabBar];
+    
+    [share showInView:self.view];
     [share release];
     
 }

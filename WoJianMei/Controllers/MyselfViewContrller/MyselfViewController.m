@@ -128,14 +128,14 @@
     [_myHeaderView setFrame: CGRectMake(0, 0, 100, 220)];
     [_myHeaderView setBackgroundColor:[UIColor clearColor]];
     
-    UIImageView *backGroundImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 260, 160)];
+    UIImageView *backGroundImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 250, 160)];
     [backGroundImageView setImage:[UIImage imageNamed:@"profile_backgroud.png"]];
     [_myHeaderView addSubview:backGroundImageView];
     [backGroundImageView release];
     
     
     ////// set the Username
-    self.userNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(100, 130, 145, 30)];
+    self.userNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(30, 130, 145, 30)];
     _userNameLabel.backgroundColor =[UIColor clearColor];
    [_userNameLabel setTextAlignment:NSTextAlignmentRight];
     _userNameLabel.textColor = [UIColor whiteColor];
@@ -157,7 +157,7 @@
     _headerVImageButton.layer.borderColor = [UIColor clearColor].CGColor;
     
     
-    [_headerVImageButton setFrame:CGRectMake(250, 115, 70, 70)];
+    [_headerVImageButton setFrame:CGRectMake(180, 115, 70, 70)];
     [_headerVImageButton setBackgroundColor:[UIColor clearColor]];
     [_headerVImageButton setImage:[ImageManager avatarbackgroundImage] forState:UIControlStateNormal];
     
@@ -166,7 +166,7 @@
     UIImageView *imageview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"description_bround.png"]];
     
     
-    [imageview setFrame:CGRectMake(0, 160, 320, 50)];
+    [imageview setFrame:CGRectMake(0, 160, 200, 50)];
     
     [self.myHeaderView addSubview:imageview];
     [imageview release];
@@ -182,7 +182,7 @@
     NSString *s = @"这是一个测试！！！adsfsaf时发生发勿忘我勿忘我勿忘我勿忘我勿忘我阿阿阿阿阿阿阿阿阿阿阿阿阿啊00000000阿什顿。。。";
     UIFont *font = [UIFont fontWithName:@"Arial" size:12];
     //设置一个行高上限
-    CGSize size = CGSizeMake(250,50);
+    CGSize size = CGSizeMake(200,50);
     
     //计算实际frame大小，并将label的frame变成实际大小
      CGSize labelsize = [s sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
