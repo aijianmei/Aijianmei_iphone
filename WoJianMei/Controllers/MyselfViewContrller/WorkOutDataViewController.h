@@ -28,9 +28,7 @@
     
     WorkOutInfo *_workOutInfo;
     
-   
-    
-    
+
 }
 
 //@property (retain,nonatomic) WorkOutProcessViewController *superViewController;

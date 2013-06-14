@@ -73,6 +73,7 @@
 //    [self hidesBottomBarWhenPushed];
 }
 
+
 /* display new or existing cached image */
 
 - (void)upgradeUI
@@ -127,7 +128,7 @@
     [_myHeaderView setFrame: CGRectMake(0, 0, 100, 220)];
     [_myHeaderView setBackgroundColor:[UIColor clearColor]];
     
-    UIImageView *backGroundImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160)];
+    UIImageView *backGroundImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 260, 160)];
     [backGroundImageView setImage:[UIImage imageNamed:@"profile_backgroud.png"]];
     [_myHeaderView addSubview:backGroundImageView];
     [backGroundImageView release];
@@ -341,7 +342,8 @@
         case 0:
             NSLog(@"I did click %@",@"我的健身历程");
         
-            [self performSegueWithIdentifier:@"WorkoutProcessSegue" sender:self];
+            [self.navigationController performSegueWithIdentifier:@"WorkoutProcessSegue" sender:self];
+            
             break;
         case 1:
             NSLog(@"I did click %@",@"我的健身小助手");

@@ -1588,6 +1588,14 @@
 		4A3AE813176A15A600A39463 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4A488DEC1769CCFD00A20EE7 /* IndexLine.png */,
+				4A488DED1769CCFD00A20EE7 /* IndexLine@2x.png */,
+				4A488DEE1769CCFD00A20EE7 /* IndexBG.png */,
+				4A488DEF1769CCFD00A20EE7 /* IndexBG@2x.png */,
+				4A488DF01769CCFD00A20EE7 /* NavigationButtonBG.png */,
+				4A488DF11769CCFD00A20EE7 /* NavigationButtonBG@2x.png */,
+				4A488DF21769CCFD00A20EE7 /* LeftSideViewIcon.png */,
+				4A488DF31769CCFD00A20EE7 /* LeftSideViewIcon@2x.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1630,14 +1638,6 @@
 			isa = PBXGroup;
 			children = (
 				4A3AE813176A15A600A39463 /* Resources */,
-				4A488DEC1769CCFD00A20EE7 /* IndexLine.png */,
-				4A488DED1769CCFD00A20EE7 /* IndexLine@2x.png */,
-				4A488DEE1769CCFD00A20EE7 /* IndexBG.png */,
-				4A488DEF1769CCFD00A20EE7 /* IndexBG@2x.png */,
-				4A488DF01769CCFD00A20EE7 /* NavigationButtonBG.png */,
-				4A488DF11769CCFD00A20EE7 /* NavigationButtonBG@2x.png */,
-				4A488DF21769CCFD00A20EE7 /* LeftSideViewIcon.png */,
-				4A488DF31769CCFD00A20EE7 /* LeftSideViewIcon@2x.png */,
 				4A488E041769EAD700A20EE7 /* AJMWebViewController */,
 				4A488E3D176A145700A20EE7 /* Classes */,
 				4A488DD51769CB3900A20EE7 /* IIViewDeckController.h */,

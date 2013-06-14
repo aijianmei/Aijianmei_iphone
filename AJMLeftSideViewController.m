@@ -230,7 +230,23 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    UIStoryboard * stroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    
+    UIStoryboard *currentInUseStoryBoard ;
+
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        
+        currentInUseStoryBoard = iPhoneStroyBoard;
+    
+    }else{
+    
+       UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+        currentInUseStoryBoard = iPadStroyBoard;
+
+    }
+    
+    
+    
     
     switch (indexPath.section)
     {
@@ -243,7 +259,7 @@
                 {
                     ///锻炼
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                                        WorkoutViewController *workOutVC = (WorkoutViewController *)[stroyBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
+                                        WorkoutViewController *workOutVC = (WorkoutViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
                         workOutVC.title = @"锻炼";
                         UINavigationController *navApiVC = [[[UINavigationController alloc] initWithRootViewController:workOutVC] autorelease] ;
                         self.viewDeckController.centerController = navApiVC;
@@ -256,7 +272,7 @@
                 {
                     ///健身计划
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        WorkoutPlanViewController *WorkoutPlanVC = (WorkoutPlanViewController *)[stroyBoard instantiateViewControllerWithIdentifier:@"WorkoutPlanViewController"];
+                        WorkoutPlanViewController *WorkoutPlanVC = (WorkoutPlanViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"WorkoutPlanViewController"];
                         WorkoutPlanVC.title = @"健身计划";
                         UINavigationController *navAuthVC = [[[UINavigationController alloc] initWithRootViewController:WorkoutPlanVC] autorelease];
                         self.viewDeckController.centerController = navAuthVC;
@@ -270,7 +286,7 @@
                 {
                     ///营养
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        NutriViewController *nutriVC = (NutriViewController *)[stroyBoard instantiateViewControllerWithIdentifier:@"NutriViewController"];
+                        NutriViewController *nutriVC = (NutriViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"NutriViewController"];
                         nutriVC.title = @"营养";
                         UINavigationController *navAuthVC = [[[UINavigationController alloc] initWithRootViewController:nutriVC] autorelease];
                         self.viewDeckController.centerController = navAuthVC;
@@ -284,7 +300,7 @@
                     ///补充
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         
-                        SupplementViewController *supplementVC = (SupplementViewController *)[stroyBoard instantiateViewControllerWithIdentifier:@"SupplementViewController"];
+                        SupplementViewController *supplementVC = (SupplementViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"SupplementViewController"];
                         supplementVC.title = @"补充";
                         UINavigationController *navAuthVC = [[[UINavigationController alloc] initWithRootViewController:supplementVC] autorelease];
                         self.viewDeckController.centerController = navAuthVC;
@@ -298,7 +314,7 @@
                     ///生活方式
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         
-                       NutriViewController *lifeStytleVC = (NutriViewController *)[stroyBoard instantiateViewControllerWithIdentifier:@"NutriViewController"];
+                       NutriViewController *lifeStytleVC = (NutriViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"NutriViewController"];
                         lifeStytleVC.title = @"生活方式";
                         UINavigationController *navQQVC = [[[UINavigationController alloc] initWithRootViewController:lifeStytleVC] autorelease];
                         self.viewDeckController.centerController = navQQVC;
@@ -311,7 +327,7 @@
                 {
                    ////论坛
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        ForumViewController *forumVC = [stroyBoard instantiateViewControllerWithIdentifier:@"ForumViewController"];
+                        ForumViewController *forumVC = [currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"ForumViewController"];
                         forumVC.title = @"论坛";
 
                         UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:forumVC] autorelease];
@@ -325,7 +341,7 @@
                 {
                     ////交友互动
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        MakeFriendsViewController *mfVC = [stroyBoard  instantiateViewControllerWithIdentifier:@"MakeFriendsViewController"];
+                        MakeFriendsViewController *mfVC = [currentInUseStoryBoard  instantiateViewControllerWithIdentifier:@"MakeFriendsViewController"];
                         mfVC.title = @"交友互动";
                         UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:mfVC] autorelease];
                         self.viewDeckController.centerController = navShareVC;
@@ -338,7 +354,7 @@
                 {
                     ///更多
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        MoreViewController *moreVC = [stroyBoard instantiateViewControllerWithIdentifier:@"MoreViewController"];
+                        MoreViewController *moreVC = [currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MoreViewController"];
                         [moreVC setTitle:@"更多"];
                         UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:moreVC] autorelease];
                         

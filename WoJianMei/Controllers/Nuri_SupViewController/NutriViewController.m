@@ -9,9 +9,12 @@
 #import "NutriViewController.h"
 #import "NutritionDetailCell.h"
 #import "NutritionInfo.h"
+#import "Article.h"
+#import "ArticleCell.h"
 #import "iCarousel.h"
 #import "ArticleService.h"
 #import "IIViewDeckController.h"
+#import "WorkoutDetailViewController.h"
 
 #define NUMBER_OF_ITEMS 13
 #define NUMBER_OF_VISIBLE_ITEMS 18
@@ -103,10 +106,30 @@
 
     [self initUI];
     [self initMoreUI];
-    [self initDatas];
     
     //获取网络数据
-//    [[ArticleService sharedService] findArticle:self];
+    ////开始下载文章
+    NSString *aucode= @"aijianmei";
+    NSString *auact = @"au_getinformationlist";
+    NSString *listtype = @"2";
+    NSString *category = @"nutri";
+    NSString *type = @"hot";
+    NSString *page = @"1";
+    NSString *pnums = @"10";
+    NSString *cateid = @"0";
+    NSString *uid = @"265";
+    
+    [[ArticleService sharedService] findArticleWithAucode:aucode
+                                                    auact:auact
+                                                 listtype:listtype
+                                                 category:category
+                                                     type:type
+                                                     page:page
+                                                    pnums:pnums
+                                                   cateid:cateid
+                                                      uid:uid
+                                                 delegate:self];
+    
     
 }
 
@@ -146,10 +169,12 @@
     NutritionDetailCell *cell = (NutritionDetailCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     // Configure the cell...
  
-    NutritionInfo *nutrition = [dataList objectAtIndex:indexPath.row];
+    Article *nutrition = [dataList objectAtIndex:indexPath.row];
     [cell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"table_header_bg@2x.png"]]];
     
-    [cell setCellInfo:nutrition];
+    if (nutrition) {
+        [cell setCellInfo:nutrition];
+    }
 
     return cell;
 }
@@ -162,6 +187,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
    //TODO
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    
+    WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
+    
+    controller.article = [self.dataList objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 
@@ -252,44 +284,6 @@
     
 }
 
-
-#pragma mark -
-#pragma mark  InitDatas Methods
-
--(void)initDatas{
-    
-    NutritionInfo *nutrition1 = [[NutritionInfo alloc]initWithNutritionId:
-                                 @"1" nutritionTitle:@"下午茶喝一杯咖啡 瘦身又抵饿"imageName:@"1.jpg" creatdDate:@"2012年9月13日" clickedNumber:@"243" commentsNumber:@"23"];
-    
-    NutritionInfo *nutrition2 = [[NutritionInfo alloc]initWithNutritionId:
-                                 @"2" nutritionTitle:@"鱼鳞可预防骨质疏松防衰老"imageName:@"2.jpg" creatdDate:@"2012年3月13日" clickedNumber:@"2753" commentsNumber:@"23" ];
-    NutritionInfo *nutrition3 = [[NutritionInfo alloc]initWithNutritionId:
-                                 @"3" nutritionTitle:@"辣辣更健康 六种日常调味品吃出美丽"imageName:@"3.jpg" creatdDate:@"2012年2月13日" clickedNumber:@"23" commentsNumber:@"23"];
-    NutritionInfo *nutrition4 = [[NutritionInfo alloc]initWithNutritionId:
-                                 @"4" nutritionTitle:@"营养不良的严重危害"imageName:@"4.jpg" creatdDate:@"2012年1月13日" clickedNumber:@"233" commentsNumber:@"23"];
-    NutritionInfo *nutrition5 = [[NutritionInfo alloc]initWithNutritionId:
-                                 @"5" nutritionTitle:@"煮鸡蛋 营养吸收百分百"imageName:@"5.jpg" creatdDate:@"2012年4月13日" clickedNumber:@"233" commentsNumber:@"23"];
-    NutritionInfo *nutrition6 = [[NutritionInfo alloc]initWithNutritionId:
-                                 @"6" nutritionTitle:@"排毒养颜 越吃越美丽"imageName:@"6.jpg" creatdDate:@"2012年6月3日" clickedNumber:@"3323" commentsNumber:@"23"];
-    
-    
-    
-    NSArray *array = [[NSArray alloc] initWithObjects:nutrition1,nutrition2,nutrition3,nutrition4,nutrition5,nutrition6, nil];
-    
-    [nutrition1 release];
-    [nutrition2 release];
-    [nutrition3 release];
-    [nutrition4 release];
-    [nutrition5 release];
-    [nutrition6 release];
-    
-    
-    self.dataList = array;
-    [array release];
-    
-    
-    
-}
 
 #pragma mark -
 #pragma mark  ButtonClicked  Methods
@@ -390,15 +384,17 @@
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
+    [self showActivity];
     
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     NSLog(@"Load objects count: %d", [objects count]);
+    [self hideActivity];
     self.dataList = objects;
     //在这里就可以在controller刷新数据
-    //[self.dataTableView reloadData];
+    [self.dataTableView reloadData];
 }
 
 @end

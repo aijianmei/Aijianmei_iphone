@@ -112,46 +112,84 @@
 //    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
 //                                                       titleHighlightedColor, UITextAttributeTextColor,
 //                                                       nil] forState:UIControlStateHighlighted];
+//
+    
 //    
+//    UIStoryboard *currentInUseStoryBoard ;
+//    
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+//        UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+//        
+//        currentInUseStoryBoard = iPhoneStroyBoard;
+//        
+//    }else{
+//        
+//        UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+//        currentInUseStoryBoard = iPadStroyBoard;
+//        
+//    }
+//
+  
+    
+    WorkoutViewController *workVC ;
+    MyselfViewController *rightVC;
     
     
-    
-    
-    //初始化主视图，  当用户点击左右的导航栏，可以更换；
-    UIStoryboard * stroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    
-    WorkoutViewController *apiVC = (WorkoutViewController*)[stroyBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
 
     
-    apiVC.title = @"锻炼";
-    UINavigationController *navApiVC = [[[UINavigationController alloc] initWithRootViewController:apiVC] autorelease];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        
+        
+        //初始化主视图，  当用户点击左右的导航栏，可以更换；
+        UIStoryboard * iPhonestroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        
+       workVC  = (WorkoutViewController*)[iPhonestroyBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
+        
+        
+        workVC.title = @"锻炼";
+        UINavigationController *navVC = [[[UINavigationController alloc] initWithRootViewController:workVC] autorelease];
+        //左视图
+        AJMLeftSideViewController *leftVC = [[[AJMLeftSideViewController alloc] init] autorelease];
     
-    
-    //左视图
-    AJMLeftSideViewController *leftVC = [[[AJMLeftSideViewController alloc] init] autorelease];
-    
-    
-    
-    //右视图
-    
-    MyselfViewController *rightVC = (MyselfViewController*)[stroyBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
-    
-    
-    
-    IIViewDeckController *vc = [[[IIViewDeckController alloc] initWithCenterViewController:navApiVC leftViewController:leftVC] autorelease];
-    
-    
-    
-    vc.rightController =rightVC;
-    
-    
-    vc.leftSize  = self.window.frame.size.width - (320 - 44.0);
-    vc.rightSize = self.window.frame.size.width - (320 - 34.0);
-    
+        //右视图
+        rightVC = (MyselfViewController*)[iPhonestroyBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
+        IIViewDeckController *vc = [[[IIViewDeckController alloc] initWithCenterViewController:navVC leftViewController:leftVC] autorelease];
+        
+        vc.rightController =rightVC;
+        vc.leftSize  = self.window.frame.size.width - (320 - 60.0);
+        vc.rightSize = self.window.frame.size.width - (320 - 60.0);
+        self.viewController = vc;
 
-    self.viewController = vc;
+       
+    } else {
+        //初始化主视图，  当用户点击左右的导航栏，可以更换；
+        UIStoryboard * iPadstroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+        workVC  = (WorkoutViewController*)[iPadstroyBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
+        workVC.title = @"锻炼";
+        UINavigationController *navVC = [[[UINavigationController alloc] initWithRootViewController:workVC] autorelease];
+
+        //左视图
+        AJMLeftSideViewController *leftVC = [[[AJMLeftSideViewController alloc] init] autorelease];
+        
+        //右视图
+        rightVC = (MyselfViewController*)[iPadstroyBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
+        IIViewDeckController *vc = [[[IIViewDeckController alloc] initWithCenterViewController:navVC leftViewController:leftVC] autorelease];
+        
+        vc.rightController =rightVC;
+        vc.leftSize  = self.window.frame.size.width - (640 - 344.0);
+        vc.rightSize = self.window.frame.size.width - (640 - 344.0);
+        self.viewController = vc;
+
+    }
+
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    
+    
+    
+    
+    
 
     //RestKit
     RKURL *baseURL = [RKURL URLWithBaseURLString:kServerUrl];

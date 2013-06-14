@@ -21,10 +21,12 @@
 
 ///// the setings of the iCarousel
 #define NUMBER_OF_ITEMS 13
-#define NUMBER_OF_VISIBLE_ITEMS 8
+#define NUMBER_OF_VISIBLE_ITEMS 18
 #define ITEM_SPACING 220
-#define SCROLL_VIEW_TAG 20120913
 
+
+
+#define SCROLL_VIEW_TAG 20120913
 #define More_BUTTON_TAG 20130607
 
 @interface WorkoutViewController ()
@@ -85,8 +87,7 @@
         [rightBtn addTarget:self action:@selector(rightButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:rightBtn] autorelease];
         
-        
-        
+
         if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPad)
         {
             UILabel *label = [[UILabel alloc] init];
@@ -166,7 +167,7 @@
     [_buttonScrollView setFrame:CGRectMake(0,170, 260, 30)];
     [_buttonScrollView setShowsHorizontalScrollIndicator:NO];
     
-    [_buttonScrollView setContentSize:CGSizeMake(([buttonArrays count]) * buttonWidth * 2.6, buttonHeight)];
+    [_buttonScrollView setContentSize:CGSizeMake(([[_buttonScrollView subviews] count]) * buttonWidth * 2.6, buttonHeight)];
 
     [self.myHeaderView addSubview:_buttonScrollView];
     
@@ -333,8 +334,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-//    WorkoutDetailViewController *controller =[[WorkoutDetailViewController alloc]init];
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     
     WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
@@ -365,8 +364,8 @@
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
 {
-	UILabel *backgroudLabel = nil;
-	
+    
+    UILabel *label = nil;
 	//create new view if no view is available for recycling
 	if (view == nil)
 	{
@@ -374,54 +373,44 @@
 		view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 130.0f)] autorelease];
         
         //set up content
-		backgroudLabel = [[[UILabel alloc] initWithFrame:view.bounds] autorelease];
-		backgroudLabel.backgroundColor = [UIColor lightGrayColor];
-		backgroudLabel.layer.borderColor = [UIColor whiteColor].CGColor;
-        backgroudLabel.layer.borderWidth = 4.0f;
-        backgroudLabel.layer.cornerRadius = 8.0f;
-        backgroudLabel.textAlignment = UITextAlignmentCenter;
-		backgroudLabel.font = [backgroudLabel.font fontWithSize:50];
-        
-
-        [view addSubview:backgroudLabel];
-
-    ///add images
-    NSString *imageName = [NSString stringWithFormat:@"%d",index +1];
-    UIImageView *imageView =[[UIImageView alloc]initWithImage:[UIImage imageNamed:imageName]];
+		label = [[[UILabel alloc] initWithFrame:view.bounds] autorelease];
+		label.backgroundColor = [UIColor lightGrayColor];
+		label.layer.borderColor = [UIColor whiteColor].CGColor;
+        label.layer.borderWidth = 4.0f;
+        label.layer.cornerRadius = 8.0f;
+        label.textAlignment = UITextAlignmentCenter;
+		label.font = [label.font fontWithSize:50];
         
         
-    [backgroudLabel addSubview: imageView];
-    [imageView release];
-     
+        [view addSubview:label];
         
-    ///add subtitles to each image
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0,100, 200, 30)];
-    NSString *string  =[NSString stringWithFormat:@"%d",index];
-    [label setText:string];
-    [label setTextAlignment:NSTextAlignmentCenter];
-    [label setTextColor:[UIColor whiteColor]];
-    label.backgroundColor = [UIColor blueColor];
-    [imageView addSubview:label];
-    [label release];
+        ///add images
+        NSString *imageName = [NSString stringWithFormat:@"%d",index +1];
+        UIImageView *imageView =[[UIImageView alloc]initWithImage:[UIImage imageNamed:imageName]];
+        [label addSubview: imageView];
+        [imageView release];
+        
+        
         
 	}
 	else
 	{
-		backgroudLabel = [[view subviews] lastObject];
+		label = [[view subviews] lastObject];
 	}
 	
     //set label
-	backgroudLabel.text = [NSString stringWithFormat:@"%@", @"adfsafasfasdfasdf"];
+	label.text = [NSString stringWithFormat:@"%@", @""];
     
     //update reflection
     //this step is expensive, so if you don't need
     //unique reflections for each item, don't do this
     //and you'll get much smoother peformance
+    //    [view update];
     
-    /// When it is the reflecttion view we need to implement this method.
-//    [view update];
+    
 	
 	return view;
+
 }
 
 - (CGFloat)carouselItemWidth:(iCarousel *)carousel
@@ -465,7 +454,6 @@
     
     self.dataList = objects;
     [self hideActivity];
-    self.dataList = objects;
     [self.dataTableView reloadData];
 }
 

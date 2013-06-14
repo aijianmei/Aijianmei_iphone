@@ -42,5 +42,7 @@
 @property (nonatomic,retain) UILabel         *userGenderLabel;
 @property (nonatomic,retain) NSDictionary      *sina_userInfo;
 @property (nonatomic,retain) User                       *user;
+- (void)drawRect:(CGRect)rect;
+
 
 @end

@@ -8,12 +8,17 @@
 
 #import "NutritionDetailCell.h"
 #import "NutritionInfo.h"
+#import "Article.h"
+#import "UIImageView+WebCache.h"
+
 
 @implementation NutritionDetailCell
 @synthesize delegate;
-@synthesize introductionImageButton =_introductionImageButton;
-@synthesize commentNumberLabel      =_commentNumberLabel;
-@synthesize clickedNumberLabel      =_clickedNumberLabel;
+@synthesize titleLabel = _titleLabel;
+@synthesize descriptionLabel = _descriptionLabel;
+@synthesize imgView = _imgView;
+@synthesize releasedTimeLabel = _releasedTimeLabel;
+@synthesize commentLabel = _commentLabel;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -28,9 +33,13 @@
 
 -(void)dealloc{
     
-    [_introductionImageButton release];
+    
+    [_titleLabel release];
+    [_descriptionLabel release];
     [_clickedNumberLabel release];
-    [_commentNumberLabel release];
+    [_commentLabel release];
+    [_imgView release];
+    
     [super dealloc];
    
 
@@ -51,15 +60,13 @@
     return 134.0f;
 }
 
-- (void)setCellInfo:(NutritionInfo *)nutritionInfo{
+- (void)setCellInfo:(Article *)nutritionInfo{
 
-    
-    [self.introductionImageButton setImage:[UIImage imageNamed:nutritionInfo.imageName] forState:UIControlStateNormal];
-    
-    NSString *commentString = [NSString stringWithFormat:@"%@次评论",nutritionInfo.commentsNumber ];
-    self.commentNumberLabel.text=commentString;
-    self.clickedNumberLabel.text=nutritionInfo.clickedNumber;
-  
+    [self.titleLabel setText:nutritionInfo.title];
+    [self.descriptionLabel setText:nutritionInfo.brief];
+    [self.imgView setImageWithURL:[NSURL URLWithString:nutritionInfo.img] placeholderImage:[UIImage imageNamed:@"11"]];
+    [self.commentLabel setText:nutritionInfo.commentCount];
+    [self.releasedTimeLabel setText:nutritionInfo.create_time];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
