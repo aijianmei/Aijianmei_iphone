@@ -10,6 +10,7 @@
 #import "CommonService.h"
 #import <RestKit/RestKit.h>
 #import "SinaWeiboManager.h"
+#import "User.h"
 
 @protocol UserServiceDelegate <NSObject>
 
@@ -21,10 +22,6 @@
                      title:(NSString *)title
                    content:(NSString *)content;
 @end
-
-
-
-
 
 @interface UserService : CommonService
 {
@@ -39,6 +36,9 @@
 
 // 用户登陆
 - (void)login:(id<UserServiceDelegate>)delegate;
+
+
+- (BOOL)hasBindAccount;
 
 
 //新浪微博用户数据注册

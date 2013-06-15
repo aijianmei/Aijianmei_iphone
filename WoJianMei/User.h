@@ -21,7 +21,7 @@
     NSString *_description;
     NSString *_gender;
     
-    
+    NSString *_sinaUserId;
 }
 @property (retain, nonatomic)  UIImage *avatarImage;
 @property (retain, nonatomic)  UIImage *avatarBackGroundImage;
@@ -30,6 +30,8 @@
 
 @property (retain, nonatomic)  NSString *description;
 @property (retain, nonatomic)  NSString *gender;
+
+@property (retain, nonatomic)  NSString *sinaUserId;
 
 
 @end

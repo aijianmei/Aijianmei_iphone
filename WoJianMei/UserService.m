@@ -128,6 +128,18 @@ static UserService* _defaultUserService = nil;
                                        delegate:delegate];
 }
 
+- (BOOL)hasBindAccount
+{
+    if ([self hasbindSina])
+        return YES;
+    else
+        return NO;
+}
+
+- (BOOL)hasbindSina
+{
+    return NO;
+}
 
 
 @end
