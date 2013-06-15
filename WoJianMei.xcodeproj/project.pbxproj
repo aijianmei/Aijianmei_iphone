@@ -542,7 +542,6 @@
 		4AEE95C315FB7FDF005A66DC /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE95C115FB7FDF005A66DC /* Link.m */; };
 		4AEE95C615FB8046005A66DC /* Pagination.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE95C515FB8046005A66DC /* Pagination.m */; };
 		4AEE95C915FB807F005A66DC /* ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE95C815FB807F005A66DC /* ImageManager.m */; };
-		4AEE95CB15FB8291005A66DC /* test.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE95CA15FB8291005A66DC /* test.txt */; };
 		C6016B7417523D2D00BA5E63 /* bj_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6016B5F17523D2D00BA5E63 /* bj_1.png */; };
 		C6016B7517523D2D00BA5E63 /* bj_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C6016B6017523D2D00BA5E63 /* bj_2.png */; };
 		C6016B7617523D2D00BA5E63 /* fgx_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6016B6117523D2D00BA5E63 /* fgx_1.png */; };
@@ -1488,7 +1487,6 @@
 		4AEE95C515FB8046005A66DC /* Pagination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pagination.m; sourceTree = "<group>"; };
 		4AEE95C715FB807F005A66DC /* ImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageManager.h; sourceTree = "<group>"; };
 		4AEE95C815FB807F005A66DC /* ImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManager.m; sourceTree = "<group>"; };
-		4AEE95CA15FB8291005A66DC /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
 		C6016B5F17523D2D00BA5E63 /* bj_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bj_1.png; sourceTree = "<group>"; };
 		C6016B6017523D2D00BA5E63 /* bj_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bj_2.png; sourceTree = "<group>"; };
 		C6016B6117523D2D00BA5E63 /* fgx_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fgx_1.png; sourceTree = "<group>"; };
@@ -2951,7 +2949,6 @@
 				4AEE95C515FB8046005A66DC /* Pagination.m */,
 				4AEE95B515FB7F5A005A66DC /* LeavesViewController.h */,
 				4AEE95B615FB7F5A005A66DC /* LeavesViewController.m */,
-				4AEE95CA15FB8291005A66DC /* test.txt */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -3851,7 +3848,6 @@
 				4AE394BC15C2DD9C00D06C61 /* InfoPlist.strings in Resources */,
 				4AE394C515C2DD9C00D06C61 /* MainStoryboard_iPhone.storyboard in Resources */,
 				4AE394C815C2DD9C00D06C61 /* MainStoryboard_iPad.storyboard in Resources */,
-				4AEE95CB15FB8291005A66DC /* test.txt in Resources */,
 				4A4991D5168553A30073E682 /* Documentation.html in Resources */,
 				4A4991D8168553A30073E682 /* LICENSE.txt in Resources */,
 				4A4991D9168553A30073E682 /* README.txt in Resources */,
