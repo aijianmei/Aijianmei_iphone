@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "CommonService.h"
 #import <RestKit/RestKit.h>
-
+#import "SinaWeiboManager.h"
 
 @protocol UserServiceDelegate <NSObject>
+
 
 @optional
 
@@ -26,7 +27,10 @@
 
 
 @interface UserService : CommonService
-
+{
+    SinaWeiboManager *_sinaweiboManager;
+    
+}
 
 + (UserService*)defaultService;
 
@@ -37,10 +41,13 @@
 - (void)login:(id<UserServiceDelegate>)delegate;
 
 
+//新浪微博用户数据注册
+- (void)registerUserWithSinaUserInfo:(NSDictionary*)userInfo
+                            delegate:(id<RKObjectLoaderDelegate>)delegate;
 
 
-
-
-
+//获取用户信息
+- (void)getUserInfo:(NSString*)uid
+                    delegate:(id<SinaWeiboRequestDelegate>)delegate;
 
 @end

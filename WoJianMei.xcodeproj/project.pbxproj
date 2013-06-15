@@ -566,6 +566,12 @@
 		C6016B8817523D2D00BA5E63 /* sj_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6016B7317523D2D00BA5E63 /* sj_1.png */; };
 		C668C23E176600B9007CC7FF /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C23B176600B9007CC7FF /* GTMNSString+HTML.m */; };
 		C668C23F176600B9007CC7FF /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C23D176600B9007CC7FF /* NSString+HTML.m */; };
+		C668C2C3176C63DC007CC7FF /* SinaWeibo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C668C2BA176C63DC007CC7FF /* SinaWeibo.bundle */; };
+		C668C2C4176C63DC007CC7FF /* SinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C2BC176C63DC007CC7FF /* SinaWeibo.m */; };
+		C668C2C5176C63DC007CC7FF /* SinaWeiboAuthorizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C2BE176C63DC007CC7FF /* SinaWeiboAuthorizeView.m */; };
+		C668C2C6176C63DC007CC7FF /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C2C1176C63DC007CC7FF /* SinaWeiboRequest.m */; };
+		C668C2CF176C649B007CC7FF /* SinaWeiboManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C2CC176C649B007CC7FF /* SinaWeiboManager.m */; };
+		C668C2D0176C649B007CC7FF /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C2CE176C649B007CC7FF /* Status.m */; };
 		C6A718A4175E38B80035E0D0 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A718A3175E38B80035E0D0 /* Article.m */; };
 		C6A718AE175E3AB40035E0D0 /* ArticleService.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A718AD175E3AB40035E0D0 /* ArticleService.m */; };
 		C6C0CD1D17509DA400A825AB /* DrawContextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C0CD1C17509DA400A825AB /* DrawContextView.m */; };
@@ -1507,6 +1513,18 @@
 		C668C23B176600B9007CC7FF /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
 		C668C23C176600B9007CC7FF /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
 		C668C23D176600B9007CC7FF /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
+		C668C2BA176C63DC007CC7FF /* SinaWeibo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SinaWeibo.bundle; sourceTree = "<group>"; };
+		C668C2BB176C63DC007CC7FF /* SinaWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeibo.h; sourceTree = "<group>"; };
+		C668C2BC176C63DC007CC7FF /* SinaWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeibo.m; sourceTree = "<group>"; };
+		C668C2BD176C63DC007CC7FF /* SinaWeiboAuthorizeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboAuthorizeView.h; sourceTree = "<group>"; };
+		C668C2BE176C63DC007CC7FF /* SinaWeiboAuthorizeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboAuthorizeView.m; sourceTree = "<group>"; };
+		C668C2BF176C63DC007CC7FF /* SinaWeiboConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboConstants.h; sourceTree = "<group>"; };
+		C668C2C0176C63DC007CC7FF /* SinaWeiboRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboRequest.h; sourceTree = "<group>"; };
+		C668C2C1176C63DC007CC7FF /* SinaWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboRequest.m; sourceTree = "<group>"; };
+		C668C2CB176C649B007CC7FF /* SinaWeiboManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboManager.h; sourceTree = "<group>"; };
+		C668C2CC176C649B007CC7FF /* SinaWeiboManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboManager.m; sourceTree = "<group>"; };
+		C668C2CD176C649B007CC7FF /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
+		C668C2CE176C649B007CC7FF /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		C6A718A2175E38B80035E0D0 /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Article.h; sourceTree = "<group>"; };
 		C6A718A3175E38B80035E0D0 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
 		C6A718AC175E3AB40035E0D0 /* ArticleService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleService.h; sourceTree = "<group>"; };
@@ -2892,6 +2910,10 @@
 		4A58805015C52B76005F8415 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				C668C2CB176C649B007CC7FF /* SinaWeiboManager.h */,
+				C668C2CC176C649B007CC7FF /* SinaWeiboManager.m */,
+				C668C2CD176C649B007CC7FF /* Status.h */,
+				C668C2CE176C649B007CC7FF /* Status.m */,
 				4AA945F81686DD2600022B2D /* FontSize */,
 				4AEE95BE15FB7FDF005A66DC /* Catalog.h */,
 				4AEE95BF15FB7FDF005A66DC /* Catalog.m */,
@@ -3074,6 +3096,7 @@
 		4A959679168ED995006F1317 /* 3PP-SDK */ = {
 			isa = PBXGroup;
 			children = (
+				C668C2B6176C63DC007CC7FF /* SinaWeiBoSDK_sso */,
 				4A3AE815176A173C00A39463 /* WeixinSDK */,
 				4A9597F8168ED995006F1317 /* MobClick */,
 			);
@@ -3659,6 +3682,21 @@
 			path = WorkOutProcess;
 			sourceTree = "<group>";
 		};
+		C668C2B6176C63DC007CC7FF /* SinaWeiBoSDK_sso */ = {
+			isa = PBXGroup;
+			children = (
+				C668C2BA176C63DC007CC7FF /* SinaWeibo.bundle */,
+				C668C2BB176C63DC007CC7FF /* SinaWeibo.h */,
+				C668C2BC176C63DC007CC7FF /* SinaWeibo.m */,
+				C668C2BD176C63DC007CC7FF /* SinaWeiboAuthorizeView.h */,
+				C668C2BE176C63DC007CC7FF /* SinaWeiboAuthorizeView.m */,
+				C668C2BF176C63DC007CC7FF /* SinaWeiboConstants.h */,
+				C668C2C0176C63DC007CC7FF /* SinaWeiboRequest.h */,
+				C668C2C1176C63DC007CC7FF /* SinaWeiboRequest.m */,
+			);
+			path = SinaWeiBoSDK_sso;
+			sourceTree = "<group>";
+		};
 		C6DB1FFC1760CC9E0060BD08 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -4059,6 +4097,7 @@
 				4A488E021769EACF00A20EE7 /* SVWebViewController.bundle in Resources */,
 				4A488E1D1769F08E00A20EE7 /* ShareSDKLocalizable.strings in Resources */,
 				4A488E1E1769F08E00A20EE7 /* Resource.bundle in Resources */,
+				C668C2C3176C63DC007CC7FF /* SinaWeibo.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4353,6 +4392,11 @@
 				4A488E34176A03B200A20EE7 /* SupplementViewController.m in Sources */,
 				4A488E38176A056900A20EE7 /* LifeStytleViewController.m in Sources */,
 				4A488E3C176A09AA00A20EE7 /* AJM_CommonViewController.m in Sources */,
+				C668C2C4176C63DC007CC7FF /* SinaWeibo.m in Sources */,
+				C668C2C5176C63DC007CC7FF /* SinaWeiboAuthorizeView.m in Sources */,
+				C668C2C6176C63DC007CC7FF /* SinaWeiboRequest.m in Sources */,
+				C668C2CF176C649B007CC7FF /* SinaWeiboManager.m in Sources */,
+				C668C2D0176C649B007CC7FF /* Status.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
