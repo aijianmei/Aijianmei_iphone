@@ -8,7 +8,6 @@
 
 #import "More_SettingsViewController.h"
 #import "AppDelegate.h"
-#import "HZActivityIndicatorView.h"
 
 
 @interface More_SettingsViewController ()
