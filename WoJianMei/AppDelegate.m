@@ -55,6 +55,7 @@
     [_navigationController release];
     [_viewDelegate release];
     [_window release];
+    [_viewController release];
     [super dealloc];
 }
 
@@ -147,13 +148,13 @@
         
         
         workVC.title = @"锻炼";
-        UINavigationController *navVC = [[[UINavigationController alloc] initWithRootViewController:workVC] autorelease];
+        _navigationController = [[UINavigationController alloc] initWithRootViewController:workVC];
         //左视图
         AJMLeftSideViewController *leftVC = [[[AJMLeftSideViewController alloc] init] autorelease];
     
         //右视图
         rightVC = (MyselfViewController*)[iPhonestroyBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
-        IIViewDeckController *vc = [[[IIViewDeckController alloc] initWithCenterViewController:navVC leftViewController:leftVC] autorelease];
+        IIViewDeckController *vc = [[IIViewDeckController alloc] initWithCenterViewController:_navigationController leftViewController:leftVC];
         
         vc.rightController =rightVC;
         vc.leftSize  = self.window.frame.size.width - (320 - 60.0);

@@ -266,7 +266,7 @@
     
 //    [self initArticles];
 //     self.dataList = [[ArticleManager defaultManager] articleList];
-    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+//    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
 
     ////开始下载文章    
     NSString *aucode= @"aijianmei";

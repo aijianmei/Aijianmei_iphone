@@ -52,7 +52,7 @@
 - (void)dealloc
 {
 
-    
+    [_navigationController release];
     [super dealloc];
 }
 
@@ -261,8 +261,8 @@
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                                         WorkoutViewController *workOutVC = (WorkoutViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
                         workOutVC.title = @"锻炼";
-                        UINavigationController *navApiVC = [[[UINavigationController alloc] initWithRootViewController:workOutVC] autorelease] ;
-                        self.viewDeckController.centerController = navApiVC;
+                        _navigationController = [[UINavigationController alloc] initWithRootViewController:workOutVC] ;
+                        self.viewDeckController.centerController = _navigationController;
                         self.view.userInteractionEnabled = YES;
                         
                     }];
@@ -274,8 +274,8 @@
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         WorkoutPlanViewController *WorkoutPlanVC = (WorkoutPlanViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"WorkoutPlanViewController"];
                         WorkoutPlanVC.title = @"健身计划";
-                        UINavigationController *navAuthVC = [[[UINavigationController alloc] initWithRootViewController:WorkoutPlanVC] autorelease];
-                        self.viewDeckController.centerController = navAuthVC;
+                        _navigationController = [[UINavigationController alloc] initWithRootViewController:WorkoutPlanVC];
+                        self.viewDeckController.centerController = _navigationController;
                         
                         self.view.userInteractionEnabled = YES;
                     }];
@@ -288,8 +288,8 @@
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         NutriViewController *nutriVC = (NutriViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"NutriViewController"];
                         nutriVC.title = @"营养";
-                        UINavigationController *navAuthVC = [[[UINavigationController alloc] initWithRootViewController:nutriVC] autorelease];
-                        self.viewDeckController.centerController = navAuthVC;
+                        _navigationController = [[UINavigationController alloc] initWithRootViewController:nutriVC];
+                        self.viewDeckController.centerController = _navigationController;
                         
                         self.view.userInteractionEnabled = YES;
                     }];
@@ -302,8 +302,8 @@
                         
                         SupplementViewController *supplementVC = (SupplementViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"SupplementViewController"];
                         supplementVC.title = @"补充";
-                        UINavigationController *navAuthVC = [[[UINavigationController alloc] initWithRootViewController:supplementVC] autorelease];
-                        self.viewDeckController.centerController = navAuthVC;
+                        _navigationController = [[UINavigationController alloc] initWithRootViewController:supplementVC];
+                        self.viewDeckController.centerController = _navigationController;
                         
                         self.view.userInteractionEnabled = YES;
                     }];
@@ -316,8 +316,8 @@
                         
                        NutriViewController *lifeStytleVC = (NutriViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"NutriViewController"];
                         lifeStytleVC.title = @"生活方式";
-                        UINavigationController *navQQVC = [[[UINavigationController alloc] initWithRootViewController:lifeStytleVC] autorelease];
-                        self.viewDeckController.centerController = navQQVC;
+                        _navigationController = [[UINavigationController alloc] initWithRootViewController:lifeStytleVC];
+                        self.viewDeckController.centerController = _navigationController;
                         
                         self.view.userInteractionEnabled = YES;
                     }];
@@ -330,8 +330,8 @@
                         ForumViewController *forumVC = [currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"ForumViewController"];
                         forumVC.title = @"论坛";
 
-                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:forumVC] autorelease];
-                        self.viewDeckController.centerController = navShareVC;
+                        _navigationController = [[UINavigationController alloc] initWithRootViewController:forumVC];
+                        self.viewDeckController.centerController = _navigationController;
                         
                         self.view.userInteractionEnabled = YES;
                     }];
@@ -343,8 +343,8 @@
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         MakeFriendsViewController *mfVC = [currentInUseStoryBoard  instantiateViewControllerWithIdentifier:@"MakeFriendsViewController"];
                         mfVC.title = @"交友互动";
-                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:mfVC] autorelease];
-                        self.viewDeckController.centerController = navShareVC;
+                        _navigationController = [[UINavigationController alloc] initWithRootViewController:mfVC];
+                        self.viewDeckController.centerController = _navigationController;
                         
                         self.view.userInteractionEnabled = YES;
                     }];
@@ -356,15 +356,15 @@
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         MoreViewController *moreVC = [currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MoreViewController"];
                         [moreVC setTitle:@"更多"];
-                        UINavigationController *navShareVC = [[[UINavigationController alloc] initWithRootViewController:moreVC] autorelease];
+                        _navigationController = [[UINavigationController alloc] initWithRootViewController:moreVC];
                         
-                        self.viewDeckController.centerController = navShareVC;
+                        self.viewDeckController.centerController = _navigationController;
                         
                         self.view.userInteractionEnabled = YES;
                     }];
                     break;
                 }
-                                
+                    
                 default:
                     break;
             }

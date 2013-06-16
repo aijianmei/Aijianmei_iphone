@@ -11,7 +11,7 @@
 #import "WXApi.h"
 #import "MoreViewController.h"
 #import "IIViewDeckController.h"
-
+#import "AJMLeftSideViewController.h"
 #import "AJMViewDelegate.h"
 
 
@@ -31,9 +31,9 @@ enum
       UINavigationController *_navigationController;
       AJMViewDelegate *_viewDelegate;
 }
-@property (retain, nonatomic)  UIWindow *window;
+@property (nonatomic,retain)  UIWindow *window;
 @property (nonatomic,retain)   UINavigationController *navigationController;
-@property (strong, nonatomic)  IIViewDeckController *viewController;
+@property (nonatomic, retain)  IIViewDeckController *viewController;
 @property (nonatomic,readonly) AJMViewDelegate *viewDelegate;
 
 @end

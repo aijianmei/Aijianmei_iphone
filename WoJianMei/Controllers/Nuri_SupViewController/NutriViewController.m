@@ -325,7 +325,6 @@
     self.buttonScrollView =scrollView;
     [self.buttonScrollView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"button_BG.png"]]];
     [scrollView release];
-    [buttonArrays release];
     
     float buttonHeight = 30;
     float buttonWidth  = 70;
@@ -336,7 +335,8 @@
     [self.buttonScrollView setShowsHorizontalScrollIndicator:NO];
     
     [self.buttonScrollView setContentSize:CGSizeMake([buttonArrays count] * buttonWidth * 2.6, buttonHeight)];
-        
+    [buttonArrays release];
+    
     
     //configure carousel
     UIView *headerView =[[UIView alloc]init];

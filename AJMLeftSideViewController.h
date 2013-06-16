@@ -20,4 +20,6 @@
     AppDelegate *_appDelegate;
 }
 
+@property(nonatomic, retain)UINavigationController *navigationController;
+
 @end
