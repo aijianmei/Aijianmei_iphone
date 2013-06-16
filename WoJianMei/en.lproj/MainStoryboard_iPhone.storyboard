@@ -178,19 +178,19 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="账号..." borderStyle="roundedRect" minimumFontSize="17" id="fjQ-5a-bek">
-                                <rect key="frame" x="55" y="121" width="210" height="30"/>
+                                <rect key="frame" x="55" y="115" width="210" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="密码..." borderStyle="roundedRect" minimumFontSize="17" id="cQ2-M5-cPr">
-                                <rect key="frame" x="55" y="167" width="210" height="30"/>
+                                <rect key="frame" x="55" y="157" width="210" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BLg-kE-XV7">
-                                <rect key="frame" x="21" y="316" width="279" height="44"/>
+                                <rect key="frame" x="21" y="300" width="279" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="还没有爱健美账号，注册一个！Go！">
@@ -202,7 +202,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="su6-f9-5wf">
-                                <rect key="frame" x="168" y="236" width="132" height="44"/>
+                                <rect key="frame" x="168" y="224" width="132" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="腾讯QQ登陆">
@@ -217,7 +217,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Y6m-b1-hND">
-                                <rect key="frame" x="21" y="236" width="132" height="44"/>
+                                <rect key="frame" x="21" y="224" width="132" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="新浪微博登陆">
@@ -231,6 +231,10 @@
                                     <action selector="clickSinaWeiboButton:" destination="ggH-Ur-he6" eventType="touchUpInside" id="Bhc-rQ-ZJe"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="loin_LOGO.png" id="1vj-tB-6yR">
+                                <rect key="frame" x="-6" y="1" width="327" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1257,6 +1261,7 @@
         <image name="fz_3.png" width="65" height="98"/>
         <image name="fz_3s.png" width="65" height="98"/>
         <image name="login_BG.png" width="640" height="960"/>
+        <image name="loin_LOGO.png" width="640" height="180"/>
         <image name="rq_1.png" width="640" height="100"/>
         <image name="sina_weibo.png" width="63" height="57"/>
         <image name="tick_frame.png" width="35" height="35"/>
