@@ -534,13 +534,8 @@
 		4AE81AFE169D7AD400D36F3B /* WifiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE81AFA169D7AD400D36F3B /* WifiViewController.m */; };
 		4AEE4DEC16A63FD700B13161 /* about_us@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE4DEB16A63FD700B13161 /* about_us@2x.png */; };
 		4AEE4DFC16A6574D00B13161 /* HZActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE4DFB16A6574D00B13161 /* HZActivityIndicatorView.m */; };
-		4AEE95B715FB7F5A005A66DC /* LeavesCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE95B215FB7F5A005A66DC /* LeavesCache.m */; };
-		4AEE95B815FB7F5A005A66DC /* LeavesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE95B415FB7F5A005A66DC /* LeavesView.m */; };
-		4AEE95B915FB7F5A005A66DC /* LeavesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE95B615FB7F5A005A66DC /* LeavesViewController.m */; };
-		4AEE95BC15FB7F6A005A66DC /* CatalogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE95BB15FB7F6A005A66DC /* CatalogView.m */; };
 		4AEE95C215FB7FDF005A66DC /* Catalog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE95BF15FB7FDF005A66DC /* Catalog.m */; };
 		4AEE95C315FB7FDF005A66DC /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE95C115FB7FDF005A66DC /* Link.m */; };
-		4AEE95C615FB8046005A66DC /* Pagination.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE95C515FB8046005A66DC /* Pagination.m */; };
 		4AEE95C915FB807F005A66DC /* ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE95C815FB807F005A66DC /* ImageManager.m */; };
 		C6016B7417523D2D00BA5E63 /* bj_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6016B5F17523D2D00BA5E63 /* bj_1.png */; };
 		C6016B7517523D2D00BA5E63 /* bj_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C6016B6017523D2D00BA5E63 /* bj_2.png */; };
@@ -1471,20 +1466,10 @@
 		4AEE4DEB16A63FD700B13161 /* about_us@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_us@2x.png"; sourceTree = "<group>"; };
 		4AEE4DFA16A6574D00B13161 /* HZActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZActivityIndicatorView.h; sourceTree = "<group>"; };
 		4AEE4DFB16A6574D00B13161 /* HZActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZActivityIndicatorView.m; sourceTree = "<group>"; };
-		4AEE95B115FB7F5A005A66DC /* LeavesCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeavesCache.h; sourceTree = "<group>"; };
-		4AEE95B215FB7F5A005A66DC /* LeavesCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeavesCache.m; sourceTree = "<group>"; };
-		4AEE95B315FB7F5A005A66DC /* LeavesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeavesView.h; sourceTree = "<group>"; };
-		4AEE95B415FB7F5A005A66DC /* LeavesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeavesView.m; sourceTree = "<group>"; };
-		4AEE95B515FB7F5A005A66DC /* LeavesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeavesViewController.h; sourceTree = "<group>"; };
-		4AEE95B615FB7F5A005A66DC /* LeavesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeavesViewController.m; sourceTree = "<group>"; };
-		4AEE95BA15FB7F6A005A66DC /* CatalogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogView.h; sourceTree = "<group>"; };
-		4AEE95BB15FB7F6A005A66DC /* CatalogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogView.m; sourceTree = "<group>"; };
 		4AEE95BE15FB7FDF005A66DC /* Catalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Catalog.h; sourceTree = "<group>"; };
 		4AEE95BF15FB7FDF005A66DC /* Catalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Catalog.m; sourceTree = "<group>"; };
 		4AEE95C015FB7FDF005A66DC /* Link.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Link.h; sourceTree = "<group>"; };
 		4AEE95C115FB7FDF005A66DC /* Link.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Link.m; sourceTree = "<group>"; };
-		4AEE95C415FB8046005A66DC /* Pagination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pagination.h; sourceTree = "<group>"; };
-		4AEE95C515FB8046005A66DC /* Pagination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pagination.m; sourceTree = "<group>"; };
 		4AEE95C715FB807F005A66DC /* ImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageManager.h; sourceTree = "<group>"; };
 		4AEE95C815FB807F005A66DC /* ImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManager.m; sourceTree = "<group>"; };
 		C6016B5F17523D2D00BA5E63 /* bj_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bj_1.png; sourceTree = "<group>"; };
@@ -2944,11 +2929,6 @@
 		4A58805115C52B81005F8415 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4AEE95BD15FB7F75005A66DC /* Leaves */,
-				4AEE95C415FB8046005A66DC /* Pagination.h */,
-				4AEE95C515FB8046005A66DC /* Pagination.m */,
-				4AEE95B515FB7F5A005A66DC /* LeavesViewController.h */,
-				4AEE95B615FB7F5A005A66DC /* LeavesViewController.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -3642,19 +3622,6 @@
 			path = HZActivityIndicator;
 			sourceTree = "<group>";
 		};
-		4AEE95BD15FB7F75005A66DC /* Leaves */ = {
-			isa = PBXGroup;
-			children = (
-				4AEE95BA15FB7F6A005A66DC /* CatalogView.h */,
-				4AEE95BB15FB7F6A005A66DC /* CatalogView.m */,
-				4AEE95B115FB7F5A005A66DC /* LeavesCache.h */,
-				4AEE95B215FB7F5A005A66DC /* LeavesCache.m */,
-				4AEE95B315FB7F5A005A66DC /* LeavesView.h */,
-				4AEE95B415FB7F5A005A66DC /* LeavesView.m */,
-			);
-			name = Leaves;
-			sourceTree = "<group>";
-		};
 		C6016B5E17523D2D00BA5E63 /* WorkOutProcess */ = {
 			isa = PBXGroup;
 			children = (
@@ -4122,13 +4089,8 @@
 				4A3D0BA615CB73CC008F6639 /* ArticleInfo.m in Sources */,
 				4A3D0BBA15CB7CF2008F6639 /* WorkOut.m in Sources */,
 				4A3D0BD115CB9F39008F6639 /* ArticleManager.m in Sources */,
-				4AEE95B715FB7F5A005A66DC /* LeavesCache.m in Sources */,
-				4AEE95B815FB7F5A005A66DC /* LeavesView.m in Sources */,
-				4AEE95B915FB7F5A005A66DC /* LeavesViewController.m in Sources */,
-				4AEE95BC15FB7F6A005A66DC /* CatalogView.m in Sources */,
 				4AEE95C215FB7FDF005A66DC /* Catalog.m in Sources */,
 				4AEE95C315FB7FDF005A66DC /* Link.m in Sources */,
-				4AEE95C615FB8046005A66DC /* Pagination.m in Sources */,
 				4AEE95C915FB807F005A66DC /* ImageManager.m in Sources */,
 				4A498E7F1685500F0073E682 /* ioapi.c in Sources */,
 				4A498E801685500F0073E682 /* mztools.c in Sources */,
