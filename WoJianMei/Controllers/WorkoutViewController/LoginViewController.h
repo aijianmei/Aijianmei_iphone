@@ -14,8 +14,14 @@
     SinaWeiboManager *_sinaweiboManager;
 }
 
-- (IBAction)clickSinaWeiboButton:(UIButton *)sender;
+@property (nonatomic, retain) IBOutlet UITextField *usernameField;
+@property (nonatomic, retain) IBOutlet UITextField *passwordField;
 
+
+//实现closeDoneEdit点击done关闭键盘
+- (IBAction)closeDoneEdit:(id)sender;
+
+- (IBAction)clickSinaWeiboButton:(UIButton *)sender;
 - (IBAction)clickQQShareButton:(UIButton *)sender;
 
 

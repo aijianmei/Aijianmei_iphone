@@ -44,7 +44,11 @@
 }
 
 
-
+//实现closeDoneEdit点击done关闭键盘
+- (IBAction)closeDoneEdit:(id)sender
+{
+    [sender resignFirstResponder];
+}
 
 - (void)didReceiveMemoryWarning
 {

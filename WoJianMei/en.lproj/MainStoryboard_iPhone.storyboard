@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="43H-bc-kkW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="43H-bc-kkW">
     <dependencies>
         <deployment version="1280" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
@@ -169,7 +169,7 @@
         <scene sceneID="jJh-Pz-33p">
             <objects>
                 <viewController id="ggH-Ur-he6" customClass="LoginViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Des-hA-COl">
+                    <view key="view" contentMode="scaleToFill" id="Des-hA-COl" customClass="UIControl">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -181,13 +181,19 @@
                                 <rect key="frame" x="55" y="115" width="210" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="closeDoneEdit:" destination="ggH-Ur-he6" eventType="editingDidEndOnExit" id="J2P-Tf-TCy"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码..." clearsOnBeginEditing="YES" minimumFontSize="17" id="cQ2-M5-cPr">
                                 <rect key="frame" x="55" y="157" width="210" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="closeDoneEdit:" destination="ggH-Ur-he6" eventType="editingDidEndOnExit" id="aJg-YW-pWm"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BLg-kE-XV7">
                                 <rect key="frame" x="21" y="300" width="279" height="44"/>
@@ -1316,6 +1322,10 @@
             <relationships>
                 <relationship kind="action" name="clickQQShareButton:" candidateClass="UIButton"/>
                 <relationship kind="action" name="clickSinaWeiboButton:" candidateClass="UIButton"/>
+                <relationship kind="action" name="closeDoneEdit:"/>
+                <relationship kind="action" name="closeViewEdit:"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="MakeFriendsViewController" superclassName="PPTableViewController">
