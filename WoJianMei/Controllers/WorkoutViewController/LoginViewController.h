@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SinaweiboManager.h"
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController<SinaWeiboDelegate>
+{
+    SinaWeiboManager *_sinaweiboManager;
+}
 
 - (IBAction)clickSinaWeiboButton:(UIButton *)sender;
 

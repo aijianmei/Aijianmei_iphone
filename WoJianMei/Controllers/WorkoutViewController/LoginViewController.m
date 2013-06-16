@@ -66,19 +66,48 @@
 
 - (IBAction)clickSinaWeiboButton:(UIButton *)sender {
     
-    SinaWeiboManager *_sinaweiboManager = [SinaWeiboManager sharedManager];
+    _sinaweiboManager = [SinaWeiboManager sharedManager];
     [_sinaweiboManager createSinaweiboWithAppKey:@"239725454" appSecret:@"b383e7a0201c154e290cf9b839b95998" appRedirectURI:@"http://aijianmei.com" delegate:self];
     
     if (![_sinaweiboManager.sinaweibo isAuthValid]) {
         [_sinaweiboManager.sinaweibo logInInView:self.view];
-    }
-
-    
-    
+    }    
 }
 
 - (IBAction)clickQQShareButton:(UIButton *)sender {
     
 }
+
+#pragma mark -
+#pragma SinaWeiboDelegate methods
+- (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
+{
+    NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
+    
+    [_sinaweiboManager storeAuthData];
+}
+
+- (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
+{
+    NSLog(@"sinaweiboDidLogOut");
+    [_sinaweiboManager removeAuthData];
+}
+
+- (void)sinaweiboLogInDidCancel:(SinaWeibo *)sinaweibo
+{
+    NSLog(@"sinaweiboLogInDidCancel");
+}
+
+- (void)sinaweibo:(SinaWeibo *)sinaweibo logInDidFailWithError:(NSError *)error
+{
+    NSLog(@"sinaweibo logInDidFailWithError %@", error);
+}
+
+- (void)sinaweibo:(SinaWeibo *)sinaweibo accessTokenInvalidOrExpired:(NSError *)error
+{
+    NSLog(@"sinaweiboAccessTokenInvalidOrExpired %@", error);
+    [_sinaweiboManager removeAuthData];
+}
+
 
 @end

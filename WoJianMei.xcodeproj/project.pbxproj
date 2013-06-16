@@ -564,6 +564,7 @@
 		C6016B8617523D2D00BA5E63 /* qd_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6016B7117523D2D00BA5E63 /* qd_1.png */; };
 		C6016B8717523D2D00BA5E63 /* rq_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6016B7217523D2D00BA5E63 /* rq_1.png */; };
 		C6016B8817523D2D00BA5E63 /* sj_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6016B7317523D2D00BA5E63 /* sj_1.png */; };
+		C6630B9A176D3CC400A5ACBA /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C6630B99176D3CC400A5ACBA /* JSONKit.m */; };
 		C668C23E176600B9007CC7FF /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C23B176600B9007CC7FF /* GTMNSString+HTML.m */; };
 		C668C23F176600B9007CC7FF /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C23D176600B9007CC7FF /* NSString+HTML.m */; };
 		C668C2C3176C63DC007CC7FF /* SinaWeibo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C668C2BA176C63DC007CC7FF /* SinaWeibo.bundle */; };
@@ -572,7 +573,6 @@
 		C668C2C6176C63DC007CC7FF /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C2C1176C63DC007CC7FF /* SinaWeiboRequest.m */; };
 		C668C2CF176C649B007CC7FF /* SinaWeiboManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C2CC176C649B007CC7FF /* SinaWeiboManager.m */; };
 		C668C2D0176C649B007CC7FF /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C2CE176C649B007CC7FF /* Status.m */; };
-		C668C2D4176CB4E5007CC7FF /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C2D3176CB4E5007CC7FF /* JSONKit.m */; };
 		C6A718A4175E38B80035E0D0 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A718A3175E38B80035E0D0 /* Article.m */; };
 		C6A718AE175E3AB40035E0D0 /* ArticleService.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A718AD175E3AB40035E0D0 /* ArticleService.m */; };
 		C6C0CD1D17509DA400A825AB /* DrawContextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C0CD1C17509DA400A825AB /* DrawContextView.m */; };
@@ -1510,6 +1510,8 @@
 		C6016B7117523D2D00BA5E63 /* qd_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qd_1.png; sourceTree = "<group>"; };
 		C6016B7217523D2D00BA5E63 /* rq_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rq_1.png; sourceTree = "<group>"; };
 		C6016B7317523D2D00BA5E63 /* sj_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sj_1.png; sourceTree = "<group>"; };
+		C6630B98176D3CC400A5ACBA /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		C6630B99176D3CC400A5ACBA /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		C668C23A176600B9007CC7FF /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		C668C23B176600B9007CC7FF /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
 		C668C23C176600B9007CC7FF /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
@@ -1526,8 +1528,6 @@
 		C668C2CC176C649B007CC7FF /* SinaWeiboManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboManager.m; sourceTree = "<group>"; };
 		C668C2CD176C649B007CC7FF /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
 		C668C2CE176C649B007CC7FF /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
-		C668C2D2176CB4E5007CC7FF /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		C668C2D3176CB4E5007CC7FF /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		C6A718A2175E38B80035E0D0 /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Article.h; sourceTree = "<group>"; };
 		C6A718A3175E38B80035E0D0 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
 		C6A718AC175E3AB40035E0D0 /* ArticleService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleService.h; sourceTree = "<group>"; };
@@ -3099,7 +3099,7 @@
 		4A959679168ED995006F1317 /* 3PP-SDK */ = {
 			isa = PBXGroup;
 			children = (
-				C668C2D1176CB4E5007CC7FF /* JSONKit */,
+				C6630B97176D3CC400A5ACBA /* JSONKit */,
 				C668C2B6176C63DC007CC7FF /* SinaWeiBoSDK_sso */,
 				4A3AE815176A173C00A39463 /* WeixinSDK */,
 				4A9597F8168ED995006F1317 /* MobClick */,
@@ -3686,6 +3686,15 @@
 			path = WorkOutProcess;
 			sourceTree = "<group>";
 		};
+		C6630B97176D3CC400A5ACBA /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				C6630B98176D3CC400A5ACBA /* JSONKit.h */,
+				C6630B99176D3CC400A5ACBA /* JSONKit.m */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
 		C668C2B6176C63DC007CC7FF /* SinaWeiBoSDK_sso */ = {
 			isa = PBXGroup;
 			children = (
@@ -3699,15 +3708,6 @@
 				C668C2C1176C63DC007CC7FF /* SinaWeiboRequest.m */,
 			);
 			path = SinaWeiBoSDK_sso;
-			sourceTree = "<group>";
-		};
-		C668C2D1176CB4E5007CC7FF /* JSONKit */ = {
-			isa = PBXGroup;
-			children = (
-				C668C2D2176CB4E5007CC7FF /* JSONKit.h */,
-				C668C2D3176CB4E5007CC7FF /* JSONKit.m */,
-			);
-			path = JSONKit;
 			sourceTree = "<group>";
 		};
 		C6DB1FFC1760CC9E0060BD08 /* SDWebImage */ = {
@@ -4410,7 +4410,7 @@
 				C668C2C6176C63DC007CC7FF /* SinaWeiboRequest.m in Sources */,
 				C668C2CF176C649B007CC7FF /* SinaWeiboManager.m in Sources */,
 				C668C2D0176C649B007CC7FF /* Status.m in Sources */,
-				C668C2D4176CB4E5007CC7FF /* JSONKit.m in Sources */,
+				C6630B9A176D3CC400A5ACBA /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4574,7 +4574,7 @@
 				);
 				PRODUCT_NAME = WoJianMei;
 				SHARED_PRECOMPS_DIR = "";
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4604,7 +4604,7 @@
 				);
 				PRODUCT_NAME = WoJianMei;
 				SHARED_PRECOMPS_DIR = "";
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
