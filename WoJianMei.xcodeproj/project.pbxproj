@@ -18,8 +18,8 @@
 		4A3D0BA615CB73CC008F6639 /* ArticleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BA515CB73CC008F6639 /* ArticleInfo.m */; };
 		4A3D0BBA15CB7CF2008F6639 /* WorkOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BB915CB7CF2008F6639 /* WorkOut.m */; };
 		4A3D0BD115CB9F39008F6639 /* ArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D0BD015CB9F38008F6639 /* ArticleManager.m */; };
-		4A429DB8175D7EFD00F018CE /* login_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A429DB3175D7EFD00F018CE /* login_2.png */; };
-		4A429DB9175D7EFD00F018CE /* loin_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A429DB4175D7EFD00F018CE /* loin_3.png */; };
+		4A429DB8175D7EFD00F018CE /* login_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A429DB3175D7EFD00F018CE /* login_BG.png */; };
+		4A429DB9175D7EFD00F018CE /* loin_LOGO.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A429DB4175D7EFD00F018CE /* loin_LOGO.png */; };
 		4A429DBA175D7EFD00F018CE /* loing_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A429DB5175D7EFD00F018CE /* loing_1.png */; };
 		4A429DBB175D7EFD00F018CE /* loing_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A429DB6175D7EFD00F018CE /* loing_2.png */; };
 		4A429DBC175D7EFD00F018CE /* loing_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A429DB7175D7EFD00F018CE /* loing_4.png */; };
@@ -652,8 +652,8 @@
 		4A3D0BB915CB7CF2008F6639 /* WorkOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOut.m; sourceTree = "<group>"; };
 		4A3D0BCF15CB9F38008F6639 /* ArticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleManager.h; sourceTree = "<group>"; };
 		4A3D0BD015CB9F38008F6639 /* ArticleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleManager.m; sourceTree = "<group>"; };
-		4A429DB3175D7EFD00F018CE /* login_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_2.png; sourceTree = "<group>"; };
-		4A429DB4175D7EFD00F018CE /* loin_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loin_3.png; sourceTree = "<group>"; };
+		4A429DB3175D7EFD00F018CE /* login_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_BG.png; sourceTree = "<group>"; };
+		4A429DB4175D7EFD00F018CE /* loin_LOGO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loin_LOGO.png; sourceTree = "<group>"; };
 		4A429DB5175D7EFD00F018CE /* loing_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loing_1.png; sourceTree = "<group>"; };
 		4A429DB6175D7EFD00F018CE /* loing_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loing_2.png; sourceTree = "<group>"; };
 		4A429DB7175D7EFD00F018CE /* loing_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loing_4.png; sourceTree = "<group>"; };
@@ -1629,8 +1629,8 @@
 		4A429DB2175D7EFD00F018CE /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				4A429DB3175D7EFD00F018CE /* login_2.png */,
-				4A429DB4175D7EFD00F018CE /* loin_3.png */,
+				4A429DB3175D7EFD00F018CE /* login_BG.png */,
+				4A429DB4175D7EFD00F018CE /* loin_LOGO.png */,
 				4A429DB5175D7EFD00F018CE /* loing_1.png */,
 				4A429DB6175D7EFD00F018CE /* loing_2.png */,
 				4A429DB7175D7EFD00F018CE /* loing_4.png */,
@@ -4057,8 +4057,8 @@
 				4ACA49651755BB8600CC9886 /* 57X57.png in Resources */,
 				4ACA49671755BB9300CC9886 /* 114X114.png in Resources */,
 				4A2D60531756214200A92F08 /* 74x74.png in Resources */,
-				4A429DB8175D7EFD00F018CE /* login_2.png in Resources */,
-				4A429DB9175D7EFD00F018CE /* loin_3.png in Resources */,
+				4A429DB8175D7EFD00F018CE /* login_BG.png in Resources */,
+				4A429DB9175D7EFD00F018CE /* loin_LOGO.png in Resources */,
 				4A429DBA175D7EFD00F018CE /* loing_1.png in Resources */,
 				4A429DBB175D7EFD00F018CE /* loing_2.png in Resources */,
 				4A429DBC175D7EFD00F018CE /* loing_4.png in Resources */,
