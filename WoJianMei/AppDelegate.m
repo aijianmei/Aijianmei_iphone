@@ -13,8 +13,6 @@
 #import "NutriViewController.h"
 #import "MakeFriendsViewController.h"
 #import "MoreViewController.h"
-#import "MySideMenueViewController.h"
-#import "MFSideMenu.h"
 #import "UIUtils.h"
 #import "DeviceDetection.h"
 #import "ImageManager.h"

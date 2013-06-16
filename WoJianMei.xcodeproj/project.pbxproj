@@ -469,13 +469,6 @@
 		4ADCFFAA169D69F700A3E979 /* JMStaticContentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFF56169D69F600A3E979 /* JMStaticContentTableViewController.m */; };
 		4ADCFFAB169D69F700A3E979 /* JMStaticContentTableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFF58169D69F600A3E979 /* JMStaticContentTableViewSection.m */; };
 		4ADCFFAC169D69F700A3E979 /* StaticTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFF5A169D69F600A3E979 /* StaticTextFieldTableViewCell.m */; };
-		4ADCFFAD169D69F700A3E979 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFF5D169D69F600A3E979 /* DemoViewController.m */; };
-		4ADCFFAE169D69F700A3E979 /* DemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFF5E169D69F600A3E979 /* DemoViewController.xib */; };
-		4ADCFFAF169D69F700A3E979 /* MFSideMenuManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFF62169D69F600A3E979 /* MFSideMenuManager.m */; };
-		4ADCFFB0169D69F700A3E979 /* MFSlidingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFF64169D69F600A3E979 /* MFSlidingView.m */; };
-		4ADCFFB1169D69F700A3E979 /* MySideMenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFF66169D69F600A3E979 /* MySideMenueViewController.m */; };
-		4ADCFFB2169D69F700A3E979 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFF68169D69F600A3E979 /* SideMenuViewController.m */; };
-		4ADCFFB3169D69F700A3E979 /* UIViewController+MFSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFF6A169D69F600A3E979 /* UIViewController+MFSideMenu.m */; };
 		4ADCFFB5169D69F700A3E979 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFF6D169D69F600A3E979 /* LICENSE */; };
 		4ADCFFB6169D69F700A3E979 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFF6E169D69F600A3E979 /* README.md */; };
 		4ADCFFB7169D69F700A3E979 /* DEComposeRuledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFF71169D69F600A3E979 /* DEComposeRuledView.m */; settings = {COMPILER_FLAGS = " -fobjc-arc"; }; };
@@ -533,7 +526,6 @@
 		4AE81AFD169D7AD400D36F3B /* WifiNetworkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE81AF8169D7AD400D36F3B /* WifiNetworkTableViewCell.m */; };
 		4AE81AFE169D7AD400D36F3B /* WifiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE81AFA169D7AD400D36F3B /* WifiViewController.m */; };
 		4AEE4DEC16A63FD700B13161 /* about_us@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE4DEB16A63FD700B13161 /* about_us@2x.png */; };
-		4AEE4DFC16A6574D00B13161 /* HZActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE4DFB16A6574D00B13161 /* HZActivityIndicatorView.m */; };
 		4AEE95C215FB7FDF005A66DC /* Catalog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE95BF15FB7FDF005A66DC /* Catalog.m */; };
 		4AEE95C315FB7FDF005A66DC /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE95C115FB7FDF005A66DC /* Link.m */; };
 		4AEE95C915FB807F005A66DC /* ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE95C815FB807F005A66DC /* ImageManager.m */; };
@@ -1377,20 +1369,6 @@
 		4ADCFF58169D69F600A3E979 /* JMStaticContentTableViewSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMStaticContentTableViewSection.m; sourceTree = "<group>"; };
 		4ADCFF59169D69F600A3E979 /* StaticTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticTextFieldTableViewCell.h; sourceTree = "<group>"; };
 		4ADCFF5A169D69F600A3E979 /* StaticTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticTextFieldTableViewCell.m; sourceTree = "<group>"; };
-		4ADCFF5C169D69F600A3E979 /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
-		4ADCFF5D169D69F600A3E979 /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
-		4ADCFF5E169D69F600A3E979 /* DemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoViewController.xib; sourceTree = "<group>"; };
-		4ADCFF60169D69F600A3E979 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
-		4ADCFF61169D69F600A3E979 /* MFSideMenuManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuManager.h; sourceTree = "<group>"; };
-		4ADCFF62169D69F600A3E979 /* MFSideMenuManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuManager.m; sourceTree = "<group>"; };
-		4ADCFF63169D69F600A3E979 /* MFSlidingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSlidingView.h; sourceTree = "<group>"; };
-		4ADCFF64169D69F600A3E979 /* MFSlidingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSlidingView.m; sourceTree = "<group>"; };
-		4ADCFF65169D69F600A3E979 /* MySideMenueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySideMenueViewController.h; sourceTree = "<group>"; };
-		4ADCFF66169D69F600A3E979 /* MySideMenueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySideMenueViewController.m; sourceTree = "<group>"; };
-		4ADCFF67169D69F600A3E979 /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuViewController.h; sourceTree = "<group>"; };
-		4ADCFF68169D69F600A3E979 /* SideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuViewController.m; sourceTree = "<group>"; };
-		4ADCFF69169D69F600A3E979 /* UIViewController+MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MFSideMenu.h"; sourceTree = "<group>"; };
-		4ADCFF6A169D69F600A3E979 /* UIViewController+MFSideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MFSideMenu.m"; sourceTree = "<group>"; };
 		4ADCFF6D169D69F600A3E979 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4ADCFF6E169D69F600A3E979 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		4ADCFF70169D69F600A3E979 /* DEComposeRuledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEComposeRuledView.h; sourceTree = "<group>"; };
@@ -1464,8 +1442,6 @@
 		4AE81AF9169D7AD400D36F3B /* WifiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiViewController.h; sourceTree = "<group>"; };
 		4AE81AFA169D7AD400D36F3B /* WifiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiViewController.m; sourceTree = "<group>"; };
 		4AEE4DEB16A63FD700B13161 /* about_us@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_us@2x.png"; sourceTree = "<group>"; };
-		4AEE4DFA16A6574D00B13161 /* HZActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZActivityIndicatorView.h; sourceTree = "<group>"; };
-		4AEE4DFB16A6574D00B13161 /* HZActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZActivityIndicatorView.m; sourceTree = "<group>"; };
 		4AEE95BE15FB7FDF005A66DC /* Catalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Catalog.h; sourceTree = "<group>"; };
 		4AEE95BF15FB7FDF005A66DC /* Catalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Catalog.m; sourceTree = "<group>"; };
 		4AEE95C015FB7FDF005A66DC /* Link.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Link.h; sourceTree = "<group>"; };
@@ -3338,13 +3314,11 @@
 			isa = PBXGroup;
 			children = (
 				4A488DDF1769CB3E00A20EE7 /* ViewDeck */,
-				4AEE4DF916A6574D00B13161 /* HZActivityIndicator */,
 				4A66C1DE16A59DFF00A2F22E /* AWIconSheet */,
 				4A66C1B716A58A1E00A2F22E /* SLNumberPicker */,
 				4A873B8916A54AD2005BDA45 /* areapicker */,
 				4AA7ECEB169F1597003E8949 /* SMPageControll */,
 				4ADCFF51169D69F600A3E979 /* JMStaticContentTableView */,
-				4ADCFF5B169D69F600A3E979 /* MFSideMenuViewController */,
 				4ADCFF6B169D69F600A3E979 /* REComposeViewController */,
 				4ADCFF90169D69F600A3E979 /* Reflections Demo */,
 			);
@@ -3368,35 +3342,6 @@
 				4ADCFF5A169D69F600A3E979 /* StaticTextFieldTableViewCell.m */,
 			);
 			path = JMStaticContentTableView;
-			sourceTree = "<group>";
-		};
-		4ADCFF5B169D69F600A3E979 /* MFSideMenuViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4ADCFF5C169D69F600A3E979 /* DemoViewController.h */,
-				4ADCFF5D169D69F600A3E979 /* DemoViewController.m */,
-				4ADCFF5E169D69F600A3E979 /* DemoViewController.xib */,
-				4ADCFF5F169D69F600A3E979 /* MFSideMenu */,
-			);
-			path = MFSideMenuViewController;
-			sourceTree = "<group>";
-		};
-		4ADCFF5F169D69F600A3E979 /* MFSideMenu */ = {
-			isa = PBXGroup;
-			children = (
-				4ADCFF60169D69F600A3E979 /* MFSideMenu.h */,
-				4ADCFF61169D69F600A3E979 /* MFSideMenuManager.h */,
-				4ADCFF62169D69F600A3E979 /* MFSideMenuManager.m */,
-				4ADCFF63169D69F600A3E979 /* MFSlidingView.h */,
-				4ADCFF64169D69F600A3E979 /* MFSlidingView.m */,
-				4ADCFF65169D69F600A3E979 /* MySideMenueViewController.h */,
-				4ADCFF66169D69F600A3E979 /* MySideMenueViewController.m */,
-				4ADCFF67169D69F600A3E979 /* SideMenuViewController.h */,
-				4ADCFF68169D69F600A3E979 /* SideMenuViewController.m */,
-				4ADCFF69169D69F600A3E979 /* UIViewController+MFSideMenu.h */,
-				4ADCFF6A169D69F600A3E979 /* UIViewController+MFSideMenu.m */,
-			);
-			path = MFSideMenu;
 			sourceTree = "<group>";
 		};
 		4ADCFF6B169D69F600A3E979 /* REComposeViewController */ = {
@@ -3611,15 +3556,6 @@
 				4AE81AFA169D7AD400D36F3B /* WifiViewController.m */,
 			);
 			name = Controllers;
-			sourceTree = "<group>";
-		};
-		4AEE4DF916A6574D00B13161 /* HZActivityIndicator */ = {
-			isa = PBXGroup;
-			children = (
-				4AEE4DFA16A6574D00B13161 /* HZActivityIndicatorView.h */,
-				4AEE4DFB16A6574D00B13161 /* HZActivityIndicatorView.m */,
-			);
-			path = HZActivityIndicator;
 			sourceTree = "<group>";
 		};
 		C6016B5E17523D2D00BA5E63 /* WorkOutProcess */ = {
@@ -3885,7 +3821,6 @@
 				4ADCFF3B169D62C400A3E979 /* Triceps-Exercises.jpg in Resources */,
 				4ADCFF3D169D62C400A3E979 /* feed_back@2x.png in Resources */,
 				4ADCFF3E169D62C400A3E979 /* update_app@2x.png in Resources */,
-				4ADCFFAE169D69F700A3E979 /* DemoViewController.xib in Resources */,
 				4ADCFFB5169D69F700A3E979 /* LICENSE in Resources */,
 				4ADCFFB6169D69F700A3E979 /* README.md in Resources */,
 				4ADCFFBB169D69F700A3E979 /* REComposeViewController.bundle in Resources */,
@@ -4292,12 +4227,6 @@
 				4ADCFFAA169D69F700A3E979 /* JMStaticContentTableViewController.m in Sources */,
 				4ADCFFAB169D69F700A3E979 /* JMStaticContentTableViewSection.m in Sources */,
 				4ADCFFAC169D69F700A3E979 /* StaticTextFieldTableViewCell.m in Sources */,
-				4ADCFFAD169D69F700A3E979 /* DemoViewController.m in Sources */,
-				4ADCFFAF169D69F700A3E979 /* MFSideMenuManager.m in Sources */,
-				4ADCFFB0169D69F700A3E979 /* MFSlidingView.m in Sources */,
-				4ADCFFB1169D69F700A3E979 /* MySideMenueViewController.m in Sources */,
-				4ADCFFB2169D69F700A3E979 /* SideMenuViewController.m in Sources */,
-				4ADCFFB3169D69F700A3E979 /* UIViewController+MFSideMenu.m in Sources */,
 				4ADCFFB7169D69F700A3E979 /* DEComposeRuledView.m in Sources */,
 				4ADCFFB8169D69F700A3E979 /* DEComposeTextView.m in Sources */,
 				4ADCFFB9169D69F700A3E979 /* REComposeBackgroundView.m in Sources */,
@@ -4320,7 +4249,6 @@
 				4A66C1C316A58A4700A2F22E /* NumberPickViewController.m in Sources */,
 				4A66C1F216A59E0000A2F22E /* AWActionSheet.m in Sources */,
 				4A66C1FB16A59E0000A2F22E /* ViewController.m in Sources */,
-				4AEE4DFC16A6574D00B13161 /* HZActivityIndicatorView.m in Sources */,
 				4ACE239C16AB0F2E002E41D1 /* CompostViewController.m in Sources */,
 				4A4EE73016AD3D92005C3ADA /* ComposeViewCell.m in Sources */,
 				4A4EE73316AD43D7005C3ADA /* ComposeViewCellInfo.m in Sources */,
@@ -4458,8 +4386,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Callon (VQ5469GPCM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tom Callon (VQ5469GPCM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -4475,8 +4403,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PROVISIONING_PROFILE = "BB00BAFA-2854-494C-91CB-074757A95BAC";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BB00BAFA-2854-494C-91CB-074757A95BAC";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
