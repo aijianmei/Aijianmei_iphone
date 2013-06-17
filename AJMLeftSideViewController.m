@@ -9,6 +9,7 @@
 #import "AJMLeftSideViewController.h"
 #import "AppDelegate.h"
 #import "AGLeftSideTableCell.h"
+#import "MyselfViewController.h"
 #import "WorkoutViewController.h"
 #import "WorkoutPlanViewController.h"
 #import "NutriViewController.h"
@@ -94,7 +95,7 @@
 {
     switch (section) {
         case 0:
-            return 8;
+            return 9;
         case 1:
             return 5;
         default:
@@ -133,27 +134,30 @@
             switch (indexPath.row)
             {
                 case 0:
+                    cell.textLabel.text = @"我";
+                    break;                    
+                case 1:
                     cell.textLabel.text = @"锻炼";
                     break;
-                case 1:
+                case 2:
                     cell.textLabel.text = @"健身计划";
                     break;
-                case 2:
+                case 3:
                     cell.textLabel.text = @"营养";
                     break;
-                case 3:
+                case 4:
                     cell.textLabel.text = @"补充";
                     break;
-                case 4:
+                case 5:
                     cell.textLabel.text = @"生活方式";
                     break;
-                case 5:
+                case 6:
                     cell.textLabel.text = @"论坛";
                     break;
-                case 6:
+                case 7:
                     cell.textLabel.text = @"交友互动";
                     break;
-                case 7:
+                case 8:
                     cell.textLabel.text = @"更多";                
                     break;
             }
@@ -259,16 +263,32 @@
                 {
                     ///锻炼
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
+                        myselfVC.title = @"锻炼";
+                        _navigationController = [[UINavigationController alloc] initWithRootViewController:myselfVC] ;
+                        self.viewDeckController.centerController = _navigationController;
+                        self.view.userInteractionEnabled = YES;
+                        
+                        
+                    }];
+                    break;
+                }
+
+                case 1:
+                {
+                    ///锻炼
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                                         WorkoutViewController *workOutVC = (WorkoutViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
                         workOutVC.title = @"锻炼";
                         _navigationController = [[UINavigationController alloc] initWithRootViewController:workOutVC] ;
                         self.viewDeckController.centerController = _navigationController;
                         self.view.userInteractionEnabled = YES;
+
                         
                     }];
                     break;
                 }
-                case 1:
+                case 2:
                 {
                     ///健身计划
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
@@ -282,7 +302,7 @@
                     break;
                 }
 
-                case 2:
+                case 3:
                 {
                     ///营养
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
@@ -295,7 +315,7 @@
                     }];
                     break;
                 }
-                case 3:
+                case 4:
                 {
                     ///补充
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
@@ -309,7 +329,7 @@
                     }];
                     break;
                 }
-                case 4:
+                case 5:
                 {
                     ///生活方式
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
@@ -323,7 +343,7 @@
                     }];
                     break;
                 }
-                case 5:
+                case 6:
                 {
                    ////论坛
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
@@ -337,7 +357,7 @@
                     }];
                     break;
                 }
-                case 6:
+                case 7:
                 {
                     ////交友互动
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
@@ -350,7 +370,7 @@
                     }];
                     break;
                 }
-                case 7:
+                case 8:
                 {
                     ///更多
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
@@ -361,6 +381,8 @@
                         self.viewDeckController.centerController = _navigationController;
                         
                         self.view.userInteractionEnabled = YES;
+                        _tableView.userInteractionEnabled =YES;
+                        
                     }];
                     break;
                 }

@@ -14,7 +14,7 @@
 #import "FontSize.h"
 #import "DeviceDetection.h"
 #import "AppDelegate.h"
-#import "MobClick.h"
+//#import "MobClick.h"
 
 
 
@@ -173,7 +173,7 @@ typedef enum {
     [self initMoreUI];
     
     
-    [MobClick event:@"More"];
+//    [MobClick event:@"More"];
 
     
     

@@ -7,7 +7,20 @@
 //
 
 #import "PPViewController.h"
+#import <UIKit/UIKit.h>
+#import "MyselfHeaderView.h"
 
-@interface AJMRightSideViewController : PPViewController
+@class AppDelegate;
+
+@interface AJMRightSideViewController : PPViewController <UITableViewDataSource,
+UITableViewDelegate>
+{
+@private
+    UITableView *_tableView;
+    MyselfHeaderView *_myselfHeaderView;
+    AppDelegate *_appDelegate;
+}
+
+@property(nonatomic, retain)UINavigationController *navigationController;
 
 @end

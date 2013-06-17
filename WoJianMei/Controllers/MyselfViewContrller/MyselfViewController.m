@@ -47,7 +47,7 @@
     [_userNameLabel release];
     [_mottoLabel release];
     [_userGenderLabel release];
-    [_sina_userInfo release], _sina_userInfo = nil;
+    [_sina_userInfo release],_sina_userInfo = nil;
     [_user release];
     [super dealloc];
 }
@@ -337,12 +337,17 @@
 ////Click the cell methos
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    
+    
+    
+//    UIStoryboard * iPhonestroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    
+    
     //TODO
     switch (indexPath.section) {
         case 0:
             NSLog(@"I did click %@",@"我的健身历程");
-        
-            [self.navigationController performSegueWithIdentifier:@"WorkoutProcessSegue" sender:self];
+            [self performSegueWithIdentifier:@"WorkoutProcessSegue" sender:self];
             
             break;
         case 1:

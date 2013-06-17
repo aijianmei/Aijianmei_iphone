@@ -17,9 +17,10 @@
 #import "DeviceDetection.h"
 #import "ImageManager.h"
 #import "UINavigationBarExt.h"
-#import  "MobClick.h"
+//#import  "MobClick.h"
 #import <ShareSDK/ShareSDK.h>
 #import "AJMLeftSideViewController.h"
+#import "AJMRightSideViewController.h"
 
 
 //#define WeChatId @"wxd930ea5d5a258f4f"
@@ -151,10 +152,18 @@
         AJMLeftSideViewController *leftVC = [[[AJMLeftSideViewController alloc] init] autorelease];
     
         //右视图
-        rightVC = (MyselfViewController*)[iPhonestroyBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
+//        rightVC = (MyselfViewController*)[iPhonestroyBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
+        
+        AJMRightSideViewController *ajmVC = [[AJMRightSideViewController alloc]init];
+        
+        
+        
         IIViewDeckController *vc = [[IIViewDeckController alloc] initWithCenterViewController:_navigationController leftViewController:leftVC];
         
-        vc.rightController =rightVC;
+        vc.rightController =ajmVC;
+        [ajmVC release];
+        
+        
         vc.leftSize  = self.window.frame.size.width - (320 - 60.0);
         vc.rightSize = self.window.frame.size.width - (320 - 60.0);
         self.viewController = vc;
@@ -210,7 +219,7 @@
     // aijianmei  :
     
     [WXApi registerApp:WeChatId];
-    [MobClick startWithAppkey:Mobclick reportPolicy:REALTIME channelId:nil];
+//    [MobClick startWithAppkey:Mobclick reportPolicy:REALTIME channelId:nil];
 
     /**
      注册SDK应用，此应用请到http://www.sharesdk.cn中进行注册申请。

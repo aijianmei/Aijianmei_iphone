@@ -28,6 +28,7 @@
         _titleLabel.font = [UIFont systemFontOfSize:16];
         _titleLabel.backgroundColor = [UIColor clearColor];
 //        _titleLabel.textColor = [UIColor colorWithRGB:0xc9beaa];
+        _titleLabel.textColor =[UIColor whiteColor];
         [self addSubview:_titleLabel];
         [_titleLabel release];
     }
