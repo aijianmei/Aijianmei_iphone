@@ -20,14 +20,13 @@
 static UserService* _defaultUserService = nil;
 
 
-+ (UserService*)defaultService{
-
-    
-        if (_defaultUserService == nil) {
++ (UserService*)defaultService
+{
+    if (_defaultUserService == nil) {
             _defaultUserService = [[UserService alloc] init];
-        }
-        return _defaultUserService;
     }
+    return _defaultUserService;
+}
 
 
 - (void)queryVersion:(id<UserServiceDelegate>)delegate{

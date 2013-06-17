@@ -71,7 +71,7 @@
 - (IBAction)clickSinaWeiboButton:(UIButton *)sender {
     
     _sinaweiboManager = [SinaWeiboManager sharedManager];
-    [_sinaweiboManager createSinaweiboWithAppKey:@"239725454" appSecret:@"b383e7a0201c154e290cf9b839b95998" appRedirectURI:@"http://aijianmei.com" delegate:self];
+    [_sinaweiboManager createSinaweiboWithAppKey:@"3622140445" appSecret:@"f94d063d06365972215c62acaadf95c3" appRedirectURI:@"http://aijianmei.com" delegate:self];
     
     if (![_sinaweiboManager.sinaweibo isAuthValid]) {
         [_sinaweiboManager.sinaweibo logInInView:self.view];
@@ -86,6 +86,7 @@
 #pragma SinaWeiboDelegate methods
 - (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
 {
+    [self.navigationController popViewControllerAnimated:YES];
     NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
     
     [_sinaweiboManager storeAuthData];

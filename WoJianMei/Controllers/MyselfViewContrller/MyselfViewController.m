@@ -212,10 +212,20 @@
     
 }
 
+- (void)checkUserLogin
+{
+    _userService = [UserService defaultService];
+    if (![_userService hasBindAccount]) {
+        [self performSegueWithIdentifier:@"FirstLoginSegue" sender:self];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self checkUserLogin];
 
     [self initUI];
     /* prepare to use our own on-disk cache */
@@ -236,9 +246,7 @@
     [user1 release];
     
     [self upgradeUI];
-    
-    
-    
+        
 }
 
 #pragma mark ----------------------------------------————————————————
