@@ -109,27 +109,11 @@
     
     //获取网络数据
     ////开始下载文章
-    NSString *aucode= @"aijianmei";
-    NSString *auact = @"au_getinformationlist";
-    NSString *listtype = @"2";
-    NSString *category = @"nutri";
-    NSString *type = @"hot";
-    NSString *page = @"1";
-    NSString *pnums = @"10";
-    NSString *cateid = @"0";
-    NSString *uid = @"265";
     
-    [[ArticleService sharedService] findArticleWithAucode:aucode
-                                                    auact:auact
-                                                 listtype:listtype
-                                                 category:category
-                                                     type:type
-                                                     page:page
-                                                    pnums:pnums
-                                                   cateid:cateid
-                                                      uid:uid
-                                                 delegate:self];
-    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"最新" forState:UIControlStateNormal];
+    [self buttonClicked:button];
+
     
 }
 
@@ -290,7 +274,72 @@
 
 -(void)buttonClicked:(id)sender{
     
-    NSLog(@"i click the button :%@",[sender description]);
+    ////开始下载文章
+    NSString *aucode= @"aijianmei";
+    NSString *auact = @"au_getinformationlist";
+    NSString *listtype = @"2";
+    NSString *category = @"nutri";
+    NSString *type = @"new";
+    NSString *page = @"1";
+    NSString *pnums = @"10";
+    NSString *cateid = @"0";
+    NSString *uid = @"265";
+
+    if ([[sender currentTitle] isEqualToString:@"最新"]) {
+        
+        category = @"nutri";
+        type = @"new";
+        page = @"1";
+        pnums = @"10";
+        cateid = @"0";
+        uid = @"265";
+        
+    }
+    if ([[sender currentTitle] isEqualToString:@"增肌"])
+    {
+        category = @"nutri";
+        type = @"new";
+        page = @"1";
+        pnums = @"10";
+        cateid = @"1";
+        uid = @"265";
+        
+    }
+    if ([[sender currentTitle] isEqualToString:@"减肥"])
+    {
+        
+        category = @"nutri";
+        type = @"new";
+        page = @"1";
+        pnums = @"10";
+        cateid = @"2";
+        uid = @"265";
+    }
+    if ([[sender currentTitle] isEqualToString:@"一般营养知识"])
+    {
+        
+        category = @"nutri";
+        type = @"new";
+        page = @"1";
+        pnums = @"10";
+        cateid = @"3";
+        uid = @"265";
+        
+    }
+
+    [[ArticleService sharedService] findArticleWithAucode:aucode
+                                                    auact:auact
+                                                 listtype:listtype
+                                                 category:category
+                                                     type:type
+                                                     page:page
+                                                    pnums:pnums
+                                                   cateid:cateid
+                                                      uid:uid
+                                                 delegate:self];
+    
+    
+    
 }
 
 #pragma mark -
@@ -299,7 +348,7 @@
 -(void)initUI{
     
     NSMutableArray *buttonArrays  =[[NSMutableArray alloc]init];
-    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最近更新",@"最热门",@"健身",@"瑜伽",@"增肌",@"减肥",@"瘦身",@"健美操",@"其它", nil];
+    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最新",@"增肌",@"减肥",@"一般饮食知识",nil];
     
     for (NSString *buttonTitle in buttonTitleArray) {
         
