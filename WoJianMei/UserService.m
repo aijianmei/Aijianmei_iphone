@@ -129,7 +129,10 @@ static UserService* _defaultUserService = nil;
 
 - (void)storeUserInfo:(NSDictionary*)userInfo
 {
-    
+    NSLog(@"Store Sina UserInfo to Local");
+    NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:userInfo];
+    [[NSUserDefaults standardUserDefaults] setObject:userData forKey:@"SinaWeiboUserInfo"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (BOOL)hasBindAccount
