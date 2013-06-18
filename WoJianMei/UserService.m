@@ -123,8 +123,13 @@ static UserService* _defaultUserService = nil;
     [_sinaweiboManager.sinaweibo requestWithURL:@"users/show.json"
                                          params:[NSMutableDictionary dictionaryWithObjectsAndKeys:
                                                  uid, @"uid", nil]
-                                     httpMethod:@"POST"
+                                     httpMethod:@"GET"
                                        delegate:delegate];
+}
+
+- (void)storeUserInfo:(NSDictionary*)userInfo
+{
+    
 }
 
 - (BOOL)hasBindAccount

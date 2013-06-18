@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "SinaWeiboManager.h"
+#import "UserService.h"
 
 @interface LoginViewController ()
 
@@ -88,8 +89,10 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
     NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
-    
     [_sinaweiboManager storeAuthData];
+   
+    
+    [[UserService defaultService] getUserInfo:sinaweibo.userID delegate:self];
 }
 
 - (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
@@ -114,5 +117,21 @@
     [_sinaweiboManager removeAuthData];
 }
 
+#pragma mark - SinaWeiboRequest Delegate
+- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
+{
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        NSLog(@"******%@",[error description]);
+    }
+}
 
+- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
+{
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        [[UserService defaultService] storeUserInfo:result];
+    }
+}
+    
 @end

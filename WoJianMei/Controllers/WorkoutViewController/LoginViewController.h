@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SinaweiboManager.h"
 
-@interface LoginViewController : UIViewController<SinaWeiboDelegate>
+@interface LoginViewController : UIViewController<SinaWeiboDelegate, SinaWeiboRequestDelegate>
 {
     SinaWeiboManager *_sinaweiboManager;
 }

@@ -50,4 +50,7 @@
 - (void)getUserInfo:(NSString*)uid
                     delegate:(id<SinaWeiboRequestDelegate>)delegate;
 
+//保存用户信息
+- (void)storeUserInfo:(NSDictionary*)userInfo;
+
 @end
