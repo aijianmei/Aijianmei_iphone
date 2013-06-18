@@ -145,7 +145,10 @@ static UserService* _defaultUserService = nil;
 
 - (BOOL)hasbindSina
 {
-    return NO;
+    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:@"SinaWeiboUserInfo"];
+    NSDictionary *userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+    NSString *uid = [userInfo objectForKey:@"id"];
+    return (uid == nil ? NO : YES);
 }
 
 
