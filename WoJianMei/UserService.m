@@ -196,11 +196,11 @@ static UserService* _defaultUserService = nil;
 
 - (BOOL)hasBindEmail
 {
-    if ([_user.email length] == 0){
-        return NO;
+    if ([_user.email length] > 0){
+        return YES;
     }
     else{
-        return YES;
+        return NO;
     }
 }
 

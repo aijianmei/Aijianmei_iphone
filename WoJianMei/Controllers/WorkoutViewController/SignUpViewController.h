@@ -11,14 +11,13 @@
 @interface SignUpViewController : UIViewController<UIWebViewDelegate>
 
 {
-    
-
-       UIWebView *_signupWebView;
-    
+        
     
 }
 
 
-@property (retain, nonatomic) IBOutlet UIWebView *signupWebView;
+@property (retain, nonatomic) IBOutlet UIButton *signUpButton;
+
+-(IBAction)didPressSignUp:(id)sender;
 
 @end

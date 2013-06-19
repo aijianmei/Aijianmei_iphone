@@ -130,8 +130,11 @@
     if ([request.url hasSuffix:@"users/show.json"])
     {
         [[UserService defaultService] storeUserInfo:result];
+        //跳转到绑定已有账号页面
         if (![[UserService defaultService] hasBindEmail]) {
-            //
+            [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
+        } else{
+            NSLog(@"***********");
         }
     }
 }
