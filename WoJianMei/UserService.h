@@ -26,8 +26,11 @@
 @interface UserService : CommonService
 {
     SinaWeiboManager *_sinaweiboManager;
+    User *_user;
     
 }
+
+@property(nonatomic, retain) User *user;
 
 + (UserService*)defaultService;
 
@@ -37,14 +40,15 @@
 // 用户登陆
 - (void)login:(id<UserServiceDelegate>)delegate;
 
+//是否绑定邮箱
+- (BOOL)hasBindEmail;
 
+//是否绑定账号
 - (BOOL)hasBindAccount;
-
 
 //新浪微博用户数据注册
 - (void)registerUserWithSinaUserInfo:(NSDictionary*)userInfo
                             delegate:(id<RKObjectLoaderDelegate>)delegate;
-
 
 //获取用户信息
 - (void)getUserInfo:(NSString*)uid
@@ -52,5 +56,21 @@
 
 //保存用户信息
 - (void)storeUserInfo:(NSDictionary*)userInfo;
+
+//注册用户
+- (void)registerUserWithUsername:(NSString*)name
+                           email:(NSString*)email
+                        password:(NSString*)password
+                        usertype:(NSString*)usertype
+                           snsId:(NSString*)snsId
+                 profileImageUrl:(NSString*)profileImageUrl
+                             sex:(NSString*)sex
+                             age:(NSString*)age
+                     body_weight:(NSString*)weight
+                          height:(NSString*)height
+                         keyword:(NSString*)keyword
+                        province:(NSString*)province
+                            city:(NSString*)city
+                        delegate:(id<RKObjectLoaderDelegate>)delegate;
 
 @end

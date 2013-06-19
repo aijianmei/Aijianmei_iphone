@@ -62,6 +62,7 @@
     [_avatarImage release];
     [_avatarBackGroundImage release];
     [_gender release];
+    [_email release];
     [super dealloc];
 }
 

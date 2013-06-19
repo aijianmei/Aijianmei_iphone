@@ -90,8 +90,7 @@
     [self.navigationController popViewControllerAnimated:YES];
     NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
     [_sinaweiboManager storeAuthData];
-   
-    
+    //微博登陆后获取用户数据
     [[UserService defaultService] getUserInfo:sinaweibo.userID delegate:self];
 }
 
@@ -131,6 +130,9 @@
     if ([request.url hasSuffix:@"users/show.json"])
     {
         [[UserService defaultService] storeUserInfo:result];
+        if (![[UserService defaultService] hasBindEmail]) {
+            //
+        }
     }
 }
     

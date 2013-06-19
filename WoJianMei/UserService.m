@@ -19,6 +19,11 @@
 
 static UserService* _defaultUserService = nil;
 
+- (void)dealloc
+{
+    [_user release];
+    [super dealloc];
+}
 
 + (UserService*)defaultService
 {
@@ -84,24 +89,70 @@ static UserService* _defaultUserService = nil;
 - (void)initStatusMap
 {
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    RKObjectMapping *articleMapping =[RKObjectMapping mappingForClass:[User class]];
-    [articleMapping mapKeyPathsToAttributes: @"status", @"_status", @"uid", @"_uid", nil];
-    [objectManager.mappingProvider setMapping:articleMapping forKeyPath:@""];
+    RKObjectMapping *userMapping =[RKObjectMapping mappingForClass:[User class]];
+    [userMapping mapKeyPathsToAttributes: @"status", @"_status", @"uid", @"_uid", nil];
+    [objectManager.mappingProvider setMapping:userMapping forKeyPath:@""];
 
 }
+
+- (void)registerUserWithUsername:(NSString*)name
+                           email:(NSString*)email
+                        password:(NSString*)password
+                        usertype:(NSString*)usertype
+                           snsId:(NSString*)snsId
+                 profileImageUrl:(NSString*)profileImageUrl
+                             sex:(NSString*)sex
+                             age:(NSString*)age
+                     body_weight:(NSString*)weight
+                          height:(NSString*)height
+                         keyword:(NSString*)keyword
+                        province:(NSString*)province
+                            city:(NSString*)city
+                        delegate:(id<RKObjectLoaderDelegate>)delegate
+
+{
+    [self initStatusMap];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSMutableDictionary *queryParams = [[NSMutableDictionary alloc] init];
+        [queryParams setObject:@"aijianmei" forKey:@"aucode"];
+        [queryParams setObject:@"au_register" forKey:@"auact"];
+        [queryParams setObject:usertype forKey:@"usertype"];
+        [queryParams setObject:snsId forKey:@"snsId"];
+        [queryParams setObject:name forKey:@"username"];
+        [queryParams setObject:email forKey:@"email"];
+        [queryParams setObject:password forKey:@"userpassword"];
+        [queryParams setObject:profileImageUrl forKey:@"profileImageUrl"];
+        [queryParams setObject:sex forKey:@"sex"];
+        [queryParams setObject:weight forKey:@"body_weight"];
+        [queryParams setObject:height forKey:@"height"];
+        [queryParams setObject:keyword forKey:@"keyword"];
+        [queryParams setObject:province forKey:@"province"];
+        [queryParams setObject:city forKey:@"city"];
+        
+        RKObjectManager *objectManager = [RKObjectManager sharedManager];
+        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
+        
+        NSLog(@"url: %@", [url absoluteString]);
+        NSLog(@"resourcePath: %@", [url resourcePath]);
+        NSLog(@"query: %@", [url query]);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
+        });
+    });
+}
+
 
 - (void)registerUserWithSinaUserInfo:(NSDictionary*)userInfo
                             delegate:(id<RKObjectLoaderDelegate>)delegate
 {
-    NSString* loginId = [userInfo objectForKey:@"sina_userid"];
-        
+    [self initStatusMap];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         NSMutableDictionary *queryParams = [NSMutableDictionary dictionaryWithDictionary:userInfo];
         [queryParams setObject:@"aijianmei" forKey:@"aucode"];
         [queryParams setObject:@"au_register" forKey:@"auact"];
         [queryParams setObject:@"sina" forKey:@"usertype"];
-
         
         RKObjectManager *objectManager = [RKObjectManager sharedManager];
         RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
@@ -137,10 +188,20 @@ static UserService* _defaultUserService = nil;
 
 - (BOOL)hasBindAccount
 {
-    if ([self hasbindSina])
+    if ([self hasbindSina] || [self hasBindEmail])
         return YES;
     else
         return NO;
+}
+
+- (BOOL)hasBindEmail
+{
+    if ([_user.email length] == 0){
+        return NO;
+    }
+    else{
+        return YES;
+    }
 }
 
 - (BOOL)hasbindSina
