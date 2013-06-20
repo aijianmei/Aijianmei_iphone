@@ -61,44 +61,6 @@
     return 147.0f;
 }
 
-//
-////从网络下载图片
-//-(UIImage *) getImageFromURL:(NSString *)fileURL {
-//    NSLog(@"执行图片下载函数");
-//    UIImage * result;
-//    
-//    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
-//    result = [UIImage imageWithData:data];
-//    return result;
-//}
-//
-////将所下载的图片保存到本地
-//-(void) saveImage:(UIImage *)image
-//     withFileName:(NSString *)imageName
-//           ofType:(NSString *)extension
-//      inDirectory:(NSString *)directoryPath
-//{
-//    if ([[extension lowercaseString] isEqualToString:@"png"]) {
-//        [UIImagePNGRepresentation(image) writeToFile:[directoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@", imageName, @"png"]] options:NSAtomicWrite error:nil];
-//    } else if ([[extension lowercaseString] isEqualToString:@"jpg"] || [[extension lowercaseString] isEqualToString:@"jpeg"]) {
-//        [UIImageJPEGRepresentation(image, 1.0) writeToFile:[directoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@", imageName, @"jpg"]] options:NSAtomicWrite error:nil];
-//    } else {
-//        //ALog(@"Image Save Failed\nExtension: (%@) is not recognized, use (PNG/JPG)", extension);
-//        NSLog(@"文件后缀不认识");
-//    }
-//}
-//
-////读取本地保存的图片
-//-(UIImage *) loadImage:(NSString *)fileName
-//                ofType:(NSString *)extension
-//           inDirectory:(NSString *)directoryPath
-//{
-//    UIImage * result = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@.%@", directoryPath, fileName, extension]];
-//    
-//    return result;
-//}
-
-
 - (void)setCellInfo:(Article *)article
 {
       //set articles cells
