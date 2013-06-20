@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="43H-bc-kkW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="43H-bc-kkW">
     <dependencies>
         <deployment version="1280" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
@@ -1243,13 +1243,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="1Je-q0-W1M"/>
-                    <connections>
-                        <outlet property="dataTableView" destination="Hxn-iU-VlR" id="lAp-b2-56f"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pd1-kq-nyo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2694" y="-888"/>
+            <point key="canvasLocation" x="2420" y="-892"/>
         </scene>
         <!--Life Stytle View Controller-->
         <scene sceneID="XDV-jv-ute">
@@ -1344,7 +1341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4e2-aW-Kfv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2656" y="-2568"/>
+            <point key="canvasLocation" x="2662" y="-2652"/>
         </scene>
     </scenes>
     <resources>
@@ -1388,7 +1385,7 @@
         <class className="FeedBackViewController" superclassName="PPViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FeedBackViewController.h"/>
         </class>
-        <class className="ForumViewController" superclassName="UIViewController">
+        <class className="ForumViewController" superclassName="AJM_CommonViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ForumViewController.h"/>
         </class>
         <class className="LifeStytleViewController" superclassName="UIViewController">
@@ -1456,7 +1453,7 @@
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="SupplementViewController" superclassName="PPTableViewController">
+        <class className="SupplementViewController" superclassName="AJM_CommonViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SupplementViewController.h"/>
         </class>
         <class className="WorkOutProcessViewController" superclassName="PPViewController">
