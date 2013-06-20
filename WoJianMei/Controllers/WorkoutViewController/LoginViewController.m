@@ -9,6 +9,8 @@
 #import "LoginViewController.h"
 #import "SinaWeiboManager.h"
 #import "UserService.h"
+#import "SignUpViewController.h"
+#import "AppDelegate.h"
 
 @interface LoginViewController ()
 
@@ -133,6 +135,9 @@
         //跳转到绑定已有账号页面
         if (![[UserService defaultService] hasBindEmail]) {
             [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
+//            UIStoryboard * iPhonestroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+//            SignUpViewController *controller  = (SignUpViewController*)[iPhonestroyBoard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
+//            [[AppDelegate getAppDelegate].navigationController pushViewController:controller animated:YES];
         } else{
             NSLog(@"***********");
         }

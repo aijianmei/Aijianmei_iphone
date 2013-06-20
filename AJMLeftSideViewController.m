@@ -265,7 +265,7 @@
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
                         myselfVC.title = @"锻炼";
-                        _navigationController = [[UINavigationController alloc] initWithRootViewController:myselfVC] ;
+                        self.navigationController = [[UINavigationController alloc] initWithRootViewController:myselfVC] ;
                         self.viewDeckController.centerController = _navigationController;
                         self.view.userInteractionEnabled = YES;
                         

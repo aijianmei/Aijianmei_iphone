@@ -217,6 +217,7 @@
     _userService = [UserService defaultService];
     if (![_userService hasBindAccount]) {
         [self performSegueWithIdentifier:@"FirstLoginSegue" sender:self];
+
     }
 }
 

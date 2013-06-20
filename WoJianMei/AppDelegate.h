@@ -36,4 +36,6 @@ enum
 @property (nonatomic, retain)  IIViewDeckController *viewController;
 @property (nonatomic,readonly) AJMViewDelegate *viewDelegate;
 
++ (AppDelegate*)getAppDelegate;
+
 @end

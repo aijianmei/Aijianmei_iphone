@@ -58,6 +58,10 @@
     [super dealloc];
 }
 
++ (AppDelegate*)getAppDelegate
+{
+    return (AppDelegate*)[UIApplication sharedApplication].delegate;
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
