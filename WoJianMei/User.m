@@ -15,6 +15,10 @@
 @synthesize avatarBackGroundImage =_avatarBackGroundImage;
 @synthesize description=_description;
 @synthesize gender =_gender;
+@synthesize uid = _uid;
+@synthesize snsId = _snsId;
+@synthesize userType = _userType;
+@synthesize email = _email;
 
 -(id)init{
     

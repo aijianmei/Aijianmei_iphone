@@ -50,12 +50,14 @@
 - (void)registerUserWithSinaUserInfo:(NSDictionary*)userInfo
                             delegate:(id<RKObjectLoaderDelegate>)delegate;
 
-//获取用户信息
-- (void)getUserInfo:(NSString*)uid
+//获取新浪用户信息
+- (void)fetchSinaUserInfo:(NSString*)uid
                     delegate:(id<SinaWeiboRequestDelegate>)delegate;
 
 //保存用户信息
 - (void)storeUserInfo:(NSDictionary*)userInfo;
+
+- (NSDictionary*)getUserInfo;
 
 //注册用户
 - (void)registerUserWithUsername:(NSString*)name

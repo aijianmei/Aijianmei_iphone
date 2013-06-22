@@ -19,6 +19,10 @@
     NSString *_gender;
     NSString *_sinaUserId;
     NSString *_email;
+    NSString *_uid;
+    NSString *_snsId;
+    NSString *_userType;
+    NSString *_profileImageUrl;
 }
 
 @property (retain, nonatomic)  UIImage *avatarImage;
@@ -29,5 +33,10 @@
 @property (retain, nonatomic)  NSString *gender;
 @property (retain, nonatomic)  NSString *sinaUserId;
 @property (retain, nonatomic)  NSString *email;
+@property (retain, nonatomic)  NSString *uid;
+@property (retain, nonatomic)  NSString *snsId;
+@property (retain, nonatomic)  NSString *userType;
+@property (retain, nonatomic)  NSString *profileImageUrl;
+
 
 @end

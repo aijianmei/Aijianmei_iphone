@@ -11,6 +11,8 @@
 #import "UserService.h"
 #import "SignUpViewController.h"
 #import "AppDelegate.h"
+#import "UserManager.h"
+#import "User.h"
 
 @interface LoginViewController ()
 
@@ -93,7 +95,7 @@
     NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
     [_sinaweiboManager storeAuthData];
     //微博登陆后获取用户数据
-    [[UserService defaultService] getUserInfo:sinaweibo.userID delegate:self];
+    [[UserService defaultService] fetchSinaUserInfo:sinaweibo.userID delegate:self];
 }
 
 - (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
@@ -131,15 +133,11 @@
 {
     if ([request.url hasSuffix:@"users/show.json"])
     {
-        [[UserService defaultService] storeUserInfo:result];
-        //跳转到绑定已有账号页面
+        [[UserService defaultService] storeUserInfo:result];        
         if (![[UserService defaultService] hasBindEmail]) {
             [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
-//            UIStoryboard * iPhonestroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-//            SignUpViewController *controller  = (SignUpViewController*)[iPhonestroyBoard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
-//            [[AppDelegate getAppDelegate].navigationController pushViewController:controller animated:YES];
-        } else{
-            NSLog(@"***********");
+       } else{
+           [self performSegueWithIdentifier:@"returnMyselfSegue" sender:self];
         }
     }
 }

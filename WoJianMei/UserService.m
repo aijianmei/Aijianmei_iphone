@@ -167,7 +167,7 @@ static UserService* _defaultUserService = nil;
     });
 }
 
-- (void)getUserInfo:(NSString*)uid
+- (void)fetchSinaUserInfo:(NSString*)uid
                     delegate:(id<SinaWeiboRequestDelegate>)delegate
 {
     _sinaweiboManager = [SinaWeiboManager sharedManager];
@@ -185,6 +185,14 @@ static UserService* _defaultUserService = nil;
     [[NSUserDefaults standardUserDefaults] setObject:userData forKey:@"SinaWeiboUserInfo"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
+- (NSDictionary*)getUserInfo
+{
+    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:@"SinaWeiboUserInfo"];
+    NSDictionary *userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+    return userInfo;
+}
+
 
 - (BOOL)hasBindAccount
 {

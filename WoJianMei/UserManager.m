@@ -7,28 +7,28 @@
 //
 
 #import "UserManager.h"
+#import "User.h"
 
-@implementation UserManager
+@implementation UserManager:NSObject
 
-+ (UserManager*)sharedManager
-{
-    static UserManager* _sharedManager = nil;
-    @synchronized(self)
-    {
-        if (_sharedManager == nil) {
-            _sharedManager = [[UserManager alloc] init];
-        }
-    }
-    return _sharedManager;
-}
 
-+ (BOOL)createUserWithUserId:(NSString *)userId
++ (User*)createUserWithUserId:(NSString *)userId
                      snsId:(NSString *)snsId
-                    userType:(int)userType
+                    userType:(NSString*)userType
                         name:(NSString *)nickName
-                      avatarImage:(NSString *)avatar
+                      profileImageUrl:(NSString *)profileImageUrl
+                      gender:(NSString*)gender
 {
-    return YES;
+    User *user = [[[User alloc] init] autorelease];
+    user.uid = userId;
+    user.snsId = snsId;
+    user.userType = userType;
+    user.name = nickName;
+    user.profileImageUrl = profileImageUrl;
+    user.gender = gender;
+    return user;
 }
+
+
 
 @end
