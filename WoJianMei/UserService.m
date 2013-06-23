@@ -12,7 +12,7 @@
 #import "FitnessNetworkRequest.h"
 #import "JSON.h"
 #import "User.h"
-#import "Status.h"
+#import "Result.h"
 
 @implementation UserService
 
@@ -86,12 +86,12 @@ static UserService* _defaultUserService = nil;
     
 }
 
-- (void)initStatusMap
+- (void)initResultMap
 {
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    RKObjectMapping *userMapping =[RKObjectMapping mappingForClass:[User class]];
-    [userMapping mapKeyPathsToAttributes: @"status", @"_status", @"uid", @"_uid", nil];
-    [objectManager.mappingProvider setMapping:userMapping forKeyPath:@""];
+    RKObjectMapping *resultMapping =[RKObjectMapping mappingForClass:[Result class]];
+    [resultMapping mapKeyPathsToAttributes: @"errorCode", @"errorCode", @"uid", @"_uid", nil];
+    [objectManager.mappingProvider setMapping:resultMapping forKeyPath:@""];
 
 }
 
@@ -111,7 +111,7 @@ static UserService* _defaultUserService = nil;
                         delegate:(id<RKObjectLoaderDelegate>)delegate
 
 {
-    [self initStatusMap];
+    [self initResultMap];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSMutableDictionary *queryParams = [[NSMutableDictionary alloc] init];
         [queryParams setObject:@"aijianmei" forKey:@"aucode"];
@@ -146,7 +146,7 @@ static UserService* _defaultUserService = nil;
 - (void)registerUserWithSinaUserInfo:(NSDictionary*)userInfo
                             delegate:(id<RKObjectLoaderDelegate>)delegate
 {
-    [self initStatusMap];
+    [self initResultMap];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         NSMutableDictionary *queryParams = [NSMutableDictionary dictionaryWithDictionary:userInfo];

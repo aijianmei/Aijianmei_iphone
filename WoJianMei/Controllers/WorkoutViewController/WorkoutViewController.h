@@ -22,16 +22,15 @@
     iCarousel                   *_carousel;
 //    SMPageControl               *_spacePageControl;
     UIScrollView *_buttonScrollView;
-    
     AppDelegate *_appDelegate;
-    
-    
 }
 
 @property (nonatomic, retain) UIScrollView *buttonScrollView;
 @property (nonatomic, retain) UIView *myHeaderView;
 @property (nonatomic, retain) iCarousel *carousel;
+@property (nonatomic, retain) UIButton *currentButton;
 //@property (nonatomic, retain) SMPageControl *spacePageControl;
+
 -(void)buttonClicked:(UIButton *)sender;
 
 

@@ -9,7 +9,7 @@
 #import "SignUpViewController.h"
 #import "UserService.h"
 #import "UserManager.h"
-#import "Status.h"
+#import "Result.h"
 
 @interface SignUpViewController ()
 
@@ -58,8 +58,7 @@
         return;
     }
     NSDictionary *userInfo = [[UserService defaultService] getUserInfo];
-    
-//    [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.emailTextField.text password:self.passwordTextField.text usertype:@"sina" snsId:[userInfo objectForKey:@"id"] profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:nil body_weight:@"" height:@"" keyword:@"" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] delegate:self];
+        [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.emailTextField.text password:self.passwordTextField.text usertype:@"sina" snsId:[userInfo objectForKey:@"id"] profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:nil body_weight:@"" height:@"" keyword:@"" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] delegate:self];
 }
 
 - (BOOL)verifyField
@@ -106,19 +105,13 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     NSLog(@"***Load objects count: %d", [objects count]);
-    Status *status = [objects objectAtIndex:0];
-    
-    NSDictionary *result = [[UserService defaultService]getUserInfo];
-    User *user = [UserManager createUserWithUserId:nil snsId:[result objectForKey:@"id"] userType:@"sina" name:[result objectForKey:@"name"] profileImageUrl:[result objectForKey:@"profile_image_url"] gender:[result objectForKey:@"gender"]];
-    user.uid = status.uid;
-    NSLog(@"********uid:%@",user.uid);
+    Result *result = [objects objectAtIndex:0];
+    NSDictionary *userInfo = [[UserService defaultService]getUserInfo];
+    User *user = [UserManager createUserWithUserId:result.uid snsId:[userInfo objectForKey:@"id"] userType:@"sina" name:[userInfo objectForKey:@"name"] profileImageUrl:[userInfo objectForKey:@"profile_image_url"] gender:[userInfo objectForKey:@"gender"]];
+    NSLog(@"******Register success,return uid:%@",user.uid);
     [UserService defaultService].user = user;
     [self performSegueWithIdentifier:@"finishRegisterSegue" sender:self];
 
 }
-
-
-
-
 
 @end

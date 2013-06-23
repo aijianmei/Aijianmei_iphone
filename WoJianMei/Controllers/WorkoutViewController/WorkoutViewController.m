@@ -24,8 +24,6 @@
 #define NUMBER_OF_VISIBLE_ITEMS 18
 #define ITEM_SPACING 220
 
-
-
 #define SCROLL_VIEW_TAG 20120913
 #define More_BUTTON_TAG 20130607
 
@@ -38,14 +36,11 @@
 @synthesize  carousel =_carousel;
 //@synthesize spacePageControl =_spacePageControl;
 @synthesize buttonScrollView =_buttonScrollView;
-
-
-
+@synthesize currentButton = _currentButton;
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)dealloc
@@ -226,8 +221,9 @@
 -(void)buttonClicked:(UIButton *)sender
 
 {
+    self.currentButton = sender;
     
-    ////开始下载文章
+    //开始下载文章
     NSString *aucode= @"aijianmei";
     NSString *auact = @"au_getinformationlist";
     NSString *listtype = @"2";
@@ -282,9 +278,6 @@
 
     }
     
-    
-    
-    
     [[ArticleService sharedService] findArticleWithAucode:aucode
                                                     auact:auact
                                                  listtype:listtype
@@ -312,34 +305,26 @@
 //}
 //
 
-- (void)viewDidLoad
+#pragma Pull Refresh Delegate
+- (void) reloadTableViewDataSource
 {
-    [super viewDidLoad];
-    
+    [self buttonClicked:_currentButton];
+}
+
+- (void)viewDidLoad
+{    
     [self initMoreUI];
     [self initUI];
+    self.supportRefreshHeader = YES;
     
 //    [self initArticles];
-//     self.dataList = [[ArticleManager defaultManager] articleList];
-//    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
-
-    
-    
+//     self.dataList = [[ArticleManager defaultManager] articleList];    
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"最新" forState:UIControlStateNormal];
     [self buttonClicked:button];
     
-   
-    
-}
-
-
--(void)viewDidUnload{
-
-    [super viewDidUnload];
-    self.carousel = nil;
-
+    [super viewDidLoad];
 }
 
 #pragma mark --
@@ -492,7 +477,7 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     NSLog(@"***Load objects count: %d", [objects count]);
-    //在这里就可以在controller刷新数据
+	[self dataSourceDidFinishLoadingNewData];
     
     self.dataList = objects;
     [self hideActivity];

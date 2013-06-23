@@ -298,33 +298,25 @@
      */
 }
 
-
-
-
-//for ios version below 4.2
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-        
-    
-//    return [self.sinaWeiboManager.sinaweibo handleOpenURL:url] ;
-    
-    return [ShareSDK handleOpenURL:url
-                        wxDelegate:self];
-    
-    
+    if ([url.absoluteString hasSuffix:@"sinaweibosso://login"]) {
+        return [[SinaWeiboManager sharedManager].sinaweibo handleOpenURL:url];
+    } else {
+        return [ShareSDK handleOpenURL:url wxDelegate:self];
+    }
 }
 
-//for ios version is or above 4.2
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-//    return [self.sinaWeiboManager.sinaweibo handleOpenURL:url];
-//    return  [WXApi handleOpenURL:url delegate:self];
-    
-    return [ShareSDK handleOpenURL:url
-                 sourceApplication:sourceApplication
-                        annotation:annotation
-                        wxDelegate:self];
-
+    if ([url.absoluteString hasSuffix:@"sinaweibosso://login"]) {
+        return [[SinaWeiboManager sharedManager].sinaweibo handleOpenURL:url];
+    } else {
+        return [ShareSDK handleOpenURL:url
+                     sourceApplication:sourceApplication
+                            annotation:annotation
+                            wxDelegate:self];
+    }
 }
 
 @end

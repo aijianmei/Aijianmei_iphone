@@ -561,7 +561,6 @@
 		C668C2C5176C63DC007CC7FF /* SinaWeiboAuthorizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C2BE176C63DC007CC7FF /* SinaWeiboAuthorizeView.m */; };
 		C668C2C6176C63DC007CC7FF /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C2C1176C63DC007CC7FF /* SinaWeiboRequest.m */; };
 		C668C2CF176C649B007CC7FF /* SinaWeiboManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C2CC176C649B007CC7FF /* SinaWeiboManager.m */; };
-		C668C2D0176C649B007CC7FF /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C2CE176C649B007CC7FF /* Status.m */; };
 		C6A718A4175E38B80035E0D0 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A718A3175E38B80035E0D0 /* Article.m */; };
 		C6A718AE175E3AB40035E0D0 /* ArticleService.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A718AD175E3AB40035E0D0 /* ArticleService.m */; };
 		C6C0CD1D17509DA400A825AB /* DrawContextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C0CD1C17509DA400A825AB /* DrawContextView.m */; };
@@ -579,6 +578,7 @@
 		C6DB202D1760D8E40060BD08 /* WorkoutDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DB202C1760D8E40060BD08 /* WorkoutDetailViewController.m */; };
 		C6DB203C176378F40060BD08 /* ArticleDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DB203B176378F40060BD08 /* ArticleDetail.m */; };
 		C6DB2058176387500060BD08 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6DB204F176387450060BD08 /* libRestKit.a */; };
+		C6E027C117770A1800A7BA90 /* Result.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E027C017770A1800A7BA90 /* Result.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1492,8 +1492,6 @@
 		C668C2C1176C63DC007CC7FF /* SinaWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboRequest.m; sourceTree = "<group>"; };
 		C668C2CB176C649B007CC7FF /* SinaWeiboManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboManager.h; sourceTree = "<group>"; };
 		C668C2CC176C649B007CC7FF /* SinaWeiboManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboManager.m; sourceTree = "<group>"; };
-		C668C2CD176C649B007CC7FF /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
-		C668C2CE176C649B007CC7FF /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		C6A718A2175E38B80035E0D0 /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Article.h; sourceTree = "<group>"; };
 		C6A718A3175E38B80035E0D0 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
 		C6A718AC175E3AB40035E0D0 /* ArticleService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleService.h; sourceTree = "<group>"; };
@@ -1529,6 +1527,8 @@
 		C6DB203A176378F40060BD08 /* ArticleDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleDetail.h; sourceTree = "<group>"; };
 		C6DB203B176378F40060BD08 /* ArticleDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleDetail.m; sourceTree = "<group>"; };
 		C6DB2044176386DD0060BD08 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
+		C6E027BF17770A1800A7BA90 /* Result.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Result.h; sourceTree = "<group>"; };
+		C6E027C017770A1800A7BA90 /* Result.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Result.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2888,8 +2888,6 @@
 			children = (
 				C668C2CB176C649B007CC7FF /* SinaWeiboManager.h */,
 				C668C2CC176C649B007CC7FF /* SinaWeiboManager.m */,
-				C668C2CD176C649B007CC7FF /* Status.h */,
-				C668C2CE176C649B007CC7FF /* Status.m */,
 				4AA945F81686DD2600022B2D /* FontSize */,
 				4AEE95BE15FB7FDF005A66DC /* Catalog.h */,
 				4AEE95BF15FB7FDF005A66DC /* Catalog.m */,
@@ -2914,6 +2912,8 @@
 				C6DB203B176378F40060BD08 /* ArticleDetail.m */,
 				C6391EB91771F0A400B64D1B /* UserManager.h */,
 				C6391EBA1771F0A400B64D1B /* UserManager.m */,
+				C6E027BF17770A1800A7BA90 /* Result.h */,
+				C6E027C017770A1800A7BA90 /* Result.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -4298,11 +4298,11 @@
 				C668C2C5176C63DC007CC7FF /* SinaWeiboAuthorizeView.m in Sources */,
 				C668C2C6176C63DC007CC7FF /* SinaWeiboRequest.m in Sources */,
 				C668C2CF176C649B007CC7FF /* SinaWeiboManager.m in Sources */,
-				C668C2D0176C649B007CC7FF /* Status.m in Sources */,
 				C6630B9A176D3CC400A5ACBA /* JSONKit.m in Sources */,
 				4A3C4457176EAC360027D81C /* AJMRightSideViewController.m in Sources */,
 				4A3C4462176EB26D0027D81C /* MyselfHeaderView.m in Sources */,
 				C6391EBB1771F0A400B64D1B /* UserManager.m in Sources */,
+				C6E027C117770A1800A7BA90 /* Result.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

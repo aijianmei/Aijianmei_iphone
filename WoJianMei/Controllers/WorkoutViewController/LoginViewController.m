@@ -14,6 +14,10 @@
 #import "UserManager.h"
 #import "User.h"
 
+#define kAppKey @"3622140445"
+#define kAppSecret @"f94d063d06365972215c62acaadf95c3"
+#define KAppRedirectURI @"http://aijianmei.com"
+
 @interface LoginViewController ()
 
 @end
@@ -76,11 +80,11 @@
 - (IBAction)clickSinaWeiboButton:(UIButton *)sender {
     
     _sinaweiboManager = [SinaWeiboManager sharedManager];
-    [_sinaweiboManager createSinaweiboWithAppKey:@"3622140445" appSecret:@"f94d063d06365972215c62acaadf95c3" appRedirectURI:@"http://aijianmei.com" delegate:self];
+    [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
     
     if (![_sinaweiboManager.sinaweibo isAuthValid]) {
-        [_sinaweiboManager.sinaweibo logInInView:self.view];
-    }    
+        [_sinaweiboManager.sinaweibo logIn];
+    }
 }
 
 - (IBAction)clickQQShareButton:(UIButton *)sender {
