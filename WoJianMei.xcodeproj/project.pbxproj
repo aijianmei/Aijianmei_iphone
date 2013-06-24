@@ -1546,7 +1546,7 @@
 			path = leftsideNavi;
 			sourceTree = "<group>";
 		};
-		4A27ADDE1777E9BE009978C5 /* LaunchImages */ = {
+		4A27ADDE1777E9BE009978C5 /* Launch_Images */ = {
 			isa = PBXGroup;
 			children = (
 				4A27ADDF1777E9BE009978C5 /* 114X114.png */,
@@ -1557,7 +1557,7 @@
 				4A27ADE41777E9BE009978C5 /* Default.png */,
 				4A27ADE51777E9BE009978C5 /* Default@2x.png */,
 			);
-			name = LaunchImages;
+			name = Launch_Images;
 			path = ../../LaunchImages;
 			sourceTree = "<group>";
 		};
@@ -3236,7 +3236,7 @@
 		4ADCFE56169D62C300A3E979 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4A27ADDE1777E9BE009978C5 /* LaunchImages */,
+				4A27ADDE1777E9BE009978C5 /* Launch_Images */,
 				4A429DB2175D7EFD00F018CE /* Login */,
 				4A634E0917533DD100453C0D /* posting */,
 				4A634DE617530E7300453C0D /* profile_settings */,
