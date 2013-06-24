@@ -100,10 +100,6 @@
 		4A429DBB175D7EFD00F018CE /* loing_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A429DB6175D7EFD00F018CE /* loing_2.png */; };
 		4A429DBC175D7EFD00F018CE /* loing_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A429DB7175D7EFD00F018CE /* loing_4.png */; };
 		4A429DBF175DD1BA00F018CE /* WorkOutInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A429DBE175DD1B900F018CE /* WorkOutInfo.m */; };
-		4A488E2C176A013000A20EE7 /* ForumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A488E2B176A012F00A20EE7 /* ForumViewController.m */; };
-		4A488E30176A02D900A20EE7 /* WorkoutPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A488E2F176A02D900A20EE7 /* WorkoutPlanViewController.m */; };
-		4A488E34176A03B200A20EE7 /* SupplementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A488E33176A03B100A20EE7 /* SupplementViewController.m */; };
-		4A488E38176A056900A20EE7 /* LifeStytleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A488E37176A056900A20EE7 /* LifeStytleViewController.m */; };
 		4A488E3C176A09AA00A20EE7 /* AJM_CommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A488E3B176A09AA00A20EE7 /* AJM_CommonViewController.m */; };
 		4A498E7F1685500F0073E682 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A498DAB1685500F0073E682 /* ioapi.c */; };
 		4A498E801685500F0073E682 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A498DAD1685500F0073E682 /* mztools.c */; };
@@ -493,6 +489,10 @@
 		4AE394C215C2DD9C00D06C61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE394C115C2DD9C00D06C61 /* AppDelegate.m */; };
 		4AE394C515C2DD9C00D06C61 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE394C315C2DD9C00D06C61 /* MainStoryboard_iPhone.storyboard */; };
 		4AE394C815C2DD9C00D06C61 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE394C615C2DD9C00D06C61 /* MainStoryboard_iPad.storyboard */; };
+		4AE52D9F177831A500F61933 /* WorkoutPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE52D9E177831A500F61933 /* WorkoutPlanViewController.m */; };
+		4AE52DA31778323400F61933 /* SupplementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE52DA21778323400F61933 /* SupplementViewController.m */; };
+		4AE52E281778327F00F61933 /* ForumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE52E271778327F00F61933 /* ForumViewController.m */; };
+		4AE52E2C1778336E00F61933 /* LifeStytleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE52E2B1778336E00F61933 /* LifeStytleViewController.m */; };
 		4AE81ADE169D7A8C00D36F3B /* AirplaneMode.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE81ACB169D7A8C00D36F3B /* AirplaneMode.png */; };
 		4AE81ADF169D7A8C00D36F3B /* AppStore.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE81ACC169D7A8C00D36F3B /* AppStore.png */; };
 		4AE81AE0169D7A8C00D36F3B /* Brightness.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE81ACD169D7A8C00D36F3B /* Brightness.png */; };
@@ -743,14 +743,6 @@
 		4A429DB7175D7EFD00F018CE /* loing_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loing_4.png; sourceTree = "<group>"; };
 		4A429DBD175DD1B900F018CE /* WorkOutInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOutInfo.h; sourceTree = "<group>"; };
 		4A429DBE175DD1B900F018CE /* WorkOutInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOutInfo.m; sourceTree = "<group>"; };
-		4A488E2A176A012F00A20EE7 /* ForumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForumViewController.h; path = ../ForumViewController.h; sourceTree = "<group>"; };
-		4A488E2B176A012F00A20EE7 /* ForumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForumViewController.m; path = ../ForumViewController.m; sourceTree = "<group>"; };
-		4A488E2E176A02D900A20EE7 /* WorkoutPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkoutPlanViewController.h; path = ../WorkoutPlanViewController.h; sourceTree = "<group>"; };
-		4A488E2F176A02D900A20EE7 /* WorkoutPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkoutPlanViewController.m; path = ../WorkoutPlanViewController.m; sourceTree = "<group>"; };
-		4A488E32176A03B100A20EE7 /* SupplementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplementViewController.h; sourceTree = "<group>"; };
-		4A488E33176A03B100A20EE7 /* SupplementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplementViewController.m; sourceTree = "<group>"; };
-		4A488E36176A056900A20EE7 /* LifeStytleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LifeStytleViewController.h; path = ../LifeStytleViewController.h; sourceTree = "<group>"; };
-		4A488E37176A056900A20EE7 /* LifeStytleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LifeStytleViewController.m; path = ../LifeStytleViewController.m; sourceTree = "<group>"; };
 		4A488E3A176A09AA00A20EE7 /* AJM_CommonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJM_CommonViewController.h; sourceTree = "<group>"; };
 		4A488E3B176A09AA00A20EE7 /* AJM_CommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJM_CommonViewController.m; sourceTree = "<group>"; };
 		4A498DAA1685500F0073E682 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
@@ -1388,6 +1380,14 @@
 		4AE394C115C2DD9C00D06C61 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = WoJianMei/AppDelegate.m; sourceTree = "<group>"; };
 		4AE394C415C2DD9C00D06C61 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		4AE394C715C2DD9C00D06C61 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		4AE52D9D177831A500F61933 /* WorkoutPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutPlanViewController.h; sourceTree = "<group>"; };
+		4AE52D9E177831A500F61933 /* WorkoutPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutPlanViewController.m; sourceTree = "<group>"; };
+		4AE52DA11778323400F61933 /* SupplementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplementViewController.h; sourceTree = "<group>"; };
+		4AE52DA21778323400F61933 /* SupplementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplementViewController.m; sourceTree = "<group>"; };
+		4AE52E261778327F00F61933 /* ForumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForumViewController.h; sourceTree = "<group>"; };
+		4AE52E271778327F00F61933 /* ForumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumViewController.m; sourceTree = "<group>"; };
+		4AE52E2A1778336E00F61933 /* LifeStytleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifeStytleViewController.h; sourceTree = "<group>"; };
+		4AE52E2B1778336E00F61933 /* LifeStytleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifeStytleViewController.m; sourceTree = "<group>"; };
 		4AE81ACB169D7A8C00D36F3B /* AirplaneMode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AirplaneMode.png; sourceTree = "<group>"; };
 		4AE81ACC169D7A8C00D36F3B /* AppStore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppStore.png; sourceTree = "<group>"; };
 		4AE81ACD169D7A8C00D36F3B /* Brightness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Brightness.png; sourceTree = "<group>"; };
@@ -1775,42 +1775,6 @@
 				4A429DB7175D7EFD00F018CE /* loing_4.png */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		4A488E2D176A013B00A20EE7 /* ForumViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4A488E2A176A012F00A20EE7 /* ForumViewController.h */,
-				4A488E2B176A012F00A20EE7 /* ForumViewController.m */,
-			);
-			name = ForumViewController;
-			sourceTree = "<group>";
-		};
-		4A488E31176A02E400A20EE7 /* WorkoutPlanViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4A488E2E176A02D900A20EE7 /* WorkoutPlanViewController.h */,
-				4A488E2F176A02D900A20EE7 /* WorkoutPlanViewController.m */,
-			);
-			name = WorkoutPlanViewController;
-			sourceTree = "<group>";
-		};
-		4A488E35176A03BA00A20EE7 /* SupplementViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4A488E32176A03B100A20EE7 /* SupplementViewController.h */,
-				4A488E33176A03B100A20EE7 /* SupplementViewController.m */,
-			);
-			name = SupplementViewController;
-			sourceTree = "<group>";
-		};
-		4A488E39176A057400A20EE7 /* LifeStytleViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4A488E36176A056900A20EE7 /* LifeStytleViewController.h */,
-				4A488E37176A056900A20EE7 /* LifeStytleViewController.m */,
-			);
-			name = LifeStytleViewController;
 			sourceTree = "<group>";
 		};
 		4A498D711685500F0073E682 /* Component-Service */ = {
@@ -3130,12 +3094,12 @@
 			children = (
 				4A488E3A176A09AA00A20EE7 /* AJM_CommonViewController.h */,
 				4A488E3B176A09AA00A20EE7 /* AJM_CommonViewController.m */,
-				4A488E39176A057400A20EE7 /* LifeStytleViewController */,
-				4A488E31176A02E400A20EE7 /* WorkoutPlanViewController */,
-				4A488E35176A03BA00A20EE7 /* SupplementViewController */,
+				4AE52E291778336E00F61933 /* lifeStytleViewController */,
+				4AE52E251778327F00F61933 /* ForumViewController */,
+				4AE52DA01778323400F61933 /* SupplementViewController */,
+				4AE52D9C177831A500F61933 /* Workout_planViewController */,
 				4ADCFE09169D614600A3E979 /* NuriViewController */,
 				4ADCFE10169D614600A3E979 /* WorkoutViewController */,
-				4A488E2D176A013B00A20EE7 /* ForumViewController */,
 				4ADCFDFA169D614600A3E979 /* MakeFriendsViewcontrller */,
 				4ADCFE04169D614600A3E979 /* MyselfViewContrller */,
 				4ADCFDFD169D614600A3E979 /* MoreViewController */,
@@ -3455,6 +3419,46 @@
 				4AE394BF15C2DD9C00D06C61 /* WoJianMei-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4AE52D9C177831A500F61933 /* Workout_planViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4AE52D9D177831A500F61933 /* WorkoutPlanViewController.h */,
+				4AE52D9E177831A500F61933 /* WorkoutPlanViewController.m */,
+			);
+			name = Workout_planViewController;
+			path = Controllers/Workout_planViewController;
+			sourceTree = "<group>";
+		};
+		4AE52DA01778323400F61933 /* SupplementViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4AE52DA11778323400F61933 /* SupplementViewController.h */,
+				4AE52DA21778323400F61933 /* SupplementViewController.m */,
+			);
+			name = SupplementViewController;
+			path = Controllers/SupplementViewController;
+			sourceTree = "<group>";
+		};
+		4AE52E251778327F00F61933 /* ForumViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4AE52E261778327F00F61933 /* ForumViewController.h */,
+				4AE52E271778327F00F61933 /* ForumViewController.m */,
+			);
+			name = ForumViewController;
+			path = Controllers/ForumViewController;
+			sourceTree = "<group>";
+		};
+		4AE52E291778336E00F61933 /* lifeStytleViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4AE52E2A1778336E00F61933 /* LifeStytleViewController.h */,
+				4AE52E2B1778336E00F61933 /* LifeStytleViewController.m */,
+			);
+			name = lifeStytleViewController;
+			path = Controllers/lifeStytleViewController;
 			sourceTree = "<group>";
 		};
 		4AE81ACA169D7A8C00D36F3B /* Images */ = {
@@ -4171,10 +4175,6 @@
 				C668C23E176600B9007CC7FF /* GTMNSString+HTML.m in Sources */,
 				C668C23F176600B9007CC7FF /* NSString+HTML.m in Sources */,
 				4A308C1F176975F0005DF997 /* FeedBackViewController.m in Sources */,
-				4A488E2C176A013000A20EE7 /* ForumViewController.m in Sources */,
-				4A488E30176A02D900A20EE7 /* WorkoutPlanViewController.m in Sources */,
-				4A488E34176A03B200A20EE7 /* SupplementViewController.m in Sources */,
-				4A488E38176A056900A20EE7 /* LifeStytleViewController.m in Sources */,
 				4A488E3C176A09AA00A20EE7 /* AJM_CommonViewController.m in Sources */,
 				C668C2C4176C63DC007CC7FF /* SinaWeibo.m in Sources */,
 				C668C2C5176C63DC007CC7FF /* SinaWeiboAuthorizeView.m in Sources */,
@@ -4206,6 +4206,10 @@
 				4A27AEC11777F303009978C5 /* AGSectionView.m in Sources */,
 				4A27AEC21777F303009978C5 /* AJMLeftSideViewController.m in Sources */,
 				4A27AEC31777F303009978C5 /* AJMViewDelegate.m in Sources */,
+				4AE52D9F177831A500F61933 /* WorkoutPlanViewController.m in Sources */,
+				4AE52DA31778323400F61933 /* SupplementViewController.m in Sources */,
+				4AE52E281778327F00F61933 /* ForumViewController.m in Sources */,
+				4AE52E2C1778336E00F61933 /* LifeStytleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
