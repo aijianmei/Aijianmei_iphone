@@ -64,6 +64,7 @@
 		4A27B12A1777F475009978C5 /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A27B05D1777F475009978C5 /* SinaWeiboConnection.framework */; };
 		4A27B12B1777F475009978C5 /* TencentWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A27B05E1777F475009978C5 /* TencentWeiboConnection.framework */; };
 		4A27B12C1777F475009978C5 /* WeChatConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A27B05F1777F475009978C5 /* WeChatConnection.framework */; };
+		4A27B1511777F7B3009978C5 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A27B1331777F475009978C5 /* libRestKit.a */; };
 		4A308C1F176975F0005DF997 /* FeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A308C1E176975F0005DF997 /* FeedBackViewController.m */; };
 		4A3AB807175060F20045729D /* WorkOutProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB806175060F10045729D /* WorkOutProcessViewController.m */; };
 		4A3AB80A1750631E0045729D /* WorkoutNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB8091750631E0045729D /* WorkoutNoteViewController.m */; };
@@ -1484,6 +1485,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A27B1511777F7B3009978C5 /* libRestKit.a in Frameworks */,
 				C6DB20271760CDE10060BD08 /* CoreImage.framework in Frameworks */,
 				C6DB20251760CDD40060BD08 /* ImageIO.framework in Frameworks */,
 				4A9449A916A94B5800A96815 /* Security.framework in Frameworks */,
