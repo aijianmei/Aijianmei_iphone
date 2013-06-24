@@ -11,8 +11,6 @@
 		4A071A23169D991F00F50D90 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A071A22169D991F00F50D90 /* MediaPlayer.framework */; };
 		4A27ADFF1777EED1009978C5 /* FitnessNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27ADFD1777EED1009978C5 /* FitnessNetworkRequest.m */; };
 		4A27AE001777EED1009978C5 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 4A27ADFE1777EED1009978C5 /* README */; };
-		4A27AE231777EF7A009978C5 /* ArticleService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AE201777EF7A009978C5 /* ArticleService.m */; };
-		4A27AE241777EF7A009978C5 /* UserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AE221777EF7A009978C5 /* UserService.m */; };
 		4A27AE6C1777F006009978C5 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AE511777F006009978C5 /* Article.m */; };
 		4A27AE6D1777F006009978C5 /* ArticleDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AE531777F006009978C5 /* ArticleDetail.m */; };
 		4A27AE6E1777F006009978C5 /* ArticleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AE551777F006009978C5 /* ArticleInfo.m */; };
@@ -557,6 +555,8 @@
 		C6DB20251760CDD40060BD08 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6DB20241760CDD40060BD08 /* ImageIO.framework */; };
 		C6DB20271760CDE10060BD08 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6DB20261760CDE00060BD08 /* CoreImage.framework */; };
 		C6DB202D1760D8E40060BD08 /* WorkoutDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DB202C1760D8E40060BD08 /* WorkoutDetailViewController.m */; };
+		C6E027CE177862E100A7BA90 /* ArticleService.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E027CB177862E100A7BA90 /* ArticleService.m */; };
+		C6E027CF177862E100A7BA90 /* UserService.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E027CD177862E100A7BA90 /* UserService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -604,10 +604,6 @@
 		4A27ADFC1777EED1009978C5 /* FitnessNetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitnessNetworkRequest.h; sourceTree = "<group>"; };
 		4A27ADFD1777EED1009978C5 /* FitnessNetworkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitnessNetworkRequest.m; sourceTree = "<group>"; };
 		4A27ADFE1777EED1009978C5 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		4A27AE1F1777EF7A009978C5 /* ArticleService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleService.h; sourceTree = "<group>"; };
-		4A27AE201777EF7A009978C5 /* ArticleService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleService.m; sourceTree = "<group>"; };
-		4A27AE211777EF7A009978C5 /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserService.h; sourceTree = "<group>"; };
-		4A27AE221777EF7A009978C5 /* UserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserService.m; sourceTree = "<group>"; };
 		4A27AE501777F006009978C5 /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Article.h; sourceTree = "<group>"; };
 		4A27AE511777F006009978C5 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
 		4A27AE521777F006009978C5 /* ArticleDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleDetail.h; sourceTree = "<group>"; };
@@ -1478,6 +1474,10 @@
 		C6DB20261760CDE00060BD08 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		C6DB202B1760D8E40060BD08 /* WorkoutDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailViewController.h; sourceTree = "<group>"; };
 		C6DB202C1760D8E40060BD08 /* WorkoutDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutDetailViewController.m; sourceTree = "<group>"; };
+		C6E027CA177862E100A7BA90 /* ArticleService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleService.h; sourceTree = "<group>"; };
+		C6E027CB177862E100A7BA90 /* ArticleService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleService.m; sourceTree = "<group>"; };
+		C6E027CC177862E100A7BA90 /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserService.h; sourceTree = "<group>"; };
+		C6E027CD177862E100A7BA90 /* UserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1534,10 +1534,10 @@
 		4A27AE1E1777EF7A009978C5 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				4A27AE1F1777EF7A009978C5 /* ArticleService.h */,
-				4A27AE201777EF7A009978C5 /* ArticleService.m */,
-				4A27AE211777EF7A009978C5 /* UserService.h */,
-				4A27AE221777EF7A009978C5 /* UserService.m */,
+				C6E027CA177862E100A7BA90 /* ArticleService.h */,
+				C6E027CB177862E100A7BA90 /* ArticleService.m */,
+				C6E027CC177862E100A7BA90 /* UserService.h */,
+				C6E027CD177862E100A7BA90 /* UserService.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -4178,8 +4178,6 @@
 				C668C2C6176C63DC007CC7FF /* SinaWeiboRequest.m in Sources */,
 				C6630B9A176D3CC400A5ACBA /* JSONKit.m in Sources */,
 				4A27ADFF1777EED1009978C5 /* FitnessNetworkRequest.m in Sources */,
-				4A27AE231777EF7A009978C5 /* ArticleService.m in Sources */,
-				4A27AE241777EF7A009978C5 /* UserService.m in Sources */,
 				4A27AE6C1777F006009978C5 /* Article.m in Sources */,
 				4A27AE6D1777F006009978C5 /* ArticleDetail.m in Sources */,
 				4A27AE6E1777F006009978C5 /* ArticleInfo.m in Sources */,
@@ -4209,6 +4207,8 @@
 				4AE52E2C1778336E00F61933 /* LifeStytleViewController.m in Sources */,
 				4AE52E3E177834A500F61933 /* MyselfTableViewCell.m in Sources */,
 				4AE52E41177834BB00F61933 /* AJM_CommonViewController.m in Sources */,
+				C6E027CE177862E100A7BA90 /* ArticleService.m in Sources */,
+				C6E027CF177862E100A7BA90 /* UserService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
