@@ -23,6 +23,7 @@
     NSString *_snsId;
     NSString *_userType;
     NSString *_profileImageUrl;
+    
 }
 
 @property (retain, nonatomic)  UIImage *avatarImage;
@@ -37,6 +38,7 @@
 @property (retain, nonatomic)  NSString *snsId;
 @property (retain, nonatomic)  NSString *userType;
 @property (retain, nonatomic)  NSString *profileImageUrl;
+@property (nonatomic, assign) NSNumber *loginStatus;
 
 
 @end

@@ -26,6 +26,8 @@
     user.name = nickName;
     user.profileImageUrl = profileImageUrl;
     user.gender = gender;
+    user.loginStatus = [NSNumber numberWithBool:YES];
+
     return user;
 }
 

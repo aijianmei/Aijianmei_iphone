@@ -70,4 +70,9 @@
     [super dealloc];
 }
 
+- (BOOL)isLogin
+{
+    return [self.loginStatus boolValue];
+}
+
 @end
