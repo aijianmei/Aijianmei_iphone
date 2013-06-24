@@ -375,8 +375,6 @@
 		4A9449A516A94B0800A96815 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9449A416A94B0800A96815 /* CoreText.framework */; };
 		4A9449A716A94B2B00A96815 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9449A616A94B2B00A96815 /* libicucore.dylib */; };
 		4A9449A916A94B5800A96815 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9449A816A94B5700A96815 /* Security.framework */; };
-		4A965CC9168F6AE400FF34CE /* README in Resources */ = {isa = PBXBuildFile; fileRef = 4A965CC4168F6AE400FF34CE /* README */; };
-		4A965CD0168F6AF600FF34CE /* FitnessNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A965CCE168F6AF600FF34CE /* FitnessNetworkRequest.m */; };
 		4A965CD4168F6B9100FF34CE /* MyselfTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A965CD3168F6B9100FF34CE /* MyselfTableViewCell.m */; };
 		4AA7ECE5169F0F78003E8949 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA7ECE4169F0F78003E8949 /* SMPageControl.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4AA7ECE9169F107B003E8949 /* pageDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA7ECE7169F107B003E8949 /* pageDot@2x.png */; };
@@ -716,7 +714,6 @@
 		4A498DB21685500F0073E682 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		4A498DB31685500F0073E682 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
 		4A498DB41685500F0073E682 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
-		4A498EDC168550D10073E682 /* FitnessNetworkConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitnessNetworkConstants.h; sourceTree = "<group>"; };
 		4A498F9E168553A20073E682 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		4A498F9F168553A20073E682 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		4A498FA0168553A20073E682 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -1230,9 +1227,6 @@
 		4A9449A416A94B0800A96815 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		4A9449A616A94B2B00A96815 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		4A9449A816A94B5700A96815 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		4A965CC4168F6AE400FF34CE /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		4A965CCE168F6AF600FF34CE /* FitnessNetworkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitnessNetworkRequest.m; sourceTree = "<group>"; };
-		4A965CD1168F6B7E00FF34CE /* FitnessNetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitnessNetworkRequest.h; sourceTree = "<group>"; };
 		4A965CD2168F6B9100FF34CE /* MyselfTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyselfTableViewCell.h; path = ../../MyselfTableViewCell.h; sourceTree = "<group>"; };
 		4A965CD3168F6B9100FF34CE /* MyselfTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyselfTableViewCell.m; path = ../../MyselfTableViewCell.m; sourceTree = "<group>"; };
 		4AA7ECE3169F0F78003E8949 /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPageControl.h; sourceTree = "<group>"; };
@@ -1746,17 +1740,6 @@
 				4A498DB21685500F0073E682 /* zip.h */,
 			);
 			path = minizip;
-			sourceTree = "<group>";
-		};
-		4A498EDA1685502A0073E682 /* NetWork */ = {
-			isa = PBXGroup;
-			children = (
-				4A498EDC168550D10073E682 /* FitnessNetworkConstants.h */,
-				4A965CD1168F6B7E00FF34CE /* FitnessNetworkRequest.h */,
-				4A965CCE168F6AF600FF34CE /* FitnessNetworkRequest.m */,
-				4A965CC4168F6AE400FF34CE /* README */,
-			);
-			name = NetWork;
 			sourceTree = "<group>";
 		};
 		4A498F9B168553A20073E682 /* Core */ = {
@@ -2889,13 +2872,6 @@
 			name = model;
 			sourceTree = "<group>";
 		};
-		4A58805115C52B81005F8415 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
 		4A58805215C52B89005F8415 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -3442,9 +3418,7 @@
 			children = (
 				4A58805215C52B89005F8415 /* Controllers */,
 				4A58805015C52B76005F8415 /* model */,
-				4A498EDA1685502A0073E682 /* NetWork */,
 				4A4992D0168589900073E682 /* Service */,
-				4A58805115C52B81005F8415 /* View */,
 				4ADCFE56169D62C300A3E979 /* Resources */,
 				4AE394B815C2DD9C00D06C61 /* Supporting Files */,
 			);
@@ -3722,7 +3696,6 @@
 				4A49926C168553A30073E682 /* fireworks1.png in Resources */,
 				4A49926D168553A30073E682 /* fireworks2.png in Resources */,
 				4A49926E168553A30073E682 /* snow.png in Resources */,
-				4A965CC9168F6AE400FF34CE /* README in Resources */,
 				4ADCFEDF169D62C400A3E979 /* all_page_bg2@2x.jpg in Resources */,
 				4ADCFEE6169D62C400A3E979 /* book_bg@2x.png in Resources */,
 				4ADCFEE7169D62C400A3E979 /* bookself_button@2x.png in Resources */,
@@ -4133,7 +4106,6 @@
 				4A4992B2168553A30073E682 /* UIViewUtils.m in Sources */,
 				4A4992B3168553A30073E682 /* UIWebViewUtil.m in Sources */,
 				4A4992D3168589E40073E682 /* UserService.m in Sources */,
-				4A965CD0168F6AF600FF34CE /* FitnessNetworkRequest.m in Sources */,
 				4A965CD4168F6B9100FF34CE /* MyselfTableViewCell.m in Sources */,
 				4AD8E031169BD46B00EE04F9 /* User.m in Sources */,
 				4ADCFE19169D614600A3E979 /* MakeFriendsViewController.m in Sources */,
