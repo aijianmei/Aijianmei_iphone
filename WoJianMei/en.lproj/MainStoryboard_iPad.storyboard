@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="wf0-LB-3WH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="wf0-LB-3WH">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
@@ -158,33 +158,6 @@
         <image name="10.png" width="200" height="130"/>
         <image name="second" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="ArticleCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ArticleCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="commentLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="imgView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="releasedTimeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MyselfViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyselfViewController.h"/>
-        </class>
-        <class className="PPTableViewController" superclassName="PPViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dataTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="PPViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPViewController.h"/>
-        </class>
-        <class className="WorkoutViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

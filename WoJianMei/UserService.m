@@ -12,22 +12,26 @@
 #import "FitnessNetworkRequest.h"
 #import "JSON.h"
 #import "User.h"
-#import "Status.h"
+#import "Result.h"
 
 @implementation UserService
 
 
 static UserService* _defaultUserService = nil;
 
+- (void)dealloc
+{
+    [_user release];
+    [super dealloc];
+}
 
-+ (UserService*)defaultService{
-
-    
-        if (_defaultUserService == nil) {
++ (UserService*)defaultService
+{
+    if (_defaultUserService == nil) {
             _defaultUserService = [[UserService alloc] init];
-        }
-        return _defaultUserService;
     }
+    return _defaultUserService;
+}
 
 
 - (void)queryVersion:(id<UserServiceDelegate>)delegate{
@@ -82,27 +86,48 @@ static UserService* _defaultUserService = nil;
     
 }
 
-- (void)initStatusMap
+- (void)initResultMap
 {
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    RKObjectMapping *articleMapping =[RKObjectMapping mappingForClass:[User class]];
-    [articleMapping mapKeyPathsToAttributes: @"status", @"_status", @"uid", @"_uid", nil];
-    [objectManager.mappingProvider setMapping:articleMapping forKeyPath:@""];
+    RKObjectMapping *resultMapping =[RKObjectMapping mappingForClass:[Result class]];
+    [resultMapping mapKeyPathsToAttributes: @"errorCode", @"errorCode", @"uid", @"_uid", nil];
+    [objectManager.mappingProvider setMapping:resultMapping forKeyPath:@""];
 
 }
 
-- (void)registerUserWithSinaUserInfo:(NSDictionary*)userInfo
-                            delegate:(id<RKObjectLoaderDelegate>)delegate
+- (void)registerUserWithUsername:(NSString*)name
+                           email:(NSString*)email
+                        password:(NSString*)password
+                        usertype:(NSString*)usertype
+                           snsId:(NSString*)snsId
+                 profileImageUrl:(NSString*)profileImageUrl
+                             sex:(NSString*)sex
+                             age:(NSString*)age
+                     body_weight:(NSString*)weight
+                          height:(NSString*)height
+                         keyword:(NSString*)keyword
+                        province:(NSString*)province
+                            city:(NSString*)city
+                        delegate:(id<RKObjectLoaderDelegate>)delegate
+
 {
-    NSString* loginId = [userInfo objectForKey:@"sina_userid"];
-        
+    [self initResultMap];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        NSMutableDictionary *queryParams = [NSMutableDictionary dictionaryWithDictionary:userInfo];
+        NSMutableDictionary *queryParams = [[NSMutableDictionary alloc] init];
         [queryParams setObject:@"aijianmei" forKey:@"aucode"];
         [queryParams setObject:@"au_register" forKey:@"auact"];
-        [queryParams setObject:@"sina" forKey:@"usertype"];
-
+        [queryParams setObject:usertype forKey:@"usertype"];
+        [queryParams setObject:snsId forKey:@"snsId"];
+        [queryParams setObject:name forKey:@"username"];
+        [queryParams setObject:email forKey:@"email"];
+        [queryParams setObject:password forKey:@"userpassword"];
+        [queryParams setObject:profileImageUrl forKey:@"profileImageUrl"];
+        [queryParams setObject:sex forKey:@"sex"];
+        [queryParams setObject:weight forKey:@"body_weight"];
+        [queryParams setObject:height forKey:@"height"];
+        [queryParams setObject:keyword forKey:@"keyword"];
+        [queryParams setObject:province forKey:@"province"];
+        [queryParams setObject:city forKey:@"city"];
         
         RKObjectManager *objectManager = [RKObjectManager sharedManager];
         RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
@@ -117,28 +142,82 @@ static UserService* _defaultUserService = nil;
     });
 }
 
-- (void)getUserInfo:(NSString*)uid
+
+- (void)registerUserWithSinaUserInfo:(NSDictionary*)userInfo
+                            delegate:(id<RKObjectLoaderDelegate>)delegate
+{
+    [self initResultMap];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSMutableDictionary *queryParams = [NSMutableDictionary dictionaryWithDictionary:userInfo];
+        [queryParams setObject:@"aijianmei" forKey:@"aucode"];
+        [queryParams setObject:@"au_register" forKey:@"auact"];
+        [queryParams setObject:@"sina" forKey:@"usertype"];
+        
+        RKObjectManager *objectManager = [RKObjectManager sharedManager];
+        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
+        
+        NSLog(@"url: %@", [url absoluteString]);
+        NSLog(@"resourcePath: %@", [url resourcePath]);
+        NSLog(@"query: %@", [url query]);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
+        });
+    });
+}
+
+- (void)fetchSinaUserInfo:(NSString*)uid
                     delegate:(id<SinaWeiboRequestDelegate>)delegate
 {
     _sinaweiboManager = [SinaWeiboManager sharedManager];
     [_sinaweiboManager.sinaweibo requestWithURL:@"users/show.json"
                                          params:[NSMutableDictionary dictionaryWithObjectsAndKeys:
                                                  uid, @"uid", nil]
-                                     httpMethod:@"POST"
+                                     httpMethod:@"GET"
                                        delegate:delegate];
 }
 
+- (void)storeUserInfo:(NSDictionary*)userInfo
+{
+    NSLog(@"Store Sina UserInfo to Local");
+    NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:userInfo];
+    [[NSUserDefaults standardUserDefaults] setObject:userData forKey:@"SinaWeiboUserInfo"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSDictionary*)getUserInfo
+{
+    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:@"SinaWeiboUserInfo"];
+    NSDictionary *userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+    return userInfo;
+}
+
+
 - (BOOL)hasBindAccount
 {
-    if ([self hasbindSina])
+    if ([self hasbindSina] || [self hasBindEmail])
         return YES;
     else
         return NO;
 }
 
+- (BOOL)hasBindEmail
+{
+    if ([_user.email length] > 0){
+        return YES;
+    }
+    else{
+        return NO;
+    }
+}
+
 - (BOOL)hasbindSina
 {
-    return NO;
+    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:@"SinaWeiboUserInfo"];
+    NSDictionary *userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+    NSString *uid = [userInfo objectForKey:@"id"];
+    return (uid == nil ? NO : YES);
 }
 
 

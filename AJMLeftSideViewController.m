@@ -18,14 +18,9 @@
 #import "ForumViewController.h"
 #import "LifeStytleViewController.h"
 #import "MakeFriendsViewController.h"
-
-
+#import "LoginViewController.h"
 #import "SVWebViewController.h"
-
 #import <ShareSDK/ShareSDK.h>
-
-
-
 
 
 #define TABLE_CELL @"tableCell"
@@ -261,11 +256,19 @@
             {
                 case 0:
                 {
-                    ///锻炼
+                    ///我
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
-                        myselfVC.title = @"锻炼";
-                        _navigationController = [[UINavigationController alloc] initWithRootViewController:myselfVC] ;
+                        
+                        if (![[UserService defaultService] hasBindAccount]) {
+                            LoginViewController *loginViewController = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+                            loginViewController.title = @"登陆";
+                            self.navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController] ;
+                            
+                        } else {
+                            MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
+                            myselfVC.title = @"我";
+                            self.navigationController = [[UINavigationController alloc] initWithRootViewController:myselfVC];
+                        }
                         self.viewDeckController.centerController = _navigationController;
                         self.view.userInteractionEnabled = YES;
                         

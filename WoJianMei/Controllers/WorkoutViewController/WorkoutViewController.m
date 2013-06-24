@@ -24,8 +24,6 @@
 #define NUMBER_OF_VISIBLE_ITEMS 18
 #define ITEM_SPACING 220
 
-
-
 #define SCROLL_VIEW_TAG 20120913
 #define More_BUTTON_TAG 20130607
 
@@ -36,16 +34,13 @@
 @implementation WorkoutViewController
 @synthesize myHeaderView =_myHeaderView;
 @synthesize  carousel =_carousel;
-@synthesize spacePageControl =_spacePageControl;
+//@synthesize spacePageControl =_spacePageControl;
 @synthesize buttonScrollView =_buttonScrollView;
-
-
-
+@synthesize currentButton = _currentButton;
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)dealloc
@@ -53,7 +48,7 @@
     _carousel.delegate = nil;
     _carousel.dataSource = nil;
     [_carousel release];
-    [_spacePageControl release];
+//    [_spacePageControl release];
     [_buttonScrollView release];
     [_myHeaderView release];
     [super dealloc];
@@ -135,7 +130,7 @@
     
    ////Configure The ButtonScrollView
     NSMutableArray *buttonArrays  =[[NSMutableArray alloc]init];
-    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最新",@"锻炼方法",@"基础知识",@"特定锻炼计划",@"锻炼视频",@"瘦身",@"健美操",@"其它", nil];
+    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最新",@"锻炼方法",@"基础知识",@"锻炼视频", nil];
     
     for (NSString *buttonTitle in buttonTitleArray) {
         
@@ -164,7 +159,7 @@
     
     [[self.view viewWithTag:SCROLL_VIEW_TAG] removeFromSuperview];
     self.buttonScrollView.tag = SCROLL_VIEW_TAG;
-    [_buttonScrollView setFrame:CGRectMake(0,170, 260, 30)];
+    [_buttonScrollView setFrame:CGRectMake(0,150, 260, 30)];
     [_buttonScrollView setShowsHorizontalScrollIndicator:NO];
     
     [_buttonScrollView setContentSize:CGSizeMake(([[_buttonScrollView subviews] count]) * buttonWidth * 2.6, buttonHeight)];
@@ -173,7 +168,7 @@
     
     
     
-    UIButton *moreButotn = [[UIButton alloc]initWithFrame:CGRectMake(270, 170, 40, 30)];
+    UIButton *moreButotn = [[UIButton alloc]initWithFrame:CGRectMake(270, 150, 40, 30)];
     [moreButotn.titleLabel setFont:[UIFont systemFontOfSize:12]];
     
     [moreButotn setBackgroundImage:[UIImage imageNamed:@"button_Image.png"] forState:UIControlStateNormal];
@@ -186,9 +181,6 @@
     [_myHeaderView addSubview:moreButotn];
     [moreButotn release];
     
-    
-    
-
 
     //configure carousel
     
@@ -201,83 +193,90 @@
     [self.carousel setCenterItemWhenSelected:YES];
     
     [self.myHeaderView addSubview:_carousel];
-       
     
-
+    
     ////The page controll
-    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(10, 137, 300, 20)];
-    [_spacePageControl setBackgroundColor:[UIColor clearColor]];
-    _spacePageControl.numberOfPages = 13;
-    [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
-    [_spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot"]];
-    [_spacePageControl addTarget:self action:@selector(pageControl:) forControlEvents:UIControlEventValueChanged];
-    [self.myHeaderView addSubview:_spacePageControl];
+//    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(10, 137, 300, 20)];
+//    [_spacePageControl setBackgroundColor:[UIColor clearColor]];
+//    _spacePageControl.numberOfPages = 13;
+//    [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
+//    [_spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot"]];
+//    [_spacePageControl addTarget:self action:@selector(pageControl:) forControlEvents:UIControlEventValueChanged];
+//    [self.myHeaderView addSubview:_spacePageControl];
+    
+    
+    
     
     [self.dataTableView setTableHeaderView:self.myHeaderView];    
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
 }
 
+
+-(void)filterTheConentsByButton{
+
+}
+
 #pragma mark-- ButtonClicked Method
+-(void)buttonClicked:(UIButton *)sender
 
-
--(void)buttonClicked:(UIButton *)sender {
-    if ([[sender currentTitle] isEqualToString:@"最新"]) {
-        PPDebug(@"I click button :%@",[sender currentTitle]);
-
-    }
-    if ([[sender currentTitle] isEqualToString:@"锻炼方法"]) {
-        PPDebug(@"I click button :%@",[sender currentTitle]);
-    }
-    if ([[sender currentTitle] isEqualToString:@"基础知识"]) {
-        PPDebug(@"I click button :%@",[sender currentTitle]);        
-    }
-    if ([[sender currentTitle] isEqualToString:@"特定锻炼计划"]) {
-        PPDebug(@"I click button :%@",[sender currentTitle]);
-    }
-    if ([[sender currentTitle] isEqualToString:@"..."]) {
-        PPDebug(@"I click button :%@",[sender currentTitle]);        
-    }
-    if ([sender tag] == More_BUTTON_TAG) {
-        PPDebug(@"I click button More Button");        
-    }
-}
-
-#pragma mark--
-#pragma mark-- PageControl
-
-- (void)pageControl:(id)sender
 {
-	NSLog(@"Current Page (UIPageControl) : %i", _spacePageControl.currentPage);
-}
-
-- (void)spacePageControl:(SMPageControl *)sender
-{
-	NSLog(@"Current Page (SMPageControl): %i", sender.currentPage);
-}
-
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+    self.currentButton = sender;
     
-    [self initMoreUI];
-    [self initUI];
-    
-//    [self initArticles];
-//     self.dataList = [[ArticleManager defaultManager] articleList];
-//    [self performSegueWithIdentifier:@"LoginSegue" sender:self];
-
-    ////开始下载文章    
+    //开始下载文章
     NSString *aucode= @"aijianmei";
     NSString *auact = @"au_getinformationlist";
     NSString *listtype = @"2";
     NSString *category = @"train";
     NSString *type = @"hot";
-    NSString *page = @"2";
+    NSString *page = @"1";
     NSString *pnums = @"10";
     NSString *cateid = @"0";
     NSString *uid = @"265";
+    
+    if ([[sender currentTitle] isEqualToString:@"最新"]) {
+        
+        category = @"train";
+        type = @"new";
+        page = @"1";
+        pnums = @"19";
+        cateid = @"0";
+        uid = @"265";
+    
+    }
+    if ([[sender currentTitle] isEqualToString:@"锻炼方法"]) {
+        
+        category = @"train";
+        type = @"new";
+        page = @"1";
+        pnums = @"19";
+        cateid = @"1";
+        uid = @"265";
+
+          }
+    if ([[sender currentTitle] isEqualToString:@"基础知识"]) {
+        
+        category = @"train";
+        type = @"new";
+        page = @"1";
+        pnums = @"19";
+        cateid = @"2";
+        uid = @"265";
+    }
+    if ([[sender currentTitle] isEqualToString:@"锻炼视频"]) {
+        
+        category = @"train";
+        type = @"new";
+        page = @"1";
+        pnums = @"19";
+        cateid = @"3";
+        uid = @"265";
+    
+    }
+    if ([sender tag] == More_BUTTON_TAG) {
+        
+
+    }
     
     [[ArticleService sharedService] findArticleWithAucode:aucode
                                                     auact:auact
@@ -288,16 +287,44 @@
                                                     pnums:pnums
                                                    cateid:cateid
                                                       uid:uid
-                                                delegate:self];
+                                                 delegate:self];
     
 }
 
+//#pragma mark--
+//#pragma mark-- PageControl
+//
+//- (void)pageControl:(id)sender
+//{
+//	NSLog(@"Current Page (UIPageControl) : %i", _spacePageControl.currentPage);
+//}
+//
+//- (void)spacePageControl:(SMPageControl *)sender
+//{
+//	NSLog(@"Current Page (SMPageControl): %i", sender.currentPage);
+//}
+//
 
--(void)viewDidUnload{
+#pragma Pull Refresh Delegate
+- (void) reloadTableViewDataSource
+{
+    [self buttonClicked:_currentButton];
+}
 
-    [super viewDidUnload];
-    self.carousel = nil;
-
+- (void)viewDidLoad
+{    
+    [self initMoreUI];
+    [self initUI];
+    self.supportRefreshHeader = YES;
+    
+//    [self initArticles];
+//     self.dataList = [[ArticleManager defaultManager] articleList];    
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"最新" forState:UIControlStateNormal];
+    [self buttonClicked:button];
+    
+    [super viewDidLoad];
 }
 
 #pragma mark --
@@ -426,7 +453,7 @@
 
     PPDebug(@"%d",[carousel currentItemIndex]);
     
-    [self.spacePageControl setCurrentPage:[carousel currentItemIndex]];
+//    [self.spacePageControl setCurrentPage:[carousel currentItemIndex]];
 }
 
 #pragma mark -
@@ -450,7 +477,7 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     NSLog(@"***Load objects count: %d", [objects count]);
-    //在这里就可以在controller刷新数据
+	[self dataSourceDidFinishLoadingNewData];
     
     self.dataList = objects;
     [self hideActivity];

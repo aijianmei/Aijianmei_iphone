@@ -16,6 +16,7 @@
 #import "User.h"
 #import <CoreText/CoreText.h>
 #import "WorkOutProcessViewController.h"
+#import "UserService.h"
 
 #define USER                          @"user"
 #define USER_NAME                     @"screen_name"
@@ -86,9 +87,7 @@
     NSString *userName = [self.user name];
     [self.userNameLabel setText:userName];
     
-    NSString *userGender = [self.user gender];
-    
-    
+    NSString *userGender = [self.user gender];    
     if ([userGender  isEqualToString:@"m"]) {
         
         [self.userGenderLabel setText:@"男"];
@@ -118,9 +117,6 @@
     
     [self setNavigationRightButton:@"设置" imageName:@"settings.png" action:@selector(clickSettingsButton:)];
     [self setNavigationLeftButton:@"智能设备" imageName:@"settings.png" action:@selector(clickSettingsButton:)];
-    
-
-
     
      //////// Set the headerView of the buttons  
     
@@ -212,33 +208,26 @@
     
 }
 
+- (void)setUserInfo
+{
+    self.user = [UserService defaultService].user;
+    
+    //Demo datas
+    self.user.description = @"我非常喜欢健身运动！！！如果你都喜欢，你就告诉我啦！哈哈哈哈哈哈";
+    self.user.avatarBackGroundImage = [UIImage imageNamed:@"profile_backgroud.png"];
+    self.user.avatarImage = [UIImage imageNamed:@"user_image.png"];    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
+    NSLog(@"################");
     [self initUI];
-    /* prepare to use our own on-disk cache */
-   
-    
     self.dataList = [NSArray arrayWithObjects:@"性别",@"年龄",@"身高",@"体重",@"BMI", nil];
-    
-    /////Demo datas
-    User *user1 = [[User alloc]init];
-    user1.description = @"我非常喜欢健身运动！！！如果你都喜欢，你就告诉我啦！哈哈哈哈哈哈";
-    user1.name = @"TomCallon";
-    user1.gender = @"m";
-    user1.avatarBackGroundImage = [UIImage imageNamed:@"profile_backgroud.png"];
-    user1.avatarImage = [UIImage imageNamed:@"user_image.png"];
-    
-    
-    self.user = user1;
-    [user1 release];
-    
+    [self setUserInfo];
     [self upgradeUI];
-    
-    
-    
+        
 }
 
 #pragma mark ----------------------------------------————————————————

@@ -288,7 +288,7 @@ typedef enum {
         }
         
     }else {
-        cell.textLabel.text = @"退出应用";
+        cell.textLabel.text = @"登出";
         imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"singleCellBackgroud.png"]];
     }
     

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
-#import "SMPageControl.h"
+//#import "SMPageControl.h"
 #import "iCarousel.h"
 #import <RestKit/RestKit.h>
 
@@ -20,18 +20,18 @@
 {
     UIView                      *_myHeaderView;
     iCarousel                   *_carousel;
-    SMPageControl               *_spacePageControl;
+//    SMPageControl               *_spacePageControl;
     UIScrollView *_buttonScrollView;
-    
     AppDelegate *_appDelegate;
-    
-    
 }
 
 @property (nonatomic, retain) UIScrollView *buttonScrollView;
 @property (nonatomic, retain) UIView *myHeaderView;
 @property (nonatomic, retain) iCarousel *carousel;
-@property (nonatomic, retain) SMPageControl *spacePageControl;
+@property (nonatomic, retain) UIButton *currentButton;
+//@property (nonatomic, retain) SMPageControl *spacePageControl;
+
+-(void)buttonClicked:(UIButton *)sender;
 
 
 @end

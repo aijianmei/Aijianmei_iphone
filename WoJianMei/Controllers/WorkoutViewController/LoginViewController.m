@@ -8,6 +8,15 @@
 
 #import "LoginViewController.h"
 #import "SinaWeiboManager.h"
+#import "UserService.h"
+#import "SignUpViewController.h"
+#import "AppDelegate.h"
+#import "UserManager.h"
+#import "User.h"
+
+#define kAppKey @"3622140445"
+#define kAppSecret @"f94d063d06365972215c62acaadf95c3"
+#define KAppRedirectURI @"http://aijianmei.com"
 
 @interface LoginViewController ()
 
@@ -71,11 +80,11 @@
 - (IBAction)clickSinaWeiboButton:(UIButton *)sender {
     
     _sinaweiboManager = [SinaWeiboManager sharedManager];
-    [_sinaweiboManager createSinaweiboWithAppKey:@"239725454" appSecret:@"b383e7a0201c154e290cf9b839b95998" appRedirectURI:@"http://aijianmei.com" delegate:self];
+    [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
     
     if (![_sinaweiboManager.sinaweibo isAuthValid]) {
-        [_sinaweiboManager.sinaweibo logInInView:self.view];
-    }    
+        [_sinaweiboManager.sinaweibo logIn];
+    }
 }
 
 - (IBAction)clickQQShareButton:(UIButton *)sender {
@@ -86,9 +95,11 @@
 #pragma SinaWeiboDelegate methods
 - (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
 {
+    [self.navigationController popViewControllerAnimated:YES];
     NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
-    
     [_sinaweiboManager storeAuthData];
+    //微博登陆后获取用户数据
+    [[UserService defaultService] fetchSinaUserInfo:sinaweibo.userID delegate:self];
 }
 
 - (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
@@ -113,5 +124,26 @@
     [_sinaweiboManager removeAuthData];
 }
 
+#pragma mark - SinaWeiboRequest Delegate
+- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
+{
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        NSLog(@"******%@",[error description]);
+    }
+}
 
+- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
+{
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        [[UserService defaultService] storeUserInfo:result];        
+        if (![[UserService defaultService] hasBindEmail]) {
+            [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
+       } else{
+           [self performSegueWithIdentifier:@"returnMyselfSegue" sender:self];
+        }
+    }
+}
+    
 @end
