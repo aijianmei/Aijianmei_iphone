@@ -16,7 +16,8 @@
 @synthesize description=_description;
 @synthesize gender =_gender;
 @synthesize uid = _uid;
-@synthesize snsId = _snsId;
+@synthesize sinaUserId = _sinaUserId;
+@synthesize qqUserId = _qqUserId;
 @synthesize userType = _userType;
 @synthesize email = _email;
 
@@ -67,6 +68,9 @@
     [_avatarBackGroundImage release];
     [_gender release];
     [_email release];
+    [_sinaUserId release];
+    [_qqUserId release];
+    [_uid release];
     [super dealloc];
 }
 

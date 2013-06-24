@@ -12,10 +12,11 @@
 @interface UserManager : NSObject
 
 + (User*)createUserWithUserId:(NSString *)userId
-                       snsId:(NSString *)snsId
-                    userType:(NSString *)userType
-                        name:(NSString *)nickName
-                 profileImageUrl:(NSString *)avatar
-                      gender:(NSString*)gender;
+                   sinaUserId:(NSString *)sinaUserId
+                     qqUserId:(NSString *)qqUserId
+                     userType:(NSString *)userType
+                         name:(NSString *)name
+              profileImageUrl:(NSString *)profileImageUrl
+                       gender:(NSString *)gender;
 
 @end

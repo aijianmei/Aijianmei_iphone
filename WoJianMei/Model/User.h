@@ -18,9 +18,9 @@
     NSString *_description;
     NSString *_gender;
     NSString *_sinaUserId;
+    NSString *_qqUserId;
     NSString *_email;
     NSString *_uid;
-    NSString *_snsId;
     NSString *_userType;
     NSString *_profileImageUrl;
     
@@ -35,7 +35,7 @@
 @property (retain, nonatomic)  NSString *sinaUserId;
 @property (retain, nonatomic)  NSString *email;
 @property (retain, nonatomic)  NSString *uid;
-@property (retain, nonatomic)  NSString *snsId;
+@property (retain, nonatomic)  NSString *qqUserId;
 @property (retain, nonatomic)  NSString *userType;
 @property (retain, nonatomic)  NSString *profileImageUrl;
 @property (nonatomic, assign) NSNumber *loginStatus;

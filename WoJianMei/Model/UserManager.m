@@ -13,17 +13,19 @@
 
 
 + (User*)createUserWithUserId:(NSString *)userId
-                     snsId:(NSString *)snsId
-                    userType:(NSString*)userType
-                        name:(NSString *)nickName
-                      profileImageUrl:(NSString *)profileImageUrl
-                      gender:(NSString*)gender
+                   sinaUserId:(NSString *)sinaUserId
+                     qqUserId:(NSString *)qqUserId
+                     userType:(NSString *)userType
+                         name:(NSString *)name
+              profileImageUrl:(NSString *)profileImageUrl
+                       gender:(NSString *)gender
 {
     User *user = [[[User alloc] init] autorelease];
     user.uid = userId;
-    user.snsId = snsId;
+    user.sinaUserId = sinaUserId;
+    user.qqUserId = qqUserId;
     user.userType = userType;
-    user.name = nickName;
+    user.name = name;
     user.profileImageUrl = profileImageUrl;
     user.gender = gender;
     user.loginStatus = [NSNumber numberWithBool:YES];

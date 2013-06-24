@@ -99,19 +99,18 @@
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
-    
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     NSLog(@"***Load objects count: %d", [objects count]);
     Result *result = [objects objectAtIndex:0];
-    NSDictionary *userInfo = [[UserService defaultService]getUserInfo];
-    User *user = [UserManager createUserWithUserId:result.uid snsId:[userInfo objectForKey:@"id"] userType:@"sina" name:[userInfo objectForKey:@"name"] profileImageUrl:[userInfo objectForKey:@"profile_image_url"] gender:[userInfo objectForKey:@"gender"]];
+    NSDictionary *userInfo = [[UserService defaultService] getUserInfo];
+    User *user = [UserManager createUserWithUserId:result.uid sinaUserId:[userInfo objectForKey:@"id"] qqUserId:@"" userType:@"sina" name:[userInfo objectForKey:@"name"] profileImageUrl:[userInfo objectForKey:@"profile_image_url"] gender:[userInfo objectForKey:@"gender"]];
+    
     NSLog(@"******Register success,return uid:%@",user.uid);
     [UserService defaultService].user = user;
     [self performSegueWithIdentifier:@"finishRegisterSegue" sender:self];
-
 }
 
 @end

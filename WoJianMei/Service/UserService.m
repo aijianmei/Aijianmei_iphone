@@ -17,9 +17,6 @@
 @implementation UserService
 
 
-
-
-
 static UserService* _defaultUserService = nil;
 
 - (void)dealloc
@@ -217,10 +214,10 @@ static UserService* _defaultUserService = nil;
 
 - (BOOL)hasbindSina
 {
-    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:@"SinaWeiboUserInfo"];
-    NSDictionary *userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
-    NSString *uid = [userInfo objectForKey:@"id"];
-    return (uid == nil ? NO : YES);
+    if (_user.sinaUserId != nil)
+        return YES;
+    else
+        return NO;
 }
 
 
