@@ -426,45 +426,23 @@
 		4ADCFE21169D614600A3E979 /* NutritionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE0F169D614600A3E979 /* NutritionInfo.m */; };
 		4ADCFE23169D614600A3E979 /* ArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE14169D614600A3E979 /* ArticleCell.m */; };
 		4ADCFE25169D614600A3E979 /* WorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE18169D614600A3E979 /* WorkoutViewController.m */; };
-		4ADCFECD169D62C400A3E979 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE57169D62C400A3E979 /* 1.jpg */; };
-		4ADCFED0169D62C400A3E979 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE5A169D62C400A3E979 /* 2.jpg */; };
-		4ADCFED3169D62C400A3E979 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE5D169D62C400A3E979 /* 3.jpg */; };
-		4ADCFED6169D62C400A3E979 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE60169D62C400A3E979 /* 4.jpg */; };
-		4ADCFED9169D62C400A3E979 /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE63169D62C400A3E979 /* 5.jpg */; };
-		4ADCFEDB169D62C400A3E979 /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE65169D62C400A3E979 /* 6.jpg */; };
-		4ADCFEDD169D62C400A3E979 /* Abs-Exercises_s.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE67169D62C400A3E979 /* Abs-Exercises_s.jpg */; };
-		4ADCFEDE169D62C400A3E979 /* adductor-exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE68169D62C400A3E979 /* adductor-exercises.jpg */; };
 		4ADCFEDF169D62C400A3E979 /* all_page_bg2@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE69169D62C400A3E979 /* all_page_bg2@2x.jpg */; };
-		4ADCFEE2169D62C400A3E979 /* Back-Exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE6C169D62C400A3E979 /* Back-Exercises.jpg */; };
-		4ADCFEE5169D62C400A3E979 /* Biceps-Exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE6F169D62C400A3E979 /* Biceps-Exercises.jpg */; };
 		4ADCFEE6169D62C400A3E979 /* book_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE70169D62C400A3E979 /* book_bg@2x.png */; };
 		4ADCFEE7169D62C400A3E979 /* bookself_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE71169D62C400A3E979 /* bookself_button@2x.png */; };
 		4ADCFEE9169D62C400A3E979 /* bottom_cell_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE73169D62C400A3E979 /* bottom_cell_background.png */; };
-		4ADCFEEA169D62C400A3E979 /* buttocks-exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE74169D62C400A3E979 /* buttocks-exercises.jpg */; };
-		4ADCFEEB169D62C400A3E979 /* calf-exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE75169D62C400A3E979 /* calf-exercises.jpg */; };
-		4ADCFEEC169D62C400A3E979 /* Chest-Exercises_s.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE76169D62C400A3E979 /* Chest-Exercises_s.jpg */; };
 		4ADCFEF6169D62C400A3E979 /* feedback_bg2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE80169D62C400A3E979 /* feedback_bg2@2x.png */; };
-		4ADCFEF7169D62C400A3E979 /* forearm-exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE81169D62C400A3E979 /* forearm-exercises.jpg */; };
-		4ADCFEF8169D62C400A3E979 /* hamstring-exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE82169D62C400A3E979 /* hamstring-exercises.jpg */; };
-		4ADCFF08169D62C400A3E979 /* Lower-Back-Exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE92169D62C400A3E979 /* Lower-Back-Exercises.jpg */; };
 		4ADCFF09169D62C400A3E979 /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE93169D62C400A3E979 /* menu-icon.png */; };
 		4ADCFF0A169D62C400A3E979 /* menu-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE94169D62C400A3E979 /* menu-icon@2x.png */; };
 		4ADCFF0B169D62C400A3E979 /* middle_cell_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE95169D62C400A3E979 /* middle_cell_background.png */; };
-		4ADCFF0C169D62C400A3E979 /* Muscle-Exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE96169D62C400A3E979 /* Muscle-Exercises.jpg */; };
-		4ADCFF0F169D62C400A3E979 /* neck_exercises_s.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE99169D62C400A3E979 /* neck_exercises_s.jpg */; };
-		4ADCFF10169D62C400A3E979 /* Oblique-abdominal-exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE9A169D62C400A3E979 /* Oblique-abdominal-exercises.jpg */; };
 		4ADCFF11169D62C400A3E979 /* page_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE9B169D62C400A3E979 /* page_button@2x.png */; };
 		4ADCFF12169D62C400A3E979 /* page_button_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE9C169D62C400A3E979 /* page_button_press@2x.png */; };
 		4ADCFF13169D62C400A3E979 /* account_management.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFE9D169D62C400A3E979 /* account_management.png */; };
-		4ADCFF1A169D62C400A3E979 /* quadriceps-exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEA4169D62C400A3E979 /* quadriceps-exercises.jpg */; };
 		4ADCFF1B169D62C400A3E979 /* Rate_Us@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEA5169D62C400A3E979 /* Rate_Us@2x.png */; };
 		4ADCFF24169D62C400A3E979 /* share_social@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEAE169D62C400A3E979 /* share_social@2x.png */; };
 		4ADCFF25169D62C400A3E979 /* share_with_firends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEAF169D62C400A3E979 /* share_with_firends@2x.png */; };
-		4ADCFF26169D62C400A3E979 /* Shoulder-Exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEB0169D62C400A3E979 /* Shoulder-Exercises.jpg */; };
 		4ADCFF28169D62C400A3E979 /* social_networks@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEB2169D62C400A3E979 /* social_networks@2x.png */; };
 		4ADCFF2B169D62C400A3E979 /* szicon_a@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEB5169D62C400A3E979 /* szicon_a@2x.png */; };
 		4ADCFF38169D62C400A3E979 /* top_cell_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEC3169D62C400A3E979 /* top_cell_background.png */; };
-		4ADCFF3B169D62C400A3E979 /* Triceps-Exercises.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEC6169D62C400A3E979 /* Triceps-Exercises.jpg */; };
 		4ADCFF3D169D62C400A3E979 /* feed_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEC8169D62C400A3E979 /* feed_back@2x.png */; };
 		4ADCFF3E169D62C400A3E979 /* update_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCFEC9169D62C400A3E979 /* update_app@2x.png */; };
 		4ADCFFA9169D69F700A3E979 /* JMStaticContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFF54169D69F600A3E979 /* JMStaticContentTableViewCell.m */; };
@@ -1324,45 +1302,23 @@
 		4ADCFE14169D614600A3E979 /* ArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCell.m; sourceTree = "<group>"; };
 		4ADCFE17169D614600A3E979 /* WorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutViewController.h; sourceTree = "<group>"; };
 		4ADCFE18169D614600A3E979 /* WorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutViewController.m; sourceTree = "<group>"; };
-		4ADCFE57169D62C400A3E979 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
-		4ADCFE5A169D62C400A3E979 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
-		4ADCFE5D169D62C400A3E979 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
-		4ADCFE60169D62C400A3E979 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
-		4ADCFE63169D62C400A3E979 /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = "<group>"; };
-		4ADCFE65169D62C400A3E979 /* 6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 6.jpg; sourceTree = "<group>"; };
-		4ADCFE67169D62C400A3E979 /* Abs-Exercises_s.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Abs-Exercises_s.jpg"; sourceTree = "<group>"; };
-		4ADCFE68169D62C400A3E979 /* adductor-exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "adductor-exercises.jpg"; sourceTree = "<group>"; };
 		4ADCFE69169D62C400A3E979 /* all_page_bg2@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "all_page_bg2@2x.jpg"; sourceTree = "<group>"; };
-		4ADCFE6C169D62C400A3E979 /* Back-Exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Back-Exercises.jpg"; sourceTree = "<group>"; };
-		4ADCFE6F169D62C400A3E979 /* Biceps-Exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Biceps-Exercises.jpg"; sourceTree = "<group>"; };
 		4ADCFE70169D62C400A3E979 /* book_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "book_bg@2x.png"; sourceTree = "<group>"; };
 		4ADCFE71169D62C400A3E979 /* bookself_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookself_button@2x.png"; sourceTree = "<group>"; };
 		4ADCFE73169D62C400A3E979 /* bottom_cell_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_cell_background.png; sourceTree = "<group>"; };
-		4ADCFE74169D62C400A3E979 /* buttocks-exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "buttocks-exercises.jpg"; sourceTree = "<group>"; };
-		4ADCFE75169D62C400A3E979 /* calf-exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "calf-exercises.jpg"; sourceTree = "<group>"; };
-		4ADCFE76169D62C400A3E979 /* Chest-Exercises_s.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Chest-Exercises_s.jpg"; sourceTree = "<group>"; };
 		4ADCFE80169D62C400A3E979 /* feedback_bg2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback_bg2@2x.png"; sourceTree = "<group>"; };
-		4ADCFE81169D62C400A3E979 /* forearm-exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "forearm-exercises.jpg"; sourceTree = "<group>"; };
-		4ADCFE82169D62C400A3E979 /* hamstring-exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hamstring-exercises.jpg"; sourceTree = "<group>"; };
-		4ADCFE92169D62C400A3E979 /* Lower-Back-Exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Lower-Back-Exercises.jpg"; sourceTree = "<group>"; };
 		4ADCFE93169D62C400A3E979 /* menu-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon.png"; sourceTree = "<group>"; };
 		4ADCFE94169D62C400A3E979 /* menu-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon@2x.png"; sourceTree = "<group>"; };
 		4ADCFE95169D62C400A3E979 /* middle_cell_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = middle_cell_background.png; sourceTree = "<group>"; };
-		4ADCFE96169D62C400A3E979 /* Muscle-Exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Muscle-Exercises.jpg"; sourceTree = "<group>"; };
-		4ADCFE99169D62C400A3E979 /* neck_exercises_s.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = neck_exercises_s.jpg; sourceTree = "<group>"; };
-		4ADCFE9A169D62C400A3E979 /* Oblique-abdominal-exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Oblique-abdominal-exercises.jpg"; sourceTree = "<group>"; };
 		4ADCFE9B169D62C400A3E979 /* page_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "page_button@2x.png"; sourceTree = "<group>"; };
 		4ADCFE9C169D62C400A3E979 /* page_button_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "page_button_press@2x.png"; sourceTree = "<group>"; };
 		4ADCFE9D169D62C400A3E979 /* account_management.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account_management.png; sourceTree = "<group>"; };
-		4ADCFEA4169D62C400A3E979 /* quadriceps-exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "quadriceps-exercises.jpg"; sourceTree = "<group>"; };
 		4ADCFEA5169D62C400A3E979 /* Rate_Us@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rate_Us@2x.png"; sourceTree = "<group>"; };
 		4ADCFEAE169D62C400A3E979 /* share_social@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_social@2x.png"; sourceTree = "<group>"; };
 		4ADCFEAF169D62C400A3E979 /* share_with_firends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_with_firends@2x.png"; sourceTree = "<group>"; };
-		4ADCFEB0169D62C400A3E979 /* Shoulder-Exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Shoulder-Exercises.jpg"; sourceTree = "<group>"; };
 		4ADCFEB2169D62C400A3E979 /* social_networks@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social_networks@2x.png"; sourceTree = "<group>"; };
 		4ADCFEB5169D62C400A3E979 /* szicon_a@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "szicon_a@2x.png"; sourceTree = "<group>"; };
 		4ADCFEC3169D62C400A3E979 /* top_cell_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_cell_background.png; sourceTree = "<group>"; };
-		4ADCFEC6169D62C400A3E979 /* Triceps-Exercises.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Triceps-Exercises.jpg"; sourceTree = "<group>"; };
 		4ADCFEC8169D62C400A3E979 /* feed_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed_back@2x.png"; sourceTree = "<group>"; };
 		4ADCFEC9169D62C400A3E979 /* update_app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "update_app@2x.png"; sourceTree = "<group>"; };
 		4ADCFF52169D69F600A3E979 /* JMStaticContentTableViewBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMStaticContentTableViewBlocks.h; sourceTree = "<group>"; };
@@ -1601,7 +1557,8 @@
 				4A27ADE41777E9BE009978C5 /* Default.png */,
 				4A27ADE51777E9BE009978C5 /* Default@2x.png */,
 			);
-			path = LaunchImages;
+			name = LaunchImages;
+			path = ../../LaunchImages;
 			sourceTree = "<group>";
 		};
 		4A3AE814176A160100A39463 /* ShareSDK */ = {
@@ -3171,7 +3128,6 @@
 				4AD9FC3116A0F82900BA766D /* singleCellBackgroud.png */,
 				4ADCFE73169D62C400A3E979 /* bottom_cell_background.png */,
 				4ADCFEA5169D62C400A3E979 /* Rate_Us@2x.png */,
-				4ADCFEB0169D62C400A3E979 /* Shoulder-Exercises.jpg */,
 			);
 			name = MoreView;
 			sourceTree = "<group>";
@@ -3280,6 +3236,7 @@
 		4ADCFE56169D62C300A3E979 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4A27ADDE1777E9BE009978C5 /* LaunchImages */,
 				4A429DB2175D7EFD00F018CE /* Login */,
 				4A634E0917533DD100453C0D /* posting */,
 				4A634DE617530E7300453C0D /* profile_settings */,
@@ -3287,41 +3244,20 @@
 				4A634D841752F91A00453C0D /* myProfile */,
 				C6016B5E17523D2D00BA5E63 /* WorkOutProcess */,
 				4AD9FC3016A0F81200BA766D /* MoreView */,
-				4ADCFE57169D62C400A3E979 /* 1.jpg */,
-				4ADCFE5A169D62C400A3E979 /* 2.jpg */,
-				4ADCFE5D169D62C400A3E979 /* 3.jpg */,
-				4ADCFE60169D62C400A3E979 /* 4.jpg */,
-				4ADCFE63169D62C400A3E979 /* 5.jpg */,
-				4ADCFE65169D62C400A3E979 /* 6.jpg */,
-				4ADCFE67169D62C400A3E979 /* Abs-Exercises_s.jpg */,
-				4ADCFE68169D62C400A3E979 /* adductor-exercises.jpg */,
 				4ADCFE69169D62C400A3E979 /* all_page_bg2@2x.jpg */,
-				4ADCFE6C169D62C400A3E979 /* Back-Exercises.jpg */,
-				4ADCFE6F169D62C400A3E979 /* Biceps-Exercises.jpg */,
 				4ADCFE70169D62C400A3E979 /* book_bg@2x.png */,
 				4ADCFE71169D62C400A3E979 /* bookself_button@2x.png */,
-				4ADCFE74169D62C400A3E979 /* buttocks-exercises.jpg */,
-				4ADCFE75169D62C400A3E979 /* calf-exercises.jpg */,
-				4ADCFE76169D62C400A3E979 /* Chest-Exercises_s.jpg */,
 				4ADCFE80169D62C400A3E979 /* feedback_bg2@2x.png */,
-				4ADCFE81169D62C400A3E979 /* forearm-exercises.jpg */,
-				4ADCFE82169D62C400A3E979 /* hamstring-exercises.jpg */,
-				4ADCFE92169D62C400A3E979 /* Lower-Back-Exercises.jpg */,
 				4ADCFE93169D62C400A3E979 /* menu-icon.png */,
 				4ADCFE94169D62C400A3E979 /* menu-icon@2x.png */,
 				4ADCFE95169D62C400A3E979 /* middle_cell_background.png */,
-				4ADCFE96169D62C400A3E979 /* Muscle-Exercises.jpg */,
-				4ADCFE99169D62C400A3E979 /* neck_exercises_s.jpg */,
-				4ADCFE9A169D62C400A3E979 /* Oblique-abdominal-exercises.jpg */,
 				4ADCFE9B169D62C400A3E979 /* page_button@2x.png */,
 				4ADCFE9C169D62C400A3E979 /* page_button_press@2x.png */,
 				4ADCFE9D169D62C400A3E979 /* account_management.png */,
 				4A66C1C816A5963000A2F22E /* account_management@2x.png */,
-				4ADCFEA4169D62C400A3E979 /* quadriceps-exercises.jpg */,
 				4ADCFEB2169D62C400A3E979 /* social_networks@2x.png */,
 				4ADCFEB5169D62C400A3E979 /* szicon_a@2x.png */,
 				4ADCFEC3169D62C400A3E979 /* top_cell_background.png */,
-				4ADCFEC6169D62C400A3E979 /* Triceps-Exercises.jpg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -3449,7 +3385,6 @@
 		4AE394A215C2DD9C00D06C61 = {
 			isa = PBXGroup;
 			children = (
-				4A27ADDE1777E9BE009978C5 /* LaunchImages */,
 				4A959679168ED995006F1317 /* 3PP-SDK */,
 				4A498F9B168553A20073E682 /* Core */,
 				4A498D711685500F0073E682 /* Component-Service */,
@@ -3788,45 +3723,23 @@
 				4A49926D168553A30073E682 /* fireworks2.png in Resources */,
 				4A49926E168553A30073E682 /* snow.png in Resources */,
 				4A965CC9168F6AE400FF34CE /* README in Resources */,
-				4ADCFECD169D62C400A3E979 /* 1.jpg in Resources */,
-				4ADCFED0169D62C400A3E979 /* 2.jpg in Resources */,
-				4ADCFED3169D62C400A3E979 /* 3.jpg in Resources */,
-				4ADCFED6169D62C400A3E979 /* 4.jpg in Resources */,
-				4ADCFED9169D62C400A3E979 /* 5.jpg in Resources */,
-				4ADCFEDB169D62C400A3E979 /* 6.jpg in Resources */,
-				4ADCFEDD169D62C400A3E979 /* Abs-Exercises_s.jpg in Resources */,
-				4ADCFEDE169D62C400A3E979 /* adductor-exercises.jpg in Resources */,
 				4ADCFEDF169D62C400A3E979 /* all_page_bg2@2x.jpg in Resources */,
-				4ADCFEE2169D62C400A3E979 /* Back-Exercises.jpg in Resources */,
-				4ADCFEE5169D62C400A3E979 /* Biceps-Exercises.jpg in Resources */,
 				4ADCFEE6169D62C400A3E979 /* book_bg@2x.png in Resources */,
 				4ADCFEE7169D62C400A3E979 /* bookself_button@2x.png in Resources */,
 				4ADCFEE9169D62C400A3E979 /* bottom_cell_background.png in Resources */,
-				4ADCFEEA169D62C400A3E979 /* buttocks-exercises.jpg in Resources */,
-				4ADCFEEB169D62C400A3E979 /* calf-exercises.jpg in Resources */,
-				4ADCFEEC169D62C400A3E979 /* Chest-Exercises_s.jpg in Resources */,
 				4ADCFEF6169D62C400A3E979 /* feedback_bg2@2x.png in Resources */,
-				4ADCFEF7169D62C400A3E979 /* forearm-exercises.jpg in Resources */,
-				4ADCFEF8169D62C400A3E979 /* hamstring-exercises.jpg in Resources */,
-				4ADCFF08169D62C400A3E979 /* Lower-Back-Exercises.jpg in Resources */,
 				4ADCFF09169D62C400A3E979 /* menu-icon.png in Resources */,
 				4ADCFF0A169D62C400A3E979 /* menu-icon@2x.png in Resources */,
 				4ADCFF0B169D62C400A3E979 /* middle_cell_background.png in Resources */,
-				4ADCFF0C169D62C400A3E979 /* Muscle-Exercises.jpg in Resources */,
-				4ADCFF0F169D62C400A3E979 /* neck_exercises_s.jpg in Resources */,
-				4ADCFF10169D62C400A3E979 /* Oblique-abdominal-exercises.jpg in Resources */,
 				4ADCFF11169D62C400A3E979 /* page_button@2x.png in Resources */,
 				4ADCFF12169D62C400A3E979 /* page_button_press@2x.png in Resources */,
 				4ADCFF13169D62C400A3E979 /* account_management.png in Resources */,
-				4ADCFF1A169D62C400A3E979 /* quadriceps-exercises.jpg in Resources */,
 				4ADCFF1B169D62C400A3E979 /* Rate_Us@2x.png in Resources */,
 				4ADCFF24169D62C400A3E979 /* share_social@2x.png in Resources */,
 				4ADCFF25169D62C400A3E979 /* share_with_firends@2x.png in Resources */,
-				4ADCFF26169D62C400A3E979 /* Shoulder-Exercises.jpg in Resources */,
 				4ADCFF28169D62C400A3E979 /* social_networks@2x.png in Resources */,
 				4ADCFF2B169D62C400A3E979 /* szicon_a@2x.png in Resources */,
 				4ADCFF38169D62C400A3E979 /* top_cell_background.png in Resources */,
-				4ADCFF3B169D62C400A3E979 /* Triceps-Exercises.jpg in Resources */,
 				4ADCFF3D169D62C400A3E979 /* feed_back@2x.png in Resources */,
 				4ADCFF3E169D62C400A3E979 /* update_app@2x.png in Resources */,
 				4ADCFFB5169D69F700A3E979 /* LICENSE in Resources */,
