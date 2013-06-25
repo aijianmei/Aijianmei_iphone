@@ -23,13 +23,15 @@
 #import "MyselfViewController.h"
 
 #import "ImageManager.h"
+#import "UIImageView+WebCache.h"
+
 
 
 
 ///// the setings of the iCarousel
 #define NUMBER_OF_ITEMS 13
 #define NUMBER_OF_VISIBLE_ITEMS 18
-#define ITEM_SPACING 220
+#define ITEM_SPACING 320
 
 #define SCROLL_VIEW_TAG 20120913
 #define More_BUTTON_TAG 20130607
@@ -221,7 +223,8 @@ typedef enum CONTENT_TYPE {
     
     self.carousel.delegate = self;
     self.carousel.dataSource = self;
-    _carousel.type = iCarouselTranformOptionTilt;
+    _carousel.type = iCarouselTranformOptionTilt;    
+    [_carousel setScrollEnabled:YES];
     
     [self.carousel setCenterItemWhenSelected:YES];
     
@@ -420,7 +423,11 @@ typedef enum CONTENT_TYPE {
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    return NUMBER_OF_ITEMS;
+//    return NUMBER_OF_ITEMS;
+    
+    
+    return [self.dataList count];
+
 }
 
 - (NSUInteger)numberOfVisibleItemsInCarousel:(iCarousel *)carousel
@@ -440,7 +447,7 @@ typedef enum CONTENT_TYPE {
 	if (view == nil)
 	{
         //set up reflection view
-		view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 130.0f)] autorelease];
+		view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 130.0f)] autorelease];
         
         //set up content
 		label = [[[UILabel alloc] initWithFrame:view.bounds] autorelease];
@@ -454,9 +461,14 @@ typedef enum CONTENT_TYPE {
         
         [view addSubview:label];
         
+        Article *article  = [self.dataList objectAtIndex: index];
+
+
         ///add images
-        NSString *imageName = [NSString stringWithFormat:@"%d",index +1];
-        UIImageView *imageView =[[UIImageView alloc]initWithImage:[UIImage imageNamed:imageName]];
+        
+        UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 130)];
+        [imageView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@"11"]];
+        
         [label addSubview: imageView];
         [imageView release];
         
@@ -490,6 +502,15 @@ typedef enum CONTENT_TYPE {
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
     PPDebug(@"I did selected the picture of %d",index);
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    
+    WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
+    
+    controller.article = [self.dataList objectAtIndex:index];
+    [self.navigationController pushViewController:controller animated:YES];
+    
+    
 }
 
 -(void)carouselCurrentItemIndexUpdated:(iCarousel *)carousel{
@@ -525,6 +546,7 @@ typedef enum CONTENT_TYPE {
     self.dataList = objects;
     [self hideActivity];
     [self.dataTableView reloadData];
+    [self.carousel reloadData];
 }
 
 @end
