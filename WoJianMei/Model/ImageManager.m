@@ -136,7 +136,13 @@ static ImageManager *_defaultManager = nil;
 ///顶部导航栏目，头像图片；
 +(UIImage*)GobalNavigationAvatarImage{
     
-    return [UIImage imageNamed:@"Navigation_avartar_Image"];
+    return [UIImage imageNamed:@"Navigation_avartar_Image.png"];
+}
+
+///顶部导航栏目，头像图片；
++(UIImage*)GobalScrollerTitleBG_Image{
+    
+    return [UIImage imageNamed:@"Scroller_BG.png"];
 }
 
 

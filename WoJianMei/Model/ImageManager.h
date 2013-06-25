@@ -51,6 +51,8 @@
 
 ///顶部导航栏目，头像图片；
 +(UIImage*)GobalNavigationAvatarImage;
++(UIImage*)GobalScrollerTitleBG_Image;
+
 
 
 

@@ -54,7 +54,7 @@ typedef enum CONTENT_TYPE {
 @implementation WorkoutViewController
 @synthesize myHeaderView =_myHeaderView;
 @synthesize  carousel =_carousel;
-//@synthesize spacePageControl =_spacePageControl;
+@synthesize spacePageControl =_spacePageControl;
 @synthesize buttonScrollView =_buttonScrollView;
 @synthesize currentButton = _currentButton;
 
@@ -68,7 +68,7 @@ typedef enum CONTENT_TYPE {
     _carousel.delegate = nil;
     _carousel.dataSource = nil;
     [_carousel release];
-//    [_spacePageControl release];
+    [_spacePageControl release];
     [_buttonScrollView release];
     [_myHeaderView release];
     [super dealloc];
@@ -232,13 +232,13 @@ typedef enum CONTENT_TYPE {
     
     
     ////The page controll
-//    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(10, 137, 300, 20)];
-//    [_spacePageControl setBackgroundColor:[UIColor clearColor]];
-//    _spacePageControl.numberOfPages = 13;
-//    [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
-//    [_spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot"]];
-//    [_spacePageControl addTarget:self action:@selector(pageControl:) forControlEvents:UIControlEventValueChanged];
-//    [self.myHeaderView addSubview:_spacePageControl];
+    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(10, 167, 300, 20)];
+    [_spacePageControl setBackgroundColor:[UIColor clearColor]];
+    _spacePageControl.numberOfPages = 13;
+    [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
+    [_spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot"]];
+    [_spacePageControl addTarget:self action:@selector(pageControl:) forControlEvents:UIControlEventValueChanged];
+    [self.myHeaderView addSubview:_spacePageControl];
     
     
     
@@ -339,19 +339,19 @@ typedef enum CONTENT_TYPE {
     
 }
 
-//#pragma mark--
-//#pragma mark-- PageControl
-//
-//- (void)pageControl:(id)sender
-//{
-//	NSLog(@"Current Page (UIPageControl) : %i", _spacePageControl.currentPage);
-//}
-//
-//- (void)spacePageControl:(SMPageControl *)sender
-//{
-//	NSLog(@"Current Page (SMPageControl): %i", sender.currentPage);
-//}
-//
+#pragma mark--
+#pragma mark-- PageControl
+
+- (void)pageControl:(id)sender
+{
+	NSLog(@"Current Page (UIPageControl) : %i", _spacePageControl.currentPage);
+}
+
+- (void)spacePageControl:(SMPageControl *)sender
+{
+	NSLog(@"Current Page (SMPageControl): %i", sender.currentPage);
+}
+
 
 #pragma Pull Refresh Delegate
 - (void) reloadTableViewDataSource
@@ -464,10 +464,10 @@ typedef enum CONTENT_TYPE {
         
         label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 100, view.frame.size.width, view.frame.size.height - 100)] autorelease];
         label.textAlignment = UITextAlignmentCenter;
-		label.font = [label.font fontWithSize:13];
+		label.font = [label.font fontWithSize:16];
         [label setTextColor:[UIColor whiteColor]];
-
-        label.backgroundColor = [UIColor colorWithRed:0.17 green:0.1 blue:0.17 alpha:0.6];
+        label.backgroundColor = [UIColor colorWithPatternImage:[ImageManager GobalScrollerTitleBG_Image]];
+        
         [imageView  addSubview:label];
         
 	}
@@ -511,7 +511,7 @@ typedef enum CONTENT_TYPE {
 
     PPDebug(@"%d",[carousel currentItemIndex]);
     
-//    [self.spacePageControl setCurrentPage:[carousel currentItemIndex]];
+   [self.spacePageControl setCurrentPage:[carousel currentItemIndex]];
 }
 
 #pragma mark -
