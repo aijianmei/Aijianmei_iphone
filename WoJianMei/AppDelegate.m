@@ -198,11 +198,11 @@
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     
-    
-    
-    
-    
-    
+    //从本地获取用户信息
+    //TOTO:根据用户uid登陆获取信息
+    if ([[UserService defaultService] getUserInfo] != nil) {
+        [UserService defaultService].user = [[UserService defaultService] getUserInfo];
+    }
 
     //RestKit
     RKURL *baseURL = [RKURL URLWithBaseURLString:kServerUrl];

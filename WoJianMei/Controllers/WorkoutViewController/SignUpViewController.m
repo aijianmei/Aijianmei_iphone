@@ -120,6 +120,7 @@
     
     NSLog(@"******Register success,return uid:%@",user.uid);
     [UserService defaultService].user = user;
+    [[UserService defaultService] storeUserInfo];
     [self performSegueWithIdentifier:@"finishRegisterSegue" sender:self];
 }
 

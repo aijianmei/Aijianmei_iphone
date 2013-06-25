@@ -193,6 +193,20 @@ static UserService* _defaultUserService = nil;
     return userInfo;
 }
 
+
+-(void)storeUserInfo
+{
+    NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.user];
+    [[NSUserDefaults standardUserDefaults] setObject:userData forKey:@"user"];
+}
+
+-(User*)getUserInfo
+{
+    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:@"user"];
+    User *user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+    return user;
+}
+
 - (BOOL)hasBindAccount
 {
     if ([self hasbindSina] || [self hasBindEmail])

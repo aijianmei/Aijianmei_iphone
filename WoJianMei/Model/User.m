@@ -39,23 +39,30 @@
         self.motto =[aDecoder decodeObjectForKey:@"motto"];
         self.description = [aDecoder decodeObjectForKey:@"description"];
         self.gender = [aDecoder decodeObjectForKey:@"gender"];
+        self.email = [aDecoder decodeObjectForKey:@"email"];
+        self.password = [aDecoder decodeObjectForKey:@"password"];
+        self.userType = [aDecoder decodeObjectForKey:@"userType"];
+        self.sinaUserId = [aDecoder decodeObjectForKey:@"sinaUserId"];
+        self.qqUserId = [aDecoder decodeObjectForKey:@"qqUserId"];
+        self.profileImageUrl = [aDecoder decodeObjectForKey:@"profileImageUrl"];
     }
     return self;
 }
 
-
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     
     [aCoder encodeObject:self.name forKey:@"name"];
-    [aCoder encodeObject:self.motto forKey:@"motto"];
-
-    
+    [aCoder encodeObject:self.motto forKey:@"motto"];    
     [aCoder encodeObject:self.description forKey:@"description"];
     [aCoder encodeObject:self.avatarImage forKey:@"avatarImage"];
     [aCoder encodeObject:self.avatarBackGroundImage forKey:@"avatarBackGroundImage"];
-
     [aCoder encodeObject:self.gender forKey:@"gender"];
-    
+    [aCoder encodeObject:self.email forKey:@"email"];
+    [aCoder encodeObject:self.password forKey:@"password"];
+    [aCoder encodeObject:self.userType forKey:@"userType"];
+    [aCoder encodeObject:self.sinaUserId forKey:@"sinaUserId"];
+    [aCoder encodeObject:self.qqUserId forKey:@"qqUserId"];
+    [aCoder encodeObject:self.profileImageUrl forKey:@"profileImageUrl"];
 }
 
 

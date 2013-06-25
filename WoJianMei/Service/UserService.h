@@ -59,6 +59,12 @@
 
 - (NSDictionary*)getSinaUserInfoWithUid:(NSString*)uid;
 
+//保存用户信息到本地
+-(void)storeUserInfo;
+
+//获取保存在本地的用户信息
+-(User*)getUserInfo;
+
 //注册用户
 - (void)registerUserWithUsername:(NSString*)name
                            email:(NSString*)email

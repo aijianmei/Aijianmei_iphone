@@ -8,7 +8,6 @@
 
 #import "MyselfViewController.h"
 #import "WorkOutDataViewController.h"
-
 #import "MyselfTableViewCell.h"
 #import "ImageManager.h"
 #import "Myself_SettingsViewController.h"
@@ -17,6 +16,7 @@
 #import <CoreText/CoreText.h>
 #import "WorkOutProcessViewController.h"
 #import "UserService.h"
+#import "UIImageView+WebCache.h"
 
 #define USER                          @"user"
 #define USER_NAME                     @"screen_name"
@@ -135,40 +135,29 @@
     _userNameLabel.backgroundColor =[UIColor clearColor];
    [_userNameLabel setTextAlignment:NSTextAlignmentRight];
     _userNameLabel.textColor = [UIColor whiteColor];
-    
-      
-    
-    
     [self.myHeaderView addSubview:self.userNameLabel];
     
-    
-
-    
-    
+        
     self.headerVImageButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
     [_headerVImageButton addTarget:self action:@selector(clickVatarButton:) forControlEvents:UIControlEventTouchUpInside];
-    
     _headerVImageButton.layer.borderWidth = 4.0f;
     _headerVImageButton.layer.cornerRadius = 8.0f;
     _headerVImageButton.layer.borderColor = [UIColor clearColor].CGColor;
-    
-    
     [_headerVImageButton setFrame:CGRectMake(180, 115, 70, 70)];
     [_headerVImageButton setBackgroundColor:[UIColor clearColor]];
     [_headerVImageButton setImage:[ImageManager avatarbackgroundImage] forState:UIControlStateNormal];
     
+    _avatarImageView =[[UIImageView alloc]initWithFrame:_headerVImageButton.frame];
+    [self.view addSubview:_avatarImageView];
+    [self.view bringSubviewToFront:_headerVImageButton];
     
     //// descritpin broundground
-    UIImageView *imageview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"description_bround.png"]];
-    
-    
+    UIImageView *imageview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"description_bround.png"]];    
     [imageview setFrame:CGRectMake(0, 160, 200, 50)];
-    
     [self.myHeaderView addSubview:imageview];
     [imageview release];
     
     //////set the motto
-    
     //初始化label
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 147, 250, 50)];
     //设置自动行数与字符换行
@@ -210,12 +199,12 @@
 
 - (void)setUserInfo
 {
+    //获取当前用户信息
     self.user = [UserService defaultService].user;
-    
-    //Demo datas
     self.user.description = @"我非常喜欢健身运动！！！如果你都喜欢，你就告诉我啦！哈哈哈哈哈哈";
     self.user.avatarBackGroundImage = [UIImage imageNamed:@"profile_backgroud.png"];
-    self.user.avatarImage = [UIImage imageNamed:@"user_image.png"];    
+    self.user.avatarImage = [UIImage imageNamed:@"user_image.png"];
+    [_avatarImageView setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"user_image.png"]];
 }
 
 - (void)viewDidLoad
@@ -468,15 +457,13 @@
 
 -(void)clickVatarButton:(id)sender{
     
-    UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
-                                                       delegate:self
-                                              cancelButtonTitle:@"取消"
-                                         destructiveButtonTitle:@"照相"
-                                              otherButtonTitles:@"相册",nil];
-    [share showFromTabBar:self.tabBarController.tabBar];
-    [share release];
-
-    
+//    UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
+//                                                       delegate:self
+//                                              cancelButtonTitle:@"取消"
+//                                         destructiveButtonTitle:@"照相"
+//                                              otherButtonTitles:@"相册",nil];
+//    [share showFromTabBar:self.tabBarController.tabBar];
+//    [share release];    
     
 }
 

@@ -33,6 +33,7 @@
 
 
 @property (nonatomic,retain) UIButton *headerVImageButton;
+@property (nonatomic,retain) UIImageView *avatarImageView;
 @property (nonatomic,retain) UIImageView *footerVImageV;
 @property (nonatomic,retain) UIView *myHeaderView;
 @property (nonatomic,retain) UILabel *userNameLabel;
