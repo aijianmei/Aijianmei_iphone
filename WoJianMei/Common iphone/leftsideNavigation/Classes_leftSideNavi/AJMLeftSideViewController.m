@@ -22,6 +22,9 @@
 #import "SVWebViewController.h"
 #import <ShareSDK/ShareSDK.h>
 
+#import "ColorManager.h"
+#import "ImageManager.h"
+
 
 #define TABLE_CELL @"tableCell"
 
@@ -108,7 +111,8 @@
         cell.textLabel.font = [UIFont boldSystemFontOfSize:18.0];
 //       cell.textLabel.textColor = [UIColor colorWithRGB:0xc3c3c2];
         
-        cell.textLabel.textColor = [UIColor whiteColor];
+//        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.textColor = [ColorManager leftSideNaviFontColor] ;
 
         
         UIImageView *lineView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"IndexLine.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:1]];
@@ -519,6 +523,9 @@
         default:
             break;
     }
+     //Set the Image of the cell when you click
+    [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    
 }
 
 @end

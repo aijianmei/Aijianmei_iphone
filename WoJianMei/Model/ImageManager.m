@@ -119,5 +119,31 @@ static ImageManager *_defaultManager = nil;
     return [UIImage imageNamed:@"topmenu_bg.png"];
 }
 
+///////AVATAR
++(UIImage*)leftSideNaviHighLightImage{
+    
+    return [UIImage imageNamed:@"leftSide_Click.png"];
+}
+
+
+///////AVATAR
++(UIImage*)GobalBGImage{
+    
+    return [UIImage imageNamed:@"gobal_background.png"];
+}
+
+
+///顶部导航栏目，头像图片；
++(UIImage*)GobalNavigationAvatarImage{
+    
+    return [UIImage imageNamed:@"Navigation_avartar_Image.png"];
+}
+
+///顶部导航栏目，头像图片；
++(UIImage*)GobalScrollerTitleBG_Image{
+    
+    return [UIImage imageNamed:@"Scroller_BG.png"];
+}
+
 
 @end

@@ -18,14 +18,34 @@
 #import "WorkoutDetailViewController.h"
 #import "IIViewDeckController.h"
 #import "AppDelegate.h"
+#import "FilterViewController.h"
+
+#import "MyselfViewController.h"
+
+#import "ImageManager.h"
+#import "UIImageView+WebCache.h"
+
+
+
 
 ///// the setings of the iCarousel
 #define NUMBER_OF_ITEMS 13
 #define NUMBER_OF_VISIBLE_ITEMS 18
-#define ITEM_SPACING 220
+#define ITEM_SPACING 320
 
 #define SCROLL_VIEW_TAG 20120913
 #define More_BUTTON_TAG 20130607
+
+
+typedef enum CONTENT_TYPE {
+    NEW_TYPE= 0,
+    WORKOUT_TYPE =1,
+    BASIC_TYPE =2,
+    VIDEO_TYPE =3
+    
+}CONTENT_TYPE;
+
+
 
 @interface WorkoutViewController ()
 
@@ -34,7 +54,7 @@
 @implementation WorkoutViewController
 @synthesize myHeaderView =_myHeaderView;
 @synthesize  carousel =_carousel;
-//@synthesize spacePageControl =_spacePageControl;
+@synthesize spacePageControl =_spacePageControl;
 @synthesize buttonScrollView =_buttonScrollView;
 @synthesize currentButton = _currentButton;
 
@@ -48,7 +68,7 @@
     _carousel.delegate = nil;
     _carousel.dataSource = nil;
     [_carousel release];
-//    [_spacePageControl release];
+    [_spacePageControl release];
     [_buttonScrollView release];
     [_myHeaderView release];
     [super dealloc];
@@ -74,11 +94,11 @@
         ////rightBtn
         UIButton *rightBtn = [[[UIButton alloc] init] autorelease];
         
-        [rightBtn setBackgroundImage:[UIImage imageNamed:@"NavigationButtonBG.png"]
-                            forState:UIControlStateNormal];
-        
-        [rightBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
-        rightBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
+//        [rightBtn setBackgroundImage:[ImageManager GobalNavigationAvatarImage]
+//                            forState:UIControlStateNormal];
+    
+        [rightBtn setImage:[ImageManager GobalNavigationAvatarImage] forState:UIControlStateNormal];
+        rightBtn.frame = CGRectMake(0.0, 0.0, 49.0, 29.0);
         [rightBtn addTarget:self action:@selector(rightButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:rightBtn] autorelease];
         
@@ -112,7 +132,22 @@
 }
 - (void)rightButtonClickHandler:(id)sender
 {
-    [self.viewDeckController toggleRightViewAnimated:YES];
+//    [self.viewDeckController toggleRightViewAnimated:YES];
+    UIStoryboard *currentInUseStoryBoard;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        
+        currentInUseStoryBoard = iPhoneStroyBoard;
+        
+    }else{
+        
+        UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+        currentInUseStoryBoard = iPadStroyBoard;
+    }
+        
+    MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
+    myselfVC.title = @"我";
+    [self.navigationController pushViewController:myselfVC animated:YES];
 }
 
 
@@ -159,7 +194,7 @@
     
     [[self.view viewWithTag:SCROLL_VIEW_TAG] removeFromSuperview];
     self.buttonScrollView.tag = SCROLL_VIEW_TAG;
-    [_buttonScrollView setFrame:CGRectMake(0,150, 260, 30)];
+    [_buttonScrollView setFrame:CGRectMake(0,0, 260, 30)];
     [_buttonScrollView setShowsHorizontalScrollIndicator:NO];
     
     [_buttonScrollView setContentSize:CGSizeMake(([[_buttonScrollView subviews] count]) * buttonWidth * 2.6, buttonHeight)];
@@ -168,7 +203,7 @@
     
     
     
-    UIButton *moreButotn = [[UIButton alloc]initWithFrame:CGRectMake(270, 150, 40, 30)];
+    UIButton *moreButotn = [[UIButton alloc]initWithFrame:CGRectMake(270, 0, 40, 30)];
     [moreButotn.titleLabel setFont:[UIFont systemFontOfSize:12]];
     
     [moreButotn setBackgroundImage:[UIImage imageNamed:@"button_Image.png"] forState:UIControlStateNormal];
@@ -184,11 +219,12 @@
 
     //configure carousel
     
-    self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 0, 320, 140)];
+    self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 30, 320, 140)];
     
     self.carousel.delegate = self;
     self.carousel.dataSource = self;
-    _carousel.type = iCarouselTypeCylinder;
+    _carousel.type = iCarouselTranformOptionTilt;    
+    [_carousel setScrollEnabled:YES];
     
     [self.carousel setCenterItemWhenSelected:YES];
     
@@ -196,13 +232,13 @@
     
     
     ////The page controll
-//    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(10, 137, 300, 20)];
-//    [_spacePageControl setBackgroundColor:[UIColor clearColor]];
-//    _spacePageControl.numberOfPages = 13;
-//    [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
-//    [_spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot"]];
-//    [_spacePageControl addTarget:self action:@selector(pageControl:) forControlEvents:UIControlEventValueChanged];
-//    [self.myHeaderView addSubview:_spacePageControl];
+    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(10, 167, 300, 20)];
+    [_spacePageControl setBackgroundColor:[UIColor clearColor]];
+    _spacePageControl.numberOfPages = 13;
+    [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
+    [_spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot"]];
+    [_spacePageControl addTarget:self action:@selector(pageControl:) forControlEvents:UIControlEventValueChanged];
+    [self.myHeaderView addSubview:_spacePageControl];
     
     
     
@@ -221,7 +257,18 @@
 -(void)buttonClicked:(UIButton *)sender
 
 {
+    
+    
     self.currentButton = sender;
+    
+    if ([sender tag] == More_BUTTON_TAG) {
+        
+        FilterViewController *vc = [[FilterViewController alloc]initWithNibName:@"FilterViewController" bundle:nil];
+        [self.navigationController  presentModalViewController:vc animated:YES];
+        [vc release];
+        
+        return;
+    }
     
     //开始下载文章
     NSString *aucode= @"aijianmei";
@@ -233,6 +280,8 @@
     NSString *pnums = @"10";
     NSString *cateid = @"0";
     NSString *uid = @"265";
+    
+   
     
     if ([[sender currentTitle] isEqualToString:@"最新"]) {
         
@@ -273,10 +322,7 @@
         uid = @"265";
     
     }
-    if ([sender tag] == More_BUTTON_TAG) {
-        
-
-    }
+    
     
     [[ArticleService sharedService] findArticleWithAucode:aucode
                                                     auact:auact
@@ -289,21 +335,23 @@
                                                       uid:uid
                                                  delegate:self];
     
+    
+    
 }
 
-//#pragma mark--
-//#pragma mark-- PageControl
-//
-//- (void)pageControl:(id)sender
-//{
-//	NSLog(@"Current Page (UIPageControl) : %i", _spacePageControl.currentPage);
-//}
-//
-//- (void)spacePageControl:(SMPageControl *)sender
-//{
-//	NSLog(@"Current Page (SMPageControl): %i", sender.currentPage);
-//}
-//
+#pragma mark--
+#pragma mark-- PageControl
+
+- (void)pageControl:(id)sender
+{
+	NSLog(@"Current Page (UIPageControl) : %i", _spacePageControl.currentPage);
+}
+
+- (void)spacePageControl:(SMPageControl *)sender
+{
+	NSLog(@"Current Page (SMPageControl): %i", sender.currentPage);
+}
+
 
 #pragma Pull Refresh Delegate
 - (void) reloadTableViewDataSource
@@ -316,10 +364,8 @@
     [self initMoreUI];
     [self initUI];
     self.supportRefreshHeader = YES;
-    
-//    [self initArticles];
-//     self.dataList = [[ArticleManager defaultManager] articleList];    
-    
+    self.supportRefreshFooter = YES;
+
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"最新" forState:UIControlStateNormal];
     [self buttonClicked:button];
@@ -377,7 +423,10 @@
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    return NUMBER_OF_ITEMS;
+//    return NUMBER_OF_ITEMS;
+
+    return [self.dataList count];
+
 }
 
 - (NSUInteger)numberOfVisibleItemsInCarousel:(iCarousel *)carousel
@@ -392,32 +441,34 @@
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
 {
     
-    UILabel *label = nil;
 	//create new view if no view is available for recycling
+    Article *article  = [self.dataList objectAtIndex: index];
+    UILabel *label = nil;
+
 	if (view == nil)
 	{
         //set up reflection view
-		view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 130.0f)] autorelease];
+		view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 130.0f)] autorelease];
         
         //set up content
-		label = [[[UILabel alloc] initWithFrame:view.bounds] autorelease];
-		label.backgroundColor = [UIColor lightGrayColor];
-		label.layer.borderColor = [UIColor whiteColor].CGColor;
-        label.layer.borderWidth = 4.0f;
-        label.layer.cornerRadius = 8.0f;
-        label.textAlignment = UITextAlignmentCenter;
-		label.font = [label.font fontWithSize:50];
         
-        
-        [view addSubview:label];
-        
+    
         ///add images
-        NSString *imageName = [NSString stringWithFormat:@"%d",index +1];
-        UIImageView *imageView =[[UIImageView alloc]initWithImage:[UIImage imageNamed:imageName]];
-        [label addSubview: imageView];
+        UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 130)];
+        [imageView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@"11"]];
+        
+//        [label addSubview: imageView];
+        [view addSubview:imageView];
         [imageView release];
         
         
+        label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 100, view.frame.size.width, view.frame.size.height - 100)] autorelease];
+        label.textAlignment = UITextAlignmentCenter;
+		label.font = [label.font fontWithSize:16];
+        [label setTextColor:[UIColor whiteColor]];
+        label.backgroundColor = [UIColor colorWithPatternImage:[ImageManager GobalScrollerTitleBG_Image]];
+        
+        [imageView  addSubview:label];
         
 	}
 	else
@@ -426,7 +477,7 @@
 	}
 	
     //set label
-	label.text = [NSString stringWithFormat:@"%@", @""];
+	label.text = [NSString stringWithFormat:@"%@", article.title];
     
     //update reflection
     //this step is expensive, so if you don't need
@@ -434,8 +485,6 @@
     //and you'll get much smoother peformance
     //    [view update];
     
-    
-	
 	return view;
 
 }
@@ -447,13 +496,22 @@
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
     PPDebug(@"I did selected the picture of %d",index);
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    
+    WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
+    
+    controller.article = [self.dataList objectAtIndex:index - 1];
+    [self.navigationController pushViewController:controller animated:YES];
+    
+    
 }
 
 -(void)carouselCurrentItemIndexUpdated:(iCarousel *)carousel{
 
     PPDebug(@"%d",[carousel currentItemIndex]);
     
-//    [self.spacePageControl setCurrentPage:[carousel currentItemIndex]];
+   [self.spacePageControl setCurrentPage:[carousel currentItemIndex]];
 }
 
 #pragma mark -
@@ -482,6 +540,7 @@
     self.dataList = objects;
     [self hideActivity];
     [self.dataTableView reloadData];
+    [self.carousel reloadData];
 }
 
 @end

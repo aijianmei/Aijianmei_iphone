@@ -254,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4V1-jv-YEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4480" y="-5671"/>
+            <point key="canvasLocation" x="4464" y="-5759"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="96l-pa-39P">
@@ -328,7 +328,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZaN-sw-G6x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5076" y="-5694"/>
+            <point key="canvasLocation" x="5148" y="-5590"/>
         </scene>
         <!--Workout View Controller-->
         <scene sceneID="KKm-98-eaU">
@@ -570,7 +570,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXF-0Z-5yh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2454" y="-4318"/>
+            <point key="canvasLocation" x="3038" y="-4366"/>
         </scene>
         <!--More View Controller-->
         <scene sceneID="8Dd-af-kE8">
@@ -628,7 +628,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZL-8w-6VZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2462" y="-3709"/>
+            <point key="canvasLocation" x="2702" y="-3389"/>
         </scene>
         <!--Workout Plan View Controller-->
         <scene sceneID="WmT-Y2-4k5">
@@ -894,7 +894,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FVd-uI-KxB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3645" y="-4642"/>
+            <point key="canvasLocation" x="4173" y="-4642"/>
         </scene>
         <!--Workout Datas View Controller-->
         <scene sceneID="8Tp-aY-T8Q">
@@ -909,7 +909,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8V-Ah-xej" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3174" y="-5506"/>
+            <point key="canvasLocation" x="3758" y="-3746"/>
         </scene>
         <!--Workout Image View Controller-->
         <scene sceneID="gOW-g7-HUB">
@@ -1072,7 +1072,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fBy-vt-Z8D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2086" y="-3726"/>
+            <point key="canvasLocation" x="1958" y="-3414"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="Gtn-rP-Yjw">
@@ -1354,7 +1354,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="11.png" width="200" height="130"/>
+        <image name="11.png" width="16" height="16"/>
         <image name="bj_1.png" width="212" height="674"/>
         <image name="bj_2.png" width="212" height="674"/>
         <image name="fgx_1.png" width="640" height="2"/>
