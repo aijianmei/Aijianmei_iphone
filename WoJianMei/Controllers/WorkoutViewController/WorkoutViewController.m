@@ -442,37 +442,36 @@ typedef enum CONTENT_TYPE {
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
 {
     
-    UILabel *label = nil;
 	//create new view if no view is available for recycling
+    Article *article  = [self.dataList objectAtIndex: index];
+    UILabel *label = nil;
+
 	if (view == nil)
 	{
         //set up reflection view
 		view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 130.0f)] autorelease];
         
         //set up content
-		label = [[[UILabel alloc] initWithFrame:view.bounds] autorelease];
+        
+    
+        ///add images
+        UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 130)];
+        [imageView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@"11"]];
+        
+//        [label addSubview: imageView];
+        [view addSubview:imageView];
+        [imageView release];
+        
+        
+        label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 100, view.frame.size.width, view.frame.size.height - 100)] autorelease];
 		label.backgroundColor = [UIColor lightGrayColor];
 		label.layer.borderColor = [UIColor whiteColor].CGColor;
         label.layer.borderWidth = 4.0f;
         label.layer.cornerRadius = 8.0f;
         label.textAlignment = UITextAlignmentCenter;
-		label.font = [label.font fontWithSize:50];
-        
-        
-        [view addSubview:label];
-        
-        Article *article  = [self.dataList objectAtIndex: index];
+		label.font = [label.font fontWithSize:10];
 
-
-        ///add images
-        
-        UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 130)];
-        [imageView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@"11"]];
-        
-        [label addSubview: imageView];
-        [imageView release];
-        
-        
+        [imageView  addSubview:label];
         
 	}
 	else
@@ -481,7 +480,7 @@ typedef enum CONTENT_TYPE {
 	}
 	
     //set label
-	label.text = [NSString stringWithFormat:@"%@", @""];
+	label.text = [NSString stringWithFormat:@"%@", article.title];
     
     //update reflection
     //this step is expensive, so if you don't need
@@ -489,8 +488,6 @@ typedef enum CONTENT_TYPE {
     //and you'll get much smoother peformance
     //    [view update];
     
-    
-	
 	return view;
 
 }
@@ -507,7 +504,7 @@ typedef enum CONTENT_TYPE {
     
     WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
     
-    controller.article = [self.dataList objectAtIndex:index];
+    controller.article = [self.dataList objectAtIndex:index - 1];
     [self.navigationController pushViewController:controller animated:YES];
     
     

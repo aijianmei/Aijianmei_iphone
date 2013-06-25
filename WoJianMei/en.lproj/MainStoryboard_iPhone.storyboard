@@ -1354,7 +1354,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="11.png" width="200" height="130"/>
+        <image name="11.png" width="16" height="16"/>
         <image name="bj_1.png" width="212" height="674"/>
         <image name="bj_2.png" width="212" height="674"/>
         <image name="fgx_1.png" width="640" height="2"/>
