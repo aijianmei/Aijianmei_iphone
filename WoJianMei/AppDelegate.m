@@ -158,18 +158,18 @@
         //右视图
 //        rightVC = (MyselfViewController*)[iPhonestroyBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
         
-        AJMRightSideViewController *ajmVC = [[AJMRightSideViewController alloc]init];
-        
-        
-        
+//        AJMRightSideViewController *ajmVC = [[AJMRightSideViewController alloc]init];
+//        
+//        
+//        
         IIViewDeckController *vc = [[IIViewDeckController alloc] initWithCenterViewController:_navigationController leftViewController:leftVC];
-        
-        vc.rightController =ajmVC;
-        [ajmVC release];
+//        
+//        vc.rightController =ajmVC;
+//        [ajmVC release];
         
         
         vc.leftSize  = self.window.frame.size.width - (320 - 60.0);
-        vc.rightSize = self.window.frame.size.width - (320 - 60.0);
+//        vc.rightSize = self.window.frame.size.width - (320 - 60.0);
         self.viewController = vc;
 
        
@@ -190,7 +190,7 @@
         
 //        vc.rightController =rightVC;
         vc.leftSize  = self.window.frame.size.width - (640 - 344.0);
-        vc.rightSize = self.window.frame.size.width - (640 - 344.0);
+//        vc.rightSize = self.window.frame.size.width - (640 - 344.0);
         self.viewController = vc;
 
     }

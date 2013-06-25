@@ -133,5 +133,11 @@ static ImageManager *_defaultManager = nil;
 }
 
 
+///顶部导航栏目，头像图片；
++(UIImage*)GobalNavigationAvatarImage{
+    
+    return [UIImage imageNamed:@"Navigation_avartar_Image"];
+}
+
 
 @end

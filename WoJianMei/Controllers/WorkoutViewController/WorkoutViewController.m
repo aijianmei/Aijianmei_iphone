@@ -22,6 +22,8 @@
 
 #import "MyselfViewController.h"
 
+#import "ImageManager.h"
+
 
 
 ///// the setings of the iCarousel
@@ -90,11 +92,11 @@ typedef enum CONTENT_TYPE {
         ////rightBtn
         UIButton *rightBtn = [[[UIButton alloc] init] autorelease];
         
-        [rightBtn setBackgroundImage:[UIImage imageNamed:@"NavigationButtonBG.png"]
-                            forState:UIControlStateNormal];
-        
-        [rightBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
-        rightBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
+//        [rightBtn setBackgroundImage:[ImageManager GobalNavigationAvatarImage]
+//                            forState:UIControlStateNormal];
+    
+        [rightBtn setImage:[ImageManager GobalNavigationAvatarImage] forState:UIControlStateNormal];
+        rightBtn.frame = CGRectMake(0.0, 0.0, 49.0, 29.0);
         [rightBtn addTarget:self action:@selector(rightButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:rightBtn] autorelease];
         
@@ -140,14 +142,10 @@ typedef enum CONTENT_TYPE {
         UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
         currentInUseStoryBoard = iPadStroyBoard;
     }
-    
-    [currentInUseStoryBoard instantiateViewControllerWithIdentifier:@""];
-    
+        
     MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
     myselfVC.title = @"我";
     [self.navigationController pushViewController:myselfVC animated:YES];
-    
-    
 }
 
 
