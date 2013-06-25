@@ -20,6 +20,10 @@
 #import "AppDelegate.h"
 #import "FilterViewController.h"
 
+#import "MyselfViewController.h"
+
+
+
 ///// the setings of the iCarousel
 #define NUMBER_OF_ITEMS 13
 #define NUMBER_OF_VISIBLE_ITEMS 18
@@ -125,10 +129,25 @@ typedef enum CONTENT_TYPE {
 - (void)rightButtonClickHandler:(id)sender
 {
 //    [self.viewDeckController toggleRightViewAnimated:YES];
+    UIStoryboard *currentInUseStoryBoard;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        
+        currentInUseStoryBoard = iPhoneStroyBoard;
+        
+    }else{
+        
+        UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+        currentInUseStoryBoard = iPadStroyBoard;
+    }
+    
+    [currentInUseStoryBoard instantiateViewControllerWithIdentifier:@""];
+    
+    MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
+    myselfVC.title = @"我";
+    [self.navigationController pushViewController:myselfVC animated:YES];
     
     
-    
- 
 }
 
 
