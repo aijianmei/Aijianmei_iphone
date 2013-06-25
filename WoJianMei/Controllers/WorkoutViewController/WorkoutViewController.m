@@ -424,8 +424,7 @@ typedef enum CONTENT_TYPE {
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
 //    return NUMBER_OF_ITEMS;
-    
-    
+
     return [self.dataList count];
 
 }
@@ -464,13 +463,11 @@ typedef enum CONTENT_TYPE {
         
         
         label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 100, view.frame.size.width, view.frame.size.height - 100)] autorelease];
-		label.backgroundColor = [UIColor lightGrayColor];
-		label.layer.borderColor = [UIColor whiteColor].CGColor;
-        label.layer.borderWidth = 4.0f;
-        label.layer.cornerRadius = 8.0f;
         label.textAlignment = UITextAlignmentCenter;
-		label.font = [label.font fontWithSize:10];
+		label.font = [label.font fontWithSize:13];
+        [label setTextColor:[UIColor whiteColor]];
 
+        label.backgroundColor = [UIColor colorWithRed:0.17 green:0.1 blue:0.17 alpha:0.6];
         [imageView  addSubview:label];
         
 	}
