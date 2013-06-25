@@ -184,10 +184,11 @@
         AJMLeftSideViewController *leftVC = [[[AJMLeftSideViewController alloc] init] autorelease];
         
         //右视图
-        rightVC = (MyselfViewController*)[iPadstroyBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
-        IIViewDeckController *vc = [[[IIViewDeckController alloc] initWithCenterViewController:navVC leftViewController:leftVC] autorelease];
+//        rightVC = (MyselfViewController*)[iPadstroyBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
         
-        vc.rightController =rightVC;
+       IIViewDeckController *vc = [[[IIViewDeckController alloc] initWithCenterViewController:navVC leftViewController:leftVC] autorelease];
+        
+//        vc.rightController =rightVC;
         vc.leftSize  = self.window.frame.size.width - (640 - 344.0);
         vc.rightSize = self.window.frame.size.width - (640 - 344.0);
         self.viewController = vc;

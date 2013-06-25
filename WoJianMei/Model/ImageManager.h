@@ -46,6 +46,8 @@
 
 
 
++(UIImage*)leftSideNaviHighLightImage;
++(UIImage*)GobalBGImage;
 
 
 

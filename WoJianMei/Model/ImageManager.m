@@ -119,5 +119,19 @@ static ImageManager *_defaultManager = nil;
     return [UIImage imageNamed:@"topmenu_bg.png"];
 }
 
+///////AVATAR
++(UIImage*)leftSideNaviHighLightImage{
+    
+    return [UIImage imageNamed:@"leftSide_Click.png"];
+}
+
+
+///////AVATAR
++(UIImage*)GobalBGImage{
+    
+    return [UIImage imageNamed:@"gobal_background.png"];
+}
+
+
 
 @end

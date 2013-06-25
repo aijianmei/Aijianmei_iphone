@@ -18,6 +18,7 @@
 #import "WorkoutDetailViewController.h"
 #import "IIViewDeckController.h"
 #import "AppDelegate.h"
+#import "FilterViewController.h"
 
 ///// the setings of the iCarousel
 #define NUMBER_OF_ITEMS 13
@@ -26,6 +27,17 @@
 
 #define SCROLL_VIEW_TAG 20120913
 #define More_BUTTON_TAG 20130607
+
+
+typedef enum CONTENT_TYPE {
+    NEW_TYPE= 0,
+    WORKOUT_TYPE =1,
+    BASIC_TYPE =2,
+    VIDEO_TYPE =3
+    
+}CONTENT_TYPE;
+
+
 
 @interface WorkoutViewController ()
 
@@ -112,7 +124,11 @@
 }
 - (void)rightButtonClickHandler:(id)sender
 {
-    [self.viewDeckController toggleRightViewAnimated:YES];
+//    [self.viewDeckController toggleRightViewAnimated:YES];
+    
+    
+    
+ 
 }
 
 
@@ -159,7 +175,7 @@
     
     [[self.view viewWithTag:SCROLL_VIEW_TAG] removeFromSuperview];
     self.buttonScrollView.tag = SCROLL_VIEW_TAG;
-    [_buttonScrollView setFrame:CGRectMake(0,150, 260, 30)];
+    [_buttonScrollView setFrame:CGRectMake(0,0, 260, 30)];
     [_buttonScrollView setShowsHorizontalScrollIndicator:NO];
     
     [_buttonScrollView setContentSize:CGSizeMake(([[_buttonScrollView subviews] count]) * buttonWidth * 2.6, buttonHeight)];
@@ -168,7 +184,7 @@
     
     
     
-    UIButton *moreButotn = [[UIButton alloc]initWithFrame:CGRectMake(270, 150, 40, 30)];
+    UIButton *moreButotn = [[UIButton alloc]initWithFrame:CGRectMake(270, 0, 40, 30)];
     [moreButotn.titleLabel setFont:[UIFont systemFontOfSize:12]];
     
     [moreButotn setBackgroundImage:[UIImage imageNamed:@"button_Image.png"] forState:UIControlStateNormal];
@@ -184,11 +200,11 @@
 
     //configure carousel
     
-    self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 0, 320, 140)];
+    self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 30, 320, 140)];
     
     self.carousel.delegate = self;
     self.carousel.dataSource = self;
-    _carousel.type = iCarouselTypeCylinder;
+    _carousel.type = iCarouselTranformOptionTilt;
     
     [self.carousel setCenterItemWhenSelected:YES];
     
@@ -221,7 +237,18 @@
 -(void)buttonClicked:(UIButton *)sender
 
 {
+    
+    
     self.currentButton = sender;
+    
+    if ([sender tag] == More_BUTTON_TAG) {
+        
+        FilterViewController *vc = [[FilterViewController alloc]initWithNibName:@"FilterViewController" bundle:nil];
+        [self.navigationController  presentModalViewController:vc animated:YES];
+        [vc release];
+        
+        return;
+    }
     
     //开始下载文章
     NSString *aucode= @"aijianmei";
@@ -233,6 +260,8 @@
     NSString *pnums = @"10";
     NSString *cateid = @"0";
     NSString *uid = @"265";
+    
+   
     
     if ([[sender currentTitle] isEqualToString:@"最新"]) {
         
@@ -273,10 +302,7 @@
         uid = @"265";
     
     }
-    if ([sender tag] == More_BUTTON_TAG) {
-        
-
-    }
+    
     
     [[ArticleService sharedService] findArticleWithAucode:aucode
                                                     auact:auact
@@ -288,6 +314,8 @@
                                                    cateid:cateid
                                                       uid:uid
                                                  delegate:self];
+    
+    
     
 }
 
@@ -316,10 +344,8 @@
     [self initMoreUI];
     [self initUI];
     self.supportRefreshHeader = YES;
-    
-//    [self initArticles];
-//     self.dataList = [[ArticleManager defaultManager] articleList];    
-    
+    self.supportRefreshFooter = YES;
+
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"最新" forState:UIControlStateNormal];
     [self buttonClicked:button];
