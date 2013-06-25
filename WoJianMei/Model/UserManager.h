@@ -17,6 +17,8 @@
                      userType:(NSString *)userType
                          name:(NSString *)name
               profileImageUrl:(NSString *)profileImageUrl
-                       gender:(NSString *)gender;
+                       gender:(NSString *)gender
+                        email:(NSString *)email
+                     password:(NSString *)password;
 
 @end

@@ -45,6 +45,11 @@
 - (void)dealloc
 {
     [super dealloc];
+    [_emailTextField release];
+    [_passwordTextField release];
+    [_loginButton release];
+    [_snsId release];
+    [_userType release];
 }
 
 - (IBAction)closeDoneEdit:(id)sender
@@ -57,8 +62,11 @@
     if ([self verifyField] == NO){
         return;
     }
-    NSDictionary *userInfo = [[UserService defaultService] getUserInfo];
-        [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.emailTextField.text password:self.passwordTextField.text usertype:@"sina" snsId:[userInfo objectForKey:@"id"] profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:nil body_weight:@"" height:@"" keyword:@"" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] delegate:self];
+    NSDictionary *userInfo = nil;
+    if ([self.userType isEqualToString:@"sina"]) {
+        userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
+    }
+    [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.emailTextField.text password:self.passwordTextField.text usertype:self.userType snsId:self.snsId profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:nil body_weight:@"" height:@"" keyword:@"" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] delegate:self];
 }
 
 - (BOOL)verifyField
@@ -86,7 +94,6 @@
 
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
-
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
     NSLog(@"Response code: %d", [response statusCode]);
 }
@@ -105,8 +112,11 @@
 {
     NSLog(@"***Load objects count: %d", [objects count]);
     Result *result = [objects objectAtIndex:0];
-    NSDictionary *userInfo = [[UserService defaultService] getUserInfo];
-    User *user = [UserManager createUserWithUserId:result.uid sinaUserId:[userInfo objectForKey:@"id"] qqUserId:@"" userType:@"sina" name:[userInfo objectForKey:@"name"] profileImageUrl:[userInfo objectForKey:@"profile_image_url"] gender:[userInfo objectForKey:@"gender"]];
+    NSDictionary *userInfo = nil;
+    if ([self.userType isEqualToString:@"sina"]) {
+        userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
+    }
+    User *user = [UserManager createUserWithUserId:result.uid sinaUserId:self.snsId qqUserId:nil userType:self.userType name:[userInfo objectForKey:@"name"] profileImageUrl:[userInfo objectForKey:@"profile_image_url"] gender:[userInfo objectForKey:@"gender"] email:_emailTextField.text password:_passwordTextField.text];
     
     NSLog(@"******Register success,return uid:%@",user.uid);
     [UserService defaultService].user = user;

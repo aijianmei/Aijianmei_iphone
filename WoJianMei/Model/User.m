@@ -68,6 +68,7 @@
     [_avatarBackGroundImage release];
     [_gender release];
     [_email release];
+    [_password release];
     [_sinaUserId release];
     [_qqUserId release];
     [_uid release];

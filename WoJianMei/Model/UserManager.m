@@ -19,6 +19,8 @@
                          name:(NSString *)name
               profileImageUrl:(NSString *)profileImageUrl
                        gender:(NSString *)gender
+                        email:(NSString *)email
+                     password:(NSString *)password
 {
     User *user = [[[User alloc] init] autorelease];
     user.uid = userId;
@@ -28,8 +30,9 @@
     user.name = name;
     user.profileImageUrl = profileImageUrl;
     user.gender = gender;
+    user.email = email;
+    user.password = password;
     user.loginStatus = [NSNumber numberWithBool:YES];
-
     return user;
 }
 

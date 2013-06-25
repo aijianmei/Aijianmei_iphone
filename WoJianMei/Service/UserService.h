@@ -54,10 +54,10 @@
 - (void)fetchSinaUserInfo:(NSString*)uid
                     delegate:(id<SinaWeiboRequestDelegate>)delegate;
 
-//保存用户信息
-- (void)storeUserInfo:(NSDictionary*)userInfo;
+//保存新浪用户信息
+- (void)storeSinaUserInfo:(NSDictionary*)userInfo;
 
-- (NSDictionary*)getUserInfo;
+- (NSDictionary*)getSinaUserInfoWithUid:(NSString*)uid;
 
 //注册用户
 - (void)registerUserWithUsername:(NSString*)name

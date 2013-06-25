@@ -137,12 +137,21 @@
 {
     if ([request.url hasSuffix:@"users/show.json"])
     {
-        [[UserService defaultService] storeUserInfo:result];        
+        [[UserService defaultService] storeSinaUserInfo:result];
         if (![[UserService defaultService] hasBindEmail]) {
             [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
        } else{
            [self performSegueWithIdentifier:@"returnMyselfSegue" sender:self];
         }
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"SignupViewSegue"]) {
+        SignUpViewController *signUpViewController = (SignUpViewController*)segue.destinationViewController;
+        signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;
+        signUpViewController.userType = @"sina";
     }
 }
     

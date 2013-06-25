@@ -178,21 +178,20 @@ static UserService* _defaultUserService = nil;
                                        delegate:delegate];
 }
 
-- (void)storeUserInfo:(NSDictionary*)userInfo
+- (void)storeSinaUserInfo:(NSDictionary*)userInfo
 {
-    NSLog(@"Store Sina UserInfo to Local");
+    NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);
     NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:userInfo];
-    [[NSUserDefaults standardUserDefaults] setObject:userData forKey:@"SinaWeiboUserInfo"];
+    [[NSUserDefaults standardUserDefaults] setObject:userData forKey:[[userInfo objectForKey:@"id"] stringValue]];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (NSDictionary*)getUserInfo
+- (NSDictionary*)getSinaUserInfoWithUid:(NSString *)uid
 {
-    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:@"SinaWeiboUserInfo"];
+    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:uid];
     NSDictionary *userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
     return userInfo;
 }
-
 
 - (BOOL)hasBindAccount
 {
@@ -214,11 +213,10 @@ static UserService* _defaultUserService = nil;
 
 - (BOOL)hasbindSina
 {
-    if (_user.sinaUserId != nil)
+    if ([_user.sinaUserId length] > 0)
         return YES;
     else
         return NO;
 }
-
 
 @end
