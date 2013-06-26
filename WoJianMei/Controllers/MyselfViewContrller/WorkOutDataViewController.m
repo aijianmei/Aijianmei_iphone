@@ -115,13 +115,7 @@
    
     [self setNavigationRightButton:@"设置" imageName:@"settings.png" action:@selector(clickEditButton:)];
     
-    
-    
-   
-    
-    ///set the gobal  backbutton 
-    UIImage *btnTrnspBgrImg30 = [[UIImage imageNamed:@"top_bar_backButton.png"]resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
-    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:btnTrnspBgrImg30      forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+   [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     
     
     

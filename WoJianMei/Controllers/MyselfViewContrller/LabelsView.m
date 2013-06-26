@@ -36,9 +36,7 @@
 {
     ////Configure The ButtonScrollView
     NSMutableArray *buttonArrays  =[[NSMutableArray alloc]init];
-
     for (NSString *buttonTitle in self.dataList) {
-        
         UIButton *button =[[UIButton alloc]initWithFrame:CGRectMake(30, 0, 50, 30)];
         [button setBackgroundColor:[UIColor clearColor]];
         [button.titleLabel setFont:[UIFont systemFontOfSize:12]];
@@ -51,8 +49,7 @@
         
     }
     
-    
-    
+
     UIScrollView *scrollView = [PPViewController createButtonScrollViewByButtonArray:buttonArrays buttonsPerLine:BUTTONS_PERLINE  buttonSeparatorY:-1];
     
     self.buttonScrollView =scrollView;
@@ -68,7 +65,6 @@
     self.buttonScrollView.tag = SCROLL_VIEW_TAG;
     [_buttonScrollView setFrame:CGRectMake(0,0, 230, 30)];
     [_buttonScrollView setShowsHorizontalScrollIndicator:NO];
-    
     [_buttonScrollView setContentSize:CGSizeMake(([[_buttonScrollView subviews] count]) * buttonWidth * 2.6, buttonHeight)];
     
     [self addSubview:_buttonScrollView];

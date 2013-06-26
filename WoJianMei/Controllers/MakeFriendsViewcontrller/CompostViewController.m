@@ -63,8 +63,9 @@ enum BUTTON_TYPE {
 
 
 -(void)didClickBackButton:(UIButton *)button{
+    
+    
 
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 
