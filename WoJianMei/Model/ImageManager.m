@@ -158,5 +158,14 @@ static ImageManager *_defaultManager = nil;
 }
 
 
+////用户头像背景图片
++(UIImage*)getProfile_backgroud{
+
+    return [UIImage imageNamed:@"profile_backgroud.png"];
+
+}
+
+
+
 
 @end

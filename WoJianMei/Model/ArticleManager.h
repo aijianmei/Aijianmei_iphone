@@ -48,8 +48,11 @@
 
 
 
-- (void)loadFollowArticleList;
-- (void)saveFollowArticleList;
+- (void)loadArticleList;
+- (void)saveArticleList;
+
+
+
 - (void)followArticle:(ArticleInfo*)article;
 - (void)unfollowArticle:(ArticleInfo*)article;
 - (BOOL)isArticleFollowed:(NSString*)articleId;

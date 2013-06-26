@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JMStaticContentTableViewController.h"
+#import "PPTableViewController.h"
 
 
 @class User;
-@interface Myself_SettingsViewController: JMStaticContentTableViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIAlertViewDelegate>
+@interface Myself_SettingsViewController: PPTableViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIAlertViewDelegate>
 
 {
 

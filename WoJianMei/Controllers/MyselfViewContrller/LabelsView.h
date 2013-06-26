@@ -10,4 +10,16 @@
 
 @interface LabelsView : UIView
 
+{
+    UIScrollView *_buttonScrollView;
+    NSArray *_dataList;
+
+}
+
+@property (nonatomic,retain) UIScrollView *buttonScrollView;
+@property (nonatomic,retain) NSArray *dataList;
+
+-(void)setNeedsDisplay;
+-(id)loadDataList;
+
 @end

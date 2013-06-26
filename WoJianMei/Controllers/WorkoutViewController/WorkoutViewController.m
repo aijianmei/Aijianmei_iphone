@@ -374,18 +374,19 @@ typedef enum CONTENT_TYPE {
 
 - (void)viewDidLoad
 {    
-    [self initMoreUI];
+    [super viewDidLoad];
+    
+    
     [self initUI];
+    [self initMoreUI];
+    
     self.supportRefreshHeader = YES;
     self.supportRefreshFooter = YES;
-    
-    
-///// 设置开始
+
+    ///// 设置开始
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"最新" forState:UIControlStateNormal];
     [self buttonClicked:button];
-    
-    [super viewDidLoad];
 }
 
 #pragma mark --

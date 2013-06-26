@@ -17,6 +17,7 @@
 #import "WorkOutProcessViewController.h"
 #import "UserService.h"
 #import "UIImageView+WebCache.h"
+#import "LabelsView.h"
 
 #define USER                          @"user"
 #define USER_NAME                     @"screen_name"
@@ -84,18 +85,18 @@
     
     [self.headerVImageButton setBackgroundImage:self.user.avatarImage forState:UIControlStateNormal];
     
-    NSString *userName = [self.user name];
+    NSString *userName = self.user.name;
     [self.userNameLabel setText:userName];
     
-    NSString *userGender = [self.user gender];    
-    if ([userGender  isEqualToString:@"m"]) {
-        
-        [self.userGenderLabel setText:@"男"];
-
-    }else{
-        [self.userGenderLabel setText:@"女"];
-        
-    }
+//    NSString *userGender = self.user.gender;    
+//    if ([userGender  isEqualToString:@"m"]) {
+//        
+//        [self.userGenderLabel setText:@"男"];
+//
+//    }else{
+//        [self.userGenderLabel setText:@"女"];
+//        
+//    }
     
     NSString *description = [self.user description];
     [self.mottoLabel setText:description];
@@ -121,11 +122,12 @@
      //////// Set the headerView of the buttons  
     
     self.myHeaderView  =[[UIView alloc]init];
-    [_myHeaderView setFrame: CGRectMake(0, 0, 100, 220)];
-    [_myHeaderView setBackgroundColor:[UIColor clearColor]];
+    [_myHeaderView setFrame: CGRectMake(0, 0, 320, 220)];
+    [_myHeaderView setBackgroundColor:[UIColor redColor]];
     
-    UIImageView *backGroundImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 250, 160)];
-    [backGroundImageView setImage:[UIImage imageNamed:@"profile_backgroud.png"]];
+    UIImageView *backGroundImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160)];
+    [backGroundImageView setImage:[ImageManager getProfile_backgroud]];
+    
     [_myHeaderView addSubview:backGroundImageView];
     [backGroundImageView release];
     
@@ -143,31 +145,31 @@
     _headerVImageButton.layer.borderWidth = 4.0f;
     _headerVImageButton.layer.cornerRadius = 8.0f;
     _headerVImageButton.layer.borderColor = [UIColor clearColor].CGColor;
-    [_headerVImageButton setFrame:CGRectMake(180, 115, 70, 70)];
+    [_headerVImageButton setFrame:CGRectMake(240, 115, 70, 70)];
     [_headerVImageButton setBackgroundColor:[UIColor clearColor]];
     [_headerVImageButton setImage:[ImageManager avatarbackgroundImage] forState:UIControlStateNormal];
     
     _avatarImageView =[[UIImageView alloc]initWithFrame:_headerVImageButton.frame];
-    [self.view addSubview:_avatarImageView];
-    [self.view bringSubviewToFront:_headerVImageButton];
+    [_myHeaderView addSubview:_avatarImageView];
+    [_myHeaderView bringSubviewToFront:_headerVImageButton];
     
-    //// descritpin broundground
+    //// Descritpin broundground
     UIImageView *imageview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"description_bround.png"]];    
-    [imageview setFrame:CGRectMake(0, 160, 200, 50)];
+    [imageview setFrame:CGRectMake(0, 160, 320, 50)];
     [self.myHeaderView addSubview:imageview];
     [imageview release];
     
     //////set the motto
     //初始化label
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 147, 250, 50)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 147, 270, 50)];
     //设置自动行数与字符换行
     [label setNumberOfLines:2];
     label.lineBreakMode = UILineBreakModeWordWrap;
     // 测试字串
-    NSString *s = @"这是一个测试！！！adsfsaf时发生发勿忘我勿忘我勿忘我勿忘我勿忘我阿阿阿阿阿阿阿阿阿阿阿阿阿啊00000000阿什顿。。。";
+    NSString *s = @"这是一个测试！！！ADSFASDFASDFASDFSADFASDFASFASFASFASDFASDFASDFASFASDFASDFASDFASDFASDFASDFASFASDFASDFASDFASDFASDFASDFA";
     UIFont *font = [UIFont fontWithName:@"Arial" size:12];
     //设置一个行高上限
-    CGSize size = CGSizeMake(200,50);
+    CGSize size = CGSizeMake(230,50);
     
     //计算实际frame大小，并将label的frame变成实际大小
      CGSize labelsize = [s sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
@@ -182,9 +184,9 @@
     
     
     ////// set the User Gender
-    self.userGenderLabel  = [[UILabel alloc]initWithFrame:CGRectMake(265, 190, 100, 30)];
-    _userGenderLabel.backgroundColor =[UIColor clearColor];
-    [self.myHeaderView addSubview:self.userGenderLabel];
+//    self.userGenderLabel  = [[UILabel alloc]initWithFrame:CGRectMake(265, 190, 100, 30)];
+//    _userGenderLabel.backgroundColor =[UIColor clearColor];
+//    [self.myHeaderView addSubview:self.userGenderLabel];
     
 
     [self.myHeaderView addSubview:self.headerVImageButton];
@@ -200,7 +202,16 @@
 - (void)setUserInfo
 {
     //获取当前用户信息
-    self.user = [UserService defaultService].user;
+//    self.user = [[UserService defaultService] user];
+   
+    
+    /////For testing !!!
+    User *user =[[User alloc]init];
+    self.user =  user;
+    [user release];
+    ///////////////
+    
+    self.user.name = @"Tom Callon";
     self.user.description = @"我非常喜欢健身运动！！！如果你都喜欢，你就告诉我啦！哈哈哈哈哈哈";
     self.user.avatarBackGroundImage = [UIImage imageNamed:@"profile_backgroud.png"];
     self.user.avatarImage = [UIImage imageNamed:@"user_image.png"];
@@ -225,7 +236,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 5;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -233,19 +244,19 @@
     // Return the number of rows in the section.
 
     switch (section) {
+//        case 0:
+//            return 1;
+//            break;
+//        case 1:
+//            return 1;
+//            break;
         case 0:
             return 1;
             break;
         case 1:
-            return 1;
-            break;
-        case 2:
-            return 1;
-            break;
-        case 3:
             return 5;
             break;
-        case 4:
+        case 2:
             return 1;
             break;
             
@@ -268,28 +279,64 @@
     
     if (cell) {
         cell = [[[MyselfTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        
-        
+
         [cell.textLabel setFont:[UIFont systemFontOfSize:14]];
         cell.textLabel.textColor=[UIColor colorWithRed:0x46/255.0 green:0x46/255.0 blue:0x46/255.0 alpha:1.0];
     }
     
-        
+    UIImage *normalImage = [UIImage imageNamed:@"AccessoryView.png"];
+    UIImage *mySelectedImage = [UIImage imageNamed:@"144x144.png"];
+    UIButton *accessoryViewButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    accessoryViewButton.frame = CGRectMake(0.0f, 0.0f, 49.0f,32.0f);
+    accessoryViewButton.userInteractionEnabled = YES;
+    
     switch (indexPath.section) {
+//        case 0:
+//            [cell.textLabel setText:@"我的健身历程"];
+//            break;
+//        case 1:
+//            [cell.textLabel setText:@"健身小助手"];
+//            break;
         case 0:
-            [cell.textLabel setText:@"我的健身历程"];
+            [cell.textLabel setText:@"标签"];
+            
+            /////显示数据接口
+            NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"增肌",@"减肥",@"增重",@"认识朋友",@"ddd",@"dd",@"dfghjhgfd", nil];
+            LabelsView *lablesView = [[LabelsView alloc]initWithFrame:CGRectMake(50, 15, cell.bounds.size.width -90, cell.bounds.size.height)];
+            [lablesView setDataList:buttonTitleArray];
+            [lablesView setNeedsDisplay];
+            [cell addSubview:lablesView];
+            [lablesView release];
+            
+        /////accessoryViewButton
+            [accessoryViewButton setImage:normalImage forState:UIControlStateNormal];
+            [accessoryViewButton setImage:mySelectedImage forState:UIControlStateHighlighted];
+            cell.accessoryView = accessoryViewButton;
+            
             break;
         case 1:
-            [cell.textLabel setText:@"健身小助手"];
+            [cell.textLabel setText:[self.dataList objectAtIndex:indexPath.row]];
+            
+            /////accessoryViewButton
+            
+            [accessoryViewButton setBackgroundImage:[UIImage imageNamed:@"Label_Type.png"] forState:UIControlStateNormal];
+            [accessoryViewButton setTitle:[self.dataList objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+
+//            [accessoryViewButton setImage:mySelectedImage forState:UIControlStateHighlighted];
+            cell.accessoryView = accessoryViewButton;
+            
+
             break;
         case 2:
-            [cell.textLabel setText:@"标签"];
-            break;
-        case 3:
-            [cell.textLabel setText:[self.dataList objectAtIndex:indexPath.row]];
-            break;
-        case 4:
             [cell.textLabel setText:@"城市"];
+            
+            
+            /////accessoryViewButton
+            [accessoryViewButton setTitle:@"城市" forState:UIControlStateNormal];
+            [accessoryViewButton setBackgroundImage:[UIImage imageNamed:@"Label_Type.png"] forState:UIControlStateNormal];
+            //            [accessoryViewButton setImage:mySelectedImage forState:UIControlStateHighlighted];
+            cell.accessoryView = accessoryViewButton;
             break;
             
         default:
@@ -297,62 +344,42 @@
     }
     
     
-    UIImage *normalImage = [UIImage imageNamed:@"144x144.png"];
-    UIImage *mySelectedImage = [UIImage imageNamed:@"144x144.png"];
     
-    UIButton *accessoryViewButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    accessoryViewButton.frame = CGRectMake(0.0f, 0.0f, normalImage.size.width -120, normalImage.size.height -120);
-    accessoryViewButton.userInteractionEnabled = YES;
-    [accessoryViewButton setImage:normalImage forState:UIControlStateNormal];
-    [accessoryViewButton setImage:mySelectedImage forState:UIControlStateHighlighted];
-    
-    cell.accessoryView = accessoryViewButton;
-
+//
     return cell;
 }
 
 ////Click the cell methos
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-    
-    
-//    UIStoryboard * iPhonestroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    //    UIStoryboard * iPhonestroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     
     
     //TODO
     switch (indexPath.section) {
+//        case 0:
+//            NSLog(@"I did click %@",@"我的健身历程");
+//            [self performSegueWithIdentifier:@"WorkoutProcessSegue" sender:self];
+//            
+//            break;
+//        case 1:
+//            NSLog(@"I did click %@",@"我的健身小助手");
+//                
+//            [self performSegueWithIdentifier:@"WorkoutImageViewSegue" sender:self];
+            
+            break;
         case 0:
-            NSLog(@"I did click %@",@"我的健身历程");
-            [self performSegueWithIdentifier:@"WorkoutProcessSegue" sender:self];
-            
-            break;
-        case 1:
-            NSLog(@"I did click %@",@"我的健身小助手");
-                
-            [self performSegueWithIdentifier:@"WorkoutImageViewSegue" sender:self];
-            
-            break;
-        case 2:
             NSLog(@"I did click %@",@"标签");
             ////for testing
             
-            [self performSegueWithIdentifier:@"WorkoutImageViewSegue" sender:self];
-            
             break;
-        case 3:
+        case 1:
             switch (indexPath.row) {
                 case 0:
                     NSLog(@"this is %@",@"性别");
-                    ////for testing by Tom Callon 
-                    [self performSegueWithIdentifier:@"WorkoutImageViewSegue" sender:self];
                     break;
                 case 1:
                     NSLog(@"this is %@",@"年龄");
-                    
-                    WorkOutDataViewController *rvController = [[[WorkOutDataViewController alloc]init] autorelease];
-                    [self.navigationController pushViewController:rvController animated:YES];
-                    
                     break;
                 case 2:
                     NSLog(@"this is %@",@"身高");
@@ -368,7 +395,7 @@
                     break;
             }
                     break;
-        case 4:
+        case 2:
             NSLog(@"I did click %@",@"城市");
             break;
             
@@ -379,42 +406,42 @@
 }
 
 
-#pragma mark -
-#pragma mark Hide and Show TabBar Methods
-
-- (void)showTabBar {
-    UITabBar *tabBar = self.tabBarController.tabBar;
-    UIView *parent = tabBar.superview; // UILayoutContainerView
-    UIView *content = [parent.subviews objectAtIndex:0]; // UITransitionView
-    UIView *window = parent.superview;
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         CGRect tabFrame = tabBar.frame;
-                         tabFrame.origin.y = CGRectGetMaxY(window.bounds) - CGRectGetHeight(tabBar.frame);
-                         tabBar.frame = tabFrame;
-                         CGRect contentFrame = content.frame;
-                         contentFrame.size.height -= tabFrame.size.height;
-                     }];
-}
-
-
-- (void)hideTabBar {
-    UITabBar *tabBar = self.tabBarController.tabBar;
-    UIView *parent = tabBar.superview; // UILayoutContainerView
-    UIView *content = [parent.subviews objectAtIndex:0];  // UITransitionView
-    UIView *window = parent.superview;
-    
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         CGRect tabFrame = tabBar.frame;
-                         tabFrame.origin.y = CGRectGetMaxY(window.bounds);
-                         tabBar.frame = tabFrame;
-                         content.frame = window.bounds;
-                     }];
-    
-}
-
-
+//#pragma mark -
+//#pragma mark Hide and Show TabBar Methods
+//
+//- (void)showTabBar {
+//    UITabBar *tabBar = self.tabBarController.tabBar;
+//    UIView *parent = tabBar.superview; // UILayoutContainerView
+//    UIView *content = [parent.subviews objectAtIndex:0]; // UITransitionView
+//    UIView *window = parent.superview;
+//    [UIView animateWithDuration:0.5
+//                     animations:^{
+//                         CGRect tabFrame = tabBar.frame;
+//                         tabFrame.origin.y = CGRectGetMaxY(window.bounds) - CGRectGetHeight(tabBar.frame);
+//                         tabBar.frame = tabFrame;
+//                         CGRect contentFrame = content.frame;
+//                         contentFrame.size.height -= tabFrame.size.height;
+//                     }];
+//}
+//
+//
+//- (void)hideTabBar {
+//    UITabBar *tabBar = self.tabBarController.tabBar;
+//    UIView *parent = tabBar.superview; // UILayoutContainerView
+//    UIView *content = [parent.subviews objectAtIndex:0];  // UITransitionView
+//    UIView *window = parent.superview;
+//    
+//    [UIView animateWithDuration:0.5
+//                     animations:^{
+//                         CGRect tabFrame = tabBar.frame;
+//                         tabFrame.origin.y = CGRectGetMaxY(window.bounds);
+//                         tabBar.frame = tabFrame;
+//                         content.frame = window.bounds;
+//                     }];
+//    
+//}
+//
+//
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
@@ -435,7 +462,8 @@
 
 -(void)clickSettingsButton:(id)sender{
     
-    Myself_SettingsViewController *vc = [[Myself_SettingsViewController alloc]init];
+    Myself_SettingsViewController *vc = [[Myself_SettingsViewController alloc]initWithNibName:@"Myself_SettingsViewController" bundle:nil];
+    
     [self.navigationController pushViewController :vc animated:YES];
      vc.user = self.user;
     [vc release];
@@ -457,13 +485,13 @@
 
 -(void)clickVatarButton:(id)sender{
     
-//    UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"取消"
-//                                         destructiveButtonTitle:@"照相"
-//                                              otherButtonTitles:@"相册",nil];
-//    [share showFromTabBar:self.tabBarController.tabBar];
-//    [share release];    
+    UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"取消"
+                                         destructiveButtonTitle:@"照相"
+                                              otherButtonTitles:@"相册",nil];
+    [share showInView:self.view];
+    [share release];    
     
 }
 

@@ -8,7 +8,7 @@
 
 #import "ArticleManager.h"
 #import "ArticleInfo.h"
-#define FOLLOW_VIDEO_LIST        @"FOLLOW_VIDEO_LIST"
+#define  ARTICLES_LIST        @"ARTICLES_LIST"
 
 
 ArticleManager *articleManager;
@@ -43,7 +43,7 @@ extern ArticleManager   *GlobalGetArticleManager()
         
         _articleArray = [[NSArray alloc]init];
 
-        [self loadFollowArticleList];
+        [self loadArticleList];
     }
     return self;
 }
@@ -98,22 +98,22 @@ extern ArticleManager   *GlobalGetArticleManager()
 #pragma FOLLOW VIDEO
 #pragma mark
 
-- (void)loadFollowArticleList
+-(void)loadArticleList
 {
     NSUserDefaults* userDefault = [NSUserDefaults standardUserDefaults];
-    NSData* listData = [userDefault objectForKey:FOLLOW_VIDEO_LIST];
+    NSData* listData = [userDefault objectForKey:ARTICLES_LIST];
     NSMutableDictionary *getFollowMatchList = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
    [self.followArticleList setDictionary:getFollowMatchList];
 }
 
-- (void)saveFollowArticleList
-{
+- (void)saveArticleList{
+
     if (_followArticleList == nil)
         return;
     
     NSUserDefaults* userDefault = [NSUserDefaults standardUserDefaults];
     NSData *followList = [NSKeyedArchiver archivedDataWithRootObject:_followArticleList];
-    [userDefault setObject:followList forKey:FOLLOW_VIDEO_LIST];
+    [userDefault setObject:followList forKey:ARTICLES_LIST];
     
 }
 
