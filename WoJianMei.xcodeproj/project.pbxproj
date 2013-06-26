@@ -21,7 +21,6 @@
 		4A221545177960D20079430D /* New_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A22153E177960D20079430D /* New_Button.png */; };
 		4A221546177960D20079430D /* 更多.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A22153F177960D20079430D /* 更多.jpg */; };
 		4A221548177969790079430D /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A221547177969780079430D /* FilterViewController.xib */; };
-		4A2215541779C1FB0079430D /* LeftSideViewIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A22154A1779C1FB0079430D /* LeftSideViewIcon@2x.png */; };
 		4A2215561779C1FB0079430D /* Navigation_avartar_Image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A22154C1779C1FB0079430D /* Navigation_avartar_Image@2x.png */; };
 		4A2215581779C1FB0079430D /* rq_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A22154E1779C1FB0079430D /* rq_2.png */; };
 		4A2215591779C1FB0079430D /* rq_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A22154F1779C1FB0079430D /* rq_3.png */; };
@@ -399,6 +398,8 @@
 		4A9C3FD3177B257E0088AA6D /* top_bar_backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A9C3FD1177B257D0088AA6D /* top_bar_backButton@2x.png */; };
 		4A9C3FD7177B267B0088AA6D /* top_bar_commonButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A9C3FD5177B267B0088AA6D /* top_bar_commonButton.png */; };
 		4A9C3FD8177B267B0088AA6D /* top_bar_commonButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A9C3FD6177B267B0088AA6D /* top_bar_commonButton@2x.png */; };
+		4A9C3FDB177B28110088AA6D /* LeftSideViewIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A9C3FD9177B280D0088AA6D /* LeftSideViewIcon.png */; };
+		4A9C3FDC177B28110088AA6D /* LeftSideViewIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A9C3FDA177B280F0088AA6D /* LeftSideViewIcon@2x.png */; };
 		4AA7ECE5169F0F78003E8949 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA7ECE4169F0F78003E8949 /* SMPageControl.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4AABA20E1753907B000C4F68 /* DEComposeBackgroundScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AABA20D1753907B000C4F68 /* DEComposeBackgroundScrollView.m */; };
 		4ABD0DA115D7F4EB00B08DDA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABD0DA015D7F4EB00B08DDA /* CFNetwork.framework */; };
@@ -412,7 +413,6 @@
 		4AD9FC3816A114AF00BA766D /* SinaUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9FC3716A114AF00BA766D /* SinaUserCell.m */; };
 		4ADCFE19169D614600A3E979 /* MakeFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFDFC169D614600A3E979 /* MakeFriendsViewController.m */; };
 		4ADCFE1A169D614600A3E979 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFDFF169D614600A3E979 /* AboutViewController.m */; };
-		4ADCFE1B169D614600A3E979 /* More_SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE01169D614600A3E979 /* More_SettingsViewController.m */; };
 		4ADCFE1C169D614600A3E979 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE03169D614600A3E979 /* MoreViewController.m */; };
 		4ADCFE1D169D614600A3E979 /* Myself_SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE06169D614600A3E979 /* Myself_SettingsViewController.m */; };
 		4ADCFE1E169D614600A3E979 /* MyselfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE08169D614600A3E979 /* MyselfViewController.m */; };
@@ -554,7 +554,6 @@
 		4A22153E177960D20079430D /* New_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = New_Button.png; sourceTree = "<group>"; };
 		4A22153F177960D20079430D /* 更多.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "更多.jpg"; sourceTree = "<group>"; };
 		4A221547177969780079430D /* FilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
-		4A22154A1779C1FB0079430D /* LeftSideViewIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LeftSideViewIcon@2x.png"; sourceTree = "<group>"; };
 		4A22154C1779C1FB0079430D /* Navigation_avartar_Image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Navigation_avartar_Image@2x.png"; sourceTree = "<group>"; };
 		4A22154E1779C1FB0079430D /* rq_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rq_2.png; sourceTree = "<group>"; };
 		4A22154F1779C1FB0079430D /* rq_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rq_3.png; sourceTree = "<group>"; };
@@ -1195,6 +1194,8 @@
 		4A9C3FD1177B257D0088AA6D /* top_bar_backButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "top_bar_backButton@2x.png"; path = "profile_settings/top_bar_backButton@2x.png"; sourceTree = "<group>"; };
 		4A9C3FD5177B267B0088AA6D /* top_bar_commonButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_bar_commonButton.png; sourceTree = "<group>"; };
 		4A9C3FD6177B267B0088AA6D /* top_bar_commonButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_bar_commonButton@2x.png"; sourceTree = "<group>"; };
+		4A9C3FD9177B280D0088AA6D /* LeftSideViewIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LeftSideViewIcon.png; sourceTree = "<group>"; };
+		4A9C3FDA177B280F0088AA6D /* LeftSideViewIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LeftSideViewIcon@2x.png"; sourceTree = "<group>"; };
 		4AA7ECE3169F0F78003E8949 /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPageControl.h; sourceTree = "<group>"; };
 		4AA7ECE4169F0F78003E8949 /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPageControl.m; sourceTree = "<group>"; };
 		4AABA20C1753907B000C4F68 /* DEComposeBackgroundScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEComposeBackgroundScrollView.h; sourceTree = "<group>"; };
@@ -1216,8 +1217,6 @@
 		4ADCFDFC169D614600A3E979 /* MakeFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeFriendsViewController.m; sourceTree = "<group>"; };
 		4ADCFDFE169D614600A3E979 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		4ADCFDFF169D614600A3E979 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
-		4ADCFE00169D614600A3E979 /* More_SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = More_SettingsViewController.h; sourceTree = "<group>"; };
-		4ADCFE01169D614600A3E979 /* More_SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = More_SettingsViewController.m; sourceTree = "<group>"; };
 		4ADCFE02169D614600A3E979 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		4ADCFE03169D614600A3E979 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; tabWidth = 3; };
 		4ADCFE05169D614600A3E979 /* Myself_SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Myself_SettingsViewController.h; sourceTree = "<group>"; };
@@ -1404,13 +1403,15 @@
 				4A22153E177960D20079430D /* New_Button.png */,
 				4A22153F177960D20079430D /* 更多.jpg */,
 			);
-			path = "更多";
+			name = "更多";
+			path = "Controllers/WorkoutViewController/更多";
 			sourceTree = "<group>";
 		};
 		4A2215491779C1FA0079430D /* Top_Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				4A22154A1779C1FB0079430D /* LeftSideViewIcon@2x.png */,
+				4A9C3FD9177B280D0088AA6D /* LeftSideViewIcon.png */,
+				4A9C3FDA177B280F0088AA6D /* LeftSideViewIcon@2x.png */,
 				4A22154C1779C1FB0079430D /* Navigation_avartar_Image@2x.png */,
 				4A9C3FAC1779D3230088AA6D /* Scroller_BG.png */,
 				4A22154E1779C1FB0079430D /* rq_2.png */,
@@ -2971,8 +2972,6 @@
 		4ADCFDFD169D614600A3E979 /* MoreViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4ADCFE00169D614600A3E979 /* More_SettingsViewController.h */,
-				4ADCFE01169D614600A3E979 /* More_SettingsViewController.m */,
 				4ADCFE02169D614600A3E979 /* MoreViewController.h */,
 				4ADCFE03169D614600A3E979 /* MoreViewController.m */,
 				4A308C1D176975F0005DF997 /* FeedBackViewController.h */,
@@ -3050,7 +3049,6 @@
 				4A221547177969780079430D /* FilterViewController.xib */,
 				4ADCFE13169D614600A3E979 /* ArticleCell.h */,
 				4ADCFE14169D614600A3E979 /* ArticleCell.m */,
-				4A221538177960D20079430D /* 更多 */,
 				4A8A7224174E10FE00BD3AAE /* LoginViewController.h */,
 				4A8A7225174E10FF00BD3AAE /* LoginViewController.m */,
 				4A8A7227174E557700BD3AAE /* SignUpViewController.h */,
@@ -3221,6 +3219,7 @@
 				4A58805215C52B89005F8415 /* Controllers */,
 				4A27ADFA1777EED1009978C5 /* NetWorkRequest */,
 				4ADCFE56169D62C300A3E979 /* Resources */,
+				4A221538177960D20079430D /* 更多 */,
 				4AE394B815C2DD9C00D06C61 /* Supporting Files */,
 			);
 			path = WoJianMei;
@@ -3638,7 +3637,6 @@
 				4A221545177960D20079430D /* New_Button.png in Resources */,
 				4A221546177960D20079430D /* 更多.jpg in Resources */,
 				4A221548177969790079430D /* FilterViewController.xib in Resources */,
-				4A2215541779C1FB0079430D /* LeftSideViewIcon@2x.png in Resources */,
 				4A2215561779C1FB0079430D /* Navigation_avartar_Image@2x.png in Resources */,
 				4A2215581779C1FB0079430D /* rq_2.png in Resources */,
 				4A2215591779C1FB0079430D /* rq_3.png in Resources */,
@@ -3655,6 +3653,8 @@
 				4A9C3FD3177B257E0088AA6D /* top_bar_backButton@2x.png in Resources */,
 				4A9C3FD7177B267B0088AA6D /* top_bar_commonButton.png in Resources */,
 				4A9C3FD8177B267B0088AA6D /* top_bar_commonButton@2x.png in Resources */,
+				4A9C3FDB177B28110088AA6D /* LeftSideViewIcon.png in Resources */,
+				4A9C3FDC177B28110088AA6D /* LeftSideViewIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3849,7 +3849,6 @@
 				4A4992B3168553A30073E682 /* UIWebViewUtil.m in Sources */,
 				4ADCFE19169D614600A3E979 /* MakeFriendsViewController.m in Sources */,
 				4ADCFE1A169D614600A3E979 /* AboutViewController.m in Sources */,
-				4ADCFE1B169D614600A3E979 /* More_SettingsViewController.m in Sources */,
 				4ADCFE1C169D614600A3E979 /* MoreViewController.m in Sources */,
 				4ADCFE1D169D614600A3E979 /* Myself_SettingsViewController.m in Sources */,
 				4ADCFE1E169D614600A3E979 /* MyselfViewController.m in Sources */,

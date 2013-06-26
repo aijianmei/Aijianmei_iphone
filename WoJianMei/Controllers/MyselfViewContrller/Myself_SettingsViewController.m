@@ -145,11 +145,7 @@
     /// 设置导航按钮
     [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(save)];
     [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
-    
 
-        
-    
-    
 	// Do any additional setup after loading the view, typically from a nib.
     self.title = NSLocalizedString(@"编辑个人资料", @"Settings");
     
