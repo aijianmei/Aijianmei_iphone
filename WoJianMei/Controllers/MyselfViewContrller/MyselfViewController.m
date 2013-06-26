@@ -119,6 +119,9 @@
     [self setNavigationRightButton:@"设置" imageName:@"settings.png" action:@selector(clickSettingsButton:)];
 //    [self setNavigationLeftButton:@"智能设备" imageName:@"settings.png" action:@selector(clickSettingsButton:)];
     
+    
+    
+    
      //////// Set the headerView of the buttons  
     
     self.myHeaderView  =[[UIView alloc]init];
@@ -302,31 +305,36 @@
             [cell.textLabel setText:@"标签"];
             
             /////显示数据接口
-            NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"增肌",@"减肥",@"增重",@"认识朋友",@"ddd",@"dd",@"dfghjhgfd", nil];
+            NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"增肌",@"减肥",@"增重",@"认识朋友",@"约炮",@"dd",@"dfghjhgfd", nil];
             LabelsView *lablesView = [[LabelsView alloc]initWithFrame:CGRectMake(50, 15, cell.bounds.size.width -90, cell.bounds.size.height)];
             [lablesView setDataList:buttonTitleArray];
             [lablesView setNeedsDisplay];
             [cell addSubview:lablesView];
             [lablesView release];
             
-        /////accessoryViewButton
+            /////accessoryViewButton
             [accessoryViewButton setImage:normalImage forState:UIControlStateNormal];
             [accessoryViewButton setImage:mySelectedImage forState:UIControlStateHighlighted];
-            cell.accessoryView = accessoryViewButton;
+            ////accessoryBGview 背景颜色
+            UIView *accessoryBGview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+            [accessoryBGview setBackgroundColor:[UIColor clearColor]];
+            [accessoryViewButton setFrame:CGRectMake(10, 0, 40, 40)];
+            [accessoryBGview addSubview:accessoryViewButton];
+            
+            cell.accessoryView = accessoryBGview;
+            [accessoryBGview release];
+            
             
             break;
         case 1:
             [cell.textLabel setText:[self.dataList objectAtIndex:indexPath.row]];
             
             /////accessoryViewButton
-            
             [accessoryViewButton setBackgroundImage:[UIImage imageNamed:@"Label_Type.png"] forState:UIControlStateNormal];
             [accessoryViewButton setTitle:[self.dataList objectAtIndex:indexPath.row] forState:UIControlStateNormal];
-
-//            [accessoryViewButton setImage:mySelectedImage forState:UIControlStateHighlighted];
             cell.accessoryView = accessoryViewButton;
-            
 
+            
             break;
         case 2:
             [cell.textLabel setText:@"城市"];
@@ -405,61 +413,6 @@
     
 }
 
-
-//#pragma mark -
-//#pragma mark Hide and Show TabBar Methods
-//
-//- (void)showTabBar {
-//    UITabBar *tabBar = self.tabBarController.tabBar;
-//    UIView *parent = tabBar.superview; // UILayoutContainerView
-//    UIView *content = [parent.subviews objectAtIndex:0]; // UITransitionView
-//    UIView *window = parent.superview;
-//    [UIView animateWithDuration:0.5
-//                     animations:^{
-//                         CGRect tabFrame = tabBar.frame;
-//                         tabFrame.origin.y = CGRectGetMaxY(window.bounds) - CGRectGetHeight(tabBar.frame);
-//                         tabBar.frame = tabFrame;
-//                         CGRect contentFrame = content.frame;
-//                         contentFrame.size.height -= tabFrame.size.height;
-//                     }];
-//}
-//
-//
-//- (void)hideTabBar {
-//    UITabBar *tabBar = self.tabBarController.tabBar;
-//    UIView *parent = tabBar.superview; // UILayoutContainerView
-//    UIView *content = [parent.subviews objectAtIndex:0];  // UITransitionView
-//    UIView *window = parent.superview;
-//    
-//    [UIView animateWithDuration:0.5
-//                     animations:^{
-//                         CGRect tabFrame = tabBar.frame;
-//                         tabFrame.origin.y = CGRectGetMaxY(window.bounds);
-//                         tabBar.frame = tabFrame;
-//                         content.frame = window.bounds;
-//                     }];
-//    
-//}
-//
-//
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    
-    
-    if ([segue.identifier isEqualToString:@"WorkoutProcessSegue"])
-    {
-//        [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
-//        
-//        UIViewController *vc = segue.destinationViewController;
-//        
-//       vc.hidesBottomBarWhenPushed = YES;
-        
-        
-    }
-
-        
-}
-
 -(void)clickSettingsButton:(id)sender{
     
     Myself_SettingsViewController *vc = [[Myself_SettingsViewController alloc]initWithNibName:@"Myself_SettingsViewController" bundle:nil];
@@ -477,7 +430,6 @@
     [super viewWillAppear:YES];
     [self.dataTableView reloadData];
     [self upgradeUI];
-    [self showTabBar];
 }
 
 

@@ -29,6 +29,7 @@
     NSDictionary *user_info;
     User *_user;
     UserService *_userService;
+
 }
 
 
