@@ -11,7 +11,6 @@
 #import "ArticleInfo.h"
 #import "ArticleManager.h"
 #import "WorkOut.h"
-#import "ReflectionView.h"
 #import "iCarousel.h"
 #import "ArticleService.h"
 #import "Article.h"
@@ -154,6 +153,16 @@ typedef enum CONTENT_TYPE {
 #pragma mark -
 #pragma mark  initUI  Methods
 
+-(void)updateUserInterface{
+    
+    
+    [self hideActivity];
+    [self.dataTableView reloadData];
+    [self.carousel reloadData];
+    [_spacePageControl setNumberOfPages:[self.dataList count]];
+}
+
+
 //// init the userInterface 
 -(void)initUI{
     
@@ -232,11 +241,11 @@ typedef enum CONTENT_TYPE {
     
     
     ////The page controll
-    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(10, 167, 300, 20)];
+    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(10, 157, 320, 20)];
     [_spacePageControl setBackgroundColor:[UIColor clearColor]];
-    _spacePageControl.numberOfPages = 13;
+    _spacePageControl.numberOfPages = [self.dataList count];
     [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
-    [_spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot"]];
+    [_spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot.png"]];
     [_spacePageControl addTarget:self action:@selector(pageControl:) forControlEvents:UIControlEventValueChanged];
     [self.myHeaderView addSubview:_spacePageControl];
     
@@ -413,9 +422,6 @@ typedef enum CONTENT_TYPE {
 
     controller.article = [self.dataList objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:controller animated:YES];
-
-    
-    
 }
 
 #pragma mark -
@@ -447,11 +453,8 @@ typedef enum CONTENT_TYPE {
 
 	if (view == nil)
 	{
-        //set up reflection view
-		view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 130.0f)] autorelease];
-        
         //set up content
-        
+		view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 130.0f)] autorelease];
     
         ///add images
         UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 130)];
@@ -501,7 +504,7 @@ typedef enum CONTENT_TYPE {
     
     WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
     
-    controller.article = [self.dataList objectAtIndex:index - 1];
+    controller.article = [dataList objectAtIndex:index - 1];
     [self.navigationController pushViewController:controller animated:YES];
     
     
@@ -538,9 +541,8 @@ typedef enum CONTENT_TYPE {
 	[self dataSourceDidFinishLoadingNewData];
     
     self.dataList = objects;
-    [self hideActivity];
-    [self.dataTableView reloadData];
-    [self.carousel reloadData];
+    /////更新用户界面；
+    [self updateUserInterface];
 }
 
 @end

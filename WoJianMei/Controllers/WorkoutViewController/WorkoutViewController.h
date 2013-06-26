@@ -32,6 +32,8 @@
 @property (nonatomic, retain) SMPageControl *spacePageControl;
 
 -(void)buttonClicked:(UIButton *)sender;
+-(void)updateUserInterface;
+
 
 
 @end
