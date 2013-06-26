@@ -139,11 +139,24 @@ static ImageManager *_defaultManager = nil;
     return [UIImage imageNamed:@"Navigation_avartar_Image.png"];
 }
 
-///顶部导航栏目，头像图片；
+///滑片label 的背景图片；
 +(UIImage*)GobalScrollerTitleBG_Image{
     
     return [UIImage imageNamed:@"Scroller_BG.png"];
 }
+
+///顶部导航栏目,左侧列表背景图片；
++(UIImage*)GobalNavigationButtonBG{
+    
+    return [UIImage imageNamed:@"NavigationButtonBG.png"];
+}
+
+///顶部导航栏目,左侧列表图片；
++(UIImage*)GobalNavigationButtonImage{
+    
+    return [UIImage imageNamed:@"LeftSideViewIcon.png"];
+}
+
 
 
 @end

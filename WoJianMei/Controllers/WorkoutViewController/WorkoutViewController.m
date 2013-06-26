@@ -80,11 +80,14 @@ typedef enum CONTENT_TYPE {
     
         ////leftBtn
         UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
-        
-        [leftBtn setBackgroundImage:[UIImage imageNamed:@"NavigationButtonBG.png"]
-                           forState:UIControlStateNormal];
-        
-        [leftBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
+    
+//      [leftBtn setBackgroundImage:[ImageManager GobalNavigationButtonBG ]
+//                       forState:UIControlStateNormal];
+    
+        [leftBtn setImage:[ImageManager GobalNavigationButtonImage] forState:UIControlStateNormal];
+
+    
+    
         leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
         [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
@@ -151,11 +154,9 @@ typedef enum CONTENT_TYPE {
 
 
 #pragma mark -
-#pragma mark  initUI  Methods
+#pragma mark  UPDATEUI  Methods
 
 -(void)updateUserInterface{
-    
-    
     [self hideActivity];
     [self.dataTableView reloadData];
     [self.carousel reloadData];
@@ -182,10 +183,12 @@ typedef enum CONTENT_TYPE {
         [button setBackgroundColor:[UIColor clearColor]];
         [button.titleLabel setFont:[UIFont systemFontOfSize:12]];
         
-        [button setBackgroundImage:[UIImage imageNamed:@"button_Image.png"] forState:UIControlStateNormal];
-        [button setBackgroundImage:[UIImage imageNamed:@"button_Image.png"] forState:UIControlStateSelected];
+//        [button setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [button setBackgroundImage:[UIImage imageNamed:@"Catalog_SelectedButton.png"] forState:UIControlStateSelected];
+        
         [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:buttonTitle forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [buttonArrays addObject:button];
         
         [button release];
@@ -194,7 +197,11 @@ typedef enum CONTENT_TYPE {
     
     UIScrollView *scrollView = [PPViewController createButtonScrollViewByButtonArray:buttonArrays buttonsPerLine:[buttonArrays count] buttonSeparatorY:-1];
     self.buttonScrollView =scrollView;
-    [self.buttonScrollView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"button_BG.png"]]];
+    
+    [self.buttonScrollView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Slider_Button_BG"]]];
+    
+    
+    
     [scrollView release];
     [buttonArrays release];
     
@@ -210,13 +217,9 @@ typedef enum CONTENT_TYPE {
 
     [self.myHeaderView addSubview:_buttonScrollView];
     
-    
-    
     UIButton *moreButotn = [[UIButton alloc]initWithFrame:CGRectMake(270, 0, 40, 30)];
     [moreButotn.titleLabel setFont:[UIFont systemFontOfSize:12]];
-    
-    [moreButotn setBackgroundImage:[UIImage imageNamed:@"button_Image.png"] forState:UIControlStateNormal];
-    [moreButotn setBackgroundImage:[UIImage imageNamed:@"button_Image.png"] forState:UIControlStateSelected];
+    [moreButotn setBackgroundImage:[UIImage imageNamed:@"Catalog_More_Button.png"] forState:UIControlStateNormal];
     [moreButotn addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
  
     
@@ -228,7 +231,7 @@ typedef enum CONTENT_TYPE {
 
     //configure carousel
     
-    self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 30, 320, 140)];
+    self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 40, 320, 140)];
     
     self.carousel.delegate = self;
     self.carousel.dataSource = self;
@@ -241,7 +244,7 @@ typedef enum CONTENT_TYPE {
     
     
     ////The page controll
-    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(10, 157, 320, 20)];
+    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(10, 190, 320, 20)];
     [_spacePageControl setBackgroundColor:[UIColor clearColor]];
     _spacePageControl.numberOfPages = [self.dataList count];
     [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
@@ -260,14 +263,15 @@ typedef enum CONTENT_TYPE {
 
 -(void)filterTheConentsByButton{
 
+    
+    
 }
 
 #pragma mark-- ButtonClicked Method
 -(void)buttonClicked:(UIButton *)sender
 
 {
-    
-    
+
     self.currentButton = sender;
     
     if ([sender tag] == More_BUTTON_TAG) {
@@ -374,7 +378,9 @@ typedef enum CONTENT_TYPE {
     [self initUI];
     self.supportRefreshHeader = YES;
     self.supportRefreshFooter = YES;
-
+    
+    
+///// 设置开始
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"最新" forState:UIControlStateNormal];
     [self buttonClicked:button];
@@ -454,18 +460,16 @@ typedef enum CONTENT_TYPE {
 	if (view == nil)
 	{
         //set up content
-		view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 130.0f)] autorelease];
+		view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 160.0f)] autorelease];
     
         ///add images
-        UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 130)];
+        UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160.0f)];
         [imageView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@"11"]];
-        
-//        [label addSubview: imageView];
         [view addSubview:imageView];
         [imageView release];
         
         
-        label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 100, view.frame.size.width, view.frame.size.height - 100)] autorelease];
+        label = [[[UILabel alloc] initWithFrame:CGRectMake(0, view.frame.origin.y + 130, view.frame.size.width, view.frame.size.height - 130)] autorelease];
         label.textAlignment = UITextAlignmentCenter;
 		label.font = [label.font fontWithSize:16];
         [label setTextColor:[UIColor whiteColor]];

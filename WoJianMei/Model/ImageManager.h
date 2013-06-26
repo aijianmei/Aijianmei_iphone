@@ -51,7 +51,18 @@
 
 ///顶部导航栏目，头像图片；
 +(UIImage*)GobalNavigationAvatarImage;
+
+///滑片label 的背景图片；
 +(UIImage*)GobalScrollerTitleBG_Image;
+
+
+///顶部导航栏目,左侧列表背景图片；
++(UIImage*)GobalNavigationButtonBG;
+
+///顶部导航栏目,左侧列表图片；
++(UIImage*)GobalNavigationButtonImage;
+
+
 
 
 
