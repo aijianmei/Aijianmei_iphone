@@ -16,8 +16,8 @@
 #define Listtype     @"listtype"
 #define Category     @"category"
 #define Type         @"type"
-#define Page         @"page"
-#define Pnums        @"pnums"
+#define Start         @"start"
+#define Offset        @"offset"
 #define Cateid       @"cateid"
 #define Uid          @"uid"
 
@@ -107,8 +107,8 @@
                      listtype:(NSString*)listtype
                      category:(NSString*)category
                          type:(NSString*)type
-                         page:(NSString*)page
-                        pnums:(NSString*)pnums
+                        start:(int)start
+                       offset:(int)offset
                        cateid:(NSString*)cateid
                           uid:(NSString*)uid
                      delegate:(id<RKObjectLoaderDelegate>)delegate
@@ -124,8 +124,8 @@
                                        listtype,Listtype,
                                        category,Category,
                                            type,Type,
-                                           page,Page,
-                                          pnums,Pnums,
+                                           [NSString stringWithFormat:@"%d",start ],Start,
+                                          [NSString stringWithFormat:@"%d",offset ],Offset,
                                          cateid,Cateid,                                            uid,Uid, nil];
         
         RKObjectManager *objectManager = [RKObjectManager sharedManager];

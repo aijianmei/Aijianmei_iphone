@@ -27,8 +27,8 @@
                      listtype:(NSString*)listtype
                      category:(NSString*)category
                          type:(NSString*)type
-                         page:(NSString*)page
-                        pnums:(NSString*)pnums
+                         start:(int)start
+                        offset:(int)offset
                        cateid:(NSString*)cateid
                           uid:(NSString*)uid
                      delegate:(id<RKObjectLoaderDelegate>)delegate;

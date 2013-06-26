@@ -477,7 +477,7 @@
     [super viewWillAppear:YES];
     [self.dataTableView reloadData];
     [self upgradeUI];
-    [self showTabBar];
+//    [self showTabBar];
 }
 
 

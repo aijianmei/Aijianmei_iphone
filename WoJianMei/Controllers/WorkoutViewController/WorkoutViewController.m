@@ -289,50 +289,43 @@ typedef enum CONTENT_TYPE {
     NSString *listtype = @"2";
     NSString *category = @"train";
     NSString *type = @"hot";
-    NSString *page = @"1";
-    NSString *pnums = @"10";
+    int offset = 10;
     NSString *cateid = @"0";
     NSString *uid = @"265";
-    
-   
-    
+        
     if ([[sender currentTitle] isEqualToString:@"最新"]) {
         
         category = @"train";
         type = @"new";
-        page = @"1";
-        pnums = @"19";
         cateid = @"0";
         uid = @"265";
+        _start=0;
     
     }
     if ([[sender currentTitle] isEqualToString:@"锻炼方法"]) {
         
         category = @"train";
         type = @"new";
-        page = @"1";
-        pnums = @"19";
         cateid = @"1";
         uid = @"265";
+        _start=0;
 
-          }
+    }
     if ([[sender currentTitle] isEqualToString:@"基础知识"]) {
         
         category = @"train";
         type = @"new";
-        page = @"1";
-        pnums = @"19";
         cateid = @"2";
         uid = @"265";
+        _start=0;
     }
     if ([[sender currentTitle] isEqualToString:@"锻炼视频"]) {
         
         category = @"train";
         type = @"new";
-        page = @"1";
-        pnums = @"19";
         cateid = @"3";
         uid = @"265";
+        _start=0;
     
     }
     
@@ -342,8 +335,8 @@ typedef enum CONTENT_TYPE {
                                                  listtype:listtype
                                                  category:category
                                                      type:type
-                                                     page:page
-                                                    pnums:pnums
+                                                     start:_start
+                                                    offset:offset
                                                    cateid:cateid
                                                       uid:uid
                                                  delegate:self];
@@ -370,6 +363,62 @@ typedef enum CONTENT_TYPE {
 - (void) reloadTableViewDataSource
 {
     [self buttonClicked:_currentButton];
+}
+
+#pragma mark - Load More
+- (void) loadMoreTableViewDataSource
+{
+    NSString *aucode= @"aijianmei";
+    NSString *auact = @"au_getinformationlist";
+    NSString *listtype = @"2";
+    NSString *category = @"train";
+    NSString *type = @"hot";
+    int offset = 10;
+    NSString *cateid = @"0";
+    NSString *uid = @"265";
+    
+    if ([[_currentButton currentTitle] isEqualToString:@"最新"]) {
+        
+        category = @"train";
+        type = @"new";
+        cateid = @"0";
+        uid = @"265";        
+    }
+    if ([[_currentButton currentTitle] isEqualToString:@"锻炼方法"]) {
+        
+        category = @"train";
+        type = @"new";
+        cateid = @"1";
+        uid = @"265";        
+    }
+    if ([[_currentButton currentTitle] isEqualToString:@"基础知识"]) {
+        
+        category = @"train";
+        type = @"new";
+        cateid = @"2";
+        uid = @"265";
+    }
+    if ([[_currentButton currentTitle] isEqualToString:@"锻炼视频"]) {
+        
+        category = @"train";
+        type = @"new";
+        cateid = @"3";
+        uid = @"265";        
+    }
+    
+    
+    [[ArticleService sharedService] findArticleWithAucode:aucode
+                                                    auact:auact
+                                                 listtype:listtype
+                                                 category:category
+                                                     type:type
+                                                    start:_start
+                                                   offset:offset
+                                                   cateid:cateid
+                                                      uid:uid
+                                                 delegate:self];
+    
+
 }
 
 - (void)viewDidLoad
@@ -544,8 +593,18 @@ typedef enum CONTENT_TYPE {
 {
     NSLog(@"***Load objects count: %d", [objects count]);
 	[self dataSourceDidFinishLoadingNewData];
+    [self dataSourceDidFinishLoadingMoreData];
     
-    self.dataList = objects;
+    if (_start == 0) {
+        self.dataList = objects;
+    } else {
+        NSMutableArray *newDataList = [NSMutableArray arrayWithArray:self.dataList];
+        [newDataList addObjectsFromArray:objects];
+        self.dataList = newDataList;
+    }
+    _start += [objects count];
+    
+    
     /////更新用户界面；
     [self updateUserInterface];
 }

@@ -30,6 +30,8 @@
 @property (nonatomic, retain) iCarousel *carousel;
 @property (nonatomic, retain) UIButton *currentButton;
 @property (nonatomic, retain) SMPageControl *spacePageControl;
+@property (assign, nonatomic) int start;
+@property (assign, nonatomic) int totalCount;
 
 -(void)buttonClicked:(UIButton *)sender;
 -(void)updateUserInterface;
