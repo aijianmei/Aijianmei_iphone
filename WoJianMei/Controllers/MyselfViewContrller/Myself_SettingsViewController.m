@@ -63,9 +63,9 @@
     
 }
 
--(void)didClickBackButton{
+-(void)didClickBackButton:(UIButton *)button{
     
-    if (didSave ==NO) {
+    if (didSave == NO) {
      
         UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"保存修改" message:@"您当前修改数据没有保存" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"保存", nil];
         
@@ -139,11 +139,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-
+    ///设置背景
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
+    /// 设置导航按钮
+    [self setNavigationRightButton:@"保存" imageName:@"settings.png" action:@selector(save)];
+    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     
+
+        
     
     
 	// Do any additional setup after loading the view, typically from a nib.
@@ -151,23 +155,8 @@
     
     didSave =NO;
 
-    UIBarButtonItem *barButton  = [[UIBarButtonItem alloc]initWithTitle:@"保存" style:UIBarButtonItemStyleDone target:self action:@selector(save)];
-    self.navigationItem.rightBarButtonItem = barButton;
-    [barButton release];
-
     
-    
-    
-    UIViewController *vc  = [self.navigationController topViewController];
-     UIBarButtonItem *back  = [[UIBarButtonItem alloc]initWithTitle:@"back" style:UIBarButtonItemStyleDone target:self action:@selector(didClickBackButton)];
-    
-    vc.navigationItem.backBarButtonItem = back;
-    [back release];
-    
-     
-    
-    self.airplaneModeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-    ////////add a section now 
+     ////////add a section now 
        
 //             cell.detailTextLabel.text = NSLocalizedString(@"更换头像", @"iamtheinternet");
 //

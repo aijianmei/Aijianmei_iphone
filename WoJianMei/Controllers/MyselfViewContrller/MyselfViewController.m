@@ -115,11 +115,8 @@
     
     
     [self setTitle:@"我"];
-    
     [self setNavigationRightButton:@"设置" imageName:@"settings.png" action:@selector(clickSettingsButton:)];
-//    [self setNavigationLeftButton:@"智能设备" imageName:@"settings.png" action:@selector(clickSettingsButton:)];
-    
-    
+    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     
     
      //////// Set the headerView of the buttons  

@@ -26,5 +26,7 @@
 @property (nonatomic ,retain)  UIButton *avatarButton;
 @property (nonatomic,retain)   User *user;
 
+-(void)didClickBackButton:(UIButton *)button;
+
 
 @end
