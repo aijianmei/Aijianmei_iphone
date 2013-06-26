@@ -115,7 +115,7 @@
     
     
     [self setTitle:@"我"];
-    [self setNavigationRightButton:@"设置" imageName:@"settings.png" action:@selector(clickSettingsButton:)];
+    [self setNavigationRightButton:@"设置" imageName:@"top_bar_commonButton.png" action:@selector(clickSettingsButton:)];
     [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     
     

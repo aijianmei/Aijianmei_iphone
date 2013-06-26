@@ -143,7 +143,7 @@
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
     /// 设置导航按钮
-    [self setNavigationRightButton:@"保存" imageName:@"settings.png" action:@selector(save)];
+    [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(save)];
     [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     
 
