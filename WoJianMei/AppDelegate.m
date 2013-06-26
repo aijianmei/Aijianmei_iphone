@@ -18,7 +18,6 @@
 #import "ImageManager.h"
 #import "UINavigationBarExt.h"
 //#import  "MobClick.h"
-#import <ShareSDK/ShareSDK.h>
 #import "AJMLeftSideViewController.h"
 #import "AJMRightSideViewController.h"
 
@@ -226,40 +225,14 @@
     [WXApi registerApp:WeChatId];
 //    [MobClick startWithAppkey:Mobclick reportPolicy:REALTIME channelId:nil];
 
-    /**
-     注册SDK应用，此应用请到http://www.sharesdk.cn中进行注册申请。
-     此方法必须在启动时调用，否则会限制SDK的使用。
-     **/
+        
     
-    [ShareSDK registerApp:@"488184735e4"];
-    [ShareSDK convertUrlEnabled:NO];
 
-    [self initializePlat];
-    
-    //添加微信应用
-    [ShareSDK connectWeChatWithAppId:@"wxc996cdfc0f512dd7" wechatCls:[WXApi class]];
-    
     
     return YES;
 }
 
 
-- (void)initializePlat
-{
-    //添加新浪微博应用
-    [ShareSDK connectSinaWeiboWithAppKey:@"239725454"
-                               appSecret:@"b383e7a0201c154e290cf9b839b95998"
-                             redirectUri:@"http://aijianmei.com"];
-    
-    
-    
-    //添加腾讯微博应用
-    [ShareSDK connectTencentWeiboWithAppKey:@"100669978"
-                                  appSecret:@"b383e7a0201c154e290cf9b839b95998"
-                                redirectUri:@"http://www.sharesdk.cn"];
-    
-
-}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     /*
@@ -304,7 +277,7 @@
     if ([url.absoluteString hasSuffix:@"sinaweibosso://login"]) {
         return [[SinaWeiboManager sharedManager].sinaweibo handleOpenURL:url];
     } else {
-        return [ShareSDK handleOpenURL:url wxDelegate:self];
+        return YES;
     }
 }
 
@@ -313,10 +286,10 @@
     if ([url.absoluteString hasSuffix:@"sinaweibosso://login"]) {
         return [[SinaWeiboManager sharedManager].sinaweibo handleOpenURL:url];
     } else {
-        return [ShareSDK handleOpenURL:url
-                     sourceApplication:sourceApplication
-                            annotation:annotation
-                            wxDelegate:self];
+        
+    return YES;
+
+
     }
 }
 
