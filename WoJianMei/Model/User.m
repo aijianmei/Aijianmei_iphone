@@ -39,16 +39,19 @@
 @synthesize avatarImage=_avatarImage;
 @synthesize avatarBackGroundImage =_avatarBackGroundImage;
 @synthesize description=_description;
+
 @synthesize gender =_gender;
 @synthesize uid = _uid;
 @synthesize sinaUserId = _sinaUserId;
 @synthesize qqUserId = _qqUserId;
 @synthesize userType = _userType;
+
 @synthesize profileImageUrl =_profileImageUrl;
 @synthesize loginStatus =_loginStatus;
 @synthesize email = _email;
 @synthesize password =_password;
 @synthesize labelsArray =_labelsArray;
+
 @synthesize age=_age;
 @synthesize height =_height;
 @synthesize weigth =_weigth;
@@ -156,8 +159,6 @@
     [_BMIValue release];
     [_city release];
 
-
-    
     [super dealloc];
 }
 

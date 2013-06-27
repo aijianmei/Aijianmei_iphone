@@ -39,7 +39,7 @@
     for (NSString *buttonTitle in self.dataList) {
         UIButton *button =[[UIButton alloc]initWithFrame:CGRectMake(30, 0, 70, 30)];
         [button setBackgroundColor:[UIColor clearColor]];
-        [button.titleLabel setFont:[UIFont systemFontOfSize:10]];
+        [button.titleLabel setFont:[UIFont systemFontOfSize:13]];
     
         //获取一个随机数范围在：[500,1000），包括500，不包括1000
 //       int y = (arc4random() % 501) + 500;

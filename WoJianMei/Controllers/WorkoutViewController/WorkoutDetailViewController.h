@@ -12,12 +12,20 @@
 #import "ArticleDetail.h"
 #import <RestKit/RestKit.h>
 #import "PPViewController.h"
+#import "AWActionSheet.h"
 
-@interface WorkoutDetailViewController : PPViewController<RKObjectLoaderDelegate,UIWebViewDelegate>
+
+@interface WorkoutDetailViewController : PPViewController<RKObjectLoaderDelegate,UIWebViewDelegate,UIScrollViewDelegate>
 
 @property(nonatomic, retain) Article *article;
 @property(nonatomic, retain) ArticleDetail *articleDetail;
 @property(nonatomic, retain) UIWebView *webview;
+
+
+- (void)showNavigationBar;
+- (void)hideNavigationBar;
+
+
 
 
 @end
