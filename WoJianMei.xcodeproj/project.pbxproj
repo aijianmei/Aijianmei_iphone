@@ -394,6 +394,7 @@
 		4A9C3FE4177B30090088AA6D /* IndexSep@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A9C3FE2177B30060088AA6D /* IndexSep@2x.png */; };
 		4A9C3FE7177B30530088AA6D /* IndexBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A9C3FE5177B30510088AA6D /* IndexBG.png */; };
 		4A9C3FE8177B30530088AA6D /* IndexBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A9C3FE6177B30520088AA6D /* IndexBG@2x.png */; };
+		4A9C3FEB177B34980088AA6D /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9C3FEA177B34900088AA6D /* HomeViewController.m */; };
 		4AA7ECE5169F0F78003E8949 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA7ECE4169F0F78003E8949 /* SMPageControl.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4AABA20E1753907B000C4F68 /* DEComposeBackgroundScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AABA20D1753907B000C4F68 /* DEComposeBackgroundScrollView.m */; };
 		4ABD0DA115D7F4EB00B08DDA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABD0DA015D7F4EB00B08DDA /* CFNetwork.framework */; };
@@ -1168,6 +1169,8 @@
 		4A9C3FE2177B30060088AA6D /* IndexSep@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndexSep@2x.png"; sourceTree = "<group>"; };
 		4A9C3FE5177B30510088AA6D /* IndexBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IndexBG.png; sourceTree = "<group>"; };
 		4A9C3FE6177B30520088AA6D /* IndexBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndexBG@2x.png"; sourceTree = "<group>"; };
+		4A9C3FE9177B34890088AA6D /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		4A9C3FEA177B34900088AA6D /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		4AA7ECE3169F0F78003E8949 /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPageControl.h; sourceTree = "<group>"; };
 		4AA7ECE4169F0F78003E8949 /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPageControl.m; sourceTree = "<group>"; };
 		4AABA20C1753907B000C4F68 /* DEComposeBackgroundScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEComposeBackgroundScrollView.h; sourceTree = "<group>"; };
@@ -2867,6 +2870,8 @@
 			children = (
 				4AE52E3F177834BB00F61933 /* AJM_CommonViewController.h */,
 				4AE52E40177834BB00F61933 /* AJM_CommonViewController.m */,
+				4A9C3FE9177B34890088AA6D /* HomeViewController.h */,
+				4A9C3FEA177B34900088AA6D /* HomeViewController.m */,
 				4AE52E291778336E00F61933 /* lifeStytleViewController */,
 				4AE52E251778327F00F61933 /* ForumViewController */,
 				4AE52DA01778323400F61933 /* SupplementViewController */,
@@ -3867,6 +3872,7 @@
 				4A221536177952560079430D /* FilterViewController.m in Sources */,
 				4A9C3FC9177AD3970088AA6D /* TesingViewController.m in Sources */,
 				4A9C3FCF177AE3F00088AA6D /* LabelsView.m in Sources */,
+				4A9C3FEB177B34980088AA6D /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
