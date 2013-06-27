@@ -37,12 +37,32 @@
     ////Configure The ButtonScrollView
     NSMutableArray *buttonArrays  =[[NSMutableArray alloc]init];
     for (NSString *buttonTitle in self.dataList) {
-        UIButton *button =[[UIButton alloc]initWithFrame:CGRectMake(30, 0, 50, 30)];
+        UIButton *button =[[UIButton alloc]initWithFrame:CGRectMake(30, 0, 70, 30)];
         [button setBackgroundColor:[UIColor clearColor]];
-        [button.titleLabel setFont:[UIFont systemFontOfSize:12]];
-        [button setBackgroundImage:[UIImage imageNamed:@"label_Coloer_1.png"] forState:UIControlStateNormal];
+        [button.titleLabel setFont:[UIFont systemFontOfSize:10]];
+    
+        //获取一个随机数范围在：[500,1000），包括500，不包括1000
+//       int y = (arc4random() % 501) + 500;
+        
+        //获取一个随机数范围在：[0,500），包括1，不包括4
+//         int y = (arc4random() % 3) + 1;
+//         NSLog(@"%i",y);
+        [button setBackgroundImage:[UIImage imageNamed:[self getAnRandomImage]] forState:UIControlStateNormal];
+
+        
+        
+        
+        
         [button setTitle:buttonTitle forState:UIControlStateNormal];
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        ////根据字体的多少来调整button 的长度
+//       CGSize stringsize = [buttonTitle sizeWithFont:[UIFont systemFontOfSize:12]];
+        //or whatever font you're using
+    
+//       [button setFrame:CGRectMake(30,0,stringsize.width,30)];
+        
+        
+        
         [buttonArrays addObject:button];
         
         [button release];
@@ -70,6 +90,22 @@
     [self addSubview:_buttonScrollView];
 
     
+}
+
+///获取随机数目图片名称；
+-(NSString*)getAnRandomImage{
+    
+    int X =[self getRandomNumber:1 to:3];
+    NSString *imageTitle = [NSString stringWithFormat:@"label_Coloer_%i",X];
+    return imageTitle;
+
+}
+///产生随机数目
+-(int)getRandomNumber:(int)from to:(int)to
+{
+    int xx = to - from + 1;
+    int returnValue =(from + (arc4random() % xx));
+    return returnValue;
 }
 
 - (id)initWithFrame:(CGRect)frame

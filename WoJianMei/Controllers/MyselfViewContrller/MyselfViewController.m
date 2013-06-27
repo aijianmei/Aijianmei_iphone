@@ -302,7 +302,7 @@
             [cell.textLabel setText:@"标签"];
             
             /////显示数据接口
-            NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"增肌",@"减肥",@"增重",@"认识朋友",@"约炮",@"dd",@"dfghjhgfd", nil];
+            NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"增肌",@"减肥",@"增重",@"认识朋友",@"约炮",@"认识好朋友",@"关注美好生活", nil];
             LabelsView *lablesView = [[LabelsView alloc]initWithFrame:CGRectMake(50, 15, cell.bounds.size.width -90, cell.bounds.size.height)];
             [lablesView setDataList:buttonTitleArray];
             [lablesView setNeedsDisplay];
@@ -418,7 +418,6 @@
      vc.user = self.user;
     [vc release];
     
-    [self hideTabBar];
 }
 
 

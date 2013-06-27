@@ -18,8 +18,9 @@
 #import "IIViewDeckController.h"
 #import "AppDelegate.h"
 #import "FilterViewController.h"
-
 #import "MyselfViewController.h"
+#import "LoginViewController.h"
+
 
 #import "ImageManager.h"
 #import "UIImageView+WebCache.h"
@@ -149,7 +150,24 @@ typedef enum CONTENT_TYPE {
         
     MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
     myselfVC.title = @"我";
+    
     [self.navigationController pushViewController:myselfVC animated:YES];
+    
+    
+        if (![[UserService defaultService] hasBindAccount]) {
+            
+            LoginViewController *loginViewController = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            loginViewController.title = @"登陆";
+            
+        } else {
+            MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
+            myselfVC.title = @"我";
+            
+           
+        }
+    
+    
+        
 }
 
 
@@ -164,7 +182,7 @@ typedef enum CONTENT_TYPE {
 }
 
 
-//// init the userInterface 
+//// init the userInterface
 -(void)initUI{
     
     UIView *headerView =[[UIView alloc]init];
