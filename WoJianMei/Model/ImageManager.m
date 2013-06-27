@@ -165,6 +165,13 @@ static ImageManager *_defaultManager = nil;
 
 }
 
+///顶部导航栏目,普通背景图片；
++(UIImage*)GobalNavigationCommonButtonBG{
+    
+    return [UIImage imageNamed:@"top_bar_commonButton.png"];
+
+    
+}
 
 
 

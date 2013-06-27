@@ -122,7 +122,7 @@
      //////// Set the headerView of the buttons  
     
     self.myHeaderView  =[[UIView alloc]init];
-    [_myHeaderView setFrame: CGRectMake(0, 0, 320, 220)];
+    [_myHeaderView setFrame: CGRectMake(0, 0, 320, 200)];
     [_myHeaderView setBackgroundColor:[UIColor redColor]];
     
     UIImageView *backGroundImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160)];
@@ -216,6 +216,18 @@
     self.user.avatarBackGroundImage = [UIImage imageNamed:@"profile_backgroud.png"];
     self.user.avatarImage = [UIImage imageNamed:@"user_image.png"];
     [_avatarImageView setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"user_image.png"]];
+    
+    
+     NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"增肌",@"减肥",@"增重",@"认识朋友",@"约炮",@"认识好朋友",@"关注美好生活", nil];
+    
+    self.user.labelsArray = buttonTitleArray;
+    
+    [self.user setGender:@"男"];
+    [self.user setAge:@"26"];
+    [self.user setHeight:@"179cm"];
+    [self.user setWeigth:@"70Kg"];
+    [self.user setBMIValue:@"43"];
+    [self.user setCity:@"深圳"];    
 }
 
 - (void)viewDidLoad
@@ -288,7 +300,7 @@
     UIImage *mySelectedImage = [UIImage imageNamed:@"144x144.png"];
     UIButton *accessoryViewButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    accessoryViewButton.frame = CGRectMake(0.0f, 0.0f, 49.0f,32.0f);
+    accessoryViewButton.frame = CGRectMake(0.0f, 0.0f, 70.0f,32.0f);
     accessoryViewButton.userInteractionEnabled = YES;
     
     switch (indexPath.section) {
@@ -302,9 +314,8 @@
             [cell.textLabel setText:@"标签"];
             
             /////显示数据接口
-            NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"增肌",@"减肥",@"增重",@"认识朋友",@"约炮",@"dd",@"dfghjhgfd", nil];
             LabelsView *lablesView = [[LabelsView alloc]initWithFrame:CGRectMake(50, 15, cell.bounds.size.width -90, cell.bounds.size.height)];
-            [lablesView setDataList:buttonTitleArray];
+            [lablesView setDataList:self.user.labelsArray];
             [lablesView setNeedsDisplay];
             [cell addSubview:lablesView];
             [lablesView release];
@@ -328,7 +339,45 @@
             
             /////accessoryViewButton
             [accessoryViewButton setBackgroundImage:[UIImage imageNamed:@"Label_Type.png"] forState:UIControlStateNormal];
-            [accessoryViewButton setTitle:[self.dataList objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+            
+            switch (indexPath.row) {
+                case 0:
+                {
+                   ///性别
+                    [accessoryViewButton setTitle:self.user.gender forState:UIControlStateNormal];
+                
+                }
+                    break;
+                case 1:
+                {
+                    ///年龄
+
+                    [accessoryViewButton setTitle:self.user.age forState:UIControlStateNormal];
+                }
+                    break;
+                case 2:
+                    //身高
+                {
+                    [accessoryViewButton setTitle:self.user.height forState:UIControlStateNormal];
+                }
+                    break;
+                case 3:
+                {
+                    //体重
+                    [accessoryViewButton setTitle:self.user.weigth forState:UIControlStateNormal];
+                }
+                    break;
+                case 4:
+                {
+                    //BMI
+                    [accessoryViewButton setTitle:self.user.BMIValue forState:UIControlStateNormal];
+                }
+                    break;
+                default:
+                    break;
+            }
+            
+        
             cell.accessoryView = accessoryViewButton;
 
             
@@ -338,7 +387,7 @@
             
             
             /////accessoryViewButton
-            [accessoryViewButton setTitle:@"城市" forState:UIControlStateNormal];
+            [accessoryViewButton setTitle:self.user.city forState:UIControlStateNormal];
             [accessoryViewButton setBackgroundImage:[UIImage imageNamed:@"Label_Type.png"] forState:UIControlStateNormal];
             //            [accessoryViewButton setImage:mySelectedImage forState:UIControlStateHighlighted];
             cell.accessoryView = accessoryViewButton;
@@ -418,7 +467,6 @@
      vc.user = self.user;
     [vc release];
     
-    [self hideTabBar];
 }
 
 
