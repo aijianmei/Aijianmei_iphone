@@ -102,10 +102,9 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-
     [self initUI];
     [self initMoreUI];
+    self.supportRefreshHeader = YES;
     
     //获取网络数据
     ////开始下载文章
@@ -113,8 +112,8 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"最新" forState:UIControlStateNormal];
     [self buttonClicked:button];
-
     
+    [super viewDidLoad];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -327,17 +326,17 @@
         
     }
 
-    [[ArticleService sharedService] findArticleWithAucode:aucode
-                                                    auact:auact
-                                                 listtype:listtype
-                                                 category:category
-                                                     type:type
-                                                     page:page
-                                                    pnums:pnums
-                                                   cateid:cateid
-                                                      uid:uid
-                                                 delegate:self];
-    
+//    [[ArticleService sharedService] findArticleWithAucode:aucode
+//                                                    auact:auact
+//                                                 listtype:listtype
+//                                                 category:category
+//                                                     type:type
+//                                                     page:page
+//                                                    pnums:pnums
+//                                                   cateid:cateid
+//                                                      uid:uid
+//                                                 delegate:self];
+//    
     
     
 }

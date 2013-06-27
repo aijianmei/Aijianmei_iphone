@@ -42,7 +42,7 @@
         // Custom initialization
         
         
-        self.dataList = [NSArray arrayWithObjects:@"性别",@"年龄",@"身高",@"体重",@"BMI", nil];
+        self.dataList = [NSArray arrayWithObjects:@"性别",@"年龄",@"身高",@"体重2",@"BMI2", nil];
         
     }
     return self;
@@ -349,8 +349,10 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
-    // Configure the cell...
+    [cell.imageView  setImage:nil];
+    [cell.textLabel setText:nil];
     
+    // Configure the cell...
     switch (indexPath.section) {
         case 0:
         {
@@ -359,7 +361,7 @@
 
             [cell.detailTextLabel setText:[array objectAtIndex:indexPath.row]];
             ////
-            if (indexPath.row ==0 ||indexPath.row ==1) {
+            if (indexPath.row ==0 || indexPath.row ==1) {
                 [cell.imageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];
 
             }
@@ -370,7 +372,6 @@
         case 1:
             PPDebug(@"");
             [cell.textLabel setText:@"标签"];
-
             break;
         case 2:
             PPDebug(@"");
@@ -378,7 +379,6 @@
             break;
         case 3:
             PPDebug(@"");
-            
             [cell.textLabel setText:@"城市"];
             
             break;

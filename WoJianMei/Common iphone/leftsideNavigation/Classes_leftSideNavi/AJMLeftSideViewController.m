@@ -260,37 +260,37 @@
                 {
                     ///首页
                     
-                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        WorkoutViewController *workOutVC = (WorkoutViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
-                        workOutVC.title = @"锻炼";
-                        _navigationController = [[UINavigationController alloc] initWithRootViewController:workOutVC] ;
-                        self.viewDeckController.centerController = _navigationController;
-                        self.view.userInteractionEnabled = YES;
-                        
-                        
-                    }];
-
-                    
-                    
-                    
-                    
 //                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        
-//                        if (![[UserService defaultService] hasBindAccount]) {
-//                            LoginViewController *loginViewController = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-//                            loginViewController.title = @"登陆";
-//                            self.navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController] ;
-//                            
-//                        } else {
-//                            MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
-//                            myselfVC.title = @"我";
-//                            self.navigationController = [[UINavigationController alloc] initWithRootViewController:myselfVC];
-//                        }
+//                        WorkoutViewController *workOutVC = (WorkoutViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
+//                        workOutVC.title = @"锻炼";
+//                        _navigationController = [[UINavigationController alloc] initWithRootViewController:workOutVC] ;
 //                        self.viewDeckController.centerController = _navigationController;
 //                        self.view.userInteractionEnabled = YES;
 //                        
 //                        
 //                    }];
+
+                    
+                    
+                    
+                    
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        
+                        if (![[UserService defaultService] hasBindAccount]) {
+                            LoginViewController *loginViewController = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+                            loginViewController.title = @"登陆";
+                            self.navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController] ;
+                            
+                        } else {
+                            MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
+                            myselfVC.title = @"我";
+                            self.navigationController = [[UINavigationController alloc] initWithRootViewController:myselfVC];
+                        }
+                        self.viewDeckController.centerController = _navigationController;
+                        self.view.userInteractionEnabled = YES;
+                        
+                        
+                    }];
 
                  break;
                 }

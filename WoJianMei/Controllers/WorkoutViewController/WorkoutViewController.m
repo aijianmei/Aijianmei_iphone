@@ -440,9 +440,7 @@ typedef enum CONTENT_TYPE {
 }
 
 - (void)viewDidLoad
-{    
-    [super viewDidLoad];
-    
+{        
     
     [self initUI];
     [self initMoreUI];
@@ -454,6 +452,9 @@ typedef enum CONTENT_TYPE {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"最新" forState:UIControlStateNormal];
     [self buttonClicked:button];
+    
+    [super viewDidLoad];
+
 }
 
 #pragma mark --

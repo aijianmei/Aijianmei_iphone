@@ -202,16 +202,16 @@
 - (void)setUserInfo
 {
     //获取当前用户信息
-//    self.user = [[UserService defaultService] user];
+    self.user = [[UserService defaultService] user];
    
     
     /////For testing !!!
-    User *user =[[User alloc]init];
-    self.user =  user;
-    [user release];
+//    User *user =[[User alloc]init];
+//    self.user =  user;
+//    [user release];
     ///////////////
     
-    self.user.name = @"Tom Callon";
+//    self.user.name = @"Tom Callon";
     self.user.description = @"我非常喜欢健身运动！！！如果你都喜欢，你就告诉我啦！哈哈哈哈哈哈";
     self.user.avatarBackGroundImage = [UIImage imageNamed:@"profile_backgroud.png"];
     self.user.avatarImage = [UIImage imageNamed:@"user_image.png"];
