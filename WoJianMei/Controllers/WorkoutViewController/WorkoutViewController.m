@@ -32,6 +32,7 @@
 #define NUMBER_OF_ITEMS 13
 #define NUMBER_OF_VISIBLE_ITEMS 18
 #define ITEM_SPACING 320
+#define EACH_FETCH_SIZE 5
 
 #define SCROLL_VIEW_TAG 20120913
 #define More_BUTTON_TAG 20130607
@@ -163,11 +164,7 @@ typedef enum CONTENT_TYPE {
             MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
             myselfVC.title = @"我";
             
-           
         }
-    
-    
-        
 }
 
 
@@ -307,7 +304,7 @@ typedef enum CONTENT_TYPE {
     NSString *listtype = @"2";
     NSString *category = @"train";
     NSString *type = @"hot";
-    int offset = 10;
+    int offset = EACH_FETCH_SIZE;
     NSString *cateid = @"0";
     NSString *uid = @"265";
         
@@ -346,8 +343,6 @@ typedef enum CONTENT_TYPE {
         _start=0;
     
     }
-    
-    
     [[ArticleService sharedService] findArticleWithAucode:aucode
                                                     auact:auact
                                                  listtype:listtype
@@ -357,9 +352,7 @@ typedef enum CONTENT_TYPE {
                                                     offset:offset
                                                    cateid:cateid
                                                       uid:uid
-                                                 delegate:self];
-    
-    
+                                                 delegate:self];    
     
 }
 
@@ -391,7 +384,7 @@ typedef enum CONTENT_TYPE {
     NSString *listtype = @"2";
     NSString *category = @"train";
     NSString *type = @"hot";
-    int offset = 10;
+    int offset = EACH_FETCH_SIZE;
     NSString *cateid = @"0";
     NSString *uid = @"265";
     
@@ -623,8 +616,7 @@ typedef enum CONTENT_TYPE {
     }
     _start += [objects count];
     
-    
-    /////更新用户界面；
+    //更新用户界面；
     [self updateUserInterface];
 }
 
