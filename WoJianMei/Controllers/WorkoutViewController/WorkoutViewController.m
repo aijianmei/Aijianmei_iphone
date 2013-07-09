@@ -86,7 +86,7 @@ typedef enum CONTENT_TYPE {
 //      [leftBtn setBackgroundImage:[ImageManager GobalNavigationButtonBG ]
 //                       forState:UIControlStateNormal];
     
-        [leftBtn setImage:[ImageManager GobalNavigationButtonImage] forState:UIControlStateNormal];
+        [leftBtn setImage:[ImageManager GobalNavigationLeftSideButtonImage] forState:UIControlStateNormal];
 
     
     
@@ -170,7 +170,6 @@ typedef enum CONTENT_TYPE {
 
 #pragma mark -
 #pragma mark  UPDATEUI  Methods
-
 -(void)updateUserInterface{
     [self hideActivity];
     [self.dataTableView reloadData];

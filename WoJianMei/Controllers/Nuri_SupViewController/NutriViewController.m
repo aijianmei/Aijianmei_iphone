@@ -19,6 +19,8 @@
 #define NUMBER_OF_ITEMS 13
 #define NUMBER_OF_VISIBLE_ITEMS 18
 #define ITEM_SPACING 220
+#define EACH_FETCH_SIZE 5
+
 #define SCROLL_VIEW_TAG 20120913
 
 @interface NutriViewController ()
@@ -27,6 +29,7 @@
 
 @implementation NutriViewController
 @synthesize buttonScrollView =_buttonScrollView;
+@synthesize currentButton =_currentButton;
 
 -(void)dealloc
 {
@@ -105,6 +108,8 @@
     [self initUI];
     [self initMoreUI];
     self.supportRefreshHeader = YES;
+    self.supportRefreshFooter = YES;
+
     
     //获取网络数据
     ////开始下载文章
@@ -279,6 +284,9 @@
     NSString *listtype = @"2";
     NSString *category = @"nutri";
     NSString *type = @"new";
+    
+    int offset = EACH_FETCH_SIZE;
+    
     NSString *page = @"1";
     NSString *pnums = @"10";
     NSString *cateid = @"0";
@@ -292,6 +300,8 @@
         pnums = @"10";
         cateid = @"0";
         uid = @"265";
+        _start=0;
+
         
     }
     if ([[sender currentTitle] isEqualToString:@"增肌"])
@@ -302,6 +312,8 @@
         pnums = @"10";
         cateid = @"1";
         uid = @"265";
+        _start=0;
+
         
     }
     if ([[sender currentTitle] isEqualToString:@"减肥"])
@@ -313,6 +325,8 @@
         pnums = @"10";
         cateid = @"2";
         uid = @"265";
+        _start=0;
+
     }
     if ([[sender currentTitle] isEqualToString:@"一般营养知识"])
     {
@@ -323,22 +337,24 @@
         pnums = @"10";
         cateid = @"3";
         uid = @"265";
+        _start=0;
+
         
     }
 
-//    [[ArticleService sharedService] findArticleWithAucode:aucode
-//                                                    auact:auact
-//                                                 listtype:listtype
-//                                                 category:category
-//                                                     type:type
-//                                                     page:page
-//                                                    pnums:pnums
-//                                                   cateid:cateid
-//                                                      uid:uid
-//                                                 delegate:self];
-//    
-    
-    
+[[ArticleService sharedService] findArticleWithAucode:aucode
+                                                auact:auact
+                                             listtype:listtype
+                                             category:category
+                                                 type:type
+                                                start:_start
+                                               offset:offset
+                                               cateid:cateid
+                                                  uid:uid
+                                             delegate:self];
+
+
+
 }
 
 #pragma mark -
@@ -417,6 +433,105 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma Pull Refresh Delegate
+- (void) reloadTableViewDataSource
+{
+    [self buttonClicked:_currentButton];
+}
+
+#pragma mark - Load More
+- (void) loadMoreTableViewDataSource
+{
+    
+    ////开始下载文章
+    NSString *aucode= @"aijianmei";
+    NSString *auact = @"au_getinformationlist";
+    NSString *listtype = @"2";
+    NSString *category = @"nutri";
+    NSString *type = @"new";
+    
+    int offset = EACH_FETCH_SIZE;
+    
+    NSString *page = @"1";
+    NSString *pnums = @"10";
+    NSString *cateid = @"0";
+    NSString *uid = @"265";
+    
+    if ([[_currentButton currentTitle] isEqualToString:@"最新"]) {
+        
+        category = @"nutri";
+        type = @"new";
+        page = @"1";
+        pnums = @"10";
+        cateid = @"0";
+        uid = @"265";
+        _start=0;
+        
+        
+    }
+    if ([[_currentButton currentTitle] isEqualToString:@"增肌"])
+    {
+        category = @"nutri";
+        type = @"new";
+        page = @"1";
+        pnums = @"10";
+        cateid = @"1";
+        uid = @"265";
+        _start=0;
+        
+        
+    }
+    if ([[_currentButton currentTitle] isEqualToString:@"减肥"])
+    {
+        
+        category = @"nutri";
+        type = @"new";
+        page = @"1";
+        pnums = @"10";
+        cateid = @"2";
+        uid = @"265";
+        _start=0;
+        
+    }
+    if ([[_currentButton currentTitle] isEqualToString:@"一般营养知识"])
+    {
+        
+        category = @"nutri";
+        type = @"new";
+        page = @"1";
+        pnums = @"10";
+        cateid = @"3";
+        uid = @"265";
+        _start=0;
+        
+        
+    }
+    
+    [[ArticleService sharedService] findArticleWithAucode:aucode
+                                                    auact:auact
+                                                 listtype:listtype
+                                                 category:category
+                                                     type:type
+                                                    start:_start
+                                                   offset:offset
+                                                   cateid:cateid
+                                                      uid:uid
+                                                 delegate:self];
+    
+    
+}
+
+#pragma mark -
+#pragma mark  UPDATEUI  Methods
+
+-(void)updateUserInterface
+{
+    [self.dataTableView reloadData];
+    [self.carousel reloadData];
+    [self hideActivity];
+}
+
+
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
 
@@ -439,10 +554,22 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     NSLog(@"Load objects count: %d", [objects count]);
-    [self hideActivity];
-    self.dataList = objects;
+   
     //在这里就可以在controller刷新数据
-    [self.dataTableView reloadData];
+    [self dataSourceDidFinishLoadingNewData];
+    [self dataSourceDidFinishLoadingMoreData];
+    
+    if (_start == 0) {
+        self.dataList = objects;
+    } else {
+        NSMutableArray *newDataList = [NSMutableArray arrayWithArray:self.dataList];
+        [newDataList addObjectsFromArray:objects];
+        self.dataList = newDataList;
+    }
+    _start += [objects count];
+    
+    //更新用户界面；
+    [self updateUserInterface];
 }
 
 @end

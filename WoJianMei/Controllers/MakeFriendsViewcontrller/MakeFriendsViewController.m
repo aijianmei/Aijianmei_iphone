@@ -8,6 +8,7 @@
 
 #import "MakeFriendsViewController.h"
 #import "IIViewDeckController.h"
+#import "ImageManager.h"
 
 @interface MakeFriendsViewController ()
 
@@ -30,25 +31,26 @@
     ////leftBtn
     UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
     
-    [leftBtn setBackgroundImage:[UIImage imageNamed:@"NavigationButtonBG.png"]
-                       forState:UIControlStateNormal];
     
-    [leftBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
+    
+    [leftBtn setBackgroundImage:[ImageManager GobalNavigationLeftSideButtonImage]
+                       forState:UIControlStateNormal];
+//    [leftBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
     leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
     [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
     
     
     ////rightBtn
-    UIButton *rightBtn = [[[UIButton alloc] init] autorelease];
-    
-    [rightBtn setBackgroundImage:[UIImage imageNamed:@"NavigationButtonBG.png"]
-                        forState:UIControlStateNormal];
-    
-    [rightBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
-    rightBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
-    [rightBtn addTarget:self action:@selector(rightButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:rightBtn] autorelease];
+//    UIButton *rightBtn = [[[UIButton alloc] init] autorelease];
+//    
+//    [rightBtn setBackgroundImage:[UIImage imageNamed:@"NavigationButtonBG.png"]
+//                        forState:UIControlStateNormal];
+//    
+//    [rightBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
+//    rightBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
+//    [rightBtn addTarget:self action:@selector(rightButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+//    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:rightBtn] autorelease];
     
     
     

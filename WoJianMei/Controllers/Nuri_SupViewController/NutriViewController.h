@@ -28,9 +28,14 @@
 @property (nonatomic,retain) UIScrollView *buttonScrollView;
 @property (nonatomic, retain) UIView *myHeaderView;
 @property (nonatomic, retain) iCarousel *carousel;
+@property (assign, nonatomic) NSInteger start;
+@property (assign, nonatomic) NSInteger totalCount;
+@property (nonatomic, retain) UIButton *currentButton;
+
 
 
 - (void)initMoreUI;
+- (void)updateUserInterface;
 - (void)leftButtonClickHandler:(id)sender;
 - (void)rightButtonClickHandler:(id)sender;
 

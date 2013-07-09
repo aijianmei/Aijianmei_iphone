@@ -152,7 +152,7 @@ static ImageManager *_defaultManager = nil;
 }
 
 ///顶部导航栏目,左侧列表图片；
-+(UIImage*)GobalNavigationButtonImage{
++(UIImage*)GobalNavigationLeftSideButtonImage{
     
     return [UIImage imageNamed:@"LeftSideViewIcon.png"];
 }

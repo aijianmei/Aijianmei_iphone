@@ -60,7 +60,7 @@
 +(UIImage*)GobalNavigationButtonBG;
 
 ///顶部导航栏目,左侧列表图片；
-+(UIImage*)GobalNavigationButtonImage;
++(UIImage*)GobalNavigationLeftSideButtonImage;
 
 ////用户头像背景图片
 +(UIImage*)getProfile_backgroud;

@@ -31,8 +31,8 @@
     
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
-    
-    [self hideTabBar];
+    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -41,7 +41,6 @@
     
 	// Do any additional setup after loading the view.
     
-    [self showTabBar];
 }
 
 

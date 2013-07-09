@@ -56,26 +56,25 @@ typedef enum {
     ////leftBtn
     UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
     
-    [leftBtn setBackgroundImage:[UIImage imageNamed:@"NavigationButtonBG.png"]
+    [leftBtn setBackgroundImage:[ImageManager GobalNavigationLeftSideButtonImage]
                        forState:UIControlStateNormal];
     
-    [leftBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
     leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
     [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
     
     
     ////rightBtn
-    UIButton *rightBtn = [[[UIButton alloc] init] autorelease];
-    
-    [rightBtn setBackgroundImage:[UIImage imageNamed:@"NavigationButtonBG.png"]
-                        forState:UIControlStateNormal];
-    
-    [rightBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
-    rightBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
-    [rightBtn addTarget:self action:@selector(rightButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:rightBtn] autorelease];
-    
+//    UIButton *rightBtn = [[[UIButton alloc] init] autorelease];
+//    
+//    [rightBtn setBackgroundImage:[UIImage imageNamed:@"NavigationButtonBG.png"]
+//                        forState:UIControlStateNormal];
+//    
+//    [rightBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
+//    rightBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
+//    [rightBtn addTarget:self action:@selector(rightButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+//    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:rightBtn] autorelease];
+//    
     
     
     if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPad)
@@ -120,11 +119,10 @@ typedef enum {
     
     
     ///Set the right bar button 
-//    [self setTitle:@"更多"];
-    [self setNavigationRightButton:@"设置"
-                          fontSize:FONT_SIZE
-                         imageName:@"setting.png"
-                            action:@selector(clickSettingsButton:)];
+//    [self setNavigationRightButton:@"设置"
+//                          fontSize:FONT_SIZE
+//                         imageName:@"setting.png"
+//                            action:@selector(clickSettingsButton:)];
 }
 
 - (void)initOptionList
@@ -338,14 +336,12 @@ typedef enum {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-
     if (indexPath.section==0) {
         NSUInteger row = [indexPath row];
         switch (row) {
             case SHARE_To_SOCIAL_NET_WORKS:
             {
-                [self shareToSocialnetWorks];
+                [self shareToYourFriends];
             }
                 break;
             case FEEDBACK:
@@ -426,7 +422,7 @@ typedef enum {
 - (void)showAWSheet
 {
     AWActionSheet *sheet = [[AWActionSheet alloc] initwithIconSheetDelegate:self ItemCount:[self numberOfItemsInActionSheet]];
-    [sheet showFromTabBar:self.tabBarController.tabBar];
+    [sheet showInView:self.view];
     [sheet release];
 }
 
