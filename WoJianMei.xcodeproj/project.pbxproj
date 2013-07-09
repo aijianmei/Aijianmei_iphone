@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		4A071A21169D989D00F50D90 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A071A20169D989D00F50D90 /* MobileCoreServices.framework */; };
 		4A071A23169D991F00F50D90 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A071A22169D991F00F50D90 /* MediaPlayer.framework */; };
+		4A0E4DC3178C4B5B00E1287D /* ChangeNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4DC1178C4B5B00E1287D /* ChangeNameViewController.m */; };
+		4A0E4DC4178C4B5B00E1287D /* ChangeNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0E4DC2178C4B5B00E1287D /* ChangeNameViewController.xib */; };
+		4A0E4DCD178C50B000E1287D /* ChangeDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4DCB178C50AF00E1287D /* ChangeDescriptionViewController.m */; };
+		4A0E4DCE178C50B000E1287D /* ChangeDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0E4DCC178C50AF00E1287D /* ChangeDescriptionViewController.xib */; };
+		4A0E4DD2178C559E00E1287D /* ChangeGenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4DD0178C559E00E1287D /* ChangeGenderViewController.m */; };
+		4A0E4DD3178C559E00E1287D /* ChangeGenderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0E4DD1178C559E00E1287D /* ChangeGenderViewController.xib */; };
 		4A22152A17793C970079430D /* ColorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A22152917793C970079430D /* ColorManager.m */; };
 		4A2215321779487B0079430D /* leftSide_Click.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2215311779487B0079430D /* leftSide_Click.png */; };
 		4A221536177952560079430D /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A221534177952560079430D /* FilterViewController.m */; };
@@ -535,6 +541,15 @@
 /* Begin PBXFileReference section */
 		4A071A20169D989D00F50D90 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4A071A22169D991F00F50D90 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		4A0E4DC0178C4B5B00E1287D /* ChangeNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeNameViewController.h; sourceTree = "<group>"; };
+		4A0E4DC1178C4B5B00E1287D /* ChangeNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeNameViewController.m; sourceTree = "<group>"; };
+		4A0E4DC2178C4B5B00E1287D /* ChangeNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeNameViewController.xib; sourceTree = "<group>"; };
+		4A0E4DCA178C50AF00E1287D /* ChangeDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeDescriptionViewController.h; sourceTree = "<group>"; };
+		4A0E4DCB178C50AF00E1287D /* ChangeDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeDescriptionViewController.m; sourceTree = "<group>"; };
+		4A0E4DCC178C50AF00E1287D /* ChangeDescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeDescriptionViewController.xib; sourceTree = "<group>"; };
+		4A0E4DCF178C559E00E1287D /* ChangeGenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeGenderViewController.h; sourceTree = "<group>"; };
+		4A0E4DD0178C559E00E1287D /* ChangeGenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeGenderViewController.m; sourceTree = "<group>"; };
+		4A0E4DD1178C559E00E1287D /* ChangeGenderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeGenderViewController.xib; sourceTree = "<group>"; };
 		4A22152817793C970079430D /* ColorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorManager.h; sourceTree = "<group>"; };
 		4A22152917793C970079430D /* ColorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorManager.m; sourceTree = "<group>"; };
 		4A2215311779487B0079430D /* leftSide_Click.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftSide_Click.png; sourceTree = "<group>"; };
@@ -2926,6 +2941,15 @@
 				4A9C3FC8177AD38D0088AA6D /* Myself_SettingsViewController.xib */,
 				4ADCFE05169D614600A3E979 /* Myself_SettingsViewController.h */,
 				4ADCFE06169D614600A3E979 /* Myself_SettingsViewController.m */,
+				4A0E4DC0178C4B5B00E1287D /* ChangeNameViewController.h */,
+				4A0E4DC1178C4B5B00E1287D /* ChangeNameViewController.m */,
+				4A0E4DC2178C4B5B00E1287D /* ChangeNameViewController.xib */,
+				4A0E4DCA178C50AF00E1287D /* ChangeDescriptionViewController.h */,
+				4A0E4DCB178C50AF00E1287D /* ChangeDescriptionViewController.m */,
+				4A0E4DCC178C50AF00E1287D /* ChangeDescriptionViewController.xib */,
+				4A0E4DCF178C559E00E1287D /* ChangeGenderViewController.h */,
+				4A0E4DD0178C559E00E1287D /* ChangeGenderViewController.m */,
+				4A0E4DD1178C559E00E1287D /* ChangeGenderViewController.xib */,
 				4ADCFE07169D614600A3E979 /* MyselfViewController.h */,
 				4ADCFE08169D614600A3E979 /* MyselfViewController.m */,
 				4A9C3FCD177AE3EE0088AA6D /* LabelsView.h */,
@@ -3589,6 +3613,9 @@
 				4A9C3FE4177B30090088AA6D /* IndexSep@2x.png in Resources */,
 				4A9C3FE7177B30530088AA6D /* IndexBG.png in Resources */,
 				4A9C3FE8177B30530088AA6D /* IndexBG@2x.png in Resources */,
+				4A0E4DC4178C4B5B00E1287D /* ChangeNameViewController.xib in Resources */,
+				4A0E4DCE178C50B000E1287D /* ChangeDescriptionViewController.xib in Resources */,
+				4A0E4DD3178C559E00E1287D /* ChangeGenderViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3873,6 +3900,9 @@
 				4A9C3FC9177AD3970088AA6D /* TesingViewController.m in Sources */,
 				4A9C3FCF177AE3F00088AA6D /* LabelsView.m in Sources */,
 				4A9C3FEB177B34980088AA6D /* HomeViewController.m in Sources */,
+				4A0E4DC3178C4B5B00E1287D /* ChangeNameViewController.m in Sources */,
+				4A0E4DCD178C50B000E1287D /* ChangeDescriptionViewController.m in Sources */,
+				4A0E4DD2178C559E00E1287D /* ChangeGenderViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

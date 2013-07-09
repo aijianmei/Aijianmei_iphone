@@ -10,6 +10,9 @@
 #import "User.h"
 #import "Citypicker.h"
 #import "NumberPickViewController.h"
+#import "ChangeNameViewController.h"
+#import "ChangeDescriptionViewController.h"
+#import "ChangeGenderViewController.h"
 
 
 #define USER @"user"
@@ -42,7 +45,7 @@
         // Custom initialization
         
         
-        self.dataList = [NSArray arrayWithObjects:@"性别",@"年龄",@"身高",@"体重2",@"BMI2", nil];
+        self.dataList = [NSArray arrayWithObjects:@"性别",@"年龄",@"身高",@"体重",@"BMI", nil];
         
     }
     return self;
@@ -82,7 +85,6 @@
 }
 
 #pragma Image Picker Related
-
 // this is just for copy
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -90,11 +92,11 @@
     if (image != nil){
         
         self.user.avatarImage = image;
-        [self.avatarButton setImage:self.user.avatarImage forState:UIControlStateNormal];
         [self storeUserInfo];
     }
     
     [self.navigationController dismissModalViewControllerAnimated:YES];
+    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
@@ -263,13 +265,11 @@
         switch (buttonIndex) {
             case 0:
             {
-                NSLog(@"Button index :%d",buttonIndex);
                 [self takePhoto];
             }
                 break;
             case 1:
             {
-                NSLog(@"Button index :%d",buttonIndex);
                 [self  selectPhoto];
 
             }
@@ -351,42 +351,57 @@
     }
     [cell.imageView  setImage:nil];
     [cell.textLabel setText:nil];
+     cell.accessoryView = nil;
+    
+    /////
+    UIImage *normalImage = [UIImage imageNamed:@"AccessoryView.png"];
+//    UIImage *mySelectedImage = [UIImage imageNamed:@"144x144.png"];
+    
+    UIButton *accessoryViewButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    accessoryViewButton.frame = CGRectMake(0.0f, 0.0f, 32.0f,32.0f);
+    accessoryViewButton.userInteractionEnabled = YES;
+    [accessoryViewButton setImage:normalImage forState:UIControlStateNormal];
+    
+    
+    UILabel *detailLabelView = [[UILabel alloc]initWithFrame:CGRectMake(145.0f, 15.0f, 115.0f,32.0f)];
+    detailLabelView.backgroundColor =[UIColor redColor];
+    [detailLabelView setTextAlignment:NSTextAlignmentRight];
+    [cell.contentView  addSubview:detailLabelView];
+    [detailLabelView setText:@"唐亮"];
+    [detailLabelView release];
     
     // Configure the cell...
     switch (indexPath.section) {
         case 0:
         {
-            PPDebug(@"");
             NSArray *array = [NSArray arrayWithObjects:@"更换头像",@"更换背景",@"更改用户名",@"更改个性签名",nil];
-
-            [cell.detailTextLabel setText:[array objectAtIndex:indexPath.row]];
-            ////
-            if (indexPath.row ==0 || indexPath.row ==1) {
+            [cell.textLabel setText:[array objectAtIndex:indexPath.row]];
+            
+            ////设置头像
+            if (indexPath.row ==0) {
                 [cell.imageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];
-
             }
-            
-            
+            ///设置背景
+            if (indexPath.row ==1) {
+                [cell.imageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];                
+            }
             break;
         }
         case 1:
-            PPDebug(@"");
             [cell.textLabel setText:@"标签"];
             break;
         case 2:
-            PPDebug(@"");
             [cell.textLabel setText:[self.dataList objectAtIndex:indexPath.row]];
             break;
         case 3:
-            PPDebug(@"");
             [cell.textLabel setText:@"城市"];
-            
             break;
-            
         default:
             break;
     }
 
+    cell.accessoryView = accessoryViewButton;
 
     return cell;
 }
@@ -430,19 +445,88 @@
  }
  */
 
+
+-(void)clickChangeAvatarButton{
+    
+    UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"取消"
+                                         destructiveButtonTitle:@"照相"
+                                              otherButtonTitles:@"相册",nil];
+    [share showInView:self.view];
+    [share release];
+    
+}
+-(void)clickChangeAvatarBackgroundButton{
+    
+    UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"取消"
+                                         destructiveButtonTitle:@"照相"
+                                              otherButtonTitles:@"相册",nil];
+    [share showInView:self.view];
+    [share release];
+
+
+}
+
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    // Navigation logic may go here. Create and push another view controller.    
+    switch (indexPath.section)
+    {
+        case 0:
+        {
+            //Change avatar image
+            if (indexPath.row ==0) {
+            [self clickChangeAvatarButton];
+            }
+            //Change avatar background
+            else if(indexPath.row ==1){
+            [self clickChangeAvatarBackgroundButton];
+            }
+            //Change name
+            else if(indexPath.row ==2){
+            ChangeNameViewController *vc = [[ChangeNameViewController alloc]initWithNibName:@"ChangeNameViewController" bundle:nil];
+           [self.navigationController pushViewController:vc animated:YES];
+           [vc release];
+            }
+            //Change description
+            else if(indexPath.row ==3){
+                ChangeDescriptionViewController *vc = [[ChangeDescriptionViewController alloc]initWithNibName:@"ChangeDescriptionViewController" bundle:nil];
+                [self.navigationController pushViewController:vc animated:YES];
+                [vc release];
+                
+            }
+        
+        }
+            break;
+            //change Label
+        case 1:
+        {
+        }
+            break;
+            //Change gender
+        case 2:
+        {
+            ChangeGenderViewController *vc = [[ChangeGenderViewController alloc]initWithNibName:@"ChangeGenderViewController" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
+            [vc release];
+         
+        }
+            break;
+            
+        default:
+            break;
+    }
+     
+     
+    
 }
+
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
