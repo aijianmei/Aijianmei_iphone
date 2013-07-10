@@ -9,10 +9,12 @@
 #import "Myself_SettingsViewController.h"
 #import "User.h"
 #import "Citypicker.h"
-#import "NumberPickViewController.h"
 #import "ChangeNameViewController.h"
 #import "ChangeDescriptionViewController.h"
 #import "ChangeGenderViewController.h"
+#import "ProvinceViewController.h"
+#import "ChangeLabelsViewController.h"
+#import "AFPickerView.h"
 
 
 #define USER @"user"
@@ -504,18 +506,76 @@
         
         }
             break;
-            //change Label
         case 1:
         {
-        }
-            break;
-            //Change gender
-        case 2:
-        {
-            ChangeGenderViewController *vc = [[ChangeGenderViewController alloc]initWithNibName:@"ChangeGenderViewController" bundle:nil];
+            //change Label
+            ChangeLabelsViewController *vc = [[ChangeLabelsViewController alloc]initWithNibName:@"ChangeLabelsViewController" bundle:nil];
             [self.navigationController pushViewController:vc animated:YES];
             [vc release];
-         
+        }
+            break;
+        case 2:
+        {
+            //Change gender
+            if (indexPath.row==0) {
+                ChangeGenderViewController *vc = [[ChangeGenderViewController alloc]initWithNibName:@"ChangeGenderViewController" bundle:nil];
+                [self.navigationController pushViewController:vc animated:YES];
+                [vc release];
+            }
+            //Change age
+            else if (indexPath.row==1) {
+                
+                if (defaultPickerView == nil) {
+                    defaultPickerView = [[AFPickerView alloc] initWithFrame:CGRectMake(0,200,320,216) backgroundImage:@"PickerBG.png" shadowImage:@"PickerShadow.png" glassImage:@"PickerGlass.png" title:@"AFPicker"];
+                    defaultPickerView.dataSource = self;
+                    defaultPickerView.delegate = self;
+                    [self.view addSubview:defaultPickerView];
+                }
+                [defaultPickerView showPicker];
+                [defaultPickerView reloadData];
+                
+                [tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
+                
+        
+                
+
+            }
+            //Change Height
+            else if (indexPath.row==2) {
+                
+                if (defaultPickerView == nil) {
+                    defaultPickerView = [[AFPickerView alloc] initWithFrame:CGRectMake(0,200,320,216) backgroundImage:@"PickerBG.png" shadowImage:@"PickerShadow.png" glassImage:@"PickerGlass.png" title:@"AFPicker"];
+                    defaultPickerView.dataSource = self;
+                    defaultPickerView.delegate = self;
+                    [self.view addSubview:defaultPickerView];
+                }
+                [defaultPickerView showPicker];
+                [defaultPickerView reloadData];
+                  [tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
+               
+            }
+            //Change Weight
+            else if (indexPath.row==3) {
+                if (defaultPickerView == nil) {
+                    defaultPickerView = [[AFPickerView alloc] initWithFrame:CGRectMake(0,200,320,216) backgroundImage:@"PickerBG.png" shadowImage:@"PickerShadow.png" glassImage:@"PickerGlass.png" title:@"AFPicker"];
+                    defaultPickerView.dataSource = self;
+                    defaultPickerView.delegate = self;
+                    [self.view addSubview:defaultPickerView];
+                }
+                [defaultPickerView showPicker];
+                [defaultPickerView reloadData];
+                  [tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
+               
+            }
+        }
+            break;
+         //Change area and city
+        case 3:
+        {
+            ProvinceViewController *vc = [[ProvinceViewController alloc]initWithNibName:@"ProvinceViewController" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
+            [vc release];
+            
         }
             break;
             
@@ -526,6 +586,26 @@
      
     
 }
+
+#pragma mark - AFPickerViewDataSource
+- (NSInteger)numberOfRowsInPickerView:(AFPickerView *)pickerView {
+    
+    return 15;
+}
+
+
+- (NSString *)pickerView:(AFPickerView *)pickerView titleForRow:(NSInteger)row {
+    return [NSString stringWithFormat:@"%i", row + 1];
+}
+
+
+#pragma mark - AFPickerViewDelegate
+
+- (void)pickerView:(AFPickerView *)pickerView didSelectRow:(NSInteger)row {
+    
+    
+}
+
 
 
 

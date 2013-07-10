@@ -69,6 +69,9 @@
 ///顶部导航栏目,普通背景图片；
 +(UIImage*)GobalNavigationCommonButtonBG;
 
+-(NSString*)getAnRandomImage;
+
+
 
 
 

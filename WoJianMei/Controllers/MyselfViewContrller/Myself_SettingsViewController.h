@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
+#import "AFPickerView.h"
 
 
 @class User;
-@interface Myself_SettingsViewController: PPTableViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIAlertViewDelegate>
+@interface Myself_SettingsViewController: PPTableViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIAlertViewDelegate,AFPickerViewDataSource, AFPickerViewDelegate>
 
 {
 
@@ -21,6 +22,9 @@
     User *_user;
     
     BOOL didSave;
+    
+    AFPickerView *defaultPickerView;
+
     
 }
 @property (nonatomic ,retain)  UIButton *avatarButton;

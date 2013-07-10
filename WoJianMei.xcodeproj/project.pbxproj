@@ -83,6 +83,24 @@
 		4A27B1881777F972009978C5 /* szicon_a@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A27B1701777F972009978C5 /* szicon_a@2x.png */; };
 		4A27B1891777F972009978C5 /* top_cell_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A27B1711777F972009978C5 /* top_cell_background.png */; };
 		4A27B18A1777F972009978C5 /* update_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A27B1721777F972009978C5 /* update_app@2x.png */; };
+		4A2FA97F178D076C006A1EFB /* ProvinceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FA97D178D076C006A1EFB /* ProvinceViewController.m */; };
+		4A2FA980178D076C006A1EFB /* ProvinceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA97E178D076C006A1EFB /* ProvinceViewController.xib */; };
+		4A2FA989178D0E4C006A1EFB /* CityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FA987178D0E4C006A1EFB /* CityViewController.m */; };
+		4A2FA98A178D0E4C006A1EFB /* CityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA988178D0E4C006A1EFB /* CityViewController.xib */; };
+		4A2FA98D178D3DE8006A1EFB /* ChangeLabelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FA98C178D3DE8006A1EFB /* ChangeLabelsViewController.m */; };
+		4A2FA98F178D3E02006A1EFB /* ChangeLabelsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA98E178D3E01006A1EFB /* ChangeLabelsViewController.xib */; };
+		4A2FA992178D494C006A1EFB /* LabelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FA991178D494C006A1EFB /* LabelManager.m */; };
+		4A2FA995178D495E006A1EFB /* Label.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FA994178D495E006A1EFB /* Label.m */; };
+		4A2FA998178D5E5C006A1EFB /* apphead@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA996178D5E5A006A1EFB /* apphead@2x.png */; };
+		4A2FA999178D5E5C006A1EFB /* deleteTag.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA997178D5E5B006A1EFB /* deleteTag.png */; };
+		4A2FA99C178D5E70006A1EFB /* AppButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FA99B178D5E6F006A1EFB /* AppButton.m */; };
+		4A2FA9A4178D8F2F006A1EFB /* PickerBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA99E178D8F2E006A1EFB /* PickerBG.png */; };
+		4A2FA9A5178D8F2F006A1EFB /* PickerBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA99F178D8F2E006A1EFB /* PickerBG@2x.png */; };
+		4A2FA9A6178D8F2F006A1EFB /* pickerGlass.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA9A0178D8F2F006A1EFB /* pickerGlass.png */; };
+		4A2FA9A7178D8F2F006A1EFB /* pickerGlass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA9A1178D8F2F006A1EFB /* pickerGlass@2x.png */; };
+		4A2FA9A8178D8F2F006A1EFB /* PickerShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA9A2178D8F2F006A1EFB /* PickerShadow.png */; };
+		4A2FA9A9178D8F2F006A1EFB /* PickerShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA9A3178D8F2F006A1EFB /* PickerShadow@2x.png */; };
+		4A2FA9AE178D8F68006A1EFB /* AFPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FA9AD178D8F68006A1EFB /* AFPickerView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4A308C1F176975F0005DF997 /* FeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A308C1E176975F0005DF997 /* FeedBackViewController.m */; };
 		4A3AB807175060F20045729D /* WorkOutProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB806175060F10045729D /* WorkOutProcessViewController.m */; };
 		4A3AB80A1750631E0045729D /* WorkoutNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB8091750631E0045729D /* WorkoutNoteViewController.m */; };
@@ -356,11 +374,6 @@
 		4A634E1F1753431E00453C0D /* foursquare-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A634E1C1753431E00453C0D /* foursquare-logo@2x.png */; };
 		4A66C1AC16A57FAD00A2F22E /* gender_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1AA16A57FAD00A2F22E /* gender_on.png */; };
 		4A66C1AD16A57FAD00A2F22E /* gender_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1AB16A57FAD00A2F22E /* gender_off.png */; };
-		4A66C1BD16A58A1E00A2F22E /* SLNumberPickerTicks.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1B816A58A1E00A2F22E /* SLNumberPickerTicks.png */; };
-		4A66C1BE16A58A1E00A2F22E /* SLNumberPickerTicks@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1B916A58A1E00A2F22E /* SLNumberPickerTicks@2x.png */; };
-		4A66C1BF16A58A1E00A2F22E /* SLNumberPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A66C1BB16A58A1E00A2F22E /* SLNumberPickerView.m */; };
-		4A66C1C016A58A1E00A2F22E /* SLNumberPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1BC16A58A1E00A2F22E /* SLNumberPickerView.xib */; };
-		4A66C1C316A58A4700A2F22E /* NumberPickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A66C1C216A58A4700A2F22E /* NumberPickViewController.m */; };
 		4A66C1F216A59E0000A2F22E /* AWActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A66C1E216A59E0000A2F22E /* AWActionSheet.m */; };
 		4A66C1FB16A59E0000A2F22E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A66C1F016A59E0000A2F22E /* ViewController.m */; };
 		4A7CF99215D74EF000206B14 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */; };
@@ -645,6 +658,31 @@
 		4A27B1701777F972009978C5 /* szicon_a@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "szicon_a@2x.png"; sourceTree = "<group>"; };
 		4A27B1711777F972009978C5 /* top_cell_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_cell_background.png; sourceTree = "<group>"; };
 		4A27B1721777F972009978C5 /* update_app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "update_app@2x.png"; sourceTree = "<group>"; };
+		4A2FA97C178D076C006A1EFB /* ProvinceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvinceViewController.h; sourceTree = "<group>"; };
+		4A2FA97D178D076C006A1EFB /* ProvinceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvinceViewController.m; sourceTree = "<group>"; };
+		4A2FA97E178D076C006A1EFB /* ProvinceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProvinceViewController.xib; sourceTree = "<group>"; };
+		4A2FA986178D0E4C006A1EFB /* CityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityViewController.h; sourceTree = "<group>"; };
+		4A2FA987178D0E4C006A1EFB /* CityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityViewController.m; sourceTree = "<group>"; };
+		4A2FA988178D0E4C006A1EFB /* CityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityViewController.xib; sourceTree = "<group>"; };
+		4A2FA98B178D3DE8006A1EFB /* ChangeLabelsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeLabelsViewController.h; sourceTree = "<group>"; };
+		4A2FA98C178D3DE8006A1EFB /* ChangeLabelsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeLabelsViewController.m; sourceTree = "<group>"; };
+		4A2FA98E178D3E01006A1EFB /* ChangeLabelsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeLabelsViewController.xib; sourceTree = "<group>"; };
+		4A2FA990178D494C006A1EFB /* LabelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelManager.h; sourceTree = "<group>"; };
+		4A2FA991178D494C006A1EFB /* LabelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelManager.m; sourceTree = "<group>"; };
+		4A2FA993178D495E006A1EFB /* Label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Label.h; sourceTree = "<group>"; };
+		4A2FA994178D495E006A1EFB /* Label.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Label.m; sourceTree = "<group>"; };
+		4A2FA996178D5E5A006A1EFB /* apphead@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apphead@2x.png"; sourceTree = "<group>"; };
+		4A2FA997178D5E5B006A1EFB /* deleteTag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteTag.png; sourceTree = "<group>"; };
+		4A2FA99A178D5E6E006A1EFB /* AppButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppButton.h; sourceTree = "<group>"; };
+		4A2FA99B178D5E6F006A1EFB /* AppButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppButton.m; sourceTree = "<group>"; };
+		4A2FA99E178D8F2E006A1EFB /* PickerBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PickerBG.png; sourceTree = "<group>"; };
+		4A2FA99F178D8F2E006A1EFB /* PickerBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PickerBG@2x.png"; sourceTree = "<group>"; };
+		4A2FA9A0178D8F2F006A1EFB /* pickerGlass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pickerGlass.png; sourceTree = "<group>"; };
+		4A2FA9A1178D8F2F006A1EFB /* pickerGlass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pickerGlass@2x.png"; sourceTree = "<group>"; };
+		4A2FA9A2178D8F2F006A1EFB /* PickerShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PickerShadow.png; sourceTree = "<group>"; };
+		4A2FA9A3178D8F2F006A1EFB /* PickerShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PickerShadow@2x.png"; sourceTree = "<group>"; };
+		4A2FA9AC178D8F68006A1EFB /* AFPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPickerView.h; sourceTree = "<group>"; };
+		4A2FA9AD178D8F68006A1EFB /* AFPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPickerView.m; sourceTree = "<group>"; };
 		4A308C1D176975F0005DF997 /* FeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedBackViewController.h; sourceTree = "<group>"; };
 		4A308C1E176975F0005DF997 /* FeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedBackViewController.m; sourceTree = "<group>"; };
 		4A3AB805175060F10045729D /* WorkOutProcessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOutProcessViewController.h; sourceTree = "<group>"; };
@@ -1129,13 +1167,6 @@
 		4A634E1C1753431E00453C0D /* foursquare-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "foursquare-logo@2x.png"; path = "REComposeViewControllerExample/REComposeViewControllerExample/foursquare-logo@2x.png"; sourceTree = "<group>"; };
 		4A66C1AA16A57FAD00A2F22E /* gender_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gender_on.png; sourceTree = "<group>"; };
 		4A66C1AB16A57FAD00A2F22E /* gender_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gender_off.png; sourceTree = "<group>"; };
-		4A66C1B816A58A1E00A2F22E /* SLNumberPickerTicks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SLNumberPickerTicks.png; sourceTree = "<group>"; };
-		4A66C1B916A58A1E00A2F22E /* SLNumberPickerTicks@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SLNumberPickerTicks@2x.png"; sourceTree = "<group>"; };
-		4A66C1BA16A58A1E00A2F22E /* SLNumberPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLNumberPickerView.h; sourceTree = "<group>"; };
-		4A66C1BB16A58A1E00A2F22E /* SLNumberPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLNumberPickerView.m; sourceTree = "<group>"; };
-		4A66C1BC16A58A1E00A2F22E /* SLNumberPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SLNumberPickerView.xib; sourceTree = "<group>"; };
-		4A66C1C116A58A4700A2F22E /* NumberPickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberPickViewController.h; sourceTree = "<group>"; };
-		4A66C1C216A58A4700A2F22E /* NumberPickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberPickViewController.m; sourceTree = "<group>"; };
 		4A66C1E116A59E0000A2F22E /* AWActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWActionSheet.h; sourceTree = "<group>"; };
 		4A66C1E216A59E0000A2F22E /* AWActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWActionSheet.m; sourceTree = "<group>"; };
 		4A66C1EF16A59E0000A2F22E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -1444,6 +1475,10 @@
 				4A27AE5A1777F006009978C5 /* FontSize.h */,
 				4A27AE5B1777F006009978C5 /* ImageManager.h */,
 				4A27AE5C1777F006009978C5 /* ImageManager.m */,
+				4A2FA990178D494C006A1EFB /* LabelManager.h */,
+				4A2FA991178D494C006A1EFB /* LabelManager.m */,
+				4A2FA993178D495E006A1EFB /* Label.h */,
+				4A2FA994178D495E006A1EFB /* Label.m */,
 				4A27AE5F1777F006009978C5 /* Result.h */,
 				4A27AE601777F006009978C5 /* Result.m */,
 				4A27AE611777F006009978C5 /* SinaUser.h */,
@@ -1581,6 +1616,41 @@
 				4A27B1721777F972009978C5 /* update_app@2x.png */,
 			);
 			path = MoreView;
+			sourceTree = "<group>";
+		};
+		4A2FA99D178D88C9006A1EFB /* AppButtonClass */ = {
+			isa = PBXGroup;
+			children = (
+				4A2FA99A178D5E6E006A1EFB /* AppButton.h */,
+				4A2FA99B178D5E6F006A1EFB /* AppButton.m */,
+				4A2FA996178D5E5A006A1EFB /* apphead@2x.png */,
+				4A2FA997178D5E5B006A1EFB /* deleteTag.png */,
+			);
+			name = AppButtonClass;
+			sourceTree = "<group>";
+		};
+		4A2FA9AA178D8F37006A1EFB /* PickerResource */ = {
+			isa = PBXGroup;
+			children = (
+				4A2FA99E178D8F2E006A1EFB /* PickerBG.png */,
+				4A2FA99F178D8F2E006A1EFB /* PickerBG@2x.png */,
+				4A2FA9A0178D8F2F006A1EFB /* pickerGlass.png */,
+				4A2FA9A1178D8F2F006A1EFB /* pickerGlass@2x.png */,
+				4A2FA9A2178D8F2F006A1EFB /* PickerShadow.png */,
+				4A2FA9A3178D8F2F006A1EFB /* PickerShadow@2x.png */,
+			);
+			name = PickerResource;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		4A2FA9AB178D8F68006A1EFB /* AFPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				4A2FA9AA178D8F37006A1EFB /* PickerResource */,
+				4A2FA9AC178D8F68006A1EFB /* AFPickerView.h */,
+				4A2FA9AD178D8F68006A1EFB /* AFPickerView.m */,
+			);
+			path = AFPickerView;
 			sourceTree = "<group>";
 		};
 		4A3AE815176A173C00A39463 /* WeixinSDK */ = {
@@ -2803,20 +2873,6 @@
 			path = posting;
 			sourceTree = "<group>";
 		};
-		4A66C1B716A58A1E00A2F22E /* SLNumberPicker */ = {
-			isa = PBXGroup;
-			children = (
-				4A66C1B816A58A1E00A2F22E /* SLNumberPickerTicks.png */,
-				4A66C1B916A58A1E00A2F22E /* SLNumberPickerTicks@2x.png */,
-				4A66C1BA16A58A1E00A2F22E /* SLNumberPickerView.h */,
-				4A66C1BB16A58A1E00A2F22E /* SLNumberPickerView.m */,
-				4A66C1BC16A58A1E00A2F22E /* SLNumberPickerView.xib */,
-				4A66C1C116A58A4700A2F22E /* NumberPickViewController.h */,
-				4A66C1C216A58A4700A2F22E /* NumberPickViewController.m */,
-			);
-			path = SLNumberPicker;
-			sourceTree = "<group>";
-		};
 		4A66C1DE16A59DFF00A2F22E /* AWIconSheet */ = {
 			isa = PBXGroup;
 			children = (
@@ -2938,9 +2994,9 @@
 				4AE52E3D177834A500F61933 /* MyselfTableViewCell.m */,
 				4A9C3FC6177AD3840088AA6D /* TesingViewController.h */,
 				4A9C3FC7177AD3860088AA6D /* TesingViewController.m */,
-				4A9C3FC8177AD38D0088AA6D /* Myself_SettingsViewController.xib */,
 				4ADCFE05169D614600A3E979 /* Myself_SettingsViewController.h */,
 				4ADCFE06169D614600A3E979 /* Myself_SettingsViewController.m */,
+				4A9C3FC8177AD38D0088AA6D /* Myself_SettingsViewController.xib */,
 				4A0E4DC0178C4B5B00E1287D /* ChangeNameViewController.h */,
 				4A0E4DC1178C4B5B00E1287D /* ChangeNameViewController.m */,
 				4A0E4DC2178C4B5B00E1287D /* ChangeNameViewController.xib */,
@@ -2950,6 +3006,16 @@
 				4A0E4DCF178C559E00E1287D /* ChangeGenderViewController.h */,
 				4A0E4DD0178C559E00E1287D /* ChangeGenderViewController.m */,
 				4A0E4DD1178C559E00E1287D /* ChangeGenderViewController.xib */,
+				4A2FA97C178D076C006A1EFB /* ProvinceViewController.h */,
+				4A2FA97D178D076C006A1EFB /* ProvinceViewController.m */,
+				4A2FA97E178D076C006A1EFB /* ProvinceViewController.xib */,
+				4A2FA986178D0E4C006A1EFB /* CityViewController.h */,
+				4A2FA987178D0E4C006A1EFB /* CityViewController.m */,
+				4A2FA988178D0E4C006A1EFB /* CityViewController.xib */,
+				4A2FA98B178D3DE8006A1EFB /* ChangeLabelsViewController.h */,
+				4A2FA98C178D3DE8006A1EFB /* ChangeLabelsViewController.m */,
+				4A2FA98E178D3E01006A1EFB /* ChangeLabelsViewController.xib */,
+				4A2FA99D178D88C9006A1EFB /* AppButtonClass */,
 				4ADCFE07169D614600A3E979 /* MyselfViewController.h */,
 				4ADCFE08169D614600A3E979 /* MyselfViewController.m */,
 				4A9C3FCD177AE3EE0088AA6D /* LabelsView.h */,
@@ -3038,9 +3104,9 @@
 		4ADCFF50169D69F500A3E979 /* Common iphone */ = {
 			isa = PBXGroup;
 			children = (
+				4A2FA9AB178D8F68006A1EFB /* AFPickerView */,
 				4A27AE881777F18E009978C5 /* leftsideNavigation */,
 				4A66C1DE16A59DFF00A2F22E /* AWIconSheet */,
-				4A66C1B716A58A1E00A2F22E /* SLNumberPicker */,
 				4A873B8916A54AD2005BDA45 /* areapicker */,
 				4AA7ECEB169F1597003E8949 /* SMPageControll */,
 				4ADCFF6B169D69F600A3E979 /* REComposeViewController */,
@@ -3469,9 +3535,6 @@
 				4A873BA816A54BD7005BDA45 /* Citypicker.xib in Resources */,
 				4A66C1AC16A57FAD00A2F22E /* gender_on.png in Resources */,
 				4A66C1AD16A57FAD00A2F22E /* gender_off.png in Resources */,
-				4A66C1BD16A58A1E00A2F22E /* SLNumberPickerTicks.png in Resources */,
-				4A66C1BE16A58A1E00A2F22E /* SLNumberPickerTicks@2x.png in Resources */,
-				4A66C1C016A58A1E00A2F22E /* SLNumberPickerView.xib in Resources */,
 				4ACE23A216AB168D002E41D1 /* AccessoryView.xib in Resources */,
 				C6016B7417523D2D00BA5E63 /* bj_1.png in Resources */,
 				C6016B7517523D2D00BA5E63 /* bj_2.png in Resources */,
@@ -3616,6 +3679,17 @@
 				4A0E4DC4178C4B5B00E1287D /* ChangeNameViewController.xib in Resources */,
 				4A0E4DCE178C50B000E1287D /* ChangeDescriptionViewController.xib in Resources */,
 				4A0E4DD3178C559E00E1287D /* ChangeGenderViewController.xib in Resources */,
+				4A2FA980178D076C006A1EFB /* ProvinceViewController.xib in Resources */,
+				4A2FA98A178D0E4C006A1EFB /* CityViewController.xib in Resources */,
+				4A2FA98F178D3E02006A1EFB /* ChangeLabelsViewController.xib in Resources */,
+				4A2FA998178D5E5C006A1EFB /* apphead@2x.png in Resources */,
+				4A2FA999178D5E5C006A1EFB /* deleteTag.png in Resources */,
+				4A2FA9A4178D8F2F006A1EFB /* PickerBG.png in Resources */,
+				4A2FA9A5178D8F2F006A1EFB /* PickerBG@2x.png in Resources */,
+				4A2FA9A6178D8F2F006A1EFB /* pickerGlass.png in Resources */,
+				4A2FA9A7178D8F2F006A1EFB /* pickerGlass@2x.png in Resources */,
+				4A2FA9A8178D8F2F006A1EFB /* PickerShadow.png in Resources */,
+				4A2FA9A9178D8F2F006A1EFB /* PickerShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3831,8 +3905,6 @@
 				4A873BA216A54AD2005BDA45 /* HZAreaPickerView.m in Sources */,
 				4A873BA416A54AD2005BDA45 /* HZLocation.m in Sources */,
 				4A873BA616A54AD2005BDA45 /* Citypicker.m in Sources */,
-				4A66C1BF16A58A1E00A2F22E /* SLNumberPickerView.m in Sources */,
-				4A66C1C316A58A4700A2F22E /* NumberPickViewController.m in Sources */,
 				4A66C1F216A59E0000A2F22E /* AWActionSheet.m in Sources */,
 				4A66C1FB16A59E0000A2F22E /* ViewController.m in Sources */,
 				4ACE239C16AB0F2E002E41D1 /* CompostViewController.m in Sources */,
@@ -3903,6 +3975,13 @@
 				4A0E4DC3178C4B5B00E1287D /* ChangeNameViewController.m in Sources */,
 				4A0E4DCD178C50B000E1287D /* ChangeDescriptionViewController.m in Sources */,
 				4A0E4DD2178C559E00E1287D /* ChangeGenderViewController.m in Sources */,
+				4A2FA97F178D076C006A1EFB /* ProvinceViewController.m in Sources */,
+				4A2FA989178D0E4C006A1EFB /* CityViewController.m in Sources */,
+				4A2FA98D178D3DE8006A1EFB /* ChangeLabelsViewController.m in Sources */,
+				4A2FA992178D494C006A1EFB /* LabelManager.m in Sources */,
+				4A2FA995178D495E006A1EFB /* Label.m in Sources */,
+				4A2FA99C178D5E70006A1EFB /* AppButton.m in Sources */,
+				4A2FA9AE178D8F68006A1EFB /* AFPickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

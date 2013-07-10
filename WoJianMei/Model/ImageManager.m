@@ -173,6 +173,39 @@ static ImageManager *_defaultManager = nil;
     
 }
 
+//获取随机数目图片名称；
+-(NSString*)getAnRandomImage
+{
+    
+    int X =[self getRandomNumber:1 to:3];
+    NSString *imageTitle = [NSString stringWithFormat:@"label_Coloer_%i",X];
+    return imageTitle;
+    
+}
+
+///产生随机数目
+-(int)getRandomNumber:(int)from to:(int)to
+{
+    int xx = to - from + 1;
+    int returnValue =(from + (arc4random() % xx));
+    return returnValue;
+}
+
+///随机获取一张label 的图片
++(UIImage*)dd{
+    
+     NSString *imageName = [self getAnRandomImage];
+
+    return [UIImage imageNamed: imageName];
+    
+    
+}
+
+
+
+
+
+
 
 
 @end
