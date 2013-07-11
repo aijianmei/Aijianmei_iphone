@@ -8,6 +8,12 @@
 
 #import "PPTableViewController.h"
 
-@interface ChangeNameViewController : PPTableViewController
+@interface ChangeNameViewController : PPTableViewController<UITextFieldDelegate>{
+
+
+    UITextField *_nameTextField;
+    
+}
+@property (nonatomic,retain) UITextField *nameTextField;
 
 @end

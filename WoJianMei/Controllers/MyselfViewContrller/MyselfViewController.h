@@ -20,6 +20,7 @@
 {
     
     UIButton *_headerVImageButton;
+    UIImageView *_backGroundImageView;
     UIView *_myHeaderView;
     UIView *myFooterView;
     UILabel *_userNameLabel;
@@ -34,6 +35,7 @@
 
 
 @property (nonatomic,retain) UIButton *headerVImageButton;
+@property (nonatomic,retain) UIImageView *backGroundImageView;
 @property (nonatomic,retain) UIImageView *avatarImageView;
 @property (nonatomic,retain) UIImageView *footerVImageV;
 @property (nonatomic,retain) UIView *myHeaderView;

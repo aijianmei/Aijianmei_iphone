@@ -422,6 +422,8 @@
 		4AC523AF178E44E7003D9729 /* ProvinceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC523AE178E44E7003D9729 /* ProvinceCell.m */; };
 		4AC523B7178E4DE1003D9729 /* PickCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC523B6178E4DE1003D9729 /* PickCityCell.m */; };
 		4AC523BA178E9011003D9729 /* MyselfSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC523B9178E9011003D9729 /* MyselfSettingCell.m */; };
+		4AC523BD178EAD48003D9729 /* description_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC523BB178EAD45003D9729 /* description_BG.png */; };
+		4AC523BE178EAD48003D9729 /* description_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC523BC178EAD47003D9729 /* description_BG@2x.png */; };
 		4ACA496A1755EF9700CC9886 /* WorkoutDataComposeSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA49691755EF9700CC9886 /* WorkoutDataComposeSheetView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4ACA496D1755F84300CC9886 /* WorkoutDataComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA496C1755F84300CC9886 /* WorkoutDataComposeViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4ACE239C16AB0F2E002E41D1 /* CompostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE239B16AB0F2E002E41D1 /* CompostViewController.m */; };
@@ -1233,6 +1235,8 @@
 		4AC523B6178E4DE1003D9729 /* PickCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickCityCell.m; sourceTree = "<group>"; };
 		4AC523B8178E9010003D9729 /* MyselfSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyselfSettingCell.h; sourceTree = "<group>"; };
 		4AC523B9178E9011003D9729 /* MyselfSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyselfSettingCell.m; sourceTree = "<group>"; };
+		4AC523BB178EAD45003D9729 /* description_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = description_BG.png; sourceTree = "<group>"; };
+		4AC523BC178EAD47003D9729 /* description_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "description_BG@2x.png"; sourceTree = "<group>"; };
 		4ACA49681755EF9700CC9886 /* WorkoutDataComposeSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDataComposeSheetView.h; sourceTree = "<group>"; };
 		4ACA49691755EF9700CC9886 /* WorkoutDataComposeSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutDataComposeSheetView.m; sourceTree = "<group>"; };
 		4ACA496B1755F84300CC9886 /* WorkoutDataComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDataComposeViewController.h; sourceTree = "<group>"; };
@@ -3011,6 +3015,8 @@
 				4A0E4DC0178C4B5B00E1287D /* ChangeNameViewController.h */,
 				4A0E4DC1178C4B5B00E1287D /* ChangeNameViewController.m */,
 				4A0E4DC2178C4B5B00E1287D /* ChangeNameViewController.xib */,
+				4AC523BB178EAD45003D9729 /* description_BG.png */,
+				4AC523BC178EAD47003D9729 /* description_BG@2x.png */,
 				4A0E4DCA178C50AF00E1287D /* ChangeDescriptionViewController.h */,
 				4A0E4DCB178C50AF00E1287D /* ChangeDescriptionViewController.m */,
 				4A0E4DCC178C50AF00E1287D /* ChangeDescriptionViewController.xib */,
@@ -3705,6 +3711,8 @@
 				4A2FA9A7178D8F2F006A1EFB /* pickerGlass@2x.png in Resources */,
 				4A2FA9A8178D8F2F006A1EFB /* PickerShadow.png in Resources */,
 				4A2FA9A9178D8F2F006A1EFB /* PickerShadow@2x.png in Resources */,
+				4AC523BD178EAD48003D9729 /* description_BG.png in Resources */,
+				4AC523BE178EAD48003D9729 /* description_BG@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

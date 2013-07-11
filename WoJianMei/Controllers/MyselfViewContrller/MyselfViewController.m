@@ -31,6 +31,7 @@
 
 @implementation MyselfViewController
 @synthesize headerVImageButton=_headerVImageButton;
+@synthesize backGroundImageView = _backGroundImageView;
 @synthesize myHeaderView =_myHeaderView;
 @synthesize userNameLabel=_userNameLabel;
 @synthesize mottoLabel = _mottoLabel;
@@ -43,6 +44,7 @@
 -(void)dealloc{
     
     [_headerVImageButton release];
+    [_backGroundImageView release];
     [_footerVImageV release];
     [_myHeaderView release];
     [_userNameLabel release];
@@ -57,6 +59,7 @@
     
     [super viewDidUnload];
     self.headerVImageButton =nil;
+    self.backGroundImageView =nil;
     self.userNameLabel = nil;
     self.mottoLabel = nil;
     self.headerVImageButton =nil;
@@ -77,7 +80,7 @@
 {
 
     [self.headerVImageButton setBackgroundImage:self.user.avatarImage forState:UIControlStateNormal];
-    
+    [_backGroundImageView setImage:self.user.avatarBackGroundImage];
     NSString *userName = self.user.name;
     [self.userNameLabel setText:userName];
      
@@ -93,8 +96,7 @@
 }
 
 -(void)initUI{
-    
-    
+
     [self setTitle:@"我"];
     [self setNavigationRightButton:@"设置" imageName:@"top_bar_commonButton.png" action:@selector(clickSettingsButton:)];
     [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
@@ -105,15 +107,15 @@
     self.myHeaderView  =[[UIView alloc]init];
     [_myHeaderView setFrame: CGRectMake(0, 0, 320, 200)];
     
-    UIImageView *backGroundImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160)];
-    if (self.user.avatarBackGroundImage) {
-     [backGroundImageView setImage:self.user.avatarBackGroundImage];
+    self.backGroundImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160)];
+    if (!self.user.avatarBackGroundImage) {
+     [_backGroundImageView setImage:self.user.avatarBackGroundImage];
     }
     
-    [backGroundImageView setImage:[ImageManager getProfile_backgroud]];
+    [_backGroundImageView setImage:self.user.avatarBackGroundImage];
     
-    [_myHeaderView addSubview:backGroundImageView];
-    [backGroundImageView release];
+    [_myHeaderView addSubview:_backGroundImageView];
+
     
     ////// set the Username
     self.userNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(30, 130, 145, 30)];
@@ -190,11 +192,11 @@
     ///////////////
     
 //    self.user.name = @"Tom Callon";
-    self.user.description = @"我非常喜欢健身运动！！！如果你都喜欢，你就告诉我啦！哈哈哈哈哈哈";
-    self.user.avatarBackGroundImage = [UIImage imageNamed:@"profile_backgroud.png"];
-    self.user.avatarImage = [UIImage imageNamed:@"user_image.png"];
-    [_avatarImageView setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"user_image.png"]];
-    
+//    self.user.description = @"我非常喜欢健身运动！！！如果你都喜欢，你就告诉我啦！哈哈哈哈哈哈";
+//    self.user.avatarBackGroundImage = [UIImage imageNamed:@"profile_backgroud.png"];
+//    self.user.avatarImage = [UIImage imageNamed:@"user_image.png"];
+//    [_avatarImageView setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"user_image.png"]];
+//    
     
      NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"增肌",@"减肥",@"增重",@"认识朋友",@"约炮",@"认识好朋友",@"关注美好生活", nil];
     
@@ -218,6 +220,8 @@
     [self upgradeUI];
         
 }
+
+
 
 #pragma mark ----------------------------------------————————————————
 #pragma mark  tableviewDelegate Method

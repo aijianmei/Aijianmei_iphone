@@ -7,12 +7,15 @@
 //
 
 #import "ChangeNameViewController.h"
+#import "UserService.h"
+#import "User.h"
 
 @interface ChangeNameViewController ()
 
 @end
 
 @implementation ChangeNameViewController
+@synthesize nameTextField =_nameTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,6 +26,11 @@
     return self;
 }
 
+
+-(void)dealloc{
+    [_nameTextField release];
+    [super dealloc];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -31,7 +39,8 @@
     [self showBackgroundImage];
     
     [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
-    [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(clickSaveButton)];
+     [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(clickBack:)];
+//    [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(clickSaveButton)];
 
 }
 -(void)clickSaveButton{
@@ -71,14 +80,18 @@
     accessoryViewButton.frame = CGRectMake(0.0f, 0.0f, 32.0f,32.0f);
     accessoryViewButton.userInteractionEnabled = YES;
     [accessoryViewButton setImage:normalImage forState:UIControlStateNormal];
+    [accessoryViewButton addTarget:self action:@selector(clickDeleteButton:) forControlEvents:UIControlEventTouchUpInside];
     
     
-    UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(5.0f, 12.0f, 250.0f,32.0f)];
-    textField.backgroundColor =[UIColor redColor];
-    [textField setTextAlignment:NSTextAlignmentLeft];
-    [cell.contentView addSubview:textField];
-    [textField setText:@"唐亮"];
-    [textField release];
+    User *user =  [[UserService defaultService]user];
+    
+    
+    self.nameTextField = [[UITextField alloc]initWithFrame:CGRectMake(5.0f, 12.0f, 250.0f,32.0f)];
+    _nameTextField.delegate = self;
+    [_nameTextField setTextAlignment:NSTextAlignmentLeft];
+    [cell.contentView addSubview:_nameTextField];
+    [_nameTextField setText:user.name];
+    [_nameTextField becomeFirstResponder];
     
     
     // Configure the cell...
@@ -87,46 +100,23 @@
     return cell;
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
+-(void)clickDeleteButton:(UIButton*)sender{
+    [_nameTextField setText:@""];
+}
 
 
+#pragma mark - 
+#pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidEndEditing:(UITextField *)textField;
+{
+// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
+
+    User *user =[[UserService defaultService] user];
+    user.name = textField.text;
+    [[UserService defaultService] setUser:user];
+    
+}
 
 #pragma mark - Table view delegate
 

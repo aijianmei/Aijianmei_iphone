@@ -102,10 +102,8 @@
             self.user.avatarBackGroundImage = image;
         }
         
-//    User *user =  [[UserService defaultService]user];
-    
-    
-    
+      [[UserService defaultService] setUser:_user];
+ 
     }
     
     [self.navigationController dismissModalViewControllerAnimated:YES];

@@ -8,6 +8,13 @@
 
 #import "PPViewController.h"
 
-@interface ChangeDescriptionViewController : PPViewController
+@interface ChangeDescriptionViewController : PPViewController<UITextFieldDelegate>
+
+{
+    UITextField *_descriptionTextField;
+
+}
+@property (nonatomic,retain) IBOutlet UITextField *descriptionTextField;
+
 
 @end
