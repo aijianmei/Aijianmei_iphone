@@ -10,6 +10,7 @@
 
 @implementation MyselfSettingCell
 @synthesize detailLabelView =_detailLabelView;
+@synthesize detailImageView =_detailImageView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -23,6 +24,14 @@
         [self.detailLabelView setTextColor:[UIColor grayColor]];
         [self addSubview:_detailLabelView];
         
+        
+        
+        self.detailImageView = [[UIImageView alloc]initWithFrame:CGRectMake(200, 5.0f, 45.0f,42.0f)];
+        [self.detailImageView setBackgroundColor:[UIColor clearColor]];
+        [self addSubview:_detailImageView];
+
+        
+        
     }
     return self;
 }
@@ -30,6 +39,7 @@
 -(void)dealloc{
 
     [_detailLabelView release];
+    [_detailImageView release];
     [super dealloc];
 }
 

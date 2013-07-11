@@ -8,6 +8,7 @@
 
 #import "Myself_SettingsViewController.h"
 #import "User.h"
+#import "UserService.h"
 #import "Citypicker.h"
 #import "ChangeNameViewController.h"
 #import "ChangeDescriptionViewController.h"
@@ -52,8 +53,9 @@
         
         isChoosingAvtarImage =NO;
         isChoosingAvtarBackground = NO;
-
         
+        self.user = [[UserService defaultService]user];
+  
     }
     return self;
 }
@@ -66,12 +68,6 @@
 }
 
 
--(void)storeUserInfo{
-    
-    NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.user];
-    [[NSUserDefaults standardUserDefaults] setObject:userData forKey:USER];
-    
-}
 
 -(void)didClickBackButton:(UIButton *)button{
     
@@ -86,7 +82,6 @@
 
 -(void)save{
     
-    [self storeUserInfo];
      didSave =YES;
 
 }
@@ -107,7 +102,10 @@
             self.user.avatarBackGroundImage = image;
         }
         
-        [self storeUserInfo];
+//    User *user =  [[UserService defaultService]user];
+    
+    
+    
     }
     
     [self.navigationController dismissModalViewControllerAnimated:YES];
@@ -307,6 +305,8 @@
     [cell.imageView  setImage:nil];
     [cell.textLabel setText:nil];
     [cell.detailLabelView setText:nil];
+    [cell.detailImageView setImage:nil];
+
      cell.accessoryView = nil;
     
     /////
@@ -328,27 +328,53 @@
             
             ////设置头像
             if (indexPath.row ==0) {
-                
-                if (self.user.avatarImage) {
-                    [cell.imageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];
+                [cell.detailImageView setImage:self.user.avatarImage];
+                if (!self.user.avatarImage) {
+                    [cell.detailImageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];
                 }
+                
 
-                [cell.imageView setImage:self.user.avatarImage];
             }
             ///设置背景
             if (indexPath.row ==1) {
-                if (self.user.avatarBackGroundImage) {
-                    [cell.imageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];
+                if (!self.user.avatarBackGroundImage) {
+                    [cell.detailImageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];
                 }
 
-                [cell.imageView setImage:self.user.avatarBackGroundImage];
-            
+                [cell.detailImageView setImage:self.user.avatarBackGroundImage];
+                [cell.detailImageView setFrame:CGRectMake(150, 2, 120, 50)];
+                
+
+
             }
+            
+            //更改用户名
+            if (indexPath.row ==2) {
+                if (!self.user.name) {
+                    [cell.detailLabelView  setText:@"设置用户名"];
+                }
+                
+                [cell.detailLabelView  setText:self.user.name];
+
+            }
+            //更改个性签名
+            if (indexPath.row ==3) {
+                if (!self.user.description) {
+                    [cell.detailLabelView  setText:@"设置个性签名"];
+                }
+                
+                [cell.detailLabelView  setText:self.user.description];
+  
+            }
+            
             break;
+
         }
         case 1:
         {
             [cell.textLabel setText:@"标签"];
+            [cell.detailLabelView setText:@"修改标签"];
+
         }
             break;
         case 2:

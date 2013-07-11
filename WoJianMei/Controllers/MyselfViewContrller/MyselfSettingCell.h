@@ -12,9 +12,12 @@
 @interface MyselfSettingCell : PPTableViewCell
 {
     UILabel *_detailLabelView;
+    UIImageView *_detailImageView;
     
 }
 
-@property (nonatomic,retain) UILabel *detailLabelView;
+@property (nonatomic,retain) UILabel     *detailLabelView;
+@property (nonatomic,retain) UIImageView *detailImageView;
+
 
 @end
