@@ -15,6 +15,7 @@
 #import "ProvinceViewController.h"
 #import "ChangeLabelsViewController.h"
 #import "AFPickerView.h"
+#import "MyselfSettingCell.h"
 
 
 #define USER @"user"
@@ -48,6 +49,10 @@
         
         
         self.dataList = [NSArray arrayWithObjects:@"性别",@"年龄",@"身高",@"体重",@"BMI", nil];
+        
+        isChoosingAvtarImage =NO;
+        isChoosingAvtarBackground = NO;
+
         
     }
     return self;
@@ -93,12 +98,21 @@
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     if (image != nil){
         
-        self.user.avatarImage = image;
+        if (isChoosingAvtarImage)
+        {
+            self.user.avatarImage = image;
+        }
+        if (isChoosingAvtarBackground)
+        {
+            self.user.avatarBackGroundImage = image;
+        }
+        
         [self storeUserInfo];
     }
     
     [self.navigationController dismissModalViewControllerAnimated:YES];
     
+    [dataTableView reloadData];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
@@ -155,29 +169,7 @@
     
     didSave =NO;
 
-    
-     ////////add a section now 
-       
-//             cell.detailTextLabel.text = NSLocalizedString(@"更换头像", @"iamtheinternet");
-//
-//              self.avatarButton =[[UIButton alloc]initWithFrame:CGRectMake(17, 6, 40, 40)];
-//             
-//             
-//             [self.avatarButton setBackgroundColor:[UIColor clearColor]];
-//             [self.avatarButton setImage:self.user.avatarImage forState:UIControlStateNormal];
-    
-             
-             
-//             UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
-//                                                                delegate:self
-//                                                       cancelButtonTitle:@"取消"
-//                                                  destructiveButtonTitle:@"照相"
-//                                                       otherButtonTitles:@"相册",nil];
-//             [share showInView:self.view];
-//             [share release];
-//    
-        
-                    
+
                   
             UIButton *femaleButton  = [UIButton buttonWithType:UIButtonTypeCustom];
             [femaleButton setFrame:CGRectMake(120, 10, 25, 25)];
@@ -194,97 +186,58 @@
             [femaleLabel setBackgroundColor:[UIColor clearColor]];
 //            [cell addSubview:femaleLabel];
             [femaleLabel release];
-                  
-            
-            UIButton *maleButton  = [UIButton buttonWithType:UIButtonTypeCustom];
-            [maleButton setFrame:CGRectMake(210, 10, 25, 25)];
-            [maleButton setImage:[UIImage imageNamed:@"gender_on.png"]
-                                forState:UIControlEventTouchUpInside];
-            [maleButton setImage:[UIImage imageNamed:@"gender_off.png"]
-                                forState:UIControlStateNormal];
-
-//            [cell addSubview:maleButton];
-    
-            UILabel *maleLabel =[[UILabel alloc]initWithFrame:CGRectMake(180, 10, 30, 30)];
-            [maleLabel setText:@"男"];
-            [maleLabel setBackgroundColor:[UIColor clearColor]];
-                  
-//            [cell addSubview:maleLabel];
-            [maleLabel release];
-            
-            
-    
-            
-//			cell.textLabel.text = NSLocalizedString(@"广东省广州市", @"Brightness");
-//            
-//            
-//            cell.detailTextLabel.text  = @"更换地区";
-//			
-//            Citypicker *cp  = [[Citypicker alloc]init];
-//            [self.navigationController pushViewController:cp animated:YES];
-//            [cp release];
-            
-        
-		
-                        
-//
-//            NumberPickViewController *cp  = [[NumberPickViewController alloc]init];
-//            [self.navigationController pushViewController:cp animated:YES];
-//            [cp release];
-		
-            
-//            //TODO
-//            NumberPickViewController *cp  = [[NumberPickViewController alloc]init];
-//            [self.navigationController pushViewController:cp animated:YES];
-//            [cp release];
-//        
-        
-
-    
-    
-      
-//		[section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
-//			cell.textLabel.text = NSLocalizedString(@"", @"Twitter");
-//            [staticContentCell setCellStyle:UITableViewCellStyleValue1];
-//            [staticContentCell setCellHeight:100];
-//            
-//            UITextView *moodTextView = [[UITextView alloc]initWithFrame:CGRectMake(20,0, 280,100)];
-//            [moodTextView setBackgroundColor:[UIColor clearColor]];
-//            [moodTextView setText:@"今天我很开心哦。我和女朋友去健身啦！"];
-//            [moodTextView setFont:[UIFont fontWithName:nil size:30]];
-//            [cell addSubview:moodTextView];
-//            [moodTextView release];
-        
-    
-}
+                              
+ }
 
             
 
 #pragma mark --actionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-
-        switch (buttonIndex) {
-            case 0:
-            {
-                [self takePhoto];
-            }
-                break;
-            case 1:
-            {
-                [self  selectPhoto];
-
-            }
-                break;
-            case 2:
-                
-            {
-                NSLog(@"Button index :%d",buttonIndex);
-            }
-                break;
-            default:
-                break;
+    switch (actionSheet.tag) {
+            //change the avatar
+        case 0:
+        {
+            isChoosingAvtarImage =YES;
+            isChoosingAvtarBackground =NO;
         }
+            break;
+            //change the avatar
+        case 1:
+        {
+            isChoosingAvtarBackground =YES;
+            isChoosingAvtarImage =NO;
+
+        }
+            break;
+
+            
+        default:
+            break;
+    }
+    
+    switch (buttonIndex) {
+        case 0:
+        {
+            [self takePhoto];
+        }
+            break;
+        case 1:
+        {
+            [self  selectPhoto];
+            
+        }
+            break;
+        case 2:
+            
+        {
+            NSLog(@"Button index :%d",buttonIndex);
+        }
+            break;
+        default:
+            break;
+    }
+
 }
 
 
@@ -347,12 +300,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    MyselfSettingCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[MyselfSettingCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     [cell.imageView  setImage:nil];
     [cell.textLabel setText:nil];
+    [cell.detailLabelView setText:nil];
      cell.accessoryView = nil;
     
     /////
@@ -364,15 +318,7 @@
     accessoryViewButton.frame = CGRectMake(0.0f, 0.0f, 32.0f,32.0f);
     accessoryViewButton.userInteractionEnabled = YES;
     [accessoryViewButton setImage:normalImage forState:UIControlStateNormal];
-    
-    
-    UILabel *detailLabelView = [[UILabel alloc]initWithFrame:CGRectMake(145.0f, 15.0f, 115.0f,32.0f)];
-    detailLabelView.backgroundColor =[UIColor redColor];
-    [detailLabelView setTextAlignment:NSTextAlignmentRight];
-    [cell.contentView  addSubview:detailLabelView];
-    [detailLabelView setText:@"唐亮"];
-    [detailLabelView release];
-    
+       
     // Configure the cell...
     switch (indexPath.section) {
         case 0:
@@ -382,71 +328,93 @@
             
             ////设置头像
             if (indexPath.row ==0) {
-                [cell.imageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];
+                
+                if (self.user.avatarImage) {
+                    [cell.imageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];
+                }
+
+                [cell.imageView setImage:self.user.avatarImage];
             }
             ///设置背景
             if (indexPath.row ==1) {
-                [cell.imageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];                
+                if (self.user.avatarBackGroundImage) {
+                    [cell.imageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];
+                }
+
+                [cell.imageView setImage:self.user.avatarBackGroundImage];
+            
             }
             break;
         }
         case 1:
+        {
             [cell.textLabel setText:@"标签"];
+        }
             break;
         case 2:
+        {
             [cell.textLabel setText:[self.dataList objectAtIndex:indexPath.row]];
+            
+            switch (indexPath.row) {
+                    //sex
+                case 0:
+                {
+                [cell.detailLabelView setText:self.user.gender];
+
+                }
+                    break;
+                    //age
+                case 1:
+                {
+                [cell.detailLabelView setText:self.user.age];
+
+                }
+                    break;
+                    //height
+                case 2:
+                {
+                [cell.detailLabelView setText:self.user.height];
+
+                }
+                    break;
+                    //weight
+                case 3:
+                {
+                [cell.detailLabelView setText:self.user.weigth];
+
+                }
+                    break;
+                    //BMI
+                case 4:
+                {
+                [cell.detailLabelView setText:self.user.BMIValue];
+                    
+                }
+                    break;
+
+                    
+                default:
+                    break;
+            }
+
+        }
             break;
         case 3:
+        {
             [cell.textLabel setText:@"城市"];
+            [cell.detailLabelView setText:self.user.city];
+        }
+            
             break;
         default:
             break;
     }
 
     cell.accessoryView = accessoryViewButton;
+    [cell.textLabel setTextColor:[UIColor grayColor]];
 
     return cell;
 }
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
 
 -(void)clickChangeAvatarButton{
     
@@ -455,6 +423,8 @@
                                               cancelButtonTitle:@"取消"
                                          destructiveButtonTitle:@"照相"
                                               otherButtonTitles:@"相册",nil];
+    
+    [share setTag:0];
     [share showInView:self.view];
     [share release];
     
@@ -466,6 +436,7 @@
                                               cancelButtonTitle:@"取消"
                                          destructiveButtonTitle:@"照相"
                                               otherButtonTitles:@"相册",nil];
+    [share setTag:1];
     [share showInView:self.view];
     [share release];
 

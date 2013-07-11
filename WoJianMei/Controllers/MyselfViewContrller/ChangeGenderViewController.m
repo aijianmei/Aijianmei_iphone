@@ -7,6 +7,8 @@
 //
 
 #import "ChangeGenderViewController.h"
+#import "UserService.h"
+#import "User.h"
 
 @interface ChangeGenderViewController ()
 
@@ -33,8 +35,11 @@
     [self showBackgroundImage];
     
     [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
-    [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(clickSaveButton)];
+//    [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(clickSaveButton)];
     
+    User *user = [[UserService defaultService]user];
+    [self setTitle:user.gender];
+
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -57,32 +62,38 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
 
-    
     /////
-    UIImage *normalImage = [UIImage imageNamed:@"AccessoryView.png"];
-    //    UIImage *mySelectedImage = [UIImage imageNamed:@"144x144.png"];
+    UIImage *selected_Image = [UIImage imageNamed:@"gender_on.png"];
     
     UIButton *accessoryViewButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
     accessoryViewButton.frame = CGRectMake(0.0f, 0.0f, 32.0f,32.0f);
     accessoryViewButton.userInteractionEnabled = YES;
-    [accessoryViewButton setImage:normalImage forState:UIControlStateNormal];
+    [accessoryViewButton setImage:selected_Image forState:UIControlStateNormal];
     
-       
-    
+    User *user = [[UserService defaultService]user];
+
     // Configure the cell...
-    cell.accessoryView = accessoryViewButton;
-    
     switch (indexPath.row) {
         case 0:
         {
+               
             [cell.textLabel setText:@"男"];
-
+            
+            if ([user.gender isEqualToString:@"男"]) {
+                cell.accessoryView = accessoryViewButton;
+            }
         }
             break;
         case 1:
         {
             [cell.textLabel setText:@"女"];
+            
+            if ([user.gender isEqualToString:@"女"]) {
+                /////
+                cell.accessoryView = accessoryViewButton;
+            }
+
 
         }
             break;
@@ -91,48 +102,10 @@
             break;
     }
     
+    [cell.textLabel setTextColor:[UIColor grayColor]];
     
     return cell;
 }
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 
 
@@ -142,8 +115,27 @@
 {
     // Navigation logic may go here. Create and push another view controller.
     
-    
-    
+    switch (indexPath.row) {
+        case 0:
+        {
+            User *user = [[UserService defaultService]user];
+            [user setGender:@"男"];
+        }
+            break;
+        case 1:
+        {
+            User *user = [[UserService defaultService]user];
+            [user setGender:@"女"];
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+    [dataTableView reloadData];
+
 }
 
 

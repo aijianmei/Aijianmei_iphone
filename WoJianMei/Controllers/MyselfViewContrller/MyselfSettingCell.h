@@ -1,0 +1,20 @@
+//
+//  MyselfSettingCell.h
+//  WoJianMei
+//
+//  Created by Tom Callon  on 7/11/13.
+//
+//
+
+#import <UIKit/UIKit.h>
+#import "PPTableViewCell.h"
+
+@interface MyselfSettingCell : PPTableViewCell
+{
+    UILabel *_detailLabelView;
+    
+}
+
+@property (nonatomic,retain) UILabel *detailLabelView;
+
+@end

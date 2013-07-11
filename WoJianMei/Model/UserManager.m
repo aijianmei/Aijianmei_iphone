@@ -10,6 +10,7 @@
 #import "User.h"
 
 @implementation UserManager:NSObject
+@synthesize user =_user;
 
 
 + (User*)createUserWithUserId:(NSString *)userId
@@ -35,6 +36,8 @@
     user.loginStatus = [NSNumber numberWithBool:YES];
     return user;
 }
+
+
 
 
 

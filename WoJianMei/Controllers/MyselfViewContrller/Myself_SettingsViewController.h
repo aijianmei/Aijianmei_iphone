@@ -24,6 +24,10 @@
     BOOL didSave;
     
     AFPickerView *defaultPickerView;
+    
+    BOOL isChoosingAvtarImage;
+    BOOL isChoosingAvtarBackground;
+
 
     
 }

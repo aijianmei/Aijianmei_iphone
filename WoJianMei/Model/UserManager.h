@@ -9,7 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "User.h"
 
-@interface UserManager : NSObject
+@interface UserManager : NSObject{
+    
+    User *_user;
+
+}
+@property (nonatomic,retain) User *user;
+
 
 + (User*)createUserWithUserId:(NSString *)userId
                    sinaUserId:(NSString *)sinaUserId

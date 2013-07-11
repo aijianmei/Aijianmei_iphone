@@ -9,5 +9,10 @@
 #import "PPTableViewController.h"
 
 @interface ProvinceViewController : PPTableViewController
+{
+    NSString *_pickResult;
+}
+@property(nonatomic,retain)  NSString *pickResult;
+
 
 @end

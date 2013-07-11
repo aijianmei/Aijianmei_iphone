@@ -9,12 +9,16 @@
 #import "ProvinceViewController.h"
 #import "CityViewController.h"
 #import "ProvinceCell.h"
+#import "User.h"
+#import "UserService.h"
 
 @interface ProvinceViewController ()
 
 @end
 
 @implementation ProvinceViewController
+@synthesize pickResult =_pickResult;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,6 +29,11 @@
     return self;
 }
 
+-(void)dealloc{
+    [_pickResult release];
+    [super dealloc];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -33,9 +42,19 @@
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
     /// 设置导航按钮
-
+    
+    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+    
+    User *user = [[UserService defaultService] user];
+    [self setTitle:user.city];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    User *user = [[UserService defaultService] user];
+    [self setTitle:user.city];
+
+}
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -74,56 +93,16 @@
     // Configure the cell...
     cell.accessoryView = accessoryViewButton;
     
-    ///先出去省份
+    ///先选省份
     NSArray *provinces = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"area.plist" ofType:nil]];
     [cell.textLabel setText:[[provinces objectAtIndex:indexPath.row] objectForKey:@"state"]];
     
+    [cell.textLabel setTextColor:[UIColor grayColor]];
+
     
     
     return cell;
 }
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -133,6 +112,11 @@
     NSArray *area = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"area.plist" ofType:nil]];
     NSArray *cities = [[area objectAtIndex:indexPath.row] objectForKey:@"cities"];
     vc.citiesList =cities;
+    //获取已经选择的地区或者省份
+    
+    NSArray *provinces = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"area.plist" ofType:nil]];
+    vc.selectedProvince = [[provinces objectAtIndex:indexPath.row] objectForKey:@"state"];
+    PPDebug(@"你选择的地区:%@",vc.selectedProvince);
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
     

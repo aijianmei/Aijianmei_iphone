@@ -42,7 +42,6 @@
 
 -(void)dealloc{
     
-    
     [_headerVImageButton release];
     [_footerVImageV release];
     [_myHeaderView release];
@@ -72,39 +71,21 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-//    [self hidesBottomBarWhenPushed];
 }
-
-
-/* display new or existing cached image */
 
 - (void)upgradeUI
 {
-    
-   
-    
+
     [self.headerVImageButton setBackgroundImage:self.user.avatarImage forState:UIControlStateNormal];
     
     NSString *userName = self.user.name;
     [self.userNameLabel setText:userName];
-    
-//    NSString *userGender = self.user.gender;    
-//    if ([userGender  isEqualToString:@"m"]) {
-//        
-//        [self.userGenderLabel setText:@"男"];
-//
-//    }else{
-//        [self.userGenderLabel setText:@"女"];
-//        
-//    }
-    
+     
     NSString *description = [self.user description];
-    [self.mottoLabel setText:description];
-    
 
-    
-    
+    [self.mottoLabel setText:description];
 }
+
 
 -(void)test{
 
@@ -123,14 +104,16 @@
     
     self.myHeaderView  =[[UIView alloc]init];
     [_myHeaderView setFrame: CGRectMake(0, 0, 320, 200)];
-    [_myHeaderView setBackgroundColor:[UIColor redColor]];
     
     UIImageView *backGroundImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160)];
+    if (self.user.avatarBackGroundImage) {
+     [backGroundImageView setImage:self.user.avatarBackGroundImage];
+    }
+    
     [backGroundImageView setImage:[ImageManager getProfile_backgroud]];
     
     [_myHeaderView addSubview:backGroundImageView];
     [backGroundImageView release];
-    
     
     ////// set the Username
     self.userNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(30, 130, 145, 30)];
@@ -139,7 +122,7 @@
     _userNameLabel.textColor = [UIColor whiteColor];
     [self.myHeaderView addSubview:self.userNameLabel];
     
-        
+
     self.headerVImageButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
     [_headerVImageButton addTarget:self action:@selector(clickVatarButton:) forControlEvents:UIControlEventTouchUpInside];
     _headerVImageButton.layer.borderWidth = 4.0f;
@@ -182,12 +165,7 @@
     [self.mottoLabel  setLineBreakMode:NSLineBreakByTruncatingTail];
     [_myHeaderView addSubview:self.mottoLabel];
     
-    
-    ////// set the User Gender
-//    self.userGenderLabel  = [[UILabel alloc]initWithFrame:CGRectMake(265, 190, 100, 30)];
-//    _userGenderLabel.backgroundColor =[UIColor clearColor];
-//    [self.myHeaderView addSubview:self.userGenderLabel];
-    
+   
 
     [self.myHeaderView addSubview:self.headerVImageButton];
     [self.dataTableView setTableHeaderView:self.myHeaderView];
@@ -384,10 +362,10 @@
             break;
         case 2:
             [cell.textLabel setText:@"城市"];
-            
-            
+        
             /////accessoryViewButton
             [accessoryViewButton setTitle:self.user.city forState:UIControlStateNormal];
+            [accessoryViewButton setFrame:CGRectMake(0, 0, 100, 40)];
             [accessoryViewButton setBackgroundImage:[UIImage imageNamed:@"Label_Type.png"] forState:UIControlStateNormal];
             //            [accessoryViewButton setImage:mySelectedImage forState:UIControlStateHighlighted];
             cell.accessoryView = accessoryViewButton;

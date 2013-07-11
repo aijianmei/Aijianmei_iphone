@@ -7,6 +7,11 @@
 //
 
 #import "CityViewController.h"
+#import "PickCityCell.h"
+#import "MyselfViewController.h"
+#import "UserManager.h"
+#import "user.h"
+
 
 @interface CityViewController ()
 
@@ -14,6 +19,8 @@
 
 @implementation CityViewController
 @synthesize citiesList =_citiesList;
+@synthesize selectedCity =_selectedCity;
+@synthesize selectedProvince =_selectedProvince;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -25,6 +32,13 @@
     return self;
 }
 
+-(void)dealloc{
+    [_citiesList release];
+    [_selectedCity release];
+    [_selectedProvince release];
+    [super dealloc];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -32,7 +46,11 @@
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
     
+    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+    
     self.dataList =_citiesList;
+    // 当前所在省份或者区域
+    [self setTitle:self.selectedProvince];
 
 }
 
@@ -53,9 +71,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    PickCityCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[PickCityCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
     [cell.textLabel setText:nil];
@@ -75,10 +93,19 @@
     // Configure the cell...
 //    cell.accessoryView = accessoryViewButton;
     
-    ///先出去省份
     [cell.textLabel setText:[[self.dataList objectAtIndex:indexPath.row] objectForKey:@"city"]];
+    [cell.textLabel setTextColor:[UIColor grayColor]];
     
+    User *user = [[UserService defaultService] user];
+
+    NSString *city = [[self.dataList objectAtIndex:indexPath.row] objectForKey:@"city"];
         
+//    if ([user.city isEqualToString:city]) {
+//        cell.textLabel setTextColor:[UIColor greenColor];
+//
+//    }
+
+   
     return cell;
 }
 
@@ -97,9 +124,22 @@
     accessoryViewButton.userInteractionEnabled = YES;
     [accessoryViewButton setImage:normalImage forState:UIControlStateNormal];
     
+    self.selectedCity =[[self.dataList objectAtIndex:indexPath.row ]objectForKey:@"city"];
+    
+    NSLog(@"所在区域 :%@%@",self.selectedProvince,self.selectedCity);
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    //TODO
+    /* 数据接口:
+      格式 ：数据格式为字符串
+      NSString* Province + NSString* Province 省份+城市
+     */
+    
+    NSString *userCity = [NSString stringWithFormat:@"%@%@",self.selectedProvince,self.selectedCity];
+    User *user = [[UserService defaultService] user];
+    user.city = userCity;
+    [[UserService defaultService] storeUserInfo];
 
-    // Configure the cell...
-        
 }
 
 
