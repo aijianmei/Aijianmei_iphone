@@ -419,6 +419,7 @@
 		4ABD0DA115D7F4EB00B08DDA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABD0DA015D7F4EB00B08DDA /* CFNetwork.framework */; };
 		4ABD0DAE15D7F86200B08DDA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABD0DAD15D7F86200B08DDA /* MessageUI.framework */; };
 		4ABD0DB015D7F8FD00B08DDA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABD0DAF15D7F8FC00B08DDA /* QuartzCore.framework */; };
+		4AC523AF178E44E7003D9729 /* ProvinceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC523AE178E44E7003D9729 /* ProvinceCell.m */; };
 		4ACA496A1755EF9700CC9886 /* WorkoutDataComposeSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA49691755EF9700CC9886 /* WorkoutDataComposeSheetView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4ACA496D1755F84300CC9886 /* WorkoutDataComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA496C1755F84300CC9886 /* WorkoutDataComposeViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4ACE239C16AB0F2E002E41D1 /* CompostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE239B16AB0F2E002E41D1 /* CompostViewController.m */; };
@@ -1224,6 +1225,8 @@
 		4ABD0DA015D7F4EB00B08DDA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		4ABD0DAD15D7F86200B08DDA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		4ABD0DAF15D7F8FC00B08DDA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4AC523AD178E44E7003D9729 /* ProvinceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvinceCell.h; sourceTree = "<group>"; };
+		4AC523AE178E44E7003D9729 /* ProvinceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvinceCell.m; sourceTree = "<group>"; };
 		4ACA49681755EF9700CC9886 /* WorkoutDataComposeSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDataComposeSheetView.h; sourceTree = "<group>"; };
 		4ACA49691755EF9700CC9886 /* WorkoutDataComposeSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutDataComposeSheetView.m; sourceTree = "<group>"; };
 		4ACA496B1755F84300CC9886 /* WorkoutDataComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDataComposeViewController.h; sourceTree = "<group>"; };
@@ -3009,6 +3012,8 @@
 				4A2FA97C178D076C006A1EFB /* ProvinceViewController.h */,
 				4A2FA97D178D076C006A1EFB /* ProvinceViewController.m */,
 				4A2FA97E178D076C006A1EFB /* ProvinceViewController.xib */,
+				4AC523AD178E44E7003D9729 /* ProvinceCell.h */,
+				4AC523AE178E44E7003D9729 /* ProvinceCell.m */,
 				4A2FA986178D0E4C006A1EFB /* CityViewController.h */,
 				4A2FA987178D0E4C006A1EFB /* CityViewController.m */,
 				4A2FA988178D0E4C006A1EFB /* CityViewController.xib */,
@@ -3982,6 +3987,7 @@
 				4A2FA995178D495E006A1EFB /* Label.m in Sources */,
 				4A2FA99C178D5E70006A1EFB /* AppButton.m in Sources */,
 				4A2FA9AE178D8F68006A1EFB /* AFPickerView.m in Sources */,
+				4AC523AF178E44E7003D9729 /* ProvinceCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
