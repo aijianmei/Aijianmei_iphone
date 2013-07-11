@@ -335,11 +335,13 @@
             }
             ///设置背景
             if (indexPath.row ==1) {
+                
+                [cell.detailImageView setImage:self.user.avatarBackGroundImage];
+                
                 if (!self.user.avatarBackGroundImage) {
                     [cell.detailImageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];
                 }
 
-                [cell.detailImageView setImage:self.user.avatarBackGroundImage];
                 [cell.detailImageView setFrame:CGRectMake(150, 2, 120, 50)];
                 
 
