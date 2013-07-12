@@ -50,9 +50,6 @@
         [button setBackgroundImage:[UIImage imageNamed:[self getAnRandomImage]] forState:UIControlStateNormal];
 
         
-        
-        
-        
         [button setTitle:buttonTitle forState:UIControlStateNormal];
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         ////根据字体的多少来调整button 的长度

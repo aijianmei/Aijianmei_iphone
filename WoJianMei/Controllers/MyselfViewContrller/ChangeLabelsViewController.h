@@ -10,6 +10,8 @@
 
 @interface ChangeLabelsViewController : PPViewController
 {
+    
+    UIView *lastButton;
 
 }
 -(NSString*)getAnRandomImage;

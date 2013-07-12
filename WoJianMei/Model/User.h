@@ -27,7 +27,7 @@
     NSString *_userType;
     NSString *_profileImageUrl;
     NSNumber *_loginStatus;
-    NSArray  *_labelsArray;
+    NSMutableArray  *_labelsArray;
     //
     NSString *_age;
     NSString *_height;
@@ -56,7 +56,7 @@
 @property (retain, nonatomic)  NSString *userType;
 @property (retain, nonatomic)  NSString *profileImageUrl;
 @property (nonatomic, assign) NSNumber *loginStatus;
-@property (retain, nonatomic)  NSArray  *labelsArray;
+@property (retain, nonatomic) NSMutableArray  *labelsArray;
 
 @property (retain, nonatomic)  NSString *age;
 @property (retain, nonatomic)  NSString *height;

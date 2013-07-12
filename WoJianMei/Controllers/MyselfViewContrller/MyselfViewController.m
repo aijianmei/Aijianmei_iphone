@@ -87,6 +87,10 @@
     NSString *description = [self.user description];
 
     [self.mottoLabel setText:description];
+    
+   [[UserService defaultService] setUser:_user];
+
+    
 }
 
 
@@ -184,21 +188,7 @@
     //获取当前用户信息
     self.user = [[UserService defaultService] user];
    
-    
-    /////For testing !!!
-//    User *user =[[User alloc]init];
-//    self.user =  user;
-//    [user release];
-    ///////////////
-    
-//    self.user.name = @"Tom Callon";
-//    self.user.description = @"我非常喜欢健身运动！！！如果你都喜欢，你就告诉我啦！哈哈哈哈哈哈";
-//    self.user.avatarBackGroundImage = [UIImage imageNamed:@"profile_backgroud.png"];
-//    self.user.avatarImage = [UIImage imageNamed:@"user_image.png"];
-//    [_avatarImageView setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"user_image.png"]];
-//    
-    
-     NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"增肌",@"减肥",@"增重",@"认识朋友",@"约炮",@"认识好朋友",@"关注美好生活", nil];
+     NSMutableArray *buttonTitleArray =[NSArray arrayWithObjects:@"增肌",@"减肥",@"增重",@"认识朋友",@"约炮",@"认识好朋友",@"关注美好生活", nil];
     
     self.user.labelsArray = buttonTitleArray;
     

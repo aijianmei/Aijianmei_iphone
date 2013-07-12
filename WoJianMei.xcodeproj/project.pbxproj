@@ -41,6 +41,9 @@
 		4A257EFE178FA702001D153F /* less_data_Button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A257EFA178FA700001D153F /* less_data_Button@2x.png */; };
 		4A257F01178FA770001D153F /* profile_data_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A257EFF178FA76E001D153F /* profile_data_BG.png */; };
 		4A257F02178FA770001D153F /* profile_data_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A257F00178FA76F001D153F /* profile_data_BG@2x.png */; };
+		4A257F0E17900522001D153F /* AddLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A257F0C17900521001D153F /* AddLabelViewController.m */; };
+		4A257F0F17900522001D153F /* AddLabelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A257F0D17900521001D153F /* AddLabelViewController.xib */; };
+		4A257F1A17900A80001D153F /* AddLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A257F1917900A7F001D153F /* AddLabelCell.m */; };
 		4A27ADFF1777EED1009978C5 /* FitnessNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27ADFD1777EED1009978C5 /* FitnessNetworkRequest.m */; };
 		4A27AE001777EED1009978C5 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 4A27ADFE1777EED1009978C5 /* README */; };
 		4A27AE6C1777F006009978C5 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AE511777F006009978C5 /* Article.m */; };
@@ -602,6 +605,11 @@
 		4A257EFA178FA700001D153F /* less_data_Button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "less_data_Button@2x.png"; sourceTree = "<group>"; };
 		4A257EFF178FA76E001D153F /* profile_data_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_data_BG.png; sourceTree = "<group>"; };
 		4A257F00178FA76F001D153F /* profile_data_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_data_BG@2x.png"; sourceTree = "<group>"; };
+		4A257F0B17900520001D153F /* AddLabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLabelViewController.h; sourceTree = "<group>"; };
+		4A257F0C17900521001D153F /* AddLabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLabelViewController.m; sourceTree = "<group>"; };
+		4A257F0D17900521001D153F /* AddLabelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddLabelViewController.xib; sourceTree = "<group>"; };
+		4A257F1817900A7E001D153F /* AddLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLabelCell.h; sourceTree = "<group>"; };
+		4A257F1917900A7F001D153F /* AddLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLabelCell.m; sourceTree = "<group>"; };
 		4A27ADFB1777EED1009978C5 /* FitnessNetworkConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitnessNetworkConstants.h; sourceTree = "<group>"; };
 		4A27ADFC1777EED1009978C5 /* FitnessNetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitnessNetworkRequest.h; sourceTree = "<group>"; };
 		4A27ADFD1777EED1009978C5 /* FitnessNetworkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitnessNetworkRequest.m; sourceTree = "<group>"; };
@@ -3053,6 +3061,11 @@
 				4A2FA98B178D3DE8006A1EFB /* ChangeLabelsViewController.h */,
 				4A2FA98C178D3DE8006A1EFB /* ChangeLabelsViewController.m */,
 				4A2FA98E178D3E01006A1EFB /* ChangeLabelsViewController.xib */,
+				4A257F0B17900520001D153F /* AddLabelViewController.h */,
+				4A257F0C17900521001D153F /* AddLabelViewController.m */,
+				4A257F0D17900521001D153F /* AddLabelViewController.xib */,
+				4A257F1817900A7E001D153F /* AddLabelCell.h */,
+				4A257F1917900A7F001D153F /* AddLabelCell.m */,
 				4A2FA99D178D88C9006A1EFB /* AppButtonClass */,
 				4ADCFE07169D614600A3E979 /* MyselfViewController.h */,
 				4ADCFE08169D614600A3E979 /* MyselfViewController.m */,
@@ -3734,6 +3747,7 @@
 				4A257EFE178FA702001D153F /* less_data_Button@2x.png in Resources */,
 				4A257F01178FA770001D153F /* profile_data_BG.png in Resources */,
 				4A257F02178FA770001D153F /* profile_data_BG@2x.png in Resources */,
+				4A257F0F17900522001D153F /* AddLabelViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4030,6 +4044,8 @@
 				4AC523B7178E4DE1003D9729 /* PickCityCell.m in Sources */,
 				4AC523BA178E9011003D9729 /* MyselfSettingCell.m in Sources */,
 				4A257EF6178F9697001D153F /* ChangeNameCell.m in Sources */,
+				4A257F0E17900522001D153F /* AddLabelViewController.m in Sources */,
+				4A257F1A17900A80001D153F /* AddLabelCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -312,6 +312,11 @@
     [cell.moreButton setHidden:NO];
 
     
+    CGSize size = CGSizeMake(320, 770);
+    [tableView setContentSize:size];
+    
+    
+    
 
 
      cell.accessoryView = nil;
@@ -407,6 +412,8 @@
                 case 0:
                 {
                 [cell.detailLabelView setText:self.user.gender];
+                cell.accessoryView = accessoryViewButton;
+
                 [cell.textField  setHidden:YES];
                 [cell.lessButton setHidden:YES];
                 [cell.moreButton setHidden:YES];
@@ -440,7 +447,7 @@
                 [cell.textField setTag:3];
                 [cell.moreButton setTag:5];
                 [cell.lessButton setTag:6];
-
+                
                 }
                     break;
                     //BMI

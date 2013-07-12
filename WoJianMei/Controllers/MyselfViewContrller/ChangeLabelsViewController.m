@@ -13,6 +13,12 @@
 #import "ImageManager.h"
 #import "AppButton.h"
 
+#import "UserService.h"
+#import "User.h"
+#import "AddLabelViewController.h"
+
+
+
 
 #define SCROLL_VIEW_TAG 20130710
 #define LABEL_ID_BUTTON_OFFSET 120111109
@@ -134,7 +140,7 @@
     }
     
     
-    
+    [self createData];
     [self createButtons];
     
 
@@ -142,37 +148,6 @@
 - (void)contentTypeButtonInit
 {
     
-    LabelManager* manager = [LabelManager defaultlabelManager];
-    
-    
-    Label *label1 = [[Label alloc]initWithId:@"0" labelName:@"我想要健身"];
-    Label *label2 = [[Label alloc]initWithId:@"1" labelName:@"我想减肥"];
-    Label *label3 = [[Label alloc]initWithId:@"2" labelName:@"我想要增肌"];
-    Label *label4 = [[Label alloc]initWithId:@"3" labelName:@"我要泡妞"];
-    Label *label5 = [[Label alloc]initWithId:@"4" labelName:@"我想要健身"];
-    Label *label6 = [[Label alloc]initWithId:@"5" labelName:@"我想减肥"];
-    Label *label7 = [[Label alloc]initWithId:@"6" labelName:@"我想要增肌"];
-    Label *label8 = [[Label alloc]initWithId:@"7" labelName:@"我要泡妞"];
-    
-    [manager addLabel:label1];
-    [manager addLabel:label2];
-    [manager addLabel:label3];
-    [manager addLabel:label4];
-    [manager addLabel:label5];
-    [manager addLabel:label6];
-    [manager addLabel:label7];
-    [manager addLabel:label8];
-
-    
-    [label1 release];
-    [label2 release];
-    [label3 release];
-    [label4 release];
-    [label5 release];
-    [label6 release];
-    [label7 release];
-    [label8 release];
-
 }
 
 #pragma mark -
@@ -180,10 +155,16 @@
 
 -(void)createButtons{
     
-    [self createData];
     // Do any additional setup after loading the view, typically from a nib.
+        
+//    LabelManager  *manager = [LabelManager defaultlabelManager];
+//    for (int i = 0; i < [manager.allLabel
+// count]; i++)
+    
+        
     int width = self.view.frame.size.width/4;
     for (int i = 0; i < [m_arData count]; i++)
+
     {
         int t = i/4;
         int d = fmod(i, 4);
@@ -191,7 +172,10 @@
         CAppButton *appBtn = [CAppButton BtnWithType:UIButtonTypeCustom];
         [appBtn setFrame:CGRectMake(TAGH, TAGH, BTNWIDTH, BTNHIGHT)];
         [appBtn setImage:[UIImage imageNamed:@"apphead.png"] forState:UIControlStateNormal];
+        
+        
         [appBtn setTitle:[m_arData objectAtIndex:i] forState:UIControlStateNormal];
+        
         [appBtn addTarget:self action:@selector(btnClicked:event:) forControlEvents:UIControlEventTouchUpInside];
         appBtn.tag = i;
         [nView addSubview:appBtn];
@@ -202,7 +186,16 @@
         [nView addSubview:tagImgView];
         
         [self.view addSubview:nView];
+        
+        
         nView.userInteractionEnabled = NO;
+
+        //最后一个按钮是可以点击的
+        if (i==[m_arData count]-1) {
+            nView.userInteractionEnabled = YES;
+            lastButton = nView;
+            [lastButton setUserInteractionEnabled:YES];
+        }
     }
     
     UILongPressGestureRecognizer *lpgr = [[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(LongPressGestureRecognizer:)] autorelease];
@@ -218,13 +211,67 @@
 
 - (void)createData
 {
-    m_arData = [[NSMutableArray alloc] initWithObjects:@"电话", @"短信", @"通讯录", @"浏览器", @"日历", @"时钟", @"计算器", @"地图", @"天气", @"图库", nil];
+    
+    LabelManager  *manager = [LabelManager defaultlabelManager];
+
+    Label *label1 = [[Label alloc]initWithId:@"0" labelName:@"健身"];
+    Label *label2 = [[Label alloc]initWithId:@"1" labelName:@"减肥"];
+    Label *label3 = [[Label alloc]initWithId:@"2" labelName:@"增肌"];
+    Label *label4 = [[Label alloc]initWithId:@"3" labelName:@"泡妞"];
+    Label *label5 = [[Label alloc]initWithId:@"4" labelName:@"健身"];
+    Label *label6 = [[Label alloc]initWithId:@"5" labelName:@"减肥"];
+    Label *label7 = [[Label alloc]initWithId:@"6" labelName:@"增肌"];
+    Label *label8 = [[Label alloc]initWithId:@"7" labelName:@"泡妞"];
+    
+    [manager addLabel:label1];
+    [manager addLabel:label2];
+    [manager addLabel:label3];
+    [manager addLabel:label4];
+    [manager addLabel:label5];
+    [manager addLabel:label6];
+    [manager addLabel:label7];
+    [manager addLabel:label8];
+    
+    
+    [label1 release];
+    [label2 release];
+    [label3 release];
+    [label4 release];
+    [label5 release];
+    [label6 release];
+    [label7 release];
+    [label8 release];
+
+    
+    
+    User *user = [[UserService defaultService] user];
+    
+    
+   m_arData = [[NSMutableArray alloc] initWithObjects:@"电话", @"短信", @"通讯录", @"浏览器", @"日历", @"时钟", @"计算器", @"地图", @"天气", @"图库",@"自定义", nil];
+    
+//    [m_arData setArray:[manager allLabel]];
+    
+      [user setLabelsArray:m_arData];
+
+    
 }
 
 - (void)btnClicked:(id)sender event:(id)event
 {
     UIButton *btn = (UIButton *)sender;
-    [self deleteAppBtn:btn.tag];
+    
+    if (([m_arData count] -1) == (btn.tag)) {
+        NSLog(@"adfasdfa");
+        [lastButton setUserInteractionEnabled:YES];
+        
+        AddLabelViewController *vc = [[AddLabelViewController alloc]initWithNibName:@"AddLabelViewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+        [vc release];
+        
+        
+    }else{
+        [self deleteAppBtn:btn.tag];
+    }
 }
 
 - (void)deleteAppBtn:(int)index
@@ -259,6 +306,12 @@
         newframe = nextframe;
     }
     [m_arData removeObjectAtIndex:index];
+    
+//    
+//    LabelManager  *manager = [LabelManager defaultlabelManager];
+//    [manager.allLabel removeObjectAtIndex:index];
+
+
 }
 
 - (void)LongPressGestureRecognizer:(UIGestureRecognizer *)gr
