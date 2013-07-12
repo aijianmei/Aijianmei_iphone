@@ -204,8 +204,8 @@
     
     [self.user setGender:@"男"];
     [self.user setAge:@"26"];
-    [self.user setHeight:@"179cm"];
-    [self.user setWeigth:@"70Kg"];
+    [self.user setHeight:@"179"];
+    [self.user setWeigth:@"70"];
     [self.user setBMIValue:@"43"];
     [self.user setCity:@"深圳"];    
 }

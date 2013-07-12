@@ -35,11 +35,16 @@
     [self showBackgroundImage];
     
     [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
-//    [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(clickSaveButton)];
+    [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(clickSaveButton:)];
     
     User *user = [[UserService defaultService]user];
     [self setTitle:user.gender];
 
+}
+
+-(void)clickSaveButton:(UIButton *)sender{
+
+    [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -70,6 +75,8 @@
     accessoryViewButton.frame = CGRectMake(0.0f, 0.0f, 32.0f,32.0f);
     accessoryViewButton.userInteractionEnabled = YES;
     [accessoryViewButton setImage:selected_Image forState:UIControlStateNormal];
+    cell.accessoryView = nil;
+
     
     User *user = [[UserService defaultService]user];
 
@@ -104,6 +111,7 @@
     
     [cell.textLabel setTextColor:[UIColor grayColor]];
     
+    
     return cell;
 }
 
@@ -133,7 +141,6 @@
         default:
             break;
     }
-    [self.navigationController popViewControllerAnimated:YES];
     [dataTableView reloadData];
 
 }

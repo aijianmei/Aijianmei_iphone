@@ -49,7 +49,7 @@
         // Custom initialization
         
         
-        self.dataList = [NSArray arrayWithObjects:@"性别",@"年龄",@"身高",@"体重",@"BMI", nil];
+        self.dataList = [NSArray arrayWithObjects:@"性别",@"年龄",@"身高(cm)",@"体重(KG)",@"BMI", nil];
         
         isChoosingAvtarImage =NO;
         isChoosingAvtarBackground = NO;
@@ -149,7 +149,6 @@
 
 
 #pragma mark - View lifecycle
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -185,7 +184,10 @@
                               
  }
 
-            
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    [dataTableView reloadData];
+}
 
 #pragma mark --actionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -304,12 +306,18 @@
     [cell.textLabel setText:nil];
     [cell.detailLabelView setText:nil];
     [cell.detailImageView setImage:nil];
+    [cell.textField setText:nil];
+    [cell.textField setHidden:NO];
+    [cell.lessButton setHidden:NO];
+    [cell.moreButton setHidden:NO];
+
+    
+
 
      cell.accessoryView = nil;
     
     /////
     UIImage *normalImage = [UIImage imageNamed:@"AccessoryView.png"];
-//    UIImage *mySelectedImage = [UIImage imageNamed:@"144x144.png"];
     
     UIButton *accessoryViewButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -331,6 +339,7 @@
                     [cell.detailImageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];
                 }
                 
+                [cell.detailImageView setFrame:CGRectMake(200, 5.0f, 45.0f,42.0f)];
 
             }
             ///设置背景
@@ -344,8 +353,6 @@
 
                 [cell.detailImageView setFrame:CGRectMake(150, 2, 120, 50)];
                 
-
-
             }
             
             //更改用户名
@@ -359,21 +366,35 @@
             }
             //更改个性签名
             if (indexPath.row ==3) {
+                
                 if (!self.user.description) {
                     [cell.detailLabelView  setText:@"设置个性签名"];
                 }
                 
                 [cell.detailLabelView  setText:self.user.description];
   
-            }
-            
-            break;
+                
 
-        }
+            }
+        
+            cell.accessoryView = accessoryViewButton;
+            [cell.textField setHidden:YES];
+            [cell.lessButton setHidden:YES];
+            [cell.moreButton setHidden:YES];
+
+
+            
+
+    }
+        break;
         case 1:
         {
             [cell.textLabel setText:@"标签"];
             [cell.detailLabelView setText:@"修改标签"];
+             cell.accessoryView = accessoryViewButton;
+            [cell.textField setHidden:YES];
+            [cell.lessButton setHidden:YES];
+            [cell.moreButton setHidden:YES];
 
         }
             break;
@@ -386,27 +407,39 @@
                 case 0:
                 {
                 [cell.detailLabelView setText:self.user.gender];
-
+                [cell.textField  setHidden:YES];
+                [cell.lessButton setHidden:YES];
+                [cell.moreButton setHidden:YES];
                 }
                     break;
                     //age
                 case 1:
                 {
-                [cell.detailLabelView setText:self.user.age];
-
+                [cell.textField setText:self.user.age];
+                [cell.textField setTag:1];
+                    
+                [cell.moreButton setTag:1];
+                [cell.lessButton setTag:2];
+                
                 }
                     break;
                     //height
                 case 2:
                 {
-                [cell.detailLabelView setText:self.user.height];
+                [cell.textField setText:self.user.height];
+                [cell.textField setTag:2];
+                [cell.moreButton setTag:3];
+                [cell.lessButton setTag:4];
 
                 }
                     break;
                     //weight
                 case 3:
                 {
-                [cell.detailLabelView setText:self.user.weigth];
+                [cell.textField setText:self.user.weigth];
+                [cell.textField setTag:3];
+                [cell.moreButton setTag:5];
+                [cell.lessButton setTag:6];
 
                 }
                     break;
@@ -414,14 +447,18 @@
                 case 4:
                 {
                 [cell.detailLabelView setText:self.user.BMIValue];
+                    [cell.textField setHidden:YES];
+                    [cell.lessButton setHidden:YES];
+                    [cell.moreButton setHidden:YES];
                     
                 }
                     break;
-
-                    
                 default:
                     break;
             }
+            
+            [cell.moreButton addTarget:self action:@selector(clickAddMoreButton:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.lessButton addTarget:self action:@selector(clickLessButton:) forControlEvents:UIControlEventTouchUpInside];
 
         }
             break;
@@ -429,6 +466,11 @@
         {
             [cell.textLabel setText:@"城市"];
             [cell.detailLabelView setText:self.user.city];
+            cell.accessoryView = accessoryViewButton;
+            [cell.textField setHidden:YES];
+            [cell.lessButton setHidden:YES];
+            [cell.moreButton setHidden:YES];
+
         }
             
             break;
@@ -436,11 +478,22 @@
             break;
     }
 
-    cell.accessoryView = accessoryViewButton;
     [cell.textLabel setTextColor:[UIColor grayColor]];
 
     return cell;
 }
+
+
+
+-(void)clickAddMoreButton:(UIButton *)sender{
+    [dataTableView reloadData];
+}
+
+-(void)clickLessButton:(UIButton *)sender{
+    [dataTableView reloadData];
+}
+
+
 
 -(void)clickChangeAvatarButton{
     
@@ -521,52 +574,19 @@
             }
             //Change age
             else if (indexPath.row==1) {
-                
-                if (defaultPickerView == nil) {
-                    defaultPickerView = [[AFPickerView alloc] initWithFrame:CGRectMake(0,200,320,216) backgroundImage:@"PickerBG.png" shadowImage:@"PickerShadow.png" glassImage:@"PickerGlass.png" title:@"AFPicker"];
-                    defaultPickerView.dataSource = self;
-                    defaultPickerView.delegate = self;
-                    [self.view addSubview:defaultPickerView];
-                }
-                [defaultPickerView showPicker];
-                [defaultPickerView reloadData];
-                
-                [tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
-                
-        
-                
 
             }
             //Change Height
             else if (indexPath.row==2) {
                 
-                if (defaultPickerView == nil) {
-                    defaultPickerView = [[AFPickerView alloc] initWithFrame:CGRectMake(0,200,320,216) backgroundImage:@"PickerBG.png" shadowImage:@"PickerShadow.png" glassImage:@"PickerGlass.png" title:@"AFPicker"];
-                    defaultPickerView.dataSource = self;
-                    defaultPickerView.delegate = self;
-                    [self.view addSubview:defaultPickerView];
-                }
-                [defaultPickerView showPicker];
-                [defaultPickerView reloadData];
-                  [tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
                
             }
             //Change Weight
             else if (indexPath.row==3) {
-                if (defaultPickerView == nil) {
-                    defaultPickerView = [[AFPickerView alloc] initWithFrame:CGRectMake(0,200,320,216) backgroundImage:@"PickerBG.png" shadowImage:@"PickerShadow.png" glassImage:@"PickerGlass.png" title:@"AFPicker"];
-                    defaultPickerView.dataSource = self;
-                    defaultPickerView.delegate = self;
-                    [self.view addSubview:defaultPickerView];
-                }
-                [defaultPickerView showPicker];
-                [defaultPickerView reloadData];
-                  [tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
-               
-            }
         }
             break;
          //Change area and city
+        }
         case 3:
         {
             ProvinceViewController *vc = [[ProvinceViewController alloc]initWithNibName:@"ProvinceViewController" bundle:nil];
@@ -581,26 +601,6 @@
     }
      
      
-    
-}
-
-#pragma mark - AFPickerViewDataSource
-- (NSInteger)numberOfRowsInPickerView:(AFPickerView *)pickerView {
-    
-    return 15;
-}
-
-
-- (NSString *)pickerView:(AFPickerView *)pickerView titleForRow:(NSInteger)row {
-    return [NSString stringWithFormat:@"%i", row + 1];
-}
-
-
-#pragma mark - AFPickerViewDelegate
-
-- (void)pickerView:(AFPickerView *)pickerView didSelectRow:(NSInteger)row {
-    
-    
 }
 
 

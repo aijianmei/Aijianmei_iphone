@@ -9,13 +9,14 @@
 #import "ChangeNameViewController.h"
 #import "UserService.h"
 #import "User.h"
+#import "ChangeNameCell.h"
 
 @interface ChangeNameViewController ()
 
 @end
 
 @implementation ChangeNameViewController
-@synthesize nameTextField =_nameTextField;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,7 +29,7 @@
 
 
 -(void)dealloc{
-    [_nameTextField release];
+
     [super dealloc];
 }
 - (void)viewDidLoad
@@ -63,17 +64,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ChangeNameCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[ChangeNameCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
+    
     [cell.imageView  setImage:nil];
     [cell.textLabel setText:nil];
     cell.accessoryView = nil;
     
     /////
-    UIImage *normalImage = [UIImage imageNamed:@"AccessoryView.png"];
-    //    UIImage *mySelectedImage = [UIImage imageNamed:@"144x144.png"];
+    UIImage *normalImage = [UIImage imageNamed:@"Name_delete.png"];
     
     UIButton *accessoryViewButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -84,16 +85,9 @@
     
     
     User *user =  [[UserService defaultService]user];
-    
-    
-    self.nameTextField = [[UITextField alloc]initWithFrame:CGRectMake(5.0f, 12.0f, 250.0f,32.0f)];
-    _nameTextField.delegate = self;
-    [_nameTextField setTextAlignment:NSTextAlignmentLeft];
-    [cell.contentView addSubview:_nameTextField];
-    [_nameTextField setText:user.name];
-    [_nameTextField becomeFirstResponder];
-    
-    
+    [cell.nameTextField setText:user.name];
+    [cell.nameTextField becomeFirstResponder];
+    currentTextField = cell.nameTextField;
     // Configure the cell...
     cell.accessoryView = accessoryViewButton;
     
@@ -101,22 +95,9 @@
 }
 
 -(void)clickDeleteButton:(UIButton*)sender{
-    [_nameTextField setText:@""];
+    [currentTextField setText:nil];
 }
 
-
-#pragma mark - 
-#pragma mark - UITextFieldDelegate
-
-- (void)textFieldDidEndEditing:(UITextField *)textField;
-{
-// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
-
-    User *user =[[UserService defaultService] user];
-    user.name = textField.text;
-    [[UserService defaultService] setUser:user];
-    
-}
 
 #pragma mark - Table view delegate
 

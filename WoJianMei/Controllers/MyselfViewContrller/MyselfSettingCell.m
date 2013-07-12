@@ -7,10 +7,29 @@
 //
 
 #import "MyselfSettingCell.h"
+#import "User.h"
+#import "UserService.h"
 
 @implementation MyselfSettingCell
 @synthesize detailLabelView =_detailLabelView;
 @synthesize detailImageView =_detailImageView;
+@synthesize textField =_textField;
+@synthesize moreButton = _moreButton;
+@synthesize lessButton = _lessButton;
+
+
+-(void)dealloc{
+    
+    [_detailLabelView release];
+    [_detailImageView release];
+    [_textField release];
+    [_moreButton release];
+    [_lessButton release];
+    [super dealloc];
+}
+
+
+
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -32,16 +51,163 @@
 
         
         
+        
+        
+        self.textField = [[UITextField alloc]initWithFrame:CGRectMake(100, 6, 142, 45)];
+        _textField.delegate =self;
+        [self.textField setBackground:[UIImage imageNamed:@"profile_data_BG.png"]];
+        [_textField setTextAlignment:NSTextAlignmentCenter];
+        [_textField setAdjustsFontSizeToFitWidth:YES];
+        [_textField setFont:[UIFont systemFontOfSize:20]];
+        [_textField setTextColor:[UIColor grayColor]];
+        [self addSubview:_textField];
+
+        
+        
+        self.moreButton = [[UIButton alloc]initWithFrame:CGRectMake(260,3, 40,22)];
+        [self.moreButton setBackgroundImage:[UIImage imageNamed:@"more_data_Button.png"] forState:UIControlStateNormal];
+    
+        [_moreButton addTarget:self action:@selector(clickAddMoreButton:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self addSubview:_moreButton];
+        
+        
+        self.lessButton = [[UIButton alloc]initWithFrame:CGRectMake(260, 30, 40, 22)];
+        [_lessButton setBackgroundImage:[UIImage imageNamed:@"less_data_Button.png"] forState:UIControlStateNormal];
+
+        [_lessButton addTarget:self action:@selector(clickLessButton:) forControlEvents:UIControlEventTouchUpInside];
+
+        [self addSubview:_lessButton];
+        
+      
     }
     return self;
 }
-
--(void)dealloc{
-
-    [_detailLabelView release];
-    [_detailImageView release];
-    [super dealloc];
+#pragma mark -
+#pragma mark - UITextFieldDelegate
+- (void)textFieldDidEndEditing:(UITextField *)textField;
+{
+    // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
+    User *user =[[UserService defaultService] user];
+    switch (textField.tag) {
+        case 1:
+        {
+            NSLog(@"age textfield");
+            user.age = textField.text;
+        }
+            break;
+        case 2:
+        {
+            NSLog(@"height textfield");
+            user.height = textField.text;
+        }
+            break;
+        case 3:
+        {
+            NSLog(@"weight textfield");
+            user.weigth = textField.text;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    [[UserService defaultService] setUser:user];
 }
+
+-(void)clickAddMoreButton:(UIButton *)sender{
+    
+    
+    UIButton *button =(UIButton *)sender;
+    int buttonTag = [button tag];
+    
+    User *user =[[UserService defaultService] user];
+    
+    switch (buttonTag) {
+        case 1:
+        {
+            int value = [_textField.text  integerValue];
+            int nt = 1;
+            
+            NSString *newValue = [NSString stringWithFormat:@"%i",value +nt];
+            user.age =newValue;
+            
+        }
+            break;
+        case 3:
+        {
+            int value = [_textField.text  integerValue];
+            int nt = 1;
+            
+            NSString *newValue = [NSString stringWithFormat:@"%i",value +nt];
+            user.height =newValue;
+
+        }
+            break;
+        case 5:
+        {
+            int value = [_textField.text  integerValue];
+            int nt = 1;
+            
+            NSString *newValue = [NSString stringWithFormat:@"%i",value +nt];
+            user.weigth =newValue;
+
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    [[UserService defaultService] setUser:user];
+ 
+}
+-(void)clickLessButton:(UIButton *)sender{
+    
+    UIButton *button =(UIButton *)sender;
+    int buttonTag = [button tag];
+    
+    User *user =[[UserService defaultService] user];
+
+    
+    switch (buttonTag) {
+        case 2:
+        {
+            int value = [_textField.text  integerValue];
+            int nt = -1;
+            
+            NSString *newValue = [NSString stringWithFormat:@"%i",value +nt];
+            user.age =newValue;
+        }
+            break;
+        case 4:
+        {
+            int value = [_textField.text  integerValue];
+            int nt = -1;
+            
+            NSString *newValue = [NSString stringWithFormat:@"%i",value +nt];
+            user.height =newValue;
+        }
+            break;
+        case 6:
+        {
+            int value = [_textField.text  integerValue];
+            int nt = -1;
+            
+            NSString *newValue = [NSString stringWithFormat:@"%i",value +nt];
+            user.weigth =newValue;
+        }
+            break;
+            
+        default:
+            break;
+    }
+
+    [[UserService defaultService] setUser:user];
+}
+
+
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

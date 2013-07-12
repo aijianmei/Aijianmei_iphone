@@ -41,10 +41,9 @@
     [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(clickBack:)];
     
     User *user =[[UserService defaultService] user];
-    
     [_descriptionTextField setDelegate:self];
-    [_descriptionTextField setText:user.description];
     [_descriptionTextField setBackground:[UIImage imageNamed:@"description_BG"]];
+    [_descriptionTextField setText:user.description];
     [_descriptionTextField becomeFirstResponder];
     
     
@@ -57,10 +56,11 @@
     // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
     
     User *user =[[UserService defaultService] user];
-    user.description = textField.text;
+    [user setDescription: textField.text];
     [[UserService defaultService] setUser:user];
-    
+        
 }
+
 
 - (void)didReceiveMemoryWarning
 {
