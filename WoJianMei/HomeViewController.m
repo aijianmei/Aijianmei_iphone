@@ -125,7 +125,6 @@ typedef enum CONTENT_TYPE {
 }
 - (void)rightButtonClickHandler:(id)sender
 {
-    [self.viewDeckController toggleRightViewAnimated:YES];
     UIStoryboard *currentInUseStoryBoard;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
@@ -155,7 +154,7 @@ typedef enum CONTENT_TYPE {
          myselfVC.title = @"我";
         [self.navigationController pushViewController:myselfVC animated:YES];
     }
-    
+    [self.viewDeckController toggleRightViewAnimated:YES];
 }
 
 
@@ -200,10 +199,6 @@ typedef enum CONTENT_TYPE {
 #pragma mark-- addButtonScrollView Method
 -(void)addButtonScrollView{
     ////Configure The ButtonScrollView
-    
-    float buttonHeight = 30;
-    float buttonWidth  = 70;
-    
     NSMutableArray *buttonArrays  =[[NSMutableArray alloc]init];
     NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最新",@"锻炼方法",@"基础知识",@"锻炼视频", nil];
     
@@ -214,7 +209,7 @@ typedef enum CONTENT_TYPE {
         [button setBackgroundImage:[UIImage imageNamed:@"Catalog_SelectedButton.png"] forState:UIControlStateSelected];
         [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:buttonTitle forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [buttonArrays addObject:button];
         [button release];
         
@@ -230,7 +225,7 @@ typedef enum CONTENT_TYPE {
     [self.buttonScrollView setTag:SCROLL_VIEW_TAG];
     [_buttonScrollView setFrame:CGRectMake(0,0, 320, 30)];
     [_buttonScrollView setShowsHorizontalScrollIndicator:NO];
-    [_buttonScrollView setContentSize:CGSizeMake(([[_buttonScrollView subviews] count]) * buttonWidth * 2.6, buttonHeight)];
+    [_buttonScrollView setContentSize:CGSizeMake(320,32)];
     [_myHeaderView addSubview:_buttonScrollView];
     
 }

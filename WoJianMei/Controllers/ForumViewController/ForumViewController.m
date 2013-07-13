@@ -7,7 +7,7 @@
 //
 
 #import "ForumViewController.h"
-
+#import "ImageManager.h"
 @interface ForumViewController ()
 
 @end
@@ -27,6 +27,17 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    ////leftBtn
+    UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
+    
+    [leftBtn setBackgroundImage:[ImageManager GobalNavigationLeftSideButtonImage]
+                       forState:UIControlStateNormal];
+    
+    leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
+    [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
+
 }
 
 - (void)didReceiveMemoryWarning

@@ -8,6 +8,7 @@
 
 #import "MoreViewController.h"
 #import "AboutViewController.h"
+#import "FeedBackViewController.h"
 #import "UserService.h"
 #import "ImageManager.h"
 #import "FontSize.h"
@@ -115,9 +116,6 @@ typedef enum {
     ////Set the background Image
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
-
-    
-    
     ///Set the right bar button 
 //    [self setNavigationRightButton:@"设置"
 //                          fontSize:FONT_SIZE
@@ -165,13 +163,7 @@ typedef enum {
     [self initOptionList];
     [self initUI];
     [self initMoreUI];
-    
-    
-//    [MobClick event:@"More"];
 
-    
-    
-    
 }
 
 - (void)viewDidUnload
@@ -472,10 +464,9 @@ typedef enum {
 }
 
 -(void)showFeedback{
-    
-    [self performSegueWithIdentifier:@"FeedbackSegue" sender:self];
-    PPDebug(@"Users show feedback");
-    
+    FeedBackViewController *fbVc = [[FeedBackViewController alloc]initWithNibName:@"FeedBackViewController" bundle:nil];
+    [self.navigationController pushViewController:fbVc animated:YES];
+    [fbVc release];
 }
 
 -(void)likeUs{
@@ -486,9 +477,9 @@ typedef enum {
 
 -(void)showAboutView{
     
-    [self performSegueWithIdentifier:@"AboutViewControllerSegue" sender:self];
-    
-    PPDebug(@"Users Trying to show the aboutView");
+    AboutViewController *abVC = [[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil];
+    [self.navigationController pushViewController:abVC animated:YES];
+    [abVC release];
 }
 
 -(void)updateApplication{
