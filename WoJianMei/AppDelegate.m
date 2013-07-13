@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PPTabBarController.h"
-#import "WorkoutViewController.h"
+#import "HomeViewController.h"
 #import "MyselfViewController.h"
 #import "NutriViewController.h"
 #import "MakeFriendsViewController.h"
@@ -133,8 +133,8 @@
 //
   
     
-    WorkoutViewController *workVC ;
-    MyselfViewController *rightVC;
+    HomeViewController *homeVC ;
+//    MyselfViewController *rightVC;
     
     
 
@@ -145,11 +145,11 @@
         //初始化主视图，  当用户点击左右的导航栏，可以更换；
         UIStoryboard * iPhonestroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
         
-       workVC  = (WorkoutViewController*)[iPhonestroyBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
+       homeVC  = (HomeViewController*)[iPhonestroyBoard instantiateViewControllerWithIdentifier:@"HomeViewController"];
         
         
-        workVC.title = @"锻炼";
-        _navigationController = [[UINavigationController alloc] initWithRootViewController:workVC];
+        homeVC.title = @"主页";
+        _navigationController = [[UINavigationController alloc] initWithRootViewController:homeVC];
         //左视图
         AJMLeftSideViewController *leftVC = [[[AJMLeftSideViewController alloc] init] autorelease];
     
@@ -174,9 +174,9 @@
     } else {
         //初始化主视图，  当用户点击左右的导航栏，可以更换；
         UIStoryboard * iPadstroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-        workVC  = (WorkoutViewController*)[iPadstroyBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
-        workVC.title = @"锻炼";
-        UINavigationController *navVC = [[[UINavigationController alloc] initWithRootViewController:workVC] autorelease];
+        homeVC  = (HomeViewController*)[iPadstroyBoard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+        homeVC.title = @"锻炼";
+        UINavigationController *navVC = [[[UINavigationController alloc] initWithRootViewController:homeVC] autorelease];
 
         //左视图
         AJMLeftSideViewController *leftVC = [[[AJMLeftSideViewController alloc] init] autorelease];

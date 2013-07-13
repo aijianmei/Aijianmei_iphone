@@ -80,17 +80,14 @@ typedef enum CONTENT_TYPE {
 
 
 - (void)initMoreUI
-{
-    _appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
+{    
     ////leftBtn
     UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
     [leftBtn setImage:[ImageManager GobalNavigationLeftSideButtonImage] forState:UIControlStateNormal];
     leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
     [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
-    
-    
+
     ////rightBtn
     UIButton *rightBtn = [[[UIButton alloc] init] autorelease];
     [rightBtn setImage:[ImageManager GobalNavigationAvatarImage] forState:UIControlStateNormal];
@@ -175,56 +172,97 @@ typedef enum CONTENT_TYPE {
 //// init the userInterface
 -(void)initUI{
     
+    [self setBackgroundImageName:@"gobal_background.png"];
+    [self showBackgroundImage];
+    
+
+    //初始化TableView Header
+    [self initTableHeaderView];
+    ///添加滑动图片
+    [self addCarouselSliders];
+    //添加顶部导航按钮
+    [self addButtonScrollView];
+    //添加当前划片的提示
+    [self addSpacePageControl];
+}
+
+#pragma mark-- addButtonScrollView Method
+-(void)initTableHeaderView{
+    
     UIView *headerView =[[UIView alloc]init];
     [headerView setFrame: CGRectMake(0, 0, 320, 200)];
     self.myHeaderView = headerView;
     [headerView release];
-    
-    
+    [self.dataTableView setTableHeaderView:_myHeaderView];
+}
+
+
+#pragma mark-- addButtonScrollView Method
+-(void)addButtonScrollView{
     ////Configure The ButtonScrollView
+    
+    float buttonHeight = 30;
+    float buttonWidth  = 70;
+    
     NSMutableArray *buttonArrays  =[[NSMutableArray alloc]init];
     NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最新",@"锻炼方法",@"基础知识",@"锻炼视频", nil];
     
     for (NSString *buttonTitle in buttonTitleArray) {
-        
         UIButton *button =[[UIButton alloc]initWithFrame:CGRectMake(30, 0, 70, 30)];
         [button setBackgroundColor:[UIColor clearColor]];
         [button.titleLabel setFont:[UIFont systemFontOfSize:12]];
-        
-        //        [button setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
         [button setBackgroundImage:[UIImage imageNamed:@"Catalog_SelectedButton.png"] forState:UIControlStateSelected];
-        
         [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:buttonTitle forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [buttonArrays addObject:button];
-        
         [button release];
         
     }
     
     UIScrollView *scrollView = [PPViewController createButtonScrollViewByButtonArray:buttonArrays buttonsPerLine:[buttonArrays count] buttonSeparatorY:-1];
     self.buttonScrollView =scrollView;
-    
-    [self.buttonScrollView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Slider_Button_BG"]]];
-    
-    
-    
+    [_buttonScrollView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Slider_Button_BG"]]];
     [scrollView release];
     [buttonArrays release];
     
-    float buttonHeight = 30;
-    float buttonWidth  = 70;
-    
     [[self.view viewWithTag:SCROLL_VIEW_TAG] removeFromSuperview];
-    self.buttonScrollView.tag = SCROLL_VIEW_TAG;
-    [_buttonScrollView setFrame:CGRectMake(0,0, 260, 30)];
+    [self.buttonScrollView setTag:SCROLL_VIEW_TAG];
+    [_buttonScrollView setFrame:CGRectMake(0,0, 320, 30)];
     [_buttonScrollView setShowsHorizontalScrollIndicator:NO];
-    
     [_buttonScrollView setContentSize:CGSizeMake(([[_buttonScrollView subviews] count]) * buttonWidth * 2.6, buttonHeight)];
+    [_myHeaderView addSubview:_buttonScrollView];
     
-    [self.myHeaderView addSubview:_buttonScrollView];
-    
+}
+
+#pragma mark-- addCarouselSliders Method
+-(void)addCarouselSliders{
+    //configure carousel
+    self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 40, 320, 140)];
+    self.carousel.delegate = self;
+    self.carousel.dataSource = self;
+    _carousel.type = iCarouselTranformOptionTilt;
+    [_carousel setScrollEnabled:YES];
+    [self.carousel setCenterItemWhenSelected:YES];
+    [_myHeaderView addSubview:_carousel];
+}
+
+#pragma mark-- MoreButon Method
+-(void)addSpacePageControl{
+    ////The page controll
+    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(200, 140, 120, 20)];
+    [_spacePageControl setBackgroundColor:[UIColor greenColor]];
+    _spacePageControl.numberOfPages = [self.dataList count];
+    [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
+    [_spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot.png"]];
+    [_spacePageControl addTarget:self action:@selector(pageControl:) forControlEvents:UIControlEventValueChanged];
+    [_myHeaderView addSubview:_spacePageControl];
+}
+
+#pragma mark-- MoreButon Method
+-(void)addMoreButton
+{
+
     UIButton *moreButotn = [[UIButton alloc]initWithFrame:CGRectMake(270, 0, 40, 30)];
     [moreButotn.titleLabel setFont:[UIFont systemFontOfSize:12]];
     [moreButotn setBackgroundImage:[UIImage imageNamed:@"Catalog_More_Button.png"] forState:UIControlStateNormal];
@@ -235,45 +273,11 @@ typedef enum CONTENT_TYPE {
     
     [_myHeaderView addSubview:moreButotn];
     [moreButotn release];
-    
-    
-    //configure carousel
-    
-    self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 40, 320, 140)];
-    
-    self.carousel.delegate = self;
-    self.carousel.dataSource = self;
-    _carousel.type = iCarouselTranformOptionTilt;
-    [_carousel setScrollEnabled:YES];
-    
-    [self.carousel setCenterItemWhenSelected:YES];
-    
-    [self.myHeaderView addSubview:_carousel];
-    
-    
-    ////The page controll
-    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(10, 190, 320, 20)];
-    [_spacePageControl setBackgroundColor:[UIColor clearColor]];
-    _spacePageControl.numberOfPages = [self.dataList count];
-    [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
-    [_spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot.png"]];
-    [_spacePageControl addTarget:self action:@selector(pageControl:) forControlEvents:UIControlEventValueChanged];
-    [self.myHeaderView addSubview:_spacePageControl];
-    
-    
-    
-    
-    [self.dataTableView setTableHeaderView:self.myHeaderView];
-    [self setBackgroundImageName:@"gobal_background.png"];
-    [self showBackgroundImage];
+
 }
 
 
--(void)filterTheConentsByButton{
-    
-    
-    
-}
+
 
 #pragma mark-- ButtonClicked Method
 -(void)buttonClicked:(UIButton *)sender
@@ -541,10 +545,6 @@ typedef enum CONTENT_TYPE {
     //set label
 	label.text = [NSString stringWithFormat:@"%@", article.title];
     
-    //update reflection
-    //this step is expensive, so if you don't need
-    //unique reflections for each item, don't do this
-    //and you'll get much smoother peformance
     //    [view update];
     
 	return view;
