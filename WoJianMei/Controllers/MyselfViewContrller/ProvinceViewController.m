@@ -51,7 +51,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
-    User *user = [[UserService defaultService] user];
+     User *user = [[UserService defaultService] user];
     [self setTitle:user.city];
 
 }

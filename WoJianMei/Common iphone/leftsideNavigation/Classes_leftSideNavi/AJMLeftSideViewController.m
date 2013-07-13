@@ -10,10 +10,12 @@
 #import "AppDelegate.h"
 #import "AGLeftSideTableCell.h"
 #import "MyselfViewController.h"
+#import "HomeViewController.h"
 #import "WorkoutViewController.h"
 #import "WorkoutPlanViewController.h"
 #import "NutriViewController.h"
 #import "SupplementViewController.h"
+#import "LifeStytleViewController.h"
 #import "MoreViewController.h"
 #import "ForumViewController.h"
 #import "LifeStytleViewController.h"
@@ -133,7 +135,7 @@
             switch (indexPath.row)
             {
                 case 0:
-                    cell.textLabel.text = @"我";
+                    cell.textLabel.text = @"首页";
                     break;                    
                 case 1:
                     cell.textLabel.text = @"锻炼";
@@ -260,37 +262,37 @@
                 {
                     ///首页
                     
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        WorkoutViewController *workOutVC = (WorkoutViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
-//                        workOutVC.title = @"锻炼";
-//                        _navigationController = [[UINavigationController alloc] initWithRootViewController:workOutVC] ;
-//                        self.viewDeckController.centerController = _navigationController;
-//                        self.view.userInteractionEnabled = YES;
-//                        
-//                        
-//                    }];
-
-                    
-                    
-                    
-                    
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        
-                        if (![[UserService defaultService] hasBindAccount]) {
-                            LoginViewController *loginViewController = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-                            loginViewController.title = @"登陆";
-                            self.navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController] ;
-                            
-                        } else {
-                            MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
-                            myselfVC.title = @"我";
-                            self.navigationController = [[UINavigationController alloc] initWithRootViewController:myselfVC];
-                        }
+                        HomeViewController *homeVC = (HomeViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+                        homeVC.title = @"首页";
+                        _navigationController = [[UINavigationController alloc] initWithRootViewController:homeVC] ;
                         self.viewDeckController.centerController = _navigationController;
                         self.view.userInteractionEnabled = YES;
                         
                         
                     }];
+
+                    
+                    
+                    
+                    
+//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+//                        
+//                        if (![[UserService defaultService] hasBindAccount]) {
+//                            LoginViewController *loginViewController = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+//                            loginViewController.title = @"登陆";
+//                            self.navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController] ;
+//                            
+//                        } else {
+//                            MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
+//                            myselfVC.title = @"我";
+//                            self.navigationController = [[UINavigationController alloc] initWithRootViewController:myselfVC];
+//                        }
+//                        self.viewDeckController.centerController = _navigationController;
+//                        self.view.userInteractionEnabled = YES;
+//                        
+//                        
+//                    }];
 
                  break;
                 }
@@ -355,7 +357,7 @@
                     ///生活方式
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         
-                       NutriViewController *lifeStytleVC = (NutriViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"NutriViewController"];
+                       LifeStytleViewController *lifeStytleVC = (LifeStytleViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LifeStytleViewController"];
                         lifeStytleVC.title = @"生活方式";
                         _navigationController = [[UINavigationController alloc] initWithRootViewController:lifeStytleVC];
                         self.viewDeckController.centerController = _navigationController;

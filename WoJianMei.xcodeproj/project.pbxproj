@@ -336,6 +336,14 @@
 		4A4992C1168556D00073E682 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4992C0168556D00073E682 /* libz.1.1.3.dylib */; };
 		4A4EE73016AD3D92005C3ADA /* ComposeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EE72F16AD3D92005C3ADA /* ComposeViewCell.m */; };
 		4A4EE73316AD43D7005C3ADA /* ComposeViewCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EE73216AD43D7005C3ADA /* ComposeViewCellInfo.m */; };
+		4A5F3FC517912B3200CD701A /* AGCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5F3FAC17912B3200CD701A /* AGCommon.framework */; };
+		4A5F3FC617912B3200CD701A /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A5F3FBE17912B3200CD701A /* Resource.bundle */; };
+		4A5F3FC717912B3200CD701A /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5F3FBF17912B3200CD701A /* ShareSDK.framework */; };
+		4A5F3FC817912B3200CD701A /* ShareSDKCoreService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5F3FC017912B3200CD701A /* ShareSDKCoreService.framework */; };
+		4A5F3FC917912B3200CD701A /* ShareSDKLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4A5F3FC117912B3200CD701A /* ShareSDKLocalizable.strings */; };
+		4A5F3FCA17912B3200CD701A /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5F3FC217912B3200CD701A /* SinaWeiboConnection.framework */; };
+		4A5F3FCB17912B3200CD701A /* TencentWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5F3FC317912B3200CD701A /* TencentWeiboConnection.framework */; };
+		4A5F3FCC17912B3200CD701A /* WeChatConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5F3FC417912B3200CD701A /* WeChatConnection.framework */; };
 		4A604E3E16A44A8B00D7C8DC /* HHNetDataCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A604E3D16A44A8B00D7C8DC /* HHNetDataCacheManager.m */; };
 		4A634D981752F91A00453C0D /* bc_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A634D851752F91A00453C0D /* bc_1.png */; };
 		4A634D991752F91A00453C0D /* profile_backgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A634D861752F91A00453C0D /* profile_backgroud.png */; };
@@ -1142,6 +1150,30 @@
 		4A4EE72F16AD3D92005C3ADA /* ComposeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComposeViewCell.m; path = ../MyselfViewContrller/ComposeViewCell.m; sourceTree = "<group>"; };
 		4A4EE73116AD43D7005C3ADA /* ComposeViewCellInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewCellInfo.h; sourceTree = "<group>"; };
 		4A4EE73216AD43D7005C3ADA /* ComposeViewCellInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewCellInfo.m; sourceTree = "<group>"; };
+		4A5F3FAC17912B3200CD701A /* AGCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGCommon.framework; sourceTree = "<group>"; };
+		4A5F3FAE17912B3200CD701A /* ISSCAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSCAccount.h; sourceTree = "<group>"; };
+		4A5F3FAF17912B3200CD701A /* ISSCAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSCAttachment.h; sourceTree = "<group>"; };
+		4A5F3FB017912B3200CD701A /* ISSCAuthSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSCAuthSession.h; sourceTree = "<group>"; };
+		4A5F3FB117912B3200CD701A /* ISSCContentDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSCContentDescriptor.h; sourceTree = "<group>"; };
+		4A5F3FB217912B3200CD701A /* ISSCDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSCDataObject.h; sourceTree = "<group>"; };
+		4A5F3FB317912B3200CD701A /* ISSCOAuthParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSCOAuthParameters.h; sourceTree = "<group>"; };
+		4A5F3FB417912B3200CD701A /* ISSCOpenApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSCOpenApp.h; sourceTree = "<group>"; };
+		4A5F3FB517912B3200CD701A /* ISSCParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSCParameters.h; sourceTree = "<group>"; };
+		4A5F3FB617912B3200CD701A /* ISSCRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSCRequest.h; sourceTree = "<group>"; };
+		4A5F3FB717912B3200CD701A /* ISSCToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSCToken.h; sourceTree = "<group>"; };
+		4A5F3FB817912B3200CD701A /* ISSCUserDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSCUserDescriptor.h; sourceTree = "<group>"; };
+		4A5F3FB917912B3200CD701A /* ShareSDKCoreService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareSDKCoreService.h; sourceTree = "<group>"; };
+		4A5F3FBA17912B3200CD701A /* SSCDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCDataObject.h; sourceTree = "<group>"; };
+		4A5F3FBB17912B3200CD701A /* SSCKeyDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCKeyDef.h; sourceTree = "<group>"; };
+		4A5F3FBC17912B3200CD701A /* SSCNotificationDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCNotificationDef.h; sourceTree = "<group>"; };
+		4A5F3FBD17912B3200CD701A /* SSCTypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCTypeDef.h; sourceTree = "<group>"; };
+		4A5F3FBE17912B3200CD701A /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resource.bundle; sourceTree = "<group>"; };
+		4A5F3FBF17912B3200CD701A /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
+		4A5F3FC017912B3200CD701A /* ShareSDKCoreService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKCoreService.framework; sourceTree = "<group>"; };
+		4A5F3FC117912B3200CD701A /* ShareSDKLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = ShareSDKLocalizable.strings; sourceTree = "<group>"; };
+		4A5F3FC217912B3200CD701A /* SinaWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SinaWeiboConnection.framework; sourceTree = "<group>"; };
+		4A5F3FC317912B3200CD701A /* TencentWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentWeiboConnection.framework; sourceTree = "<group>"; };
+		4A5F3FC417912B3200CD701A /* WeChatConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WeChatConnection.framework; sourceTree = "<group>"; };
 		4A604E3C16A44A8A00D7C8DC /* HHNetDataCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHNetDataCacheManager.h; sourceTree = "<group>"; };
 		4A604E3D16A44A8B00D7C8DC /* HHNetDataCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHNetDataCacheManager.m; sourceTree = "<group>"; };
 		4A634D851752F91A00453C0D /* bc_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bc_1.png; sourceTree = "<group>"; };
@@ -1430,6 +1462,12 @@
 				4AE394B215C2DD9C00D06C61 /* UIKit.framework in Frameworks */,
 				4AE394B415C2DD9C00D06C61 /* Foundation.framework in Frameworks */,
 				4A3AE81B176A173C00A39463 /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
+				4A5F3FC517912B3200CD701A /* AGCommon.framework in Frameworks */,
+				4A5F3FC717912B3200CD701A /* ShareSDK.framework in Frameworks */,
+				4A5F3FC817912B3200CD701A /* ShareSDKCoreService.framework in Frameworks */,
+				4A5F3FCA17912B3200CD701A /* SinaWeiboConnection.framework in Frameworks */,
+				4A5F3FCB17912B3200CD701A /* TencentWeiboConnection.framework in Frameworks */,
+				4A5F3FCC17912B3200CD701A /* WeChatConnection.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1589,6 +1627,7 @@
 		4A27AEC41777F474009978C5 /* ThirdParty_Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A5F3FAB17912B3200CD701A /* ShareSDK */,
 				4A27AEC51777F474009978C5 /* RestKit */,
 			);
 			path = ThirdParty_Frameworks;
@@ -2829,6 +2868,45 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		4A5F3FAB17912B3200CD701A /* ShareSDK */ = {
+			isa = PBXGroup;
+			children = (
+				4A5F3FAC17912B3200CD701A /* AGCommon.framework */,
+				4A5F3FAD17912B3200CD701A /* Headers */,
+				4A5F3FBE17912B3200CD701A /* Resource.bundle */,
+				4A5F3FBF17912B3200CD701A /* ShareSDK.framework */,
+				4A5F3FC017912B3200CD701A /* ShareSDKCoreService.framework */,
+				4A5F3FC117912B3200CD701A /* ShareSDKLocalizable.strings */,
+				4A5F3FC217912B3200CD701A /* SinaWeiboConnection.framework */,
+				4A5F3FC317912B3200CD701A /* TencentWeiboConnection.framework */,
+				4A5F3FC417912B3200CD701A /* WeChatConnection.framework */,
+			);
+			path = ShareSDK;
+			sourceTree = "<group>";
+		};
+		4A5F3FAD17912B3200CD701A /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				4A5F3FAE17912B3200CD701A /* ISSCAccount.h */,
+				4A5F3FAF17912B3200CD701A /* ISSCAttachment.h */,
+				4A5F3FB017912B3200CD701A /* ISSCAuthSession.h */,
+				4A5F3FB117912B3200CD701A /* ISSCContentDescriptor.h */,
+				4A5F3FB217912B3200CD701A /* ISSCDataObject.h */,
+				4A5F3FB317912B3200CD701A /* ISSCOAuthParameters.h */,
+				4A5F3FB417912B3200CD701A /* ISSCOpenApp.h */,
+				4A5F3FB517912B3200CD701A /* ISSCParameters.h */,
+				4A5F3FB617912B3200CD701A /* ISSCRequest.h */,
+				4A5F3FB717912B3200CD701A /* ISSCToken.h */,
+				4A5F3FB817912B3200CD701A /* ISSCUserDescriptor.h */,
+				4A5F3FB917912B3200CD701A /* ShareSDKCoreService.h */,
+				4A5F3FBA17912B3200CD701A /* SSCDataObject.h */,
+				4A5F3FBB17912B3200CD701A /* SSCKeyDef.h */,
+				4A5F3FBC17912B3200CD701A /* SSCNotificationDef.h */,
+				4A5F3FBD17912B3200CD701A /* SSCTypeDef.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
 		4A634D841752F91A00453C0D /* myProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -3743,6 +3821,8 @@
 				4A257F01178FA770001D153F /* profile_data_BG.png in Resources */,
 				4A257F02178FA770001D153F /* profile_data_BG@2x.png in Resources */,
 				4A257F0F17900522001D153F /* AddLabelViewController.xib in Resources */,
+				4A5F3FC617912B3200CD701A /* Resource.bundle in Resources */,
+				4A5F3FC917912B3200CD701A /* ShareSDKLocalizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

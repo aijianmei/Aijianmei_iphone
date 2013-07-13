@@ -197,7 +197,8 @@
     [self.user setHeight:@"179"];
     [self.user setWeigth:@"70"];
     [self.user setBMIValue:@"43"];
-    [self.user setCity:@"深圳"];    
+    [self.user setCity:@"深圳"];
+    
 }
 
 - (void)viewDidLoad

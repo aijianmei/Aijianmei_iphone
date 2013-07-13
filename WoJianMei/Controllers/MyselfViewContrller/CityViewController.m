@@ -127,6 +127,12 @@
     self.selectedCity =[[self.dataList objectAtIndex:indexPath.row ]objectForKey:@"city"];
     
     NSLog(@"所在区域 :%@%@",self.selectedProvince,self.selectedCity);
+    
+    NSString *userCity = [NSString stringWithFormat:@"%@%@",self.selectedProvince,self.selectedCity];
+    User *user = [[UserService defaultService] user];
+    [user setCity:userCity];
+    
+    [[UserService defaultService] setUser:user];
     [self.navigationController popViewControllerAnimated:YES];
     
     //TODO
@@ -135,10 +141,9 @@
       NSString* Province + NSString* Province 省份+城市
      */
     
-    NSString *userCity = [NSString stringWithFormat:@"%@%@",self.selectedProvince,self.selectedCity];
-    User *user = [[UserService defaultService] user];
-    user.city = userCity;
-    [[UserService defaultService] storeUserInfo];
+   
+    
+    
 
 }
 

@@ -29,6 +29,7 @@ static UserService* _defaultUserService = nil;
 {
     if (_defaultUserService == nil) {
             _defaultUserService = [[UserService alloc] init];
+        [_defaultUserService getUserInfo];
     }
     return _defaultUserService;
 }
