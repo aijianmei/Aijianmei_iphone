@@ -1033,102 +1033,6 @@
             </objects>
             <point key="canvasLocation" x="1829" y="-2551"/>
         </scene>
-        <!--Supplement View Controller-->
-        <scene sceneID="NRB-b4-LWJ">
-            <objects>
-                <viewController storyboardIdentifier="SupplementViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DBP-RJ-yqN" customClass="SupplementViewController" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="NhO-Vs-7Er">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="134" sectionHeaderHeight="22" sectionFooterHeight="22" id="Hxn-iU-VlR">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="510"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="SupplementCell" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SupplementCell" rowHeight="134" id="Cgv-hq-4z4" customClass="NutritionDetailCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="134"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="133"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="某牌子蛋白粉,你觉得这个好吃吗，我希望我可以每天都吃这个东西好吗？" lineBreakMode="middleTruncation" numberOfLines="2" adjustsFontSizeToFit="NO" id="vzY-4e-PRF">
-                                                    <rect key="frame" x="6" y="2" width="307" height="42"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.2424980072" green="0.60363844259999999" blue="0.93498784300000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1234" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eFd-nV-lC4">
-                                                    <rect key="frame" x="156" y="110" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="评论:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GzD-qT-Ey0">
-                                                    <rect key="frame" x="128" y="110" width="31" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="发表时间：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ibc-JG-aTJ">
-                                                    <rect key="frame" x="6" y="110" width="46" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="在过去很长一段时间里，运动员为了提升运动水平和增加肌肉，都会进行力量训练。力量训练似乎成为了运动员的“专利”。然而如今，无论男女老少，力量训练对每个人的健康都有着至关重要的作用。在拥有量身定做的健身计划后，人人都可以进行力量训练！" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5nr-MI-QhD">
-                                                    <rect key="frame" x="6" y="46" width="199" height="67"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="4小时前" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mYV-44-gHd">
-                                                    <rect key="frame" x="48" y="110" width="75" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="pXc-op-sbe">
-                                                    <rect key="frame" x="213" y="50" width="101" height="67"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <outlet property="commentLabel" destination="eFd-nV-lC4" id="aSz-eA-MtG"/>
-                                            <outlet property="descriptionLabel" destination="5nr-MI-QhD" id="X4L-Xw-DD7"/>
-                                            <outlet property="imgView" destination="pXc-op-sbe" id="1zE-Aq-j1e"/>
-                                            <outlet property="releasedTimeLabel" destination="mYV-44-gHd" id="AyD-WV-atv"/>
-                                            <outlet property="titleLabel" destination="vzY-4e-PRF" id="ooI-yp-Rjx"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="DBP-RJ-yqN" id="VlW-rS-voY"/>
-                                    <outlet property="delegate" destination="DBP-RJ-yqN" id="Y0J-hs-pl5"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="1Je-q0-W1M"/>
-                    <connections>
-                        <outlet property="dataTableView" destination="Hxn-iU-VlR" id="9Qw-6r-Vvi"/>
-                        <outlet property="view" destination="Hxn-iU-VlR" id="fap-ay-Rim"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pd1-kq-nyo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1838" y="-4964"/>
-        </scene>
         <!--Home View Controller-->
         <scene sceneID="as1-VE-irK">
             <objects>
@@ -1426,6 +1330,105 @@
             </objects>
             <point key="canvasLocation" x="1775" y="-5665"/>
         </scene>
+        <!--Supplement View Controller-->
+        <scene sceneID="nxc-PG-irh">
+            <objects>
+                <viewController restorationIdentifier="SupplementViewController" storyboardIdentifier="SupplementViewController" id="zGu-mK-cjR" customClass="SupplementViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rvl-Nm-UaJ">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="147" sectionHeaderHeight="22" sectionFooterHeight="22" id="N6j-YN-tcv">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="466"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="ArticleCell" rowHeight="147" id="bvW-W8-m79" customClass="ArticleCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="147"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="146"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="评论：" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="tvE-3L-Osu">
+                                                    <rect key="frame" x="136" y="122" width="28" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="9"/>
+                                                    <color key="textColor" red="0.63137254899999995" green="0.59215686270000001" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="60秒" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="OTE-Vj-jWX">
+                                                    <rect key="frame" x="57" y="122" width="71" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="9"/>
+                                                    <color key="textColor" red="0.43529411759999997" green="0.40784313729999999" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="34" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="9Ye-k1-dUy">
+                                                    <rect key="frame" x="159" y="122" width="34" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="9"/>
+                                                    <color key="textColor" red="0.43529411759999997" green="0.40784313729999999" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9dt-Gd-cYc">
+                                                    <rect key="frame" x="12" y="4" width="301" height="42"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <string key="text">如果你在训练中用50磅的重量，也就是50%单次极限，属于低强度。
+</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.2424980072" green="0.60363844259999999" blue="0.93498784300000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="owv-Ra-ooI">
+                                                    <rect key="frame" x="7" y="54" width="189" height="63"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <string key="text">一般来说，力量训练的健身计划可以细分为组和次。而通常，次数就决定了你能选择的重量。例如：做3组10次的举重；或者做10组3次的举重。显然，对于后者你会选择更大的重量，但两种情况下你同样都做了30次。所以如果你想要增加肌肉的爆发力，尽可能降低每组的次数，并增加重量。</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="发布时间：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Q3-eg-xxb">
+                                                    <rect key="frame" x="7" y="122" width="54" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="11.png" id="hZi-ck-9LN">
+                                                    <rect key="frame" x="199" y="54" width="109" height="71"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="_imgView" destination="hZi-ck-9LN" id="yzg-1C-Ttg"/>
+                                            <outlet property="commentLabel" destination="9Ye-k1-dUy" id="bj9-eR-8gK"/>
+                                            <outlet property="descriptionLabel" destination="owv-Ra-ooI" id="vKy-dX-lMx"/>
+                                            <outlet property="imgView" destination="hZi-ck-9LN" id="5Vd-i5-sIC"/>
+                                            <outlet property="releasedTimeLabel" destination="OTE-Vj-jWX" id="ALK-jG-eaz"/>
+                                            <outlet property="titleLabel" destination="9dt-Gd-cYc" id="ymm-3O-VZu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="zGu-mK-cjR" id="3Jd-01-bhV"/>
+                                    <outlet property="delegate" destination="zGu-mK-cjR" id="QLo-vg-Alh"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YJC-0A-xpP"/>
+                    <connections>
+                        <outlet property="dataTableView" destination="N6j-YN-tcv" id="EBY-2f-Ycq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ha-Hj-c5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1783" y="-5070"/>
+        </scene>
     </scenes>
     <resources>
         <image name="11.png" width="16" height="16"/>
@@ -1498,16 +1501,6 @@
         </class>
         <class className="NutriViewController" superclassName="PPTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NutriViewController.h"/>
-        </class>
-        <class className="NutritionDetailCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NutritionDetailCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="commentLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="imgView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="releasedTimeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
         </class>
         <class className="PPTableViewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PPTableViewCell.h"/>
