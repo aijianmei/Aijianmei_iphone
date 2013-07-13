@@ -19,7 +19,6 @@
 #import "UINavigationBarExt.h"
 //#import  "MobClick.h"
 #import "AJMLeftSideViewController.h"
-#import "AJMRightSideViewController.h"
 
 
 //#define WeChatId @"wxd930ea5d5a258f4f"

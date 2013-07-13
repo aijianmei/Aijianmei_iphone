@@ -60,7 +60,6 @@
 		4A27AEA51777F18E009978C5 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AE8B1777F18E009978C5 /* SVModalWebViewController.m */; };
 		4A27AEA61777F18E009978C5 /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A27AE8C1777F18E009978C5 /* SVWebViewController.bundle */; };
 		4A27AEA71777F18E009978C5 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AE8E1777F18E009978C5 /* SVWebViewController.m */; };
-		4A27AEA81777F18E009978C5 /* AJMRightSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AE911777F18E009978C5 /* AJMRightSideViewController.m */; };
 		4A27AEA91777F18E009978C5 /* MyselfHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AE931777F18E009978C5 /* MyselfHeaderView.m */; };
 		4A27AEAA1777F18E009978C5 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AE951777F18E009978C5 /* IIViewDeckController.m */; };
 		4A27AEAB1777F18E009978C5 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AE971777F18E009978C5 /* IIWrapController.m */; };
@@ -643,8 +642,6 @@
 		4A27AE8C1777F18E009978C5 /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
 		4A27AE8D1777F18E009978C5 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
 		4A27AE8E1777F18E009978C5 /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
-		4A27AE901777F18E009978C5 /* AJMRightSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJMRightSideViewController.h; sourceTree = "<group>"; };
-		4A27AE911777F18E009978C5 /* AJMRightSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJMRightSideViewController.m; sourceTree = "<group>"; };
 		4A27AE921777F18E009978C5 /* MyselfHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyselfHeaderView.h; sourceTree = "<group>"; };
 		4A27AE931777F18E009978C5 /* MyselfHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyselfHeaderView.m; sourceTree = "<group>"; };
 		4A27AE941777F18E009978C5 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
@@ -1566,8 +1563,6 @@
 				4A27AEBD1777F303009978C5 /* AJMLeftSideViewController.m */,
 				4A27AEBE1777F303009978C5 /* AJMViewDelegate.h */,
 				4A27AEBF1777F303009978C5 /* AJMViewDelegate.m */,
-				4A27AE901777F18E009978C5 /* AJMRightSideViewController.h */,
-				4A27AE911777F18E009978C5 /* AJMRightSideViewController.m */,
 				4A27AE921777F18E009978C5 /* MyselfHeaderView.h */,
 				4A27AE931777F18E009978C5 /* MyselfHeaderView.m */,
 			);
@@ -4009,7 +4004,6 @@
 				4A27AE781777F006009978C5 /* WorkOut.m in Sources */,
 				4A27AEA51777F18E009978C5 /* SVModalWebViewController.m in Sources */,
 				4A27AEA71777F18E009978C5 /* SVWebViewController.m in Sources */,
-				4A27AEA81777F18E009978C5 /* AJMRightSideViewController.m in Sources */,
 				4A27AEA91777F18E009978C5 /* MyselfHeaderView.m in Sources */,
 				4A27AEAA1777F18E009978C5 /* IIViewDeckController.m in Sources */,
 				4A27AEAB1777F18E009978C5 /* IIWrapController.m in Sources */,
