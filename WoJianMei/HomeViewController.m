@@ -85,14 +85,7 @@ typedef enum CONTENT_TYPE {
     
     ////leftBtn
     UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
-    
-    //      [leftBtn setBackgroundImage:[ImageManager GobalNavigationButtonBG ]
-    //                       forState:UIControlStateNormal];
-    
     [leftBtn setImage:[ImageManager GobalNavigationLeftSideButtonImage] forState:UIControlStateNormal];
-    
-    
-    
     leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
     [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
@@ -100,10 +93,6 @@ typedef enum CONTENT_TYPE {
     
     ////rightBtn
     UIButton *rightBtn = [[[UIButton alloc] init] autorelease];
-    
-    //        [rightBtn setBackgroundImage:[ImageManager GobalNavigationAvatarImage]
-    //                            forState:UIControlStateNormal];
-    
     [rightBtn setImage:[ImageManager GobalNavigationAvatarImage] forState:UIControlStateNormal];
     rightBtn.frame = CGRectMake(0.0, 0.0, 49.0, 29.0);
     [rightBtn addTarget:self action:@selector(rightButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -139,7 +128,7 @@ typedef enum CONTENT_TYPE {
 }
 - (void)rightButtonClickHandler:(id)sender
 {
-    //    [self.viewDeckController toggleRightViewAnimated:YES];
+    [self.viewDeckController toggleRightViewAnimated:YES];
     UIStoryboard *currentInUseStoryBoard;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
@@ -151,23 +140,25 @@ typedef enum CONTENT_TYPE {
         UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
         currentInUseStoryBoard = iPadStroyBoard;
     }
-    
-    MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
-    myselfVC.title = @"我";
-    
-    [self.navigationController pushViewController:myselfVC animated:YES];
-    
+        
     
     if (![[UserService defaultService] hasBindAccount]) {
         
-        LoginViewController *loginViewController = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        loginViewController.title = @"登陆";
+        LoginViewController *loginVC = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        loginVC.title = @"登陆";
+        
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
+        
+        [self.navigationController presentModalViewController:nav animated:YES];
+        
+        [nav release];
         
     } else {
         MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
-        myselfVC.title = @"我";
-        
+         myselfVC.title = @"我";
+        [self.navigationController pushViewController:myselfVC animated:YES];
     }
+    
 }
 
 

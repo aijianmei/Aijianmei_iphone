@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SinaweiboManager.h"
+#import "PPViewController.h"
 
-@interface LoginViewController : UIViewController<SinaWeiboDelegate, SinaWeiboRequestDelegate>
+@interface LoginViewController : PPViewController<SinaWeiboDelegate, SinaWeiboRequestDelegate>
 {
     SinaWeiboManager *_sinaweiboManager;
 }

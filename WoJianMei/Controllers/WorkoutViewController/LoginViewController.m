@@ -37,13 +37,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    UIBarButtonItem *bar = [[UIBarButtonItem alloc]initWithImage:nil style:UIBarButtonItemStyleBordered target:self action:@selector(clickCancleButton:)];
-    [bar setTitle:@"取消"];
-    [self.navigationItem setRightBarButtonItem:bar];
-    [bar release];
-
-    
+    [self setNavigationRightButton:@"取消" imageName:@"top_bar_commonButton.png" action:@selector(clickCancleButton:)];
 }
 
 -(void)clickCancleButton:(UIButton *)sender{
