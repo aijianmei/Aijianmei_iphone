@@ -129,7 +129,6 @@ extern ArticleManager   *GlobalGetArticleManager()
         NSLog(@"my follow articlelist %@",[_followArticleList description]);
         NSLog(@"follow match (%@)", [ArticleInfo description]);
     }
-    
 }
 
 - (void)unfollowArticle:(ArticleInfo*)article
