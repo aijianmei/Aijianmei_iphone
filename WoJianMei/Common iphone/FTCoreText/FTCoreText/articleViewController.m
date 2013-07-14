@@ -8,15 +8,78 @@
 
 #import "articleViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ArticleService.h"
+#import "NSString+HTML.h"
+#import "ImageManager.h"
+
+
+@interface articleViewController ()<UIActionSheetDelegate,AWActionSheetDelegate>
+
+
+@end
 
 @implementation articleViewController
 @synthesize scrollView;
 @synthesize coreTextView;
+@synthesize article =_article;
+
+
+#pragma mark -
+#pragma mark - RKObjectLoaderDelegate
+
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+    NSLog(@"Response code: %d", [response statusCode]);
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", [error localizedDescription]);
+}
+
+- (void)requestDidStartLoad:(RKRequest *)request
+{
+    NSLog(@"Start load request...");
+    [self showActivityWithText:@"数据加载中..."];
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
+    NSLog(@"***Load objects count: %d", [objects count]);
+    [self hideActivity];
+    _articleDetail = [objects objectAtIndex:0];
+//    [self loadWebViewWithHtmlString:_articleDetail.content];
+//    [_webview sizeToFit];
+    PPDebug(@"Article ：%@",_articleDetail.content);
+    
+    [self setTextOfTheWebView];
+    
+}
+
+
+- (void)loadWebViewWithHtmlString:(NSString*)htmlString
+{
+    //处理html特殊字符
+    NSString *html = [htmlString stringByDecodingHTMLEntities];
+    [_webview loadHTMLString:html baseURL:nil];
+}
 
 
 - (NSString *)textForView
 {
-    return [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"text" ofType:@"txt"] encoding:NSUTF8StringEncoding error:nil];
+   return [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"text" ofType:@"txt"] encoding:NSUTF8StringEncoding error:nil];
+    
+//    return _articleDetail.content;
+
+}
+
+-(void)setTextOfTheWebView{
+    // set text
+    [coreTextView setText:[self textForView]];
+    // set styles
+    [coreTextView addStyles:[self coreTextStyle]];
+    // set delegate
+    [coreTextView setDelegate:self];
+	[coreTextView fitToSuggestedHeight];
 }
 
 
@@ -129,24 +192,23 @@
 {
     [super viewDidLoad];
     
+    
+    [self setBackgroundImageName:@"gobal_background.png"];
+    [self showBackgroundImage];
+
 	//add coretextview
     scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
 	scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     coreTextView = [[FTCoreTextView alloc] initWithFrame:CGRectMake(20, 20, 280, 0)];
 	coreTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    // set text
-    [coreTextView setText:[self textForView]];
-    // set styles
-    [coreTextView addStyles:[self coreTextStyle]];
-    // set delegate
-    [coreTextView setDelegate:self];
-	
-	[coreTextView fitToSuggestedHeight];
-
     [scrollView addSubview:coreTextView];
     [scrollView setContentSize:CGSizeMake(CGRectGetWidth(scrollView.bounds), CGRectGetHeight(coreTextView.frame) + 40)];
     
     [self.view addSubview:scrollView];
+    
+    
+    [[ArticleService sharedService] findArticleInfoWithAucode:@"aijianmei" auact:@"au_getinformationdetail" articleId:_article._id channel:@" " channelType:@" " uid:@"" delegate:self];
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation

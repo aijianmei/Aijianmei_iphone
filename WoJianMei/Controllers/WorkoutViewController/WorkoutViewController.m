@@ -20,6 +20,9 @@
 #import "FilterViewController.h"
 #import "MyselfViewController.h"
 #import "LoginViewController.h"
+#import "articleViewController.h"
+
+
 
 
 #import "ImageManager.h"
@@ -485,10 +488,15 @@ typedef enum CONTENT_TYPE {
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     
-    WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
-
-    controller.article = [self.dataList objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:controller animated:YES];
+//    WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
+//
+//    controller.article = [self.dataList objectAtIndex:indexPath.row];
+//    [self.navigationController pushViewController:controller animated:YES];
+//    
+    articleViewController *articleVC = [[articleViewController alloc]init];
+    articleVC.article =[self.dataList objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:articleVC animated:YES];
+    
 }
 
 #pragma mark -
