@@ -1285,10 +1285,10 @@
 		4A873B9A16A54AD2005BDA45 /* Citypicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Citypicker.h; sourceTree = "<group>"; };
 		4A873B9B16A54AD2005BDA45 /* Citypicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Citypicker.m; sourceTree = "<group>"; };
 		4A873BA716A54BD7005BDA45 /* Citypicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Citypicker.xib; sourceTree = "<group>"; };
-		4A8A7224174E10FE00BD3AAE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		4A8A7225174E10FF00BD3AAE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		4A8A7227174E557700BD3AAE /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
-		4A8A7228174E557700BD3AAE /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		4A8A7224174E10FE00BD3AAE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Controllers/WorkoutViewController/LoginViewController.h; sourceTree = "<group>"; };
+		4A8A7225174E10FF00BD3AAE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Controllers/WorkoutViewController/LoginViewController.m; sourceTree = "<group>"; };
+		4A8A7227174E557700BD3AAE /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignUpViewController.h; path = Controllers/WorkoutViewController/SignUpViewController.h; sourceTree = "<group>"; };
+		4A8A7228174E557700BD3AAE /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignUpViewController.m; path = Controllers/WorkoutViewController/SignUpViewController.m; sourceTree = "<group>"; };
 		4A9449A416A94B0800A96815 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		4A9449A616A94B2B00A96815 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		4A9449A816A94B5700A96815 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -2911,6 +2911,10 @@
 		4A58805215C52B89005F8415 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4A8A7224174E10FE00BD3AAE /* LoginViewController.h */,
+				4A8A7225174E10FF00BD3AAE /* LoginViewController.m */,
+				4A8A7227174E557700BD3AAE /* SignUpViewController.h */,
+				4A8A7228174E557700BD3AAE /* SignUpViewController.m */,
 				4ACD190916154F5C00567A24 /* Entries */,
 			);
 			name = Controllers;
@@ -3261,10 +3265,6 @@
 				4A221547177969780079430D /* FilterViewController.xib */,
 				4ADCFE13169D614600A3E979 /* ArticleCell.h */,
 				4ADCFE14169D614600A3E979 /* ArticleCell.m */,
-				4A8A7224174E10FE00BD3AAE /* LoginViewController.h */,
-				4A8A7225174E10FF00BD3AAE /* LoginViewController.m */,
-				4A8A7227174E557700BD3AAE /* SignUpViewController.h */,
-				4A8A7228174E557700BD3AAE /* SignUpViewController.m */,
 				C6DB202B1760D8E40060BD08 /* WorkoutDetailViewController.h */,
 				C6DB202C1760D8E40060BD08 /* WorkoutDetailViewController.m */,
 			);
@@ -4417,9 +4417,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -4447,9 +4445,7 @@
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

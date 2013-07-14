@@ -29,12 +29,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="login_BG.png" id="kKm-U7-EGz">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="421"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="账号..." clearsOnBeginEditing="YES" minimumFontSize="17" id="fjQ-5a-bek">
-                                <rect key="frame" x="36" y="193" width="241" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="36" y="134" width="241" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
@@ -42,8 +42,8 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码..." clearsOnBeginEditing="YES" minimumFontSize="17" id="cQ2-M5-cPr">
-                                <rect key="frame" x="36" y="246" width="241" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="36" y="185" width="241" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
@@ -51,8 +51,8 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BLg-kE-XV7">
-                                <rect key="frame" x="21" y="372" width="279" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="19" y="395" width="279" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="还没有爱健美账号，注册一个！Go！">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -66,8 +66,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="su6-f9-5wf">
-                                <rect key="frame" x="168" y="318" width="132" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="168" y="266" width="132" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="腾讯QQ登陆">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -81,8 +81,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Y6m-b1-hND">
-                                <rect key="frame" x="21" y="318" width="132" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="21" y="266" width="132" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="新浪微博登陆">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -96,7 +96,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="loin_LOGO.png" id="1vj-tB-6yR">
-                                <rect key="frame" x="-2" y="20" width="321" height="101"/>
+                                <rect key="frame" x="-2" y="5" width="321" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -109,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4V1-jv-YEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3234" y="-6335"/>
+            <point key="canvasLocation" x="3378" y="-6401"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="96l-pa-39P">
@@ -183,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZaN-sw-G6x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4124" y="-6222"/>
+            <point key="canvasLocation" x="4316" y="-6494"/>
         </scene>
         <!--Workout View Controller-->
         <scene sceneID="KKm-98-eaU">
@@ -320,16 +320,14 @@
                     <connections>
                         <outlet property="dataTableView" destination="sFc-dy-A0a" id="dim-Zu-OGu"/>
                         <outlet property="view" destination="NHW-lm-GR8" id="2KV-t5-9rG"/>
-                        <segue destination="Xx6-Ol-siI" kind="push" identifier="SearchViewController" id="Lle-dq-2R2"/>
                         <segue destination="96c-6V-RW1" kind="push" identifier="WorkoutProcessSegue" id="hXg-yB-fF2"/>
                         <segue destination="ytj-Mg-1gh" kind="push" identifier="WorkoutNoteViewSegue" id="03s-xF-0la"/>
-                        <segue destination="tr5-hw-RcC" kind="push" identifier="WorkoutImageViewSegue" id="Z6n-HZ-YXS"/>
                         <segue destination="Evp-Ar-1p6" kind="push" identifier="WorkoutDatasViewSegue" id="t0g-qk-otc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXF-0Z-5yh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3325" y="-4850"/>
+            <point key="canvasLocation" x="3549" y="-5138"/>
         </scene>
         <!--More View Controller-->
         <scene sceneID="8Dd-af-kE8">
@@ -400,48 +398,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hOd-mA-Ooq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2374" y="-1627"/>
-        </scene>
-        <!--Search Table View Controller-->
-        <scene sceneID="5WF-2J-khd">
-            <objects>
-                <viewController id="Xx6-Ol-siI" customClass="SearchTableViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CK9-RD-uox">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="xdB-uf-gxc">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SearchCell" rowHeight="95" id="FDo-NG-nVd">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="97"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="94"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="Xx6-Ol-siI" id="fZa-Dc-rcU"/>
-                                    <outlet property="delegate" destination="Xx6-Ol-siI" id="Cgh-1Y-4iV"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="JCV-op-s4K"/>
-                    <connections>
-                        <outlet property="dataTableView" destination="xdB-uf-gxc" id="glQ-up-lWs"/>
-                        <outlet property="view" destination="CK9-RD-uox" id="Nk8-Vn-YtY"/>
-                        <segue destination="NbY-xu-H1A" kind="push" identifier="SinaUsers" id="uRs-JQ-rBk"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xAv-9e-sCD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5868" y="-5098"/>
         </scene>
         <!--Workout Detail View Controller-->
         <scene sceneID="6OX-gw-b1X">
@@ -635,7 +591,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FVd-uI-KxB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4173" y="-4642"/>
+            <point key="canvasLocation" x="4621" y="-5410"/>
         </scene>
         <!--Workout Datas View Controller-->
         <scene sceneID="8Tp-aY-T8Q">
@@ -650,22 +606,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8V-Ah-xej" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3758" y="-3746"/>
-        </scene>
-        <!--Workout Image View Controller-->
-        <scene sceneID="gOW-g7-HUB">
-            <objects>
-                <viewController id="tr5-hw-RcC" customClass="WorkoutImageViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1uz-8h-m0L">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="snE-0W-8Va"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sPI-UR-vDP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5227" y="-4591"/>
+            <point key="canvasLocation" x="4494" y="-4314"/>
         </scene>
         <!--Workout Note View Controller-->
         <scene sceneID="s4P-Wr-FY1">
@@ -680,83 +621,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q7Z-KE-2la" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5003" y="-3953"/>
-        </scene>
-        <!--Sina Users View Controller-->
-        <scene sceneID="Xlm-RU-jSh">
-            <objects>
-                <viewController id="NbY-xu-H1A" customClass="SinaUsersViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="RfK-mX-Lh8">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="62" sectionHeaderHeight="22" sectionFooterHeight="22" id="EXe-qm-Iv0">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SinaUser" rowHeight="62" id="6xD-jd-h2d" customClass="SinaUserCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="62"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="touxiang_40x40.png" id="Row-Te-zsI">
-                                                    <rect key="frame" x="9" y="6" width="46" height="46"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="TomCallon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2gL-DO-cxe">
-                                                    <rect key="frame" x="93" y="20" width="134" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mzM-nx-OMf">
-                                                    <rect key="frame" x="278" y="10" width="30" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <state key="normal">
-                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <state key="highlighted">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="clickInvitedButton:" destination="6xD-jd-h2d" eventType="touchUpInside" id="EeY-sC-1b0"/>
-                                                    </connections>
-                                                </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="touxiang_40x40@2x.png" id="inx-0n-eZb">
-                                                    <rect key="frame" x="12" y="9" width="40" height="40"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <outlet property="avatarImageView" destination="inx-0n-eZb" id="dFH-6X-Quu"/>
-                                            <outlet property="inviteButton" destination="mzM-nx-OMf" id="8Ho-sX-Eaa"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="NbY-xu-H1A" id="F9g-gg-JW4"/>
-                                    <outlet property="delegate" destination="NbY-xu-H1A" id="Zzn-xf-as3"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="veh-5g-I3d"/>
-                    <connections>
-                        <outlet property="dataTableView" destination="EXe-qm-Iv0" id="KrG-mY-pcz"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0wa-xa-ecv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5758" y="-4234"/>
+            <point key="canvasLocation" x="5363" y="-4641"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="CQi-CD-WpG">
@@ -1284,8 +1149,6 @@
         <image name="login_BG.png" width="640" height="960"/>
         <image name="loin_LOGO.png" width="640" height="180"/>
         <image name="rq_1.png" width="640" height="100"/>
-        <image name="touxiang_40x40.png" width="50" height="50"/>
-        <image name="touxiang_40x40@2x.png" width="100" height="100"/>
     </resources>
     <classes>
         <class className="AJM_CommonViewController" superclassName="PPViewController">
@@ -1332,9 +1195,6 @@
         <class className="NutriViewController" superclassName="PPTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NutriViewController.h"/>
         </class>
-        <class className="PPTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPTableViewCell.h"/>
-        </class>
         <class className="PPTableViewController" superclassName="PPViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PPTableViewController.h"/>
             <relationships>
@@ -1357,15 +1217,6 @@
                 <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
-        <class className="SinaUserCell" superclassName="PPTableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SinaUserCell.h"/>
-            <relationships>
-                <relationship kind="action" name="clickInvitedButton:"/>
-                <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="inviteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
         <class className="SupplementViewController" superclassName="PPTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SupplementViewController.h"/>
         </class>
@@ -1377,9 +1228,6 @@
         </class>
         <class className="WorkoutDetailViewController" superclassName="PPViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutDetailViewController.h"/>
-        </class>
-        <class className="WorkoutImageViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutImageViewController.h"/>
         </class>
         <class className="WorkoutNoteViewController" superclassName="REComposeViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutNoteViewController.h"/>
