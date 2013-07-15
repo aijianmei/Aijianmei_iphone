@@ -95,11 +95,11 @@
         
         if (isChoosingAvtarImage)
         {
-            self.user.avatarImage = image;
+//            self.user.avatarImage = image;
         }
         if (isChoosingAvtarBackground)
         {
-            self.user.avatarBackGroundImage = image;
+//            self.user.avatarBackGroundImage = image;
         }
         
       [[UserService defaultService] setUser:_user];
@@ -339,18 +339,18 @@
             
             ////设置头像
             if (indexPath.row ==0) {
-                [cell.detailImageView setImage:self.user.avatarImage];
-                if (!self.user.avatarImage) {
-                    [cell.detailImageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];
-                }
-                
+//                [cell.detailImageView setImage:[UIImage imageNamed:self.user.avatarImage]];
+//                if (!self.user.avatarImage) {
+//                    [cell.detailImageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];
+//                }
+            
                 [cell.detailImageView setFrame:CGRectMake(200, 5.0f, 45.0f,42.0f)];
 
             }
             ///设置背景
             if (indexPath.row ==1) {
                 
-                [cell.detailImageView setImage:self.user.avatarBackGroundImage];
+//                [cell.detailImageView setImage:self.user.avatarBackGroundImage];
                 
                 if (!self.user.avatarBackGroundImage) {
                     [cell.detailImageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];

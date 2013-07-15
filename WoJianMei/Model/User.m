@@ -10,7 +10,6 @@
 
 
 #define Name           @"name"
-#define Motto          @"motto"
 #define AvatarImage    @"avatarImage"
 #define AvatarBackGroundImage @"avatarBackGroundImage"
 #define Description    @"description"
@@ -35,8 +34,6 @@
 
 @implementation User
 @synthesize name =_name;
-@synthesize motto=_motto;
-@synthesize avatarImage=_avatarImage;
 @synthesize avatarBackGroundImage =_avatarBackGroundImage;
 @synthesize description=_description;
 
@@ -72,13 +69,9 @@
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self=[super init]) {
-        self.avatarImage = [aDecoder decodeObjectForKey:AvatarImage];
         self.avatarBackGroundImage = [aDecoder decodeObjectForKey:AvatarBackGroundImage];
         self.name =[aDecoder decodeObjectForKey:Name];
-        self.motto =[aDecoder decodeObjectForKey:Motto];
         self.description = [aDecoder decodeObjectForKey:Description];
-        
-        
         self.gender = [aDecoder decodeObjectForKey:Gender];
         self.sinaUserId = [aDecoder decodeObjectForKey:SinaUserId];
         self.qqUserId = [aDecoder decodeObjectForKey:QQUserId];
@@ -102,10 +95,8 @@
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
-    [aCoder encodeObject:self.avatarImage forKey:AvatarImage];
     [aCoder encodeObject:self.avatarBackGroundImage forKey:AvatarBackGroundImage];
     [aCoder encodeObject:self.name forKey:Name];
-    [aCoder encodeObject:self.motto forKey:Motto];
     [aCoder encodeObject:self.description forKey:Description];
     
     
@@ -135,10 +126,8 @@
 
 -(void)dealloc{
     
-    [_avatarImage release];
     [_avatarBackGroundImage release];
     [_name release];
-    [_motto release];
     [_description release];
     
     [_gender release];

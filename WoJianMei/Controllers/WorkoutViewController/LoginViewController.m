@@ -232,8 +232,9 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     NSLog(@"***Load objects count: %d", [objects count]);
-    Result *result = [objects objectAtIndex:0];
 
+    User *user = [objects objectAtIndex:0];
+    
     
 }
 

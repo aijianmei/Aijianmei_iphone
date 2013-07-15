@@ -147,7 +147,10 @@ static UserService* _defaultUserService = nil;
 {
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     RKObjectMapping *resultMapping =[RKObjectMapping mappingForClass:[Result class]];
-    [resultMapping mapKeyPathsToAttributes: @"errorCode", @"errorCode", @"uid", @"_uid", nil];
+    [resultMapping mapKeyPathsToAttributes:
+     @"errorCode", @"errorCode",
+     @"uid", @"_uid",
+     nil];
     [objectManager.mappingProvider setMapping:resultMapping forKeyPath:@""];
 
 }
@@ -205,28 +208,25 @@ static UserService* _defaultUserService = nil;
     RKObjectMapping *resultMapping =[RKObjectMapping mappingForClass:[User class]];
     [resultMapping mapKeyPathsToAttributes:
      @"uid", @"_uid",
+     @"userType", @"userType",
+     @"profileImageUrl", @"profileImageUrl",
+     @"avatarBackGroundImage",@"avatarBackGroundImage",
+     @"name", @"name",
+     @"description", @"description",
+     @"gender", @"gender",
+     @"sinaUserId",@"sinaUserId",
+     @"qqUserId",@"qqUserId",
      @"email", @"email",
-     @"uname", @"uname",
-     @"sex", @"errorCode",
-     @"province", @"_uid",
-     @"province", @"_uid",
-     @"province", @"_uid",
-     @"province", @"_uid",
-     @"province", @"_uid",
-     @"keywordinfo", @"keywordinfo",
-     @"body_weight", @"body_weight",
-     @"height", @"height",
+//     @"password", @"password",
+     @"loginStatus",@"loginStatus",
+     @"labelsArray", @"labelsArray",
      @"age", @"age",
-     @"errorCode", @"errorCode",
-
-     
+     @"height", @"height",
+     @"weight", @"weight",
+     @"BMIValue", @"BMIValue",
+     @"province", @"province",
+     @"city", @"city",
      nil];
-    
-    
-    
-    
-    
-    
     
     [objectManager.mappingProvider setMapping:resultMapping forKeyPath:@""];
     
@@ -265,7 +265,7 @@ static UserService* _defaultUserService = nil;
                userType:(NSString*)userType
                             delegate:(id<RKObjectLoaderDelegate>)delegate
 {
-    [self initResultMap];
+    [self initUserMap];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
    // http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_getuserinfobysnsid&snsid=2578458467&usertype=sina
@@ -275,7 +275,7 @@ static UserService* _defaultUserService = nil;
         [queryParams setObject:@"aijianmei" forKey:@"aucode"];
         [queryParams setObject:@"au_getuserinfobysnsid" forKey:@"auact"];
         [queryParams setObject:snsID forKey:@"snsid"];
-        [queryParams setObject:userType forKey:@"userType"];
+        [queryParams setObject:userType forKey:@"usertype"];
 
         
         RKObjectManager *objectManager = [RKObjectManager sharedManager];

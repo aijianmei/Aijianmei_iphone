@@ -483,7 +483,7 @@
     [self.navigationController  dismissViewControllerAnimated:YES completion:^{
         
         [self.headerVImageButton setImage:image forState:UIControlStateNormal];
-         self.user.avatarImage = image;
+//         self.user.avatarImage = image;
         [self storeUserInfo];
         
     }];

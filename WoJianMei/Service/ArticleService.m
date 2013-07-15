@@ -67,17 +67,18 @@
     //将json映射到class
     RKObjectMapping *articleMapping =[RKObjectMapping mappingForClass:[Article class]];
     [articleMapping mapKeyPathsToAttributes:
+     @"category_id",@"category_id",
      @"id", @"_id",
      @"title", @"_title",
      @"brief", @"_brief",
      @"create_time", @"_create_time",
      @"img", @"_img",
      @"click", @"_click",
-     @"channel", @"_channel",
      @"commentCount",@"_commentCount",
      @"channeltype",@"_channeltype",
      @"url", @"url",
-     @"shareurl",@"shareurl", nil];
+     @"shareurl",@"shareurl",
+     @"channel", @"_channel",nil];
     
     [objectManager.mappingProvider setMapping:articleMapping forKeyPath:@""];
 }
