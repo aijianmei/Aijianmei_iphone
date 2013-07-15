@@ -112,6 +112,37 @@ static UserService* _defaultUserService = nil;
 
 
 
+- (void)registerAijianmeiUserWithUsername:(NSString*)name
+                           email:(NSString*)email
+                        password:(NSString*)password
+                        usertype:(NSString*)usertype
+                        delegate:(id<RKObjectLoaderDelegate>)delegate
+
+{
+    [self initResultMap];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSMutableDictionary *queryParams = [[NSMutableDictionary alloc] init];
+        [queryParams setObject:@"aijianmei" forKey:@"aucode"];
+        [queryParams setObject:@"au_register" forKey:@"auact"];
+        [queryParams setObject:usertype forKey:@"usertype"];
+        [queryParams setObject:name forKey:@"username"];
+        [queryParams setObject:password forKey:@"userpassword"];
+        [queryParams setObject:email forKey:@"email"];
+
+        RKObjectManager *objectManager = [RKObjectManager sharedManager];
+        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
+        
+        NSLog(@"url: %@", [url absoluteString]);
+        NSLog(@"resourcePath: %@", [url resourcePath]);
+        NSLog(@"query: %@", [url query]);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
+        });
+    });
+}
+
+
 - (void)initResultMap
 {
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -220,6 +251,8 @@ static UserService* _defaultUserService = nil;
 }
 
 
+
+
 -(void)storeUserInfo
 {
     NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.user];
@@ -231,6 +264,13 @@ static UserService* _defaultUserService = nil;
     NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:@"user"];
     User *user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
     return user;
+}
+
+-(NSMutableDictionary*)createUserInfo:(NSString *)userName
+{
+    NSMutableDictionary *userInfo = [[[NSMutableDictionary alloc]init] autorelease];
+    [userInfo setObject:userName forKey:@"userName"];
+    return userInfo;
 }
 
 - (BOOL)hasBindAccount

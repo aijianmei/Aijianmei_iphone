@@ -13,6 +13,8 @@
 #import "AppDelegate.h"
 #import "UserManager.h"
 #import "User.h"
+#import "Result.h"
+
 
 #define kAppKey @"3622140445"
 #define kAppSecret @"f94d063d06365972215c62acaadf95c3"
@@ -42,6 +44,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self setNavigationRightButton:@"取消" imageName:@"top_bar_commonButton.png" action:@selector(clickCancleButton:)];
+    
+    
+    [self.sinaButton setTag:10];
+    [self.qqButton setTag:10];
+    [self.aijianmeiButton setTag:10];
+
+
 }
 
 -(void)clickCancleButton:(UIButton *)sender{
@@ -112,22 +121,20 @@
 }
 
 - (IBAction)clickSinaWeiboButton:(UIButton *)sender {
-    
+    [self setUserType:@"sina"];
     _sinaweiboManager = [SinaWeiboManager sharedManager];
     [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
     
     if (![_sinaweiboManager.sinaweibo isAuthValid]) {
         [_sinaweiboManager.sinaweibo logIn];
     }
-    
-    
 }
 
 - (IBAction)clickQQShareButton:(UIButton *)sender {
-    
+    [self setUserType:@"qq"];
 }
-
 - (IBAction)clickSignupAijianmeiAccount:(UIButton *)sender {
+    self.userType =@"local";
     [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
     
 }
@@ -178,23 +185,68 @@
 {
     if ([request.url hasSuffix:@"users/show.json"])
     {
-        [[UserService defaultService] storeSinaUserInfo:result];
+    [[UserService defaultService] storeSinaUserInfo:result];
+     
+    NSDictionary *userInfo = result;
+    NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);
+        
+    /*获取新浪微博ID ,判断该用户是否已经注册;
+      如果用户已经注册过，就直接返回用户的所有个人数据
+      如果用户没有注册过，就让其注册；
+    */
+        
+        
+
+        
         if (![[UserService defaultService] hasBindEmail]) {
             [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
        } else{
            [self performSegueWithIdentifier:@"returnMyselfSegue" sender:self];
         }
     }
+    
+    
 }
+
+
+
+#pragma mark -
+#pragma mark - RKObjectLoaderDelegate
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+    NSLog(@"Response code: %d", [response statusCode]);
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", [error localizedDescription]);
+}
+
+- (void)requestDidStartLoad:(RKRequest *)request
+{
+    NSLog(@"Start load request...");
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
+    NSLog(@"***Load objects count: %d", [objects count]);
+    Result *result = [objects objectAtIndex:0];
+    PPDebug(@"The error code:%@",result.errorCode);
+
+    
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
     if ([segue.identifier isEqualToString:@"SignupViewSegue"]) {
-        SignUpViewController *signUpViewController = (SignUpViewController*)segue.destinationViewController;
-        signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;
-        signUpViewController.userType = @"sina";
+        
+          SignUpViewController *signUpViewController = (SignUpViewController*)segue.destinationViewController;
+          signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;
+           signUpViewController.userType =[self userType];
+
     }
+
 }
-    
+
 @end

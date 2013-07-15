@@ -54,7 +54,7 @@
                                 <rect key="frame" x="-2" y="5" width="321" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TC7-te-IjY">
+                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TC7-te-IjY">
                                 <rect key="frame" x="36" y="250" width="115" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -69,7 +69,7 @@
                                     <action selector="clickSinaWeiboButton:" destination="ggH-Ur-he6" eventType="touchUpInside" id="aeo-z5-XFz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aNf-wc-koz">
+                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aNf-wc-koz">
                                 <rect key="frame" x="169" y="250" width="108" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -84,7 +84,7 @@
                                     <action selector="clickQQShareButton:" destination="ggH-Ur-he6" eventType="touchUpInside" id="TFd-TZ-NhL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dCp-iP-qfD">
+                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dCp-iP-qfD">
                                 <rect key="frame" x="25" y="384" width="270" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -104,14 +104,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="fB0-kX-iF0"/>
                     <connections>
+                        <outlet property="aijianmeiButton" destination="dCp-iP-qfD" id="kLV-1o-GMO"/>
                         <outlet property="passwordField" destination="cQ2-M5-cPr" id="TQW-h8-aq9"/>
+                        <outlet property="qqButton" destination="aNf-wc-koz" id="A38-81-rzC"/>
+                        <outlet property="sinaButton" destination="TC7-te-IjY" id="BAQ-yv-bas"/>
                         <outlet property="usernameField" destination="fjQ-5a-bek" id="g5P-I9-dSi"/>
                         <segue destination="iV3-WQ-fer" kind="push" identifier="SignupViewSegue" id="2XO-bT-Wyj"/>
+                        <segue destination="SQ4-9u-AZl" kind="push" identifier="returnMyselfSegue" id="5sh-Cl-2mm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4V1-jv-YEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3168" y="-6781"/>
+            <point key="canvasLocation" x="2772" y="-5697"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="96l-pa-39P">
@@ -226,7 +230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZaN-sw-G6x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3772" y="-6761"/>
+            <point key="canvasLocation" x="3660" y="-6045"/>
         </scene>
         <!--Workout View Controller-->
         <scene sceneID="KKm-98-eaU">
@@ -1223,7 +1227,10 @@
                 <relationship kind="action" name="clickSignupAijianmeiAccount:" candidateClass="UIButton"/>
                 <relationship kind="action" name="clickSinaWeiboButton:" candidateClass="UIButton"/>
                 <relationship kind="action" name="closeDoneEdit:"/>
+                <relationship kind="outlet" name="aijianmeiButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="qqButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sinaButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -1291,6 +1298,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="iUL-cz-5HG"/>
+        <segue reference="5sh-Cl-2mm"/>
     </inferredMetricsTieBreakers>
 </document>

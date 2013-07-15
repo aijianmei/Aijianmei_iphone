@@ -4,7 +4,7 @@
 //
 //  Created by Tom Callon  on 12/22/12.
 //
-//
+
 
 #import <Foundation/Foundation.h>
 #import "CommonService.h"
@@ -63,6 +63,13 @@
 - (void)registerUserWithSinaUserInfo:(NSDictionary*)userInfo
                             delegate:(id<RKObjectLoaderDelegate>)delegate;
 
+//本地注册
+- (void)registerAijianmeiUserWithUsername:(NSString*)name
+                                    email:(NSString*)email
+                                 password:(NSString*)password
+                                 usertype:(NSString*)usertype
+                                 delegate:(id<RKObjectLoaderDelegate>)delegate;
+
 //获取新浪用户信息
 - (void)fetchSinaUserInfo:(NSString*)uid
                     delegate:(id<SinaWeiboRequestDelegate>)delegate;
@@ -77,6 +84,8 @@
 
 //获取保存在本地的用户信息
 -(User*)getUserInfo;
+
+-(NSMutableDictionary*)createUserInfo:(NSString *)userName;
 
 //是否绑定邮箱
 - (BOOL)hasBindEmail;

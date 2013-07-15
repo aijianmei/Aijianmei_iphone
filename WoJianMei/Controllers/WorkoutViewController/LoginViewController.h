@@ -18,12 +18,18 @@
     SinaWeiboManager *_sinaweiboManager;
     UITextField    *_usernameField;
     UITextField    *_passwordField;
+    
+    
+    
 }
 
 @property (nonatomic, retain) IBOutlet UITextField *usernameField;
 @property (nonatomic, retain) IBOutlet UITextField *passwordField;
 @property (retain, nonatomic) NSString *snsId;
 @property (retain, nonatomic) NSString *userType;
+@property (nonatomic, retain) IBOutlet UIButton *sinaButton;
+@property (nonatomic, retain) IBOutlet UIButton *qqButton;
+@property (nonatomic, retain) IBOutlet UIButton *aijianmeiButton;
 
 //实现closeDoneEdit点击done关闭键盘
 - (IBAction)closeDoneEdit:(id)sender;
