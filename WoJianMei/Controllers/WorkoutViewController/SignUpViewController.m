@@ -7,6 +7,7 @@
 //
 
 #import "SignUpViewController.h"
+#import "User.h"
 #import "UserService.h"
 #import "UserManager.h"
 #import "Result.h"
@@ -32,7 +33,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self setTitle:@"账号绑定"];
+//    [self setTitle:@"账号绑定"];
+    
+    User *user = [[UserService defaultService] user];
+    [_userNameTextField setText:user.name];
     
 }
 
@@ -44,12 +48,15 @@
 
 - (void)dealloc
 {
-    [super dealloc];
+    [_userNameTextField release];
     [_emailTextField release];
     [_passwordTextField release];
+    [_repeatPasswordTextField release];
     [_loginButton release];
     [_snsId release];
     [_userType release];
+    [super dealloc];
+    
 }
 
 - (IBAction)closeDoneEdit:(id)sender
@@ -77,6 +84,12 @@
         return NO;
     }
     
+    if ([_userNameTextField.text length] == 0){
+        [UIUtils alert:@"用户名不能为空"];
+        [_emailTextField becomeFirstResponder];
+        return NO;
+    }
+    
     if (NSStringIsValidEmail(_emailTextField.text) == NO){
         [UIUtils alert:@"输入的电子邮件地址不合法，请重新输入"];
         [_emailTextField becomeFirstResponder];
@@ -88,6 +101,13 @@
         [_passwordTextField becomeFirstResponder];
         return NO;
     }
+    
+    if ([_repeatPasswordTextField.text length] == 0){
+        [UIUtils alert:@"密码不能为空"];
+        [_passwordTextField becomeFirstResponder];
+        return NO;
+    }
+
     
     return YES;
 }

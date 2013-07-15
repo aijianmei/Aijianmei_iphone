@@ -23,6 +23,10 @@
 @end
 
 @implementation LoginViewController
+@synthesize  usernameField =_usernameField;
+@synthesize  passwordField =_passwordField;
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,13 +49,49 @@
     [self dismissModalViewControllerAnimated:YES];
 
 }
-
-
 //实现closeDoneEdit点击done关闭键盘
 - (IBAction)closeDoneEdit:(id)sender
 {
     [sender resignFirstResponder];
+    
+    //开始登陆
+    if ([self verifyField] == NO){
+        return;
+    }
+    NSDictionary *userInfo = nil;
+    if ([self.userType isEqualToString:@"sina"]) {
+        userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
+    }
+    
+    [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.usernameField.text password:self.passwordField.text usertype:self.userType snsId:self.snsId profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:nil body_weight:@"" height:@"" keyword:@"" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] delegate:self];
+
+    
+    
 }
+
+- (BOOL)verifyField
+{
+    if ([_usernameField.text length] == 0){
+        [UIUtils alert:@"电子邮件地址不能为空"];
+        [_usernameField becomeFirstResponder];
+        return NO;
+    }
+    
+    if (NSStringIsValidEmail(_usernameField.text) == NO){
+        [UIUtils alert:@"输入的电子邮件地址不合法，请重新输入"];
+        [_usernameField becomeFirstResponder];
+        return NO;
+    }
+    
+    if ([_passwordField.text length] == 0){
+        [UIUtils alert:@"密码不能为空"];
+        [_passwordField becomeFirstResponder];
+        return NO;
+    }
+    
+    return YES;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -79,9 +119,16 @@
     if (![_sinaweiboManager.sinaweibo isAuthValid]) {
         [_sinaweiboManager.sinaweibo logIn];
     }
+    
+    
 }
 
 - (IBAction)clickQQShareButton:(UIButton *)sender {
+    
+}
+
+- (IBAction)clickSignupAijianmeiAccount:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
     
 }
 
@@ -142,6 +189,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
     if ([segue.identifier isEqualToString:@"SignupViewSegue"]) {
         SignUpViewController *signUpViewController = (SignUpViewController*)segue.destinationViewController;
         signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;

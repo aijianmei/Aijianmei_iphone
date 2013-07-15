@@ -18,6 +18,8 @@
 #import "UserService.h"
 #import "UIImageView+WebCache.h"
 #import "LabelsView.h"
+#import "UIImageView+WebCache.h"
+
 
 #define USER                          @"user"
 #define USER_NAME                     @"screen_name"
@@ -79,8 +81,10 @@
 - (void)upgradeUI
 {
 
-    [self.headerVImageButton setBackgroundImage:self.user.avatarImage forState:UIControlStateNormal];
-    [_backGroundImageView setImage:self.user.avatarBackGroundImage];
+    [self.headerVImageButton setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"11.png"]];
+
+    [self.backGroundImageView setImage:[ImageManager avatarbackgroundImage]];
+    
     NSString *userName = self.user.name;
     [self.userNameLabel setText:userName];
      
@@ -192,12 +196,12 @@
     
     self.user.labelsArray = buttonTitleArray;
     
-    [self.user setGender:@"男"];
-    [self.user setAge:@"26"];
-    [self.user setHeight:@"179"];
-    [self.user setWeigth:@"70"];
-    [self.user setBMIValue:@"43"];
-    [self.user setCity:@"深圳"];
+    [self.user setGender:_user.gender];
+    [self.user setAge:_user.age];
+    [self.user setHeight:_user.height];
+    [self.user setWeigth:_user.weigth];
+    [self.user setBMIValue:_user.BMIValue];
+    [self.user setCity:_user.city];
     
 }
 
