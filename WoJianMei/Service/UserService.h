@@ -78,6 +78,9 @@
 - (void)storeSinaUserInfo:(NSDictionary*)userInfo;
 
 - (NSDictionary*)getSinaUserInfoWithUid:(NSString*)uid;
+- (void)fechUserBySnsId:(NSString*)snsID
+               userType:(NSString*)userType
+               delegate:(id<RKObjectLoaderDelegate>)delegate;
 
 //保存用户信息到本地
 -(void)storeUserInfo;

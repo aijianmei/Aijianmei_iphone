@@ -128,6 +128,7 @@
     if (![_sinaweiboManager.sinaweibo isAuthValid]) {
         [_sinaweiboManager.sinaweibo logIn];
     }
+        
 }
 
 - (IBAction)clickQQShareButton:(UIButton *)sender {
@@ -196,6 +197,8 @@
     */
         
         
+    [[UserService defaultService] fechUserBySnsId:[userInfo objectForKey:@"id"]  userType:@"sina" delegate:self];
+        
 
         
         if (![[UserService defaultService] hasBindEmail]) {
@@ -230,7 +233,6 @@
 {
     NSLog(@"***Load objects count: %d", [objects count]);
     Result *result = [objects objectAtIndex:0];
-    PPDebug(@"The error code:%@",result.errorCode);
 
     
 }

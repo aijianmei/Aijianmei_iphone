@@ -70,7 +70,6 @@
      @"id", @"_id",
      @"title", @"_title",
      @"brief", @"_brief",
-//     @"content",@"_content"
      @"create_time", @"_create_time",
      @"img", @"_img",
      @"click", @"_click",

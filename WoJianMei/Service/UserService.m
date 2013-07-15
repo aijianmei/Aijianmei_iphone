@@ -121,7 +121,7 @@ static UserService* _defaultUserService = nil;
 {
     [self initResultMap];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSMutableDictionary *queryParams = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *queryParams = [[[NSMutableDictionary alloc] init] autorelease];
         [queryParams setObject:@"aijianmei" forKey:@"aucode"];
         [queryParams setObject:@"au_register" forKey:@"auact"];
         [queryParams setObject:usertype forKey:@"usertype"];
@@ -170,7 +170,7 @@ static UserService* _defaultUserService = nil;
 {
     [self initResultMap];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSMutableDictionary *queryParams = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *queryParams = [[[NSMutableDictionary alloc] init] autorelease];
         [queryParams setObject:@"aijianmei" forKey:@"aucode"];
         [queryParams setObject:@"au_register" forKey:@"auact"];
         [queryParams setObject:usertype forKey:@"usertype"];
@@ -199,6 +199,42 @@ static UserService* _defaultUserService = nil;
     });
 }
 
+- (void)initUserMap
+{
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    RKObjectMapping *resultMapping =[RKObjectMapping mappingForClass:[User class]];
+    [resultMapping mapKeyPathsToAttributes:
+     @"uid", @"_uid",
+     @"email", @"email",
+     @"uname", @"uname",
+     @"sex", @"errorCode",
+     @"province", @"_uid",
+     @"province", @"_uid",
+     @"province", @"_uid",
+     @"province", @"_uid",
+     @"province", @"_uid",
+     @"keywordinfo", @"keywordinfo",
+     @"body_weight", @"body_weight",
+     @"height", @"height",
+     @"age", @"age",
+     @"errorCode", @"errorCode",
+
+     
+     nil];
+    
+    
+    
+    
+    
+    
+    
+    [objectManager.mappingProvider setMapping:resultMapping forKeyPath:@""];
+    
+}
+
+/* 当用户选择使用新浪微博登陆的时候，要
+    进行判断，该新浪微博的id 是否已经是我们的用户
+ */
 
 - (void)registerUserWithSinaUserInfo:(NSDictionary*)userInfo
                             delegate:(id<RKObjectLoaderDelegate>)delegate
@@ -223,6 +259,41 @@ static UserService* _defaultUserService = nil;
         });
     });
 }
+
+
+- (void)fechUserBySnsId:(NSString*)snsID
+               userType:(NSString*)userType
+                            delegate:(id<RKObjectLoaderDelegate>)delegate
+{
+    [self initResultMap];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+   // http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_getuserinfobysnsid&snsid=2578458467&usertype=sina
+        
+        
+        NSMutableDictionary *queryParams = [[[NSMutableDictionary  alloc]init] autorelease];
+        [queryParams setObject:@"aijianmei" forKey:@"aucode"];
+        [queryParams setObject:@"au_getuserinfobysnsid" forKey:@"auact"];
+        [queryParams setObject:snsID forKey:@"snsid"];
+        [queryParams setObject:userType forKey:@"userType"];
+
+        
+        RKObjectManager *objectManager = [RKObjectManager sharedManager];
+        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
+        
+        NSLog(@"url: %@", [url absoluteString]);
+        NSLog(@"resourcePath: %@", [url resourcePath]);
+        NSLog(@"query: %@", [url query]);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
+        });
+    });
+}
+
+
+
+
 
 - (void)fetchSinaUserInfo:(NSString*)uid
                     delegate:(id<SinaWeiboRequestDelegate>)delegate
