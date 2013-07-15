@@ -54,8 +54,8 @@
 #pragma mark - clickSendButton
 -(void)clickSendButton:(UIButton *)sender{
 
-    [[UserService defaultService] postFeedbackWithContent:@"WHAT THE FUCK MA" uid:@"1" delegate:self];
-
+    [[UserService defaultService] postFeedbackWithUid:@"2"
+                                              content:@"我们可以做的更加好的！"  delegate:self];
 }
 
 

@@ -34,21 +34,30 @@
 
 + (UserService*)defaultService;
 
-///获取新版本
-- (void)queryVersion:(id<UserServiceDelegate>)delegate;
+//注册用户
+- (void)registerUserWithUsername:(NSString*)name
+                           email:(NSString*)email
+                        password:(NSString*)password
+                        usertype:(NSString*)usertype
+                           snsId:(NSString*)snsId
+                 profileImageUrl:(NSString*)profileImageUrl
+                             sex:(NSString*)sex
+                             age:(NSString*)age
+                     body_weight:(NSString*)weight
+                          height:(NSString*)height
+                         keyword:(NSString*)keyword
+                        province:(NSString*)province
+                            city:(NSString*)city
+                        delegate:(id<RKObjectLoaderDelegate>)delegate;
 
+///获取新版本
 - (void)queryVersionWithDelegate:(id<RKObjectLoaderDelegate>)delegate;
 
+//意见反馈
+- (void)postFeedbackWithUid:(NSString*)uid
+                    content:(NSString*)content
+                   delegate:(id<RKObjectLoaderDelegate>)delegate;
 
-- (void)postFeedbackWithContent:(NSString*)content
-                            uid:(NSString*)uid
-                       delegate:(id<RKObjectLoaderDelegate>)delegate;
-
-//是否绑定邮箱
-- (BOOL)hasBindEmail;
-
-//是否绑定账号
-- (BOOL)hasBindAccount;
 
 //新浪微博用户数据注册
 - (void)registerUserWithSinaUserInfo:(NSDictionary*)userInfo
@@ -69,20 +78,12 @@
 //获取保存在本地的用户信息
 -(User*)getUserInfo;
 
-//注册用户
-- (void)registerUserWithUsername:(NSString*)name
-                           email:(NSString*)email
-                        password:(NSString*)password
-                        usertype:(NSString*)usertype
-                           snsId:(NSString*)snsId
-                 profileImageUrl:(NSString*)profileImageUrl
-                             sex:(NSString*)sex
-                             age:(NSString*)age
-                     body_weight:(NSString*)weight
-                          height:(NSString*)height
-                         keyword:(NSString*)keyword
-                        province:(NSString*)province
-                            city:(NSString*)city
-                        delegate:(id<RKObjectLoaderDelegate>)delegate;
+//是否绑定邮箱
+- (BOOL)hasBindEmail;
+
+//是否绑定账号
+- (BOOL)hasBindAccount;
+
+
 
 @end

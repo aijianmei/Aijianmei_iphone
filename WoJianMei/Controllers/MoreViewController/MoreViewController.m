@@ -472,9 +472,7 @@ typedef enum {
 }
 
 -(void)likeUs{
-
     PPDebug(@"Users likes us !");
-
 }
 
 -(void)showAboutView{
@@ -485,7 +483,6 @@ typedef enum {
 }
 
 -(void)updateApplication{
-    
     [[UserService defaultService] queryVersionWithDelegate:self];
 }
 

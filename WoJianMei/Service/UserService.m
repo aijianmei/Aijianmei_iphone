@@ -36,29 +36,6 @@ static UserService* _defaultUserService = nil;
 }
 
 
-- (void)queryVersion:(id<UserServiceDelegate>)delegate{
-
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        CommonNetworkOutput *output = [FitnessNetworkRequest queryVersion];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (output.resultCode == ERROR_SUCCESS) {
-                NSDictionary* jsonDict = [output.textData JSONValue];
-                NSString *app_version = (NSString*)[jsonDict objectForKey:PARA_FITNESS_APP_VERSION];
-                NSString *app_data_version = (NSString*)[jsonDict objectForKey:PARA_FITNESS_APP_DATA_VERSION];
-                
-                NSString *app_update_title = (NSString *)[jsonDict objectForKey:PARA_FITNESS_APP_UPDATE_TITLE];
-                NSString *app_update_content = (NSString *)[jsonDict objectForKey:PARA_FITNESS_APP_UPDATE_CONTENT];
-                
-                if (delegate && [delegate respondsToSelector:@selector(queryVersionFinish:dataVersion:title:content:)]) {
-                    [delegate queryVersionFinish:app_version dataVersion:app_data_version title:app_update_title content:app_update_content];
-                }
-            }
-        });
-    });
-}
-
 - (void)initVersionMap
 {
     //获取在AppDelegate中生成的第一个RKObjectManager对象
@@ -74,7 +51,7 @@ static UserService* _defaultUserService = nil;
 }
 
 
-
+//用户版本更新
 - (void)queryVersionWithDelegate:(id<RKObjectLoaderDelegate>)delegate
 {
     [self initVersionMap];
@@ -100,10 +77,10 @@ static UserService* _defaultUserService = nil;
 }
 
 
-
-- (void)postFeedbackWithContent:(NSString*)content
-                        uid:(NSString*)uid
-                       delegate:(id<RKObjectLoaderDelegate>)delegate
+//用户反馈
+- (void)postFeedbackWithUid:(NSString*)uid
+                    content:(NSString*)content
+                   delegate:(id<RKObjectLoaderDelegate>)delegate
 {
     
     [self initResultMap];
@@ -111,17 +88,14 @@ static UserService* _defaultUserService = nil;
         
       //  http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_sendsuggestion&uid=1&content=ohmygod
         
-     //   auact=au_sendsuggestion
-     //    &uid=1&content=ohmygod
-        
         NSMutableDictionary *queryParams = [[NSMutableDictionary alloc] init];
         [queryParams setObject:@"aijianmei" forKey:@"aucode"];
         [queryParams setObject:@"au_sendsuggestion" forKey:@"auact"];
-        [queryParams setObject:@"1" forKey:@"uid"];
+        [queryParams setObject:uid forKey:@"uid"];
         [queryParams setObject:content forKey:@"content"];
         
         
-    
+        
         RKObjectManager *objectManager = [RKObjectManager sharedManager];
         RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
         
