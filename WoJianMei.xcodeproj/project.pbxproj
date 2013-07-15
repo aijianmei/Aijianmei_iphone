@@ -93,6 +93,7 @@
 		4A27B1881777F972009978C5 /* szicon_a@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A27B1701777F972009978C5 /* szicon_a@2x.png */; };
 		4A27B1891777F972009978C5 /* top_cell_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A27B1711777F972009978C5 /* top_cell_background.png */; };
 		4A27B18A1777F972009978C5 /* update_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A27B1721777F972009978C5 /* update_app@2x.png */; };
+		4A2BCF801793919D006ED7C8 /* VersionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2BCF7F1793919D006ED7C8 /* VersionInfo.m */; };
 		4A2FA97F178D076C006A1EFB /* ProvinceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FA97D178D076C006A1EFB /* ProvinceViewController.m */; };
 		4A2FA980178D076C006A1EFB /* ProvinceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA97E178D076C006A1EFB /* ProvinceViewController.xib */; };
 		4A2FA989178D0E4C006A1EFB /* CityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FA987178D0E4C006A1EFB /* CityViewController.m */; };
@@ -727,6 +728,8 @@
 		4A27B1701777F972009978C5 /* szicon_a@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "szicon_a@2x.png"; sourceTree = "<group>"; };
 		4A27B1711777F972009978C5 /* top_cell_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_cell_background.png; sourceTree = "<group>"; };
 		4A27B1721777F972009978C5 /* update_app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "update_app@2x.png"; sourceTree = "<group>"; };
+		4A2BCF7E1793919D006ED7C8 /* VersionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionInfo.h; sourceTree = "<group>"; };
+		4A2BCF7F1793919D006ED7C8 /* VersionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionInfo.m; sourceTree = "<group>"; };
 		4A2FA97C178D076C006A1EFB /* ProvinceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvinceViewController.h; sourceTree = "<group>"; };
 		4A2FA97D178D076C006A1EFB /* ProvinceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvinceViewController.m; sourceTree = "<group>"; };
 		4A2FA97E178D076C006A1EFB /* ProvinceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProvinceViewController.xib; sourceTree = "<group>"; };
@@ -1592,6 +1595,8 @@
 				C6E027CB177862E100A7BA90 /* ArticleService.m */,
 				C6E027CC177862E100A7BA90 /* UserService.h */,
 				C6E027CD177862E100A7BA90 /* UserService.m */,
+				4A2BCF7E1793919D006ED7C8 /* VersionInfo.h */,
+				4A2BCF7F1793919D006ED7C8 /* VersionInfo.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -4294,6 +4299,7 @@
 				4AFE7FCA17928530006B5310 /* FTCoreTextStyle.m in Sources */,
 				4AFE7FCB17928530006B5310 /* FTCoreTextView.m in Sources */,
 				4AFE7FCF17928530006B5310 /* FTCoreTextAppDelegate.m in Sources */,
+				4A2BCF801793919D006ED7C8 /* VersionInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

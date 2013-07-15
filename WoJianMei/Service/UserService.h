@@ -37,8 +37,8 @@
 ///获取新版本
 - (void)queryVersion:(id<UserServiceDelegate>)delegate;
 
-// 用户登陆
-- (void)login:(id<UserServiceDelegate>)delegate;
+- (void)queryVersionWithDelegate:(id<RKObjectLoaderDelegate>)delegate;
+
 
 //是否绑定邮箱
 - (BOOL)hasBindEmail;

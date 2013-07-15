@@ -15,6 +15,8 @@
 #import "DeviceDetection.h"
 #import "AppDelegate.h"
 //#import "MobClick.h"
+#import "Result.h"
+#import "VersionInfo.h"
 
 
 
@@ -484,8 +486,7 @@ typedef enum {
 
 -(void)updateApplication{
     
-    [[UserService defaultService] queryVersion:self];
-    PPDebug(@"Users are trying to upgrad the app");
+    [[UserService defaultService] queryVersionWithDelegate:self];
 }
 
 -(void)recommmendedApps{
@@ -595,6 +596,30 @@ typedef enum {
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+
+#pragma mark -
+#pragma mark - RKObjectLoaderDelegate
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+    NSLog(@"Response code: %d", [response statusCode]);
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", [error localizedDescription]);
+}
+
+- (void)requestDidStartLoad:(RKRequest *)request
+{
+    NSLog(@"Start load request...");
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
+    NSLog(@"***Load objects count: %d", [objects count]);
+    VersionInfo *versionInfo =[objects objectAtIndex:0];
+    NSLog(@"当前版本是:%@;下载URL:%@",versionInfo.version,versionInfo.downloadurl);
 }
 
  @end

@@ -127,34 +127,7 @@
 }
 
 
-+ (CommonNetworkOutput*)login{
-    
-//    CommonNetworkOutput* output = [[[CommonNetworkOutput alloc] init] autorelease];
-//    
-//    ConstructURLBlock constructURLHandler = ^NSString *(NSString *baseURL)  {
-//        NSString* str = [NSString stringWithString:baseURL];
-//        return str;
-//    };
-//    
-//    FitnessNetworkResponseBlock responseHandler = ^(NSDictionary* jsonDictionary, NSData* data, int resultCode) {
-//        return;
-//    };
-//    
-//    return [FitnessNetworkRequest sendRequest:URL_FITNESS_QUERY_VERSION
-//                          constructURLHandler:constructURLHandler
-//                              responseHandler:responseHandler
-//                                 outputFormat:FORMAT_FITNESS_JSON
-//                                       output:output];
-//    
-//    NSLog(@"%@ the url of the update ",[[FitnessNetworkRequest sendRequest:URL_FITNESS_QUERY_VERSION
-//                                                       constructURLHandler:constructURLHandler
-//                                                           responseHandler:responseHandler
-//                                                              outputFormat:FORMAT_FITNESS_JSON
-//                                                                    output:output] description]);
-//
-//
 
-}
 
 
 
