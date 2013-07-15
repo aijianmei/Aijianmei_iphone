@@ -619,7 +619,10 @@ typedef enum {
 {
     NSLog(@"***Load objects count: %d", [objects count]);
     VersionInfo *versionInfo =[objects objectAtIndex:0];
-    NSLog(@"当前版本是:%@;下载URL:%@",versionInfo.version,versionInfo.downloadurl);
+    NSLog(@"当前版本是:%@,下载URL:%@,标题:%@,更新内容:%@",      versionInfo.version,
+          versionInfo.downloadurl,
+          versionInfo.updateTitle,
+          versionInfo.updateContent);
 }
 
  @end

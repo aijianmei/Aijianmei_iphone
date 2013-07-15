@@ -59,6 +59,21 @@ static UserService* _defaultUserService = nil;
     });
 }
 
+- (void)initVersionMap
+{
+    //获取在AppDelegate中生成的第一个RKObjectManager对象
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    //将json映射到class
+    RKObjectMapping *articleMapping =[RKObjectMapping mappingForClass:[VersionInfo class]];
+    [articleMapping mapKeyPathsToAttributes:
+     @"version", @"version",
+     @"downloadurl",@"downloadurl",
+     @"app_update_title",@"updateTitle",
+     @"app_update_content",@"updateContent",nil];
+    [objectManager.mappingProvider setMapping:articleMapping forKeyPath:@""];
+}
+
+
 
 - (void)queryVersionWithDelegate:(id<RKObjectLoaderDelegate>)delegate
 {
@@ -86,6 +101,43 @@ static UserService* _defaultUserService = nil;
 
 
 
+- (void)postFeedbackWithContent:(NSString*)content
+                        uid:(NSString*)uid
+                       delegate:(id<RKObjectLoaderDelegate>)delegate
+{
+    
+    [self initResultMap];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+      //  http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_sendsuggestion&uid=1&content=ohmygod
+        
+     //   auact=au_sendsuggestion
+     //    &uid=1&content=ohmygod
+        
+        NSMutableDictionary *queryParams = [[NSMutableDictionary alloc] init];
+        [queryParams setObject:@"aijianmei" forKey:@"aucode"];
+        [queryParams setObject:@"au_sendsuggestion" forKey:@"auact"];
+        [queryParams setObject:@"1" forKey:@"uid"];
+        [queryParams setObject:content forKey:@"content"];
+        
+        
+    
+        RKObjectManager *objectManager = [RKObjectManager sharedManager];
+        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
+        
+        NSLog(@"url: %@", [url absoluteString]);
+        NSLog(@"resourcePath: %@", [url resourcePath]);
+        NSLog(@"query: %@", [url query]);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
+        });
+    });
+}
+
+
+
+
 - (void)initResultMap
 {
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -94,18 +146,6 @@ static UserService* _defaultUserService = nil;
     [objectManager.mappingProvider setMapping:resultMapping forKeyPath:@""];
 
 }
-- (void)initVersionMap
-{
-    //获取在AppDelegate中生成的第一个RKObjectManager对象
-    RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    //将json映射到class
-    RKObjectMapping *articleMapping =[RKObjectMapping mappingForClass:[VersionInfo class]];
-    [articleMapping mapKeyPathsToAttributes:
-     @"version", @"version",
-     @"downloadurl",@"downloadurl",nil];
-    [objectManager.mappingProvider setMapping:articleMapping forKeyPath:@""];
-}
-
 
 - (void)registerUserWithUsername:(NSString*)name
                            email:(NSString*)email

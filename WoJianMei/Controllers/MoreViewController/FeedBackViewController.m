@@ -9,6 +9,7 @@
 #import "FeedBackViewController.h"
 #import "User.h"
 #import "UserService.h"
+#import "Result.h"
 
 @interface FeedBackViewController ()
 
@@ -38,7 +39,7 @@
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
     [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
-    [self setNavigationRightButton:@"发送" imageName:@"top_bar_commonButton.png" action:@selector(clickBack:)];
+    [self setNavigationRightButton:@"发送" imageName:@"top_bar_commonButton.png" action:@selector(clickSendButton:)];
     
     User *user =[[UserService defaultService] user];
     [_descriptionTextField setDelegate:self];
@@ -48,6 +49,17 @@
     
     
 }
+
+#pragma mark -
+#pragma mark - clickSendButton
+-(void)clickSendButton:(UIButton *)sender{
+
+    [[UserService defaultService] postFeedbackWithContent:@"WHAT THE FUCK MA" uid:@"1" delegate:self];
+
+}
+
+
+
 #pragma mark -
 #pragma mark - UITextFieldDelegate
 
@@ -67,5 +79,31 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+#pragma mark -
+#pragma mark - RKObjectLoaderDelegate
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+    NSLog(@"Response code: %d", [response statusCode]);
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", [error localizedDescription]);
+}
+
+- (void)requestDidStartLoad:(RKRequest *)request
+{
+    NSLog(@"Start load request...");
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
+    NSLog(@"***Load objects count: %d", [objects count]);
+    Result *result = [objects objectAtIndex:0];
+    PPDebug(@"The error code : %@",result.errorCode);
+    
+}
+
 
 @end

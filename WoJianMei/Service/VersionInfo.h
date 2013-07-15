@@ -10,9 +10,7 @@
 
 @interface VersionInfo : NSObject
 {
-
 }
-
 @property (nonatomic, retain) NSString *version;
 @property (nonatomic, retain) NSString *downloadurl;
 @property (nonatomic, retain) NSString *updateTitle;

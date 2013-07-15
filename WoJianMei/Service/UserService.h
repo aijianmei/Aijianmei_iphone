@@ -40,6 +40,10 @@
 - (void)queryVersionWithDelegate:(id<RKObjectLoaderDelegate>)delegate;
 
 
+- (void)postFeedbackWithContent:(NSString*)content
+                            uid:(NSString*)uid
+                       delegate:(id<RKObjectLoaderDelegate>)delegate;
+
 //是否绑定邮箱
 - (BOOL)hasBindEmail;
 
