@@ -7,13 +7,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "WoJianMei/NetWorkRequest/FitnessNetworkRequest.m"
-         timestampString = "395545151.6742"
+         filePath = "WoJianMei/Controllers/WorkoutViewController/LoginViewController.m"
+         timestampString = "395748729.653067"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "85"
-         endingLineNumber = "85"
-         landmarkName = "+sendRequest:constructURLHandler:responseHandler:outputFormat:output:"
+         startingLineNumber = "320"
+         endingLineNumber = "320"
+         landmarkName = "-objectLoader:didLoadObjects:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

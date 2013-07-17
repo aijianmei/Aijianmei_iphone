@@ -24,7 +24,7 @@
 
 @class AppDelegate;
 
-@interface MoreViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UserServiceDelegate,RKObjectLoaderDelegate>
+@interface MoreViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UserServiceDelegate,RKObjectLoaderDelegate,UIAlertViewDelegate>
 
 {
  

@@ -396,6 +396,7 @@ static UserService* _defaultUserService = nil;
                                        delegate:delegate];
 }
 
+//保存新浪微博的信息
 - (void)storeSinaUserInfo:(NSDictionary*)userInfo
 {
     NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);
@@ -403,14 +404,21 @@ static UserService* _defaultUserService = nil;
     [[NSUserDefaults standardUserDefaults] setObject:userData forKey:[[userInfo objectForKey:@"id"] stringValue]];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-
+//读取新浪微博的信息
 - (NSDictionary*)getSinaUserInfoWithUid:(NSString *)uid
 {
     NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:uid];
     NSDictionary *userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
     return userInfo;
 }
-
+//删除新浪微博的信息
+- (void)deleteSinaUserInfoWithUid:(NSString *)uid
+{
+    [[NSUserDefaults standardUserDefaults]  removeObjectForKey:uid];
+    NSLog(@"######Delete sinaweibo account with ID :%@",uid);
+    [[SinaWeiboManager sharedManager] removeAuthData];
+    
+}
 
 
 
@@ -420,11 +428,27 @@ static UserService* _defaultUserService = nil;
     [[NSUserDefaults standardUserDefaults] setObject:userData forKey:uid];
 }
 
+
 -(User*)getUserInfoByUid:(NSString *)uid
 {
     NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:uid];
     User *user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     return user;
+}
+
+-(void)deleteUserByUid:(NSString *)uid
+{
+    [self deleteSinaUserInfoWithUid:self.user.sinaUserId];
+    
+    if ([self getUserInfoByUid:uid]) {
+        [[NSUserDefaults standardUserDefaults]  removeObjectForKey:uid];
+        NSLog(@"####Delete User with ID :%@ Successfully!",uid);
+    }
+    
+    
+    
+    [self setUser:nil];
 }
 
 -(NSMutableDictionary*)createUserInfo:(NSString *)userName

@@ -150,8 +150,14 @@ enum errorCode {
         [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
     
        //授权不可用的时候,用户要重新登录
-        if ([_sinaweiboManager.sinaweibo isAuthValid]) {
-            [self performSegueWithIdentifier:@"returnMyselfSegue" sender:self];
+        if ([_sinaweiboManager.sinaweibo isAuthValid])
+        {
+            
+            PPDebug(@"%@",_sinaweiboManager.sinaweibo.userID);
+            
+            [[UserService defaultService]  fechUserBySnsId:_sinaweiboManager.sinaweibo.userID userType:@"sina" delegate:self];
+
+            
 
         }else if(![_sinaweiboManager.sinaweibo isAuthValid]){
             [_sinaweiboManager.sinaweibo logIn];
@@ -225,11 +231,12 @@ enum errorCode {
     */
       [[UserService defaultService] fechUserBySnsId:[userInfo objectForKey:@"id"]  userType:@"sina" delegate:self];
         
+        [[UserService defaultService]setUser:nil];
+        
         if (![[UserService defaultService] hasBindEmail])
         {
             [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
        }
-        
         else{
            [self performSegueWithIdentifier:@"returnMyselfSegue" sender:self];
         }
@@ -260,52 +267,55 @@ enum errorCode {
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
      NSLog(@"***Load objects count: %d", [objects count]);
-     NSObject *objectClass =  [objects objectAtIndex:0];
-     Result *result =[objects objectAtIndex:0];
-    [self showActivity];
+    NSObject *result =[objects objectAtIndex:0];
+    [self hideActivity];
+    
 
-    
-    /* 
-     10002 用户密码错误
-     */
-    
-    int errocde = [result.errorCode integerValue];
-    
-    if (WRONG_NAME_PASSWORD == errocde){
-        [UIUtils alert:@"用户名或密码 错误"];
-        [_usernameField becomeFirstResponder];
-        [_passwordField becomeFirstResponder];
-        return;
-    }
-
-    if (ERROR_SUCCESS ==errocde)
+    if ([result isMemberOfClass:[Result class]])
     {
-        PPDebug(@"注册成功,用户ID:%@",result.uid);
-        if ([objectClass isMemberOfClass:[Result class]])
-        {
-            Result *result =[objects objectAtIndex:0];
-                if ([result.uid integerValue] !=0 && [result.errorCode integerValue] ==0)
-                {
-                //正式创建新用户
-                User *user = [UserManager createUserWithUserId:result.uid sinaUserId:nil qqUserId:nil userType:self.userType name:nil profileImageUrl:nil gender:nil email:nil password:nil];
-                [[UserService defaultService] setUser:user];
-                [self dismissViewControllerAnimated:YES completion:^{
-                    // 调用该方法进入用户资料界面
-                    if (delegate) {
-                        [delegate pushToMyselfViewController:self];
-                    }
-                  }];
-                }
-         }
-
+        //使用用户登陆接口，只是需要填写 邮箱以及密码
+        /*
+         10002 用户密码错误
+         */
+        Result *result =[objects objectAtIndex:0];
+        int errocde = [result.errorCode integerValue];
         
-    //
-        if ([objectClass isMemberOfClass:[User class]]) {
+        if (WRONG_NAME_PASSWORD == errocde)
+        {
+            [UIUtils alert:@"用户名或密码 错误"];
+            [_usernameField becomeFirstResponder];
+            [_passwordField becomeFirstResponder];
+            return;
+        }
+        
+        if (ERROR_SUCCESS ==errocde)
+        {
+            PPDebug(@"注册成功,用户ID:%@",result.uid);
+            
+            Result *result =[objects objectAtIndex:0];
+            if ([result.uid integerValue] !=0 && [result.errorCode integerValue] ==0)
+                {
+                    //正式创建新用户
+                    User *user = [UserManager createUserWithUserId:result.uid sinaUserId:nil qqUserId:nil userType:self.userType name:nil profileImageUrl:nil gender:nil email:nil password:nil];
+                    [[UserService defaultService] setUser:user];
+                    [self dismissViewControllerAnimated:YES completion:^{
+                        // 调用该方法进入用户资料界面
+                        if (delegate) {
+                            [delegate pushToMyselfViewController:self];
+                        }
+                    }];
+                }
+            
+         }
+    }
+    
+    
+    if ([result isMemberOfClass:[User class]])
+    {
             
             User *user  = [objects objectAtIndex:0];
             //把用户存取下来
             [[UserService defaultService] setUser:user];
-            
             
             if (![[UserService defaultService] hasBindEmail])
             {
@@ -316,10 +326,8 @@ enum errorCode {
                 [self performSegueWithIdentifier:@"returnMyselfSegue" sender:self];
             }
         }
-        //
-
     
-    }
+    
 }
 
 

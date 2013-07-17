@@ -85,6 +85,8 @@
 - (void)removeAuthData
 {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"SinaWeiboAuthData"];
+     NSLog(@"######Delete sinaweibo account Successfully!!!");
+
 }
 
 

@@ -499,6 +499,43 @@ typedef enum {
 
 }
 
+
+#pragma mark --alretViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    switch (buttonIndex) {
+        case 0:
+        {
+            PPDebug(@"0");
+        }
+            break;
+        case 1:
+        {
+            PPDebug(@"1");
+            
+            NSString *userId = [[[UserService defaultService] user] uid];
+            NSString *uid  =nil;
+            
+            if (userId)
+            {
+            uid = [[[NSString  alloc]initWithString:userId] autorelease];
+            }
+             
+            if ([uid integerValue]) {
+                [[UserService defaultService] deleteUserByUid:uid];
+            }
+        }
+            break;
+
+            
+        default:
+            break;
+    }
+
+
+}
+
+
 #pragma mark --actionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {

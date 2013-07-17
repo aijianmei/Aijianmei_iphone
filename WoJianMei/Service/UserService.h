@@ -94,6 +94,9 @@
 - (void)storeSinaUserInfo:(NSDictionary*)userInfo;
 
 - (NSDictionary*)getSinaUserInfoWithUid:(NSString*)uid;
+- (void)deleteSinaUserInfoWithUid:(NSString *)uid;
+
+
 - (void)fechUserBySnsId:(NSString*)snsID
                userType:(NSString*)userType
                delegate:(id<RKObjectLoaderDelegate>)delegate;
@@ -102,6 +105,10 @@
 -(void)storeUserInfoByUid:(NSString *)uid;
 //获取保存在本地的用户信息
 -(User*)getUserInfoByUid:(NSString *)uid;
+
+//删除在本地的用户信息
+-(void)deleteUserByUid:(NSString *)uid;
+
 
 -(NSMutableDictionary*)createUserInfo:(NSString *)userName;
 
