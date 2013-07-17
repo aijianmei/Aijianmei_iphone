@@ -11,11 +11,12 @@
 #import "MyselfTableViewCell.h"
 #import "User.h"
 #import "UserService.h"
+#import <RestKit/RestKit.h>
 
 @class User;
 
 
-@interface MyselfViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,MyselfTableViewCellDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
+@interface MyselfViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,MyselfTableViewCellDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UIActionSheetDelegate,RKObjectLoaderDelegate>
 
 {
     
@@ -25,7 +26,6 @@
     UIView *myFooterView;
     UILabel *_userNameLabel;
     UILabel *_descriptionLabel;
-    UILabel *_userGenderLabel;
     NSDictionary *_sina_userInfo;
     NSDictionary *user_info;
     User *_user;
@@ -41,10 +41,10 @@
 @property (nonatomic,retain) UIView *myHeaderView;
 @property (nonatomic,retain) UILabel *userNameLabel;
 @property (nonatomic,retain) UILabel *descriptionLabel;
-@property (nonatomic,retain) UILabel *userGenderLabel;
 @property (nonatomic,retain) NSDictionary *sina_userInfo;
 @property (nonatomic,retain) User *user;
 
 - (void)drawRect:(CGRect)rect;
+
 
 @end

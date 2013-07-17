@@ -37,7 +37,6 @@
 @synthesize myHeaderView =_myHeaderView;
 @synthesize userNameLabel=_userNameLabel;
 @synthesize descriptionLabel = _descriptionLabel;
-@synthesize userGenderLabel = _userGenderLabel;
 @synthesize sina_userInfo =_sina_userInfo;
 @synthesize user =_user;
 
@@ -51,7 +50,6 @@
     [_myHeaderView release];
     [_userNameLabel release];
     [_descriptionLabel release];
-    [_userGenderLabel release];
     [_sina_userInfo release],_sina_userInfo = nil;
     [_user release];
     [super dealloc];
@@ -68,7 +66,6 @@
     self.myHeaderView =nil;
     self.userNameLabel =nil;
     self.descriptionLabel =nil;
-    self.userGenderLabel =nil;
     
 }
 
@@ -77,28 +74,7 @@
     [super viewDidAppear:animated];
 }
 
-- (void)upgradeUI
-{
-
-    [self.headerVImageButton setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
-
-    [self.backGroundImageView setImageWithURL:[NSURL URLWithString:self.user.avatarBackGroundImage] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
-    
-    NSString *userName = self.user.name;
-    [self.userNameLabel setText:userName];
-     
-    NSString *description = [self.user description];
-
-    [self.descriptionLabel setText:description];
-    
-   [[UserService defaultService] setUser:_user];
-
-    
-}
-
-
 -(void)addHeaderView{
-
     self.myHeaderView  =[[UIView alloc]init];
     [_myHeaderView setFrame: CGRectMake(0, 0, 320, 200)];
     [self.dataTableView setTableHeaderView:self.myHeaderView];
@@ -106,19 +82,9 @@
 }
 
 -(void)addAvatarBGImageView{
-
-    
     self.backGroundImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160)];
     [self.backGroundImageView setImageWithURL:[NSURL URLWithString:self.user.avatarBackGroundImage] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
-    
-    
-    
     [self.myHeaderView addSubview:_backGroundImageView];
-    
-//    _avatarImageView =[[UIImageView alloc]initWithFrame:_headerVImageButton.frame];
-//    [_myHeaderView addSubview:_avatarImageView];
-    
-    
 }
 
 
@@ -193,30 +159,31 @@
     [self addDescriptionLabel];
 }
 
-- (void)setUserInfo
-{
-    //获取当前用户信息
-    self.user = [[UserService defaultService] user];
-   
-     NSMutableArray *buttonTitleArray =[NSArray arrayWithObjects:@"增肌",@"减肥",@"增重",@"认识朋友",@"约炮",@"认识好朋友",@"关注美好生活", nil];
+
+-(void)loadUserData{
     
-    self.user.labelsArray = buttonTitleArray;
-    if ([_user.gender isEqualToString:@"m"]) {
-        [self.user setGender:@"男"];
+    NSString *uid = [[[UserService defaultService] user] uid];
+    
+    //本地数据存在的时候直接读取本地数据;
+    if ([[UserService defaultService] getUserInfoByUid:uid]) {
+        self.user = [[UserService defaultService] getUserInfoByUid:uid];
+        [self upgradeUI];
 
     }else{
-        [self.user setGender:@"女"];
+    //本地数据不存在，用户第一次登陆的时候，就往服务器拉数据
+         [[UserService defaultService] fecthUserInfoWithUid:uid delegate:self];
     }
-    [self.user setProfileImageUrl:@"profile_backgroud.png"];
-    [self.user setAvatarBackGroundImage:@"profile_backgroud.png"];
+}
 
-    [self.user setAge:_user.age];
-    [self.user setHeight:_user.height];
-    [self.user setWeigth:_user.weigth];
-    [self.user setBMIValue:_user.BMIValue];
-    [self.user setCity:_user.city];
-    [self.user setDescription:@" How are you doing guys "];
+- (void)upgradeUI
+{
     
+    [self.headerVImageButton setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
+    [self.backGroundImageView setImageWithURL:[NSURL URLWithString:self.user.avatarBackGroundImage] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
+    [self.userNameLabel setText:_user.name];
+    [self.descriptionLabel setText:_user.description];
+    
+    [dataTableView reloadData];
 }
 
 - (void)viewDidLoad
@@ -232,11 +199,9 @@
     [self showBackgroundImage];
 
     [self initUI];
-    [self setUserInfo];
-    [self upgradeUI];
     
+    [self loadUserData];
     
-        
 }
 
 
@@ -256,12 +221,6 @@
     // Return the number of rows in the section.
 
     switch (section) {
-//        case 0:
-//            return 1;
-//            break;
-//        case 1:
-//            return 1;
-//            break;
         case 0:
             return 1;
             break;
@@ -304,12 +263,6 @@
     accessoryViewButton.userInteractionEnabled = YES;
     
     switch (indexPath.section) {
-//        case 0:
-//            [cell.textLabel setText:@"我的健身历程"];
-//            break;
-//        case 1:
-//            [cell.textLabel setText:@"健身小助手"];
-//            break;
         case 0:
             [cell.textLabel setText:@"标签"];
             
@@ -344,7 +297,15 @@
                 case 0:
                 {
                    ///性别
-                    [accessoryViewButton setTitle:self.user.gender forState:UIControlStateNormal];
+                    NSString *gender;
+                    if ([self.user.gender isEqualToString:@"0"])
+                    {
+                        gender = [NSString stringWithFormat:@"男"];
+                    }else{
+                        gender = [NSString stringWithFormat:@"女"];
+
+                    }
+                    [accessoryViewButton setTitle:gender forState:UIControlStateNormal];
                 
                 }
                     break;
@@ -364,7 +325,7 @@
                 case 3:
                 {
                     //体重
-                    [accessoryViewButton setTitle:self.user.weigth forState:UIControlStateNormal];
+                    [accessoryViewButton setTitle:self.user.weight forState:UIControlStateNormal];
                 }
                     break;
                 case 4:
@@ -386,10 +347,11 @@
             [cell.textLabel setText:@"城市"];
         
             /////accessoryViewButton
-            [accessoryViewButton setTitle:self.user.city forState:UIControlStateNormal];
+            NSString *userLocation = [NSString stringWithFormat:@"%@%@",self.user.province,self.user.city];
+            
+            [accessoryViewButton setTitle:userLocation forState:UIControlStateNormal];
             [accessoryViewButton setFrame:CGRectMake(0, 0, 100, 40)];
             [accessoryViewButton setBackgroundImage:[UIImage imageNamed:@"Label_Type.png"] forState:UIControlStateNormal];
-            //            [accessoryViewButton setImage:mySelectedImage forState:UIControlStateHighlighted];
             cell.accessoryView = accessoryViewButton;
             break;
             
@@ -506,8 +468,6 @@
     [self.navigationController  dismissViewControllerAnimated:YES completion:^{
         
         [self.headerVImageButton setImage:image forState:UIControlStateNormal];
-//         self.user.avatarImage = image;
-        [self storeUserInfo];
         
     }];
   }
@@ -519,19 +479,6 @@
     [self.navigationController dismissModalViewControllerAnimated:YES];
     
 }
-
-
-
-
--(void)storeUserInfo{
-    
-     NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.user];
-    [[NSUserDefaults standardUserDefaults] setObject:userData forKey:USER];
-    
-    [self upgradeUI];
-    
-}
-
 
 #pragma mark --actionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -566,6 +513,39 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+#pragma mark -
+#pragma mark - RKObjectLoaderDelegate
+
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+    NSLog(@"Response code: %d", [response statusCode]);
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", [error localizedDescription]);
+}
+
+- (void)requestDidStartLoad:(RKRequest *)request
+{
+    NSLog(@"Start load request...");
+    [self showActivityWithText:@"数据加载中..."];
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
+    
+    NSLog(@"***Load objects count: %d", [objects count]);
+    [self hideActivity];
+    
+     NSObject *object = [objects objectAtIndex:0];
+    if ([object isMemberOfClass:[User class]]) {
+         User *user = [objects objectAtIndex:0];
+        [[UserService defaultService] setUser:user];
+        [[UserService defaultService] storeUserInfoByUid:user.uid];
+        self.user =[[UserService defaultService] user];
+        [self upgradeUI];
+    }
 }
 
 

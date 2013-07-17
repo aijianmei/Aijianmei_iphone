@@ -29,7 +29,7 @@
     NSString *_age;
     NSString *_height;
     
-    NSString *_weigth;
+    NSString *_weight;
     NSString *_BMIValue;
     NSString *_province;
     NSString *_city;
@@ -56,7 +56,7 @@
 
 @property (retain, nonatomic)  NSString *age;
 @property (retain, nonatomic)  NSString *height;
-@property (retain, nonatomic)  NSString *weigth;
+@property (retain, nonatomic)  NSString *weight;
 @property (retain, nonatomic)  NSString *BMIValue;
 @property (retain, nonatomic)  NSString *province;
 

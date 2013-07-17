@@ -20,6 +20,12 @@
 #define kAppSecret @"f94d063d06365972215c62acaadf95c3"
 #define KAppRedirectURI @"http://aijianmei.com"
 
+
+enum errorCode {
+    ERROR_SUCCESS =0,
+    WRONG_NAME_PASSWORD =10002
+};
+
 @interface LoginViewController ()
 
 @end
@@ -236,6 +242,8 @@
 #pragma mark - RKObjectLoaderDelegate
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
     NSLog(@"Response code: %d", [response statusCode]);
+    [self showActivityWithText:@"数据加载完成"];
+
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
@@ -246,43 +254,72 @@
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
+    [self showActivityWithText:@"数据加载中"];
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
-    NSLog(@"***Load objects count: %d", [objects count]);
-    
+     NSLog(@"***Load objects count: %d", [objects count]);
      NSObject *objectClass =  [objects objectAtIndex:0];
-    
-    if ([objectClass isMemberOfClass:[Result class]]) {
-        Result *result =[objects objectAtIndex:0];
-        if (result.uid) {
-            [self dismissViewControllerAnimated:YES completion:^{
-             // 调用该方法进入用户资料界面
-                if (delegate) {
-                    [delegate pushToMyselfViewController:self];
-                }
-            }];
-        }
-    }
-    
-    if ([objectClass isMemberOfClass:[User class]]) {
+     Result *result =[objects objectAtIndex:0];
+    [self showActivity];
 
-        User *user  = [objects objectAtIndex:0];
-        //把用户存取下来
-        [[UserService defaultService] setUser:user];
-        
-        
-        if (![[UserService defaultService] hasBindEmail])
+    
+    /* 
+     10002 用户密码错误
+     */
+    
+    int errocde = [result.errorCode integerValue];
+    
+    if (WRONG_NAME_PASSWORD == errocde){
+        [UIUtils alert:@"用户名或密码 错误"];
+        [_usernameField becomeFirstResponder];
+        [_passwordField becomeFirstResponder];
+        return;
+    }
+
+    if (ERROR_SUCCESS ==errocde)
+    {
+        PPDebug(@"注册成功,用户ID:%@",result.uid);
+        if ([objectClass isMemberOfClass:[Result class]])
         {
-            [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
-        }
-        
-        else{
-            [self performSegueWithIdentifier:@"returnMyselfSegue" sender:self];
-        }
-    }
+            Result *result =[objects objectAtIndex:0];
+                if ([result.uid integerValue] !=0 && [result.errorCode integerValue] ==0)
+                {
+                //正式创建新用户
+                User *user = [UserManager createUserWithUserId:result.uid sinaUserId:nil qqUserId:nil userType:self.userType name:nil profileImageUrl:nil gender:nil email:nil password:nil];
+                [[UserService defaultService] setUser:user];
+                [self dismissViewControllerAnimated:YES completion:^{
+                    // 调用该方法进入用户资料界面
+                    if (delegate) {
+                        [delegate pushToMyselfViewController:self];
+                    }
+                  }];
+                }
+         }
 
+        
+    //
+        if ([objectClass isMemberOfClass:[User class]]) {
+            
+            User *user  = [objects objectAtIndex:0];
+            //把用户存取下来
+            [[UserService defaultService] setUser:user];
+            
+            
+            if (![[UserService defaultService] hasBindEmail])
+            {
+                [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
+            }
+            
+            else{
+                [self performSegueWithIdentifier:@"returnMyselfSegue" sender:self];
+            }
+        }
+        //
+
+    
+    }
 }
 
 

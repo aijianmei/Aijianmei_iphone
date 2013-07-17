@@ -105,7 +105,7 @@
         case 3:
         {
             NSLog(@"weight textfield");
-            user.weigth = textField.text;
+            user.weight = textField.text;
         }
             break;
             
@@ -150,7 +150,7 @@
             int nt = 1;
             
             NSString *newValue = [NSString stringWithFormat:@"%i",value +nt];
-            user.weigth =newValue;
+            user.weight =newValue;
 
         }
             break;
@@ -195,7 +195,7 @@
             int nt = -1;
             
             NSString *newValue = [NSString stringWithFormat:@"%i",value +nt];
-            user.weigth =newValue;
+            user.weight =newValue;
         }
             break;
             

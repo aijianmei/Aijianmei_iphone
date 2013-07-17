@@ -30,7 +30,7 @@ static UserService* _defaultUserService = nil;
 {
     if (_defaultUserService == nil) {
             _defaultUserService = [[UserService alloc] init];
-        [_defaultUserService getUserInfo];
+        [_defaultUserService getUserInfoByUid:@"0"];
     }
     return _defaultUserService;
 }
@@ -143,7 +143,7 @@ static UserService* _defaultUserService = nil;
                   delegate:(id<RKObjectLoaderDelegate>)delegate
 {
     
-    [self initResultMap];
+    [self initUserMap];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSMutableDictionary *queryParams = [[[NSMutableDictionary alloc] init] autorelease];
         
@@ -414,15 +414,15 @@ static UserService* _defaultUserService = nil;
 
 
 
--(void)storeUserInfo
+-(void)storeUserInfoByUid:(NSString *)uid
 {
     NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.user];
-    [[NSUserDefaults standardUserDefaults] setObject:userData forKey:@"user"];
+    [[NSUserDefaults standardUserDefaults] setObject:userData forKey:uid];
 }
 
--(User*)getUserInfo
+-(User*)getUserInfoByUid:(NSString *)uid
 {
-    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:@"user"];
+    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:uid];
     User *user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
     return user;
 }

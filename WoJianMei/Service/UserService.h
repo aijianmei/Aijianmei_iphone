@@ -99,10 +99,9 @@
                delegate:(id<RKObjectLoaderDelegate>)delegate;
 
 //保存用户信息到本地
--(void)storeUserInfo;
-
+-(void)storeUserInfoByUid:(NSString *)uid;
 //获取保存在本地的用户信息
--(User*)getUserInfo;
+-(User*)getUserInfoByUid:(NSString *)uid;
 
 -(NSMutableDictionary*)createUserInfo:(NSString *)userName;
 

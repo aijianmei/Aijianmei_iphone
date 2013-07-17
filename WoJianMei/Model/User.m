@@ -25,7 +25,7 @@
 #define LabelsArray    @"labelsArray"
 #define Age            @"age"
 #define Height         @"height"
-#define Weigth         @"weigth"
+#define Weight         @"weight"
 #define BmiValue       @"BMIValue"
 #define City           @"city"
 
@@ -51,7 +51,7 @@
 
 @synthesize age=_age;
 @synthesize height =_height;
-@synthesize weigth =_weigth;
+@synthesize weight =_weight;
 @synthesize BMIValue =_BMIValue;
 @synthesize city =_city;
 
@@ -87,7 +87,7 @@
         
         self.age =[aDecoder decodeObjectForKey:Age];
         self.height =[aDecoder decodeObjectForKey:Height];
-        self.weigth =[aDecoder decodeObjectForKey:Weigth];
+        self.weight =[aDecoder decodeObjectForKey:Weight];
         self.BMIValue =[aDecoder decodeObjectForKey:BmiValue];
         self.city =[aDecoder decodeObjectForKey:City];
     }
@@ -118,7 +118,7 @@
     
     [aCoder encodeObject:self.age forKey:Age];
     [aCoder encodeObject:self.height forKey:Height];
-    [aCoder encodeObject:self.weigth forKey:Weigth];
+    [aCoder encodeObject:self.weight forKey:Weight];
     [aCoder encodeObject:self.BMIValue forKey:BmiValue];
     [aCoder encodeObject:self.city forKey:City];
 }
@@ -144,7 +144,7 @@
     
     [_age release];
     [_height release];
-    [_weigth release];
+    [_weight release];
     [_BMIValue release];
     [_city release];
 

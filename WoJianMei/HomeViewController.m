@@ -143,11 +143,16 @@ typedef enum CONTENT_TYPE {
         currentInUseStoryBoard = iPadStroyBoard;
     }
 
+    User *user = [[UserService defaultService] user];
     
-    MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
-    myselfVC.title = @"我";
-    [self.navigationController pushViewController:myselfVC animated:YES];
-
+    if (user.uid) {
+        MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
+        myselfVC.title = @"我";
+        [self.navigationController pushViewController:myselfVC animated:YES];
+    
+    }else{
+        [self showLoginView];
+    }
 }
 
 
@@ -202,14 +207,12 @@ typedef enum CONTENT_TYPE {
         currentInUseStoryBoard = iPadStroyBoard;
     }
     
-    if (![[UserService defaultService] hasBindEmail]){
+    if (![[UserService defaultService] user]){
         
         self.loginViewController = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         UINavigationController *nv = [[[UINavigationController alloc]initWithRootViewController:_loginViewController] autorelease];
         [self.navigationController presentModalViewController:nv animated:YES];
-        
         self.loginViewController.delegate = self;
-        
     }
 }
 

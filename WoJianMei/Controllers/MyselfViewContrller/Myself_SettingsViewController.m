@@ -411,7 +411,17 @@
                     //sex
                 case 0:
                 {
-                [cell.detailLabelView setText:self.user.gender];
+                    
+                    NSString *gender;
+                    if ([self.user.gender isEqualToString:@"0"])
+                    {
+                        gender = [NSString stringWithFormat:@"男"];
+                    }else{
+                        gender = [NSString stringWithFormat:@"女"];
+                        
+                    }
+
+                [cell.detailLabelView setText:gender];
                 cell.accessoryView = accessoryViewButton;
 
                 [cell.textField  setHidden:YES];
@@ -443,7 +453,7 @@
                     //weight
                 case 3:
                 {
-                [cell.textField setText:self.user.weigth];
+                [cell.textField setText:self.user.weight];
                 [cell.textField setTag:3];
                 [cell.moreButton setTag:5];
                 [cell.lessButton setTag:6];
@@ -472,7 +482,8 @@
         case 3:
         {
             [cell.textLabel setText:@"城市"];
-            [cell.detailLabelView setText:self.user.city];
+             NSString *userLocation = [NSString stringWithFormat:@"%@%@",self.user.province,self.user.city];
+            [cell.detailLabelView setText:userLocation];
             cell.accessoryView = accessoryViewButton;
             [cell.textField setHidden:YES];
             [cell.lessButton setHidden:YES];
