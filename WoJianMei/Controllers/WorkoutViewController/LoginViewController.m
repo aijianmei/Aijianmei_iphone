@@ -72,8 +72,12 @@
         userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
     }
     
-    [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.usernameField.text password:self.passwordField.text usertype:self.userType snsId:self.snsId profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:nil body_weight:@"" height:@"" keyword:@"" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] delegate:self];
-
+//    [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.usernameField.text password:self.passwordField.text usertype:self.userType snsId:self.snsId profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:nil body_weight:@"" height:@"" keyword:@"" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] delegate:self];
+    
+    [self setUserType:@"local"];
+    [[UserService defaultService] loginUserWithUseremail:self.usernameField.text
+                                                password:self.passwordField.text
+                                                usertype:self.userType delegate:self];
     
     
 }
@@ -107,8 +111,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 
 - (void)dealloc {
@@ -233,7 +235,7 @@
 {
     NSLog(@"***Load objects count: %d", [objects count]);
 
-    User *user = [objects objectAtIndex:0];
+    Result *resutl = [objects objectAtIndex:0];
     
     
 }
@@ -247,7 +249,6 @@
           SignUpViewController *signUpViewController = (SignUpViewController*)segue.destinationViewController;
           signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;
            signUpViewController.userType =[self userType];
-
     }
 
 }

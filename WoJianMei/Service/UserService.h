@@ -64,12 +64,18 @@
                             delegate:(id<RKObjectLoaderDelegate>)delegate;
 
 //本地注册
+- (void)loginUserWithUseremail:(NSString*)email
+                      password:(NSString*)password
+                      usertype:(NSString*)usertype
+                      delegate:(id<RKObjectLoaderDelegate>)delegate;
+
+
+
 - (void)registerAijianmeiUserWithUsername:(NSString*)name
                                     email:(NSString*)email
                                  password:(NSString*)password
                                  usertype:(NSString*)usertype
                                  delegate:(id<RKObjectLoaderDelegate>)delegate;
-
 //获取新浪用户信息
 - (void)fetchSinaUserInfo:(NSString*)uid
                     delegate:(id<SinaWeiboRequestDelegate>)delegate;

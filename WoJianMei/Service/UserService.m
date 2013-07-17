@@ -202,6 +202,41 @@ static UserService* _defaultUserService = nil;
     });
 }
 
+
+- (void)loginUserWithUseremail:(NSString*)email
+                      password:(NSString*)password
+                      usertype:(NSString*)usertype
+                      delegate:(id<RKObjectLoaderDelegate>)delegate{
+    
+    
+    
+    [self initResultMap];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSMutableDictionary *queryParams = [[[NSMutableDictionary alloc] init] autorelease];
+        [queryParams setObject:@"aijianmei" forKey:@"aucode"];
+        [queryParams setObject:@"au_login" forKey:@"auact"];
+        [queryParams setObject:email forKey:@"email"];
+        [queryParams setObject:password forKey:@"userpassword"];
+        [queryParams setObject:usertype forKey:@"usertype"];
+
+        
+        
+        RKObjectManager *objectManager = [RKObjectManager sharedManager];
+        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
+        
+        NSLog(@"url: %@", [url absoluteString]);
+        NSLog(@"resourcePath: %@", [url resourcePath]);
+        NSLog(@"query: %@", [url query]);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
+        });
+    });
+
+
+
+}
+
 - (void)initUserMap
 {
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -217,7 +252,6 @@ static UserService* _defaultUserService = nil;
      @"sinaUserId",@"sinaUserId",
      @"qqUserId",@"qqUserId",
      @"email", @"email",
-//     @"password", @"password",
      @"loginStatus",@"loginStatus",
      @"labelsArray", @"labelsArray",
      @"age", @"age",
