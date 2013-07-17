@@ -27,6 +27,8 @@
 @implementation LoginViewController
 @synthesize  usernameField =_usernameField;
 @synthesize  passwordField =_passwordField;
+@synthesize delegate;
+
 
 
 
@@ -72,7 +74,7 @@
         userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
     }
     if ([self.userType isEqualToString:@"qq"]) {
-        userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
+//        userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
     }
     
     if ([self.userType isEqualToString:@"local"]) {
@@ -83,7 +85,6 @@
     
 
     self.userType = @"local";
-
     [[UserService defaultService] loginUserWithEmail:_usernameField.text
                                             password:_passwordField.text
                                             usertype:self.userType
@@ -251,28 +252,37 @@
 {
     NSLog(@"***Load objects count: %d", [objects count]);
     
-    Result *result =[objects objectAtIndex:0];
+     NSObject *objectClass =  [objects objectAtIndex:0];
     
+    if ([objectClass isMemberOfClass:[Result class]]) {
+        Result *result =[objects objectAtIndex:0];
+        if (result.uid) {
+            [self dismissViewControllerAnimated:YES completion:^{
+             // 调用该方法进入用户资料界面
+                if (delegate) {
+                    [delegate pushToMyselfViewController:self];
+                }
+            }];
+        }
+    }
     
-    User *user =  [[UserService defaultService] user];
-    user.uid = result.uid;
+    if ([objectClass isMemberOfClass:[User class]]) {
 
+        User *user  = [objects objectAtIndex:0];
+        //把用户存取下来
+        [[UserService defaultService] setUser:user];
+        
+        
+        if (![[UserService defaultService] hasBindEmail])
+        {
+            [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
+        }
+        
+        else{
+            [self performSegueWithIdentifier:@"returnMyselfSegue" sender:self];
+        }
+    }
 
-    
-//    User *user  = [objects objectAtIndex:0];
-//    //把用户存取下来
-//    [[UserService defaultService] setUser:user];
-//    
-//    
-//    if (![[UserService defaultService] hasBindEmail])
-//    {
-//        [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
-//    }
-//    
-//    else{
-//        [self performSegueWithIdentifier:@"returnMyselfSegue" sender:self];
-//    }
-    
 }
 
 
@@ -285,7 +295,11 @@
            signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;
            signUpViewController.userType =[self userType];
     }
-
+    
+    if ([segue.identifier isEqualToString:@"returnMyselfSegue"]) {
+        
+        
+    }
 }
 
 @end

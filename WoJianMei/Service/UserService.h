@@ -65,6 +65,10 @@
                      usertype:(NSString*)usertype
                      delegate:(id<RKObjectLoaderDelegate>)delegate;
 
+
+- (void)fecthUserInfoWithUid:(NSString*)uid
+                    delegate:(id<RKObjectLoaderDelegate>)delegate;
+
 //新浪微博用户数据注册
 - (void)registerUserWithSinaUserInfo:(NSDictionary*)userInfo
                             delegate:(id<RKObjectLoaderDelegate>)delegate;

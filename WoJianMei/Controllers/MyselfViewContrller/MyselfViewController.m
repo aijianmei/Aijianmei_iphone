@@ -17,8 +17,8 @@
 #import "WorkOutProcessViewController.h"
 #import "UserService.h"
 #import "UIImageView+WebCache.h"
+#import "UIButton+WebCache.h"
 #import "LabelsView.h"
-#import "UIImageView+WebCache.h"
 
 
 #define USER                          @"user"
@@ -80,7 +80,7 @@
 - (void)upgradeUI
 {
 
-    [_headerVImageButton setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"11.png"]];
+    [self.headerVImageButton setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
 
     [self.backGroundImageView setImageWithURL:[NSURL URLWithString:self.user.avatarBackGroundImage] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
     
@@ -109,8 +109,7 @@
 
     
     self.backGroundImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160)];
-    
-    [self.backGroundImageView setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
+    [self.backGroundImageView setImageWithURL:[NSURL URLWithString:self.user.avatarBackGroundImage] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
     
     
     
@@ -131,9 +130,10 @@
     _headerVImageButton.layer.borderColor = [UIColor clearColor].CGColor;
     [_headerVImageButton setFrame:CGRectMake(240, 115, 70, 70)];
     [_headerVImageButton setBackgroundColor:[UIColor clearColor]];
-    [_headerVImageButton setImage:[ImageManager avatarbackgroundImage] forState:UIControlStateNormal];
+    [_headerVImageButton setImage:[UIImage imageNamed:@"touxiang_40x40"] forState:UIControlStateNormal];
     [self.myHeaderView addSubview:_headerVImageButton];
 
+     
 }
 
 -(void)addUserNameLabel{
@@ -143,6 +143,7 @@
     _userNameLabel.backgroundColor =[UIColor clearColor];
     [_userNameLabel setTextAlignment:NSTextAlignmentRight];
     _userNameLabel.textColor = [UIColor whiteColor];
+    [_userNameLabel setText:@"用户名"];
     [self.myHeaderView addSubview:self.userNameLabel];    
 }
 
@@ -206,13 +207,15 @@
     }else{
         [self.user setGender:@"女"];
     }
+    [self.user setProfileImageUrl:@"profile_backgroud.png"];
     [self.user setAvatarBackGroundImage:@"profile_backgroud.png"];
+
     [self.user setAge:_user.age];
     [self.user setHeight:_user.height];
     [self.user setWeigth:_user.weigth];
     [self.user setBMIValue:_user.BMIValue];
     [self.user setCity:_user.city];
-    [self.user setDescription:@"            How are you doing guys "];
+    [self.user setDescription:@" How are you doing guys "];
     
 }
 

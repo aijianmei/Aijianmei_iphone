@@ -23,6 +23,7 @@
 #import "FilterViewController.h"
 #import "MyselfViewController.h"
 #import "LoginViewController.h"
+#import "Result.h"
 
 
 #import "ImageManager.h"
@@ -61,6 +62,7 @@ typedef enum CONTENT_TYPE {
 @synthesize spacePageControl =_spacePageControl;
 @synthesize buttonScrollView =_buttonScrollView;
 @synthesize currentButton = _currentButton;
+@synthesize loginViewController =_loginViewController;
 
 - (void)didReceiveMemoryWarning
 {
@@ -71,10 +73,12 @@ typedef enum CONTENT_TYPE {
 {
     _carousel.delegate = nil;
     _carousel.dataSource = nil;
+    [_myHeaderView release];
     [_carousel release];
     [_spacePageControl release];
     [_buttonScrollView release];
-    [_myHeaderView release];
+    [_currentButton release];
+    [_loginViewController release];
     [super dealloc];
 }
 
@@ -125,6 +129,8 @@ typedef enum CONTENT_TYPE {
 }
 - (void)rightButtonClickHandler:(id)sender
 {
+    [self.viewDeckController toggleRightViewAnimated:YES];
+
     UIStoryboard *currentInUseStoryBoard;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
@@ -136,25 +142,12 @@ typedef enum CONTENT_TYPE {
         UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
         currentInUseStoryBoard = iPadStroyBoard;
     }
-        
+
     
-    if (![[UserService defaultService] hasBindAccount]) {
-        
-        LoginViewController *loginVC = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        loginVC.title = @"登陆";
-        
-        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
-        
-        [self.navigationController presentModalViewController:nav animated:YES];
-        
-        [nav release];
-        
-    } else {
-        MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
-         myselfVC.title = @"我";
-        [self.navigationController pushViewController:myselfVC animated:YES];
-    }
-    [self.viewDeckController toggleRightViewAnimated:YES];
+    MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
+    myselfVC.title = @"我";
+    [self.navigationController pushViewController:myselfVC animated:YES];
+
 }
 
 
@@ -183,9 +176,44 @@ typedef enum CONTENT_TYPE {
     [self addButtonScrollView];
     //添加当前划片的提示
     [self addSpacePageControl];
+
+    [self showLoginView];
+}
+
+
+-(void)pushToMyselfViewController:(id)sender{
+    
+    [self rightButtonClickHandler:sender];
+
 }
 
 #pragma mark-- addButtonScrollView Method
+
+-(void)showLoginView{
+
+    UIStoryboard *currentInUseStoryBoard;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        currentInUseStoryBoard = iPhoneStroyBoard;
+        
+    }else{
+        
+        UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+        currentInUseStoryBoard = iPadStroyBoard;
+    }
+    
+    if (![[UserService defaultService] hasBindEmail]){
+        
+        self.loginViewController = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        UINavigationController *nv = [[[UINavigationController alloc]initWithRootViewController:_loginViewController] autorelease];
+        [self.navigationController presentModalViewController:nv animated:YES];
+        
+        self.loginViewController.delegate = self;
+        
+    }
+}
+
+
 -(void)initTableHeaderView{
     
     UIView *headerView =[[UIView alloc]init];
@@ -591,6 +619,7 @@ typedef enum CONTENT_TYPE {
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
+
     NSLog(@"***Load objects count: %d", [objects count]);
 	[self dataSourceDidFinishLoadingNewData];
     [self dataSourceDidFinishLoadingMoreData];
@@ -606,6 +635,8 @@ typedef enum CONTENT_TYPE {
     
     //更新用户界面；
     [self updateUserInterface];
+    
+    
 }
 
 @end

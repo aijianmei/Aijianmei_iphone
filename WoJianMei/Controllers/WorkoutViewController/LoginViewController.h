@@ -12,6 +12,13 @@
 #import <RestKit/RestKit.h>
 
 
+@protocol LoginViewDelegate <NSObject>
+
+@optional
+-(void)pushToMyselfViewController:(id)sender;
+@end
+
+
 
 @interface LoginViewController : PPViewController<SinaWeiboDelegate, SinaWeiboRequestDelegate,RKObjectLoaderDelegate>
 {
@@ -19,7 +26,8 @@
     UITextField    *_usernameField;
     UITextField    *_passwordField;
     
-    
+    id <LoginViewDelegate> delegate;
+
     
 }
 
@@ -30,6 +38,8 @@
 @property (nonatomic, retain) IBOutlet UIButton *sinaButton;
 @property (nonatomic, retain) IBOutlet UIButton *qqButton;
 @property (nonatomic, retain) IBOutlet UIButton *aijianmeiButton;
+@property (nonatomic,assign) id <LoginViewDelegate> delegate;
+
 
 //实现closeDoneEdit点击done关闭键盘
 - (IBAction)closeDoneEdit:(id)sender;

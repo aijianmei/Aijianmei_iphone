@@ -138,6 +138,37 @@ static UserService* _defaultUserService = nil;
     });
 }
 
+// 用户登录，只是使用邮箱密码马上可以登录
+- (void)fecthUserInfoWithUid:(NSString*)uid
+                  delegate:(id<RKObjectLoaderDelegate>)delegate
+{
+    
+    [self initResultMap];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSMutableDictionary *queryParams = [[[NSMutableDictionary alloc] init] autorelease];
+        
+     /*   http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_getuserinfobyuid&uid=435
+      */
+        
+        [queryParams setObject:@"aijianmei" forKey:@"aucode"];
+        [queryParams setObject:@"au_getuserinfobyuid" forKey:@"auact"];
+        [queryParams setObject:uid forKey:@"uid"];
+        
+        
+        RKObjectManager *objectManager = [RKObjectManager sharedManager];
+        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
+        
+        NSLog(@"url: %@", [url absoluteString]);
+        NSLog(@"resourcePath: %@", [url resourcePath]);
+        NSLog(@"query: %@", [url query]);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
+        });
+    });
+}
+
+
 
 
 
@@ -236,9 +267,7 @@ static UserService* _defaultUserService = nil;
                       password:(NSString*)password
                       usertype:(NSString*)usertype
                       delegate:(id<RKObjectLoaderDelegate>)delegate{
-    
-    
-    
+
     [self initResultMap];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSMutableDictionary *queryParams = [[[NSMutableDictionary alloc] init] autorelease];
@@ -248,8 +277,6 @@ static UserService* _defaultUserService = nil;
         [queryParams setObject:password forKey:@"userpassword"];
         [queryParams setObject:usertype forKey:@"usertype"];
 
-        
-        
         RKObjectManager *objectManager = [RKObjectManager sharedManager];
         RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
         

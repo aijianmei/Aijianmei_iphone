@@ -11,11 +11,14 @@
 #import "SMPageControl.h"
 #import "iCarousel.h"
 #import <RestKit/RestKit.h>
+#import "LoginViewController.h"
+
+
 
 
 @class AppDelegate;
 
-@interface HomeViewController : PPTableViewController<iCarouselDataSource, iCarouselDelegate,RKObjectLoaderDelegate>
+@interface HomeViewController : PPTableViewController<iCarouselDataSource, iCarouselDelegate,RKObjectLoaderDelegate,LoginViewDelegate>
 
 {
     UIView                      *_myHeaderView;
@@ -23,6 +26,9 @@
     SMPageControl               *_spacePageControl;
     UIScrollView *_buttonScrollView;
     AppDelegate *_appDelegate;
+    
+
+    
 }
 
 @property (nonatomic, retain) UIScrollView *buttonScrollView;
@@ -32,9 +38,13 @@
 @property (nonatomic, retain) SMPageControl *spacePageControl;
 @property (assign, nonatomic) NSInteger start;
 @property (assign, nonatomic) NSInteger totalCount;
+@property (nonatomic,retain) LoginViewController *loginViewController;
+
 
 -(void)buttonClicked:(UIButton *)sender;
 -(void)updateUserInterface;
+-(void)pushToMyselfViewController;
+
 
 
 
