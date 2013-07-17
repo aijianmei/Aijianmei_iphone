@@ -519,6 +519,7 @@ typedef enum {
             if (userId)
             {
             uid = [[[NSString  alloc]initWithString:userId] autorelease];
+                [uid retain];
             }
              
             if ([uid integerValue]) {

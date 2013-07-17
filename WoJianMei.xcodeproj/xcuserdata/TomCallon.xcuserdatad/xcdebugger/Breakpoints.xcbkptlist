@@ -20,13 +20,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "WoJianMei/Controllers/WorkoutViewController/LoginViewController.m"
-         timestampString = "395758962.529297"
+         filePath = "WoJianMei/Service/UserService.m"
+         timestampString = "395759680.239783"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "276"
-         endingLineNumber = "276"
-         landmarkName = "-objectLoader:didLoadObjects:"
+         startingLineNumber = "459"
+         endingLineNumber = "459"
+         landmarkName = "-deleteSinaUserInfoWithUid:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

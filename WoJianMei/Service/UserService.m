@@ -488,8 +488,6 @@ static UserService* _defaultUserService = nil;
         NSLog(@"####Delete User with ID :%@ Successfully!",uid);
     }
     
-    
-    
     [self setUser:nil];
 }
 

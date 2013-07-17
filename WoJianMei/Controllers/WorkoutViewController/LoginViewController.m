@@ -277,13 +277,13 @@ enum SinaResultErrorCode
         
         if (SINA_ERROR_SUCCESS ==errocde)
         {
-            PPDebug(@"注册成功,用户ID:%@",result.uid);
+            PPDebug(@"登陆成功,用户ID:%@",result.uid);
             
             SinaResult *result =[objects objectAtIndex:0];
             if ([result.uid integerValue] !=0 && [result.errorCode integerValue] ==0)
             {
                 //正式创建新用户
-                User *user = [UserManager createUserWithUserId:result.uid sinaUserId:nil qqUserId:nil userType:self.userType name:nil profileImageUrl:nil gender:nil email:nil password:nil];
+                User *user = [UserManager createUserWithUserId:result.uid sinaUserId:_sinaweiboManager.sinaweibo.userID qqUserId:nil userType:self.userType name:nil profileImageUrl:nil gender:nil email:nil password:nil];
                 [[UserService defaultService] setUser:user];
                 [self dismissViewControllerAnimated:YES completion:^
                  {
@@ -326,7 +326,7 @@ enum SinaResultErrorCode
         
         if (ERROR_SUCCESS ==errocde)
         {
-            PPDebug(@"注册成功,用户ID:%@",result.uid);
+            PPDebug(@"本地登陆成功,用户ID:%@",result.uid);
             
             Result *result =[objects objectAtIndex:0];
             if ([result.uid integerValue] !=0 && [result.errorCode integerValue] ==0)
