@@ -45,6 +45,7 @@
         
         
         
+        
         self.detailImageView = [[UIImageView alloc]initWithFrame:CGRectMake(200, 5.0f, 45.0f,42.0f)];
         [self.detailImageView setBackgroundColor:[UIColor clearColor]];
         [self addSubview:_detailImageView];

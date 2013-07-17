@@ -17,6 +17,7 @@
 #import "ChangeLabelsViewController.h"
 #import "AFPickerView.h"
 #import "MyselfSettingCell.h"
+#import "UIImageView+WebCache.h"
 
 
 #define USER @"user"
@@ -95,11 +96,12 @@
         
         if (isChoosingAvtarImage)
         {
-//            self.user.avatarImage = image;
+            
+//           self.user.avatarImage = image;
         }
         if (isChoosingAvtarBackground)
         {
-//            self.user.avatarBackGroundImage = image;
+//           self.user.avatarBackGroundImage = image;
         }
         
       [[UserService defaultService] setUser:_user];
@@ -163,26 +165,7 @@
     self.title = NSLocalizedString(@"编辑个人资料", @"Settings");
     
     didSave =NO;
-
-
-                  
-            UIButton *femaleButton  = [UIButton buttonWithType:UIButtonTypeCustom];
-            [femaleButton setFrame:CGRectMake(120, 10, 25, 25)];
-            [femaleButton setImage:[UIImage imageNamed:@"gender_on.png"]
-                          forState:UIControlStateSelected];
-            [femaleButton setImage:[UIImage imageNamed:@"gender_off.png"]
-                                forState:UIControlStateNormal];
-
-                  
-//            [cell addSubview:femaleButton];
-    
-            UILabel *femaleLabel =[[UILabel alloc]initWithFrame:CGRectMake(90, 10, 30, 30)];
-            [femaleLabel setText:@"女"];
-            [femaleLabel setBackgroundColor:[UIColor clearColor]];
-//            [cell addSubview:femaleLabel];
-            [femaleLabel release];
-                              
- }
+}
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
@@ -339,23 +322,17 @@
             
             ////设置头像
             if (indexPath.row ==0) {
-//                [cell.detailImageView setImage:[UIImage imageNamed:self.user.avatarImage]];
-//                if (!self.user.avatarImage) {
-//                    [cell.detailImageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];
-//                }
-            
+                
+                [cell.detailImageView setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
                 [cell.detailImageView setFrame:CGRectMake(200, 5.0f, 45.0f,42.0f)];
 
             }
             ///设置背景
             if (indexPath.row ==1) {
+                                
                 
-//                [cell.detailImageView setImage:self.user.avatarBackGroundImage];
-                
-                if (!self.user.avatarBackGroundImage) {
-                    [cell.detailImageView setImage:[UIImage imageNamed:@"touxiang_40x40"]];
-                }
-
+                [cell.detailImageView setImageWithURL:[NSURL URLWithString:self.user.avatarBackGroundImage] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
+               
                 [cell.detailImageView setFrame:CGRectMake(150, 2, 120, 50)];
                 
             }
@@ -377,9 +354,6 @@
                 }
                 
                 [cell.detailLabelView  setText:self.user.description];
-  
-                
-
             }
         
             cell.accessoryView = accessoryViewButton;
@@ -620,9 +594,6 @@
      
      
 }
-
-
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
