@@ -15,6 +15,7 @@
 		4A0E4DCE178C50B000E1287D /* ChangeDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0E4DCC178C50AF00E1287D /* ChangeDescriptionViewController.xib */; };
 		4A0E4DD2178C559E00E1287D /* ChangeGenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4DD0178C559E00E1287D /* ChangeGenderViewController.m */; };
 		4A0E4DD3178C559E00E1287D /* ChangeGenderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0E4DD1178C559E00E1287D /* ChangeGenderViewController.xib */; };
+		4A11FC571796BBE100DE34E6 /* SinaResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A11FC561796BBE100DE34E6 /* SinaResult.m */; };
 		4A125DB717951BD300D64751 /* dl_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A125DAD17951BD300D64751 /* dl_1@2x.png */; };
 		4A125DB817951BD300D64751 /* dl_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A125DAE17951BD300D64751 /* dl_2@2x.png */; };
 		4A125DB917951BD300D64751 /* dlk_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A125DAF17951BD300D64751 /* dlk_1@2x.png */; };
@@ -631,6 +632,8 @@
 		4A0E4DCF178C559E00E1287D /* ChangeGenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeGenderViewController.h; sourceTree = "<group>"; };
 		4A0E4DD0178C559E00E1287D /* ChangeGenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeGenderViewController.m; sourceTree = "<group>"; };
 		4A0E4DD1178C559E00E1287D /* ChangeGenderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeGenderViewController.xib; sourceTree = "<group>"; };
+		4A11FC551796BBE100DE34E6 /* SinaResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaResult.h; sourceTree = "<group>"; };
+		4A11FC561796BBE100DE34E6 /* SinaResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaResult.m; sourceTree = "<group>"; };
 		4A125DAD17951BD300D64751 /* dl_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dl_1@2x.png"; sourceTree = "<group>"; };
 		4A125DAE17951BD300D64751 /* dl_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dl_2@2x.png"; sourceTree = "<group>"; };
 		4A125DAF17951BD300D64751 /* dlk_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dlk_1@2x.png"; sourceTree = "<group>"; };
@@ -2962,6 +2965,8 @@
 			children = (
 				4A8A7224174E10FE00BD3AAE /* LoginViewController.h */,
 				4A8A7225174E10FF00BD3AAE /* LoginViewController.m */,
+				4A11FC551796BBE100DE34E6 /* SinaResult.h */,
+				4A11FC561796BBE100DE34E6 /* SinaResult.m */,
 				4A8A7227174E557700BD3AAE /* SignUpViewController.h */,
 				4A8A7228174E557700BD3AAE /* SignUpViewController.m */,
 				4ACD190916154F5C00567A24 /* Entries */,
@@ -4349,6 +4354,7 @@
 				4AFE7FCB17928530006B5310 /* FTCoreTextView.m in Sources */,
 				4AFE7FCF17928530006B5310 /* FTCoreTextAppDelegate.m in Sources */,
 				4A2BCF801793919D006ED7C8 /* VersionInfo.m in Sources */,
+				4A11FC571796BBE100DE34E6 /* SinaResult.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,6 +20,8 @@ enum errorCode {
     USER_TYPE = 10004
 };
 
+
+
 @interface SignUpViewController ()
 
 @end
@@ -211,7 +213,7 @@ enum errorCode {
         
         NSLog(@"******Register success,return uid:%@",user.uid);
         [UserService defaultService].user = user;
-        [[UserService defaultService] storeUserInfo];
+        [[UserService defaultService] storeUserInfoByUid:user.uid];
         [self performSegueWithIdentifier:@"finishRegisterSegue" sender:self];
 
     }

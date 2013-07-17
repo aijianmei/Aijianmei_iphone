@@ -13,6 +13,7 @@
 #import "JSON.h"
 #import "User.h"
 #import "Result.h"
+#import "SinaResult.h"
 #import "VersionInfo.h"
 
 @implementation UserService
@@ -167,6 +168,47 @@ static UserService* _defaultUserService = nil;
         });
     });
 }
+
+- (void)initSinaResultMap
+{
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    RKObjectMapping *resultMapping =[RKObjectMapping mappingForClass:[SinaResult class]];
+    [resultMapping mapKeyPathsToAttributes:
+     @"uid", @"_uid",
+     @"errorCode", @"errorCode",
+     nil];
+    [objectManager.mappingProvider setMapping:resultMapping forKeyPath:@""];
+    
+}
+
+
+- (void)fechUserIdBySnsId:(NSString*)snsID
+               delegate:(id<RKObjectLoaderDelegate>)delegate
+{
+    [self initSinaResultMap];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        //http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_getuidbysnsid&snsid=1787966731
+        
+        NSMutableDictionary *queryParams = [[[NSMutableDictionary  alloc]init] autorelease];
+        [queryParams setObject:@"aijianmei" forKey:@"aucode"];
+        [queryParams setObject:@"au_getuidbysnsid" forKey:@"auact"];
+        [queryParams setObject:snsID forKey:@"snsid"];
+        
+        
+        RKObjectManager *objectManager = [RKObjectManager sharedManager];
+        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
+        
+        NSLog(@"url: %@", [url absoluteString]);
+        NSLog(@"resourcePath: %@", [url resourcePath]);
+        NSLog(@"query: %@", [url query]);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
+        });
+    });
+}
+
 
 
 
