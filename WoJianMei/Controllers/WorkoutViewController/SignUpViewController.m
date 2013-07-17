@@ -79,9 +79,12 @@ enum errorCode {
 
 - (IBAction)didPressLogin:(id)sender
 {
+    
+    
     if ([self verifyField] == NO){
         return;
     }
+    
     NSDictionary *userInfo = nil;
     if ([self.userType isEqualToString:@"sina"]) {
         userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
@@ -100,10 +103,14 @@ enum errorCode {
         
         [[UserService defaultService] registerAijianmeiUserWithUsername:[userInfo objectForKey:@"userName"] email:self.emailTextField.text password:self.passwordTextField.text usertype:self.userType delegate:self];
     }
+    
+    
 }
 
 - (BOOL)verifyField
 {
+    
+    
     if ([_userNameTextField.text length] == 0){
         [UIUtils alert:@"用户名不能为空"];
         [_emailTextField becomeFirstResponder];
@@ -180,14 +187,19 @@ enum errorCode {
     if (REPEAT_USER_NAME ==errocde){
         [UIUtils alert:@"用户名已被使用"];
         [_userNameTextField becomeFirstResponder];
+        return;
     }
     if (REPEAT_USER_EMAIL ==errocde){
         [UIUtils alert:@"邮箱已经被注册"];
         [_emailTextField becomeFirstResponder];
+        return;
+
     }
     if (REPEAT_USER_NAME_EMAIL ==errocde){
         [UIUtils alert:@"用户名和邮箱已被注册"];
         [_userNameTextField becomeFirstResponder];
+        return;
+
     }
     
     

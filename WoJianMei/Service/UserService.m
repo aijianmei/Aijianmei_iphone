@@ -35,7 +35,7 @@ static UserService* _defaultUserService = nil;
     return _defaultUserService;
 }
 
-
+//更新版本的接口
 - (void)initVersionMap
 {
     //获取在AppDelegate中生成的第一个RKObjectManager对象
@@ -109,14 +109,43 @@ static UserService* _defaultUserService = nil;
     });
 }
 
+// 用户登录，只是使用邮箱密码马上可以登录
+- (void)loginUserWithEmail:(NSString*)email
+                        password:(NSString*)password
+                        usertype:(NSString*)usertype
+                        delegate:(id<RKObjectLoaderDelegate>)delegate{
+    
+    [self initResultMap];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSMutableDictionary *queryParams = [[[NSMutableDictionary alloc] init] autorelease];
+        [queryParams setObject:@"aijianmei" forKey:@"aucode"];
+        [queryParams setObject:@"au_login" forKey:@"auact"];
+        [queryParams setObject:email forKey:@"email"];
+        [queryParams setObject:password forKey:@"userpassword"];
+        [queryParams setObject:usertype forKey:@"usertype"];
+
+        
+        RKObjectManager *objectManager = [RKObjectManager sharedManager];
+        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
+        
+        NSLog(@"url: %@", [url absoluteString]);
+        NSLog(@"resourcePath: %@", [url resourcePath]);
+        NSLog(@"query: %@", [url query]);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
+        });
+    });
+}
+
 
 
 
 - (void)registerAijianmeiUserWithUsername:(NSString*)name
-                           email:(NSString*)email
-                        password:(NSString*)password
-                        usertype:(NSString*)usertype
-                        delegate:(id<RKObjectLoaderDelegate>)delegate
+                                    email:(NSString*)email
+                                 password:(NSString*)password
+                                 usertype:(NSString*)usertype
+                                 delegate:(id<RKObjectLoaderDelegate>)delegate
 
 {
     [self initResultMap];
@@ -177,7 +206,7 @@ static UserService* _defaultUserService = nil;
         [queryParams setObject:@"aijianmei" forKey:@"aucode"];
         [queryParams setObject:@"au_register" forKey:@"auact"];
         [queryParams setObject:usertype forKey:@"usertype"];
-        [queryParams setObject:snsId forKey:@"snsId"];
+        [queryParams setObject:snsId forKey:@"snsid"];
         [queryParams setObject:name forKey:@"username"];
         [queryParams setObject:email forKey:@"email"];
         [queryParams setObject:password forKey:@"userpassword"];

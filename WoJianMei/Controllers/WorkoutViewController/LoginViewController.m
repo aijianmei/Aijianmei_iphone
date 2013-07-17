@@ -62,7 +62,7 @@
 - (IBAction)closeDoneEdit:(id)sender
 {
     [sender resignFirstResponder];
-    
+
     //开始登陆
     if ([self verifyField] == NO){
         return;
@@ -71,16 +71,29 @@
     if ([self.userType isEqualToString:@"sina"]) {
         userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
     }
+    if ([self.userType isEqualToString:@"qq"]) {
+        userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
+    }
     
-//    [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.usernameField.text password:self.passwordField.text usertype:self.userType snsId:self.snsId profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:nil body_weight:@"" height:@"" keyword:@"" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] delegate:self];
+    if ([self.userType isEqualToString:@"local"]) {
+//        userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
+    }
     
-    [self setUserType:@"local"];
-    [[UserService defaultService] loginUserWithUseremail:self.usernameField.text
-                                                password:self.passwordField.text
-                                                usertype:self.userType delegate:self];
+//    [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.usernameField.text password:self.passwordField.text usertype:@"local" snsId:nil profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:nil body_weight:@"" height:@"" keyword:@"" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] delegate:self];
+    
+
+    self.userType = @"local";
+
+    [[UserService defaultService] loginUserWithEmail:_usernameField.text
+                                            password:_passwordField.text
+                                            usertype:self.userType
+                                            delegate:self];
     
     
 }
+
+
+
 
 - (BOOL)verifyField
 {
@@ -123,14 +136,20 @@
 }
 
 - (IBAction)clickSinaWeiboButton:(UIButton *)sender {
-    [self setUserType:@"sina"];
-    _sinaweiboManager = [SinaWeiboManager sharedManager];
-    [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
     
-    if (![_sinaweiboManager.sinaweibo isAuthValid]) {
-        [_sinaweiboManager.sinaweibo logIn];
-    }
         
+        [self setUserType:@"sina"];
+        _sinaweiboManager = [SinaWeiboManager sharedManager];
+        [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
+    
+       //授权不可用的时候,用户要重新登录
+        if ([_sinaweiboManager.sinaweibo isAuthValid]) {
+            [self performSegueWithIdentifier:@"returnMyselfSegue" sender:self];
+
+        }else if(![_sinaweiboManager.sinaweibo isAuthValid]){
+            [_sinaweiboManager.sinaweibo logIn];
+  }
+    
 }
 
 - (IBAction)clickQQShareButton:(UIButton *)sender {
@@ -197,20 +216,17 @@
       如果用户已经注册过，就直接返回用户的所有个人数据
       如果用户没有注册过，就让其注册；
     */
+      [[UserService defaultService] fechUserBySnsId:[userInfo objectForKey:@"id"]  userType:@"sina" delegate:self];
         
-        
-    [[UserService defaultService] fechUserBySnsId:[userInfo objectForKey:@"id"]  userType:@"sina" delegate:self];
-        
-
-        
-        if (![[UserService defaultService] hasBindEmail]) {
+        if (![[UserService defaultService] hasBindEmail])
+        {
             [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
-       } else{
+       }
+        
+        else{
            [self performSegueWithIdentifier:@"returnMyselfSegue" sender:self];
         }
     }
-    
-    
 }
 
 
@@ -234,9 +250,28 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     NSLog(@"***Load objects count: %d", [objects count]);
-
-    Result *resutl = [objects objectAtIndex:0];
     
+    Result *result =[objects objectAtIndex:0];
+    
+    
+    User *user =  [[UserService defaultService] user];
+    user.uid = result.uid;
+
+
+    
+//    User *user  = [objects objectAtIndex:0];
+//    //把用户存取下来
+//    [[UserService defaultService] setUser:user];
+//    
+//    
+//    if (![[UserService defaultService] hasBindEmail])
+//    {
+//        [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
+//    }
+//    
+//    else{
+//        [self performSegueWithIdentifier:@"returnMyselfSegue" sender:self];
+//    }
     
 }
 
@@ -247,7 +282,7 @@
     if ([segue.identifier isEqualToString:@"SignupViewSegue"]) {
         
           SignUpViewController *signUpViewController = (SignUpViewController*)segue.destinationViewController;
-          signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;
+           signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;
            signUpViewController.userType =[self userType];
     }
 

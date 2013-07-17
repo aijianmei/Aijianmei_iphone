@@ -24,7 +24,7 @@
     UIView *_myHeaderView;
     UIView *myFooterView;
     UILabel *_userNameLabel;
-    UILabel *_mottoLabel;
+    UILabel *_descriptionLabel;
     UILabel *_userGenderLabel;
     NSDictionary *_sina_userInfo;
     NSDictionary *user_info;
@@ -40,7 +40,7 @@
 @property (nonatomic,retain) UIImageView *footerVImageV;
 @property (nonatomic,retain) UIView *myHeaderView;
 @property (nonatomic,retain) UILabel *userNameLabel;
-@property (nonatomic,retain) UILabel *mottoLabel;
+@property (nonatomic,retain) UILabel *descriptionLabel;
 @property (nonatomic,retain) UILabel *userGenderLabel;
 @property (nonatomic,retain) NSDictionary *sina_userInfo;
 @property (nonatomic,retain) User *user;

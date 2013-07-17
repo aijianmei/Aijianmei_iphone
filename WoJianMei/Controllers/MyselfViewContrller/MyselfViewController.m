@@ -36,7 +36,7 @@
 @synthesize backGroundImageView = _backGroundImageView;
 @synthesize myHeaderView =_myHeaderView;
 @synthesize userNameLabel=_userNameLabel;
-@synthesize mottoLabel = _mottoLabel;
+@synthesize descriptionLabel = _descriptionLabel;
 @synthesize userGenderLabel = _userGenderLabel;
 @synthesize sina_userInfo =_sina_userInfo;
 @synthesize user =_user;
@@ -50,7 +50,7 @@
     [_footerVImageV release];
     [_myHeaderView release];
     [_userNameLabel release];
-    [_mottoLabel release];
+    [_descriptionLabel release];
     [_userGenderLabel release];
     [_sina_userInfo release],_sina_userInfo = nil;
     [_user release];
@@ -63,12 +63,11 @@
     self.headerVImageButton =nil;
     self.backGroundImageView =nil;
     self.userNameLabel = nil;
-    self.mottoLabel = nil;
     self.headerVImageButton =nil;
     self.footerVImageV =nil;
     self.myHeaderView =nil;
     self.userNameLabel =nil;
-    self.mottoLabel =nil;
+    self.descriptionLabel =nil;
     self.userGenderLabel =nil;
     
 }
@@ -81,16 +80,16 @@
 - (void)upgradeUI
 {
 
-    [self.headerVImageButton setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"11.png"]];
+    [_headerVImageButton setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"11.png"]];
 
-    [self.backGroundImageView setImage:[ImageManager avatarbackgroundImage]];
+    [self.backGroundImageView setImageWithURL:[NSURL URLWithString:self.user.avatarBackGroundImage] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
     
     NSString *userName = self.user.name;
     [self.userNameLabel setText:userName];
      
     NSString *description = [self.user description];
 
-    [self.mottoLabel setText:description];
+    [self.descriptionLabel setText:description];
     
    [[UserService defaultService] setUser:_user];
 
@@ -98,41 +97,33 @@
 }
 
 
--(void)test{
+-(void)addHeaderView{
 
-    NSLog(@"i am testing now !!!");
-}
-
--(void)initUI{
-
-    [self setTitle:@"我"];
-    [self setNavigationRightButton:@"设置" imageName:@"top_bar_commonButton.png" action:@selector(clickSettingsButton:)];
-    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
-    
-    
-     //////// Set the headerView of the buttons  
-    
     self.myHeaderView  =[[UIView alloc]init];
     [_myHeaderView setFrame: CGRectMake(0, 0, 320, 200)];
+    [self.dataTableView setTableHeaderView:self.myHeaderView];
+
+}
+
+-(void)addAvatarBGImageView{
+
     
     self.backGroundImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160)];
-    if (!self.user.avatarBackGroundImage) {
-     [_backGroundImageView setImage:self.user.avatarBackGroundImage];
-    }
     
-    [_backGroundImageView setImage:self.user.avatarBackGroundImage];
+    [self.backGroundImageView setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
     
-    [_myHeaderView addSubview:_backGroundImageView];
+    
+    
+    [self.myHeaderView addSubview:_backGroundImageView];
+    
+//    _avatarImageView =[[UIImageView alloc]initWithFrame:_headerVImageButton.frame];
+//    [_myHeaderView addSubview:_avatarImageView];
+    
+    
+}
 
-    
-    ////// set the Username
-    self.userNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(30, 130, 145, 30)];
-    _userNameLabel.backgroundColor =[UIColor clearColor];
-   [_userNameLabel setTextAlignment:NSTextAlignmentRight];
-    _userNameLabel.textColor = [UIColor whiteColor];
-    [self.myHeaderView addSubview:self.userNameLabel];
-    
 
+-(void)addAvtarImageButton{
     self.headerVImageButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
     [_headerVImageButton addTarget:self action:@selector(clickVatarButton:) forControlEvents:UIControlEventTouchUpInside];
     _headerVImageButton.layer.borderWidth = 4.0f;
@@ -141,23 +132,36 @@
     [_headerVImageButton setFrame:CGRectMake(240, 115, 70, 70)];
     [_headerVImageButton setBackgroundColor:[UIColor clearColor]];
     [_headerVImageButton setImage:[ImageManager avatarbackgroundImage] forState:UIControlStateNormal];
+    [self.myHeaderView addSubview:_headerVImageButton];
+
+}
+
+-(void)addUserNameLabel{
     
-    _avatarImageView =[[UIImageView alloc]initWithFrame:_headerVImageButton.frame];
-    [_myHeaderView addSubview:_avatarImageView];
-    [_myHeaderView bringSubviewToFront:_headerVImageButton];
-    
+    ////// set the Username
+    self.userNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(30, 130, 145, 30)];
+    _userNameLabel.backgroundColor =[UIColor clearColor];
+    [_userNameLabel setTextAlignment:NSTextAlignmentRight];
+    _userNameLabel.textColor = [UIColor whiteColor];
+    [self.myHeaderView addSubview:self.userNameLabel];    
+}
+
+-(void)addDescriptionBG
+{
     //// Descritpin broundground
-    UIImageView *imageview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"description_bround.png"]];    
-    [imageview setFrame:CGRectMake(0, 160, 320, 50)];
-    [self.myHeaderView addSubview:imageview];
-    [imageview release];
-    
-    //////set the motto
+    UIImageView *descriptionBG = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"description_bround.png"]];
+    [descriptionBG setFrame:CGRectMake(0, 160, 320, 50)];
+    [self.myHeaderView addSubview:descriptionBG];
+    [descriptionBG release];
+}
+
+-(void)addDescriptionLabel{
+
     //初始化label
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 147, 270, 50)];
+    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 147, 270, 50)];
     //设置自动行数与字符换行
-    [label setNumberOfLines:2];
-    label.lineBreakMode = UILineBreakModeWordWrap;
+    [descriptionLabel setNumberOfLines:2];
+    descriptionLabel.lineBreakMode = UILineBreakModeWordWrap;
     // 测试字串
     NSString *s = @"这是一个测试！！！ADSFASDFASDFASDFSADFASDFASFASFASFASDFASDFASDFASFASDFASDFASDFASDFASDFASDFASFASDFASDFASDFASDFASDFASDFA";
     UIFont *font = [UIFont fontWithName:@"Arial" size:12];
@@ -165,26 +169,27 @@
     CGSize size = CGSizeMake(230,50);
     
     //计算实际frame大小，并将label的frame变成实际大小
-     CGSize labelsize = [s sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
-    [label setFrame:CGRectMake(0, 160, labelsize.width, labelsize.height)];
+    CGSize labelsize = [s sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
+    [descriptionLabel setFrame:CGRectMake(0, 160, labelsize.width, labelsize.height)];
     
     
-    self.mottoLabel = label;
-    [self.mottoLabel setTextAlignment:NSTextAlignmentLeft];
-    [self.mottoLabel setBackgroundColor:[UIColor clearColor]];
-    [self.mottoLabel  setLineBreakMode:NSLineBreakByTruncatingTail];
-    [_myHeaderView addSubview:self.mottoLabel];
-    
-   
+    self.descriptionLabel = descriptionLabel;
+    [self.descriptionLabel setTextAlignment:NSTextAlignmentLeft];
+    [self.descriptionLabel setBackgroundColor:[UIColor clearColor]];
+    [self.descriptionLabel  setLineBreakMode:NSLineBreakByTruncatingTail];
+    [self.myHeaderView addSubview:self.descriptionLabel];
+    [_myHeaderView bringSubviewToFront:_headerVImageButton];
+}
 
-    [self.myHeaderView addSubview:self.headerVImageButton];
-    [self.dataTableView setTableHeaderView:self.myHeaderView];
-    
-    
-    [self setBackgroundImageName:@"gobal_background.png"];
-    [self showBackgroundImage];
 
+-(void)initUI{
     
+    [self addHeaderView];
+    [self addAvatarBGImageView];
+    [self addAvtarImageButton];
+    [self addUserNameLabel];
+    [self addDescriptionBG];
+    [self addDescriptionLabel];
 }
 
 - (void)setUserInfo
@@ -195,13 +200,19 @@
      NSMutableArray *buttonTitleArray =[NSArray arrayWithObjects:@"增肌",@"减肥",@"增重",@"认识朋友",@"约炮",@"认识好朋友",@"关注美好生活", nil];
     
     self.user.labelsArray = buttonTitleArray;
-    
-    [self.user setGender:_user.gender];
+    if ([_user.gender isEqualToString:@"m"]) {
+        [self.user setGender:@"男"];
+
+    }else{
+        [self.user setGender:@"女"];
+    }
+    [self.user setAvatarBackGroundImage:@"profile_backgroud.png"];
     [self.user setAge:_user.age];
     [self.user setHeight:_user.height];
     [self.user setWeigth:_user.weigth];
     [self.user setBMIValue:_user.BMIValue];
     [self.user setCity:_user.city];
+    [self.user setDescription:@"            How are you doing guys "];
     
 }
 
@@ -209,10 +220,19 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self initUI];
     self.dataList = [NSArray arrayWithObjects:@"性别",@"年龄",@"身高",@"体重",@"BMI", nil];
+
+    [self setTitle:@"我"];
+    [self setNavigationRightButton:@"设置" imageName:@"top_bar_commonButton.png" action:@selector(clickSettingsButton:)];
+    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+    [self setBackgroundImageName:@"gobal_background.png"];
+    [self showBackgroundImage];
+
+    [self initUI];
     [self setUserInfo];
     [self upgradeUI];
+    
+    
         
 }
 

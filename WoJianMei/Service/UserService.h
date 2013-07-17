@@ -59,6 +59,12 @@
                    delegate:(id<RKObjectLoaderDelegate>)delegate;
 
 
+// 用户登录，只是使用邮箱密码马上可以登录
+- (void)loginUserWithEmail:(NSString*)email
+                     password:(NSString*)password
+                     usertype:(NSString*)usertype
+                     delegate:(id<RKObjectLoaderDelegate>)delegate;
+
 //新浪微博用户数据注册
 - (void)registerUserWithSinaUserInfo:(NSDictionary*)userInfo
                             delegate:(id<RKObjectLoaderDelegate>)delegate;
