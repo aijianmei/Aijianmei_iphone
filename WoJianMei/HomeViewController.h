@@ -12,13 +12,14 @@
 #import "iCarousel.h"
 #import <RestKit/RestKit.h>
 #import "LoginViewController.h"
+#import "SignUpViewController.h"
 
 
 
 
 @class AppDelegate;
 
-@interface HomeViewController : PPTableViewController<iCarouselDataSource, iCarouselDelegate,RKObjectLoaderDelegate,LoginViewDelegate>
+@interface HomeViewController : PPTableViewController<iCarouselDataSource, iCarouselDelegate,RKObjectLoaderDelegate,LoginViewDelegate,SignUpViewControllerDelegate>
 
 {
     UIView                      *_myHeaderView;
@@ -39,6 +40,8 @@
 @property (assign, nonatomic) NSInteger start;
 @property (assign, nonatomic) NSInteger totalCount;
 @property (nonatomic,retain) LoginViewController *loginViewController;
+@property (nonatomic,retain) SignUpViewController*signUpViewController;
+
 
 
 -(void)buttonClicked:(UIButton *)sender;

@@ -77,6 +77,9 @@ enum SinaResultErrorCode
 //实现closeDoneEdit点击done关闭键盘
 - (IBAction)closeDoneEdit:(id)sender
 {
+    
+    //    [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.usernameField.text password:self.passwordField.text usertype:@"local" snsId:nil profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:nil body_weight:@"" height:@"" keyword:@"" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] delegate:self];
+
     [sender resignFirstResponder];
 
     //开始登陆
@@ -92,13 +95,13 @@ enum SinaResultErrorCode
     }
     
     if ([self.userType isEqualToString:@"local"]) {
-//        userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
     }
     
-//    [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.usernameField.text password:self.passwordField.text usertype:@"local" snsId:nil profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:nil body_weight:@"" height:@"" keyword:@"" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] delegate:self];
     
 
     self.userType = @"local";
+    
+    
     [[UserService defaultService] loginUserWithEmail:_usernameField.text
                                             password:_passwordField.text
                                             usertype:self.userType
@@ -268,8 +271,6 @@ enum SinaResultErrorCode
     NSObject *result =[objects objectAtIndex:0];
     [self hideActivity];
     
-    
-    
     //通过新浪微博或者腾讯微博等第三方账号登陆
     if ([result isMemberOfClass:[SinaResult class]])
     {
@@ -289,7 +290,7 @@ enum SinaResultErrorCode
                 [self dismissViewControllerAnimated:YES completion:^
                  {
                      // 调用该方法进入用户资料界面
-                     if (delegate)
+                     if (delegate &&[delegate respondsToSelector:@selector(pushToMyselfViewController:)])
                      {
                          [delegate pushToMyselfViewController:self];
                      }
@@ -302,7 +303,6 @@ enum SinaResultErrorCode
             
             [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
             
-    
         }
     
     }
@@ -359,10 +359,6 @@ enum SinaResultErrorCode
            signUpViewController.userType =[self userType];
     }
     
-    if ([segue.identifier isEqualToString:@"returnMyselfSegue"]) {
-        
-        
-    }
 }
 
 @end

@@ -782,7 +782,6 @@ typedef enum {
     
     if ([request.url hasSuffix:@"statuses/upload.json"])
     {
-        
         NSLog(@"******%@",[result description]);
         [self hideActivity];
     }
@@ -797,9 +796,6 @@ typedef enum {
         NSLog(@"******%@",[response description]);
         
     }
-
-
-
 }
 
 

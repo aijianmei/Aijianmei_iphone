@@ -491,12 +491,6 @@ static UserService* _defaultUserService = nil;
     [self setUser:nil];
 }
 
--(NSMutableDictionary*)createUserInfo:(NSString *)userName
-{
-    NSMutableDictionary *userInfo = [[[NSMutableDictionary alloc]init] autorelease];
-    [userInfo setObject:userName forKey:@"userName"];
-    return userInfo;
-}
 
 - (BOOL)hasBindAccount
 {

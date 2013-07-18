@@ -113,9 +113,6 @@
 //删除在本地的用户信息
 -(void)deleteUserByUid:(NSString *)uid;
 
-
--(NSMutableDictionary*)createUserInfo:(NSString *)userName;
-
 //是否绑定邮箱
 - (BOOL)hasBindEmail;
 

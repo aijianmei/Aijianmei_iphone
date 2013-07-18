@@ -63,6 +63,8 @@ typedef enum CONTENT_TYPE {
 @synthesize buttonScrollView =_buttonScrollView;
 @synthesize currentButton = _currentButton;
 @synthesize loginViewController =_loginViewController;
+@synthesize signUpViewController =_signUpViewController;
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -79,6 +81,8 @@ typedef enum CONTENT_TYPE {
     [_buttonScrollView release];
     [_currentButton release];
     [_loginViewController release];
+    [_signUpViewController release];
+
     [super dealloc];
 }
 
@@ -142,6 +146,12 @@ typedef enum CONTENT_TYPE {
         UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
         currentInUseStoryBoard = iPadStroyBoard;
     }
+    
+    
+    SignUpViewController *signupVC = (SignUpViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
+    self.signUpViewController =signupVC;
+    self.signUpViewController.delegate =self;
+    
 
     User *user = [[UserService defaultService] user];
     
@@ -189,6 +199,13 @@ typedef enum CONTENT_TYPE {
 -(void)pushToMyselfViewController:(id)sender{
     
     [self rightButtonClickHandler:sender];
+
+}
+
+-(void)pushToMyselfViewControllerFrom:(UIViewController *)viewController{
+
+    [self rightButtonClickHandler:viewController];
+
 
 }
 
@@ -638,7 +655,6 @@ typedef enum CONTENT_TYPE {
     
     //更新用户界面；
     [self updateUserInterface];
-    
     
 }
 

@@ -12,6 +12,7 @@
 #import "UserManager.h"
 #import "Result.h"
 
+
 enum errorCode {
     ERROR_SUCCESS =0,
     REPEAT_USER_NAME = 10001,
@@ -27,6 +28,8 @@ enum errorCode {
 @end
 
 @implementation SignUpViewController
+@synthesize delegate;
+
 
 
 
@@ -43,7 +46,7 @@ enum errorCode {
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-//    [self setTitle:@"账号绑定"];
+    [self setTitle:@"注册新用户，完善用户资料"];
     
     if ([self.userType isEqualToString:@"sina"]) {
         NSDictionary *userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
@@ -52,6 +55,9 @@ enum errorCode {
         [_userNameTextField setText:sinaWeiboUserName];
 
     }
+    
+    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+
 
 }
 
@@ -99,11 +105,10 @@ enum errorCode {
 
     }
     if ([self.userType isEqualToString:@"local"]) {
-        
-        userInfo = [[UserService defaultService] createUserInfo:_userNameTextField.text];
-        PPDebug(@"I am going to login as aijianmei account");
-        
-        [[UserService defaultService] registerAijianmeiUserWithUsername:[userInfo objectForKey:@"userName"] email:self.emailTextField.text password:self.passwordTextField.text usertype:self.userType delegate:self];
+        [[UserService defaultService] registerAijianmeiUserWithUsername:self.userNameTextField.text
+                                                                  email:self.emailTextField.text
+                                                               password:self.passwordTextField.text
+                                                               usertype:self.userType delegate:self];
     }
     
     
@@ -204,29 +209,50 @@ enum errorCode {
 
     }
     
-    
+    //通过新浪微博注册，获得用户名;
     NSDictionary *userInfo = nil;
     if ([self.userType isEqualToString:@"sina"]) {
         userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
         
-        User *user = [UserManager createUserWithUserId:result.uid sinaUserId:self.snsId qqUserId:nil userType:self.userType name:[userInfo objectForKey:@"name"] profileImageUrl:[userInfo objectForKey:@"profile_image_url"] gender:[userInfo objectForKey:@"gender"] email:_emailTextField.text password:_passwordTextField.text];
+        User *user = [UserManager createUserWithUserId:result.uid
+                                            sinaUserId:self.snsId
+                                              qqUserId:nil
+                                              userType:self.userType name:[userInfo objectForKey:@"name"]
+                                       profileImageUrl:[userInfo objectForKey:@"profile_image_url"]
+                                                gender:[userInfo objectForKey:@"gender"]
+                                                 email:_emailTextField.text
+                                              password:_passwordTextField.text];
         
         NSLog(@"******Register success,return uid:%@",user.uid);
         [UserService defaultService].user = user;
-        [[UserService defaultService] storeUserInfoByUid:user.uid];
-        [self performSegueWithIdentifier:@"finishRegisterSegue" sender:self];
-
+        [[UserService defaultService] storeUserInfoByUid:user.uid];        
+        [self.navigationController popViewControllerAnimated:YES];
     }
+    //直接注册，用户名;
     if ([self.userType isEqualToString:@"local"]) {
-        userInfo = [[UserService defaultService] createUserInfo:_userNameTextField.text];
-        
-        User *user = [UserManager createUserWithUserId:result.uid sinaUserId:nil qqUserId:nil userType:self.userType name:[userInfo objectForKey:@"name"] profileImageUrl:nil gender:nil email:_emailTextField.text password:_passwordTextField.text];
+        User *user = [UserManager createUserWithUserId:result.uid
+                                            sinaUserId:nil
+                                              qqUserId:nil
+                                              userType:self.userType
+                                                  name:_userNameTextField.text
+                                       profileImageUrl:nil
+                                                gender:nil
+                                                 email:_emailTextField.text
+                                              password:_passwordTextField.text];
         
         NSLog(@"******Register success,return uid:%@",user.uid);
         [UserService defaultService].user = user;
-        [[UserService defaultService] storeUserInfo];
-        [self performSegueWithIdentifier:@"finishRegisterSegue" sender:self];
+        [[UserService defaultService] storeUserInfoByUid:result.uid];
         
+        
+        [self dismissViewControllerAnimated:YES completion:^
+         {
+             // 调用该方法进入用户资料界面
+             if (delegate && [delegate respondsToSelector:@selector(pushToMyselfViewControllerFrom:)])
+             {
+                 [delegate pushToMyselfViewControllerFrom:self];
+             }
+         }];
     }
 }
 
