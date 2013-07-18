@@ -18,6 +18,8 @@
 #import "Result.h"
 #import "VersionInfo.h"
 
+#import "SinaWeibo.h"
+
 
 
 enum actionsheetNumber{
@@ -260,7 +262,7 @@ typedef enum {
         
         if (0 == [indexPath row] )
         imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_cell_background.png"]];
-        else if (4 == [indexPath row])
+        else if (3 == [indexPath row])
         imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottom_cell_background.png"]];
         else
         imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"middle_cell_background.png"]];
@@ -422,22 +424,46 @@ typedef enum {
 
 -(int)numberOfItemsInActionSheet
 {
-    return 13;
+    return 7;
 }
 
 
 -(AWActionSheetCell *)cellForActionAtIndex:(NSInteger)index
 {
     AWActionSheetCell* cell = [[[AWActionSheetCell alloc] init] autorelease];
+
     
-    [[cell iconView] setBackgroundColor:
-     [UIColor colorWithRed:rand()%255/255.0f
-                     green:rand()%255/255.0f
-                      blue:rand()%255/255.0f
-                     alpha:1]];
-    [[cell titleLabel] setText:[NSString stringWithFormat:@"item %d",index]];
-    [[cell iconView] setImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
-    cell.index = index;
+    //set title
+    NSArray *titleArray  = [ NSArray arrayWithObjects:
+                            @"新浪微博",
+                            @"朋友圈",
+                            @"微信",
+                            @"腾讯微博",
+                            @"邮件",
+                            @"短信",
+                            @"复制链接",
+                            nil];
+    [[cell titleLabel] setText:[NSString stringWithFormat:@"%@",[titleArray objectAtIndex:index]]];
+    
+    
+    //set icons 
+    NSArray *imageArray  = [ NSArray arrayWithObjects:
+                            @"sina.png",
+                            @"friendsCircle.png",
+                            @"wechat.png",
+                            @"tencentWeibo.png",
+                            @"email.png",
+                            @"message.png",
+                            @"copylink.png",
+                            nil];
+    
+    NSString *imageName = [NSString stringWithFormat:@"%@",[imageArray objectAtIndex:index]];
+    UIImage *image = [UIImage imageNamed:imageName];
+    [[cell iconView] setImage:image];
+    
+    
+    
+     cell.index = index;
     
     return cell;
 }
@@ -445,6 +471,95 @@ typedef enum {
 -(void)DidTapOnItemAtIndex:(NSInteger)index
 {
     PPDebug(@"tap on %d",index);
+    
+    NSString *bodyStringBegin = @"我正在使用爱健美客户端，学习如何健身，分享，很方便很好用，下载地址是";
+    NSString *bodyStringWebsite = @"http://www.aijianmei.com";
+    NSString *bodyString = [NSString stringWithFormat:@"%@%@", bodyStringBegin, bodyStringWebsite];
+
+    
+    
+    enum TapOnItem {
+        
+        SINA_WEIBO = 0,
+        FREIND_CIRCLE = 1,
+        WECHAT = 2,
+        TENCENT_WEIBO = 3,
+        EMAIL = 4,
+        MESSAGE = 5,
+        COPY_LINK =6
+
+    };
+    
+    int TapOnItem = index;
+    
+    
+    switch (TapOnItem) {
+        case SINA_WEIBO:
+        {
+            PPDebug(@"分享到新浪微博");
+            NSString *status = @"TESTING";
+            UIImage *pic =[UIImage imageNamed:@"Default-568h@2x.png"];
+            
+            
+            NSMutableDictionary * params =[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                           status, @"status",pic,@"pic",nil];
+            
+            
+            [[SinaWeiboManager sharedManager].sinaweibo requestWithURL:@"statuses/upload.json"
+                                                                params:params
+                                                            httpMethod:@"POST"
+                                                              delegate:self];
+            
+
+            [self showActivityWithText:@"正在分享"];
+
+        }
+            break;
+        case FREIND_CIRCLE:
+        {
+            
+        }
+            break;
+        case WECHAT:
+        {
+            
+        }
+            break;
+        case TENCENT_WEIBO:
+        {
+            
+        }
+            break;
+        case EMAIL:
+        {
+            [self sendEmailTo:nil
+                 ccRecipients:nil
+                bccRecipients:nil
+                      subject:@"下载爱健美客户端，学习如何健身"
+                         body:bodyString
+                       isHTML:NO
+                     delegate:self];
+            
+        }
+            break;
+        case MESSAGE:
+        {
+            [self sendSms:nil body:bodyString];
+            
+        }
+            break;
+        case COPY_LINK:
+        {
+            //copy one link
+            NSString *downloadAPPUrl = [NSString stringWithFormat:@"www.aijianmei.com"];
+            UIPasteboard *gpBoard = [UIPasteboard generalPasteboard];
+            [gpBoard setString:downloadAPPUrl];
+                
+        }
+            break;
+        default:
+            break;
+    }
 
 }
 
@@ -459,10 +574,8 @@ typedef enum {
     else{
         whichAcctionSheet = RECOMMENDATION;
         [self shareToSocialnetWorks];
-        PPDebug(@"Users share to his friends");
     
     }
-        
 }
 
 -(void)showFeedback{
@@ -558,14 +671,28 @@ typedef enum {
             CANCLE_BUTTON
         };
                 
-        NSInteger BUTTON_INDEX ;
-        BUTTON_INDEX  = buttonIndex;
+        NSInteger BUTTON_INDEX  =buttonIndex;
 
         switch (BUTTON_INDEX) {
             case SEND_SINA_WEIBO:
             {
                 
-                                
+                NSString *status = @"TESTING";
+                UIImage *pic =[UIImage imageNamed:@"Default-568h@2x.png"];
+                
+
+                NSMutableDictionary * params =[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                               status, @"status",pic,@"pic",nil];
+                
+                
+            [[SinaWeiboManager sharedManager].sinaweibo requestWithURL:@"statuses/upload.json"
+                                                     params:params
+                                                 httpMethod:@"POST"
+                                                   delegate:self];
+                
+                [self showActivityWithText:@"正在分享"];
+
+                
             }
                 break;
             case SEND_WECHAT_SOCIAL:
@@ -582,6 +709,7 @@ typedef enum {
             case SEND_EMAIL:
                 
             {
+                
                 [self sendEmailTo:nil
                      ccRecipients:nil
                     bccRecipients:nil
@@ -632,6 +760,49 @@ typedef enum {
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
+
+#pragma mark - SinaWeiboRequest Delegate
+- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
+{
+    
+    
+    if ([request.url hasSuffix:@"statuses/upload.json"])
+    {
+        NSLog(@"******%@",[error description]);
+        [self showActivityWithText:@"分享失败"];
+
+    }
+}
+
+- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
+{
+    
+    
+    if ([request.url hasSuffix:@"statuses/upload.json"])
+    {
+        
+        NSLog(@"******%@",[result description]);
+        [self hideActivity];
+    }
+}
+
+
+- (void)request:(SinaWeiboRequest *)request didReceiveResponse:(NSURLResponse *)response{
+    
+    if ([request.url hasSuffix:@"statuses/upload.json"])
+    {
+        
+        NSLog(@"******%@",[response description]);
+        
+    }
+
+
+
+}
+
+
 
 
 #pragma mark -

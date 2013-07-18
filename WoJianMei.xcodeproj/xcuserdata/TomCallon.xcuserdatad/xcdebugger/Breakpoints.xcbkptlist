@@ -20,13 +20,52 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "WoJianMei/Service/UserService.m"
-         timestampString = "395759680.239783"
+         filePath = "WoJianMei/Controllers/MoreViewController/MoreViewController.m"
+         timestampString = "395813850.751332"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "459"
-         endingLineNumber = "459"
-         landmarkName = "-deleteSinaUserInfoWithUid:"
+         startingLineNumber = "685"
+         endingLineNumber = "685"
+         landmarkName = "-actionSheet:clickedButtonAtIndex:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "WoJianMei/Controllers/MoreViewController/MoreViewController.m"
+         timestampString = "395813850.751332"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "773"
+         endingLineNumber = "773"
+         landmarkName = "-request:didFailWithError:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "WoJianMei/Controllers/MoreViewController/MoreViewController.m"
+         timestampString = "395814103.61254"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "797"
+         endingLineNumber = "797"
+         landmarkName = "-request:didReceiveResponse:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "WoJianMei/Controllers/MoreViewController/MoreViewController.m"
+         timestampString = "395814154.693047"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "786"
+         endingLineNumber = "786"
+         landmarkName = "-request:didFinishLoadingWithResult:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

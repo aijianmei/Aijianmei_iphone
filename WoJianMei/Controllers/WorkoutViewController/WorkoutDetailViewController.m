@@ -48,17 +48,37 @@
 -(AWActionSheetCell *)cellForActionAtIndex:(NSInteger)index
 {
     AWActionSheetCell* cell = [[[AWActionSheetCell alloc] init] autorelease];
+        
     
-//    [[cell iconView] setBackgroundColor:
-//     [UIColor colorWithRed:rand()%255/255.0f
-//                     green:rand()%255/255.0f
-//                      blue:rand()%255/255.0f
-//                     alpha:1]];
-//    
-    NSArray *array  = [ NSArray arrayWithObjects:@"新浪微博",@"朋友圈",@"微信",@"腾讯微博",@"邮件",@"短信",@"复制链接", nil];
+    //set title
+    NSArray *titleArray  = [ NSArray arrayWithObjects:
+                            @"新浪微博",
+                            @"朋友圈",
+                            @"微信",
+                            @"腾讯微博",
+                            @"邮件",
+                            @"短信",
+                            @"复制文章链接",
+                            nil];
+    [[cell titleLabel] setText:[NSString stringWithFormat:@"%@",[titleArray objectAtIndex:index]]];
     
-    [[cell titleLabel] setText:[NSString stringWithFormat:@"%@",[array objectAtIndex:index]]];
-    [[cell iconView] setImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
+    
+    //set icons
+    NSArray *imageArray  = [ NSArray arrayWithObjects:
+                            @"sina.png",
+                            @"friendsCircle.png",
+                            @"wechat.png",
+                            @"tencentWeibo.png",
+                            @"email.png",
+                            @"message.png",
+                            @"copylink.png",
+                            nil];
+    NSString *imageName = [NSString stringWithFormat:@"%@",[imageArray objectAtIndex:index]];
+    UIImage *image = [UIImage imageNamed:imageName];
+    [[cell iconView] setImage:image];
+    
+    
+    
     cell.index = index;
     
     return cell;

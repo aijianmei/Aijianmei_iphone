@@ -30,6 +30,11 @@
 
 #define Mobclick @"51b942ae56240bd8cb009671"
 
+
+#define SinaweibossoLogin @"sinaweibosso"
+
+
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -273,7 +278,7 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    if ([url.absoluteString hasSuffix:@"sinaweibosso://login"]) {
+    if ([url.absoluteString hasSuffix:SinaweibossoLogin]) {
         return [[SinaWeiboManager sharedManager].sinaweibo handleOpenURL:url];
     } else {
         return YES;
@@ -282,13 +287,12 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    if ([url.absoluteString hasSuffix:@"sinaweibosso://login"]) {
+
+    if ([sourceApplication isEqualToString:@"com.sina.weibo"] && [url.absoluteString hasPrefix:SinaweibossoLogin]){
         return [[SinaWeiboManager sharedManager].sinaweibo handleOpenURL:url];
-    } else {
+    }else{
         
     return YES;
-
-
     }
 }
 

@@ -11,6 +11,12 @@
 #import "UserService.h"
 #import "Result.h"
 
+enum errorCode {
+    ERROR_SUCCESS =0,
+};
+
+
+
 @interface FeedBackViewController ()
 
 @end
@@ -41,11 +47,10 @@
     [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     [self setNavigationRightButton:@"发送" imageName:@"top_bar_commonButton.png" action:@selector(clickSendButton:)];
     
-    User *user =[[UserService defaultService] user];
     [_descriptionTextField setDelegate:self];
     [_descriptionTextField setBackground:[UIImage imageNamed:@"description_BG"]];
-    [_descriptionTextField setText:user.description];
-    [_descriptionTextField becomeFirstResponder];
+    [_descriptionTextField setText:@"欢迎告诉我们您的意见！"];
+    
     
     
 }
@@ -95,6 +100,7 @@
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
+    [self showActivityWithText:@"加载中"];
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
@@ -102,6 +108,15 @@
     NSLog(@"***Load objects count: %d", [objects count]);
     Result *result = [objects objectAtIndex:0];
     PPDebug(@"The error code : %@",result.errorCode);
+    [self hideActivity];
+    
+    NSInteger errorCode =  [result.errorCode integerValue];
+    
+    if (errorCode ==ERROR_SUCCESS )
+    {
+        PPDebug(@"信息反馈完成");
+    
+    }
     
 }
 
