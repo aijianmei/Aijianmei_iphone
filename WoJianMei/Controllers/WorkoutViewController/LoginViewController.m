@@ -42,7 +42,7 @@ enum SinaResultErrorCode
 @synthesize  usernameField =_usernameField;
 @synthesize  passwordField =_passwordField;
 @synthesize delegate;
-
+@synthesize signUpViewController =_signUpViewController;
 
 
 
@@ -65,6 +65,23 @@ enum SinaResultErrorCode
     [self.sinaButton setTag:10];
     [self.qqButton setTag:10];
     [self.aijianmeiButton setTag:10];
+    
+    
+    UIStoryboard *currentInUseStoryBoard;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        
+        currentInUseStoryBoard = iPhoneStroyBoard;
+        
+    }else{
+        
+        UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+        currentInUseStoryBoard = iPadStroyBoard;
+    }
+
+
+    SignUpViewController *signupVC = (SignUpViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
+    self.signUpViewController =signupVC;
 
 
 }
@@ -146,9 +163,26 @@ enum SinaResultErrorCode
 
 - (void)dealloc {
     
+    
+    [_usernameField release];
+    [_passwordField release];
+    [_snsId release];
+    [_userType release];
+    [_sinaButton release];
+    [_qqButton release];
+    [_aijianmeiButton release];
+    [_signUpViewController release];
+
     [super dealloc];
 }
 - (void)viewDidUnload {
+    
+    [self setUsernameField:nil];
+    [self setPasswordField :nil];
+    [self setSinaButton:nil];
+    [self setQqButton: nil];
+    [self setAijianmeiButton:nil];
+    [self setSignUpViewController:nil];
     
     [super viewDidUnload];
 }
@@ -178,8 +212,13 @@ enum SinaResultErrorCode
     [self setUserType:@"qq"];
 }
 - (IBAction)clickSignupAijianmeiAccount:(UIButton *)sender {
+    
     self.userType =@"local";
-    [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
+    [self.navigationController pushViewController:self.signUpViewController animated:YES];
+    _signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;
+    _signUpViewController.userType =[self userType];
+    
+    self.signUpViewController.delegate = (id) self.delegate;
     
 }
 
@@ -300,8 +339,10 @@ enum SinaResultErrorCode
         if (NO_Such_User ==errocde)
         {
             PPDebug(@"该用户不存在,用户要开始创建新的账户");
-            
-            [self performSegueWithIdentifier:@"SignupViewSegue" sender:self];
+                        
+            [self.navigationController pushViewController:self.signUpViewController animated:YES];
+            _signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;
+            _signUpViewController.userType =[self userType];
             
         }
     
@@ -348,17 +389,5 @@ enum SinaResultErrorCode
          }
 }
 
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    
-    if ([segue.identifier isEqualToString:@"SignupViewSegue"]) {
-        
-          SignUpViewController *signUpViewController = (SignUpViewController*)segue.destinationViewController;
-           signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;
-           signUpViewController.userType =[self userType];
-    }
-    
-}
 
 @end

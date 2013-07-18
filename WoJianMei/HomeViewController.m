@@ -63,7 +63,7 @@ typedef enum CONTENT_TYPE {
 @synthesize buttonScrollView =_buttonScrollView;
 @synthesize currentButton = _currentButton;
 @synthesize loginViewController =_loginViewController;
-@synthesize signUpViewController =_signUpViewController;
+
 
 
 - (void)didReceiveMemoryWarning
@@ -81,7 +81,6 @@ typedef enum CONTENT_TYPE {
     [_buttonScrollView release];
     [_currentButton release];
     [_loginViewController release];
-    [_signUpViewController release];
 
     [super dealloc];
 }
@@ -148,9 +147,7 @@ typedef enum CONTENT_TYPE {
     }
     
     
-    SignUpViewController *signupVC = (SignUpViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
-    self.signUpViewController =signupVC;
-    self.signUpViewController.delegate =self;
+    
     
 
     User *user = [[UserService defaultService] user];
@@ -228,8 +225,8 @@ typedef enum CONTENT_TYPE {
         
         self.loginViewController = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         UINavigationController *nv = [[[UINavigationController alloc]initWithRootViewController:_loginViewController] autorelease];
-        [self.navigationController presentModalViewController:nv animated:YES];
         self.loginViewController.delegate = self;
+        [self.navigationController presentModalViewController:nv animated:YES];
     }
 }
 

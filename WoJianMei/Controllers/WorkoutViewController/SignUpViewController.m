@@ -225,8 +225,18 @@ enum errorCode {
         
         NSLog(@"******Register success,return uid:%@",user.uid);
         [UserService defaultService].user = user;
-        [[UserService defaultService] storeUserInfoByUid:user.uid];        
-        [self.navigationController popViewControllerAnimated:YES];
+        [[UserService defaultService] storeUserInfoByUid:user.uid];
+        
+        //直接从注册页面，跳动到用户界面;
+        [self dismissViewControllerAnimated:YES completion:^
+         {
+             // 调用该方法进入用户资料界面
+             if (delegate && [delegate respondsToSelector:@selector(pushToMyselfViewControllerFrom:)])
+             {
+                 [delegate pushToMyselfViewControllerFrom:self];
+             }
+         }];
+        
     }
     //直接注册，用户名;
     if ([self.userType isEqualToString:@"local"]) {
@@ -244,7 +254,8 @@ enum errorCode {
         [UserService defaultService].user = user;
         [[UserService defaultService] storeUserInfoByUid:result.uid];
         
-        
+                
+        //直接从注册页面，跳动到用户界面;
         [self dismissViewControllerAnimated:YES completion:^
          {
              // 调用该方法进入用户资料界面

@@ -12,9 +12,8 @@
 #import "iCarousel.h"
 #import <RestKit/RestKit.h>
 #import "LoginViewController.h"
+
 #import "SignUpViewController.h"
-
-
 
 
 @class AppDelegate;
@@ -40,7 +39,6 @@
 @property (assign, nonatomic) NSInteger start;
 @property (assign, nonatomic) NSInteger totalCount;
 @property (nonatomic,retain) LoginViewController *loginViewController;
-@property (nonatomic,retain) SignUpViewController*signUpViewController;
 
 
 

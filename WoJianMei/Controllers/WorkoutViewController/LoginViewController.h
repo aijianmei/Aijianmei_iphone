@@ -10,6 +10,7 @@
 #import "SinaweiboManager.h"
 #import "PPViewController.h"
 #import <RestKit/RestKit.h>
+#import "SignUpViewController.h"
 
 
 @protocol LoginViewDelegate <NSObject>
@@ -27,18 +28,22 @@
     UITextField    *_passwordField;
     
     id <LoginViewDelegate> delegate;
+    
+    SignUpViewController*_signUpViewController;
 
     
 }
 
 @property (nonatomic, retain) IBOutlet UITextField *usernameField;
 @property (nonatomic, retain) IBOutlet UITextField *passwordField;
-@property (retain, nonatomic) NSString *snsId;
-@property (retain, nonatomic) NSString *userType;
+@property (nonatomic, retain) NSString *snsId;
+@property (nonatomic, retain) NSString *userType;
 @property (nonatomic, retain) IBOutlet UIButton *sinaButton;
 @property (nonatomic, retain) IBOutlet UIButton *qqButton;
 @property (nonatomic, retain) IBOutlet UIButton *aijianmeiButton;
 @property (nonatomic,assign) id <LoginViewDelegate> delegate;
+@property (nonatomic,retain) SignUpViewController*signUpViewController;
+
 
 
 //实现closeDoneEdit点击done关闭键盘
