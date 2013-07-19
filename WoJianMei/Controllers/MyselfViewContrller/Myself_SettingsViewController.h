@@ -10,9 +10,11 @@
 #import "PPTableViewController.h"
 #import "AFPickerView.h"
 
+#import <RestKit/RestKit.h>
+
 
 @class User;
-@interface Myself_SettingsViewController: PPTableViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIAlertViewDelegate,AFPickerViewDataSource, AFPickerViewDelegate>
+@interface Myself_SettingsViewController: PPTableViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIAlertViewDelegate,AFPickerViewDataSource, AFPickerViewDelegate,RKObjectLoaderDelegate>
 
 {
 

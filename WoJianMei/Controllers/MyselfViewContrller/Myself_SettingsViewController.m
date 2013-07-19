@@ -81,16 +81,17 @@
 
 -(void)save{
     
-    [[UserService defaultService] postImage];
+    [[UserService defaultService] postObject:nil  WithDelegate:self];
 
      didSave =YES;
 }
-- (void) objectLoader:(RKObjectLoader*)objectLoader didLoadObject:(id)object {
+
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObject:(id)object {
     
-    if ([objectLoader wasSentToResourcePath:@"/pet/uploadPhoto"]) {
+    if ([objectLoader wasSentToResourcePath:@"/imgtest.php"]) {
     }
 }
-
 
 
 

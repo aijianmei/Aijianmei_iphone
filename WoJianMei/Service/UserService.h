@@ -12,7 +12,7 @@
 #import "SinaWeiboManager.h"
 #import "User.h"
 
-@protocol UserServiceDelegate <NSObject>
+@protocol UserServiceDelegate <NSObject,RKObjectLoaderDelegate>
 
 
 @optional
@@ -113,7 +113,9 @@
 //删除在本地的用户信息
 -(void)deleteUserByUid:(NSString *)uid;
 
--(void)postImage;
+-(void)postObject:(NSObject*)object
+     WithDelegate:(id<RKObjectLoaderDelegate>)delegate;
+
 
 -(void)postImageToServerWithDelegate:(id)delegate;
 

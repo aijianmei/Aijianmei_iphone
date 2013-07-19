@@ -15,6 +15,8 @@
 #import "Result.h"
 #import "SinaResult.h"
 #import "VersionInfo.h"
+#import <RestKit/RKJSONParserJSONKit.h>
+
 
 
 
@@ -491,13 +493,10 @@ static UserService* _defaultUserService = nil;
 }
 
 
--(void)testToPostAIamge{
 
 
-}
-
-
--(void)postImage
+-(void)postObject:(NSObject*)object
+     WithDelegate:(id<RKObjectLoaderDelegate>)delegate;
 {
     
    // http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_uploadimg
@@ -513,18 +512,32 @@ static UserService* _defaultUserService = nil;
     RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[User class]];
     [userMapping mapKeyPath:@"id" toAttribute:@"identifier"];
     [userMapping mapAttributes:
-     @"uid",
-//     @"image1",
-//     @"image2",
+     @"uid", 
+     @"userType",
+     @"profileImageUrl",
+     @"avatarBackGroundImage",
+     @"name",
+     @"description",
+     @"gender",
+     @"sinaUserId",
+     @"qqUserId",
+     @"email",
+     @"loginStatus",
+     @"labelsArray",
+     @"age",
+     @"height",
+     @"weight",
+     @"BMIValue",
+     @"province",
+     @"city",
+
+     @"avatarimage1",
+     @"backgroundimage1",
      nil];
     
     [objectManager.mappingProvider addObjectMapping:userMapping];
     [objectManager.mappingProvider setSerializationMapping:[userMapping inverseMapping] forClass:[User class]];
     [objectManager.mappingProvider setMapping:userMapping forKeyPath:@"user"];
-    
-    //The post
-    User *user = [[User alloc] init];
-    [user setUid:@"1111"];
     
     
     
@@ -532,22 +545,50 @@ static UserService* _defaultUserService = nil;
     UIImage *image2 = [UIImage imageNamed:@"table_header_bg.png"];
     NSData *imageData1 = UIImagePNGRepresentation(image1);
     NSData *imageData2 = UIImagePNGRepresentation(image2);
-    
-    
-    
-        
-    [objectManager postObject:user usingBlock:^(RKObjectLoader *loader)
-    {
-        RKParams* params = [RKParams params];
-        [params setValue:user.uid forParam:@"uid"];
-        
-        [params setData:imageData1 MIMEType:@"image/png" forParam:@"image1"];
-        [params setData:imageData2 MIMEType:@"image/png" forParam:@"image2"];
+    //The post
+    User *user = [[User alloc] init];
+    [user setUid:@"1111"];
+    [user setAge:@"19"];
+    [user setCity:@"广州"];
+    [user setProvince:@"广东"];
+    [user setBMIValue:@"fu"];
+   
 
-        loader.params = params;
-    }];
-}
     
+    NSDictionary * paramsDictionary = [[NSDictionary alloc]initWithObjects:nil forKeys:nil];
+    
+//    RKParams* params = [RKParams paramsWithDictionary:(NSDictionary *)];
+    
+    
+
+    RKParams* params = [RKParams params];
+
+    [params setValue:user.uid forParam:@"uid"];
+    [params setValue:user.age forParam:@"age"];
+    [params setValue:user.city forParam:@"city"];
+    [params setValue:user.province forParam:@"province"];
+    [params setValue:user.BMIValue forParam:@"BMIValue"];
+
+    
+    [params setData:imageData1 MIMEType:@"image/png"
+           forParam:@"avatarimage1"];
+    [params setData:imageData2 MIMEType:@"image/png"
+           forParam:@"backgroundimage1"];
+    
+    
+    [[RKObjectManager sharedManager] postObject:user usingBlock:^(RKObjectLoader *loader)
+    {
+        loader.params = params;
+        loader.timeoutInterval =30;
+
+    }];
+    
+    
+}
+
+
+
+
 
 - (BOOL)hasBindAccount
 {
