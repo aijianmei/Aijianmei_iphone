@@ -632,8 +632,8 @@
 		4A0E4DCF178C559E00E1287D /* ChangeGenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeGenderViewController.h; sourceTree = "<group>"; };
 		4A0E4DD0178C559E00E1287D /* ChangeGenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeGenderViewController.m; sourceTree = "<group>"; };
 		4A0E4DD1178C559E00E1287D /* ChangeGenderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeGenderViewController.xib; sourceTree = "<group>"; };
-		4A11FC551796BBE100DE34E6 /* SinaResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaResult.h; sourceTree = "<group>"; };
-		4A11FC561796BBE100DE34E6 /* SinaResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaResult.m; sourceTree = "<group>"; };
+		4A11FC551796BBE100DE34E6 /* SinaResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SinaResult.h; path = ../SinaResult.h; sourceTree = "<group>"; };
+		4A11FC561796BBE100DE34E6 /* SinaResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SinaResult.m; path = ../SinaResult.m; sourceTree = "<group>"; };
 		4A125DAD17951BD300D64751 /* dl_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dl_1@2x.png"; sourceTree = "<group>"; };
 		4A125DAE17951BD300D64751 /* dl_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dl_2@2x.png"; sourceTree = "<group>"; };
 		4A125DAF17951BD300D64751 /* dlk_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dlk_1@2x.png"; sourceTree = "<group>"; };
@@ -1681,6 +1681,8 @@
 				4A27AE6B1777F006009978C5 /* WorkOut.m */,
 				4A22152817793C970079430D /* ColorManager.h */,
 				4A22152917793C970079430D /* ColorManager.m */,
+				4A11FC551796BBE100DE34E6 /* SinaResult.h */,
+				4A11FC561796BBE100DE34E6 /* SinaResult.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2965,8 +2967,6 @@
 			children = (
 				4A8A7224174E10FE00BD3AAE /* LoginViewController.h */,
 				4A8A7225174E10FF00BD3AAE /* LoginViewController.m */,
-				4A11FC551796BBE100DE34E6 /* SinaResult.h */,
-				4A11FC561796BBE100DE34E6 /* SinaResult.m */,
 				4A8A7227174E557700BD3AAE /* SignUpViewController.h */,
 				4A8A7228174E557700BD3AAE /* SignUpViewController.m */,
 				4ACD190916154F5C00567A24 /* Entries */,

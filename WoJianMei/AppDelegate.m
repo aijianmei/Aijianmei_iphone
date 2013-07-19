@@ -26,8 +26,6 @@
 ///aijianmei
 #define WeChatId @"wxc996cdfc0f512dd7"
 #define kAppRedirectURI     @"http://aijianmei.com"
-#define kServerUrl @"http://42.96.132.109/wapapi"
-
 #define Mobclick @"51b942ae56240bd8cb009671"
 
 
@@ -76,6 +74,7 @@
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
   
     
+
     
     // Assign tab bar item with titles
 //    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;

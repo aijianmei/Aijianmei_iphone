@@ -483,6 +483,7 @@ typedef enum CONTENT_TYPE {
     [button setTitle:@"最新" forState:UIControlStateNormal];
     [self buttonClicked:button];
     
+    
     [super viewDidLoad];
     
 }
@@ -633,6 +634,7 @@ typedef enum CONTENT_TYPE {
     NSLog(@"Start load request...");
     [self showActivityWithText:@"数据加载中..."];
 }
+
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {

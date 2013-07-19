@@ -16,6 +16,8 @@
 #import "SinaResult.h"
 #import "VersionInfo.h"
 
+
+
 @implementation UserService
 
 
@@ -330,9 +332,6 @@ static UserService* _defaultUserService = nil;
             [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
         });
     });
-
-
-
 }
 
 - (void)initUserMap
@@ -491,6 +490,64 @@ static UserService* _defaultUserService = nil;
     [self setUser:nil];
 }
 
+
+-(void)testToPostAIamge{
+
+
+}
+
+
+-(void)postImage
+{
+    
+   // http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_uploadimg
+  //    http://42.96.132.109/wapapi/imgtest.php
+    
+    //Router setup:  设定你要POST的物体的上传路径
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    [objectManager.router routeClass:[User class] toResourcePath:@"/imgtest.php" forMethod:RKRequestMethodPOST];
+    
+    NSLog(@"Post an Image baseURL %@",[objectManager baseURL]);
+
+    //Mapping setup:
+    RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[User class]];
+    [userMapping mapKeyPath:@"id" toAttribute:@"identifier"];
+    [userMapping mapAttributes:
+     @"uid",
+//     @"image1",
+//     @"image2",
+     nil];
+    
+    [objectManager.mappingProvider addObjectMapping:userMapping];
+    [objectManager.mappingProvider setSerializationMapping:[userMapping inverseMapping] forClass:[User class]];
+    [objectManager.mappingProvider setMapping:userMapping forKeyPath:@"user"];
+    
+    //The post
+    User *user = [[User alloc] init];
+    [user setUid:@"1111"];
+    
+    
+    
+    UIImage *image1 = [UIImage imageNamed:@"touxiang_40x40.png"];
+    UIImage *image2 = [UIImage imageNamed:@"table_header_bg.png"];
+    NSData *imageData1 = UIImagePNGRepresentation(image1);
+    NSData *imageData2 = UIImagePNGRepresentation(image2);
+    
+    
+    
+        
+    [objectManager postObject:user usingBlock:^(RKObjectLoader *loader)
+    {
+        RKParams* params = [RKParams params];
+        [params setValue:user.uid forParam:@"uid"];
+        
+        [params setData:imageData1 MIMEType:@"image/png" forParam:@"image1"];
+        [params setData:imageData2 MIMEType:@"image/png" forParam:@"image2"];
+
+        loader.params = params;
+    }];
+}
+    
 
 - (BOOL)hasBindAccount
 {

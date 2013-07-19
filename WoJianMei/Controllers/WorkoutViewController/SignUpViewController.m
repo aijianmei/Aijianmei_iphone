@@ -97,7 +97,7 @@ enum errorCode {
     if ([self.userType isEqualToString:@"sina"]) {
         userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
         
-        [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.emailTextField.text password:self.passwordTextField.text usertype:self.userType snsId:self.snsId profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:@"" body_weight:@"" height:@"" keyword:@"" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] delegate:self];
+        [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.emailTextField.text password:self.passwordTextField.text usertype:self.userType snsId:self.snsId profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:@"23" body_weight:@"65" height:@"175" keyword:@"1233|33|eerw" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] delegate:self];
 
     }
     if ([self.userType isEqualToString:@"qq"]) {

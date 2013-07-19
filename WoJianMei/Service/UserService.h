@@ -34,7 +34,7 @@
 
 + (UserService*)defaultService;
 
-//注册用户
+//注册新用户
 - (void)registerUserWithUsername:(NSString*)name
                            email:(NSString*)email
                         password:(NSString*)password
@@ -112,6 +112,10 @@
 
 //删除在本地的用户信息
 -(void)deleteUserByUid:(NSString *)uid;
+
+-(void)postImage;
+
+-(void)postImageToServerWithDelegate:(id)delegate;
 
 //是否绑定邮箱
 - (BOOL)hasBindEmail;

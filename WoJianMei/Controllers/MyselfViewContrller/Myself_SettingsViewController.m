@@ -73,9 +73,7 @@
 -(void)didClickBackButton:(UIButton *)button{
     
     if (didSave == NO) {
-     
         UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"保存修改" message:@"您当前修改数据没有保存" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"保存", nil];
-        
         [av show];
     }
 }
@@ -83,9 +81,18 @@
 
 -(void)save{
     
-     didSave =YES;
+    [[UserService defaultService] postImage];
 
+     didSave =YES;
 }
+- (void) objectLoader:(RKObjectLoader*)objectLoader didLoadObject:(id)object {
+    
+    if ([objectLoader wasSentToResourcePath:@"/pet/uploadPhoto"]) {
+    }
+}
+
+
+
 
 #pragma Image Picker Related
 // this is just for copy
@@ -96,7 +103,6 @@
         
         if (isChoosingAvtarImage)
         {
-            
 //           self.user.avatarImage = image;
         }
         if (isChoosingAvtarBackground)
@@ -192,7 +198,6 @@
         }
             break;
 
-            
         default:
             break;
     }
@@ -237,12 +242,12 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
 
     if (buttonIndex==0) {
-     
         NSLog(@"0");
+        
     }else {
         NSLog(@"1");
 
-    
+
     }
 }
 
