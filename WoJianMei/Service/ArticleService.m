@@ -115,30 +115,32 @@
 {
     [self initArticleMap];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        //传入api接口参数,例如：
-        //aucode=aijianmei&auact=au_getinformationlist&listtype=2&category=train&type=hot&page=1&punms=5
-        
-        NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:aucode,Aucode,
-                                          auact,Auact,
-                                       listtype,Listtype,
-                                       category,Category,
-                                           type,Type,
-                                           [NSString stringWithFormat:@"%d",start ],Start,
-                                          [NSString stringWithFormat:@"%d",offset ],Offset,
-                                         cateid,Cateid,                                            uid,Uid, nil];
-        
-        RKObjectManager *objectManager = [RKObjectManager sharedManager];
-        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
-        
-        NSLog(@"url: %@", [url absoluteString]);
-        NSLog(@"resourcePath: %@", [url resourcePath]);
-        NSLog(@"query: %@", [url query]);
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
-        });
-    });
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        //传入api接口参数,例如：
+//        //aucode=aijianmei&auact=au_getinformationlist&listtype=2&category=train&type=hot&page=1&punms=5
+//        
+//        NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:aucode,Aucode,
+//                                          auact,Auact,
+//                                       listtype,Listtype,
+//                                       category,Category,
+//                                           type,Type,
+//                                           [NSString stringWithFormat:@"%d",start ],Start,
+//                                          [NSString stringWithFormat:@"%d",offset ],Offset,
+//                                         cateid,Cateid,                                            uid,Uid, nil];
+//        
+//        RKObjectManager *objectManager = [RKObjectManager sharedManager];
+//        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
+//        
+//        NSLog(@"url: %@", [url absoluteString]);
+//        NSLog(@"resourcePath: %@", [url resourcePath]);
+//        NSLog(@"query: %@", [url query]);
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+////            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
+//           
+//
+//        });
+//    });
 
 }
 
@@ -148,33 +150,33 @@
                         channel:(NSString*)channel
                      channelType:(NSString*)channelType
                           uid:(NSString*)uid
-                     delegate:(id<RKObjectLoaderDelegate>)delegate
+                     delegate:(id <RKObjectLoaderDelegate>)delegate
 {
     [self initArticleDetailMap];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        //传入api接口参数,例如：
-        //aucode=aijianmei&auact=au_getinformationlist&listtype=2&category=train&type=hot&page=1&punms=5
-        
-        NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:aucode,@"aucode",
-                                     auact, @"auact",
-                                     _id,@"id",
-                                     channel,@"channel",
-                                     channelType,@"channelType",
-                                     uid, @"uid", nil];
-        
-        RKObjectManager *objectManager = [RKObjectManager sharedManager];
-        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
-        
-        NSLog(@"url: %@", [url absoluteString]);
-        NSLog(@"resourcePath: %@", [url resourcePath]);
-        NSLog(@"query: %@", [url query]);
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
-        });
-    });
-    
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        //传入api接口参数,例如：
+//        //aucode=aijianmei&auact=au_getinformationlist&listtype=2&category=train&type=hot&page=1&punms=5
+//        
+//        NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:aucode,@"aucode",
+//                                     auact, @"auact",
+//                                     _id,@"id",
+//                                     channel,@"channel",
+//                                     channelType,@"channelType",
+//                                     uid, @"uid", nil];
+//        
+//        RKObjectManager *objectManager = [RKObjectManager sharedManager];
+//        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
+//        
+//        NSLog(@"url: %@", [url absoluteString]);
+//        NSLog(@"resourcePath: %@", [url resourcePath]);
+//        NSLog(@"query: %@", [url query]);
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
+//        });
+//    });
+//    
 }
 
 - (void)findArticle:(id<RKObjectLoaderDelegate>)delegate
@@ -182,38 +184,38 @@
     //映射所需类对象
     [self initArticleMap];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        NSString *aucode= @"aijianmei";
-        NSString *auact = @"au_getinformationlist";
-        NSString *listtype = @"2";
-        NSString *category = @"train";
-        NSString *type = @"hot";
-        NSString *page = @"1";
-        NSString *pnums = @"10";
-        NSString *cateid = @"1";
-        NSString *uid = @"265";
-                
-        NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:aucode, @"aucode",
-                                         auact,  @"auact",
-                                         listtype, @"listtype",
-                                         category, @"category",
-                                         type, @"type",
-                                         page, @"page",
-                                         pnums, @"pnums",
-                                         cateid,@"cateid",
-                                         uid, @"uid", nil];
-        RKObjectManager *objectManager = [RKObjectManager sharedManager];
-        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
-        
-        NSLog(@"url: %@", [url absoluteString]);
-        NSLog(@"resourcePath: %@", [url resourcePath]);
-        NSLog(@"query: %@", [url query]);
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
-        });
-    });
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        
+//        NSString *aucode= @"aijianmei";
+//        NSString *auact = @"au_getinformationlist";
+//        NSString *listtype = @"2";
+//        NSString *category = @"train";
+//        NSString *type = @"hot";
+//        NSString *page = @"1";
+//        NSString *pnums = @"10";
+//        NSString *cateid = @"1";
+//        NSString *uid = @"265";
+//                
+//        NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:aucode, @"aucode",
+//                                         auact,  @"auact",
+//                                         listtype, @"listtype",
+//                                         category, @"category",
+//                                         type, @"type",
+//                                         page, @"page",
+//                                         pnums, @"pnums",
+//                                         cateid,@"cateid",
+//                                         uid, @"uid", nil];
+//        RKObjectManager *objectManager = [RKObjectManager sharedManager];
+//        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
+//        
+//        NSLog(@"url: %@", [url absoluteString]);
+//        NSLog(@"resourcePath: %@", [url resourcePath]);
+//        NSLog(@"query: %@", [url query]);
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
+//        });
+//    });
 }
 
 @end

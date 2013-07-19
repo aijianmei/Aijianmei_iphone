@@ -411,6 +411,7 @@
 		4A66C1AD16A57FAD00A2F22E /* gender_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A66C1AB16A57FAD00A2F22E /* gender_off.png */; };
 		4A66C1F216A59E0000A2F22E /* AWActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A66C1E216A59E0000A2F22E /* AWActionSheet.m */; };
 		4A66C1FB16A59E0000A2F22E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A66C1F016A59E0000A2F22E /* ViewController.m */; };
+		4A7B7976179986F700FD6E56 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7B796D1799864A00FD6E56 /* libRestKit.a */; };
 		4A7CF99215D74EF000206B14 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */; };
 		4A873B7E16A5301E005BDA45 /* touxiang_40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A873B7C16A5301D005BDA45 /* touxiang_40x40.png */; };
 		4A873B7F16A5301E005BDA45 /* touxiang_40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A873B7D16A5301E005BDA45 /* touxiang_40x40@2x.png */; };
@@ -522,7 +523,6 @@
 		4AFE7FD117928530006B5310 /* giraffe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AFE7FBF1792852F006B5310 /* giraffe@2x.png */; };
 		4AFE7FD317928530006B5310 /* text.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4AFE7FC11792852F006B5310 /* text.txt */; };
 		4AFE7FD417928530006B5310 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 4AFE7FC517928530006B5310 /* README */; };
-		4AFE80A11792E6DD006B5310 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AFE80961792E60D006B5310 /* libRestKit.a */; };
 		C6016B7417523D2D00BA5E63 /* bj_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6016B5F17523D2D00BA5E63 /* bj_1.png */; };
 		C6016B7517523D2D00BA5E63 /* bj_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C6016B6017523D2D00BA5E63 /* bj_2.png */; };
 		C6016B7617523D2D00BA5E63 /* fgx_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6016B6117523D2D00BA5E63 /* fgx_1.png */; };
@@ -569,54 +569,47 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4A7B796C1799864A00FD6E56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A7B79651799864900FD6E56 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160D1614564E810060A5C5;
+			remoteInfo = RestKit;
+		};
+		4A7B796E1799864A00FD6E56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A7B79651799864900FD6E56 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160D2614564E820060A5C5;
+			remoteInfo = RestKitTests;
+		};
+		4A7B79701799864A00FD6E56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A7B79651799864900FD6E56 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160E62145651060060A5C5;
+			remoteInfo = RestKitFramework;
+		};
+		4A7B79721799864A00FD6E56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A7B79651799864900FD6E56 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160E78145651060060A5C5;
+			remoteInfo = RestKitFrameworkTests;
+		};
+		4A7B7974179986EF00FD6E56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A7B79651799864900FD6E56 /* RestKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 25160D1514564E810060A5C5;
+			remoteInfo = RestKit;
+		};
 		4AFE7FD617928530006B5310 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4AFE7FC21792852F006B5310 /* FTCoreText.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 684DBCA513FD4DCF00776C6D;
 			remoteInfo = FTCoreText;
-		};
-		4AFE80951792E60D006B5310 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4AFE808D1792E60B006B5310 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160D1614564E810060A5C5;
-			remoteInfo = RestKit;
-		};
-		4AFE80971792E60D006B5310 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4AFE808D1792E60B006B5310 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160D2614564E820060A5C5;
-			remoteInfo = RestKitTests;
-		};
-		4AFE80991792E60D006B5310 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4AFE808D1792E60B006B5310 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160E62145651060060A5C5;
-			remoteInfo = RestKitFramework;
-		};
-		4AFE809B1792E60D006B5310 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4AFE808D1792E60B006B5310 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160E78145651060060A5C5;
-			remoteInfo = RestKitFrameworkTests;
-		};
-		4AFE809D1792E60D006B5310 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4AFE808D1792E60B006B5310 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 259C301615128079003066A2;
-			remoteInfo = RestKitResources;
-		};
-		4AFE809F1792E6D4006B5310 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4AFE808D1792E60B006B5310 /* RestKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 25160D1514564E810060A5C5;
-			remoteInfo = RestKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1295,6 +1288,7 @@
 		4A66C1E216A59E0000A2F22E /* AWActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWActionSheet.m; sourceTree = "<group>"; };
 		4A66C1EF16A59E0000A2F22E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		4A66C1F016A59E0000A2F22E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4A7B79651799864900FD6E56 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = ../RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4A873B7C16A5301D005BDA45 /* touxiang_40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = touxiang_40x40.png; path = ../../Controllers/MyselfViewContrller/touxiang_40x40.png; sourceTree = "<group>"; };
 		4A873B7D16A5301E005BDA45 /* touxiang_40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "touxiang_40x40@2x.png"; path = "../../Controllers/MyselfViewContrller/touxiang_40x40@2x.png"; sourceTree = "<group>"; };
@@ -1458,7 +1452,6 @@
 		4AFE7FC11792852F006B5310 /* text.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = text.txt; sourceTree = "<group>"; };
 		4AFE7FC21792852F006B5310 /* FTCoreText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = FTCoreText.xcodeproj; sourceTree = "<group>"; };
 		4AFE7FC517928530006B5310 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		4AFE808D1792E60B006B5310 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		C6016B5F17523D2D00BA5E63 /* bj_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bj_1.png; sourceTree = "<group>"; };
 		C6016B6017523D2D00BA5E63 /* bj_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bj_2.png; sourceTree = "<group>"; };
 		C6016B6117523D2D00BA5E63 /* fgx_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fgx_1.png; sourceTree = "<group>"; };
@@ -1533,7 +1526,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AFE80A11792E6DD006B5310 /* libRestKit.a in Frameworks */,
+				4A7B7976179986F700FD6E56 /* libRestKit.a in Frameworks */,
 				C6DB20271760CDE10060BD08 /* CoreImage.framework in Frameworks */,
 				C6DB20251760CDD40060BD08 /* ImageIO.framework in Frameworks */,
 				4A9449A916A94B5800A96815 /* Security.framework in Frameworks */,
@@ -1749,7 +1742,6 @@
 		4A27AEC41777F474009978C5 /* ThirdParty_Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4AFE808D1792E60B006B5310 /* RestKit.xcodeproj */,
 				4A5F3FAB17912B3200CD701A /* ShareSDK */,
 			);
 			path = ThirdParty_Frameworks;
@@ -3115,6 +3107,17 @@
 			path = AWIconSheet;
 			sourceTree = "<group>";
 		};
+		4A7B79661799864900FD6E56 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4A7B796D1799864A00FD6E56 /* libRestKit.a */,
+				4A7B796F1799864A00FD6E56 /* RestKitTests.octest */,
+				4A7B79711799864A00FD6E56 /* RestKit.framework */,
+				4A7B79731799864A00FD6E56 /* RestKitFrameworkTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		4A873B8916A54AD2005BDA45 /* areapicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -3423,6 +3426,7 @@
 		4AE394A215C2DD9C00D06C61 = {
 			isa = PBXGroup;
 			children = (
+				4A7B79651799864900FD6E56 /* RestKit.xcodeproj */,
 				4A959679168ED995006F1317 /* 3PP-SDK */,
 				4A498F9B168553A20073E682 /* Core */,
 				4A498D711685500F0073E682 /* Component-Service */,
@@ -3614,18 +3618,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4AFE808E1792E60B006B5310 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4AFE80961792E60D006B5310 /* libRestKit.a */,
-				4AFE80981792E60D006B5310 /* RestKitTests.octest */,
-				4AFE809A1792E60D006B5310 /* RestKit.framework */,
-				4AFE809C1792E60D006B5310 /* RestKitFrameworkTests.octest */,
-				4AFE809E1792E60D006B5310 /* RestKitResources.bundle */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		C6016B5E17523D2D00BA5E63 /* WorkOutProcess */ = {
 			isa = PBXGroup;
 			children = (
@@ -3719,7 +3711,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				4AFE80A01792E6D4006B5310 /* PBXTargetDependency */,
+				4A7B7975179986EF00FD6E56 /* PBXTargetDependency */,
 			);
 			name = WoJianMei;
 			productName = WoJianMei;
@@ -3754,8 +3746,8 @@
 					ProjectRef = 4AFE7FC21792852F006B5310 /* FTCoreText.xcodeproj */;
 				},
 				{
-					ProductGroup = 4AFE808E1792E60B006B5310 /* Products */;
-					ProjectRef = 4AFE808D1792E60B006B5310 /* RestKit.xcodeproj */;
+					ProductGroup = 4A7B79661799864900FD6E56 /* Products */;
+					ProjectRef = 4A7B79651799864900FD6E56 /* RestKit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -3766,46 +3758,39 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		4A7B796D1799864A00FD6E56 /* libRestKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKit.a;
+			remoteRef = 4A7B796C1799864A00FD6E56 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4A7B796F1799864A00FD6E56 /* RestKitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestKitTests.octest;
+			remoteRef = 4A7B796E1799864A00FD6E56 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4A7B79711799864A00FD6E56 /* RestKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RestKit.framework;
+			remoteRef = 4A7B79701799864A00FD6E56 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4A7B79731799864A00FD6E56 /* RestKitFrameworkTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestKitFrameworkTests.octest;
+			remoteRef = 4A7B79721799864A00FD6E56 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		4AFE7FD717928530006B5310 /* FTCoreText.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = FTCoreText.app;
 			remoteRef = 4AFE7FD617928530006B5310 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4AFE80961792E60D006B5310 /* libRestKit.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRestKit.a;
-			remoteRef = 4AFE80951792E60D006B5310 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4AFE80981792E60D006B5310 /* RestKitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RestKitTests.octest;
-			remoteRef = 4AFE80971792E60D006B5310 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4AFE809A1792E60D006B5310 /* RestKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RestKit.framework;
-			remoteRef = 4AFE80991792E60D006B5310 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4AFE809C1792E60D006B5310 /* RestKitFrameworkTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RestKitFrameworkTests.octest;
-			remoteRef = 4AFE809B1792E60D006B5310 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4AFE809E1792E60D006B5310 /* RestKitResources.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RestKitResources.bundle;
-			remoteRef = 4AFE809D1792E60D006B5310 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -4361,10 +4346,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4AFE80A01792E6D4006B5310 /* PBXTargetDependency */ = {
+		4A7B7975179986EF00FD6E56 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = RestKit;
-			targetProxy = 4AFE809F1792E6D4006B5310 /* PBXContainerItemProxy */;
+			targetProxy = 4A7B7974179986EF00FD6E56 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -4476,12 +4461,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.1;
+				SHARED_PRECOMPS_DIR = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -4503,11 +4489,12 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.1;
+				SHARED_PRECOMPS_DIR = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -4533,12 +4520,10 @@
 					"\"$(SRCROOT)/WoJianMei\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WoJianMei;
 				SHARED_PRECOMPS_DIR = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -4565,12 +4550,10 @@
 					"\"$(SRCROOT)/WoJianMei\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WoJianMei;
 				SHARED_PRECOMPS_DIR = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

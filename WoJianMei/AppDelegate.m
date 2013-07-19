@@ -17,8 +17,9 @@
 #import "DeviceDetection.h"
 #import "ImageManager.h"
 #import "UINavigationBarExt.h"
-//#import  "MobClick.h"
 #import "AJMLeftSideViewController.h"
+
+#import <RestKit/RestKit.h>
 
 
 //#define WeChatId @"wxd930ea5d5a258f4f"
@@ -207,11 +208,14 @@
     }
 
     //RestKit
-    RKURL *baseURL = [RKURL URLWithBaseURLString:kServerUrl];
-    RKObjectManager *objectManager = [RKObjectManager objectManagerWithBaseURL:baseURL];
+//    RKURL *baseURL = [RKURL URLWithBaseURLString:kServerUrl];
+//    RKObjectManager *objectManager = [RKObjectManager objectManagerWithBaseURL:baseURL];
+    
+    RKObjectManager* objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:kServerUrl]];
+    
     objectManager.acceptMIMEType = RKMIMETypeJSON;
     objectManager.serializationMIMEType = RKMIMETypeJSON;
-    objectManager.client.baseURL = baseURL;
+    objectManager.client.baseURL = [NSURL URLWithString:kServerUrl];
 
     if ([DeviceDetection isOS5]){
         [[UINavigationBar appearance] setBackgroundImage:[[ImageManager defaultManager] navigationBgImage] forBarMetrics:UIBarMetricsDefault];
