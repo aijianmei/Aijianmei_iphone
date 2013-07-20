@@ -28,6 +28,9 @@
 
 #import "ImageManager.h"
 #import "UIImageView+WebCache.h"
+#import "SDSegmentedControl.h"
+
+
 
 
 
@@ -60,6 +63,7 @@ typedef enum CONTENT_TYPE {
 @synthesize myHeaderView =_myHeaderView;
 @synthesize  carousel =_carousel;
 @synthesize spacePageControl =_spacePageControl;
+@synthesize segmentedController =_segmentedController;
 @synthesize buttonScrollView =_buttonScrollView;
 @synthesize currentButton = _currentButton;
 @synthesize loginViewController =_loginViewController;
@@ -78,6 +82,7 @@ typedef enum CONTENT_TYPE {
     [_myHeaderView release];
     [_carousel release];
     [_spacePageControl release];
+    [_segmentedController release];
     [_buttonScrollView release];
     [_currentButton release];
     [_loginViewController release];
@@ -147,8 +152,6 @@ typedef enum CONTENT_TYPE {
     }
     
     
-    
-    
 
     User *user = [[UserService defaultService] user];
     
@@ -167,8 +170,8 @@ typedef enum CONTENT_TYPE {
 #pragma mark  UPDATEUI  Methods
 -(void)updateUserInterface{
     [self hideActivity];
-    [self.dataTableView reloadData];
     [self.carousel reloadData];
+    [self.dataTableView reloadData];
     [_spacePageControl setNumberOfPages:[self.dataList count]];
 }
 
@@ -244,54 +247,40 @@ typedef enum CONTENT_TYPE {
 #pragma mark-- addButtonScrollView Method
 -(void)addButtonScrollView{
     ////Configure The ButtonScrollView
-    NSMutableArray *buttonArrays  =[[NSMutableArray alloc]init];
+    
     NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最新",@"锻炼方法",@"基础知识",@"锻炼视频", nil];
     
-    for (NSString *buttonTitle in buttonTitleArray) {
-        UIButton *button =[[UIButton alloc]initWithFrame:CGRectMake(30, 0, 70, 30)];
-        [button setBackgroundColor:[UIColor clearColor]];
-        [button.titleLabel setFont:[UIFont systemFontOfSize:12]];
-        [button setBackgroundImage:[UIImage imageNamed:@"Catalog_SelectedButton.png"] forState:UIControlStateSelected];
-        [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [button setTitle:buttonTitle forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [buttonArrays addObject:button];
-        [button release];
-        
-    }
+
+    self.segmentedController=[[SDSegmentedControl alloc]initWithItems:buttonTitleArray];
+    [_segmentedController setFrame:CGRectMake(0, 0, 320, 40)];
+    [_segmentedController setSelectedSegmentIndex:0];
+    [_segmentedController addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventValueChanged];
+    [_myHeaderView addSubview:_segmentedController];
     
-    UIScrollView *scrollView = [PPViewController createButtonScrollViewByButtonArray:buttonArrays buttonsPerLine:[buttonArrays count] buttonSeparatorY:-1];
-    self.buttonScrollView =scrollView;
-    [_buttonScrollView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Slider_Button_BG"]]];
-    [scrollView release];
-    [buttonArrays release];
     
-    [[self.view viewWithTag:SCROLL_VIEW_TAG] removeFromSuperview];
-    [self.buttonScrollView setTag:SCROLL_VIEW_TAG];
-    [_buttonScrollView setFrame:CGRectMake(0,0, 320, 30)];
-    [_buttonScrollView setShowsHorizontalScrollIndicator:NO];
-    [_buttonScrollView setContentSize:CGSizeMake(320,32)];
-    [_myHeaderView addSubview:_buttonScrollView];
+    
+    
+   
     
 }
 
 #pragma mark-- addCarouselSliders Method
 -(void)addCarouselSliders{
     //configure carousel
-    self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 40, 320, 140)];
+    self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 50, 320, 140)];
     self.carousel.delegate = self;
     self.carousel.dataSource = self;
     _carousel.type = iCarouselTranformOptionTilt;
     [_carousel setScrollEnabled:YES];
     [self.carousel setCenterItemWhenSelected:YES];
-    [_myHeaderView addSubview:_carousel];
+    [_myHeaderView addSubview:self.carousel];
 }
 
 #pragma mark-- MoreButon Method
 -(void)addSpacePageControl{
     ////The page controll
-    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(200, 140, 120, 20)];
-    [_spacePageControl setBackgroundColor:[UIColor greenColor]];
+    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(200, 185, 120, 20)];
+    [_spacePageControl setBackgroundColor:[UIColor clearColor]];
     _spacePageControl.numberOfPages = [self.dataList count];
     [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
     [_spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot.png"]];
@@ -320,20 +309,11 @@ typedef enum CONTENT_TYPE {
 
 
 #pragma mark-- ButtonClicked Method
--(void)buttonClicked:(UIButton *)sender
+-(void)buttonClicked:(SDSegmentedControl *)sender
 
 {
     
-    self.currentButton = sender;
-    
-    if ([sender tag] == More_BUTTON_TAG) {
-        
-        FilterViewController *vc = [[FilterViewController alloc]initWithNibName:@"FilterViewController" bundle:nil];
-        [self.navigationController  presentModalViewController:vc animated:YES];
-        [vc release];
-        
-        return;
-    }
+
     
     //开始下载文章
     NSString *aucode= @"aijianmei";
@@ -345,7 +325,7 @@ typedef enum CONTENT_TYPE {
     NSString *cateid = @"0";
     NSString *uid = @"265";
     
-    if ([[sender currentTitle] isEqualToString:@"最新"]) {
+    if (self.segmentedController.selectedSegmentIndex ==0) {
         
         category = @"train";
         type = @"new";
@@ -354,7 +334,7 @@ typedef enum CONTENT_TYPE {
         _start=0;
         
     }
-    if ([[sender currentTitle] isEqualToString:@"锻炼方法"]) {
+    if (self.segmentedController.selectedSegmentIndex ==1) {
         
         category = @"train";
         type = @"new";
@@ -363,7 +343,7 @@ typedef enum CONTENT_TYPE {
         _start=0;
         
     }
-    if ([[sender currentTitle] isEqualToString:@"基础知识"]) {
+    if (self.segmentedController.selectedSegmentIndex ==2) {
         
         category = @"train";
         type = @"new";
@@ -371,7 +351,7 @@ typedef enum CONTENT_TYPE {
         uid = @"265";
         _start=0;
     }
-    if ([[sender currentTitle] isEqualToString:@"锻炼视频"]) {
+    if (self.segmentedController.selectedSegmentIndex ==3) {
         
         category = @"train";
         type = @"new";
@@ -410,7 +390,7 @@ typedef enum CONTENT_TYPE {
 #pragma Pull Refresh Delegate
 - (void) reloadTableViewDataSource
 {
-    [self buttonClicked:_currentButton];
+    [self buttonClicked:self.segmentedController];
 }
 
 #pragma mark - Load More
@@ -425,28 +405,28 @@ typedef enum CONTENT_TYPE {
     NSString *cateid = @"0";
     NSString *uid = @"265";
     
-    if ([[_currentButton currentTitle] isEqualToString:@"最新"]) {
+    if (self.segmentedController.selectedSegmentIndex ==0) {
         
         category = @"train";
         type = @"new";
         cateid = @"0";
         uid = @"265";
     }
-    if ([[_currentButton currentTitle] isEqualToString:@"锻炼方法"]) {
+    if (self.segmentedController.selectedSegmentIndex ==1) {
         
         category = @"train";
         type = @"new";
         cateid = @"1";
         uid = @"265";
     }
-    if ([[_currentButton currentTitle] isEqualToString:@"基础知识"]) {
+    if (self.segmentedController.selectedSegmentIndex ==2) {
         
         category = @"train";
         type = @"new";
         cateid = @"2";
         uid = @"265";
     }
-    if ([[_currentButton currentTitle] isEqualToString:@"锻炼视频"]) {
+    if (self.segmentedController.selectedSegmentIndex ==3) {
         
         category = @"train";
         type = @"new";
@@ -472,9 +452,9 @@ typedef enum CONTENT_TYPE {
 - (void)viewDidLoad
 {
     
+    
     [self initUI];
     [self initMoreUI];
-    
     self.supportRefreshHeader = YES;
     self.supportRefreshFooter = YES;
     
@@ -482,9 +462,10 @@ typedef enum CONTENT_TYPE {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"最新" forState:UIControlStateNormal];
     [self buttonClicked:button];
-    
+
     
     [super viewDidLoad];
+    
     
 }
 
@@ -536,7 +517,7 @@ typedef enum CONTENT_TYPE {
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
     //    return NUMBER_OF_ITEMS;
-    
+
     return [self.dataList count];
     
 }
@@ -554,7 +535,12 @@ typedef enum CONTENT_TYPE {
 {
     
 	//create new view if no view is available for recycling
-    Article *article  = [self.dataList objectAtIndex: index];
+    
+    
+    
+    Article *article  = [self.dataList objectAtIndex:index];
+    
+
     UILabel *label = nil;
     
 	if (view == nil)
@@ -564,7 +550,7 @@ typedef enum CONTENT_TYPE {
         
         ///add images
         UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160.0f)];
-        [imageView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@"11"]];
+        [imageView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@""]];
         [view addSubview:imageView];
         [imageView release];
         
@@ -585,9 +571,7 @@ typedef enum CONTENT_TYPE {
 	
     //set label
 	label.text = [NSString stringWithFormat:@"%@", article.title];
-    
-    //    [view update];
-    
+        
 	return view;
     
 }
@@ -604,7 +588,7 @@ typedef enum CONTENT_TYPE {
     
     WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
     
-    controller.article = [dataList objectAtIndex:index - 1];
+    controller.article = [self.dataList objectAtIndex:index];
     [self.navigationController pushViewController:controller animated:YES];
     
     

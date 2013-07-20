@@ -504,40 +504,44 @@ static UserService* _defaultUserService = nil;
     
     //Router setup:  设定你要POST的物体的上传路径
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
+
     [objectManager.router routeClass:[User class] toResourcePath:@"/imgtest.php" forMethod:RKRequestMethodPOST];
     
+    
+    objectManager.client.serviceUnavailableAlertEnabled = YES;
+    objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
+
     NSLog(@"Post an Image baseURL %@",[objectManager baseURL]);
 
-    //Mapping setup:
-    RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[User class]];
-    [userMapping mapKeyPath:@"id" toAttribute:@"identifier"];
-    [userMapping mapAttributes:
-     @"uid", 
-     @"userType",
-     @"profileImageUrl",
-     @"avatarBackGroundImage",
-     @"name",
-     @"description",
-     @"gender",
-     @"sinaUserId",
-     @"qqUserId",
-     @"email",
-     @"loginStatus",
-     @"labelsArray",
-     @"age",
-     @"height",
-     @"weight",
-     @"BMIValue",
-     @"province",
-     @"city",
-
-     @"avatarimage1",
-     @"backgroundimage1",
-     nil];
     
-    [objectManager.mappingProvider addObjectMapping:userMapping];
-    [objectManager.mappingProvider setSerializationMapping:[userMapping inverseMapping] forClass:[User class]];
-    [objectManager.mappingProvider setMapping:userMapping forKeyPath:@"user"];
+    //Mapping setup:
+ //     @"uid",
+//     @"userType",
+//     @"profileImageUrl",
+//     @"avatarBackGroundImage",
+//     @"name",
+//     @"description",
+//     @"gender",
+//     @"sinaUserId",
+//     @"qqUserId",
+//     @"email",
+//     @"loginStatus",
+//     @"labelsArray",
+//     @"age",
+//     @"height",
+//     @"weight",
+//     @"BMIValue",
+//     @"province",
+//     @"city",
+//       @"errorCode",
+//       @"uid",
+//     @"avatarimage1",
+//     @"backgroundimage1",
+//     nil];
+    
+//    [objectManager.mappingProvider addObjectMapping:userMapping];
+//    [objectManager.mappingProvider setSerializationMapping:[userMapping inverseMapping] forClass:[Result class]];
+//    [objectManager.mappingProvider setMapping:userMapping forKeyPath:@"Result"];
     
     
     
@@ -546,28 +550,22 @@ static UserService* _defaultUserService = nil;
     NSData *imageData1 = UIImagePNGRepresentation(image1);
     NSData *imageData2 = UIImagePNGRepresentation(image2);
     //The post
-    User *user = [[User alloc] init];
-    [user setUid:@"1111"];
-    [user setAge:@"19"];
-    [user setCity:@"广州"];
-    [user setProvince:@"广东"];
-    [user setBMIValue:@"fu"];
-   
-
-    
-    NSDictionary * paramsDictionary = [[NSDictionary alloc]initWithObjects:nil forKeys:nil];
-    
-//    RKParams* params = [RKParams paramsWithDictionary:(NSDictionary *)];
-    
+    User *budd = [[User alloc] init];
+    [budd setUid:@"1111"];
+    [budd setAge:@"19"];
+    [budd setCity:@"广州"];
+    [budd setProvince:@"广东"];
+    [budd setBMIValue:@"fu"];
+       
     
 
     RKParams* params = [RKParams params];
 
-    [params setValue:user.uid forParam:@"uid"];
-    [params setValue:user.age forParam:@"age"];
-    [params setValue:user.city forParam:@"city"];
-    [params setValue:user.province forParam:@"province"];
-    [params setValue:user.BMIValue forParam:@"BMIValue"];
+    [params setValue:budd.uid forParam:@"uid"];
+    [params setValue:budd.age forParam:@"age"];
+    [params setValue:budd.city forParam:@"city"];
+    [params setValue:budd.province forParam:@"province"];
+    [params setValue:budd.BMIValue forParam:@"BMIValue"];
 
     
     [params setData:imageData1 MIMEType:@"image/png"
@@ -576,14 +574,19 @@ static UserService* _defaultUserService = nil;
            forParam:@"backgroundimage1"];
     
     
-    [[RKObjectManager sharedManager] postObject:user usingBlock:^(RKObjectLoader *loader)
+    [[RKObjectManager sharedManager] postObject:budd usingBlock:^(RKObjectLoader *loader)
     {
+        loader.method = RKRequestMethodPOST;
         loader.params = params;
         loader.timeoutInterval =30;
-
+        
+        
+        // What ever success handler you need.
+        loader.onDidLoadObject = ^(id reslult) {
+            NSLog(@"I post the %@", reslult);
+        };
+        
     }];
-    
-    
 }
 
 

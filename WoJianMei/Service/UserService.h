@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "CommonService.h"
-#import <RestKit/RestKit.h>
 #import "SinaWeiboManager.h"
 #import "User.h"
+#import <RestKit/RestKit.h>
 
 @protocol UserServiceDelegate <NSObject,RKObjectLoaderDelegate>
 
