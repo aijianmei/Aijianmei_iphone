@@ -10,6 +10,7 @@
 #import "Article.h"
 #import "WorkOut.h"
 #import "UIImageView+WebCache.h"
+#import "TimeUtils.h"
 
 #define isPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
@@ -66,9 +67,47 @@
       //set articles cells
       [self.titleLabel setText:article.title];
       [self.descriptionLabel setText:article.brief];
-      [self.imgView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@"11"]];
+      [self.imgView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@"11.png"]];
       [self.commentLabel setText:article.commentCount];
       [self.releasedTimeLabel setText:article.create_time];
+    
+    PPDebug(@"%@",article.create_time);
+    
+
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *mydate = [dateFormatter dateFromString:@"2001-08-04 16:01:03"];
+    NSLog(@"%@", mydate);
+    [dateFormatter release];
+    
+    
+    NSString * str = chineseBeforeTime(mydate);
+    
+    PPDebug(@"距离时间: %@",str);
+    
+    //删除日期以后的字符串
+    NSMutableString *articleDate = [[NSMutableString alloc]initWithString:article.create_time];
+    [articleDate deleteCharactersInRange:NSMakeRange(10,1)];
+    NSLog(articleDate,nil);
+    
+    //获取当日时间
+    NSMutableString *articletime = [[NSMutableString alloc]initWithString:article.create_time];
+    [articletime deleteCharactersInRange:NSMakeRange(10,1)];
+    NSLog(articletime,nil);
+    
+    
+    NSMutableString *articletime1 = [[NSMutableString alloc]initWithString:articletime];
+    [articletime1 deleteCharactersInRange:NSMakeRange(1,1)];
+    NSLog(articletime1,nil);
+    
+
+    
+    
+    
+    
+    
+
 }
 
 

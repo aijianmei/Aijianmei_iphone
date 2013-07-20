@@ -415,6 +415,12 @@
 		4A7B7EBA179A7AAB00FD6E56 /* MIT-LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B7EAC179A7AAA00FD6E56 /* MIT-LICENSE */; };
 		4A7B7EBB179A7AAB00FD6E56 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B7EAD179A7AAA00FD6E56 /* README.md */; };
 		4A7B7EBC179A7AAB00FD6E56 /* SDSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7B7EAF179A7AAB00FD6E56 /* SDSegmentedControl.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		4A7B7ED1179ABC0200FD6E56 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B7ECB179ABC0200FD6E56 /* comment.png */; };
+		4A7B7ED2179ABC0200FD6E56 /* sxl_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B7ECC179ABC0200FD6E56 /* sxl_1@2x.png */; };
+		4A7B7ED3179ABC0200FD6E56 /* sxl_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B7ECD179ABC0200FD6E56 /* sxl_2@2x.png */; };
+		4A7B7ED4179ABC0200FD6E56 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B7ECE179ABC0200FD6E56 /* time.png */; };
+		4A7B7ED5179ABC0200FD6E56 /* 交互文档.doc in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B7ECF179ABC0200FD6E56 /* 交互文档.doc */; };
+		4A7B7ED6179ABC0200FD6E56 /* 文字排版.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B7ED0179ABC0200FD6E56 /* 文字排版.jpg */; };
 		4A7CF99215D74EF000206B14 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */; };
 		4A873B7E16A5301E005BDA45 /* touxiang_40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A873B7C16A5301D005BDA45 /* touxiang_40x40.png */; };
 		4A873B7F16A5301E005BDA45 /* touxiang_40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A873B7D16A5301E005BDA45 /* touxiang_40x40@2x.png */; };
@@ -1303,6 +1309,12 @@
 		4A7B7EAD179A7AAA00FD6E56 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		4A7B7EAE179A7AAA00FD6E56 /* SDSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDSegmentedControl.h; sourceTree = "<group>"; };
 		4A7B7EAF179A7AAB00FD6E56 /* SDSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDSegmentedControl.m; sourceTree = "<group>"; };
+		4A7B7ECB179ABC0200FD6E56 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
+		4A7B7ECC179ABC0200FD6E56 /* sxl_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sxl_1@2x.png"; sourceTree = "<group>"; };
+		4A7B7ECD179ABC0200FD6E56 /* sxl_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sxl_2@2x.png"; sourceTree = "<group>"; };
+		4A7B7ECE179ABC0200FD6E56 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
+		4A7B7ECF179ABC0200FD6E56 /* 交互文档.doc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "交互文档.doc"; sourceTree = "<group>"; };
+		4A7B7ED0179ABC0200FD6E56 /* 文字排版.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "文字排版.jpg"; sourceTree = "<group>"; };
 		4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4A873B7C16A5301D005BDA45 /* touxiang_40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = touxiang_40x40.png; path = ../../Controllers/MyselfViewContrller/touxiang_40x40.png; sourceTree = "<group>"; };
 		4A873B7D16A5301E005BDA45 /* touxiang_40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "touxiang_40x40@2x.png"; path = "../../Controllers/MyselfViewContrller/touxiang_40x40@2x.png"; sourceTree = "<group>"; };
@@ -3145,6 +3157,29 @@
 			path = "rs-SDSegmentedControl";
 			sourceTree = "<group>";
 		};
+		4A7B7EC9179ABA5C00FD6E56 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4A9C3FE9177B34890088AA6D /* HomeViewController.h */,
+				4A9C3FEA177B34900088AA6D /* HomeViewController.m */,
+			);
+			name = HomeViewController;
+			sourceTree = "<group>";
+		};
+		4A7B7ECA179ABC0200FD6E56 /* article_Layout */ = {
+			isa = PBXGroup;
+			children = (
+				4A7B7ECB179ABC0200FD6E56 /* comment.png */,
+				4A7B7ECC179ABC0200FD6E56 /* sxl_1@2x.png */,
+				4A7B7ECD179ABC0200FD6E56 /* sxl_2@2x.png */,
+				4A7B7ECE179ABC0200FD6E56 /* time.png */,
+				4A7B7ECF179ABC0200FD6E56 /* 交互文档.doc */,
+				4A7B7ED0179ABC0200FD6E56 /* 文字排版.jpg */,
+			);
+			name = article_Layout;
+			path = "05文字排版";
+			sourceTree = "<group>";
+		};
 		4A873B8916A54AD2005BDA45 /* areapicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -3202,14 +3237,13 @@
 			children = (
 				4AE52E3F177834BB00F61933 /* AJM_CommonViewController.h */,
 				4AE52E40177834BB00F61933 /* AJM_CommonViewController.m */,
-				4A9C3FE9177B34890088AA6D /* HomeViewController.h */,
-				4A9C3FEA177B34900088AA6D /* HomeViewController.m */,
+				4A7B7EC9179ABA5C00FD6E56 /* HomeViewController */,
+				4ADCFE10169D614600A3E979 /* WorkoutViewController */,
 				4AE52E291778336E00F61933 /* lifeStytleViewController */,
 				4AE52E251778327F00F61933 /* ForumViewController */,
 				4AE52DA01778323400F61933 /* SupplementViewController */,
 				4AE52D9C177831A500F61933 /* Workout_planViewController */,
 				4ADCFE09169D614600A3E979 /* NuriViewController */,
-				4ADCFE10169D614600A3E979 /* WorkoutViewController */,
 				4ADCFDFA169D614600A3E979 /* MakeFriendsViewcontrller */,
 				4ADCFE04169D614600A3E979 /* MyselfViewContrller */,
 				4ADCFDFD169D614600A3E979 /* MoreViewController */,
@@ -3353,6 +3387,7 @@
 		4ADCFE56169D62C300A3E979 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4A7B7ECA179ABC0200FD6E56 /* article_Layout */,
 				4A125DAC17951BD300D64751 /* loginPage */,
 				4A27AE981777F18E009978C5 /* leftsideNavi_Resource */,
 				4A9C3FD4177B25930088AA6D /* Public_Icons */,
@@ -4071,6 +4106,12 @@
 				4A125DC017951BD300D64751 /* 选择登录.jpg in Resources */,
 				4A7B7EBA179A7AAB00FD6E56 /* MIT-LICENSE in Resources */,
 				4A7B7EBB179A7AAB00FD6E56 /* README.md in Resources */,
+				4A7B7ED1179ABC0200FD6E56 /* comment.png in Resources */,
+				4A7B7ED2179ABC0200FD6E56 /* sxl_1@2x.png in Resources */,
+				4A7B7ED3179ABC0200FD6E56 /* sxl_2@2x.png in Resources */,
+				4A7B7ED4179ABC0200FD6E56 /* time.png in Resources */,
+				4A7B7ED5179ABC0200FD6E56 /* 交互文档.doc in Resources */,
+				4A7B7ED6179ABC0200FD6E56 /* 文字排版.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

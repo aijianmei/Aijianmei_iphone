@@ -21,15 +21,6 @@
 @implementation WorkoutDetailViewController
 @synthesize article =_article;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 
 /////only avaiable at ios 6
 - (void)showAWSheet
@@ -177,22 +168,17 @@
     [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     
     
-    _webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height)];
+    _webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height + 30)];
     _webview.delegate = self;
     _webview.scrollView.delegate = self;
     [self.view addSubview:_webview];
     
-    
-    UILabel *articleTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320,150)];
-    articleTitleLabel.backgroundColor = [UIColor colorWithHue:12 saturation:34 brightness:32 alpha:0.3];
-    [articleTitleLabel setText:self.article.title];
-    [articleTitleLabel setTextColor:[UIColor whiteColor]];
-    articleTitleLabel.textAlignment =UITextAlignmentCenter;
-    [self.view addSubview:articleTitleLabel];
-    [articleTitleLabel release];
+
     
     /////重新定位，设定NavigationBar 的位置
    [self.navigationController.navigationBar setFrame:CGRectMake(0, 420, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
+    
+    
     
     
     //just for test
@@ -259,7 +245,8 @@
 
 #pragma mark -
 #pragma mark UIWebViewDelegate
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationTyp
+{
     
     
 	NSString *picName = [[request URL] absoluteString];
@@ -332,6 +319,7 @@
     _articleDetail = [objects objectAtIndex:0];
     [self loadWebViewWithHtmlString:_articleDetail.content];
     [_webview sizeToFit];
+    [_webview setFrame:CGRectMake(0, 0, 320, 480)];
     PPDebug(@"Article ：%@",_articleDetail.content);
 }
 

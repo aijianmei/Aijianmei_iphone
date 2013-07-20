@@ -253,7 +253,7 @@ typedef enum CONTENT_TYPE {
 
     self.segmentedController=[[SDSegmentedControl alloc]initWithItems:buttonTitleArray];
     [_segmentedController setFrame:CGRectMake(0, 0, 320, 40)];
-    [_segmentedController setSelectedSegmentIndex:0];
+    [_segmentedController setSelectedSegmentIndex:0];    
     [_segmentedController addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventValueChanged];
     [_myHeaderView addSubview:_segmentedController];
     
@@ -313,7 +313,7 @@ typedef enum CONTENT_TYPE {
 
 {
     
-
+    self.segmentedController = (SDSegmentedControl *)sender;
     
     //开始下载文章
     NSString *aucode= @"aijianmei";
@@ -459,9 +459,11 @@ typedef enum CONTENT_TYPE {
     self.supportRefreshFooter = YES;
     
     ///// 设置开始
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"最新" forState:UIControlStateNormal];
-    [self buttonClicked:button];
+    
+    SDSegmentedControl *sender =[[SDSegmentedControl alloc]init];
+    [_segmentedController setSelectedSegmentIndex:0];
+
+    [self buttonClicked:sender];
 
     
     [super viewDidLoad];
