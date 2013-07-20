@@ -172,6 +172,26 @@ static ImageManager *_defaultManager = nil;
 
     
 }
+///文章单页喜欢按钮背景
++(UIImage*)GobalArticelLikeButtonBG{
+    
+    return [UIImage imageNamed:@"like_icon.png"];
+    
+}
+///文章单页分享按钮背景
++(UIImage*)GobalArticelShareButtonBG{
+    
+    return [UIImage imageNamed:@"Share_article.png"];
+    
+}
+///文章单页评论按钮背景
++(UIImage*)GobalArticelCommentButtonBG{
+    
+    return [UIImage imageNamed:@"comment_icon.png"];
+    
+}
+
+
 
 
 

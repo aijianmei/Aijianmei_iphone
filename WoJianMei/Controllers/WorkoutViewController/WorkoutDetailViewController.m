@@ -118,8 +118,10 @@
     
     UIView *rightButtonView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 3*(buttonLen+seporator) +30, buttonHigh)];
     
-    UIButton * likeButton = [[UIButton alloc] initWithFrame:CGRectMake(leftOffest, 0, buttonLen, buttonHigh)];
-    [likeButton setBackgroundImage:[ImageManager GobalNavigationCommonButtonBG] forState:UIControlStateNormal];
+    
+    
+    UIButton * likeButton = [[UIButton alloc] initWithFrame:CGRectMake(leftOffest, 3, 22, 22)];
+    [likeButton setImage:[ImageManager GobalArticelLikeButtonBG] forState:UIControlStateNormal];
     [likeButton setTitle:@"喜欢" forState:UIControlStateNormal];
     [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [likeButton.titleLabel setFont:font];
@@ -127,9 +129,9 @@
     [rightButtonView addSubview:likeButton];
     
     
-    UIButton * commentBarButton = [[UIButton alloc] initWithFrame:CGRectMake(leftOffest+buttonLen+seporator, 0, buttonLen, buttonHigh)];
+    UIButton * commentBarButton = [[UIButton alloc] initWithFrame:CGRectMake(leftOffest+buttonLen+seporator,3, 22, 22)];
     [commentBarButton addTarget:self action:@selector(clickCommentButton:) forControlEvents:UIControlEventTouchUpInside];
-    [commentBarButton setBackgroundImage:[ImageManager GobalNavigationCommonButtonBG] forState:UIControlStateNormal];
+    [commentBarButton setImage:[ImageManager GobalArticelCommentButtonBG] forState:UIControlStateNormal];
     [commentBarButton setTitle:@"评论" forState:UIControlStateNormal];
     [commentBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [commentBarButton.titleLabel setFont:font];
@@ -137,8 +139,8 @@
     [commentBarButton release];
     
     
-    UIButton *shareBarButton = [[UIButton alloc]initWithFrame:CGRectMake(leftOffest+(buttonLen+seporator)*2, 0, shareBarButtonLen, buttonHigh)];
-    [shareBarButton setBackgroundImage:[ImageManager GobalNavigationCommonButtonBG] forState:UIControlStateNormal];
+    UIButton *shareBarButton = [[UIButton alloc]initWithFrame:CGRectMake(leftOffest+(buttonLen+seporator)*2, 0, 22, 22)];
+    [shareBarButton setImage:[ImageManager GobalArticelShareButtonBG] forState:UIControlStateNormal];
     [shareBarButton setTitle:@"分享" forState:UIControlStateNormal];
     [shareBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [shareBarButton addTarget:self action:@selector(clickShareButton:) forControlEvents:UIControlEventTouchUpInside];

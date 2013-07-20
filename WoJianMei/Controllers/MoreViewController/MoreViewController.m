@@ -19,6 +19,7 @@
 #import "VersionInfo.h"
 
 #import "SinaWeibo.h"
+#import "TLAlertView.h"
 
 
 
@@ -605,6 +606,11 @@ typedef enum {
 }
 -(void)logout{
     
+    
+    
+        
+    
+
     PPDebug(@"User is trying to logout");
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"确定要退出账号吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     [alert show];

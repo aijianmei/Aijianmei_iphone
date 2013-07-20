@@ -69,6 +69,14 @@
 ///顶部导航栏目,普通背景图片；
 +(UIImage*)GobalNavigationCommonButtonBG;
 
+
+///文章单页喜欢按钮
++(UIImage*)GobalArticelLikeButtonBG;
+///文章单页分享按钮背景
++(UIImage*)GobalArticelShareButtonBG;
+///文章单页评论按钮背景
++(UIImage*)GobalArticelCommentButtonBG;
+
 -(NSString*)getAnRandomImage;
 
 
