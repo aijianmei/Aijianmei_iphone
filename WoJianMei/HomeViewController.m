@@ -192,7 +192,7 @@ typedef enum CONTENT_TYPE {
     //添加当前划片的提示
     [self addSpacePageControl];
 
-    [self showLoginView];
+//    [self showLoginView];
 }
 
 
@@ -248,7 +248,7 @@ typedef enum CONTENT_TYPE {
 -(void)addButtonScrollView{
     ////Configure The ButtonScrollView
     
-    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最新",@"锻炼方法",@"基础知识",@"锻炼视频", nil];
+    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最新文章",@"最热文章",@"最新视频",@"最热视频", nil];
     
 
     self.segmentedController=[[SDSegmentedControl alloc]initWithItems:buttonTitleArray];
@@ -272,7 +272,7 @@ typedef enum CONTENT_TYPE {
     self.carousel.dataSource = self;
     _carousel.type = iCarouselTypeLinear;
     [_carousel setScrollEnabled:YES];
-    [_carousel setScrollSpeed:1];
+    [_carousel setScrollSpeed:1];    
     [_myHeaderView addSubview:self.carousel];
 }
 
@@ -315,6 +315,10 @@ typedef enum CONTENT_TYPE {
     self.segmentedController = (SDSegmentedControl *)sender;
     
     //开始下载文章
+    
+    //listtype  1 视频和文章的混合
+    //          2 单独是文章
+    //          3 单独是视频
     NSString *aucode= @"aijianmei";
     NSString *auact = @"au_getinformationlist";
     NSString *listtype = @"2";
@@ -324,19 +328,21 @@ typedef enum CONTENT_TYPE {
     NSString *cateid = @"0";
     NSString *uid = @"265";
     
-    if (self.segmentedController.selectedSegmentIndex ==0) {
+    if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==-1) {
         
-        category = @"train";
+        category = @"home";
+        listtype = @"2";
         type = @"new";
-        cateid = @"0";
+        cateid = @"1";
         uid = @"265";
         _start=0;
         
     }
     if (self.segmentedController.selectedSegmentIndex ==1) {
         
-        category = @"train";
-        type = @"new";
+        category = @"home";
+        listtype = @"2";
+        type = @"hot";
         cateid = @"1";
         uid = @"265";
         _start=0;
@@ -344,17 +350,19 @@ typedef enum CONTENT_TYPE {
     }
     if (self.segmentedController.selectedSegmentIndex ==2) {
         
-        category = @"train";
+        category = @"home";
+        listtype = @"3";
         type = @"new";
-        cateid = @"2";
+        cateid = @"0";
         uid = @"265";
         _start=0;
     }
     if (self.segmentedController.selectedSegmentIndex ==3) {
         
-        category = @"train";
-        type = @"new";
-        cateid = @"3";
+        category = @"home";
+        listtype = @"3";
+        type = @"hot";
+        cateid = @"0";
         uid = @"265";
         _start=0;
         
@@ -389,6 +397,7 @@ typedef enum CONTENT_TYPE {
 #pragma Pull Refresh Delegate
 - (void) reloadTableViewDataSource
 {
+    
     [self buttonClicked:self.segmentedController];
 }
 
@@ -398,7 +407,7 @@ typedef enum CONTENT_TYPE {
     NSString *aucode= @"aijianmei";
     NSString *auact = @"au_getinformationlist";
     NSString *listtype = @"2";
-    NSString *category = @"train";
+    NSString *category = @"";
     NSString *type = @"hot";
     int offset = EACH_FETCH_SIZE;
     NSString *cateid = @"0";
@@ -406,31 +415,40 @@ typedef enum CONTENT_TYPE {
     
     if (self.segmentedController.selectedSegmentIndex ==0) {
         
-        category = @"train";
+        category = @"home";
+        listtype = @"2";
         type = @"new";
-        cateid = @"0";
+        cateid = @"";
         uid = @"265";
+
+        
     }
     if (self.segmentedController.selectedSegmentIndex ==1) {
         
-        category = @"train";
-        type = @"new";
-        cateid = @"1";
+        category = @"home";
+        listtype = @"2";
+        type = @"hot";
+        cateid = @"0";
         uid = @"265";
+
     }
     if (self.segmentedController.selectedSegmentIndex ==2) {
         
-        category = @"train";
+        category = @"home";
+        listtype = @"3";
         type = @"new";
-        cateid = @"2";
+        cateid = @"";
         uid = @"265";
+
     }
     if (self.segmentedController.selectedSegmentIndex ==3) {
         
-        category = @"train";
-        type = @"new";
-        cateid = @"3";
+        category = @"home";
+        listtype = @"3";
+        type = @"hot";
+        cateid = @"";
         uid = @"265";
+
     }
     
     
