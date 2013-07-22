@@ -38,7 +38,7 @@
 ///// the setings of the iCarousel
 #define NUMBER_OF_ITEMS 13
 #define NUMBER_OF_VISIBLE_ITEMS 18
-#define ITEM_SPACING 380
+#define ITEM_SPACING 320
 #define EACH_FETCH_SIZE 5
 
 #define SCROLL_VIEW_TAG 20120913
@@ -270,9 +270,8 @@ typedef enum CONTENT_TYPE {
     self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 50, 320, 140)];
     self.carousel.delegate = self;
     self.carousel.dataSource = self;
-    _carousel.type = iCarouselTranformOptionTilt;
+    _carousel.type = iCarouselTypeLinear;
     [_carousel setScrollEnabled:YES];
-    [self.carousel setCenterItemWhenSelected:YES];
     [_myHeaderView addSubview:self.carousel];
 }
 
