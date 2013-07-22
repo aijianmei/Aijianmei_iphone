@@ -37,8 +37,8 @@
 
 ///// the setings of the iCarousel
 #define NUMBER_OF_ITEMS 13
-#define NUMBER_OF_VISIBLE_ITEMS 15
-#define ITEM_SPACING 50
+#define NUMBER_OF_VISIBLE_ITEMS 18
+#define ITEM_SPACING 380
 #define EACH_FETCH_SIZE 5
 
 #define SCROLL_VIEW_TAG 20120913
