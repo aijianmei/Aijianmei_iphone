@@ -118,6 +118,11 @@
 
 
 -(void)postImageToServerWithDelegate:(id)delegate;
+-(void)postImageDelegate:(id<RKObjectLoaderDelegate>)delegate;
+
++ (NSData *)postImage:(UIImage *)image
+            imageName:(NSString *)imageName
+            urlString:(NSString *)urlString;
 
 //是否绑定邮箱
 - (BOOL)hasBindEmail;

@@ -20,6 +20,15 @@
 
 @implementation WorkoutDetailViewController
 @synthesize article =_article;
+@synthesize toolBar =_toolBar;
+
+
+-(void)dealloc
+{
+    [_toolBar release];
+    [super dealloc];
+}
+
 
 
 /////only avaiable at ios 6
@@ -110,7 +119,6 @@
 {
     float buttonHigh = 27.5;
     float buttonLen = 47.5;
-    float shareBarButtonLen = 47.5;
     float seporator = 5;
     float leftOffest = 20;
     
@@ -156,7 +164,18 @@
     [rightButtonView release];
     
     self.navigationItem.rightBarButtonItem = rightBarButton;
+    
     [rightBarButton release];
+}
+
+
+- (void)clickBack:(id)sender
+{
+    
+    [self.navigationController.navigationBar setHidden:NO];
+    [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
+
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -164,6 +183,7 @@
 {
     [super viewDidLoad];
     
+    [self.view  setBounds:CGRectMake(0, 40, 320, 480)];
 
     
     [self setRightBarButtons];
@@ -176,18 +196,21 @@
     [self.view addSubview:_webview];
     
 
-    
+    self.navigationController.navigationBarHidden =NO;
     /////重新定位，设定NavigationBar 的位置
    [self.navigationController.navigationBar setFrame:CGRectMake(0, 420, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
-    
     
     
     
     //just for test
 	[[ArticleService sharedService] findArticleInfoWithAucode:@"aijianmei" auact:@"au_getinformationdetail" articleId:_article._id channel:@" " channelType:@" " uid:@"" delegate:self];
     
+
     
-    
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidAppear:YES];
 }
 
 
@@ -199,7 +222,7 @@
     UIView *parent = tabBar.superview; // UILayoutContainerView
     UIView *content = [parent.subviews objectAtIndex:0]; // UITransitionView
     UIView *window = parent.superview;
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:1.5
                      animations:^{
                          CGRect tabFrame = tabBar.frame;
                          tabFrame.origin.y = CGRectGetMaxY(window.bounds) - CGRectGetHeight(tabBar.frame);
@@ -223,20 +246,10 @@
                          tabBar.frame = tabFrame;
                          content.frame = window.bounds;
                      }];
-    
 }
 
 
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:YES];
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{   [self showNavigationBar];
-    [super viewWillDisappear:YES];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -292,7 +305,6 @@
 }
 
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView{
-    [self showNavigationBar];
 }
 
 
@@ -321,7 +333,7 @@
     _articleDetail = [objects objectAtIndex:0];
     [self loadWebViewWithHtmlString:_articleDetail.content];
     [_webview sizeToFit];
-    [_webview setFrame:CGRectMake(0, 0, 320, 480)];
+//    [_webview setFrame:CGRectMake(0, 0, 320, 480)];
     PPDebug(@"Article ：%@",_articleDetail.content);
 }
 

@@ -18,6 +18,7 @@
 #import "AFPickerView.h"
 #import "MyselfSettingCell.h"
 #import "UIImageView+WebCache.h"
+#import "Result.h"
 
 
 #define USER @"user"
@@ -81,15 +82,24 @@
 
 -(void)save{
     
-    [[UserService defaultService] postObject:nil  WithDelegate:self];
+    [[UserService defaultService] postImageDelegate:self];
+    
+//    UIImage *image = [UIImage imageNamed:@"comment_icon.png"];
+    
+//    [UserService  postImage:image imageName:@"he" urlString:@"http://42.96.132.109/wapapi/imgtest.php"];
+//    [[UserService defaultService] postObject:nil WithDelegate:nil];
+//    [self postobj];
 
      didSave =YES;
 }
 
-
-- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObject:(id)object {
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects;
+ {
     
     if ([objectLoader wasSentToResourcePath:@"/imgtest.php"]) {
+     
+        PPDebug(@"%@",[objects objectAtIndex:0]);
+        
     }
 }
 

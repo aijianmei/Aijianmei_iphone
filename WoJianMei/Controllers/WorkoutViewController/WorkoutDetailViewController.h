@@ -17,9 +17,16 @@
 
 @interface WorkoutDetailViewController : PPViewController<RKObjectLoaderDelegate,UIWebViewDelegate,UIScrollViewDelegate>
 
+{
+    UIToolbar *_toolBar;
+    
+}
+
 @property(nonatomic, retain) Article *article;
 @property(nonatomic, retain) ArticleDetail *articleDetail;
 @property(nonatomic, retain) UIWebView *webview;
+@property(nonatomic, retain) UIToolbar *toolBar;
+
 
 
 - (void)showNavigationBar;

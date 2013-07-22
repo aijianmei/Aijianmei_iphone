@@ -37,8 +37,8 @@
 
 ///// the setings of the iCarousel
 #define NUMBER_OF_ITEMS 13
-#define NUMBER_OF_VISIBLE_ITEMS 18
-#define ITEM_SPACING 320
+#define NUMBER_OF_VISIBLE_ITEMS 15
+#define ITEM_SPACING 50
 #define EACH_FETCH_SIZE 5
 
 #define SCROLL_VIEW_TAG 20120913
@@ -312,7 +312,6 @@ typedef enum CONTENT_TYPE {
 -(void)buttonClicked:(SDSegmentedControl *)sender
 
 {
-    
     self.segmentedController = (SDSegmentedControl *)sender;
     
     //开始下载文章
@@ -453,23 +452,29 @@ typedef enum CONTENT_TYPE {
 {
     
     
-    [self initUI];
-    [self initMoreUI];
+    
     self.supportRefreshHeader = YES;
     self.supportRefreshFooter = YES;
     
-    ///// 设置开始
     
-    SDSegmentedControl *sender =[[SDSegmentedControl alloc]init];
-    [_segmentedController setSelectedSegmentIndex:0];
-
-    [self buttonClicked:sender];
 
     
     [super viewDidLoad];
     
     
+    [self initUI];
+    [self initMoreUI];
+    
+    ///// 设置开始
+    
+    SDSegmentedControl *sender =[[SDSegmentedControl alloc]init];
+    [_segmentedController setSelectedSegmentIndex:0];
+    
+    [self buttonClicked:sender];
+    
 }
+
+
 
 #pragma mark --
 #pragma mark  tableviewDelegate Method
@@ -510,6 +515,7 @@ typedef enum CONTENT_TYPE {
     WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
     
     controller.article = [self.dataList objectAtIndex:indexPath.row];
+    self.navigationController.navigationBarHidden =YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -537,8 +543,6 @@ typedef enum CONTENT_TYPE {
 {
     
 	//create new view if no view is available for recycling
-    
-    
     
     Article *article  = [self.dataList objectAtIndex:index];
     
@@ -586,12 +590,13 @@ typedef enum CONTENT_TYPE {
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
     PPDebug(@"I did selected the picture of %d",index);
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    
-    WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
-    
-    controller.article = [self.dataList objectAtIndex:index];
-    [self.navigationController pushViewController:controller animated:YES];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+//    
+//    WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
+//    
+//    controller.article = [self.dataList objectAtIndex:index];
+//    self.navigationController.navigationBarHidden =YES;
+//    [self.navigationController pushViewController:controller animated:YES];
     
     
 }

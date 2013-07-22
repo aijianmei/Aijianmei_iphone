@@ -19,7 +19,6 @@
 
 
 
-
 @implementation UserService
 
 
@@ -504,14 +503,15 @@ static UserService* _defaultUserService = nil;
     
     //Router setup:  设定你要POST的物体的上传路径
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
-
-    [objectManager.router routeClass:[User class] toResourcePath:@"/imgtest.php" forMethod:RKRequestMethodPOST];
+    RKURL *url = [RKURL URLWithBaseURL:objectManager.baseURL resourcePath:@"/imgtest.php"];
+                  
+//    [objectManager.router routeClass:[User class] toResourcePath:@"/imgtest.php" forMethod:RKRequestMethodPOST];
     
     
-    objectManager.client.serviceUnavailableAlertEnabled = YES;
-    objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
-
-    NSLog(@"Post an Image baseURL %@",[objectManager baseURL]);
+    
+//    NSLog(@"Post an Image baseURL %@",[objectManager baseURL]);
+    
+     
 
     
     //Mapping setup:
@@ -544,49 +544,101 @@ static UserService* _defaultUserService = nil;
 //    [objectManager.mappingProvider setMapping:userMapping forKeyPath:@"Result"];
     
     
+}
+
+
++ (NSData *)postImage:(UIImage *)image
+            imageName:(NSString *)imageName
+            urlString:(NSString *)urlString
+{
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.7);
+    NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"POST"];
+    NSString *boundary = @"---------------------------14737809831466499882746641449";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+    NSMutableData *body = [NSMutableData data];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"uploadedfile\"; filename=\"%@\"\r\n", imageName] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:imageData]];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:body];
+    NSURLResponse *respose = nil;
+    NSError *error = nil;
+     
+    NSLog(@"<DDNetwork> postImage:%@", urlString);
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&respose error:&error];
+        if (error == nil) {
+            NSLog(@"succ");
+        } else {
+            NSLog(@"error");
+        }
+        NSLog(@"respose url:%@ textEncodingName:%@ MIMEType:%@ suggestedFilename:%@ expectedContentLength:%lld", respose.URL, respose.textEncodingName, respose.MIMEType,  respose.suggestedFilename, respose.expectedContentLength);
+    
+    return data;
+}
+
+-(void)postImageDelegate:(id<RKObjectLoaderDelegate>)delegate{
+    // http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_uploadimg
+    //    http://42.96.132.109/wapapi/imgtest.php
+    
+    //Router setup:  设定你要POST的物体的上传路径    
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    RKObjectMapping *resultMapping = [RKObjectMapping mappingForClass:[Result class]];
+    [resultMapping mapKeyPathsToAttributes:
+     @"errorCode", @"errorcode",
+     @"uid", @"uid",
+     nil];
+    [objectManager.mappingProvider setMapping:resultMapping forKeyPath:@""];
+    
+    
+    
+    RKObjectRouter *router = [RKObjectManager sharedManager].router;
+    [router routeClass:[User class] toResourcePath:@"/imgtest.php" forMethod:RKRequestMethodPOST];
+    
+        
+    NSLog(@"THE URL :%@%@",objectManager.baseURL,@"/imgtest.php");
+    
+    RKObjectMapping *postListMapping = [RKObjectMapping mappingForClass:[User class]];
+    [objectManager.mappingProvider setMapping:postListMapping forKeyPath:@""];
+
+    [postListMapping mapKeyPath:@"uid" toAttribute:@"uid"];
+    [postListMapping mapKeyPath:@"image1" toAttribute:@"image1"];
+    [postListMapping mapKeyPath:@"image2" toAttribute:@"image2"];
+    
+    
+    [objectManager.mappingProvider addObjectMapping:postListMapping];
+    [objectManager.mappingProvider setSerializationMapping:[postListMapping inverseMapping] forClass:[User class]];
+    [objectManager setSerializationMIMEType:RKMIMETypeJSON];
+    
+    //NSUTF8StringEncoding
+    [objectManager setAcceptMIMEType:RKMIMETypeJSON];
+
+    
+    //The post
+    User *user = [[User alloc] init];
+    [user setUid:@"1111"];
+    
     
     UIImage *image1 = [UIImage imageNamed:@"touxiang_40x40.png"];
     UIImage *image2 = [UIImage imageNamed:@"table_header_bg.png"];
     NSData *imageData1 = UIImagePNGRepresentation(image1);
     NSData *imageData2 = UIImagePNGRepresentation(image2);
-    //The post
-    User *budd = [[User alloc] init];
-    [budd setUid:@"1111"];
-    [budd setAge:@"19"];
-    [budd setCity:@"广州"];
-    [budd setProvince:@"广东"];
-    [budd setBMIValue:@"fu"];
-       
+    
+    [objectManager postObject:user usingBlock:^(RKObjectLoader *loader)
+     {
+         RKParams* params = [RKParams params];
+         [params setValue:user.uid forParam:@"uid"];
+         [params setData:imageData1 MIMEType:@"image/png" forParam:@"image1"];
+         [params setData:imageData2 MIMEType:@"image/png" forParam:@"image2"];
+         loader.params = params;
+         
+        }];
     
 
-    RKParams* params = [RKParams params];
 
-    [params setValue:budd.uid forParam:@"uid"];
-    [params setValue:budd.age forParam:@"age"];
-    [params setValue:budd.city forParam:@"city"];
-    [params setValue:budd.province forParam:@"province"];
-    [params setValue:budd.BMIValue forParam:@"BMIValue"];
-
-    
-    [params setData:imageData1 MIMEType:@"image/png"
-           forParam:@"avatarimage1"];
-    [params setData:imageData2 MIMEType:@"image/png"
-           forParam:@"backgroundimage1"];
-    
-    
-    [[RKObjectManager sharedManager] postObject:budd usingBlock:^(RKObjectLoader *loader)
-    {
-        loader.method = RKRequestMethodPOST;
-        loader.params = params;
-        loader.timeoutInterval =30;
-        
-        
-        // What ever success handler you need.
-        loader.onDidLoadObject = ^(id reslult) {
-            NSLog(@"I post the %@", reslult);
-        };
-        
-    }];
 }
 
 

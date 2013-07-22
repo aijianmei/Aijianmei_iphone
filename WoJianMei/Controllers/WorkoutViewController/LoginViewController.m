@@ -285,6 +285,12 @@ enum SinaResultErrorCode
 
 
 
+
+
+
+
+
+
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
@@ -340,9 +346,11 @@ enum SinaResultErrorCode
         {
             PPDebug(@"该用户不存在,用户要开始创建新的账户");
                         
-            [self.navigationController pushViewController:self.signUpViewController animated:YES];
             _signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;
             _signUpViewController.userType =[self userType];
+            
+            [self.navigationController pushViewController:self.signUpViewController animated:YES];
+
             
         }
     
