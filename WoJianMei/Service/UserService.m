@@ -502,9 +502,9 @@ static UserService* _defaultUserService = nil;
   //    http://42.96.132.109/wapapi/imgtest.php
     
     //Router setup:  设定你要POST的物体的上传路径
-    RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    RKURL *url = [RKURL URLWithBaseURL:objectManager.baseURL resourcePath:@"/imgtest.php"];
-                  
+//    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+//    RKURL *url = [RKURL URLWithBaseURL:objectManager.baseURL resourcePath:@"/imgtest.php"];
+    
 //    [objectManager.router routeClass:[User class] toResourcePath:@"/imgtest.php" forMethod:RKRequestMethodPOST];
     
     
@@ -584,42 +584,27 @@ static UserService* _defaultUserService = nil;
     // http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_uploadimg
     //    http://42.96.132.109/wapapi/imgtest.php
     
-    //Router setup:  设定你要POST的物体的上传路径    
+    //Router setup:  设定你要POST的物体的上传路径
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    RKObjectMapping *resultMapping = [RKObjectMapping mappingForClass:[Result class]];
-    [resultMapping mapKeyPathsToAttributes:
-     @"errorCode", @"errorcode",
-     @"uid", @"uid",
+    [objectManager.router routeClass:[User class] toResourcePath:@"/imgtest.php" forMethod:RKRequestMethodPOST];
+    
+    NSLog(@"Post an Image baseURL %@%@",[objectManager baseURL],@"/imgtest.php");
+    
+    //Mapping setup:
+    RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[User class]];
+    [userMapping mapKeyPath:@"id" toAttribute:@"identifier"];
+    [userMapping mapAttributes:
+     @"uid",
      nil];
-    [objectManager.mappingProvider setMapping:resultMapping forKeyPath:@""];
     
-    
-    
-    RKObjectRouter *router = [RKObjectManager sharedManager].router;
-    [router routeClass:[User class] toResourcePath:@"/imgtest.php" forMethod:RKRequestMethodPOST];
-    
-        
-    NSLog(@"THE URL :%@%@",objectManager.baseURL,@"/imgtest.php");
-    
-    RKObjectMapping *postListMapping = [RKObjectMapping mappingForClass:[User class]];
-    [objectManager.mappingProvider setMapping:postListMapping forKeyPath:@""];
-
-    [postListMapping mapKeyPath:@"uid" toAttribute:@"uid"];
-    [postListMapping mapKeyPath:@"image1" toAttribute:@"image1"];
-    [postListMapping mapKeyPath:@"image2" toAttribute:@"image2"];
-    
-    
-    [objectManager.mappingProvider addObjectMapping:postListMapping];
-    [objectManager.mappingProvider setSerializationMapping:[postListMapping inverseMapping] forClass:[User class]];
-    [objectManager setSerializationMIMEType:RKMIMETypeJSON];
-    
-    //NSUTF8StringEncoding
-    [objectManager setAcceptMIMEType:RKMIMETypeJSON];
-
+    [objectManager.mappingProvider addObjectMapping:userMapping];
+    [objectManager.mappingProvider setSerializationMapping:[userMapping inverseMapping] forClass:[User class]];
+    [objectManager.mappingProvider setMapping:userMapping forKeyPath:@"user"];
     
     //The post
     User *user = [[User alloc] init];
     [user setUid:@"1111"];
+    
     
     
     UIImage *image1 = [UIImage imageNamed:@"touxiang_40x40.png"];
@@ -627,17 +612,19 @@ static UserService* _defaultUserService = nil;
     NSData *imageData1 = UIImagePNGRepresentation(image1);
     NSData *imageData2 = UIImagePNGRepresentation(image2);
     
+    
+    
     [objectManager postObject:user usingBlock:^(RKObjectLoader *loader)
      {
          RKParams* params = [RKParams params];
          [params setValue:user.uid forParam:@"uid"];
+         
          [params setData:imageData1 MIMEType:@"image/png" forParam:@"image1"];
          [params setData:imageData2 MIMEType:@"image/png" forParam:@"image2"];
+         
          loader.params = params;
          
-        }];
-    
-
+     }];
 
 }
 
