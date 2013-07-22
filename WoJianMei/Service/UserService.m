@@ -623,7 +623,9 @@ static UserService* _defaultUserService = nil;
          [params setData:imageData2 MIMEType:@"image/png" forParam:@"image2"];
          
          loader.params = params;
-         
+         loader.targetObject = nil;
+
+
      }];
 
 }
