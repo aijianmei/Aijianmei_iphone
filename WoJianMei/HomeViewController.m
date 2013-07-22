@@ -272,6 +272,7 @@ typedef enum CONTENT_TYPE {
     self.carousel.dataSource = self;
     _carousel.type = iCarouselTypeLinear;
     [_carousel setScrollEnabled:YES];
+    [_carousel setScrollSpeed:1];
     [_myHeaderView addSubview:self.carousel];
 }
 
