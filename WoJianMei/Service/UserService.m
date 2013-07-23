@@ -624,10 +624,10 @@ static UserService* _defaultUserService = nil;
 }
 
 -(void)postImageDelegate:(id<RKObjectLoaderDelegate>)delegate{
-    // http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_uploadimg
-    //    http://42.96.132.109/wapapi/imgtest.php
+
     
-    //Router setup:  设定你要POST的物体的上传路径
+    //    http://42.96.132.109/wapapi/imgtest.php
+    //Router setup: 
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     [objectManager.router routeClass:[User class] toResourcePath:@"/imgtest.php" forMethod:RKRequestMethodPOST];
     
@@ -665,6 +665,9 @@ static UserService* _defaultUserService = nil;
          [params setData:imageData2 MIMEType:@"image/png" forParam:@"backgroundimage"];
          
          loader.params = params;
+         
+         
+         
          loader.targetObject = nil;
          loader.delegate = delegate;
 

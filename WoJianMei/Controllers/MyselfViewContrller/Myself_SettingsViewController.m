@@ -95,7 +95,6 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects;
  {
-    
     if ([objectLoader wasSentToResourcePath:@"/imgtest.php"]) {
      
         PPDebug(@"%@",[objects objectAtIndex:0]);
