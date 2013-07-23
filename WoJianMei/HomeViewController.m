@@ -499,6 +499,11 @@ typedef enum CONTENT_TYPE {
     
     [self buttonClicked:sender];
     
+   // 时间戳转时间的方法
+    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:1363948516];
+    NSLog(@"1363948516  = %@",confromTimesp);
+    
+    
 }
 
 
