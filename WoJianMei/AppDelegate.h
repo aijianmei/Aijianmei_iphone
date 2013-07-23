@@ -30,6 +30,8 @@ enum
 {
       UINavigationController *_navigationController;
       AJMViewDelegate *_viewDelegate;
+      enum WXScene _scene;
+
 }
 @property (nonatomic,retain)  UIWindow *window;
 @property (nonatomic,retain)   UINavigationController *navigationController;

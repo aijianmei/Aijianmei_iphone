@@ -683,21 +683,8 @@ typedef enum {
             case SEND_SINA_WEIBO:
             {
                 
-                NSString *status = @"TESTING";
-                UIImage *pic =[UIImage imageNamed:@"Default-568h@2x.png"];
-                
-
-                NSMutableDictionary * params =[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                               status, @"status",pic,@"pic",nil];
-                
-                
-            [[SinaWeiboManager sharedManager].sinaweibo requestWithURL:@"statuses/upload.json"
-                                                     params:params
-                                                 httpMethod:@"POST"
-                                                   delegate:self];
-                
+                [[UserService defaultService] shareThroughSinaWeiboWithImageArray:nil TextContent:nil delegate:self];
                 [self showActivityWithText:@"正在分享"];
-
                 
             }
                 break;

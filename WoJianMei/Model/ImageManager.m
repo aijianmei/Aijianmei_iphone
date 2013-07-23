@@ -114,7 +114,7 @@ static ImageManager *_defaultManager = nil;
 }
 
 
-- (UIImage *)navigationBgImage
++ (UIImage *)navigationBgImage
 {
     return [UIImage imageNamed:@"topmenu_bg.png"];
 }

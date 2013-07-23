@@ -43,6 +43,7 @@
 - (id)init{
     if(self = [super init]){
         _viewDelegate = [[AJMViewDelegate alloc] init];
+        _scene = WXSceneSession;
 
     }
     
@@ -214,7 +215,7 @@
     objectManager.client.baseURL = baseURL;
 
     if ([DeviceDetection isOS5]){
-        [[UINavigationBar appearance] setBackgroundImage:[[ImageManager defaultManager] navigationBgImage] forBarMetrics:UIBarMetricsDefault];
+        [[UINavigationBar appearance] setBackgroundImage:[ImageManager navigationBgImage] forBarMetrics:UIBarMetricsDefault];
     }else{
         
        GlobalSetNavBarBackground(@"topmenu_bg@2x.png");
@@ -225,7 +226,7 @@
     // Register to WeChat   wxd930ea5d5a258f4f
     // aijianmei  :
     
-    [WXApi registerApp:WeChatId];
+     [WXApi registerApp:WeChatId];
 //    [MobClick startWithAppkey:Mobclick reportPolicy:REALTIME channelId:nil];
 
         
@@ -282,6 +283,12 @@
     } else {
         return YES;
     }
+    if ([url.absoluteString hasSuffix:@""]) {
+        return [WXApi handleOpenURL:url delegate:self];
+    } else {
+        return YES;
+    }
+
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
@@ -293,6 +300,14 @@
         
     return YES;
     }
+    
+    if ([sourceApplication isEqualToString:@"com.sina.weibo"] && [url.absoluteString hasPrefix:SinaweibossoLogin]){
+        return [WXApi handleOpenURL:url delegate:self];
+    }else{
+        
+        return YES;
+    }
+
 }
 
 @end

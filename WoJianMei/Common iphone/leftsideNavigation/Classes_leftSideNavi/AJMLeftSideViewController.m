@@ -24,8 +24,16 @@
 #import "SVWebViewController.h"
 //#import <ShareSDK/ShareSDK.h>
 
+#import "SinaWeiboRequest.h"
+
 #import "ColorManager.h"
 #import "ImageManager.h"
+
+#define kAppKey @"3622140445"
+#define kAppSecret @"f94d063d06365972215c62acaadf95c3"
+#define KAppRedirectURI @"http://aijianmei.com"
+
+#define AIJIANMEI_SINAWEIBO_ID @"2692984661"
 
 
 #define TABLE_CELL @"tableCell"
@@ -71,7 +79,7 @@
     [self.view addSubview:bgImageView];
     [bgImageView release];
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width , self.view.frame.size.height)
                                               style:UITableViewStylePlain];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -80,6 +88,7 @@
     _tableView.delegate = self;
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.backgroundView = nil;
+    [_tableView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
     [self.view addSubview:_tableView];
     [_tableView release];
 }
@@ -97,7 +106,7 @@
         case 0:
             return 9;
         case 1:
-            return 5;
+            return 3;
         default:
             return 0;
     }
@@ -171,21 +180,21 @@
                 case 0:
                     cell.textLabel.text = @"关注新浪微博";
                     break;
+//                case 1:
+//                    cell.textLabel.text = @"关注腾讯微博";
+//                    break;
                 case 1:
-                    cell.textLabel.text = @"关注腾讯微博";
-                    break;
-                case 2:
                     cell.textLabel.text = @"关注官方微信";
                     break;
-                case 3:
+                case 2:
                     cell.textLabel.text = @"访问官方网站";
                     break;
-                case 4:
-                {
-                    NSBundle *bundle = [NSBundle mainBundle];
-                    cell.textLabel.text = [NSString stringWithFormat:@"版本:ver%@",[[bundle infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey]];
-                    break;
-                }
+//                case 3:
+//                {
+//                    NSBundle *bundle = [NSBundle mainBundle];
+//                    cell.textLabel.text = [NSString stringWithFormat:@"版本:ver%@",[[bundle infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey]];
+//                    break;
+//                }
                 default:
                     break;
             }
@@ -193,6 +202,10 @@
         default:
             break;
     }
+    
+    [cell.textLabel setTextColor:[UIColor grayColor]];
+
+    
     return cell;
 }
 
@@ -271,29 +284,6 @@
                         
                         
                     }];
-
-                    
-                    
-                    
-                    
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        
-//                        if (![[UserService defaultService] hasBindAccount]) {
-//                            LoginViewController *loginViewController = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-//                            loginViewController.title = @"登陆";
-//                            self.navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController] ;
-//                            
-//                        } else {
-//                            MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
-//                            myselfVC.title = @"我";
-//                            self.navigationController = [[UINavigationController alloc] initWithRootViewController:myselfVC];
-//                        }
-//                        self.viewDeckController.centerController = _navigationController;
-//                        self.view.userInteractionEnabled = YES;
-//                        
-//                        
-//                    }];
-
                  break;
                 }
 
@@ -427,26 +417,45 @@
                 ///关注新浪微博
                 //TODO
                     
-                    break;
+                    
+                    _sinaweiboManager = [SinaWeiboManager sharedManager];
+                    [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
+                    
+                    if ([_sinaweiboManager.sinaweibo isAuthValid])
+                    {
+                        PPDebug(@"%@",_sinaweiboManager.sinaweibo.userID);
+                        [[UserService defaultService] createSinaFriendshipWithUid:AIJIANMEI_SINAWEIBO_ID delegate:self];
+                        PPDebug(@"新浪授权可用");
+
+                    }
+                    //授权不可用的时候,就获取新浪微博的id，再通过sns 的id 来获取用户信息；
+                    else if(![_sinaweiboManager.sinaweibo isAuthValid])
+                    {
+                        [_sinaweiboManager.sinaweibo logIn];
+                        PPDebug(@"登陆新浪授权页面");
+
+                    }
+
 
                 }
+                    break;
+//                case 1:
+//                {
+//                ///关注腾讯微博
+//                //TODO
+
+
+//                }
+                    
+                   break;
                 case 1:
-                {
-                ///关注腾讯微博
-                //TODO
-                    break;
-
-                    
-                    
-                }
-                case 2:
                 {
                 ///关注微信
                 //TODO
                     break;
 
                 }
-                case 3:
+                case 2:
                 {
                     ///关注爱健美网 www.aijianmei.com
                     //TODO
@@ -470,8 +479,109 @@
             break;
     }
      //Set the Image of the cell when you click
-    [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+//    [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     
 }
+
+#pragma mark -
+#pragma SinaWeiboDelegate methods
+- (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
+    [_sinaweiboManager storeAuthData];
+    //微博登陆后获取用户数据
+    [[UserService defaultService] fetchSinaUserInfo:sinaweibo.userID delegate:self];
+}
+
+- (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
+{
+    NSLog(@"sinaweiboDidLogOut");
+    [_sinaweiboManager removeAuthData];
+}
+
+- (void)sinaweiboLogInDidCancel:(SinaWeibo *)sinaweibo
+{
+    NSLog(@"sinaweiboLogInDidCancel");
+}
+
+- (void)sinaweibo:(SinaWeibo *)sinaweibo logInDidFailWithError:(NSError *)error
+{
+    NSLog(@"sinaweibo logInDidFailWithError %@", error);
+}
+
+- (void)sinaweibo:(SinaWeibo *)sinaweibo accessTokenInvalidOrExpired:(NSError *)error
+{
+    NSLog(@"sinaweiboAccessTokenInvalidOrExpired %@", error);
+    [_sinaweiboManager removeAuthData];
+}
+
+#pragma mark - SinaWeiboRequest Delegate
+- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
+{
+    //获取用户信息
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        NSLog(@"******%@",[error description]);
+    }
+    //上传图片
+    if ([request.url hasSuffix:@"statuses/upload.json"])
+    {
+        NSLog(@"******%@",[error description]);
+    }
+    //关注爱健美用户
+    if ([request.url hasSuffix:@"friendships/create.json"])
+    {
+        NSLog(@"******%@",[error description]);
+        if ([error code]==20506) {
+            UIAlertView *alerView  = [[UIAlertView alloc]initWithTitle:@"您已关注了 @爱健美网"
+                                                               message:@""
+                                                              delegate:self
+                                                     cancelButtonTitle:@"确定"
+                                                     otherButtonTitles:nil, nil];
+            [alerView show];
+        }
+    }
+    
+
+}
+
+- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
+{
+    
+    //获取用户信息
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        NSLog(@"******%@",[result description]);
+    }
+    
+
+    //上传图片
+    if ([request.url hasSuffix:@"statuses/upload.json"])
+    {
+        [[UserService defaultService] storeSinaUserInfo:result];
+        
+        NSDictionary *userInfo = result;
+        NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);
+       
+    }
+    
+    //关注爱健美用户
+    if ([request.url hasSuffix:@"friendships/create.json"])
+    {
+        NSLog(@"******%@",[result description]);
+        UIAlertView *alerView  = [[UIAlertView alloc]initWithTitle:@"成功关注了@爱健美网"
+                                                           message:@""
+                                                          delegate:self
+                                                 cancelButtonTitle:@"退出"
+                                                 otherButtonTitles:nil, nil];
+        [alerView show];
+    }
+
+}
+
+
+
+
 
 @end

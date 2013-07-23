@@ -16,10 +16,6 @@
 @protocol ArticleListCellDelegate <NSObject>
 
 - (void)didClickFollowButton:(id)sender atIndex:(NSIndexPath*)indexPath;
-- (void)didClickBuyButton:(id)sender atIndex:(NSIndexPath *)indexPath;
-- (void)didClickSinaWeiBlogButton:(id)sender atIndex:(NSIndexPath *)indexPath;
-- (void)clickShowBigImage:(id)sender atIndex:(NSIndexPath *)indexPath;
-
 @end
 
 @interface ArticleCell : UITableViewCell
