@@ -279,7 +279,7 @@ typedef enum CONTENT_TYPE {
 #pragma mark-- MoreButon Method
 -(void)addSpacePageControl{
     ////The page controll
-    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(200, 185, 120, 20)];
+    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(215, 185, 120, 20)];
     [_spacePageControl setBackgroundColor:[UIColor clearColor]];
     _spacePageControl.numberOfPages = [self.dataList count];
     [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
@@ -328,13 +328,21 @@ typedef enum CONTENT_TYPE {
     NSString *cateid = @"0";
     NSString *uid = @"265";
     
+    User *user = [[UserService defaultService] user];
+    NSString *userUid = user.uid;
+    
+    if (userUid) {
+        uid = userUid;
+    }
+
+    
+    
     if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==-1) {
         
         category = @"home";
         listtype = @"2";
         type = @"new";
         cateid = @"1";
-        uid = @"265";
         _start=0;
         
     }
@@ -344,7 +352,6 @@ typedef enum CONTENT_TYPE {
         listtype = @"2";
         type = @"hot";
         cateid = @"1";
-        uid = @"265";
         _start=0;
         
     }
@@ -354,7 +361,6 @@ typedef enum CONTENT_TYPE {
         listtype = @"3";
         type = @"new";
         cateid = @"0";
-        uid = @"265";
         _start=0;
     }
     if (self.segmentedController.selectedSegmentIndex ==3) {
@@ -363,7 +369,6 @@ typedef enum CONTENT_TYPE {
         listtype = @"3";
         type = @"hot";
         cateid = @"0";
-        uid = @"265";
         _start=0;
         
     }
@@ -412,6 +417,14 @@ typedef enum CONTENT_TYPE {
     int offset = EACH_FETCH_SIZE;
     NSString *cateid = @"0";
     NSString *uid = @"265";
+
+    User *user = [[UserService defaultService] user];
+    NSString *userUid = user.uid;
+    
+    if (userUid) {
+        uid = userUid;
+    }
+    
     
     if (self.segmentedController.selectedSegmentIndex ==0) {
         
@@ -419,7 +432,6 @@ typedef enum CONTENT_TYPE {
         listtype = @"2";
         type = @"new";
         cateid = @"";
-        uid = @"265";
 
         
     }
@@ -429,7 +441,6 @@ typedef enum CONTENT_TYPE {
         listtype = @"2";
         type = @"hot";
         cateid = @"0";
-        uid = @"265";
 
     }
     if (self.segmentedController.selectedSegmentIndex ==2) {
@@ -438,7 +449,6 @@ typedef enum CONTENT_TYPE {
         listtype = @"3";
         type = @"new";
         cateid = @"";
-        uid = @"265";
 
     }
     if (self.segmentedController.selectedSegmentIndex ==3) {
@@ -447,7 +457,6 @@ typedef enum CONTENT_TYPE {
         listtype = @"3";
         type = @"hot";
         cateid = @"";
-        uid = @"265";
 
     }
     
@@ -489,6 +498,11 @@ typedef enum CONTENT_TYPE {
     [_segmentedController setSelectedSegmentIndex:0];
     
     [self buttonClicked:sender];
+    
+   // 时间戳转时间的方法
+    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:1363948516];
+    NSLog(@"1363948516  = %@",confromTimesp);
+    
     
 }
 

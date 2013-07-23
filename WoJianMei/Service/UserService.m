@@ -430,6 +430,8 @@ static UserService* _defaultUserService = nil;
 - (void)fetchSinaUserInfo:(NSString*)uid
                     delegate:(id<SinaWeiboRequestDelegate>)delegate
 {
+     //https://api.weibo.com/2/users/show.json
+
     _sinaweiboManager = [SinaWeiboManager sharedManager];
     [_sinaweiboManager.sinaweibo requestWithURL:@"users/show.json"
                                          params:[NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -491,6 +493,47 @@ static UserService* _defaultUserService = nil;
     [self setUser:nil];
 }
 
+//关注爱健美网新浪微博
+- (void)createSinaFriendshipWithUid:(NSString*)uid
+                 delegate:(id<SinaWeiboRequestDelegate>)delegate
+{
+    
+    //https://api.weibo.com/2/friendships/create.json
+    
+    
+    _sinaweiboManager = [SinaWeiboManager sharedManager];
+    [_sinaweiboManager.sinaweibo requestWithURL:@"friendships/create.json"
+                                         params: [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                                  uid, @"uid", nil]
+                                     httpMethod:@"POST"
+                                       delegate:delegate];
+    
+}
+
+
+-(void)shareThroughSinaWeiboWithImageArray:(NSArray *)imageArray
+                               TextContent:(NSString *)TextContent
+                                  delegate:(id<SinaWeiboRequestDelegate>)delegate
+{
+        NSString *status = @"我正在使用爱健美客户端！";
+        UIImage *pic =[UIImage imageNamed:@"Default-568h@2x.png"];
+
+
+         NSMutableDictionary * params =[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                               status, @"status",pic,@"pic",nil];
+
+          [[SinaWeiboManager sharedManager].sinaweibo requestWithURL:@"statuses/upload.json"
+                                                    params:params
+                                                httpMethod:@"POST"
+                                                  delegate:delegate];
+    
+}
+
++ (void)followWeixinUser:(NSString *)userData{
+
+  
+
+}
 
 
 

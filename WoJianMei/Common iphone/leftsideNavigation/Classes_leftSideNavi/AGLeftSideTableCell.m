@@ -15,7 +15,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
-        self.accessoryView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"AccessoryView.png"]] autorelease];
+//        self.accessoryView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"AccessoryView.png"]] autorelease];
     }
     return self;
 }
@@ -24,9 +24,8 @@
 {
     [super layoutSubviews];
 
-    int point = self.accessoryView.frame.origin.y;
-    
-    self.accessoryView.frame = CGRectMake(250, point, self.accessoryView.frame.size.width, self.accessoryView.frame.size.height);
+//    int point = self.accessoryView.frame.origin.y;
+//    self.accessoryView.frame = CGRectMake(200, point, self.accessoryView.frame.size.width, self.accessoryView.frame.size.height);
 }
 
 @end

@@ -42,8 +42,7 @@
 +(UIImage*)avatarbackgroundImage;
 
 - (UIImage *)allBackgroundImage;
-- (UIImage *)navigationBgImage;
-
++ (UIImage *)navigationBgImage;
 
 
 +(UIImage*)leftSideNaviHighLightImage;

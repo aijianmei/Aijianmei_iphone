@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "AGSectionView.h"
+#import "SinaWeiboRequest.h"
+#import "SinaWeiboManager.h"
 
 @class AppDelegate;
 
 @interface AJMLeftSideViewController : UIViewController <UITableViewDataSource,
-                                                        UITableViewDelegate>
+                                                        UITableViewDelegate,SinaWeiboRequestDelegate,SinaWeiboDelegate,UIAlertViewDelegate>
 {
+    SinaWeiboManager *_sinaweiboManager;
 @private
     UITableView *_tableView;
     AGSectionView *_sectionView;

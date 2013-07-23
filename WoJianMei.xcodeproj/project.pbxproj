@@ -344,6 +344,34 @@
 		4A4992BB1685562D0073E682 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4992BA1685562D0073E682 /* CoreData.framework */; };
 		4A4992BF168556700073E682 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4992BE168556700073E682 /* AVFoundation.framework */; };
 		4A4992C1168556D00073E682 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4992C0168556D00073E682 /* libz.1.1.3.dylib */; };
+		4A4A5DB1179E512E00F00085 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4A5DAF179E512E00F00085 /* CommentViewController.m */; };
+		4A4A5DB2179E512E00F00085 /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5DB0179E512E00F00085 /* CommentViewController.xib */; };
+		4A4A5DDA179E59F400F00085 /* Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4A5DBA179E59F300F00085 /* Emoji.m */; };
+		4A4A5DDB179E59F400F00085 /* EmojiEmoticons.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4A5DBC179E59F300F00085 /* EmojiEmoticons.m */; };
+		4A4A5DDC179E59F400F00085 /* EmojiMapSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4A5DBE179E59F300F00085 /* EmojiMapSymbols.m */; };
+		4A4A5DDD179E59F400F00085 /* EmojiPictographs.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4A5DC0179E59F300F00085 /* EmojiPictographs.m */; };
+		4A4A5DDE179E59F400F00085 /* EmojiTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4A5DC2179E59F300F00085 /* EmojiTransport.m */; };
+		4A4A5DDF179E59F400F00085 /* FaceToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4A5DC4179E59F300F00085 /* FaceToolBar.m */; };
+		4A4A5DE0179E59F400F00085 /* FacialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4A5DC6179E59F300F00085 /* FacialView.m */; };
+		4A4A5DE1179E59F400F00085 /* UIExpandingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4A5DC8179E59F300F00085 /* UIExpandingTextView.m */; };
+		4A4A5DE2179E59F400F00085 /* UIExpandingTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4A5DCA179E59F300F00085 /* UIExpandingTextViewInternal.m */; };
+		4A4A5E00179E5DB100F00085 /* face.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5DF2179E5DB100F00085 /* face.png */; };
+		4A4A5E01179E5DB100F00085 /* face@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5DF3179E5DB100F00085 /* face@2x.png */; };
+		4A4A5E02179E5DB100F00085 /* faceDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5DF4179E5DB100F00085 /* faceDelete.png */; };
+		4A4A5E03179E5DB100F00085 /* faceDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5DF5179E5DB100F00085 /* faceDelete@2x.png */; };
+		4A4A5E04179E5DB100F00085 /* facesBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5DF6179E5DB100F00085 /* facesBack.png */; };
+		4A4A5E05179E5DB100F00085 /* facesBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5DF7179E5DB100F00085 /* facesBack@2x.png */; };
+		4A4A5E06179E5DB100F00085 /* InputBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5DF8179E5DB100F00085 /* InputBack.png */; };
+		4A4A5E07179E5DB100F00085 /* InputBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5DF9179E5DB100F00085 /* InputBack@2x.png */; };
+		4A4A5E08179E5DB100F00085 /* Speak.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5DFA179E5DB100F00085 /* Speak.png */; };
+		4A4A5E09179E5DB100F00085 /* Speak@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5DFB179E5DB100F00085 /* Speak@2x.png */; };
+		4A4A5E0A179E5DB100F00085 /* Text.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5DFC179E5DB100F00085 /* Text.png */; };
+		4A4A5E0B179E5DB100F00085 /* Text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5DFD179E5DB100F00085 /* Text@2x.png */; };
+		4A4A5E0C179E5DB100F00085 /* Voice.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5DFE179E5DB100F00085 /* Voice.png */; };
+		4A4A5E0D179E5DB100F00085 /* Voice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5DFF179E5DB100F00085 /* Voice@2x.png */; };
+		4A4A5E10179E76FB00F00085 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4A5E0F179E76FA00F00085 /* CommentCell.m */; };
+		4A4A5E13179E77B000F00085 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4A5E12179E77AF00F00085 /* Comment.m */; };
+		4A4A5E15179E7DCB00F00085 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5E14179E7DC900F00085 /* CommentCell.xib */; };
 		4A4EE73016AD3D92005C3ADA /* ComposeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EE72F16AD3D92005C3ADA /* ComposeViewCell.m */; };
 		4A4EE73316AD43D7005C3ADA /* ComposeViewCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EE73216AD43D7005C3ADA /* ComposeViewCellInfo.m */; };
 		4A5F3FC517912B3200CD701A /* AGCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5F3FAC17912B3200CD701A /* AGCommon.framework */; };
@@ -1236,6 +1264,46 @@
 		4A4992BA1685562D0073E682 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		4A4992BE168556700073E682 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4A4992C0168556D00073E682 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		4A4A5DAE179E512E00F00085 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		4A4A5DAF179E512E00F00085 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
+		4A4A5DB0179E512E00F00085 /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentViewController.xib; sourceTree = "<group>"; };
+		4A4A5DB9179E59F300F00085 /* Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Emoji.h; sourceTree = "<group>"; };
+		4A4A5DBA179E59F300F00085 /* Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Emoji.m; sourceTree = "<group>"; };
+		4A4A5DBB179E59F300F00085 /* EmojiEmoticons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojiEmoticons.h; sourceTree = "<group>"; };
+		4A4A5DBC179E59F300F00085 /* EmojiEmoticons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojiEmoticons.m; sourceTree = "<group>"; };
+		4A4A5DBD179E59F300F00085 /* EmojiMapSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojiMapSymbols.h; sourceTree = "<group>"; };
+		4A4A5DBE179E59F300F00085 /* EmojiMapSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojiMapSymbols.m; sourceTree = "<group>"; };
+		4A4A5DBF179E59F300F00085 /* EmojiPictographs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojiPictographs.h; sourceTree = "<group>"; };
+		4A4A5DC0179E59F300F00085 /* EmojiPictographs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojiPictographs.m; sourceTree = "<group>"; };
+		4A4A5DC1179E59F300F00085 /* EmojiTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojiTransport.h; sourceTree = "<group>"; };
+		4A4A5DC2179E59F300F00085 /* EmojiTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojiTransport.m; sourceTree = "<group>"; };
+		4A4A5DC3179E59F300F00085 /* FaceToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceToolBar.h; sourceTree = "<group>"; };
+		4A4A5DC4179E59F300F00085 /* FaceToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceToolBar.m; sourceTree = "<group>"; };
+		4A4A5DC5179E59F300F00085 /* FacialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacialView.h; sourceTree = "<group>"; };
+		4A4A5DC6179E59F300F00085 /* FacialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacialView.m; sourceTree = "<group>"; };
+		4A4A5DC7179E59F300F00085 /* UIExpandingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIExpandingTextView.h; sourceTree = "<group>"; };
+		4A4A5DC8179E59F300F00085 /* UIExpandingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIExpandingTextView.m; sourceTree = "<group>"; };
+		4A4A5DC9179E59F300F00085 /* UIExpandingTextViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIExpandingTextViewInternal.h; sourceTree = "<group>"; };
+		4A4A5DCA179E59F300F00085 /* UIExpandingTextViewInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIExpandingTextViewInternal.m; sourceTree = "<group>"; };
+		4A4A5DF2179E5DB100F00085 /* face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = face.png; sourceTree = "<group>"; };
+		4A4A5DF3179E5DB100F00085 /* face@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "face@2x.png"; sourceTree = "<group>"; };
+		4A4A5DF4179E5DB100F00085 /* faceDelete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faceDelete.png; sourceTree = "<group>"; };
+		4A4A5DF5179E5DB100F00085 /* faceDelete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faceDelete@2x.png"; sourceTree = "<group>"; };
+		4A4A5DF6179E5DB100F00085 /* facesBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facesBack.png; sourceTree = "<group>"; };
+		4A4A5DF7179E5DB100F00085 /* facesBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facesBack@2x.png"; sourceTree = "<group>"; };
+		4A4A5DF8179E5DB100F00085 /* InputBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InputBack.png; sourceTree = "<group>"; };
+		4A4A5DF9179E5DB100F00085 /* InputBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InputBack@2x.png"; sourceTree = "<group>"; };
+		4A4A5DFA179E5DB100F00085 /* Speak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Speak.png; sourceTree = "<group>"; };
+		4A4A5DFB179E5DB100F00085 /* Speak@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Speak@2x.png"; sourceTree = "<group>"; };
+		4A4A5DFC179E5DB100F00085 /* Text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Text.png; sourceTree = "<group>"; };
+		4A4A5DFD179E5DB100F00085 /* Text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text@2x.png"; sourceTree = "<group>"; };
+		4A4A5DFE179E5DB100F00085 /* Voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Voice.png; sourceTree = "<group>"; };
+		4A4A5DFF179E5DB100F00085 /* Voice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Voice@2x.png"; sourceTree = "<group>"; };
+		4A4A5E0E179E76F900F00085 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		4A4A5E0F179E76FA00F00085 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		4A4A5E11179E77AF00F00085 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Comment.h; path = ../Controllers/WorkoutViewController/Comment.h; sourceTree = "<group>"; };
+		4A4A5E12179E77AF00F00085 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Comment.m; path = ../Controllers/WorkoutViewController/Comment.m; sourceTree = "<group>"; };
+		4A4A5E14179E7DC900F00085 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		4A4EE72E16AD3D92005C3ADA /* ComposeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComposeViewCell.h; path = ../MyselfViewContrller/ComposeViewCell.h; sourceTree = "<group>"; };
 		4A4EE72F16AD3D92005C3ADA /* ComposeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComposeViewCell.m; path = ../MyselfViewContrller/ComposeViewCell.m; sourceTree = "<group>"; };
 		4A4EE73116AD43D7005C3ADA /* ComposeViewCellInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewCellInfo.h; sourceTree = "<group>"; };
@@ -1745,6 +1813,8 @@
 				4A22152917793C970079430D /* ColorManager.m */,
 				4A11FC551796BBE100DE34E6 /* SinaResult.h */,
 				4A11FC561796BBE100DE34E6 /* SinaResult.m */,
+				4A4A5E11179E77AF00F00085 /* Comment.h */,
+				4A4A5E12179E77AF00F00085 /* Comment.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3024,6 +3094,53 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		4A4A5DB8179E59F300F00085 /* Emoji-master */ = {
+			isa = PBXGroup;
+			children = (
+				4A4A5DF1179E5DB100F00085 /* Images */,
+				4A4A5DB9179E59F300F00085 /* Emoji.h */,
+				4A4A5DBA179E59F300F00085 /* Emoji.m */,
+				4A4A5DBB179E59F300F00085 /* EmojiEmoticons.h */,
+				4A4A5DBC179E59F300F00085 /* EmojiEmoticons.m */,
+				4A4A5DBD179E59F300F00085 /* EmojiMapSymbols.h */,
+				4A4A5DBE179E59F300F00085 /* EmojiMapSymbols.m */,
+				4A4A5DBF179E59F300F00085 /* EmojiPictographs.h */,
+				4A4A5DC0179E59F300F00085 /* EmojiPictographs.m */,
+				4A4A5DC1179E59F300F00085 /* EmojiTransport.h */,
+				4A4A5DC2179E59F300F00085 /* EmojiTransport.m */,
+				4A4A5DC3179E59F300F00085 /* FaceToolBar.h */,
+				4A4A5DC4179E59F300F00085 /* FaceToolBar.m */,
+				4A4A5DC5179E59F300F00085 /* FacialView.h */,
+				4A4A5DC6179E59F300F00085 /* FacialView.m */,
+				4A4A5DC7179E59F300F00085 /* UIExpandingTextView.h */,
+				4A4A5DC8179E59F300F00085 /* UIExpandingTextView.m */,
+				4A4A5DC9179E59F300F00085 /* UIExpandingTextViewInternal.h */,
+				4A4A5DCA179E59F300F00085 /* UIExpandingTextViewInternal.m */,
+			);
+			path = "Emoji-master";
+			sourceTree = "<group>";
+		};
+		4A4A5DF1179E5DB100F00085 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4A4A5DF2179E5DB100F00085 /* face.png */,
+				4A4A5DF3179E5DB100F00085 /* face@2x.png */,
+				4A4A5DF4179E5DB100F00085 /* faceDelete.png */,
+				4A4A5DF5179E5DB100F00085 /* faceDelete@2x.png */,
+				4A4A5DF6179E5DB100F00085 /* facesBack.png */,
+				4A4A5DF7179E5DB100F00085 /* facesBack@2x.png */,
+				4A4A5DF8179E5DB100F00085 /* InputBack.png */,
+				4A4A5DF9179E5DB100F00085 /* InputBack@2x.png */,
+				4A4A5DFA179E5DB100F00085 /* Speak.png */,
+				4A4A5DFB179E5DB100F00085 /* Speak@2x.png */,
+				4A4A5DFC179E5DB100F00085 /* Text.png */,
+				4A4A5DFD179E5DB100F00085 /* Text@2x.png */,
+				4A4A5DFE179E5DB100F00085 /* Voice.png */,
+				4A4A5DFF179E5DB100F00085 /* Voice@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		4A58805215C52B89005F8415 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -3484,6 +3601,12 @@
 				4ADCFE14169D614600A3E979 /* ArticleCell.m */,
 				C6DB202B1760D8E40060BD08 /* WorkoutDetailViewController.h */,
 				C6DB202C1760D8E40060BD08 /* WorkoutDetailViewController.m */,
+				4A4A5DAE179E512E00F00085 /* CommentViewController.h */,
+				4A4A5DAF179E512E00F00085 /* CommentViewController.m */,
+				4A4A5DB0179E512E00F00085 /* CommentViewController.xib */,
+				4A4A5E0E179E76F900F00085 /* CommentCell.h */,
+				4A4A5E0F179E76FA00F00085 /* CommentCell.m */,
+				4A4A5E14179E7DC900F00085 /* CommentCell.xib */,
 			);
 			name = WorkoutViewController;
 			path = Controllers/WorkoutViewController;
@@ -3514,6 +3637,7 @@
 		4ADCFF50169D69F500A3E979 /* Common iphone */ = {
 			isa = PBXGroup;
 			children = (
+				4A4A5DB8179E59F300F00085 /* Emoji-master */,
 				4A7B7EFD179ADF5C00FD6E56 /* TLAlertView */,
 				4A7B7E97179A7AAA00FD6E56 /* SDSegmentedControl */,
 				4AFE7FA71792852F006B5310 /* FTCoreText */,
@@ -4240,6 +4364,22 @@
 				4A7B7EFC179AD31C00FD6E56 /* 单篇文章.jpg in Resources */,
 				4A7B7F18179ADF5C00FD6E56 /* License.md in Resources */,
 				4A7B7F19179ADF5C00FD6E56 /* README.md in Resources */,
+				4A4A5DB2179E512E00F00085 /* CommentViewController.xib in Resources */,
+				4A4A5E00179E5DB100F00085 /* face.png in Resources */,
+				4A4A5E01179E5DB100F00085 /* face@2x.png in Resources */,
+				4A4A5E02179E5DB100F00085 /* faceDelete.png in Resources */,
+				4A4A5E03179E5DB100F00085 /* faceDelete@2x.png in Resources */,
+				4A4A5E04179E5DB100F00085 /* facesBack.png in Resources */,
+				4A4A5E05179E5DB100F00085 /* facesBack@2x.png in Resources */,
+				4A4A5E06179E5DB100F00085 /* InputBack.png in Resources */,
+				4A4A5E07179E5DB100F00085 /* InputBack@2x.png in Resources */,
+				4A4A5E08179E5DB100F00085 /* Speak.png in Resources */,
+				4A4A5E09179E5DB100F00085 /* Speak@2x.png in Resources */,
+				4A4A5E0A179E5DB100F00085 /* Text.png in Resources */,
+				4A4A5E0B179E5DB100F00085 /* Text@2x.png in Resources */,
+				4A4A5E0C179E5DB100F00085 /* Voice.png in Resources */,
+				4A4A5E0D179E5DB100F00085 /* Voice@2x.png in Resources */,
+				4A4A5E15179E7DCB00F00085 /* CommentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4547,6 +4687,18 @@
 				4A11FC571796BBE100DE34E6 /* SinaResult.m in Sources */,
 				4A7B7EBC179A7AAB00FD6E56 /* SDSegmentedControl.m in Sources */,
 				4A7B7F20179ADF5C00FD6E56 /* TLAlertView.m in Sources */,
+				4A4A5DB1179E512E00F00085 /* CommentViewController.m in Sources */,
+				4A4A5DDA179E59F400F00085 /* Emoji.m in Sources */,
+				4A4A5DDB179E59F400F00085 /* EmojiEmoticons.m in Sources */,
+				4A4A5DDC179E59F400F00085 /* EmojiMapSymbols.m in Sources */,
+				4A4A5DDD179E59F400F00085 /* EmojiPictographs.m in Sources */,
+				4A4A5DDE179E59F400F00085 /* EmojiTransport.m in Sources */,
+				4A4A5DDF179E59F400F00085 /* FaceToolBar.m in Sources */,
+				4A4A5DE0179E59F400F00085 /* FacialView.m in Sources */,
+				4A4A5DE1179E59F400F00085 /* UIExpandingTextView.m in Sources */,
+				4A4A5DE2179E59F400F00085 /* UIExpandingTextViewInternal.m in Sources */,
+				4A4A5E10179E76FB00F00085 /* CommentCell.m in Sources */,
+				4A4A5E13179E77B000F00085 /* Comment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

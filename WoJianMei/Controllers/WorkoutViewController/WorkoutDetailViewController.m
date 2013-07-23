@@ -10,6 +10,8 @@
 #import "ArticleService.h"
 #import "NSString+HTML.h"
 #import "ImageManager.h"
+#import "CommentViewController.h"
+#import "ArticleDetail.h"
 
 
 
@@ -21,11 +23,16 @@
 @implementation WorkoutDetailViewController
 @synthesize article =_article;
 @synthesize toolBar =_toolBar;
+@synthesize likeButton =_likeButton;
+@synthesize articleDetail =_articleDetail;
 
 
 -(void)dealloc
 {
     [_toolBar release];
+    [_likeButton release];
+    [_article release];
+    [_articleDetail release];
     [super dealloc];
 }
 
@@ -93,16 +100,25 @@
 
 
 ////点击喜欢按钮
--(void)clickLikeButton:(UIButton *)sender{
-    
-    PPDebug(@"////点击喜欢按钮");
+-(void)clickLikeButton:(id)sender{
+        
+    NSString *newLike = _articleDetail.like;
+    int likeValue = [newLike integerValue];
+    if (likeValue == 1)
+    {
+        PPDebug(@"你已经赞了该这篇文章，不可以重复哦");
+    }
+
    
 }
 ////点击评论按钮
 -(void)clickCommentButton:(UIButton *)sender{
     
-    
     PPDebug(@"////点击评论按钮");
+    CommentViewController *cVC = [[CommentViewController alloc]initWithNibName:@"CommentViewController" bundle:nil];
+    [self.navigationController pushViewController:cVC animated:YES];
+    [cVC release];
+    
 
 }
 ////点击分享按钮
@@ -128,13 +144,13 @@
     
     
     
-    UIButton * likeButton = [[UIButton alloc] initWithFrame:CGRectMake(leftOffest, 3, 22, 22)];
-    [likeButton setImage:[ImageManager GobalArticelLikeButtonBG] forState:UIControlStateNormal];
-    [likeButton setTitle:@"喜欢" forState:UIControlStateNormal];
-    [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [likeButton.titleLabel setFont:font];
-    [likeButton addTarget:self action:@selector(clickLikeButton:) forControlEvents:UIControlEventTouchUpInside];
-    [rightButtonView addSubview:likeButton];
+    self.likeButton = [[UIButton alloc] initWithFrame:CGRectMake(leftOffest, 3, 22, 22)];
+    [_likeButton setImage:[ImageManager GobalArticelLikeButtonBG] forState:UIControlStateNormal];
+    [_likeButton setTitle:@"喜欢" forState:UIControlStateNormal];
+    [_likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_likeButton.titleLabel setFont:font];
+    [_likeButton addTarget:self action:@selector(clickLikeButton:) forControlEvents:UIControlEventTouchUpInside];
+    [rightButtonView addSubview:self.likeButton];
     
     
     UIButton * commentBarButton = [[UIButton alloc] initWithFrame:CGRectMake(leftOffest+buttonLen+seporator,3, 22, 22)];
@@ -201,12 +217,8 @@
    [self.navigationController.navigationBar setFrame:CGRectMake(0, 420, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
     
     
-    
     //just for test
 	[[ArticleService sharedService] findArticleInfoWithAucode:@"aijianmei" auact:@"au_getinformationdetail" articleId:_article._id channel:@" " channelType:@" " uid:@"" delegate:self];
-    
-
-    
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -255,6 +267,22 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)updateUserInterface{
+    
+     [_likeButton setImage:[UIImage imageNamed:@"like_icon.png"] forState:UIControlStateNormal];
+    
+    NSString *newLike = _articleDetail.like;
+    int likeValue = [newLike integerValue];
+    
+    if (likeValue ==1) {
+        
+        [_likeButton setImage:[UIImage imageNamed:@"Press_like_icon.png"] forState:UIControlStateNormal];
+    }
+
+    
+    PPDebug(@"Like %@",_articleDetail.like);
 }
 
 
@@ -330,11 +358,15 @@
 {
     NSLog(@"***Load objects count: %d", [objects count]);
     [self hideActivity];
-    _articleDetail = [objects objectAtIndex:0];
+    self.articleDetail = [objects objectAtIndex:0];
     [self loadWebViewWithHtmlString:_articleDetail.content];
     [_webview sizeToFit];
 //    [_webview setFrame:CGRectMake(0, 0, 320, 480)];
-    PPDebug(@"Article ：%@",_articleDetail.content);
+    
+    [self updateUserInterface];
 }
+
+
+
 
 @end

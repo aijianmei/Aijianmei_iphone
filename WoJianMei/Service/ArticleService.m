@@ -97,6 +97,7 @@
      @"brief", @"_brief",
      @"create_time", @"_create_time",
      @"img", @"_img",
+     @"like", @"like",
      @"clikc", @"_click",
      @"commentsCount",@"_commentsCount",nil];
     [objectManager.mappingProvider setMapping:articleMapping forKeyPath:@""];

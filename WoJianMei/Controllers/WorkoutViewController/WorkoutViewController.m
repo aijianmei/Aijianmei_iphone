@@ -277,13 +277,6 @@ typedef enum CONTENT_TYPE {
     [self showBackgroundImage];
 }
 
-
--(void)filterTheConentsByButton{
-
-    
-    
-}
-
 #pragma mark-- ButtonClicked Method
 -(void)buttonClicked:(UIButton *)sender
 

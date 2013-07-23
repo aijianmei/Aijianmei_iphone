@@ -113,6 +113,21 @@
 //删除在本地的用户信息
 -(void)deleteUserByUid:(NSString *)uid;
 
+
+//分享一条新浪微博，附带图片
+-(void)shareThroughSinaWeiboWithImageArray:(NSArray *)imageArray
+                               TextContent:(NSString *)TextContent
+                                  delegate:(id<SinaWeiboRequestDelegate>)delegate;
+
+//关注爱健美网新浪微博
+- (void)createSinaFriendshipWithUid:(NSString*)uid
+                           delegate:(id<SinaWeiboRequestDelegate>)delegate;
+
+
+
++ (void)followWeixinUser:(NSString *)userData;
+
+
 -(void)postObject:(NSObject*)object
      WithDelegate:(id<RKObjectLoaderDelegate>)delegate;
 

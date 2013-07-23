@@ -19,18 +19,21 @@
 
 {
     UIToolbar *_toolBar;
-    
+    UIButton *_likeButton;
+    ArticleDetail *_articleDetail;
 }
 
 @property(nonatomic, retain) Article *article;
 @property(nonatomic, retain) ArticleDetail *articleDetail;
 @property(nonatomic, retain) UIWebView *webview;
 @property(nonatomic, retain) UIToolbar *toolBar;
+@property(nonatomic,retain)  UIButton *likeButton;
 
 
 
 - (void)showNavigationBar;
 - (void)hideNavigationBar;
+- (void)updateUserInterface;
 
 
 

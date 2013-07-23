@@ -283,14 +283,6 @@ enum SinaResultErrorCode
 }
 
 
-
-
-
-
-
-
-
-
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
