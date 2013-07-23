@@ -99,9 +99,31 @@
     if ([objectLoader wasSentToResourcePath:@"/imgtest.php"]) {
      
         PPDebug(@"%@",[objects objectAtIndex:0]);
+        if ([[objects objectAtIndex:0] isMemberOfClass:[User class]]) {
+            User *user = [objects objectAtIndex:0];
+            NSLog(@"%@",user.uid);
+            NSLog(@"%@",user.profileImageUrl);
+            NSLog(@"%@",user.avatarBackGroundImage);
+        }
         
     }
 }
+
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+    NSLog(@"Response code: %d", [response statusCode]);
+    
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", [error localizedDescription]);
+}
+
+- (void)requestDidStartLoad:(RKRequest *)request
+{
+    NSLog(@"Start load request...");
+}
+
 
 
 

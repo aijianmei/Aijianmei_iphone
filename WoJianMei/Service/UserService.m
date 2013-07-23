@@ -15,7 +15,7 @@
 #import "Result.h"
 #import "SinaResult.h"
 #import "VersionInfo.h"
-#import <RestKit/RKJSONParserJSONKit.h>
+#import <RestKit/RestKit.h>
 
 
 
@@ -592,14 +592,13 @@ static UserService* _defaultUserService = nil;
     
     //Mapping setup:
     RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[User class]];
-    [userMapping mapKeyPath:@"id" toAttribute:@"identifier"];
-    [userMapping mapAttributes:
-     @"uid",
-     nil];
-    
+    [userMapping mapKeyPathsToAttributes:
+     @"uid", @"uid",
+     @"avatarimage", @"profileImageUrl",
+     @"backgroundimage",@"avatarBackGroundImage",
+     nil];    
     [objectManager.mappingProvider addObjectMapping:userMapping];
-    [objectManager.mappingProvider setSerializationMapping:[userMapping inverseMapping] forClass:[User class]];
-    [objectManager.mappingProvider setMapping:userMapping forKeyPath:@"user"];
+    [objectManager.mappingProvider setMapping:userMapping forKeyPath:@""];
     
     //The post
     User *user = [[User alloc] init];
@@ -619,12 +618,18 @@ static UserService* _defaultUserService = nil;
          RKParams* params = [RKParams params];
          [params setValue:user.uid forParam:@"uid"];
          
-         [params setData:imageData1 MIMEType:@"image/png" forParam:@"image1"];
-         [params setData:imageData2 MIMEType:@"image/png" forParam:@"image2"];
+         [params setData:imageData1 MIMEType:@"image/png" forParam:@"avatarimage"];
+         [params setData:imageData2 MIMEType:@"image/png" forParam:@"backgroundimage"];
          
          loader.params = params;
          loader.targetObject = nil;
+         loader.delegate = delegate;
 
+         loader.onDidLoadResponse = ^(RKResponse *response) {
+             NSLog(@"Response did arrive");
+             NSLog(@"%@",response.bodyAsString);
+             
+         };
 
      }];
 
