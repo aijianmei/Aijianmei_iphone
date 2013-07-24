@@ -70,23 +70,23 @@
       [self.descriptionLabel setText:article.brief];
       [self.imgView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@"11.png"]];
     
-    CALayer * layer = [self.imgView layer];
-    layer.borderColor = [[UIColor whiteColor] CGColor];
-    layer.borderWidth = 3.0f;
-    
-    //添加四个边阴影
-    _imgView.layer.shadowColor = [UIColor blackColor].CGColor;
-    _imgView.layer.shadowOffset = CGSizeMake(0, 0);
-    _imgView.layer.shadowOpacity = 0.5;
-    _imgView.layer.shadowRadius = 10.0;
-    
-    //给iamgeview添加阴影 < wbr > 和边框
-    
-    //添加两个边阴影
-    _imgView.layer.shadowColor = [UIColor blackColor].CGColor;
-    _imgView.layer.shadowOffset = CGSizeMake(4, 4);
-    _imgView.layer.shadowOpacity = 0.5;
-    _imgView.layer.shadowRadius = 2.0;
+//    CALayer * layer = [self.imgView layer];
+//    layer.borderColor = [[UIColor whiteColor] CGColor];
+//    layer.borderWidth = 3.0f;
+//    
+//    //添加四个边阴影
+//    _imgView.layer.shadowColor = [UIColor blackColor].CGColor;
+//    _imgView.layer.shadowOffset = CGSizeMake(0, 0);
+//    _imgView.layer.shadowOpacity = 0.5;
+//    _imgView.layer.shadowRadius = 10.0;
+//    
+//    //给iamgeview添加阴影 < wbr > 和边框
+//    
+//    //添加两个边阴影
+//    _imgView.layer.shadowColor = [UIColor blackColor].CGColor;
+//    _imgView.layer.shadowOffset = CGSizeMake(4, 4);
+//    _imgView.layer.shadowOpacity = 0.5;
+//    _imgView.layer.shadowRadius = 2.0;
     
     
     
@@ -98,39 +98,32 @@
     
 
 
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *mydate = [dateFormatter dateFromString:@"2001-08-04 16:01:03"];
-    NSLog(@"%@", mydate);
-    [dateFormatter release];
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//    NSDate *mydate = [dateFormatter dateFromString:@"2001-08-04 16:01:03"];
+//    NSLog(@"%@", mydate);
+//    [dateFormatter release];
+//    
+//    
+//    NSString * str = chineseBeforeTime(mydate);
+//    
+//    PPDebug(@"距离时间: %@",str);
+//    
+//    //删除日期以后的字符串
+//    NSMutableString *articleDate = [[NSMutableString alloc]initWithString:article.create_time];
+//    [articleDate deleteCharactersInRange:NSMakeRange(10,1)];
+//    NSLog(articleDate,nil);
+//    
+//    //获取当日时间
+//    NSMutableString *articletime = [[NSMutableString alloc]initWithString:article.create_time];
+//    [articletime deleteCharactersInRange:NSMakeRange(10,1)];
+//    NSLog(articletime,nil);
+//    
+//    
+//    NSMutableString *articletime1 = [[NSMutableString alloc]initWithString:articletime];
+//    [articletime1 deleteCharactersInRange:NSMakeRange(1,1)];
+//    NSLog(articletime1,nil);
     
-    
-    NSString * str = chineseBeforeTime(mydate);
-    
-    PPDebug(@"距离时间: %@",str);
-    
-    //删除日期以后的字符串
-    NSMutableString *articleDate = [[NSMutableString alloc]initWithString:article.create_time];
-    [articleDate deleteCharactersInRange:NSMakeRange(10,1)];
-    NSLog(articleDate,nil);
-    
-    //获取当日时间
-    NSMutableString *articletime = [[NSMutableString alloc]initWithString:article.create_time];
-    [articletime deleteCharactersInRange:NSMakeRange(10,1)];
-    NSLog(articletime,nil);
-    
-    
-    NSMutableString *articletime1 = [[NSMutableString alloc]initWithString:articletime];
-    [articletime1 deleteCharactersInRange:NSMakeRange(1,1)];
-    NSLog(articletime1,nil);
-    
-
-    
-    
-    
-    
-    
-
 }
 
 
