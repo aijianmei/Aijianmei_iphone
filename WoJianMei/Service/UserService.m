@@ -75,6 +75,7 @@ static UserService* _defaultUserService = nil;
         NSLog(@"query: %@", [url query]);
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            
             [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
         });
     });
