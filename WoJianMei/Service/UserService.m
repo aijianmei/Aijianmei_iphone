@@ -34,7 +34,7 @@ static UserService* _defaultUserService = nil;
 {
     if (_defaultUserService == nil) {
             _defaultUserService = [[UserService alloc] init];
-        [_defaultUserService getUserInfoByUid:@"0"];
+//        [_defaultUserService getUserInfoByUid:@"0"];
     }
     return _defaultUserService;
 }
@@ -351,7 +351,7 @@ static UserService* _defaultUserService = nil;
      @"sinaUserId",@"sinaUserId",
      @"qqUserId",@"qqUserId",
      @"email", @"email",
-     @"loginStatus",@"loginStatus",
+//     @"loginStatus",@"loginStatus",
      @"labelsArray", @"labelsArray",
      @"age", @"age",
      @"height", @"height",
@@ -469,6 +469,9 @@ static UserService* _defaultUserService = nil;
 
 -(void)storeUserInfoByUid:(NSString *)uid
 {
+    
+    //以后程序启动的时候就是要读取默认的这个Uid数据;
+    [[NSUserDefaults standardUserDefaults] setObject:uid forKey:@"OriginalUserId"];
     NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.user];
     [[NSUserDefaults standardUserDefaults] setObject:userData forKey:uid];
 }
@@ -476,6 +479,8 @@ static UserService* _defaultUserService = nil;
 
 -(User*)getUserInfoByUid:(NSString *)uid
 {
+    
+    
     NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:uid];
     User *user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -484,7 +489,7 @@ static UserService* _defaultUserService = nil;
 
 -(void)deleteUserByUid:(NSString *)uid
 {
-    [self deleteSinaUserInfoWithUid:self.user.sinaUserId];
+    [self deleteSinaUserInfoWithUid:_user.sinaUserId];
     
     if ([self getUserInfoByUid:uid]) {
         [[NSUserDefaults standardUserDefaults]  removeObjectForKey:uid];
@@ -536,40 +541,8 @@ static UserService* _defaultUserService = nil;
 
 }
 
-+ (NSData *)postImage:(UIImage *)image
-            imageName:(NSString *)imageName
-            urlString:(NSString *)urlString
+-(void)postObject:(NSObject *)object withImage:(UIImage *)image delegate:(id<RKObjectLoaderDelegate>)delegate
 {
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.7);
-    NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
-    [request setURL:[NSURL URLWithString:urlString]];
-    [request setHTTPMethod:@"POST"];
-    NSString *boundary = @"---------------------------14737809831466499882746641449";
-    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
-    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
-    NSMutableData *body = [NSMutableData data];
-    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"uploadedfile\"; filename=\"%@\"\r\n", imageName] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[NSData dataWithData:imageData]];
-    [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [request setHTTPBody:body];
-    NSURLResponse *respose = nil;
-    NSError *error = nil;
-     
-    NSLog(@"<DDNetwork> postImage:%@", urlString);
-    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&respose error:&error];
-        if (error == nil) {
-            NSLog(@"succ");
-        } else {
-            NSLog(@"error");
-        }
-        NSLog(@"respose url:%@ textEncodingName:%@ MIMEType:%@ suggestedFilename:%@ expectedContentLength:%lld", respose.URL, respose.textEncodingName, respose.MIMEType,  respose.suggestedFilename, respose.expectedContentLength);
-    
-    return data;
-}
-
--(void)postImageDelegate:(id<RKObjectLoaderDelegate>)delegate{
     //    http://42.96.132.109/wapapi/imgtest.php
     //Router setup: 
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -588,8 +561,10 @@ static UserService* _defaultUserService = nil;
     [objectManager.mappingProvider setMapping:userMapping forKeyPath:@""];
     
     //The post
-    User *user = [[User alloc] init];
-    [user setUid:@"1111"];
+   User *user =[[UserService defaultService] user];
+    
+    
+
     
     
     
@@ -605,11 +580,11 @@ static UserService* _defaultUserService = nil;
          RKParams* params = [RKParams params];
          [params setValue:user.uid forParam:@"uid"];
          
+         
          [params setData:imageData1 MIMEType:@"image/png" forParam:@"avatarimage"];
          [params setData:imageData2 MIMEType:@"image/png" forParam:@"backgroundimage"];
          
          loader.params = params;
-         
          
          
          loader.targetObject = nil;
@@ -622,7 +597,6 @@ static UserService* _defaultUserService = nil;
          };
 
      }];
-
 }
 
 
