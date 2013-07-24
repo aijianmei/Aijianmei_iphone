@@ -82,15 +82,10 @@
 
 -(void)save{
     
+     didSave =YES;
     [[UserService defaultService] postImageDelegate:self];
     
-//    UIImage *image = [UIImage imageNamed:@"comment_icon.png"];
     
-//    [UserService  postImage:image imageName:@"he" urlString:@"http://42.96.132.109/wapapi/imgtest.php"];
-//    [[UserService defaultService] postObject:nil WithDelegate:nil];
-//    [self postobj];
-
-     didSave =YES;
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects;

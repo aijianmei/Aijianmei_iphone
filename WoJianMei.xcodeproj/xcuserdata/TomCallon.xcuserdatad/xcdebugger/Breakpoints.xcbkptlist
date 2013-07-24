@@ -20,19 +20,6 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "WoJianMei/Common iphone/leftsideNavigation/Classes_leftSideNavi/AJMLeftSideViewController.m"
-         timestampString = "396237845.58643"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "492"
-         endingLineNumber = "492"
-         landmarkName = "-sinaweiboDidLogIn:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "../Common_iPhone_20/3PP-SDK/SinaWeiBoSDK_sso/SinaWeibo.m"
          timestampString = "396239694.595207"
          startingColumnNumber = "9223372036854775807"
@@ -46,13 +33,26 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "WoJianMei/Controllers/MyselfViewContrller/Myself_SettingsViewController.m"
-         timestampString = "396288445.886298"
+         filePath = "WoJianMei/AppDelegate.m"
+         timestampString = "396326955.245768"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "105"
-         endingLineNumber = "105"
-         landmarkName = "-objectLoader:didLoadObjects:"
+         startingLineNumber = "311"
+         endingLineNumber = "311"
+         landmarkName = "-application:openURL:sourceApplication:annotation:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "WoJianMei/AppDelegate.m"
+         timestampString = "396326955.245768"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "302"
+         endingLineNumber = "302"
+         landmarkName = "-application:openURL:sourceApplication:annotation:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

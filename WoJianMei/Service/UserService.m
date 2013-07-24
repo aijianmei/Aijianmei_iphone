@@ -535,61 +535,6 @@ static UserService* _defaultUserService = nil;
 
 }
 
-
-
--(void)postObject:(NSObject*)object
-     WithDelegate:(id<RKObjectLoaderDelegate>)delegate;
-{
-    
-   // http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_uploadimg
-  //    http://42.96.132.109/wapapi/imgtest.php
-    
-    //Router setup:  设定你要POST的物体的上传路径
-//    RKObjectManager *objectManager = [RKObjectManager sharedManager];
-//    RKURL *url = [RKURL URLWithBaseURL:objectManager.baseURL resourcePath:@"/imgtest.php"];
-    
-//    [objectManager.router routeClass:[User class] toResourcePath:@"/imgtest.php" forMethod:RKRequestMethodPOST];
-    
-    
-    
-//    NSLog(@"Post an Image baseURL %@",[objectManager baseURL]);
-    
-     
-
-    
-    //Mapping setup:
- //     @"uid",
-//     @"userType",
-//     @"profileImageUrl",
-//     @"avatarBackGroundImage",
-//     @"name",
-//     @"description",
-//     @"gender",
-//     @"sinaUserId",
-//     @"qqUserId",
-//     @"email",
-//     @"loginStatus",
-//     @"labelsArray",
-//     @"age",
-//     @"height",
-//     @"weight",
-//     @"BMIValue",
-//     @"province",
-//     @"city",
-//       @"errorCode",
-//       @"uid",
-//     @"avatarimage1",
-//     @"backgroundimage1",
-//     nil];
-    
-//    [objectManager.mappingProvider addObjectMapping:userMapping];
-//    [objectManager.mappingProvider setSerializationMapping:[userMapping inverseMapping] forClass:[Result class]];
-//    [objectManager.mappingProvider setMapping:userMapping forKeyPath:@"Result"];
-    
-    
-}
-
-
 + (NSData *)postImage:(UIImage *)image
             imageName:(NSString *)imageName
             urlString:(NSString *)urlString
@@ -624,8 +569,6 @@ static UserService* _defaultUserService = nil;
 }
 
 -(void)postImageDelegate:(id<RKObjectLoaderDelegate>)delegate{
-
-    
     //    http://42.96.132.109/wapapi/imgtest.php
     //Router setup: 
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -680,6 +623,8 @@ static UserService* _defaultUserService = nil;
      }];
 
 }
+
+
 
 
 

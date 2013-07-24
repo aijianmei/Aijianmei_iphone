@@ -417,7 +417,6 @@
                 ///关注新浪微博
                 //TODO
                     
-                    
                     _sinaweiboManager = [SinaWeiboManager sharedManager];
                     [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
                     
@@ -452,6 +451,18 @@
                 {
                 ///关注微信
                 //TODO
+                    
+                    if ([WXApi isWXAppInstalled]) {
+                        NSString *str = [NSString stringWithFormat:@"weixin://qr/%@",@"lXSTnL7EBoB5h6--nyGx"];
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+
+                    }else
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"您没有安装微信，现在去安装" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+                        [alertView show];
+                        
+                    }
+                    
                     break;
 
                 }

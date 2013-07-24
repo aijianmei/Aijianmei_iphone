@@ -21,7 +21,8 @@
 #import "AJMLeftSideViewController.h"
 
 
-//#define WeChatId @"wxd930ea5d5a258f4f"
+
+// To be changed for each project
 
 ///aijianmei
 #define WeChatId @"wxc996cdfc0f512dd7"
@@ -213,6 +214,8 @@
     objectManager.acceptMIMEType = RKMIMETypeJSON;
     objectManager.serializationMIMEType = RKMIMETypeJSON;
     objectManager.client.baseURL = baseURL;
+    
+    
 
     if ([DeviceDetection isOS5]){
         [[UINavigationBar appearance] setBackgroundImage:[ImageManager navigationBgImage] forBarMetrics:UIBarMetricsDefault];
@@ -278,12 +281,15 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
+    
+    
+    
     if ([url.absoluteString hasSuffix:SinaweibossoLogin]) {
         return [[SinaWeiboManager sharedManager].sinaweibo handleOpenURL:url];
     } else {
         return YES;
     }
-    if ([url.absoluteString hasSuffix:@""]) {
+    if ([url.absoluteString hasPrefix:@"http://weixin.qq.com/"]) {
         return [WXApi handleOpenURL:url delegate:self];
     } else {
         return YES;
@@ -301,7 +307,7 @@
     return YES;
     }
     
-    if ([sourceApplication isEqualToString:@"com.sina.weibo"] && [url.absoluteString hasPrefix:SinaweibossoLogin]){
+    if ([url.absoluteString hasPrefix:@"http://weixin.qq.com/"]){
         return [WXApi handleOpenURL:url delegate:self];
     }else{
         

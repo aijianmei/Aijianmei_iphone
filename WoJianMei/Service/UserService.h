@@ -12,16 +12,16 @@
 #import "User.h"
 #import <RestKit/RestKit.h>
 
-@protocol UserServiceDelegate <NSObject,RKObjectLoaderDelegate>
-
-
-@optional
-
-- (void)queryVersionFinish:(NSString*)version
-               dataVersion:(NSString*)dataVersion
-                     title:(NSString *)title
-                   content:(NSString *)content;
-@end
+//@protocol UserServiceDelegate <NSObject,RKObjectLoaderDelegate>
+//
+//
+//@optional
+//
+//- (void)queryVersionFinish:(NSString*)version
+//               dataVersion:(NSString*)dataVersion
+//                     title:(NSString *)title
+//                   content:(NSString *)content;
+//@end
 
 @interface UserService : CommonService
 {

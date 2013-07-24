@@ -20,6 +20,10 @@
 
 #import "SinaWeibo.h"
 #import "TLAlertView.h"
+#import "UIUtils.h"
+
+
+#define kAppId			@"516243132"
 
 
 
@@ -596,8 +600,10 @@ typedef enum {
     [abVC release];
 }
 
--(void)updateApplication{
+-(void)updateApplication{    
+    
     [[UserService defaultService] queryVersionWithDelegate:self];
+    
 }
 
 -(void)recommmendedApps{
@@ -606,11 +612,6 @@ typedef enum {
 }
 -(void)logout{
     
-    
-    
-        
-    
-
     PPDebug(@"User is trying to logout");
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"确定要退出账号吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     [alert show];
@@ -754,40 +755,40 @@ typedef enum {
 
 
 
-#pragma mark - SinaWeiboRequest Delegate
-- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
-{
-    
-    
-    if ([request.url hasSuffix:@"statuses/upload.json"])
-    {
-        NSLog(@"******%@",[error description]);
-        [self showActivityWithText:@"分享失败"];
-
-    }
-}
-
-- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
-{
-    
-    
-    if ([request.url hasSuffix:@"statuses/upload.json"])
-    {
-        NSLog(@"******%@",[result description]);
-        [self hideActivity];
-    }
-}
-
-
-- (void)request:(SinaWeiboRequest *)request didReceiveResponse:(NSURLResponse *)response{
-    
-    if ([request.url hasSuffix:@"statuses/upload.json"])
-    {
-        
-        NSLog(@"******%@",[response description]);
-        
-    }
-}
+//#pragma mark - SinaWeiboRequest Delegate
+//- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
+//{
+//    
+//    
+//    if ([request.url hasSuffix:@"statuses/upload.json"])
+//    {
+//        NSLog(@"******%@",[error description]);
+//        [self showActivityWithText:@"分享失败"];
+//
+//    }
+//}
+//
+//- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
+//{
+//    
+//    
+//    if ([request.url hasSuffix:@"statuses/upload.json"])
+//    {
+//        NSLog(@"******%@",[result description]);
+//        [self hideActivity];
+//    }
+//}
+//
+//
+//- (void)request:(SinaWeiboRequest *)request didReceiveResponse:(NSURLResponse *)response{
+//    
+//    if ([request.url hasSuffix:@"statuses/upload.json"])
+//    {
+//        
+//        NSLog(@"******%@",[response description]);
+//        
+//    }
+//}
 
 
 
@@ -811,11 +812,31 @@ typedef enum {
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     NSLog(@"***Load objects count: %d", [objects count]);
+    [self hideActivity];
+
+    NSObject *result =[objects objectAtIndex:0];
+    
+    if ([result isMemberOfClass:[VersionInfo class]]){
+        
+        
     VersionInfo *versionInfo =[objects objectAtIndex:0];
     NSLog(@"当前版本是:%@,下载URL:%@,标题:%@,更新内容:%@",      versionInfo.version,
           versionInfo.downloadurl,
           versionInfo.updateTitle,
           versionInfo.updateContent);
+    
+    NSString *latestVersion = versionInfo.version;
+    NSString *localVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    
+    if ([latestVersion isEqualToString:localVersion])
+    {
+        [self popupHappyMessage:@"已经是最新版本" title:nil];
+    }
+    else
+    {
+        [UIUtils openApp:kAppId];  //跳到更新页面
+    }
+ }
 }
 
  @end

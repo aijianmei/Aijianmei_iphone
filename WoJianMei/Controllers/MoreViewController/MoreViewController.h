@@ -10,8 +10,6 @@
 #import "PPTableViewController.h"
 #import "UserService.h"
 #import "AWActionSheet.h"
-
-
 #import "WXApiObject.h"
 
 @protocol sendMsgToWeChatViewDelegate <NSObject>
@@ -24,7 +22,7 @@
 
 @class AppDelegate;
 
-@interface MoreViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UserServiceDelegate,RKObjectLoaderDelegate,UIAlertViewDelegate,SinaWeiboRequestDelegate>
+@interface MoreViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,RKObjectLoaderDelegate,UIAlertViewDelegate>
 
 {
  
