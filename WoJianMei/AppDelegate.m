@@ -75,52 +75,12 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
   
-    
-
-    
-    // Assign tab bar item with titles
-//    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-//    
-//
-//    
-//    
-//    UITabBar *tabBar = tabBarController.tabBar;
-//    UITabBarItem *tabBarItem1 = [tabBar.items objectAtIndex:0];
-//    UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
-//    UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
-//    UITabBarItem *tabBarItem4 = [tabBar.items objectAtIndex:3];
-//    UITabBarItem *tabBarItem5 = [tabBar.items objectAtIndex:4];
-//
-////    
-//    tabBarItem1.title = @"锻炼";
-//    tabBarItem2.title = @"营养与辅助";
-//    tabBarItem3.title = @"我";
-//    tabBarItem4.title = @"交友互动";
-//    tabBarItem5.title = @"更多";
-//
-//    
-//    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"workout_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"workout.png"]];
-//    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"nutri_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"nutri.png"]];
-//    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"myprofile_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"myprofile.png"]];
-//    [tabBarItem4 setFinishedSelectedImage:[UIImage imageNamed:@"makefriend_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"makefriend.png"]];
-//    [tabBarItem5 setFinishedSelectedImage:[UIImage imageNamed:@"more_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"more.png"]];
-//    
-//    
-//    
-//    // Change the tab bar background
-//    UIImage* tabBarBackground = [UIImage imageNamed:@"bottom_bg.png"];
-//    [[UITabBar appearance] setBackgroundImage:tabBarBackground];
-//    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar_selected.png"]];
-//    
-//    // Change the title color of tab bar items
-//    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-//                                                       [UIColor whiteColor], UITextAttributeTextColor,
-//                                                       nil] forState:UIControlStateNormal];
-//    UIColor *titleHighlightedColor = [UIColor colorWithRed:153/255.0 green:192/255.0 blue:48/255.0 alpha:1.0];
-//    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-//                                                       titleHighlightedColor, UITextAttributeTextColor,
-//                                                       nil] forState:UIControlStateHighlighted];
-//
+  //RestKit initialized...
+    RKURL *baseURL = [RKURL URLWithBaseURLString:kServerUrl];
+    RKObjectManager *objectManager = [RKObjectManager objectManagerWithBaseURL:baseURL];
+    objectManager.acceptMIMEType = RKMIMETypeJSON;
+    objectManager.serializationMIMEType = RKMIMETypeJSON;
+    objectManager.client.baseURL = baseURL;
     
 //    
 //    UIStoryboard *currentInUseStoryBoard ;
@@ -215,14 +175,7 @@
 //        [[UserService defaultService] storeUserInfoByUid:uid];;
     }
 
-    //RestKit
-    RKURL *baseURL = [RKURL URLWithBaseURLString:kServerUrl];
-    RKObjectManager *objectManager = [RKObjectManager objectManagerWithBaseURL:baseURL];
-    objectManager.acceptMIMEType = RKMIMETypeJSON;
-    objectManager.serializationMIMEType = RKMIMETypeJSON;
-    objectManager.client.baseURL = baseURL;
-    
-    
+
 
     if ([DeviceDetection isOS5]){
         [[UINavigationBar appearance] setBackgroundImage:[ImageManager navigationBgImage] forBarMetrics:UIBarMetricsDefault];

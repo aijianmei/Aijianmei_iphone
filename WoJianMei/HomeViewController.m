@@ -304,9 +304,6 @@ typedef enum CONTENT_TYPE {
 
 }
 
-
-
-
 #pragma mark-- ButtonClicked Method
 -(void)buttonClicked:(SDSegmentedControl *)sender
 
@@ -479,20 +476,13 @@ typedef enum CONTENT_TYPE {
 
 - (void)viewDidLoad
 {
-    
-    
-    
     self.supportRefreshHeader = YES;
     self.supportRefreshFooter = YES;
-    
-    
-
-    
     [super viewDidLoad];
-    
     
     [self initUI];
     [self initMoreUI];
+    
     
     ///// 设置开始
     
@@ -502,8 +492,8 @@ typedef enum CONTENT_TYPE {
     [self buttonClicked:sender];
     
    // 时间戳转时间的方法
-    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:1363948516];
-    NSLog(@"1363948516  = %@",confromTimesp);
+//    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:1363948516];
+//    NSLog(@"1363948516  = %@",confromTimesp);
     
 }
 
