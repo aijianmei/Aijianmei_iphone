@@ -128,16 +128,7 @@
 + (void)followWeixinUser:(NSString *)userData;
 
 
--(void)postObject:(NSObject*)object
-     WithDelegate:(id<RKObjectLoaderDelegate>)delegate;
-
-
--(void)postImageToServerWithDelegate:(id)delegate;
--(void)postImageDelegate:(id<RKObjectLoaderDelegate>)delegate;
-
-+ (NSData *)postImage:(UIImage *)image
-            imageName:(NSString *)imageName
-            urlString:(NSString *)urlString;
+-(void)postObject:(NSObject *)object withImage:(UIImage *)image delegate:(id<RKObjectLoaderDelegate>)delegate;
 
 //是否绑定邮箱
 - (BOOL)hasBindEmail;

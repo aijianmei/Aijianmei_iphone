@@ -151,7 +151,6 @@ typedef enum CONTENT_TYPE {
         currentInUseStoryBoard = iPadStroyBoard;
     }
     
-    
 
     User *user = [[UserService defaultService] user];
     
@@ -475,6 +474,9 @@ typedef enum CONTENT_TYPE {
     
 }
 
+#pragma mark -
+#pragma mark life 
+
 - (void)viewDidLoad
 {
     
@@ -502,9 +504,6 @@ typedef enum CONTENT_TYPE {
    // 时间戳转时间的方法
     NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:1363948516];
     NSLog(@"1363948516  = %@",confromTimesp);
-    
-    
-    
     
 }
 
@@ -579,7 +578,6 @@ typedef enum CONTENT_TYPE {
 	//create new view if no view is available for recycling
     
     Article *article  = [self.dataList objectAtIndex:index];
-    
 
     UILabel *label = nil;
     

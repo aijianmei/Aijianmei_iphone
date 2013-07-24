@@ -3510,6 +3510,8 @@
 		4ADCFE04169D614600A3E979 /* MyselfViewContrller */ = {
 			isa = PBXGroup;
 			children = (
+				4ADCFE07169D614600A3E979 /* MyselfViewController.h */,
+				4ADCFE08169D614600A3E979 /* MyselfViewController.m */,
 				4AE52E3C177834A500F61933 /* MyselfTableViewCell.h */,
 				4AE52E3D177834A500F61933 /* MyselfTableViewCell.m */,
 				4A9C3FC6177AD3840088AA6D /* TesingViewController.h */,
@@ -3549,8 +3551,6 @@
 				4A257F1817900A7E001D153F /* AddLabelCell.h */,
 				4A257F1917900A7F001D153F /* AddLabelCell.m */,
 				4A2FA99D178D88C9006A1EFB /* AppButtonClass */,
-				4ADCFE07169D614600A3E979 /* MyselfViewController.h */,
-				4ADCFE08169D614600A3E979 /* MyselfViewController.m */,
 				4A9C3FCD177AE3EE0088AA6D /* LabelsView.h */,
 				4A9C3FCE177AE3EF0088AA6D /* LabelsView.m */,
 				4A9C3FCB177AE36D0088AA6D /* LabelsView.xib */,

@@ -43,6 +43,19 @@ typedef enum {
 } MORE_SELECTION;
 
 
+enum TapOnItem {
+    
+    SINA_WEIBO = 0,
+    FREIND_CIRCLE = 1,
+    WECHAT = 2,
+    //       TENCENT_WEIBO = 3,
+    EMAIL = 3,
+    MESSAGE = 4,
+    COPY_LINK =5
+};
+
+
+
 @interface MoreViewController ()<UIActionSheetDelegate,AWActionSheetDelegate>
 
 @end
@@ -406,7 +419,6 @@ typedef enum {
 -(void)shareToSocialnetWorks
 {
     whichAcctionSheet = RECOMMENDATION;
-    
     UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
                                                        delegate:self
                                               cancelButtonTitle:NSLS(@"取消")
@@ -429,7 +441,7 @@ typedef enum {
 
 -(int)numberOfItemsInActionSheet
 {
-    return 7;
+    return 6;
 }
 
 
@@ -443,7 +455,7 @@ typedef enum {
                             @"新浪微博",
                             @"朋友圈",
                             @"微信",
-                            @"腾讯微博",
+//                            @"腾讯微博",
                             @"邮件",
                             @"短信",
                             @"复制链接",
@@ -456,7 +468,7 @@ typedef enum {
                             @"sina.png",
                             @"friendsCircle.png",
                             @"wechat.png",
-                            @"tencentWeibo.png",
+//                            @"tencentWeibo.png",
                             @"email.png",
                             @"message.png",
                             @"copylink.png",
@@ -483,18 +495,7 @@ typedef enum {
 
     
     
-    enum TapOnItem {
-        
-        SINA_WEIBO = 0,
-        FREIND_CIRCLE = 1,
-        WECHAT = 2,
-        TENCENT_WEIBO = 3,
-        EMAIL = 4,
-        MESSAGE = 5,
-        COPY_LINK =6
-
-    };
-    
+       
     int TapOnItem = index;
     
     
@@ -530,11 +531,6 @@ typedef enum {
             
         }
             break;
-        case TENCENT_WEIBO:
-        {
-            
-        }
-            break;
         case EMAIL:
         {
             [self sendEmailTo:nil
@@ -559,13 +555,16 @@ typedef enum {
             NSString *downloadAPPUrl = [NSString stringWithFormat:@"www.aijianmei.com"];
             UIPasteboard *gpBoard = [UIPasteboard generalPasteboard];
             [gpBoard setString:downloadAPPUrl];
-                
+            
+            
+            [self popupHappyMessage:@"已成功复制下载链接" title:nil];
+
         }
             break;
+            
         default:
             break;
     }
-
 }
 
 - (void)shareToYourFriends
@@ -590,7 +589,7 @@ typedef enum {
 }
 
 -(void)likeUs{
-    PPDebug(@"Users likes us !");
+    [UIUtils openApp:kAppId];
 }
 
 -(void)showAboutView{
@@ -613,7 +612,7 @@ typedef enum {
 -(void)logout{
     
     PPDebug(@"User is trying to logout");
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"确定要退出账号吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"确定要退出账号吗?" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     [alert show];
     [alert release];
 
@@ -622,9 +621,9 @@ typedef enum {
 #pragma mark -
 #pragma mark --AlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    PPDebug(@"***%@*****",alertView.title);
 
-    
-    
     if ([alertView.title isEqualToString:@"版本更新"])
     {
         switch (buttonIndex) {
@@ -646,7 +645,8 @@ typedef enum {
         
 
     }
-    if ([alertView.title isEqualToString:@"退出账号"])
+    
+    if ([alertView.title hasPrefix:@"确定要退出账号"])
     {
     
     switch (buttonIndex) {
@@ -678,6 +678,9 @@ typedef enum {
     }
 
     }
+    
+    
+    
 }
 
 
@@ -708,7 +711,8 @@ typedef enum {
             case SEND_SINA_WEIBO:
             {
                 
-                [[UserService defaultService] shareThroughSinaWeiboWithImageArray:nil TextContent:nil delegate:self];
+                [[UserService defaultService] shareThroughSinaWeiboWithImageArray:nil TextContent:@"" delegate:self];
+                
                 [self showActivityWithText:@"正在分享"];
                 
             }
@@ -727,7 +731,6 @@ typedef enum {
             case SEND_EMAIL:
                 
             {
-                
                 [self sendEmailTo:nil
                      ccRecipients:nil
                     bccRecipients:nil
@@ -735,7 +738,6 @@ typedef enum {
                              body:bodyString
                            isHTML:NO
                          delegate:self];
-                
             }
                 break;
             case SEND_MESSAGE:
@@ -762,7 +764,6 @@ typedef enum {
 - (void)sendAppContent
 {
     
-    
     if (_delegate  && [_delegate respondsToSelector:@selector(sendAppContent)]
 )
     {
@@ -779,26 +780,77 @@ typedef enum {
 
 
 
+#pragma mark -
+#pragma mark - MessageComposeController Delegate
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    NSLog(@"<sendSms> result=%d", result);
+    switch (result)
+    {
+        case MessageComposeResultCancelled:
+            [self popupHappyMessage:@"信息取消" title:nil];
+            break;
+        case MessageComposeResultSent:
+            [self popupHappyMessage:@"信息已发送"title:nil];
+            break;
+        case MessageComposeResultFailed:
+            [self popupUnhappyMessage:@"信息发送失败" title:nil];
+            break;
+        default:
+            break;
+    }
+
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark -
+#pragma mark - MailComposeController Delegate
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    // Notifies users about errors associated with the interface
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            [self popupHappyMessage:@"邮件取消" title:nil];
+            break;
+        case MFMailComposeResultSaved:
+            [self popupHappyMessage:@"邮件已保存" title:nil];
+            break;
+        case MFMailComposeResultSent:
+            [self popupHappyMessage:@"邮件已发送"title:nil];
+            break;
+        case MFMailComposeResultFailed:
+            [self popupUnhappyMessage:@"邮件发送失败" title:nil];
+            break;
+        default:
+            break;
+    }
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 #pragma mark - 
 #pragma mark - SinaWeiboRequest Delegate
-
 - (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
 {
     
     if ([request.url hasSuffix:@"statuses/upload.json"])
     {
         NSLog(@"******%@",[error description]);
-        [self showActivityWithText:@"分享失败"];
-
+        [self hideActivity];
+        [self popupHappyMessage:@"分享失败" title:@""];
     }
 }
 
 - (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
 {
+    
     if ([request.url hasSuffix:@"statuses/upload.json"])
     {
         NSLog(@"******%@",[result description]);
         [self hideActivity];
+        [self popupHappyMessage:@"分享成功" title:@""];
     }
 }
 
@@ -845,9 +897,9 @@ typedef enum {
     }
     else
     {
-        UIAlertView *myalertView =[[UIAlertView alloc]initWithTitle:@"版本更新" message:versionInfo.updateContent delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"更新", nil];
+        NSString *title = [NSString stringWithFormat:@"版本更新%@",latestVersion];
+        UIAlertView *myalertView =[[UIAlertView alloc]initWithTitle:title message:versionInfo.updateContent delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"更新", nil];
         [myalertView setTag:11];
-       
         [myalertView show];
     }
  }

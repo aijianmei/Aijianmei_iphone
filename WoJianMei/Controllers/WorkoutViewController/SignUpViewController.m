@@ -233,7 +233,7 @@ enum errorCode {
              // 调用该方法进入用户资料界面
              if (delegate && [delegate respondsToSelector:@selector(pushToMyselfViewControllerFrom:)])
              {
-                 [delegate pushToMyselfViewControllerFrom:self];
+                [delegate pushToMyselfViewControllerFrom:self];
              }
          }];
         

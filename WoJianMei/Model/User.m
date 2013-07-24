@@ -19,7 +19,7 @@
 #define QQUserId       @"qqUserId"
 #define UserType       @"userType"
 #define ProfileImageUrl @"profileImageUrl"
-#define LoginStatus    @"loginStatus"
+//#define LoginStatus    @"loginStatus"
 #define Email          @"email"
 #define PassWord       @"password"
 #define LabelsArray    @"labelsArray"
@@ -28,6 +28,8 @@
 #define Weight         @"weight"
 #define BmiValue       @"BMIValue"
 #define City           @"city"
+#define Province       @"Province"
+
 
 
 
@@ -44,7 +46,7 @@
 @synthesize userType = _userType;
 
 @synthesize profileImageUrl =_profileImageUrl;
-@synthesize loginStatus =_loginStatus;
+//@synthesize loginStatus =_loginStatus;
 @synthesize email = _email;
 @synthesize password =_password;
 @synthesize labelsArray =_labelsArray;
@@ -54,6 +56,7 @@
 @synthesize weight =_weight;
 @synthesize BMIValue =_BMIValue;
 @synthesize city =_city;
+@synthesize province =_province;
 
 
 
@@ -82,7 +85,7 @@
         self.uid = [aDecoder decodeObjectForKey:Uid];
         self.userType =[aDecoder decodeObjectForKey:UserType];
         self.profileImageUrl =[aDecoder decodeObjectForKey:ProfileImageUrl];
-        self.loginStatus = [aDecoder decodeObjectForKey:LoginStatus];
+//        self.loginStatus = [aDecoder decodeObjectForKey:LoginStatus];
         self.labelsArray =[aDecoder decodeObjectForKey:LabelsArray];
         
         self.age =[aDecoder decodeObjectForKey:Age];
@@ -90,6 +93,8 @@
         self.weight =[aDecoder decodeObjectForKey:Weight];
         self.BMIValue =[aDecoder decodeObjectForKey:BmiValue];
         self.city =[aDecoder decodeObjectForKey:City];
+        self.province =[aDecoder decodeObjectForKey:Province];
+
     }
     return self;
 }
@@ -111,7 +116,7 @@
     [aCoder encodeObject:self.uid forKey:Uid];
     [aCoder encodeObject:self.userType forKey:UserType];
     [aCoder encodeObject:self.profileImageUrl forKey:ProfileImageUrl];
-    [aCoder encodeObject:self.loginStatus forKey:LoginStatus];
+//    [aCoder encodeObject:self.loginStatus forKey:LoginStatus];
     [aCoder encodeObject:self.labelsArray forKey:LabelsArray];
     
     
@@ -121,6 +126,8 @@
     [aCoder encodeObject:self.weight forKey:Weight];
     [aCoder encodeObject:self.BMIValue forKey:BmiValue];
     [aCoder encodeObject:self.city forKey:City];
+    [aCoder encodeObject:self.province forKey:Province];
+
 }
 
 
@@ -147,13 +154,14 @@
     [_weight release];
     [_BMIValue release];
     [_city release];
+    [_province release];
 
     [super dealloc];
 }
 
-- (BOOL)isLogin
-{
-    return [self.loginStatus boolValue];
-}
+//- (BOOL)isLogin
+//{
+//    return [self.loginStatus boolValue];
+//}
 
 @end

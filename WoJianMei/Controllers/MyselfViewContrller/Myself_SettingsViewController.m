@@ -83,9 +83,7 @@
 -(void)save{
     
      didSave =YES;
-    [[UserService defaultService] postImageDelegate:self];
-    
-    
+    [[UserService defaultService] postObject:nil withImage:nil delegate:self];
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects;
@@ -95,9 +93,20 @@
         PPDebug(@"%@",[objects objectAtIndex:0]);
         if ([[objects objectAtIndex:0] isMemberOfClass:[User class]]) {
             User *user = [objects objectAtIndex:0];
-            NSLog(@"%@",user.uid);
-            NSLog(@"%@",user.profileImageUrl);
-            NSLog(@"%@",user.avatarBackGroundImage);
+            NSLog(@"******%@******",user.uid);
+            NSLog(@"******%@******",user.profileImageUrl);
+            NSLog(@"******%@*****",user.avatarBackGroundImage);
+            
+            //取出用户
+            User *newUser  =[[UserService defaultService] user];
+            
+            //修改用户
+            [newUser setProfileImageUrl:user.profileImageUrl];
+            [newUser setAvatarBackGroundImage:user.avatarBackGroundImage];
+            
+            //保存用户
+            [[UserService defaultService] storeUserInfoByUid:newUser.uid];
+            
         }
         
     }
@@ -105,7 +114,6 @@
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
     NSLog(@"Response code: %d", [response statusCode]);
-    
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error

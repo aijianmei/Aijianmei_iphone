@@ -47,10 +47,12 @@ enum errorCode {
     [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     [self setNavigationRightButton:@"发送" imageName:@"top_bar_commonButton.png" action:@selector(clickSendButton:)];
     
+    
     [_descriptionTextField setDelegate:self];
     [_descriptionTextField setBackground:[UIImage imageNamed:@"description_BG"]];
     [_descriptionTextField setText:@"欢迎告诉我们您的意见！"];
-    
+    [_descriptionTextField resignFirstResponder];
+
     
     
 }
@@ -58,11 +60,15 @@ enum errorCode {
 #pragma mark -
 #pragma mark - clickSendButton
 -(void)clickSendButton:(UIButton *)sender{
-
-    [[UserService defaultService] postFeedbackWithUid:@"2"
-                                              content:@"我们可以做的更加好的！"  delegate:self];
+    
+    User *getuser =[[UserService defaultService] user];
+    NSString  *uid =getuser.uid;
+    PPDebug(@"********用户UID%@,开始信息发送反馈*******",uid);
+    
+    [[UserService defaultService] postFeedbackWithUid:@"122"
+content: @"buddy" delegate:self];  
+    
 }
-
 
 
 #pragma mark -
@@ -72,10 +78,6 @@ enum errorCode {
 {
     // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
     
-    User *user =[[UserService defaultService] user];
-    [user setDescription: textField.text];
-    [[UserService defaultService] setUser:user];
-        
 }
 
 
@@ -112,10 +114,13 @@ enum errorCode {
     
     NSInteger errorCode =  [result.errorCode integerValue];
     
+    User *user =[[UserService defaultService] user];
+    NSString *uid =user.uid;
+    
     if (errorCode ==ERROR_SUCCESS )
     {
-        PPDebug(@"信息反馈完成");
-    
+        PPDebug(@"********用户UID%@,信息反馈完成*******",uid);
+        [self popupHappyMessage:@"信息反馈成功" title:nil];
     }
     
 }

@@ -33,7 +33,7 @@
     user.gender = gender;
     user.email = email;
     user.password = password;
-    user.loginStatus = [NSNumber numberWithBool:YES];
+//    user.loginStatus = [NSNumber numberWithBool:YES];
     return user;
 }
 

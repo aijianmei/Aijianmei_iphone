@@ -24,7 +24,7 @@
     NSString *_email;
     
     NSString *_password;
-    NSNumber *_loginStatus;
+//    NSNumber *_loginStatus;
     NSMutableArray  *_labelsArray;
     NSString *_age;
     NSString *_height;
@@ -51,7 +51,7 @@
 @property (retain, nonatomic)  NSString *qqUserId;
 @property (retain, nonatomic)  NSString *email;
 @property (retain, nonatomic)  NSString *password;
-@property (nonatomic, assign)  NSNumber *loginStatus;
+//@property (nonatomic, assign)  NSNumber *loginStatus;
 @property (retain, nonatomic)  NSMutableArray  *labelsArray;
 
 @property (retain, nonatomic)  NSString *age;

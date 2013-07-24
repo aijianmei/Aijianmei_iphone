@@ -166,7 +166,9 @@
     
     //本地数据存在的时候直接读取本地数据;
     if ([[UserService defaultService] getUserInfoByUid:uid]) {
-        self.user = [[UserService defaultService] getUserInfoByUid:uid];
+        
+        [self setUser:[[UserService defaultService] getUserInfoByUid:uid]];
+        
         [self upgradeUI];
 
     }else{
@@ -177,8 +179,7 @@
 
 - (void)upgradeUI
 {
-    
-    [self.headerVImageButton setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
+    [self.headerVImageButton setImageWithURL:[NSURL URLWithString:_user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
     [self.backGroundImageView setImageWithURL:[NSURL URLWithString:self.user.avatarBackGroundImage] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
     [self.userNameLabel setText:_user.name];
     [self.descriptionLabel setText:_user.description];

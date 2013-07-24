@@ -7,39 +7,26 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../Common_iPhone_20/3PP-SDK/SinaWeiBoSDK_sso/SinaWeibo.m"
-         timestampString = "396239694.595207"
+         filePath = "WoJianMei/Service/UserService.m"
+         timestampString = "396343930.28482"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "469"
-         endingLineNumber = "469"
-         landmarkName = "-request:didFinishLoadingWithResult:"
+         startingLineNumber = "529"
+         endingLineNumber = "529"
+         landmarkName = "-shareThroughSinaWeiboWithImageArray:TextContent:delegate:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "WoJianMei/AppDelegate.m"
-         timestampString = "396326955.245768"
+         filePath = "WoJianMei/Controllers/WorkoutViewController/SignUpViewController.m"
+         timestampString = "396344578.554091"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "311"
-         endingLineNumber = "311"
-         landmarkName = "-application:openURL:sourceApplication:annotation:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "WoJianMei/AppDelegate.m"
-         timestampString = "396326955.245768"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "302"
-         endingLineNumber = "302"
-         landmarkName = "-application:openURL:sourceApplication:annotation:"
+         startingLineNumber = "258"
+         endingLineNumber = "258"
+         landmarkName = "-objectLoader:didLoadObjects:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -94,9 +94,6 @@ enum SinaResultErrorCode
 //实现closeDoneEdit点击done关闭键盘
 - (IBAction)closeDoneEdit:(id)sender
 {
-    
-    //    [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.usernameField.text password:self.passwordField.text usertype:@"local" snsId:nil profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:nil body_weight:@"" height:@"" keyword:@"" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] delegate:self];
-
     [sender resignFirstResponder];
 
     //开始登陆
@@ -321,9 +318,12 @@ enum SinaResultErrorCode
             SinaResult *result =[objects objectAtIndex:0];
             if ([result.uid integerValue] !=0 && [result.errorCode integerValue] ==0)
             {
+                
+            
                 //正式创建新用户
                 User *user = [UserManager createUserWithUserId:result.uid sinaUserId:_sinaweiboManager.sinaweibo.userID qqUserId:nil userType:self.userType name:nil profileImageUrl:nil gender:nil email:nil password:nil];
                 [[UserService defaultService] setUser:user];
+                
                 [self dismissViewControllerAnimated:YES completion:^
                  {
                      // 调用该方法进入用户资料界面
