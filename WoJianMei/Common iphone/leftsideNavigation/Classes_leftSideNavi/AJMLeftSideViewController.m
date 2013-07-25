@@ -104,7 +104,7 @@
 {
     switch (section) {
         case 0:
-            return 9;
+            return 6;
         case 1:
             return 3;
         default:
@@ -149,25 +149,25 @@
                 case 1:
                     cell.textLabel.text = @"锻炼";
                     break;
+//                case 2:
+//                    cell.textLabel.text = @"健身计划";
+//                    break;
                 case 2:
-                    cell.textLabel.text = @"健身计划";
-                    break;
-                case 3:
                     cell.textLabel.text = @"营养";
                     break;
-                case 4:
+                case 3:
                     cell.textLabel.text = @"补充";
                     break;
-                case 5:
+                case 4:
                     cell.textLabel.text = @"生活方式";
                     break;
-                case 6:
-                    cell.textLabel.text = @"论坛";
-                    break;
-                case 7:
-                    cell.textLabel.text = @"交友互动";
-                    break;
-                case 8:
+//                case 6:
+//                    cell.textLabel.text = @"论坛";
+//                    break;
+//                case 7:
+//                    cell.textLabel.text = @"交友互动";
+//                    break;
+                case 5:
                     cell.textLabel.text = @"更多";                
                     break;
             }
@@ -301,21 +301,21 @@
                     }];
                     break;
                 }
-                case 2:
-                {
-                    ///健身计划
-                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        WorkoutPlanViewController *WorkoutPlanVC = (WorkoutPlanViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"WorkoutPlanViewController"];
-                        WorkoutPlanVC.title = @"健身计划";
-                        _navigationController = [[UINavigationController alloc] initWithRootViewController:WorkoutPlanVC];
-                        self.viewDeckController.centerController = _navigationController;
-                        
-                        self.view.userInteractionEnabled = YES;
-                    }];
-                    break;
-                }
+//                case 2:
+//                {
+//                    ///健身计划
+//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+//                        WorkoutPlanViewController *WorkoutPlanVC = (WorkoutPlanViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"WorkoutPlanViewController"];
+//                        WorkoutPlanVC.title = @"健身计划";
+//                        _navigationController = [[UINavigationController alloc] initWithRootViewController:WorkoutPlanVC];
+//                        self.viewDeckController.centerController = _navigationController;
+//                        
+//                        self.view.userInteractionEnabled = YES;
+//                    }];
+//                    break;
+//                }
 
-                case 3:
+                case 2:
                 {
                     ///营养
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
@@ -328,7 +328,7 @@
                     }];
                     break;
                 }
-                case 4:
+                case 3:
                 {
                     ///补充
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
@@ -342,7 +342,7 @@
                     }];
                     break;
                 }
-                case 5:
+                case 4:
                 {
                     ///生活方式
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
@@ -356,34 +356,34 @@
                     }];
                     break;
                 }
-                case 6:
-                {
-                   ////论坛
-                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        ForumViewController *forumVC = [currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"ForumViewController"];
-                        forumVC.title = @"论坛";
-
-                        _navigationController = [[UINavigationController alloc] initWithRootViewController:forumVC];
-                        self.viewDeckController.centerController = _navigationController;
-                        
-                        self.view.userInteractionEnabled = YES;
-                    }];
-                    break;
-                }
-                case 7:
-                {
-                    ////交友互动
-                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        MakeFriendsViewController *mfVC = [currentInUseStoryBoard  instantiateViewControllerWithIdentifier:@"MakeFriendsViewController"];
-                        mfVC.title = @"交友互动";
-                        _navigationController = [[UINavigationController alloc] initWithRootViewController:mfVC];
-                        self.viewDeckController.centerController = _navigationController;
-                        
-                        self.view.userInteractionEnabled = YES;
-                    }];
-                    break;
-                }
-                case 8:
+//                case 6:
+//                {
+//                   ////论坛
+//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+//                        ForumViewController *forumVC = [currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"ForumViewController"];
+//                        forumVC.title = @"论坛";
+//
+//                        _navigationController = [[UINavigationController alloc] initWithRootViewController:forumVC];
+//                        self.viewDeckController.centerController = _navigationController;
+//                        
+//                        self.view.userInteractionEnabled = YES;
+//                    }];
+//                    break;
+//                }
+//                case 7:
+//                {
+//                    ////交友互动
+//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+//                        MakeFriendsViewController *mfVC = [currentInUseStoryBoard  instantiateViewControllerWithIdentifier:@"MakeFriendsViewController"];
+//                        mfVC.title = @"交友互动";
+//                        _navigationController = [[UINavigationController alloc] initWithRootViewController:mfVC];
+//                        self.viewDeckController.centerController = _navigationController;
+//                        
+//                        self.view.userInteractionEnabled = YES;
+//                    }];
+//                    break;
+//                }
+                case 5:
                 {
                     ///更多
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
@@ -530,16 +530,18 @@
 #pragma mark - SinaWeiboRequest Delegate
 - (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
 {
-    //获取用户信息
-    if ([request.url hasSuffix:@"users/show.json"])
-    {
-        NSLog(@"******%@",[error description]);
-    }
-    //上传图片
-    if ([request.url hasSuffix:@"statuses/upload.json"])
-    {
-        NSLog(@"******%@",[error description]);
-    }
+//    //获取用户信息
+//    if ([request.url hasSuffix:@"users/show.json"])
+//    {
+//        NSLog(@"******%@",[error description]);
+//    }
+//    //上传图片
+//    if ([request.url hasSuffix:@"statuses/upload.json"])
+//    {
+//        NSLog(@"******%@",[error description]);
+//    }
+    
+    
     //关注爱健美用户
     if ([request.url hasSuffix:@"friendships/create.json"])
     {
@@ -560,22 +562,22 @@
 - (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
 {
     
-    //获取用户信息
-    if ([request.url hasSuffix:@"users/show.json"])
-    {
-        NSLog(@"******%@",[result description]);
-    }
-    
-
-    //上传图片
-    if ([request.url hasSuffix:@"statuses/upload.json"])
-    {
-        [[UserService defaultService] storeSinaUserInfo:result];
-        
-        NSDictionary *userInfo = result;
-        NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);
-       
-    }
+//    //获取用户信息
+//    if ([request.url hasSuffix:@"users/show.json"])
+//    {
+//        NSLog(@"******%@",[result description]);
+//    }
+//    
+//
+//    //上传图片
+//    if ([request.url hasSuffix:@"statuses/upload.json"])
+//    {
+//        [[UserService defaultService] storeSinaUserInfo:result];
+//        
+//        NSDictionary *userInfo = result;
+//        NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);
+//       
+//    }
     
     //关注爱健美用户
     if ([request.url hasSuffix:@"friendships/create.json"])

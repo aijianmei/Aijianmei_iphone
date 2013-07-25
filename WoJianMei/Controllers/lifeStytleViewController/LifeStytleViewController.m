@@ -1,10 +1,12 @@
+
 //
-//  LifeStytleViewController.m
+//  HomeViewController.m
 //  WoJianMei
 //
-//  Created by Tom Callon  on 6/13/13.
+//  Created by Tom Callon  on 6/26/13.
 //
 //
+
 
 
 #import "LifeStytleViewController.h"
@@ -21,10 +23,14 @@
 #import "FilterViewController.h"
 #import "MyselfViewController.h"
 #import "LoginViewController.h"
+#import "Result.h"
 
 
 #import "ImageManager.h"
 #import "UIImageView+WebCache.h"
+#import "SDSegmentedControl.h"
+
+
 
 
 
@@ -57,8 +63,12 @@ typedef enum CONTENT_TYPE {
 @synthesize myHeaderView =_myHeaderView;
 @synthesize  carousel =_carousel;
 @synthesize spacePageControl =_spacePageControl;
+@synthesize segmentedController =_segmentedController;
 @synthesize buttonScrollView =_buttonScrollView;
 @synthesize currentButton = _currentButton;
+@synthesize loginViewController =_loginViewController;
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -69,39 +79,53 @@ typedef enum CONTENT_TYPE {
 {
     _carousel.delegate = nil;
     _carousel.dataSource = nil;
+    [_myHeaderView release];
     [_carousel release];
     [_spacePageControl release];
+    [_segmentedController release];
     [_buttonScrollView release];
-    [_myHeaderView release];
+    [_currentButton release];
+    [_loginViewController release];
+    
     [super dealloc];
 }
 
 
+#pragma mark -
+#pragma mark View life
+
+- (void)viewDidLoad
+{
+    self.supportRefreshHeader = YES;
+    self.supportRefreshFooter = YES;
+    [super viewDidLoad];
+    
+    [self initUI];
+    [self initMoreUI];
+    
+    ///// 设置开始
+    SDSegmentedControl *sender =[[SDSegmentedControl alloc]init];
+    [_segmentedController setSelectedSegmentIndex:0];
+    
+    [self buttonClicked:sender];
+    
+    // 时间戳转时间的方法
+    //    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:1363948516];
+    //    NSLog(@"1363948516  = %@",confromTimesp);
+    
+}
+
 - (void)initMoreUI
 {
-    _appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
     ////leftBtn
     UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
-    
-    //      [leftBtn setBackgroundImage:[ImageManager GobalNavigationButtonBG ]
-    //                       forState:UIControlStateNormal];
-    
     [leftBtn setImage:[ImageManager GobalNavigationLeftSideButtonImage] forState:UIControlStateNormal];
-    
-    
-    
     leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
     [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
     
-    
     ////rightBtn
     UIButton *rightBtn = [[[UIButton alloc] init] autorelease];
-    
-    //        [rightBtn setBackgroundImage:[ImageManager GobalNavigationAvatarImage]
-    //                            forState:UIControlStateNormal];
-    
     [rightBtn setImage:[ImageManager GobalNavigationAvatarImage] forState:UIControlStateNormal];
     rightBtn.frame = CGRectMake(0.0, 0.0, 49.0, 29.0);
     [rightBtn addTarget:self action:@selector(rightButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -137,7 +161,8 @@ typedef enum CONTENT_TYPE {
 }
 - (void)rightButtonClickHandler:(id)sender
 {
-    //    [self.viewDeckController toggleRightViewAnimated:YES];
+    [self.viewDeckController toggleRightViewAnimated:YES];
+    
     UIStoryboard *currentInUseStoryBoard;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
@@ -150,21 +175,16 @@ typedef enum CONTENT_TYPE {
         currentInUseStoryBoard = iPadStroyBoard;
     }
     
-    MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
-    myselfVC.title = @"我";
     
-    [self.navigationController pushViewController:myselfVC animated:YES];
+    User *user = [[UserService defaultService] user];
     
-    
-    if (![[UserService defaultService] hasBindAccount]) {
-        
-        LoginViewController *loginViewController = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        loginViewController.title = @"登陆";
-        
-    } else {
+    if (user.uid) {
         MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
         myselfVC.title = @"我";
+        [self.navigationController pushViewController:myselfVC animated:YES];
         
+    }else{
+        [self showLoginView];
     }
 }
 
@@ -173,8 +193,8 @@ typedef enum CONTENT_TYPE {
 #pragma mark  UPDATEUI  Methods
 -(void)updateUserInterface{
     [self hideActivity];
-    [self.dataTableView reloadData];
     [self.carousel reloadData];
+    [self.dataTableView reloadData];
     [_spacePageControl setNumberOfPages:[self.dataList count]];
 }
 
@@ -182,55 +202,121 @@ typedef enum CONTENT_TYPE {
 //// init the userInterface
 -(void)initUI{
     
+    [self setBackgroundImageName:@"gobal_background.png"];
+    [self showBackgroundImage];
+    
+    
+    //初始化TableView Header
+    [self initTableHeaderView];
+    ///添加滑动图片
+    [self addCarouselSliders];
+    //添加顶部导航按钮
+    [self addButtonScrollView];
+    //添加当前划片的提示
+    [self addSpacePageControl];
+    
+    //    [self showLoginView];
+}
+
+
+-(void)pushToMyselfViewController:(id)sender{
+    
+    [self rightButtonClickHandler:sender];
+    
+}
+
+-(void)pushToMyselfViewControllerFrom:(UIViewController *)viewController{
+    
+    [self rightButtonClickHandler:viewController];
+    
+    
+}
+
+#pragma mark-- addButtonScrollView Method
+
+-(void)showLoginView{
+    
+    UIStoryboard *currentInUseStoryBoard;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        currentInUseStoryBoard = iPhoneStroyBoard;
+        
+    }else{
+        
+        UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+        currentInUseStoryBoard = iPadStroyBoard;
+    }
+    
+    if (![[UserService defaultService] user]){
+        
+        self.loginViewController = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        UINavigationController *nv = [[[UINavigationController alloc]initWithRootViewController:_loginViewController] autorelease];
+        self.loginViewController.delegate = self;
+        [self.navigationController presentModalViewController:nv animated:YES];
+    }
+}
+
+
+-(void)initTableHeaderView{
+    
     UIView *headerView =[[UIView alloc]init];
     [headerView setFrame: CGRectMake(0, 0, 320, 200)];
     self.myHeaderView = headerView;
     [headerView release];
-    
-    
+    [self.dataTableView setTableHeaderView:_myHeaderView];
+}
+
+
+#pragma mark-- addButtonScrollView Method
+-(void)addButtonScrollView{
     ////Configure The ButtonScrollView
-    NSMutableArray *buttonArrays  =[[NSMutableArray alloc]init];
-    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最新",@"锻炼方法",@"基础知识",@"锻炼视频", nil];
     
-    for (NSString *buttonTitle in buttonTitleArray) {
-        
-        UIButton *button =[[UIButton alloc]initWithFrame:CGRectMake(30, 0, 70, 30)];
-        [button setBackgroundColor:[UIColor clearColor]];
-        [button.titleLabel setFont:[UIFont systemFontOfSize:12]];
-        
-        //        [button setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-        [button setBackgroundImage:[UIImage imageNamed:@"Catalog_SelectedButton.png"] forState:UIControlStateSelected];
-        
-        [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [button setTitle:buttonTitle forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [buttonArrays addObject:button];
-        
-        [button release];
-        
-    }
-    
-    UIScrollView *scrollView = [PPViewController createButtonScrollViewByButtonArray:buttonArrays buttonsPerLine:[buttonArrays count] buttonSeparatorY:-1];
-    self.buttonScrollView =scrollView;
-    
-    [self.buttonScrollView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Slider_Button_BG"]]];
+    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最新文章",@"最热文章",@"最新视频",@"最热视频", nil];
     
     
+    self.segmentedController=[[SDSegmentedControl alloc]initWithItems:buttonTitleArray];
+    [_segmentedController setFrame:CGRectMake(0, 0, 320, 40)];
+    [_segmentedController setSelectedSegmentIndex:0];
+    [_segmentedController addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventValueChanged];
+    [_myHeaderView addSubview:self.segmentedController];
+}
+
+#pragma mark--
+#pragma mark-- addCarouselSliders Method
+
+-(void)addCarouselSliders{
+    //configure carousel
+    self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 50, 320, 140)];
+    self.carousel.delegate = self;
+    self.carousel.dataSource = self;
+    _carousel.type = iCarouselTypeLinear;
+    [_carousel setScrollEnabled:YES];
+    //可以调整slider 的滑动速度;
+    [_carousel setScrollSpeed:0.25f];
     
-    [scrollView release];
-    [buttonArrays release];
+    [_myHeaderView addSubview:self.carousel];
+}
+
+#pragma mark--
+#pragma mark-- MoreButon Method
+-(void)addSpacePageControl{
+    ////The page controll
     
-    float buttonHeight = 30;
-    float buttonWidth  = 70;
     
-    [[self.view viewWithTag:SCROLL_VIEW_TAG] removeFromSuperview];
-    self.buttonScrollView.tag = SCROLL_VIEW_TAG;
-    [_buttonScrollView setFrame:CGRectMake(0,0, 260, 30)];
-    [_buttonScrollView setShowsHorizontalScrollIndicator:NO];
-    
-    [_buttonScrollView setContentSize:CGSizeMake(([[_buttonScrollView subviews] count]) * buttonWidth * 2.6, buttonHeight)];
-    
-    [self.myHeaderView addSubview:_buttonScrollView];
+    // 10, 190, 320, 20
+    //215, 185, 120, 20
+    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(0, 196, 320, 20)];
+    [_spacePageControl setBackgroundColor:[UIColor clearColor]];
+    _spacePageControl.numberOfPages = [self.dataList count];
+    [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
+    [_spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot.png"]];
+    [_spacePageControl addTarget:self action:@selector(pageControl:) forControlEvents:UIControlEventValueChanged];
+    [_myHeaderView addSubview:self.spacePageControl];
+}
+
+#pragma mark-- MoreButon Method
+-(void)addMoreButton
+{
     
     UIButton *moreButotn = [[UIButton alloc]initWithFrame:CGRectMake(270, 0, 40, 30)];
     [moreButotn.titleLabel setFont:[UIFont systemFontOfSize:12]];
@@ -243,62 +329,19 @@ typedef enum CONTENT_TYPE {
     [_myHeaderView addSubview:moreButotn];
     [moreButotn release];
     
-    
-    //configure carousel
-    
-    self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 40, 320, 140)];
-    
-    self.carousel.delegate = self;
-    self.carousel.dataSource = self;
-    _carousel.type = iCarouselTranformOptionTilt;
-    [_carousel setScrollEnabled:YES];
-    
-    [self.carousel setCenterItemWhenSelected:YES];
-    
-    [self.myHeaderView addSubview:_carousel];
-    
-    
-    ////The page controll
-    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(10, 190, 320, 20)];
-    [_spacePageControl setBackgroundColor:[UIColor clearColor]];
-    _spacePageControl.numberOfPages = [self.dataList count];
-    [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
-    [_spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot.png"]];
-    [_spacePageControl addTarget:self action:@selector(pageControl:) forControlEvents:UIControlEventValueChanged];
-    [self.myHeaderView addSubview:_spacePageControl];
-    
-    
-    
-    
-    [self.dataTableView setTableHeaderView:self.myHeaderView];
-    [self setBackgroundImageName:@"gobal_background.png"];
-    [self showBackgroundImage];
-}
-
-
--(void)filterTheConentsByButton{
-    
-    
-    
 }
 
 #pragma mark-- ButtonClicked Method
--(void)buttonClicked:(UIButton *)sender
+-(void)buttonClicked:(SDSegmentedControl *)sender
 
 {
-    
-    self.currentButton = sender;
-    
-    if ([sender tag] == More_BUTTON_TAG) {
-        
-        FilterViewController *vc = [[FilterViewController alloc]initWithNibName:@"FilterViewController" bundle:nil];
-        [self.navigationController  presentModalViewController:vc animated:YES];
-        [vc release];
-        
-        return;
-    }
+    self.segmentedController = (SDSegmentedControl *)sender;
     
     //开始下载文章
+    
+    //listtype  1 视频和文章的混合
+    //          2 单独是文章
+    //          3 单独是视频
     NSString *aucode= @"aijianmei";
     NSString *auact = @"au_getinformationlist";
     NSString *listtype = @"2";
@@ -308,38 +351,47 @@ typedef enum CONTENT_TYPE {
     NSString *cateid = @"0";
     NSString *uid = @"265";
     
-    if ([[sender currentTitle] isEqualToString:@"最新"]) {
-        
-        category = @"train";
-        type = @"new";
-        cateid = @"0";
-        uid = @"265";
-        _start=0;
-        
+    User *user = [[UserService defaultService] user];
+    NSString *userUid = user.uid;
+    
+    if (userUid) {
+        uid = userUid;
     }
-    if ([[sender currentTitle] isEqualToString:@"锻炼方法"]) {
+    
+    
+    
+    if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==-1) {
         
-        category = @"train";
+        category = @"home";
+        listtype = @"2";
         type = @"new";
         cateid = @"1";
-        uid = @"265";
         _start=0;
         
     }
-    if ([[sender currentTitle] isEqualToString:@"基础知识"]) {
+    if (self.segmentedController.selectedSegmentIndex ==1) {
         
-        category = @"train";
+        category = @"home";
+        listtype = @"2";
+        type = @"hot";
+        cateid = @"1";
+        _start=0;
+        
+    }
+    if (self.segmentedController.selectedSegmentIndex ==2) {
+        
+        category = @"home";
+        listtype = @"3";
         type = @"new";
-        cateid = @"2";
-        uid = @"265";
+        cateid = @"0";
         _start=0;
     }
-    if ([[sender currentTitle] isEqualToString:@"锻炼视频"]) {
+    if (self.segmentedController.selectedSegmentIndex ==3) {
         
-        category = @"train";
-        type = @"new";
-        cateid = @"3";
-        uid = @"265";
+        category = @"home";
+        listtype = @"3";
+        type = @"hot";
+        cateid = @"0";
         _start=0;
         
     }
@@ -373,7 +425,8 @@ typedef enum CONTENT_TYPE {
 #pragma Pull Refresh Delegate
 - (void) reloadTableViewDataSource
 {
-    [self buttonClicked:_currentButton];
+    
+    [self buttonClicked:self.segmentedController];
 }
 
 #pragma mark - Load More
@@ -382,39 +435,52 @@ typedef enum CONTENT_TYPE {
     NSString *aucode= @"aijianmei";
     NSString *auact = @"au_getinformationlist";
     NSString *listtype = @"2";
-    NSString *category = @"train";
+    NSString *category = @"";
     NSString *type = @"hot";
     int offset = EACH_FETCH_SIZE;
     NSString *cateid = @"0";
     NSString *uid = @"265";
     
-    if ([[_currentButton currentTitle] isEqualToString:@"最新"]) {
+    User *user = [[UserService defaultService] user];
+    NSString *userUid = user.uid;
+    
+    if (userUid) {
+        uid = userUid;
+    }
+    
+    
+    if (self.segmentedController.selectedSegmentIndex ==0) {
         
-        category = @"train";
+        category = @"home";
+        listtype = @"2";
         type = @"new";
+        cateid = @"";
+        
+        
+    }
+    if (self.segmentedController.selectedSegmentIndex ==1) {
+        
+        category = @"home";
+        listtype = @"2";
+        type = @"hot";
         cateid = @"0";
-        uid = @"265";
-    }
-    if ([[_currentButton currentTitle] isEqualToString:@"锻炼方法"]) {
         
-        category = @"train";
-        type = @"new";
-        cateid = @"1";
-        uid = @"265";
     }
-    if ([[_currentButton currentTitle] isEqualToString:@"基础知识"]) {
+    if (self.segmentedController.selectedSegmentIndex ==2) {
         
-        category = @"train";
+        category = @"home";
+        listtype = @"3";
         type = @"new";
-        cateid = @"2";
-        uid = @"265";
+        cateid = @"";
+        
     }
-    if ([[_currentButton currentTitle] isEqualToString:@"锻炼视频"]) {
+    if (self.segmentedController.selectedSegmentIndex ==3) {
         
-        category = @"train";
-        type = @"new";
-        cateid = @"3";
-        uid = @"265";
+        category = @"home";
+        listtype = @"3";
+        type = @"hot";
+        cateid = @"";
+        
     }
     
     
@@ -429,24 +495,6 @@ typedef enum CONTENT_TYPE {
                                                       uid:uid
                                                  delegate:self];
     
-    
-}
-
-- (void)viewDidLoad
-{
-    
-    [self initUI];
-    [self initMoreUI];
-    
-    self.supportRefreshHeader = YES;
-    self.supportRefreshFooter = YES;
-    
-    ///// 设置开始
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"最新" forState:UIControlStateNormal];
-    [self buttonClicked:button];
-    
-    [super viewDidLoad];
     
 }
 
@@ -489,6 +537,7 @@ typedef enum CONTENT_TYPE {
     WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
     
     controller.article = [self.dataList objectAtIndex:indexPath.row];
+    self.navigationController.navigationBarHidden =YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -498,9 +547,7 @@ typedef enum CONTENT_TYPE {
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
     //    return NUMBER_OF_ITEMS;
-    
     return [self.dataList count];
-    
 }
 
 - (NSUInteger)numberOfVisibleItemsInCarousel:(iCarousel *)carousel
@@ -516,7 +563,9 @@ typedef enum CONTENT_TYPE {
 {
     
 	//create new view if no view is available for recycling
-    Article *article  = [self.dataList objectAtIndex: index];
+    
+    Article *article  = [self.dataList objectAtIndex:index];
+    
     UILabel *label = nil;
     
 	if (view == nil)
@@ -526,7 +575,7 @@ typedef enum CONTENT_TYPE {
         
         ///add images
         UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160.0f)];
-        [imageView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@"11"]];
+        [imageView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@""]];
         [view addSubview:imageView];
         [imageView release];
         
@@ -548,12 +597,6 @@ typedef enum CONTENT_TYPE {
     //set label
 	label.text = [NSString stringWithFormat:@"%@", article.title];
     
-    //update reflection
-    //this step is expensive, so if you don't need
-    //unique reflections for each item, don't do this
-    //and you'll get much smoother peformance
-    //    [view update];
-    
 	return view;
     
 }
@@ -566,12 +609,13 @@ typedef enum CONTENT_TYPE {
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
     PPDebug(@"I did selected the picture of %d",index);
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    
-    WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
-    
-    controller.article = [dataList objectAtIndex:index - 1];
-    [self.navigationController pushViewController:controller animated:YES];
+    //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    //
+    //    WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
+    //
+    //    controller.article = [self.dataList objectAtIndex:index];
+    //    self.navigationController.navigationBarHidden =YES;
+    //    [self.navigationController pushViewController:controller animated:YES];
     
     
 }
@@ -601,8 +645,10 @@ typedef enum CONTENT_TYPE {
     [self showActivityWithText:@"数据加载中..."];
 }
 
+
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
+    
     NSLog(@"***Load objects count: %d", [objects count]);
 	[self dataSourceDidFinishLoadingNewData];
     [self dataSourceDidFinishLoadingMoreData];
@@ -618,6 +664,7 @@ typedef enum CONTENT_TYPE {
     
     //更新用户界面；
     [self updateUserInterface];
+    
 }
 
 @end

@@ -318,25 +318,6 @@
 }
 
 #pragma mark -
-#pragma mark - UIScrollViewDelegate
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
-{
-    // called on finger up as we are moving
-    PPDebug(@"#############11111");
-}
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    PPDebug(@"#############22222");
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    PPDebug(@"#############333333");
-}
-
-- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView{
-}
-
-
-#pragma mark -
 #pragma mark - RKObjectLoaderDelegate
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
@@ -359,10 +340,9 @@
     NSLog(@"***Load objects count: %d", [objects count]);
     [self hideActivity];
     self.articleDetail = [objects objectAtIndex:0];
-    [self loadWebViewWithHtmlString:_articleDetail.content];
-    [_webview sizeToFit];
-//    [_webview setFrame:CGRectMake(0, 0, 320, 480)];
-    
+    [self loadWebViewWithHtmlString:self.articleDetail.content];
+    [self.webview sizeToFit];
+        
     [self updateUserInterface];
 }
 

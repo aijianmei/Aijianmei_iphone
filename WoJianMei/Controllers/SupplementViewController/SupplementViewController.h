@@ -1,12 +1,4 @@
 //
-//  SupplementViewController.h
-//  WoJianMei
-//
-//  Created by Tom Callon  on 6/13/13.
-//
-//
-
-//
 //  HomeViewController.h
 //  WoJianMei
 //
@@ -19,11 +11,15 @@
 #import "SMPageControl.h"
 #import "iCarousel.h"
 #import <RestKit/RestKit.h>
+#import "LoginViewController.h"
+#import "SignUpViewController.h"
 
 
 @class AppDelegate;
+@class SDSegmentedControl;
 
-@interface SupplementViewController : PPTableViewController<iCarouselDataSource, iCarouselDelegate,RKObjectLoaderDelegate>
+
+@interface SupplementViewController : PPTableViewController<iCarouselDataSource, iCarouselDelegate,RKObjectLoaderDelegate,LoginViewDelegate,SignUpViewControllerDelegate>
 
 {
     UIView                      *_myHeaderView;
@@ -31,6 +27,12 @@
     SMPageControl               *_spacePageControl;
     UIScrollView *_buttonScrollView;
     AppDelegate *_appDelegate;
+    
+    
+    SDSegmentedControl *_segmentedController;
+    
+    
+    
 }
 
 @property (nonatomic, retain) UIScrollView *buttonScrollView;
@@ -38,11 +40,18 @@
 @property (nonatomic, retain) iCarousel *carousel;
 @property (nonatomic, retain) UIButton *currentButton;
 @property (nonatomic, retain) SMPageControl *spacePageControl;
+@property (nonatomic, retain) SDSegmentedControl *segmentedController;
 @property (assign, nonatomic) NSInteger start;
 @property (assign, nonatomic) NSInteger totalCount;
+@property (nonatomic,retain) LoginViewController *loginViewController;
 
--(void)buttonClicked:(UIButton *)sender;
+
+
+
+-(void)buttonClicked:(SDSegmentedControl *)sender;
 -(void)updateUserInterface;
+-(void)pushToMyselfViewController;
+
 
 
 

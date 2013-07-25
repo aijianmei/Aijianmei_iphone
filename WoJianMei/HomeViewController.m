@@ -91,6 +91,30 @@ typedef enum CONTENT_TYPE {
 }
 
 
+#pragma mark -
+#pragma mark View life
+
+- (void)viewDidLoad
+{
+    self.supportRefreshHeader = YES;
+    self.supportRefreshFooter = YES;
+    [super viewDidLoad];
+    
+    [self initUI];
+    [self initMoreUI];
+    
+    ///// 设置开始
+    SDSegmentedControl *sender =[[SDSegmentedControl alloc]init];
+    [_segmentedController setSelectedSegmentIndex:0];
+    
+    [self buttonClicked:sender];
+    
+    // 时间戳转时间的方法
+    //    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:1363948516];
+    //    NSLog(@"1363948516  = %@",confromTimesp);
+    
+}
+
 - (void)initMoreUI
 {    
     ////leftBtn
@@ -254,16 +278,12 @@ typedef enum CONTENT_TYPE {
     [_segmentedController setFrame:CGRectMake(0, 0, 320, 40)];
     [_segmentedController setSelectedSegmentIndex:0];    
     [_segmentedController addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventValueChanged];
-    [_myHeaderView addSubview:_segmentedController];
-    
-    
-    
-    
-   
-    
+    [_myHeaderView addSubview:self.segmentedController];
 }
 
+#pragma mark-- 
 #pragma mark-- addCarouselSliders Method
+
 -(void)addCarouselSliders{
     //configure carousel
     self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 50, 320, 140)];
@@ -271,20 +291,27 @@ typedef enum CONTENT_TYPE {
     self.carousel.dataSource = self;
     _carousel.type = iCarouselTypeLinear;
     [_carousel setScrollEnabled:YES];
-    [_carousel setScrollSpeed:1];    
+    //可以调整slider 的滑动速度;
+    [_carousel setScrollSpeed:0.25f];
+    
     [_myHeaderView addSubview:self.carousel];
 }
 
+#pragma mark-- 
 #pragma mark-- MoreButon Method
 -(void)addSpacePageControl{
     ////The page controll
-    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(215, 185, 120, 20)];
+    
+    
+   // 10, 190, 320, 20
+    //215, 185, 120, 20
+    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(0, 196, 320, 20)];
     [_spacePageControl setBackgroundColor:[UIColor clearColor]];
     _spacePageControl.numberOfPages = [self.dataList count];
     [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
     [_spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot.png"]];
     [_spacePageControl addTarget:self action:@selector(pageControl:) forControlEvents:UIControlEventValueChanged];
-    [_myHeaderView addSubview:_spacePageControl];
+    [_myHeaderView addSubview:self.spacePageControl];
 }
 
 #pragma mark-- MoreButon Method
@@ -471,34 +498,6 @@ typedef enum CONTENT_TYPE {
     
 }
 
-#pragma mark -
-#pragma mark life 
-
-- (void)viewDidLoad
-{
-    self.supportRefreshHeader = YES;
-    self.supportRefreshFooter = YES;
-    [super viewDidLoad];
-    
-    [self initUI];
-    [self initMoreUI];
-    
-    
-    ///// 设置开始
-    
-    SDSegmentedControl *sender =[[SDSegmentedControl alloc]init];
-    [_segmentedController setSelectedSegmentIndex:0];
-    
-    [self buttonClicked:sender];
-    
-   // 时间戳转时间的方法
-//    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:1363948516];
-//    NSLog(@"1363948516  = %@",confromTimesp);
-    
-}
-
-
-
 #pragma mark --
 #pragma mark  tableviewDelegate Method
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -548,9 +547,7 @@ typedef enum CONTENT_TYPE {
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
     //    return NUMBER_OF_ITEMS;
-
     return [self.dataList count];
-    
 }
 
 - (NSUInteger)numberOfVisibleItemsInCarousel:(iCarousel *)carousel
