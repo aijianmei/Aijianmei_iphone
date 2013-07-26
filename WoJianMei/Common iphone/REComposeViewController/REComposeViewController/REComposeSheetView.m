@@ -25,8 +25,7 @@
 
 #import "REComposeSheetView.h"
 #import <QuartzCore/QuartzCore.h>
-#import "UIBarButtonItemExt.h"
-
+//#import "UIBarButtonItemExt.h"
 
 @implementation REComposeSheetView
 
@@ -45,30 +44,30 @@
         _navigationItem = [[UINavigationItem alloc] initWithTitle:@""];
         _navigationBar.items = @[_navigationItem];
         
-//        UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"取消", @"Cancel") style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
-//        _navigationItem.leftBarButtonItem = cancelButtonItem;
-//        
-//        UIBarButtonItem *postButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"保存", @"Post") style:UIBarButtonItemStyleBordered target:self action:@selector(postButtonPressed)];
-//        _navigationItem.rightBarButtonItem = postButtonItem;
+        UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"取消", @"Cancel") style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
+        _navigationItem.leftBarButtonItem = cancelButtonItem;
+        
+        UIBarButtonItem *postButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"保存", @"Post") style:UIBarButtonItemStyleBordered target:self action:@selector(postButtonPressed)];
+         _navigationItem.rightBarButtonItem = postButtonItem;
         
         
                
-        UIBarButtonItem* cancleBarButtonItem = [[UIBarButtonItem alloc]
-                                          initWithCustomView:[UIBarButtonItem getButtonWithTitle:@"取消"
-                                                                                       imageName:@"settings.png"
-                                                                                          target:self
-                                                                                          action:@selector(cancelButtonPressed)]
-                                          ];
-        _navigationItem.leftBarButtonItem = cancleBarButtonItem;
-
-        
-        UIBarButtonItem* postBarButtonItem = [[UIBarButtonItem alloc]
-                                          initWithCustomView:[UIBarButtonItem getButtonWithTitle:@"保存"
-                                                                                       imageName:@"settings.png"
-                                                                                          target:self
-                                                                                          action:@selector(postButtonPressed)]
-                                              ];
-    _navigationItem.rightBarButtonItem = postBarButtonItem;
+//        UIBarButtonItem* cancleBarButtonItem = [[UIBarButtonItem alloc]
+//                                          initWithCustomView:[UIBarButtonItem getButtonWithTitle:@"取消"
+//                                                                                       imageName:@"settings.png"
+//                                                                                          target:self
+//                                                                                          action:@selector(cancelButtonPressed)]
+//                                          ];
+//        _navigationItem.leftBarButtonItem = cancleBarButtonItem;
+//
+//        
+//        UIBarButtonItem* postBarButtonItem = [[UIBarButtonItem alloc]
+//                                          initWithCustomView:[UIBarButtonItem getButtonWithTitle:@"保存"
+//                                                                                       imageName:@"settings.png"
+//                                                                                          target:self
+//                                                                                          action:@selector(postButtonPressed)]
+//                                              ];
+//    _navigationItem.rightBarButtonItem = postBarButtonItem;
 
         
         
@@ -101,16 +100,16 @@
         
         
         _attachmentView = [[UIView alloc] initWithFrame:CGRectMake(frame.size.width - 84, 54, 84, 79)];
-//        [self addSubview:_attachmentView];
+        [self addSubview:_attachmentView];
         
         _attachmentImageView = [[UIImageView alloc] initWithFrame:CGRectMake(6, 2, 72, 72)];
         _attachmentImageView.layer.cornerRadius = 3.0f;
         _attachmentImageView.layer.masksToBounds = YES;
-//        [_attachmentView addSubview:_attachmentImageView];
+       [_attachmentView addSubview:_attachmentImageView];
         
         _attachmentContainerView = [[UIImageView alloc] initWithFrame:_attachmentView.bounds];
         _attachmentContainerView.image = [UIImage imageNamed:@"REComposeViewController.bundle/AttachmentFrame"];
-//        [_attachmentView addSubview:_attachmentContainerView];
+       [_attachmentView addSubview:_attachmentContainerView];
         _attachmentView.hidden = YES;
         
 

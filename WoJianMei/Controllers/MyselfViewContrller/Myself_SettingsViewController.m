@@ -86,49 +86,6 @@
     [[UserService defaultService] postObject:nil withImage:nil delegate:self];
 }
 
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects;
- {
-    if ([objectLoader wasSentToResourcePath:@"/imgtest.php"]) {
-     
-        PPDebug(@"%@",[objects objectAtIndex:0]);
-        if ([[objects objectAtIndex:0] isMemberOfClass:[User class]]) {
-            User *user = [objects objectAtIndex:0];
-            NSLog(@"******%@******",user.uid);
-            NSLog(@"******%@******",user.profileImageUrl);
-            NSLog(@"******%@*****",user.avatarBackGroundImage);
-            
-            //取出用户
-            User *newUser  =[[UserService defaultService] user];
-            
-            //修改用户
-            [newUser setProfileImageUrl:user.profileImageUrl];
-            [newUser setAvatarBackGroundImage:user.avatarBackGroundImage];
-            
-            //保存用户
-            [[UserService defaultService] storeUserInfoByUid:newUser.uid];
-            
-        }
-        
-    }
-}
-
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    NSLog(@"Response code: %d", [response statusCode]);
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
-{
-    NSLog(@"Error: %@", [error localizedDescription]);
-}
-
-- (void)requestDidStartLoad:(RKRequest *)request
-{
-    NSLog(@"Start load request...");
-}
-
-
-
-
 #pragma Image Picker Related
 // this is just for copy
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -208,9 +165,20 @@
     didSave =NO;
 }
 
+
+-(void)loadDatas{
+    
+    self.user = [[UserService defaultService]user];
+}
+
+-(void)updateUI{
+    [dataTableView reloadData];
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
-    [dataTableView reloadData];
+    [self loadDatas];
+    [self updateUI];
 }
 
 #pragma mark --actionSheetDelegate
@@ -269,7 +237,6 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-    self.airplaneModeSwitch = nil;
 }
 
 
@@ -333,6 +300,7 @@
     [cell.textField setHidden:NO];
     [cell.lessButton setHidden:NO];
     [cell.moreButton setHidden:NO];
+    cell.newdelegate =self;
 
     
     CGSize size = CGSizeMake(320, 770);
@@ -343,6 +311,7 @@
 
 
      cell.accessoryView = nil;
+
     
     /////
     UIImage *normalImage = [UIImage imageNamed:@"AccessoryView.png"];
@@ -487,9 +456,6 @@
                 default:
                     break;
             }
-            
-            [cell.moreButton addTarget:self action:@selector(clickAddMoreButton:) forControlEvents:UIControlEventTouchUpInside];
-            [cell.lessButton addTarget:self action:@selector(clickLessButton:) forControlEvents:UIControlEventTouchUpInside];
 
         }
             break;
@@ -515,15 +481,6 @@
     return cell;
 }
 
-
-
--(void)clickAddMoreButton:(UIButton *)sender{
-    [dataTableView reloadData];
-}
-
--(void)clickLessButton:(UIButton *)sender{
-    [dataTableView reloadData];
-}
 
 
 
@@ -635,6 +592,24 @@
      
 }
 
+- (void)didClickAddMoreButton:(id)sender atIndex:(NSIndexPath*)indexPath;
+{
+    
+   
+
+    
+
+}
+
+- (void)didClickLessButton:(id)sender atIndex:(NSIndexPath*)indexPath{
+    
+    
+    PPDebug(@"asdfasdfasdfasdfasdfasd");
+    
+}
+
+
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -644,5 +619,46 @@
         return YES;
     }
 }
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects;
+{
+    if ([objectLoader wasSentToResourcePath:@"/imgtest.php"]) {
+        
+        PPDebug(@"%@",[objects objectAtIndex:0]);
+        if ([[objects objectAtIndex:0] isMemberOfClass:[User class]]) {
+            User *user = [objects objectAtIndex:0];
+            NSLog(@"******%@******",user.uid);
+            NSLog(@"******%@******",user.profileImageUrl);
+            NSLog(@"******%@*****",user.avatarBackGroundImage);
+            
+            //取出用户
+            User *newUser  =[[UserService defaultService] user];
+            
+            //修改用户
+            [newUser setProfileImageUrl:user.profileImageUrl];
+            [newUser setAvatarBackGroundImage:user.avatarBackGroundImage];
+            
+            //保存用户
+            [[UserService defaultService] storeUserInfoByUid:newUser.uid];
+            
+        }
+        
+    }
+}
+
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+    NSLog(@"Response code: %d", [response statusCode]);
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", [error localizedDescription]);
+}
+
+- (void)requestDidStartLoad:(RKRequest *)request
+{
+    NSLog(@"Start load request...");
+}
+
 
 @end

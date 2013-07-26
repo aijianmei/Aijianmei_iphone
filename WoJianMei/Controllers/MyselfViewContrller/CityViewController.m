@@ -128,11 +128,14 @@
     
     NSLog(@"所在区域 :%@%@",self.selectedProvince,self.selectedCity);
     
-    NSString *userCity = [NSString stringWithFormat:@"%@%@",self.selectedProvince,self.selectedCity];
+   
     User *user = [[UserService defaultService] user];
-    [user setCity:userCity];
+    
+    [user setCity:self.selectedCity];
+    [user setProvince:self.selectedProvince];
     
     [[UserService defaultService] setUser:user];
+    [[UserService defaultService] storeUserInfoByUid:user.uid];
     [self.navigationController popViewControllerAnimated:YES];
     
     //TODO

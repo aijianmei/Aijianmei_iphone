@@ -38,7 +38,7 @@ typedef enum {
     LIKE_US,
     SHOW_ABOUT_VIEW,
     UPDATE_APP,
-    REMMOMED_APPS,
+   // REMMOMED_APPS,
     LOGOUT
 } MORE_SELECTION;
 
@@ -237,7 +237,7 @@ enum TapOnItem {
         {
             PPDebug(@"Section two");
             
-            return 2;
+            return 1;
         }
             break;
         case 2:
@@ -270,6 +270,8 @@ enum TapOnItem {
     [cellAccessoryView release];
     
     
+    cell.textLabel.textColor =[UIColor grayColor];
+
     // set backgroudView
     UIImageView *imageView = nil;
     imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_cell_background.png"]];
@@ -289,14 +291,28 @@ enum TapOnItem {
         // @"客户端更新",@"推荐应用",@"退出客户端"
         if (indexPath.row == 0) {
             cell.textLabel.text = @"客户端更新";
-         imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_cell_background.png"]];
-        }else {
+         imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"singleCellBackgroud.png"]];
+            
+            
+        }/*else {
             cell.textLabel.text  = @"推荐应用";
          imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottom_cell_background.png"]];
-        }
+        }*/
         
     }else {
-        cell.textLabel.text = @"登出";
+        cell.textLabel.text = @"退出当前账号";
+        
+        User *user = [[UserService defaultService] user];
+        
+
+        if (user.uid) {
+            
+            cell.textLabel.textColor =[UIColor redColor];
+        }
+        
+        
+        
+        
         imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"singleCellBackgroud.png"]];
     }
     
@@ -385,12 +401,12 @@ enum TapOnItem {
                 [self updateApplication];
             }
                 break;
-            case 1:
-            {
-                [self recommmendedApps];
-                
-            }
-                break;
+//            case 1:
+//            {
+//                [self recommmendedApps];
+//                
+//            }
+//                break;
                 
             default:
                 break;
@@ -612,7 +628,7 @@ enum TapOnItem {
 -(void)logout{
     
     PPDebug(@"User is trying to logout");
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"确定要退出账号吗?" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"若退出当前账号,您的所有用户数据将会被清楚！" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     [alert show];
     [alert release];
 
@@ -646,7 +662,7 @@ enum TapOnItem {
 
     }
     
-    if ([alertView.title hasPrefix:@"确定要退出账号"])
+    if ([alertView.title hasPrefix:@"提示"])
     {
     
     switch (buttonIndex) {

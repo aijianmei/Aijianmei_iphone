@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "PPTableViewCell.h"
 
+@protocol MyselfSettingCellDelegate <NSObject>
+
+- (void)didClickAddMoreButton:(id)sender atIndex:(NSIndexPath*)indexPath;
+- (void)didClickLessButton:(id)sender atIndex:(NSIndexPath*)indexPath;
+
+@end
+
+
 @interface MyselfSettingCell : PPTableViewCell<UITextFieldDelegate>
 {
     UILabel *_detailLabelView;
@@ -17,6 +25,8 @@
     
     UIButton *_moreButton;
     UIButton *_lessButton;
+    
+    id <MyselfSettingCellDelegate> newdelegate;
 
     
 }
@@ -26,6 +36,8 @@
 @property (nonatomic,retain) UITextField *textField;
 @property (nonatomic,retain) UIButton    *moreButton;
 @property (nonatomic,retain) UIButton    *lessButton;
+@property (nonatomic,assign) id<MyselfSettingCellDelegate>newdelegate;
+
 
 
 

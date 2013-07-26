@@ -53,6 +53,14 @@
 ///获取新版本
 - (void)queryVersionWithDelegate:(id<RKObjectLoaderDelegate>)delegate;
 
+
+-(void)sendLikeWithContentId:(NSString *)contentId
+                     userId :(NSString *)uid
+                 channeltype:(NSString *)channeltype
+                    delegate:(id<RKObjectLoaderDelegate>)delegate;
+
+
+
 //意见反馈
 - (void)postFeedbackWithUid:(NSString*)uid
                     content:(NSString*)content

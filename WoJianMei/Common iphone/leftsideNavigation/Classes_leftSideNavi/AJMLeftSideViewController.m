@@ -422,10 +422,8 @@
                     
                     if ([_sinaweiboManager.sinaweibo isAuthValid])
                     {
-                        PPDebug(@"%@",_sinaweiboManager.sinaweibo.userID);
-                        [[UserService defaultService] createSinaFriendshipWithUid:AIJIANMEI_SINAWEIBO_ID delegate:self];
+                        [self createSinaFriendship];
                         PPDebug(@"新浪授权可用");
-
                     }
                     //授权不可用的时候,就获取新浪微博的id，再通过sns 的id 来获取用户信息；
                     else if(![_sinaweiboManager.sinaweibo isAuthValid])
@@ -530,18 +528,12 @@
 #pragma mark - SinaWeiboRequest Delegate
 - (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
 {
-//    //获取用户信息
-//    if ([request.url hasSuffix:@"users/show.json"])
-//    {
-//        NSLog(@"******%@",[error description]);
-//    }
-//    //上传图片
-//    if ([request.url hasSuffix:@"statuses/upload.json"])
-//    {
-//        NSLog(@"******%@",[error description]);
-//    }
-    
-    
+    //获取用户信息
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        NSLog(@"******%@",[error description]);
+    }
+
     //关注爱健美用户
     if ([request.url hasSuffix:@"friendships/create.json"])
     {
@@ -562,22 +554,12 @@
 - (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
 {
     
-//    //获取用户信息
-//    if ([request.url hasSuffix:@"users/show.json"])
-//    {
-//        NSLog(@"******%@",[result description]);
-//    }
-//    
-//
-//    //上传图片
-//    if ([request.url hasSuffix:@"statuses/upload.json"])
-//    {
-//        [[UserService defaultService] storeSinaUserInfo:result];
-//        
-//        NSDictionary *userInfo = result;
-//        NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);
-//       
-//    }
+    //获取用户信息
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        NSLog(@"******%@",[result description]);
+        [self createSinaFriendship];
+    }
     
     //关注爱健美用户
     if ([request.url hasSuffix:@"friendships/create.json"])
@@ -593,6 +575,12 @@
 
 }
 
+
+-(void)createSinaFriendship{
+    
+    PPDebug(@"%@",_sinaweiboManager.sinaweibo.userID);
+    [[UserService defaultService] createSinaFriendshipWithUid:AIJIANMEI_SINAWEIBO_ID delegate:self];
+}
 
 
 

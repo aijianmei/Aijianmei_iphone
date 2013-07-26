@@ -187,7 +187,7 @@
     [dataTableView reloadData];
 }
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
@@ -437,7 +437,7 @@
 
     [super viewWillAppear:YES];
     [self.dataTableView reloadData];
-    [self upgradeUI];
+    [self loadUserData];
 }
 
 

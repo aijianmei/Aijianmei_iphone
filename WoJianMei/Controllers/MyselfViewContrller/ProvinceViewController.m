@@ -45,16 +45,25 @@
     
     [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     
-    User *user = [[UserService defaultService] user];
-    [self setTitle:user.city];
+    [self updateUI];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
-     User *user = [[UserService defaultService] user];
-    [self setTitle:user.city];
+    [self updateUI];
 
+    
 }
+
+
+-(void)updateUI{
+    User *user = [[UserService defaultService] user];
+    [[UserService defaultService] storeUserInfoByUid:user.uid];
+    NSString *location = [NSString stringWithFormat:@"%@%@",user.province,user.city];
+    [self setTitle:location];
+}
+
+
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

@@ -16,6 +16,7 @@
 @synthesize textField =_textField;
 @synthesize moreButton = _moreButton;
 @synthesize lessButton = _lessButton;
+@synthesize newdelegate;
 
 
 -(void)dealloc{
@@ -27,9 +28,6 @@
     [_lessButton release];
     [super dealloc];
 }
-
-
-
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -133,6 +131,9 @@
             NSString *newValue = [NSString stringWithFormat:@"%i",value +nt];
             user.age =newValue;
             
+            [_textField setText:user.age];
+
+            
         }
             break;
         case 3:
@@ -142,6 +143,8 @@
             
             NSString *newValue = [NSString stringWithFormat:@"%i",value +nt];
             user.height =newValue;
+            
+            [_textField setText:user.height];
 
         }
             break;
@@ -152,7 +155,9 @@
             
             NSString *newValue = [NSString stringWithFormat:@"%i",value +nt];
             user.weight =newValue;
+            [_textField setText:user.weight];
 
+            
         }
             break;
             
@@ -161,15 +166,21 @@
     }
     
     [[UserService defaultService] setUser:user];
- 
+    
+//    if (newdelegate && [newdelegate respondsToSelector:@selector(didClickAddMoreButton:atIndex:)]) {
+//        
+//        [newdelegate didClickLessButton:sender atIndex:indexPath];
+//    }
+    
+    
 }
 -(void)clickLessButton:(UIButton *)sender{
+    
     
     UIButton *button =(UIButton *)sender;
     int buttonTag = [button tag];
     
     User *user =[[UserService defaultService] user];
-
     
     switch (buttonTag) {
         case 2:
@@ -179,6 +190,8 @@
             
             NSString *newValue = [NSString stringWithFormat:@"%i",value +nt];
             user.age =newValue;
+            [_textField setText:user.age];
+
         }
             break;
         case 4:
@@ -188,6 +201,8 @@
             
             NSString *newValue = [NSString stringWithFormat:@"%i",value +nt];
             user.height =newValue;
+            [_textField setText:user.height];
+
         }
             break;
         case 6:
@@ -197,14 +212,22 @@
             
             NSString *newValue = [NSString stringWithFormat:@"%i",value +nt];
             user.weight =newValue;
+            [_textField setText:user.weight];
+
         }
             break;
             
         default:
             break;
     }
-
-    [[UserService defaultService] setUser:user];
+    
+     [[UserService defaultService] setUser:user];
+     [[UserService defaultService] storeUserInfoByUid:user.uid];
+    
+//    if (newdelegate && [newdelegate respondsToSelector:@selector(didClickLessButton:atIndex:)]) {
+//        
+//        [newdelegate didClickLessButton:sender atIndex:indexPath];
+//    }
 }
 
 

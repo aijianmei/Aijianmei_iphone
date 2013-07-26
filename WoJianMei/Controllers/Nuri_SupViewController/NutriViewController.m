@@ -271,7 +271,7 @@ typedef enum CONTENT_TYPE {
 -(void)addButtonScrollView{
     ////Configure The ButtonScrollView
     
-    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最新文章",@"最热文章",@"最新视频",@"最热视频", nil];
+    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"增肌",@"减脂",@"一般饮食知识", nil];
     
     
     self.segmentedController=[[SDSegmentedControl alloc]initWithItems:buttonTitleArray];
@@ -345,7 +345,7 @@ typedef enum CONTENT_TYPE {
     NSString *aucode= @"aijianmei";
     NSString *auact = @"au_getinformationlist";
     NSString *listtype = @"2";
-    NSString *category = @"train";
+    NSString *category = @"nutri";
     NSString *type = @"hot";
     int offset = EACH_FETCH_SIZE;
     NSString *cateid = @"0";
@@ -362,7 +362,7 @@ typedef enum CONTENT_TYPE {
     
     if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==-1) {
         
-        category = @"home";
+        category = @"nutri";
         listtype = @"2";
         type = @"new";
         cateid = @"1";
@@ -371,24 +371,24 @@ typedef enum CONTENT_TYPE {
     }
     if (self.segmentedController.selectedSegmentIndex ==1) {
         
-        category = @"home";
+        category = @"nutri";
         listtype = @"2";
-        type = @"hot";
+        type = @"new";
         cateid = @"1";
         _start=0;
         
     }
     if (self.segmentedController.selectedSegmentIndex ==2) {
         
-        category = @"home";
-        listtype = @"3";
+        category = @"nutri";
+        listtype = @"2";
         type = @"new";
         cateid = @"0";
         _start=0;
     }
     if (self.segmentedController.selectedSegmentIndex ==3) {
         
-        category = @"home";
+        category = @"nutri";
         listtype = @"3";
         type = @"hot";
         cateid = @"0";
@@ -435,7 +435,7 @@ typedef enum CONTENT_TYPE {
     NSString *aucode= @"aijianmei";
     NSString *auact = @"au_getinformationlist";
     NSString *listtype = @"2";
-    NSString *category = @"";
+    NSString *category = @"nutri";
     NSString *type = @"hot";
     int offset = EACH_FETCH_SIZE;
     NSString *cateid = @"0";
@@ -451,7 +451,7 @@ typedef enum CONTENT_TYPE {
     
     if (self.segmentedController.selectedSegmentIndex ==0) {
         
-        category = @"home";
+        category = @"nutri";
         listtype = @"2";
         type = @"new";
         cateid = @"";
@@ -460,23 +460,23 @@ typedef enum CONTENT_TYPE {
     }
     if (self.segmentedController.selectedSegmentIndex ==1) {
         
-        category = @"home";
+        category = @"nutri";
         listtype = @"2";
-        type = @"hot";
+        type = @"new";
         cateid = @"0";
         
     }
     if (self.segmentedController.selectedSegmentIndex ==2) {
         
-        category = @"home";
-        listtype = @"3";
+        category = @"nutri";
+        listtype = @"2";
         type = @"new";
         cateid = @"";
         
     }
     if (self.segmentedController.selectedSegmentIndex ==3) {
         
-        category = @"home";
+        category = @"nutri";
         listtype = @"3";
         type = @"hot";
         cateid = @"";
@@ -531,14 +531,10 @@ typedef enum CONTENT_TYPE {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    
-    WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
-    
-    controller.article = [self.dataList objectAtIndex:indexPath.row];
-    self.navigationController.navigationBarHidden =YES;
-    [self.navigationController pushViewController:controller animated:YES];
+    WorkoutDetailViewController *workOutVc = [[WorkoutDetailViewController alloc]initWithNibName:@"WorkoutDetailViewController" bundle:nil];
+    workOutVc.article = [self.dataList objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:workOutVc animated:YES];
+    [workOutVc release];
 }
 
 #pragma mark -

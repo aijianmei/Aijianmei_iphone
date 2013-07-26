@@ -54,8 +54,8 @@
                                 <rect key="frame" x="-2" y="5" width="321" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TC7-te-IjY">
-                                <rect key="frame" x="36" y="250" width="115" height="41"/>
+                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TC7-te-IjY">
+                                <rect key="frame" x="35" y="226" width="241" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="新浪微博登陆" image="xldl_1@2x.png">
@@ -69,27 +69,12 @@
                                     <action selector="clickSinaWeiboButton:" destination="ggH-Ur-he6" eventType="touchUpInside" id="aeo-z5-XFz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aNf-wc-koz">
-                                <rect key="frame" x="169" y="250" width="115" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="腾讯QQ登陆" image="txdl_1@2x.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="clickQQShareButton:" destination="ggH-Ur-he6" eventType="touchUpInside" id="TFd-TZ-NhL"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dCp-iP-qfD">
-                                <rect key="frame" x="25" y="384" width="270" height="44"/>
+                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dCp-iP-qfD">
+                                <rect key="frame" x="25" y="401" width="270" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="还没有爱健美账号，注册一个！Go！" image="zc_1@2x.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="还没有爱健美账号，注册一个！Go！">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -106,7 +91,6 @@
                     <connections>
                         <outlet property="aijianmeiButton" destination="dCp-iP-qfD" id="kLV-1o-GMO"/>
                         <outlet property="passwordField" destination="cQ2-M5-cPr" id="TQW-h8-aq9"/>
-                        <outlet property="qqButton" destination="aNf-wc-koz" id="A38-81-rzC"/>
                         <outlet property="sinaButton" destination="TC7-te-IjY" id="BAQ-yv-bas"/>
                         <outlet property="usernameField" destination="fjQ-5a-bek" id="g5P-I9-dSi"/>
                         <segue destination="iV3-WQ-fer" kind="push" identifier="SignupViewSegue" id="2XO-bT-Wyj"/>
@@ -318,7 +302,6 @@
                     <navigationItem key="navigationItem" id="Nww-0t-ckY"/>
                     <connections>
                         <outlet property="dataTableView" destination="NtN-xg-TPp" id="PiG-EZ-ml2"/>
-                        <segue destination="9Ij-wE-8fk" kind="push" id="1Dh-GF-TUa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbY-3i-Lwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -438,21 +421,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hOd-mA-Ooq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2374" y="-1627"/>
-        </scene>
-        <!--Workout Detail View Controller-->
-        <scene sceneID="6OX-gw-b1X">
-            <objects>
-                <viewController storyboardIdentifier="ArticleDetailSegue" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Ij-wE-8fk" customClass="WorkoutDetailViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="e8B-Q3-pz5">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="bRq-8n-PKY"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7s8-5x-ky7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3242" y="-7305"/>
         </scene>
         <!--Work Out Process View Controller-->
         <scene sceneID="8JA-RT-lZG">
@@ -802,7 +770,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="34" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="ZIG-8x-TJa">
-                                                    <rect key="frame" x="159" y="122" width="42" height="21"/>
+                                                    <rect key="frame" x="159" y="123" width="42" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="9"/>
                                                     <color key="textColor" red="0.43529411759999997" green="0.40784313729999999" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -818,23 +786,23 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2oA-eD-udT">
-                                                    <rect key="frame" x="7" y="54" width="189" height="63"/>
+                                                    <rect key="frame" x="7" y="43" width="189" height="74"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <string key="text">一般来说，力量训练的健身计划可以细分为组和次。而通常，次数就决定了你能选择的重量。例如：做3组10次的举重；或者做10组3次的举重。显然，对于后者你会选择更大的重量，但两种情况下你同样都做了30次。所以如果你想要增加肌肉的爆发力，尽可能降低每组的次数，并增加重量。</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="Hk3-Gk-eQP">
-                                                    <rect key="frame" x="200" y="56" width="115" height="72"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="11.png" id="Hk3-Gk-eQP">
+                                                    <rect key="frame" x="200" y="47" width="113" height="74"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="time.png" id="EPg-MJ-LvB">
-                                                    <rect key="frame" x="15" y="122" width="20" height="20"/>
+                                                    <rect key="frame" x="15" y="125" width="15" height="15"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="comment.png" highlighted="YES" id="gwi-6d-UbJ">
-                                                    <rect key="frame" x="125" y="123" width="20" height="20"/>
+                                                    <rect key="frame" x="127" y="126" width="15" height="15"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -1186,9 +1154,7 @@
         <image name="loin_LOGO.png" width="640" height="180"/>
         <image name="rq_1.png" width="640" height="100"/>
         <image name="time.png" width="26" height="26"/>
-        <image name="txdl_1@2x.png" width="230" height="80"/>
         <image name="xldl_1@2x.png" width="230" height="80"/>
-        <image name="zc_1@2x.png" width="440" height="80"/>
     </resources>
     <classes>
         <class className="AJM_CommonViewController" superclassName="PPViewController">
@@ -1272,9 +1238,6 @@
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
             </relationships>
         </class>
-        <class className="WorkoutDetailViewController" superclassName="PPViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutDetailViewController.h"/>
-        </class>
         <class className="WorkoutNoteViewController" superclassName="REComposeViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutNoteViewController.h"/>
         </class>
@@ -1291,6 +1254,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="iUL-cz-5HG"/>
+        <segue reference="5sh-Cl-2mm"/>
     </inferredMetricsTieBreakers>
 </document>

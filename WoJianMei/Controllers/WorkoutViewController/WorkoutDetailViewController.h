@@ -13,9 +13,11 @@
 #import <RestKit/RestKit.h>
 #import "PPViewController.h"
 #import "AWActionSheet.h"
+#import "SinaWeibo.h"
+#import "REComposeViewController.h"
 
 
-@interface WorkoutDetailViewController : PPViewController<RKObjectLoaderDelegate,UIWebViewDelegate,UIScrollViewDelegate>
+@interface WorkoutDetailViewController : PPViewController<RKObjectLoaderDelegate,UIWebViewDelegate,UIScrollViewDelegate,SinaWeiboRequestDelegate,REComposeViewControllerDelegate>
 
 {
     UIToolbar *_toolBar;
@@ -34,6 +36,7 @@
 - (void)showNavigationBar;
 - (void)hideNavigationBar;
 - (void)updateUserInterface;
+-(void)shareArticleWithTitle:(NSString*)title image:(UIImage *)image;
 
 
 

@@ -8,13 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
-#import "AFPickerView.h"
-
 #import <RestKit/RestKit.h>
+#import "MyselfSettingCell.h"
 
 
 @class User;
-@interface Myself_SettingsViewController: PPTableViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIAlertViewDelegate,AFPickerViewDataSource, AFPickerViewDelegate,RKObjectLoaderDelegate>
+@interface Myself_SettingsViewController: PPTableViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIAlertViewDelegate,RKObjectLoaderDelegate,MyselfSettingCellDelegate>
 
 {
 
@@ -24,9 +23,7 @@
     User *_user;
     
     BOOL didSave;
-    
-    AFPickerView *defaultPickerView;
-    
+        
     BOOL isChoosingAvtarImage;
     BOOL isChoosingAvtarBackground;
 

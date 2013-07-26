@@ -12,6 +12,21 @@
 #import "ImageManager.h"
 #import "CommentViewController.h"
 #import "ArticleDetail.h"
+#import "UserService.h"
+#import "Result.h"
+#import "REComposeViewController.h"
+#import "CustomURLCache.h"
+
+enum TapOnItem {
+    
+    SINA_WEIBO = 0,
+    FREIND_CIRCLE = 1,
+    WECHAT = 2,
+    EMAIL = 3,
+    MESSAGE = 4,
+    COPY_LINK =5
+};
+
 
 
 
@@ -27,11 +42,29 @@
 @synthesize articleDetail =_articleDetail;
 
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+
+        CustomURLCache *urlCache = [[CustomURLCache alloc] initWithMemoryCapacity:20 * 1024 * 1024
+                                                                     diskCapacity:200 * 1024 * 1024
+                                                                         diskPath:nil
+                                                                        cacheTime:0];
+        [CustomURLCache setSharedURLCache:urlCache];
+        [urlCache release];
+    }
+    return self;
+}
+
+
 -(void)dealloc
 {
     [_toolBar release];
     [_likeButton release];
     [_article release];
+    [_webview release];
     [_articleDetail release];
     [super dealloc];
 }
@@ -48,24 +81,23 @@
 
 -(int)numberOfItemsInActionSheet
 {
-    return 7;
+    return 6;
 }
 
 
 -(AWActionSheetCell *)cellForActionAtIndex:(NSInteger)index
 {
     AWActionSheetCell* cell = [[[AWActionSheetCell alloc] init] autorelease];
-        
+    
     
     //set title
     NSArray *titleArray  = [ NSArray arrayWithObjects:
                             @"新浪微博",
                             @"朋友圈",
                             @"微信",
-                            @"腾讯微博",
                             @"邮件",
                             @"短信",
-                            @"复制文章链接",
+                            @"复制链接",
                             nil];
     [[cell titleLabel] setText:[NSString stringWithFormat:@"%@",[titleArray objectAtIndex:index]]];
     
@@ -75,11 +107,11 @@
                             @"sina.png",
                             @"friendsCircle.png",
                             @"wechat.png",
-                            @"tencentWeibo.png",
                             @"email.png",
                             @"message.png",
                             @"copylink.png",
                             nil];
+    
     NSString *imageName = [NSString stringWithFormat:@"%@",[imageArray objectAtIndex:index]];
     UIImage *image = [UIImage imageNamed:imageName];
     [[cell iconView] setImage:image];
@@ -87,13 +119,76 @@
     
     
     cell.index = index;
-    
+
+
     return cell;
+
 }
 
 -(void)DidTapOnItemAtIndex:(NSInteger)index
 {
     PPDebug(@"tap on %d",index);
+    
+    NSString *bodyStringBegin = @"我正在使用爱健美客户端，学习如何健身，分享，很方便很好用，下载地址是";
+    NSString *bodyStringWebsite = @"http://www.aijianmei.com";
+    NSString *bodyString = [NSString stringWithFormat:@"%@%@", bodyStringBegin, bodyStringWebsite];
+    
+    
+    
+    
+    int TapOnItem = index;
+    
+    
+    switch (TapOnItem) {
+        case SINA_WEIBO:
+        {
+            [self clickSinaShareButton];
+        }
+            break;
+        case FREIND_CIRCLE:
+        {
+            
+        }
+            break;
+        case WECHAT:
+        {
+            
+        }
+            break;
+        case EMAIL:
+        {
+            [self sendEmailTo:nil
+                 ccRecipients:nil
+                bccRecipients:nil
+                      subject:@"下载爱健美客户端，学习如何健身"
+                         body:bodyString
+                       isHTML:NO
+                     delegate:self];
+            
+        }
+            break;
+        case MESSAGE:
+        {
+            [self sendSms:nil body:bodyString];
+            
+        }
+            break;
+        case COPY_LINK:
+        {
+            //copy one link
+            NSString *downloadAPPUrl = [NSString stringWithFormat:@"www.aijianmei.com"];
+            UIPasteboard *gpBoard = [UIPasteboard generalPasteboard];
+            [gpBoard setString:downloadAPPUrl];
+            
+            
+            [self popupHappyMessage:@"已成功复制下载链接" title:nil];
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
     
 }
 
@@ -101,15 +196,19 @@
 
 ////点击喜欢按钮
 -(void)clickLikeButton:(id)sender{
-        
-    NSString *newLike = _articleDetail.like;
-    int likeValue = [newLike integerValue];
-    if (likeValue == 1)
-    {
-        PPDebug(@"你已经赞了该这篇文章，不可以重复哦");
-    }
+    
 
-   
+    
+   ArticleDetail *article =[self articleDetail];
+   User *user =  [[UserService defaultService] user];
+    
+    if ( user.uid ==nil) {
+        return;
+    }
+    
+    
+   [[UserService defaultService] sendLikeWithContentId:[article _id] userId:user.uid  channeltype:@"1"  delegate:self];
+    
 }
 ////点击评论按钮
 -(void)clickCommentButton:(UIButton *)sender{
@@ -195,20 +294,33 @@
 }
 
 
+//从网络下载图片
+-(UIImage *) getImageFromURL:(NSString *)fileURL {
+    NSLog(@"执行图片下载函数");
+    UIImage * result;
+    
+    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
+    result = [UIImage imageWithData:data];
+    
+    return result;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+
     [self.view  setBounds:CGRectMake(0, 40, 320, 480)];
 
-    
     [self setRightBarButtons];
     [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     
     
-    _webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height + 30)];
-    _webview.delegate = self;
-    _webview.scrollView.delegate = self;
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height + 50)];
+    [self setWebview:webView];
+    [webView release];
+    self.webview.delegate = self;
+    self.webview.scrollView.delegate = self;
     [self.view addSubview:_webview];
     
 
@@ -217,8 +329,10 @@
    [self.navigationController.navigationBar setFrame:CGRectMake(0, 420, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
     
     
-    //just for test
-	[[ArticleService sharedService] findArticleInfoWithAucode:@"aijianmei" auact:@"au_getinformationdetail" articleId:_article._id channel:@" " channelType:@" " uid:@"" delegate:self];
+    
+    [[ArticleService sharedService] findArticleInfoWithAucode:@"aijianmei" auact:@"au_getinformationdetail" articleId:_article._id channel:@" " channelType:@" " uid:@"" delegate:self];
+
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -267,6 +381,9 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    CustomURLCache *urlCache = (CustomURLCache *)[NSURLCache sharedURLCache];
+    [urlCache removeAllCachedResponses];
+
 }
 
 -(void)updateUserInterface{
@@ -280,9 +397,64 @@
         
         [_likeButton setImage:[UIImage imageNamed:@"Press_like_icon.png"] forState:UIControlStateNormal];
     }
+}
 
+
+
+-(void)shareArticleWithTitle:(NSString*)title image:(UIImage *)image
+
+{
+    NSMutableDictionary * params =[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   title, @"status",image,@"pic",nil];
+    [[SinaWeiboManager sharedManager].sinaweibo requestWithURL:@"statuses/upload.json"
+                                                        params:params
+                                                    httpMethod:@"POST"
+                                                      delegate:self];
+    [self showActivityWithText:@"正在分享"];
     
-    PPDebug(@"Like %@",_articleDetail.like);
+}
+
+
+- (void)clickSinaShareButton
+{
+    
+    REComposeViewController *composeViewController = [[REComposeViewController alloc] init];
+    composeViewController.hasAttachment = YES;
+    composeViewController.attachmentImage = [UIImage imageNamed:@"Default-568h@2x.png"];
+    
+    NSString *bodyStringBegin = @"我正在使用爱健美客户端，学习如何健身，分享，很方便很好用，下载地址是";
+    NSString *bodyStringWebsite = @"http://www.aijianmei.com";
+    NSString *bodyString = [NSString stringWithFormat:@"%@%@", bodyStringBegin, bodyStringWebsite];
+    
+    [composeViewController setText:bodyString];
+    
+    
+    
+    UIImageView *titleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"foursquare-logo"]];
+    titleImageView.frame = CGRectMake(0, 0, 110, 30);
+    composeViewController.navigationItem.titleView = titleImageView;
+    
+    // UIApperance setup
+    [composeViewController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg"] forBarMetrics:UIBarMetricsDefault];
+    
+    
+    // Alternative use with REComposeViewControllerCompletionHandler
+    composeViewController.completionHandler = ^(REComposeResult result) {
+        if (result == REComposeResultCancelled) {
+            NSLog(@"Cancelled");
+        }
+        
+        if (result == REComposeResultPosted) {
+            NSLog(@"Text = %@", composeViewController.text);
+            
+        [self shareArticleWithTitle: composeViewController.text image:composeViewController.attachmentImage ];
+            
+        }
+    };
+    
+    [self presentViewController:composeViewController animated:YES completion:nil];
+    
+    [composeViewController release];
 }
 
 
@@ -290,31 +462,65 @@
 #pragma mark UIWebViewDelegate
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationTyp
 {
-    
-    
-	NSString *picName = [[request URL] absoluteString];
-	NSLog(@"picName is %@",picName);
-    
+	NSString *picName = [[request URL] absoluteString];    
     
 	if ([picName hasPrefix:@"src"]) {
-//		[self showBigImage:[picName substringFromIndex:4]];
 		return NO;
 	}else {
 		return YES;
 	}
+}
+
+#pragma mark -
+#pragma mark - webview
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    PPDebug(@"Webview did finish loading");
     
     
 }
 
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    
+    PPDebug(@"Webview did fail to  load with error :%@",error);
 
+}
 
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    PPDebug(@"web view did start to load");
+}
 
 
 - (void)loadWebViewWithHtmlString:(NSString*)htmlString
 {
     //处理html特殊字符
     NSString *html = [htmlString stringByDecodingHTMLEntities];
-    [_webview loadHTMLString:html baseURL:nil];
+    [self.webview loadHTMLString:html baseURL:nil];
+}
+
+#pragma mark -
+#pragma mark - SinaWeiboRequest Delegate
+
+- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
+{
+    
+    if ([request.url hasSuffix:@"statuses/upload.json"])
+    {
+        NSLog(@"******%@",[error description]);
+        [self hideActivity];
+        [self popupHappyMessage:@"分享失败" title:@""];
+    }
+}
+
+- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
+{
+    
+    if ([request.url hasSuffix:@"statuses/upload.json"])
+    {
+        NSLog(@"******%@",[result description]);
+        [self hideActivity];
+        [self popupHappyMessage:@"分享成功" title:@""];
+    }
 }
 
 #pragma mark -
@@ -339,10 +545,56 @@
 {
     NSLog(@"***Load objects count: %d", [objects count]);
     [self hideActivity];
-    self.articleDetail = [objects objectAtIndex:0];
-    [self loadWebViewWithHtmlString:self.articleDetail.content];
-    [self.webview sizeToFit];
+
+    NSObject *object = [objects objectAtIndex:0];
+
+    if ([object isMemberOfClass:[ArticleDetail class]])
+    {
         
+        ArticleDetail *article  = [objects objectAtIndex:0];
+        [self setArticleDetail:article];
+        [self loadWebViewWithHtmlString:self.articleDetail.content];
+        [self.webview sizeToFit];
+        [self.webview setFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height + 50)];
+
+        
+    }
+    
+    
+    if ([object isMemberOfClass:[Result class]])
+    {
+        
+      //  10001 参数错误 缺少uid用户id或者缺少文章id
+      //  10002 用户已经赞过
+      //  0 提交成功
+        
+        
+        enum ErrorCode
+        {
+            ERROR_SUCCESS =0,
+            LACK_OF_PARAMATERS =10001,
+            REPEATED_POST =10002
+        };
+        
+        Result *result = [objects objectAtIndex:0];
+        NSInteger errorCode =  [[result errorCode] integerValue];
+        
+        
+        
+        if (errorCode ==ERROR_SUCCESS)
+        {
+          [self popupHappyMessage:@"赞了该这篇文章" title:nil];
+            
+            [self.articleDetail setLike:@"1"];
+        }
+        if (errorCode ==LACK_OF_PARAMATERS) {
+            [self popupHappyMessage:@"未知错误" title:nil];
+        }
+        if (errorCode ==REPEATED_POST) {
+            [self popupUnhappyMessage:@"已经赞了该文章,不可以贪心哦！" title:nil];
+        }
+}
+    
     [self updateUserInterface];
 }
 

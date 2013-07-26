@@ -271,7 +271,7 @@ typedef enum CONTENT_TYPE {
 -(void)addButtonScrollView{
     ////Configure The ButtonScrollView
     
-    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最新文章",@"最热文章",@"最新视频",@"最热视频", nil];
+    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"锻炼方法",@"基础知识",@"锻炼视频", nil];
     
     
     self.segmentedController=[[SDSegmentedControl alloc]initWithItems:buttonTitleArray];
@@ -362,7 +362,7 @@ typedef enum CONTENT_TYPE {
     
     if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==-1) {
         
-        category = @"home";
+        category = @"train";
         listtype = @"2";
         type = @"new";
         cateid = @"1";
@@ -371,7 +371,7 @@ typedef enum CONTENT_TYPE {
     }
     if (self.segmentedController.selectedSegmentIndex ==1) {
         
-        category = @"home";
+        category = @"train";
         listtype = @"2";
         type = @"hot";
         cateid = @"1";
@@ -380,7 +380,7 @@ typedef enum CONTENT_TYPE {
     }
     if (self.segmentedController.selectedSegmentIndex ==2) {
         
-        category = @"home";
+        category = @"train";
         listtype = @"3";
         type = @"new";
         cateid = @"0";
@@ -388,7 +388,7 @@ typedef enum CONTENT_TYPE {
     }
     if (self.segmentedController.selectedSegmentIndex ==3) {
         
-        category = @"home";
+        category = @"train";
         listtype = @"3";
         type = @"hot";
         cateid = @"0";
@@ -531,14 +531,10 @@ typedef enum CONTENT_TYPE {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    
-    WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
-    
-    controller.article = [self.dataList objectAtIndex:indexPath.row];
-    self.navigationController.navigationBarHidden =YES;
-    [self.navigationController pushViewController:controller animated:YES];
+    WorkoutDetailViewController *workOutVc = [[WorkoutDetailViewController alloc]initWithNibName:@"WorkoutDetailViewController" bundle:nil];
+    workOutVc.article = [self.dataList objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:workOutVc animated:YES];
+    [workOutVc release];
 }
 
 #pragma mark -

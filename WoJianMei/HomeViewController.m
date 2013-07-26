@@ -532,13 +532,13 @@ typedef enum CONTENT_TYPE {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        
+    WorkoutDetailViewController *workOutVc = [[WorkoutDetailViewController alloc]initWithNibName:@"WorkoutDetailViewController" bundle:nil];
+    workOutVc.article = [self.dataList objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:workOutVc animated:YES];
+    [workOutVc release];
     
-    WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
-    
-    controller.article = [self.dataList objectAtIndex:indexPath.row];
-    self.navigationController.navigationBarHidden =YES;
-    [self.navigationController pushViewController:controller animated:YES];
+
 }
 
 #pragma mark -
