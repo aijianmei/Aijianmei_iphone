@@ -6,9 +6,6 @@
 //  Created by Tom Callon  on 6/26/13.
 //
 //
-
-
-
 #import "HomeViewController.h"
 #import "ArticleCell.h"
 #import "ArticleInfo.h"
@@ -205,7 +202,6 @@ typedef enum CONTENT_TYPE {
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
     
-
     //初始化TableView Header
     [self initTableHeaderView];
     ///添加滑动图片
@@ -358,8 +354,6 @@ typedef enum CONTENT_TYPE {
         uid = userUid;
     }
 
-    
-    
     if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==-1) {
         
         category = @"home";
@@ -448,7 +442,6 @@ typedef enum CONTENT_TYPE {
         uid = userUid;
     }
     
-    
     if (self.segmentedController.selectedSegmentIndex ==0) {
         
         category = @"home";
@@ -482,7 +475,6 @@ typedef enum CONTENT_TYPE {
         cateid = @"";
 
     }
-    
     
     [[ArticleService sharedService] findArticleWithAucode:aucode
                                                     auact:auact
@@ -531,14 +523,10 @@ typedef enum CONTENT_TYPE {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-        
     WorkoutDetailViewController *workOutVc = [[WorkoutDetailViewController alloc]initWithNibName:@"WorkoutDetailViewController" bundle:nil];
     workOutVc.article = [self.dataList objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:workOutVc animated:YES];
     [workOutVc release];
-    
-
 }
 
 #pragma mark -

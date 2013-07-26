@@ -55,11 +55,36 @@ enum SinaResultErrorCode
     return self;
 }
 
+
+-(void)tap{
+
+    PPDebug(@"Tap the view");
+    if ([_passwordField isEditing])
+    {
+        [_passwordField resignFirstResponder];
+    }
+    
+    if ([_usernameField isEditing])
+    {
+        [_usernameField resignFirstResponder];
+    }
+
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self setNavigationRightButton:@"取消" imageName:@"top_bar_commonButton.png" action:@selector(clickCancleButton:)];
+    
+    //轻触手势（单击，双击）
+    UITapGestureRecognizer *tapCgr=nil;
+    tapCgr=[[UITapGestureRecognizer alloc]initWithTarget:self
+                                                  action:@selector(tap)];
+    tapCgr.numberOfTapsRequired=1;
+    [self.view addGestureRecognizer:tapCgr];
+    [tapCgr release];
+    
     
     
     [self.sinaButton setTag:10];
@@ -94,7 +119,17 @@ enum SinaResultErrorCode
 //实现closeDoneEdit点击done关闭键盘
 - (IBAction)closeDoneEdit:(id)sender
 {
+    
+    
+    if ([_usernameField isEditing]) {
+        [_passwordField becomeFirstResponder];
+        return;
+    }
+    
+    
     [sender resignFirstResponder];
+
+    self.userType = @"local";
 
     //开始登陆
     if ([self verifyField] == NO){
@@ -110,12 +145,7 @@ enum SinaResultErrorCode
     
     if ([self.userType isEqualToString:@"local"]) {
     }
-    
-    
 
-    self.userType = @"local";
-    
-    
     [[UserService defaultService] loginUserWithEmail:_usernameField.text
                                             password:_passwordField.text
                                             usertype:self.userType
@@ -361,8 +391,8 @@ enum SinaResultErrorCode
         if (WRONG_NAME_PASSWORD == errocde)
         {
             [UIUtils alert:@"用户名或密码 错误"];
-            [_usernameField becomeFirstResponder];
-            [_passwordField becomeFirstResponder];
+//            [_usernameField becomeFirstResponder];
+//            [_passwordField becomeFirstResponder];
             return;
         }
         
