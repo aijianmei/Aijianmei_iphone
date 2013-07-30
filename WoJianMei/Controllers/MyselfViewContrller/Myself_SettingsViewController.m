@@ -35,14 +35,23 @@
 - (void)selectPhoto;
 - (void)takePhoto;
 
-@property (nonatomic, retain) UISwitch *airplaneModeSwitch;
 @end
 
 
 @implementation Myself_SettingsViewController
-@synthesize airplaneModeSwitch = _airplaneModeSwitch;
 @synthesize avatarButton =_avatarButton;
 @synthesize user= _user;
+@synthesize avtarImage =_avtarImage;
+
+
+
+-(void)dealloc{
+
+    [_avtarImage release];
+    [_user release];
+    [_avatarButton release];
+    [super dealloc];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -82,8 +91,15 @@
 
 -(void)save{
     
+    
+    
      didSave =YES;
-    [[UserService defaultService] postObject:nil withImage:nil delegate:self];
+    
+    self.avtarImage = [self loadImage:nil ofType:nil inDirectory:self.user.profileImageUrl];
+    [[UserService defaultService] postObject:nil withImage:self.avtarImage delegate:self];
+    
+    
+    
 }
 
 #pragma Image Picker Related
@@ -95,25 +111,34 @@
         
         if (isChoosingAvtarImage)
         {
-//           self.user.avatarImage = image;
+        NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *path = [paths objectAtIndex:0];
+        NSString *tmpPathToFile = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/avtar.png", path]];
+            
+            if([imageData writeToFile:tmpPathToFile atomically:YES]){
+                //Write was successful.
+                PPDebug(@"The path of the ProfileImageUrl :%@",tmpPathToFile);
+                [self.user setProfileImageUrl:tmpPathToFile];
+                
+                self.avtarImage = image;
+            }
+            
         }
-        if (isChoosingAvtarBackground)
-        {
-//           self.user.avatarBackGroundImage = image;
-        }
-        
-      [[UserService defaultService] setUser:_user];
- 
     }
     
-    [self.navigationController dismissModalViewControllerAnimated:YES];
     
+    User *user =[[UserService defaultService] user];
+    [[UserService defaultService] setUser:user];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+    [self loadDatas];
     [dataTableView reloadData];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)selectPhoto
@@ -125,7 +150,7 @@
         picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
         picker.allowsEditing = YES;
         picker.delegate = self;
-        [self.navigationController presentModalViewController:picker animated:YES];
+        [self.navigationController presentViewController:picker animated:YES completion:nil];
         [picker release];
         
     }
@@ -140,10 +165,10 @@
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         picker.allowsEditing = YES;
         picker.delegate = self; 
-        [self.navigationController presentModalViewController:picker animated:YES];
+        [self.navigationController presentViewController:picker animated:YES completion:nil];
         [picker release];
     }
-    
+
 }
 
 
@@ -258,7 +283,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 4;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -266,15 +291,15 @@
     // Return the number of rows in the section.
     switch (section) {
         case 0:
-            return 4;
+            return 3;
             break;
+//        case 1:
+//            return 1;
+//            break;
         case 1:
-            return 1;
-            break;
-        case 2:
             return 5;
             break;
-        case 3:
+        case 2:
             return 1;
             break;
             
@@ -326,28 +351,39 @@
     switch (indexPath.section) {
         case 0:
         {
-            NSArray *array = [NSArray arrayWithObjects:@"更换头像",@"更换背景",@"更改用户名",@"更改个性签名",nil];
+            NSArray *array = [NSArray arrayWithObjects:@"更换头像",
+//                              @"更换背景",
+                              @"更改用户名",@"更改个性签名",nil];
             [cell.textLabel setText:[array objectAtIndex:indexPath.row]];
             
             ////设置头像
             if (indexPath.row ==0) {
                 
+                
                 [cell.detailImageView setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
+
+                 UIImage *image = [self loadImage:@"avtar" ofType:@"png" inDirectory:self.user.profileImageUrl];
+                if (image) {
+                    [cell.detailImageView setImage:image];
+                }
+
+                
+                
                 [cell.detailImageView setFrame:CGRectMake(200, 5.0f, 45.0f,42.0f)];
 
             }
             ///设置背景
-            if (indexPath.row ==1) {
-                                
-                
-                [cell.detailImageView setImageWithURL:[NSURL URLWithString:self.user.avatarBackGroundImage] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
-               
-                [cell.detailImageView setFrame:CGRectMake(150, 2, 120, 50)];
-                
-            }
+//            if (indexPath.row ==1) {
+//                                
+//                
+//                [cell.detailImageView setImageWithURL:[NSURL URLWithString:self.user.avatarBackGroundImage] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
+//               
+//                [cell.detailImageView setFrame:CGRectMake(150, 2, 120, 50)];
+//                
+//            }
             
             //更改用户名
-            if (indexPath.row ==2) {
+            if (indexPath.row ==1) {
                 if (!self.user.name) {
                     [cell.detailLabelView  setText:@"设置用户名"];
                 }
@@ -356,7 +392,7 @@
 
             }
             //更改个性签名
-            if (indexPath.row ==3) {
+            if (indexPath.row ==2) {
                 
                 if (!self.user.description) {
                     [cell.detailLabelView  setText:@"设置个性签名"];
@@ -375,18 +411,18 @@
 
     }
         break;
+//        case 1:
+//        {
+//            [cell.textLabel setText:@"标签"];
+//            [cell.detailLabelView setText:@"修改标签"];
+//             cell.accessoryView = accessoryViewButton;
+//            [cell.textField setHidden:YES];
+//            [cell.lessButton setHidden:YES];
+//            [cell.moreButton setHidden:YES];
+//
+//        }
+//            break;
         case 1:
-        {
-            [cell.textLabel setText:@"标签"];
-            [cell.detailLabelView setText:@"修改标签"];
-             cell.accessoryView = accessoryViewButton;
-            [cell.textField setHidden:YES];
-            [cell.lessButton setHidden:YES];
-            [cell.moreButton setHidden:YES];
-
-        }
-            break;
-        case 2:
         {
             [cell.textLabel setText:[self.dataList objectAtIndex:indexPath.row]];
             
@@ -459,7 +495,7 @@
 
         }
             break;
-        case 3:
+        case 2:
         {
             [cell.textLabel setText:@"城市"];
              NSString *userLocation = [NSString stringWithFormat:@"%@%@",self.user.province,self.user.city];
@@ -479,6 +515,18 @@
     [cell.textLabel setTextColor:[UIColor grayColor]];
 
     return cell;
+}
+
+
+//读取本地保存的图片
+-(UIImage *) loadImage:(NSString *)fileName ofType:(NSString *)extension inDirectory:(NSString *)directoryPath {
+    
+//    UIImage * result = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@.%@", directoryPath, fileName, extension]];
+    
+    UIImage * result = [UIImage imageWithContentsOfFile: directoryPath];
+
+    
+    return result;
 }
 
 
@@ -526,9 +574,9 @@
             [self clickChangeAvatarButton];
             }
             //Change avatar background
-            else if(indexPath.row ==1){
-            [self clickChangeAvatarBackgroundButton];
-            }
+//            else if(indexPath.row ==1){
+//            [self clickChangeAvatarBackgroundButton];
+//            }
             //Change name
             else if(indexPath.row ==2){
             ChangeNameViewController *vc = [[ChangeNameViewController alloc]initWithNibName:@"ChangeNameViewController" bundle:nil];
@@ -545,15 +593,15 @@
         
         }
             break;
+//        case 1:
+//        {
+//            //change Label
+//            ChangeLabelsViewController *vc = [[ChangeLabelsViewController alloc]initWithNibName:@"ChangeLabelsViewController" bundle:nil];
+//            [self.navigationController pushViewController:vc animated:YES];
+//            [vc release];
+//        }
+//            break;
         case 1:
-        {
-            //change Label
-            ChangeLabelsViewController *vc = [[ChangeLabelsViewController alloc]initWithNibName:@"ChangeLabelsViewController" bundle:nil];
-            [self.navigationController pushViewController:vc animated:YES];
-            [vc release];
-        }
-            break;
-        case 2:
         {
             //Change gender
             if (indexPath.row==0) {
@@ -576,7 +624,7 @@
             break;
          //Change area and city
         }
-        case 3:
+        case 2:
         {
             ProvinceViewController *vc = [[ProvinceViewController alloc]initWithNibName:@"ProvinceViewController" bundle:nil];
             [self.navigationController pushViewController:vc animated:YES];

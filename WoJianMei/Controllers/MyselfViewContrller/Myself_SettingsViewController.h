@@ -20,6 +20,8 @@
     UIButton *_avatarButton;
     
  
+    UIImage *_avtarImage;
+    
     User *_user;
     
     BOOL didSave;
@@ -32,6 +34,7 @@
 }
 @property (nonatomic ,retain)  UIButton *avatarButton;
 @property (nonatomic,retain)   User *user;
+@property (nonatomic,retain) UIImage *avtarImage;
 
 -(void)didClickBackButton:(UIButton *)button;
 

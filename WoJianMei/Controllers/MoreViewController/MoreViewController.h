@@ -33,6 +33,8 @@
     NSArray *_listData;
     int whichAcctionSheet;
     
+    SinaWeiboManager *_sinaweiboManager;
+
     
     AppDelegate *_appDelegate;
 }

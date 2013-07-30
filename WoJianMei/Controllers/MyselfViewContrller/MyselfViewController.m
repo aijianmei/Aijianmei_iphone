@@ -257,7 +257,6 @@
     }
     
     UIImage *normalImage = [UIImage imageNamed:@"AccessoryView.png"];
-    UIImage *mySelectedImage = [UIImage imageNamed:@"144x144.png"];
     UIButton *accessoryViewButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
     accessoryViewButton.frame = CGRectMake(0.0f, 0.0f, 70.0f,32.0f);
@@ -276,7 +275,6 @@
             
             /////accessoryViewButton
             [accessoryViewButton setImage:normalImage forState:UIControlStateNormal];
-            [accessoryViewButton setImage:mySelectedImage forState:UIControlStateHighlighted];
             ////accessoryBGview 背景颜色
             UIView *accessoryBGview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
             [accessoryBGview setBackgroundColor:[UIColor clearColor]];

@@ -29,6 +29,10 @@
 
 #define TIPSLABEL_TAG 10086
 
+#define kAppKey @"3622140445"
+#define kAppSecret @"f94d063d06365972215c62acaadf95c3"
+#define KAppRedirectURI @"http://aijianmei.com"
+
 
 
 enum actionsheetNumber{
@@ -568,21 +572,33 @@ enum TapOnItem {
 -(void)clickSinaShareButton
 {
     
-    NSString *bodyStringBegin = @"我正在使用 @爱健美网 手机客户端，学习如何专业的运动、健康资信，很方便很好用，下载地址是";
-    NSString *bodyStringWebsite = @"http://www.aijianmei.com";
-    NSString *bodyString = [NSString stringWithFormat:@"%@%@", bodyStringBegin, bodyStringWebsite];
-
-    NSString *status = bodyString;
-    UIImage *pic =[UIImage imageNamed:@"Default.png"];
-    
-    NSMutableDictionary * params =[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   status, @"status",pic,@"pic",nil];
+    _sinaweiboManager = [SinaWeiboManager sharedManager];
+    [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
     
     
-    [[SinaWeiboManager sharedManager].sinaweibo requestWithURL:@"statuses/upload.json"
-                                                        params:params
-                                                    httpMethod:@"POST"
-                                                      delegate:self];
+    if([_sinaweiboManager.sinaweibo isAuthValid]){
+        
+        NSString *bodyStringBegin = @"我正在使用 @爱健美网 iphone手机客户端，学习专业的运动、健身、健康资信，里边的健身运动小知识，和健身计划很适合要增肌、减肥的用户哦！下载地址是";
+        NSString *bodyStringWebsite = @"http://www.aijianmei.com";
+        NSString *bodyString = [NSString stringWithFormat:@"%@%@", bodyStringBegin, bodyStringWebsite];
+        
+        NSString *status = bodyString;
+        UIImage *pic =[UIImage imageNamed:@"Default.png"];
+        
+        NSMutableDictionary * params =[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                       status, @"status",pic,@"pic",nil];
+        
+        
+        [[SinaWeiboManager sharedManager].sinaweibo requestWithURL:@"statuses/upload.json"
+                                                            params:params
+                                                        httpMethod:@"POST"
+                                                          delegate:self];
+    
+    }if(![_sinaweiboManager.sinaweibo isAuthValid])
+    {
+        [_sinaweiboManager.sinaweibo logIn];
+        
+    }
     
 }
 
@@ -715,7 +731,7 @@ enum TapOnItem {
     
     if (whichAcctionSheet == RECOMMENDATION )
     {
-        NSString *bodyStringBegin = @"朋友，我正在使用爱健美客户端，学习如何健身，分享，很方便很好用，下载地址是";
+        NSString *bodyStringBegin = @"我正在使用 @爱健美网 iphone手机客户端，学习专业的运动、健身、健康资信，里边的健身运动小知识，和健身计划很适合要增肌、减肥的用户哦！下载地址是";
         NSString *bodyStringWebsite = @"http://www.aijianmei.com";
         
         NSString *bodyString = [NSString stringWithFormat:@"%@%@", bodyStringBegin, bodyStringWebsite];
@@ -761,7 +777,7 @@ enum TapOnItem {
                 [self sendEmailTo:nil
                      ccRecipients:nil
                     bccRecipients:nil
-                          subject:@"向你推荐爱健美的客户端"
+                          subject:@"向你推荐爱健美iphone客户端"
                              body:bodyString
                            isHTML:NO
                          delegate:self];
@@ -909,6 +925,12 @@ enum TapOnItem {
         [self hideActivity];
         [self popupHappyMessage:@"分享失败" title:@""];
     }
+    
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        NSLog(@"******%@",[error description]);
+    }
+
 }
 
 - (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
@@ -920,6 +942,18 @@ enum TapOnItem {
         [self hideActivity];
         [self popupHappyMessage:@"分享成功" title:@""];
     }
+    
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        [[UserService defaultService] storeSinaUserInfo:result];
+        
+        NSDictionary *userInfo = result;
+        NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);
+        
+        
+        [self  clickSinaShareButton];
+    }
+
 }
 
 

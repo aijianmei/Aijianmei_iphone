@@ -590,55 +590,68 @@ static UserService* _defaultUserService = nil;
     RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[User class]];
     [userMapping mapKeyPathsToAttributes:
      @"uid", @"uid",
+     @"name",@"name",
+     @"description",@"description",
+     @"gender",@"gender",
+     @"sinaUserId",@"sinaUserId",
+     @"email",@"email",
+     @"age",@"age",
+     @"height",@"height",
+     @"weight",@"weight",
+     @"BMIValue",@"BMIValue",
+     @"province",@"province",
+     @"city",@"city",
      @"avatarimage", @"profileImageUrl",
-     @"backgroundimage",@"avatarBackGroundImage",
-     nil];    
+//     @"backgroundimage",@"avatarBackGroundImage",
+     nil];
     [objectManager.mappingProvider addObjectMapping:userMapping];
     [objectManager.mappingProvider setMapping:userMapping forKeyPath:@""];
     
     //The post
    User *user =[[UserService defaultService] user];
     
+//    UIImage *image1 = [UIImage imageNamed:@"touxiang_40x40.png"];
+//    UIImage *image2 = [UIImage imageNamed:@"table_header_bg.png"];
+    NSData *imageData1 = UIImagePNGRepresentation(image);
+//    NSData *imageData2 = UIImagePNGRepresentation(image2);
+    
+    
+    
+    RKParams* params = [RKParams params];
+    [params setValue:user.uid forParam:@"uid"];
+    [params setValue:user.name forParam:@"name"];
+    [params setValue:user.description forParam:@"description"];
+    [params setValue:user.gender forParam:@"gender"];
+    [params setValue:user.sinaUserId forParam:@"sinaUserId"];
+    [params setValue:user.email forParam:@"email"];
+    [params setValue:user.age forParam:@"age"];
+    [params setValue:user.weight forParam:@"weight"];
+    [params setValue:user.BMIValue forParam:@"BMIValue"];
+    [params setValue:user.province forParam:@"province"];
+    [params setValue:user.city forParam:@"city"];
+    [params setValue:user.age forParam:@"age"];
+    
+    
+    
+    [params setData:imageData1 MIMEType:@"image/png" forParam:@"avatarimage"];
+//    [params setData:imageData2 MIMEType:@"image/png" forParam:@"backgroundimage"];
+    
     
 
-    
-    
-    
-    UIImage *image1 = [UIImage imageNamed:@"touxiang_40x40.png"];
-    UIImage *image2 = [UIImage imageNamed:@"table_header_bg.png"];
-    NSData *imageData1 = UIImagePNGRepresentation(image1);
-    NSData *imageData2 = UIImagePNGRepresentation(image2);
-    
-    
-    
     [objectManager postObject:user usingBlock:^(RKObjectLoader *loader)
      {
-         RKParams* params = [RKParams params];
-         [params setValue:user.uid forParam:@"uid"];
-         
-         
-         [params setData:imageData1 MIMEType:@"image/png" forParam:@"avatarimage"];
-         [params setData:imageData2 MIMEType:@"image/png" forParam:@"backgroundimage"];
-         
-         loader.params = params;
-         
-         
-         loader.targetObject = nil;
          loader.delegate = delegate;
-
+         loader.params = params;
+         loader.targetObject = nil;
+         loader.objectMapping = userMapping;
+         loader.method = RKRequestMethodPOST;
+         
          loader.onDidLoadResponse = ^(RKResponse *response) {
              NSLog(@"Response did arrive");
              NSLog(@"%@",response.bodyAsString);
-             
          };
-
      }];
 }
-
-
-
-
-
 
 
 - (BOOL)hasBindAccount
