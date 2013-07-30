@@ -25,6 +25,10 @@
 
 #define kAppId			@"516243132"
 
+#define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
+
+#define TIPSLABEL_TAG 10086
+
 
 
 enum actionsheetNumber{
@@ -152,26 +156,14 @@ enum TapOnItem {
     [array release];
 }
 
--(void)clickSettingsButton:(id)sender{
-   
-}
-
-
 -(AppDelegate *)appDelegate{
-    
-
     AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication];
 
     return appDelegate;
-
-//    - (TencentOAuthManager *)tencentOAuthManager
-//    {
-//        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//        [appDelegate.tencentOAuthManager setDelegate:self];
-//        return appDelegate.tencentOAuthManager;
-//    }
     
 }
+
+
 
 
 
@@ -518,33 +510,23 @@ enum TapOnItem {
     switch (TapOnItem) {
         case SINA_WEIBO:
         {
-            PPDebug(@"分享到新浪微博");
-            NSString *status = @"TESTING";
-            UIImage *pic =[UIImage imageNamed:@"Default-568h@2x.png"];
-            
-            
-            NSMutableDictionary * params =[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                           status, @"status",pic,@"pic",nil];
-            
-            
-            [[SinaWeiboManager sharedManager].sinaweibo requestWithURL:@"statuses/upload.json"
-                                                                params:params
-                                                            httpMethod:@"POST"
-                                                              delegate:self];
-            
-
+    
+            [self clickSinaShareButton];
             [self showActivityWithText:@"正在分享"];
 
         }
             break;
         case FREIND_CIRCLE:
         {
-            
+            [self onSelectTimelineScene];
+            [self sendAppContent];
         }
             break;
         case WECHAT:
         {
-            
+            [self onSelectSessionScene];
+            [self sendAppContent];
+
         }
             break;
         case EMAIL:
@@ -581,6 +563,27 @@ enum TapOnItem {
         default:
             break;
     }
+}
+
+-(void)clickSinaShareButton
+{
+    
+    NSString *bodyStringBegin = @"我正在使用 @爱健美网 手机客户端，学习如何专业的运动、健康资信，很方便很好用，下载地址是";
+    NSString *bodyStringWebsite = @"http://www.aijianmei.com";
+    NSString *bodyString = [NSString stringWithFormat:@"%@%@", bodyStringBegin, bodyStringWebsite];
+
+    NSString *status = bodyString;
+    UIImage *pic =[UIImage imageNamed:@"Default.png"];
+    
+    NSMutableDictionary * params =[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   status, @"status",pic,@"pic",nil];
+    
+    
+    [[SinaWeiboManager sharedManager].sinaweibo requestWithURL:@"statuses/upload.json"
+                                                        params:params
+                                                    httpMethod:@"POST"
+                                                      delegate:self];
+    
 }
 
 - (void)shareToYourFriends
@@ -673,7 +676,6 @@ enum TapOnItem {
             break;
         case 1:
         {
-            PPDebug(@"1");
             
             NSString *userId = [[[UserService defaultService] user] uid];
             NSString *uid  =nil;
@@ -682,11 +684,18 @@ enum TapOnItem {
             {
             uid = [[[NSString  alloc]initWithString:userId] autorelease];
                 [uid retain];
+            
+            [[UserService defaultService] deleteUserByUid:uid];
+                
+                [dataTableView reloadData];
+
+            }else {
+                
+                PPDebug(@"******User does not exit********");
+                
             }
-             
-            if ([uid integerValue]) {
-                [[UserService defaultService] deleteUserByUid:uid];
-            }
+            
+            
         }
             break;
         default:
@@ -735,12 +744,14 @@ enum TapOnItem {
                 break;
             case SEND_WECHAT_SOCIAL:
             {
-                
+                [self onSelectTimelineScene];
+                [self sendAppContent ];
             }
             case SEND_WECHAT_FRIENDS:
             {
                 ///调用微信接口
-                [self sendAppContent];
+                [self  onSelectSessionScene];
+                [self  sendAppContent];
                 
             }
                 break;
@@ -776,10 +787,37 @@ enum TapOnItem {
     
 }
 
+- (void)doOAuth
+{
+    if (_delegate)
+    {
+        [_delegate doAuth];
+    }
+}
+
+- (void)onSelectSessionScene{
+    [_delegate changeScene:WXSceneSession];
+    
+    UILabel *tips = (UILabel *)[self.view viewWithTag:TIPSLABEL_TAG];
+    tips.text = @"分享场景:会话";
+}
+
+- (void)onSelectTimelineScene{
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(changeScene:)]) {
+        
+        [_delegate changeScene:WXSceneTimeline];
+        
+        UILabel *tips = (UILabel *)[self.view viewWithTag:TIPSLABEL_TAG];
+        tips.text = @"分享场景:朋友圈";
+    }
+    
+    
+}
+
 ////Wechat
 - (void)sendAppContent
 {
-    
     if (_delegate  && [_delegate respondsToSelector:@selector(sendAppContent)]
 )
     {
@@ -787,6 +825,20 @@ enum TapOnItem {
 
         [_delegate sendAppContent];
     }
+}
+
+
+-(void)sendNewsContent{
+    
+    if (_delegate  && [_delegate respondsToSelector:@selector(sendNewsContent)]
+        )
+    {
+        PPDebug(@"Share to Wechat！");
+        
+        [_delegate sendNewsContent];
+    }
+
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

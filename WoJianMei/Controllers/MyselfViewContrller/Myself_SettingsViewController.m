@@ -139,7 +139,7 @@
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         picker.allowsEditing = YES;
-        picker.delegate = self;
+        picker.delegate = self; 
         [self.navigationController presentModalViewController:picker animated:YES];
         [picker release];
     }

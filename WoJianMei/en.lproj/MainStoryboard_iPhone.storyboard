@@ -120,11 +120,11 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="确认密码" minimumFontSize="17" background="dlk_1@2x.png" id="7C1-V3-XOI">
-                                <rect key="frame" x="94" y="202" width="210" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请填写用户，如健美王子" minimumFontSize="17" background="dlk_1@2x.png" id="7C1-V3-XOI">
+                                <rect key="frame" x="94" y="69" width="210" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <action selector="closeDoneEdit:" destination="iV3-WQ-fer" eventType="editingDidEndOnExit" id="BlQ-5t-Zfh"/>
                                 </connections>
@@ -169,7 +169,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="v6A-sn-TRB">
-                                <rect key="frame" x="143" y="269" width="113" height="44"/>
+                                <rect key="frame" x="143" y="262" width="112" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="注册" image="wczc_2@2x.png">
@@ -183,32 +183,25 @@
                                     <action selector="didPressLogin:" destination="iV3-WQ-fer" eventType="touchUpInside" id="zs8-ZL-Rse"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请填写用户名" minimumFontSize="17" background="dlk_1@2x.png" id="h0l-gw-uYD">
-                                <rect key="frame" x="94" y="69" width="210" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="确认密码" minimumFontSize="17" background="dlk_1@2x.png" id="h0l-gw-uYD">
+                                <rect key="frame" x="94" y="202" width="210" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="closeDoneEdit:" destination="iV3-WQ-fer" eventType="editingDidEndOnExit" id="ZN8-FA-RR9"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="只需要一分钟完成注册！专业的运动、健康知识等着你哦！" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nbg-LS-ydH">
-                                <rect key="frame" x="40" y="9" width="241" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="cQ8-3E-dfX"/>
                     <connections>
-                        <outlet property="emailTextField" destination="CXv-YD-95L" id="hXG-Yp-MYu"/>
+                        <outlet property="emailTextField" destination="CXv-YD-95L" id="zFC-gS-ll4"/>
                         <outlet property="loginButton" destination="v6A-sn-TRB" id="56J-Yv-il3"/>
-                        <outlet property="passwordTextField" destination="4J6-0T-U8k" id="lSh-Tt-4aI"/>
-                        <outlet property="repeatPasswordTextField" destination="7C1-V3-XOI" id="ScR-CY-UYH"/>
-                        <outlet property="userNameTextField" destination="h0l-gw-uYD" id="sJ8-da-KwQ"/>
+                        <outlet property="passwordTextField" destination="4J6-0T-U8k" id="cuP-vN-uLM"/>
+                        <outlet property="repeatPasswordTextField" destination="h0l-gw-uYD" id="Whf-4B-H7K"/>
+                        <outlet property="userNameTextField" destination="7C1-V3-XOI" id="LJr-jq-ECN"/>
                         <segue destination="SQ4-9u-AZl" kind="push" identifier="finishRegisterSegue" id="iUL-cz-5HG"/>
                     </connections>
                 </viewController>
@@ -1142,120 +1135,28 @@
     </scenes>
     <resources>
         <image name="11.png" width="16" height="16"/>
-        <image name="bj_1.png" width="212" height="674"/>
-        <image name="bj_2.png" width="212" height="674"/>
+        <image name="bj_1.png" width="16" height="16"/>
+        <image name="bj_2.png" width="16" height="16"/>
         <image name="comment.png" width="27" height="26"/>
         <image name="dlk_1@2x.png" width="496" height="72"/>
-        <image name="fgx_1.png" width="640" height="2"/>
-        <image name="fgx_2.png" width="2" height="674"/>
+        <image name="fgx_1.png" width="16" height="16"/>
+        <image name="fgx_2.png" width="16" height="16"/>
         <image name="fl_1.png" width="16" height="16"/>
-        <image name="fl_2.png" width="640" height="56"/>
-        <image name="fl_3.png" width="43" height="26"/>
-        <image name="fz_1.png" width="65" height="98"/>
-        <image name="fz_1s.png" width="65" height="98"/>
-        <image name="fz_2.png" width="65" height="98"/>
-        <image name="fz_2s.png" width="65" height="98"/>
-        <image name="fz_3.png" width="65" height="98"/>
-        <image name="fz_3s.png" width="65" height="98"/>
+        <image name="fl_2.png" width="16" height="16"/>
+        <image name="fl_3.png" width="16" height="16"/>
+        <image name="fz_1.png" width="16" height="16"/>
+        <image name="fz_1s.png" width="16" height="16"/>
+        <image name="fz_2.png" width="16" height="16"/>
+        <image name="fz_2s.png" width="16" height="16"/>
+        <image name="fz_3.png" width="16" height="16"/>
+        <image name="fz_3s.png" width="16" height="16"/>
         <image name="login_BG.png" width="640" height="960"/>
         <image name="loin_LOGO.png" width="640" height="180"/>
-        <image name="rq_1.png" width="640" height="100"/>
+        <image name="rq_1.png" width="16" height="16"/>
         <image name="time.png" width="26" height="26"/>
         <image name="wczc_2@2x.png" width="190" height="80"/>
         <image name="xldl_1@2x.png" width="230" height="80"/>
     </resources>
-    <classes>
-        <class className="AJM_CommonViewController" superclassName="PPViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AJM_CommonViewController.h"/>
-        </class>
-        <class className="ArticleCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ArticleCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="commentLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="imgView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="releasedTimeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ForumViewController" superclassName="AJM_CommonViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ForumViewController.h"/>
-        </class>
-        <class className="HomeViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
-        </class>
-        <class className="LifeStytleViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LifeStytleViewController.h"/>
-        </class>
-        <class className="LoginViewController" superclassName="PPViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="clickQQShareButton:" candidateClass="UIButton"/>
-                <relationship kind="action" name="clickSignupAijianmeiAccount:" candidateClass="UIButton"/>
-                <relationship kind="action" name="clickSinaWeiboButton:" candidateClass="UIButton"/>
-                <relationship kind="action" name="closeDoneEdit:"/>
-                <relationship kind="outlet" name="aijianmeiButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="qqButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="sinaButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="MakeFriendsViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MakeFriendsViewController.h"/>
-        </class>
-        <class className="MoreViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MoreViewController.h"/>
-        </class>
-        <class className="MyselfViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyselfViewController.h"/>
-        </class>
-        <class className="NutriViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NutriViewController.h"/>
-        </class>
-        <class className="PPTableViewController" superclassName="PPViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dataTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="PPViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPViewController.h"/>
-        </class>
-        <class className="REComposeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/REComposeViewController.h"/>
-        </class>
-        <class className="SignUpViewController" superclassName="PPViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SignUpViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="closeDoneEdit:"/>
-                <relationship kind="action" name="didPressLogin:"/>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="repeatPasswordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="userNameTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SupplementViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SupplementViewController.h"/>
-        </class>
-        <class className="WorkOutProcessViewController" superclassName="PPViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkOutProcessViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="WorkoutNoteViewController" superclassName="REComposeViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutNoteViewController.h"/>
-        </class>
-        <class className="WorkoutPlanViewController" superclassName="AJM_CommonViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutPlanViewController.h"/>
-        </class>
-        <class className="WorkoutViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

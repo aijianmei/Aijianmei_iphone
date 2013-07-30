@@ -113,7 +113,7 @@ enum SinaResultErrorCode
 
 -(void)clickCancleButton:(UIButton *)sender{
 
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 
 }
 //实现closeDoneEdit点击done关闭键盘

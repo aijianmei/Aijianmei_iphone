@@ -17,6 +17,10 @@
 #import "REComposeViewController.h"
 #import "CustomURLCache.h"
 
+#define kAppKey @"3622140445"
+#define kAppSecret @"f94d063d06365972215c62acaadf95c3"
+#define KAppRedirectURI @"http://aijianmei.com"
+
 enum TapOnItem {
     
     SINA_WEIBO = 0,
@@ -48,12 +52,12 @@ enum TapOnItem {
     if (self) {
         // Custom initialization
 
-        CustomURLCache *urlCache = [[CustomURLCache alloc] initWithMemoryCapacity:20 * 1024 * 1024
-                                                                     diskCapacity:200 * 1024 * 1024
-                                                                         diskPath:nil
-                                                                        cacheTime:0];
-        [CustomURLCache setSharedURLCache:urlCache];
-        [urlCache release];
+//        CustomURLCache *urlCache = [[CustomURLCache alloc] initWithMemoryCapacity:20 * 1024 * 1024
+//                                                                     diskCapacity:200 * 1024 * 1024
+//                                                                         diskPath:nil
+//                                                                        cacheTime:0];
+//        [CustomURLCache setSharedURLCache:urlCache];
+//        [urlCache release];
     }
     return self;
 }
@@ -129,12 +133,9 @@ enum TapOnItem {
 {
     PPDebug(@"tap on %d",index);
     
-    NSString *bodyStringBegin = @"我正在使用爱健美客户端，学习如何健身，分享，很方便很好用，下载地址是";
+    NSString *bodyStringBegin = @"我正在使用 @爱健美网 iphone手机客户端，学习专业的健身运动、健康资信，很方便很好用，下载地址是";
     NSString *bodyStringWebsite = @"http://www.aijianmei.com";
     NSString *bodyString = [NSString stringWithFormat:@"%@%@", bodyStringBegin, bodyStringWebsite];
-    
-    
-    
     
     int TapOnItem = index;
     
@@ -195,10 +196,7 @@ enum TapOnItem {
 
 
 ////点击喜欢按钮
--(void)clickLikeButton:(id)sender{
-    
-
-    
+-(void)clickLikeButton:(id)sender{    
    ArticleDetail *article =[self articleDetail];
    User *user =  [[UserService defaultService] user];
     
@@ -240,29 +238,29 @@ enum TapOnItem {
     UIFont *font = [UIFont systemFontOfSize:14];
     
     UIView *rightButtonView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 3*(buttonLen+seporator) +30, buttonHigh)];
+//    
+//    
+//    
+//    self.likeButton = [[UIButton alloc] initWithFrame:CGRectMake(leftOffest, 3, 22, 22)];
+//    [_likeButton setImage:[ImageManager GobalArticelLikeButtonBG] forState:UIControlStateNormal];
+//    [_likeButton setTitle:@"喜欢" forState:UIControlStateNormal];
+//    [_likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [_likeButton.titleLabel setFont:font];
+//    [_likeButton addTarget:self action:@selector(clickLikeButton:) forControlEvents:UIControlEventTouchUpInside];
+//    [rightButtonView addSubview:self.likeButton];
+//    
+//    
+//    UIButton * commentBarButton = [[UIButton alloc] initWithFrame:CGRectMake(leftOffest+buttonLen+seporator,3, 22, 22)];
+//    [commentBarButton addTarget:self action:@selector(clickCommentButton:) forControlEvents:UIControlEventTouchUpInside];
+//    [commentBarButton setImage:[ImageManager GobalArticelCommentButtonBG] forState:UIControlStateNormal];
+//    [commentBarButton setTitle:@"评论" forState:UIControlStateNormal];
+//    [commentBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [commentBarButton.titleLabel setFont:font];
+//    [rightButtonView addSubview:commentBarButton];
+//    [commentBarButton release];
+//    
     
-    
-    
-    self.likeButton = [[UIButton alloc] initWithFrame:CGRectMake(leftOffest, 3, 22, 22)];
-    [_likeButton setImage:[ImageManager GobalArticelLikeButtonBG] forState:UIControlStateNormal];
-    [_likeButton setTitle:@"喜欢" forState:UIControlStateNormal];
-    [_likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_likeButton.titleLabel setFont:font];
-    [_likeButton addTarget:self action:@selector(clickLikeButton:) forControlEvents:UIControlEventTouchUpInside];
-    [rightButtonView addSubview:self.likeButton];
-    
-    
-    UIButton * commentBarButton = [[UIButton alloc] initWithFrame:CGRectMake(leftOffest+buttonLen+seporator,3, 22, 22)];
-    [commentBarButton addTarget:self action:@selector(clickCommentButton:) forControlEvents:UIControlEventTouchUpInside];
-    [commentBarButton setImage:[ImageManager GobalArticelCommentButtonBG] forState:UIControlStateNormal];
-    [commentBarButton setTitle:@"评论" forState:UIControlStateNormal];
-    [commentBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [commentBarButton.titleLabel setFont:font];
-    [rightButtonView addSubview:commentBarButton];
-    [commentBarButton release];
-    
-    
-    UIButton *shareBarButton = [[UIButton alloc]initWithFrame:CGRectMake(leftOffest+(buttonLen+seporator)*2, 0, 22, 22)];
+    UIButton *shareBarButton = [[UIButton alloc]initWithFrame:CGRectMake(leftOffest+(buttonLen+seporator)*2 +30, 0, 22, 22)];
     [shareBarButton setImage:[ImageManager GobalArticelShareButtonBG] forState:UIControlStateNormal];
     [shareBarButton setTitle:@"分享" forState:UIControlStateNormal];
     [shareBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -287,6 +285,13 @@ enum TapOnItem {
 - (void)clickBack:(id)sender
 {
     
+    if ([self.webview isLoading]) {
+        [self.webview   stopLoading];
+        PPDebug(@"webView stop loading");
+    }
+    
+    
+    
     [self.navigationController.navigationBar setHidden:NO];
     [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
 
@@ -305,9 +310,16 @@ enum TapOnItem {
     return result;
 }
 
+-(void)tap{
+    
+    [self hideNavigationBar];
+
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     
 
     [self.view  setBounds:CGRectMake(0, 40, 320, 480)];
@@ -317,12 +329,12 @@ enum TapOnItem {
     
     
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height + 50)];
-    [self setWebview:webView];
+    self.webview = webView;
     [webView release];
-    self.webview.delegate = self;
-    self.webview.scrollView.delegate = self;
-    [self.view addSubview:_webview];
     
+    self.webview.delegate = self;
+    [self.view addSubview:_webview];
+        
 
     self.navigationController.navigationBarHidden =NO;
     /////重新定位，设定NavigationBar 的位置
@@ -334,6 +346,15 @@ enum TapOnItem {
 
     
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    
+    [super viewWillAppear:YES];
+    
+    
+}
+
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidAppear:YES];
@@ -404,6 +425,8 @@ enum TapOnItem {
 -(void)shareArticleWithTitle:(NSString*)title image:(UIImage *)image
 
 {
+    
+    
     NSMutableDictionary * params =[NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    title, @"status",image,@"pic",nil];
     [[SinaWeiboManager sharedManager].sinaweibo requestWithURL:@"statuses/upload.json"
@@ -418,43 +441,61 @@ enum TapOnItem {
 - (void)clickSinaShareButton
 {
     
-    REComposeViewController *composeViewController = [[REComposeViewController alloc] init];
-    composeViewController.hasAttachment = YES;
-    composeViewController.attachmentImage = [UIImage imageNamed:@"Default-568h@2x.png"];
+    UIImage *image = [self getImageFromURL:_article.img];
+    postImage = image;
     
-    NSString *bodyStringBegin = @"我正在使用爱健美客户端，学习如何健身，分享，很方便很好用，下载地址是";
-    NSString *bodyStringWebsite = @"http://www.aijianmei.com";
-    NSString *bodyString = [NSString stringWithFormat:@"%@%@", bodyStringBegin, bodyStringWebsite];
-    
-    [composeViewController setText:bodyString];
+    _sinaweiboManager = [SinaWeiboManager sharedManager];
+    [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
     
     
-    
-    UIImageView *titleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"foursquare-logo"]];
-    titleImageView.frame = CGRectMake(0, 0, 110, 30);
-    composeViewController.navigationItem.titleView = titleImageView;
-    
-    // UIApperance setup
-    [composeViewController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg"] forBarMetrics:UIBarMetricsDefault];
-    
-    
-    // Alternative use with REComposeViewControllerCompletionHandler
-    composeViewController.completionHandler = ^(REComposeResult result) {
-        if (result == REComposeResultCancelled) {
-            NSLog(@"Cancelled");
-        }
+    if([_sinaweiboManager.sinaweibo isAuthValid])
+    {
+        REComposeViewController *composeViewController = [[REComposeViewController alloc] init];
+        composeViewController.hasAttachment = YES;
+        composeViewController.attachmentImage =postImage;
         
-        if (result == REComposeResultPosted) {
-            NSLog(@"Text = %@", composeViewController.text);
+        
+        NSString *appendString =@"(分享自  @爱健美网)";
+        NSString *articleTitle =_article.title;
+        NSString *shareUrl = [NSString stringWithFormat:@"   详情点击:%@",_article.shareurl];
+        
+        NSString *postText = [NSString stringWithFormat:@"%@%@%@",articleTitle,appendString,shareUrl];
+        
+        [composeViewController setText:postText];
+        
+        
+        
+        UIImageView *titleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"foursquare-logo"]];
+        titleImageView.frame = CGRectMake(0, 0, 110, 30);
+        composeViewController.navigationItem.titleView = titleImageView;
+        
+        // UIApperance setup
+        [composeViewController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg"] forBarMetrics:UIBarMetricsDefault];
+        
+        
+        // Alternative use with REComposeViewControllerCompletionHandler
+        composeViewController.completionHandler = ^(REComposeResult result) {
+            if (result == REComposeResultCancelled) {
+                NSLog(@"Cancelled");
+            }
             
-        [self shareArticleWithTitle: composeViewController.text image:composeViewController.attachmentImage ];
-            
-        }
-    };
-    
-    [self presentViewController:composeViewController animated:YES completion:nil];
-    
-    [composeViewController release];
+            if (result == REComposeResultPosted) {
+                NSLog(@"Text = %@", composeViewController.text);
+                
+                [self shareArticleWithTitle: composeViewController.text image:composeViewController.attachmentImage ];
+                
+            }
+        };
+        
+        [self presentViewController:composeViewController animated:YES completion:nil];
+        
+        [composeViewController release];
+
+    }if(![_sinaweiboManager.sinaweibo isAuthValid])
+    {
+        [_sinaweiboManager.sinaweibo logIn];
+    }
+
 }
 
 
@@ -497,6 +538,39 @@ enum TapOnItem {
     NSString *html = [htmlString stringByDecodingHTMLEntities];
     [self.webview loadHTMLString:html baseURL:nil];
 }
+#pragma mark -
+#pragma SinaWeiboDelegate methods
+- (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
+    [_sinaweiboManager storeAuthData];
+    //微博登陆后获取用户数据
+    [[UserService defaultService] fetchSinaUserInfo:sinaweibo.userID delegate:self];
+}
+
+- (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
+{
+    NSLog(@"sinaweiboDidLogOut");
+    [_sinaweiboManager removeAuthData];
+}
+
+- (void)sinaweiboLogInDidCancel:(SinaWeibo *)sinaweibo
+{
+    NSLog(@"sinaweiboLogInDidCancel");
+}
+
+- (void)sinaweibo:(SinaWeibo *)sinaweibo logInDidFailWithError:(NSError *)error
+{
+    NSLog(@"sinaweibo logInDidFailWithError %@", error);
+}
+
+- (void)sinaweibo:(SinaWeibo *)sinaweibo accessTokenInvalidOrExpired:(NSError *)error
+{
+    NSLog(@"sinaweiboAccessTokenInvalidOrExpired %@", error);
+    [_sinaweiboManager removeAuthData];
+}
+
 
 #pragma mark -
 #pragma mark - SinaWeiboRequest Delegate
@@ -510,6 +584,12 @@ enum TapOnItem {
         [self hideActivity];
         [self popupHappyMessage:@"分享失败" title:@""];
     }
+    
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        NSLog(@"******%@",[error description]);
+    }
+
 }
 
 - (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
@@ -521,7 +601,20 @@ enum TapOnItem {
         [self hideActivity];
         [self popupHappyMessage:@"分享成功" title:@""];
     }
+    
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        [[UserService defaultService] storeSinaUserInfo:result];
+        
+        NSDictionary *userInfo = result;
+        NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);
+        
+       
+        [self  clickSinaShareButton];
+    }
+
 }
+
 
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
@@ -555,6 +648,8 @@ enum TapOnItem {
         [self setArticleDetail:article];
         [self loadWebViewWithHtmlString:self.articleDetail.content];
         [self.webview sizeToFit];
+        [self.webview scalesPageToFit];
+        [self.webview setUserInteractionEnabled:YES];
         [self.webview setFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height + 50)];
 
         

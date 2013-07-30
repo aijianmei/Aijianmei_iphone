@@ -15,14 +15,19 @@
 #import "AWActionSheet.h"
 #import "SinaWeibo.h"
 #import "REComposeViewController.h"
+#import "SinaWeiboManager.h"
 
 
-@interface WorkoutDetailViewController : PPViewController<RKObjectLoaderDelegate,UIWebViewDelegate,UIScrollViewDelegate,SinaWeiboRequestDelegate,REComposeViewControllerDelegate>
+@interface WorkoutDetailViewController : PPViewController<RKObjectLoaderDelegate,UIWebViewDelegate,SinaWeiboRequestDelegate,REComposeViewControllerDelegate,UIGestureRecognizerDelegate,SinaWeiboDelegate>
 
 {
     UIToolbar *_toolBar;
     UIButton *_likeButton;
     ArticleDetail *_articleDetail;
+    
+    UIImage *postImage;
+    
+    SinaWeiboManager *_sinaweiboManager;
 }
 
 @property(nonatomic, retain) Article *article;
@@ -37,6 +42,7 @@
 - (void)hideNavigationBar;
 - (void)updateUserInterface;
 -(void)shareArticleWithTitle:(NSString*)title image:(UIImage *)image;
+-(void)tap;
 
 
 

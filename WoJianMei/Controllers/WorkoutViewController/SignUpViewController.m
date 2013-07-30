@@ -11,6 +11,7 @@
 #import "UserService.h"
 #import "UserManager.h"
 #import "Result.h"
+#import "StringUtil.h"
 
 
 enum errorCode {
@@ -29,8 +30,13 @@ enum errorCode {
 
 @implementation SignUpViewController
 @synthesize delegate;
-
-
+@synthesize userNameTextField =_userNameTextField;
+@synthesize emailTextField =_emailTextField;
+@synthesize passwordTextField =_passwordTextField;
+@synthesize repeatPasswordTextField =_repeatPasswordTextField;
+@synthesize loginButton =_loginButton;
+@synthesize snsId =_snsId;
+@synthesize userType =_userType;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -42,11 +48,73 @@ enum errorCode {
     return self;
 }
 
+
+
+-(void)tap{
+    
+    PPDebug(@"Tap the view");
+    if ([_userNameTextField isEditing])
+    {
+        [_userNameTextField resignFirstResponder];
+    }
+    
+    if ([_emailTextField isEditing])
+    {
+        [_emailTextField resignFirstResponder];
+    }
+    
+    if ([_repeatPasswordTextField isEditing])
+    {
+        [_repeatPasswordTextField resignFirstResponder];
+    }
+    
+    if ([_passwordTextField isEditing])
+    {
+        [_passwordTextField resignFirstResponder];
+    }
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	keyBoardController=[[UIKeyboardViewController alloc] initWithControllerDelegate:self];
+	[keyBoardController addToolbarToKeyboard];
+}
+
+#pragma - UIKeyboardViewController delegate methods
+
+- (void)alttextFieldDidEndEditing:(UITextField *)textField {
+    NSLog(@"%@", textField.text);
+}
+
+- (void)alttextViewDidEndEditing:(UITextView *)textView {
+    NSLog(@"%@", textView.text);
+}
+-(void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	MCRelease(keyBoardController);
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+        
+        //轻触手势（单击，双击）
+        UITapGestureRecognizer *tapCgr=nil;
+        tapCgr=[[UITapGestureRecognizer alloc]initWithTarget:self
+                                                      action:@selector(tap)];
+        tapCgr.numberOfTapsRequired=1;
+        [self.view addGestureRecognizer:tapCgr];
+        [tapCgr release];
+        
+    
+    
+    
+    
+    
 	// Do any additional setup after loading the view.
-    [self setTitle:@"注册新用户，完善用户资料"];
+    [self setTitle:@"注册新用户"];
     
     if ([self.userType isEqualToString:@"sina"]) {
         NSDictionary *userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
@@ -120,7 +188,7 @@ enum errorCode {
     
     if ([_userNameTextField.text length] == 0){
         [UIUtils alert:@"用户名不能为空"];
-        [_emailTextField becomeFirstResponder];
+        [_userNameTextField becomeFirstResponder];
         return NO;
     }
     

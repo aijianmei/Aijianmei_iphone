@@ -392,7 +392,7 @@
                         _navigationController = [[UINavigationController alloc] initWithRootViewController:moreVC];
                         
                         self.viewDeckController.centerController = _navigationController;
-                        
+                        moreVC.delegate =[self getAppDelegate];
                         self.view.userInteractionEnabled = YES;
                         _tableView.userInteractionEnabled =YES;
                         
@@ -491,6 +491,12 @@
 //    [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     
 }
+
+- (AppDelegate*)getAppDelegate
+{
+    return (AppDelegate*)[UIApplication sharedApplication].delegate;
+}
+
 
 #pragma mark -
 #pragma SinaWeiboDelegate methods

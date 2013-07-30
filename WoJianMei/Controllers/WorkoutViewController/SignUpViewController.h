@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PPViewController.h"
 #import <RestKit/RestKit.h>
+#import "UIKeyboardViewController.h"
+
 
 @protocol SignUpViewControllerDelegate <NSObject>
 
@@ -17,11 +19,13 @@
 @end
 
 
-@interface SignUpViewController : PPViewController<RKObjectLoaderDelegate>
+@interface SignUpViewController : PPViewController<RKObjectLoaderDelegate,UIKeyboardViewControllerDelegate>
 {
         
     BOOL isSignupAijianmeiUser;
     id <SignUpViewControllerDelegate> delegate;
+    UIKeyboardViewController *keyBoardController;
+
 
 }
 

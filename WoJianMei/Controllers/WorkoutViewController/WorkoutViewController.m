@@ -20,7 +20,6 @@
 #import "WorkoutDetailViewController.h"
 #import "IIViewDeckController.h"
 #import "AppDelegate.h"
-#import "FilterViewController.h"
 #import "MyselfViewController.h"
 #import "LoginViewController.h"
 #import "Result.h"

@@ -16,6 +16,10 @@
 - (void) sendTextContent:(NSString*)nsText;
 - (void) sendAppContent;
 - (void) sendImageContent;
+- (void) sendNewsContent ;
+- (void) doAuth;
+- (void) changeScene:(NSInteger)scene;
+
 @end
 
 
@@ -40,6 +44,7 @@
 - (void)initMoreUI;
 - (void)leftButtonClickHandler:(id)sender;
 - (void)rightButtonClickHandler:(id)sender;
+-(void)clickSinaShareButton;
 
 
 @end

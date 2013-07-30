@@ -17,7 +17,6 @@
 #import "DeviceDetection.h"
 #import "ImageManager.h"
 #import "UINavigationBarExt.h"
-//#import  "MobClick.h"
 #import "AJMLeftSideViewController.h"
 
 
@@ -61,10 +60,123 @@
     [super dealloc];
 }
 
-+ (AppDelegate*)getAppDelegate
+-(AppDelegate*)getAppDelegate
 {
     return (AppDelegate*)[UIApplication sharedApplication].delegate;
 }
+
+
+
+- (void)sendNewsContent
+{
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.title = @"欢迎下载爱健美客户端！";
+    message.description = @"爱健美iphone 客户端是一个专业的健身运动知识汇总手机客户端！";
+    [message setThumbImage:[UIImage imageNamed:@"144x144.png"]];
+    
+    WXWebpageObject *ext = [WXWebpageObject object];
+    ext.webpageUrl = @"http://view.news.qq.com/zt2012/mdl/index.htm";
+    
+    message.mediaObject = ext;
+    
+    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+    req.bText = NO;
+    req.message = message;
+    req.scene = _scene;
+    
+    [WXApi sendReq:req];
+}
+
+-(void) RespNewsContent
+{
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.title = @"欢迎下载爱健美客户端！";
+    message.description = @"爱健美iphone 客户端是一个专业的健身运动知识汇总手机客户端！";
+    [message setThumbImage:[UIImage imageNamed:@"144x144.png"]];
+    
+    WXWebpageObject *ext = [WXWebpageObject object];
+    ext.webpageUrl = @"http://view.news.qq.com/zt2012/mdl/index.htm";
+    
+    message.mediaObject = ext;
+    
+    GetMessageFromWXResp* resp = [[[GetMessageFromWXResp alloc] init] autorelease];
+    resp.message = message;
+    resp.bText = NO;
+    
+    [WXApi sendResp:resp];
+}
+
+
+#define BUFFER_SIZE 1024 * 100
+- (void) sendAppContent
+{
+    // 发送内容给微信
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.title = @"欢迎下载爱健美客户端！";
+    message.description = @"爱健美iphone 客户端是一个专业的健身运动知识汇总手机客户端！";
+    //发送的图片不能太大，否则，不可以通过！
+    [message setThumbImage:[UIImage imageNamed:@"144x144.png"]];
+    
+    WXAppExtendObject *ext = [WXAppExtendObject object];
+    ext.extInfo = @"<xml>test</xml>";
+    ext.url = @"http://www.aijianmei.com";
+    
+    Byte* pBuffer = (Byte *)malloc(BUFFER_SIZE);
+    memset(pBuffer, 0, BUFFER_SIZE);
+    NSData* data = [NSData dataWithBytes:pBuffer length:BUFFER_SIZE];
+    free(pBuffer);
+    
+    ext.fileData = data;
+    
+    message.mediaObject = ext;
+    
+    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+    req.bText = NO;
+    req.message = message;
+    req.scene = _scene;
+    
+    [WXApi sendReq:req];
+}
+
+-(void) RespAppContent
+{
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.title = @"欢迎下载爱健美客户端！";
+    message.description = @"你看不懂啊， 看不懂啊， 看不懂！";
+    [message setThumbImage:[UIImage imageNamed:@"144x144.png"]];
+    
+    WXAppExtendObject *ext = [WXAppExtendObject object];
+    ext.extInfo = @"<xml>test</xml>";
+    
+    Byte* pBuffer = (Byte *)malloc(BUFFER_SIZE);
+    memset(pBuffer, 0, BUFFER_SIZE);
+    NSData* data = [NSData dataWithBytes:pBuffer length:BUFFER_SIZE];
+    free(pBuffer);
+    
+    ext.fileData = data;
+    
+    message.mediaObject = ext;
+    
+    GetMessageFromWXResp* resp = [[[GetMessageFromWXResp alloc] init] autorelease];
+    resp.message = message;
+    resp.bText = NO;
+    
+    [WXApi sendResp:resp];
+}
+
+- (void)doAuth
+{
+    SendAuthReq* req = [[[SendAuthReq alloc] init] autorelease];
+    req.scope = @"post_timeline";
+    req.state = @"xxx";
+    
+    [WXApi sendReq:req];
+}
+
+-(void) changeScene:(NSInteger)scene{
+    _scene = scene;
+}
+
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
