@@ -16,6 +16,7 @@
 #import "Result.h"
 #import "REComposeViewController.h"
 #import "CustomURLCache.h"
+#import "AppDelegate.h"
 
 #define kAppKey @"3622140445"
 #define kAppSecret @"f94d063d06365972215c62acaadf95c3"
@@ -44,6 +45,7 @@ enum TapOnItem {
 @synthesize toolBar =_toolBar;
 @synthesize likeButton =_likeButton;
 @synthesize articleDetail =_articleDetail;
+@synthesize delegate = _delegate;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -58,6 +60,10 @@ enum TapOnItem {
 //                                                                        cacheTime:0];
 //        [CustomURLCache setSharedURLCache:urlCache];
 //        [urlCache release];
+        
+        
+        self.delegate =[AppDelegate getAppDelegate];
+        
     }
     return self;
 }
@@ -148,11 +154,22 @@ enum TapOnItem {
             break;
         case FREIND_CIRCLE:
         {
+            [self onSelectTimelineScene];
+            
+            UIImage *image = [self getImageFromURL:_article.img];
+            postImage = image;
+            
+            [self sendAppContentWithTitle:_article.title description:_article.brief image:postImage  urlLink:_article.shareurl];
             
         }
             break;
         case WECHAT:
         {
+            
+            [self onSelectSessionScene];
+            UIImage *image = [self getImageFromURL:_article.img];
+            postImage = image;
+            [self sendAppContentWithTitle:_article.title description:_article.brief image:postImage urlLink:_article.shareurl];
             
         }
             break;
@@ -193,6 +210,62 @@ enum TapOnItem {
     
 }
 
+- (void)doOAuth
+{
+    if (_delegate)
+    {
+        [_delegate doAuth];
+    }
+}
+
+- (void)onSelectSessionScene{
+    [_delegate changeScene:WXSceneSession];
+    [self popupHappyMessage:@"分享场景:会话" title:nil];
+   
+}
+
+- (void)onSelectTimelineScene{
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(changeScene:)]) {
+        
+        [_delegate changeScene:WXSceneTimeline];
+        [self popupHappyMessage:@"分享场景:朋友圈" title:nil];
+
+    }
+    
+    
+}
+
+////Wechat
+- (void) sendAppContentWithTitle:(NSString*)title  description:(NSString *)descriptoin image:(UIImage *)image urlLink :(NSString*)urlLink
+{
+    if (_delegate  && [_delegate respondsToSelector:@selector(sendAppContentWithTitle:description:image:urlLink:)]
+        )
+    {
+        PPDebug(@"Share to Wechat！");
+        
+        [_delegate sendAppContentWithTitle:title description:descriptoin image:image urlLink:urlLink];
+    }
+}
+
+
+-(void)sendNewsContent{
+    
+    if (_delegate  && [_delegate respondsToSelector:@selector(sendNewsContent)]
+        )
+    {
+        PPDebug(@"Share to Wechat！");
+        
+        [_delegate sendNewsContent];
+    }
+    
+    
+}
+
+- (AppDelegate*)getAppDelegate
+{
+    return (AppDelegate*)[UIApplication sharedApplication].delegate;
+}
 
 
 ////点击喜欢按钮
@@ -347,18 +420,6 @@ enum TapOnItem {
     
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    
-    
-    [super viewWillAppear:YES];
-    
-    
-}
-
-
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidAppear:YES];
-}
 
 
 #pragma mark -
@@ -465,31 +526,33 @@ enum TapOnItem {
         
         
         
-        UIImageView *titleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"foursquare-logo"]];
+        UIImageView *titleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
         titleImageView.frame = CGRectMake(0, 0, 110, 30);
         composeViewController.navigationItem.titleView = titleImageView;
         
         // UIApperance setup
-        [composeViewController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg"] forBarMetrics:UIBarMetricsDefault];
+        [composeViewController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topmenu_bg.png"] forBarMetrics:UIBarMetricsDefault];
         
         
+        [self presentViewController:composeViewController animated:YES completion:nil];
+        [composeViewController release];
+
         // Alternative use with REComposeViewControllerCompletionHandler
         composeViewController.completionHandler = ^(REComposeResult result) {
             if (result == REComposeResultCancelled) {
                 NSLog(@"Cancelled");
+
             }
+            
             
             if (result == REComposeResultPosted) {
                 NSLog(@"Text = %@", composeViewController.text);
-                
                 [self shareArticleWithTitle: composeViewController.text image:composeViewController.attachmentImage ];
                 
             }
         };
         
-        [self presentViewController:composeViewController animated:YES completion:nil];
-        
-        [composeViewController release];
+               
 
     }if(![_sinaweiboManager.sinaweibo isAuthValid])
     {
@@ -588,6 +651,8 @@ enum TapOnItem {
     if ([request.url hasSuffix:@"users/show.json"])
     {
         NSLog(@"******%@",[error description]);
+        [self hideActivity];
+        [self popupHappyMessage:@"用户资料获取失败" title:@""];
     }
 
 }

@@ -53,6 +53,8 @@ typedef void (^REComposeViewControllerCompletionHandler)(REComposeResult result)
 - (UINavigationBar *)navigationBar;
 - (NSString *)text;
 - (void)setText:(NSString *)text;
+-(void)setTextSize:(CGFloat)size;
+
 
 - (BOOL)hasAttachment;
 - (void)setHasAttachment:(BOOL)hasAttachment;

@@ -14,7 +14,7 @@
 
 @protocol sendMsgToWeChatViewDelegate <NSObject>
 - (void) sendTextContent:(NSString*)nsText;
-- (void) sendAppContent;
+- (void) sendAppContentWithTitle:(NSString*)title  description:(NSString *)descriptoin image:(UIImage *)image urlLink :(NSString*)urlLink;
 - (void) sendImageContent;
 - (void) sendNewsContent ;
 - (void) doAuth;

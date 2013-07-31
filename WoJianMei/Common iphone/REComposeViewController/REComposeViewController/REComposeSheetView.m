@@ -25,7 +25,7 @@
 
 #import "REComposeSheetView.h"
 #import <QuartzCore/QuartzCore.h>
-//#import "UIBarButtonItemExt.h"
+#import "UIBarButtonItemExt.h"
 
 @implementation REComposeSheetView
 
@@ -44,30 +44,33 @@
         _navigationItem = [[UINavigationItem alloc] initWithTitle:@""];
         _navigationBar.items = @[_navigationItem];
         
-        UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"取消", @"Cancel") style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
-        _navigationItem.leftBarButtonItem = cancelButtonItem;
         
-        UIBarButtonItem *postButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"保存", @"Post") style:UIBarButtonItemStyleBordered target:self action:@selector(postButtonPressed)];
-         _navigationItem.rightBarButtonItem = postButtonItem;
+        
+        
+//        UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"取消", @"Cancel") style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
+//        _navigationItem.leftBarButtonItem = cancelButtonItem;
+//        
+//        UIBarButtonItem *postButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"保存", @"Post") style:UIBarButtonItemStyleBordered target:self action:@selector(postButtonPressed)];
+//         _navigationItem.rightBarButtonItem = postButtonItem;
         
         
                
-//        UIBarButtonItem* cancleBarButtonItem = [[UIBarButtonItem alloc]
-//                                          initWithCustomView:[UIBarButtonItem getButtonWithTitle:@"取消"
-//                                                                                       imageName:@"settings.png"
-//                                                                                          target:self
-//                                                                                          action:@selector(cancelButtonPressed)]
-//                                          ];
-//        _navigationItem.leftBarButtonItem = cancleBarButtonItem;
-//
-//        
-//        UIBarButtonItem* postBarButtonItem = [[UIBarButtonItem alloc]
-//                                          initWithCustomView:[UIBarButtonItem getButtonWithTitle:@"保存"
-//                                                                                       imageName:@"settings.png"
-//                                                                                          target:self
-//                                                                                          action:@selector(postButtonPressed)]
-//                                              ];
-//    _navigationItem.rightBarButtonItem = postBarButtonItem;
+        UIBarButtonItem* cancleBarButtonItem = [[UIBarButtonItem alloc]
+                                          initWithCustomView:[UIBarButtonItem getButtonWithTitle:@"取消"
+                                                                                       imageName:@"top_bar_commonButton.png"
+                                                                                          target:self
+                                                                                          action:@selector(cancelButtonPressed)]
+                                          ];
+        _navigationItem.leftBarButtonItem = cancleBarButtonItem;
+
+        
+        UIBarButtonItem* postBarButtonItem = [[UIBarButtonItem alloc]
+                                          initWithCustomView:[UIBarButtonItem getButtonWithTitle:@"分享"
+                                                                                       imageName:@"top_bar_commonButton.png"
+                                                                                          target:self
+                                                                                          action:@selector(postButtonPressed)]
+                                              ];
+    _navigationItem.rightBarButtonItem = postBarButtonItem;
 
         
         

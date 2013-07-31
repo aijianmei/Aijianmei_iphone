@@ -33,10 +33,6 @@
     NSString *_BMIValue;
     NSString *_province;
     NSString *_city;
-    
-
-    
-    
 }
 
 @property (retain, nonatomic)  NSString *uid;

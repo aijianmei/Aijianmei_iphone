@@ -523,14 +523,18 @@ enum TapOnItem {
         case FREIND_CIRCLE:
         {
             [self onSelectTimelineScene];
-            [self sendAppContent];
-        }
+            
+            UIImage *image =[UIImage imageNamed:@"Default.png"];
+            
+            [self sendAppContentWithTitle:@"下载爱健美iphone客户端" description:@"学习专业的运动、健身、健康资讯，就下载爱健美手机客户端啦！" image:image urlLink:@"www.aijianmei.com" ];        }
             break;
         case WECHAT:
         {
             [self onSelectSessionScene];
-            [self sendAppContent];
-
+            
+            UIImage *image =[UIImage imageNamed:@"Default.png"];
+            
+            [self sendAppContentWithTitle:@"下载爱健美iphone客户端" description:@"学习专业的运动、健身、健康资讯，就下载爱健美手机客户端啦！" image:image urlLink:@"www.aijianmei.com" ];
         }
             break;
         case EMAIL:
@@ -753,7 +757,6 @@ enum TapOnItem {
             {
                 
                 [[UserService defaultService] shareThroughSinaWeiboWithImageArray:nil TextContent:@"" delegate:self];
-                
                 [self showActivityWithText:@"正在分享"];
                 
             }
@@ -761,13 +764,17 @@ enum TapOnItem {
             case SEND_WECHAT_SOCIAL:
             {
                 [self onSelectTimelineScene];
-                [self sendAppContent ];
+                
+                UIImage *image =[UIImage imageNamed:@"Default.png"];
+                
+                [self sendAppContentWithTitle:@"下载爱健美iphone客户端" description:@"学习专业的运动、健身、健康资讯，就下载爱健美手机客户端啦！" image:image urlLink:@"www.aijianmei.com" ];
             }
             case SEND_WECHAT_FRIENDS:
             {
                 ///调用微信接口
                 [self  onSelectSessionScene];
-                [self  sendAppContent];
+                UIImage *image =[UIImage imageNamed:@"Default.png"];
+                [self sendAppContentWithTitle:@"下载爱健美iphone客户端" description:@"学习专业的运动、健身、健康资讯，就下载爱健美手机客户端啦！" image:image urlLink:@"www.aijianmei.com" ];
                 
             }
                 break;
@@ -813,33 +820,24 @@ enum TapOnItem {
 
 - (void)onSelectSessionScene{
     [_delegate changeScene:WXSceneSession];
-    
-    UILabel *tips = (UILabel *)[self.view viewWithTag:TIPSLABEL_TAG];
-    tips.text = @"分享场景:会话";
 }
 
 - (void)onSelectTimelineScene{
     
     if (_delegate && [_delegate respondsToSelector:@selector(changeScene:)]) {
-        
         [_delegate changeScene:WXSceneTimeline];
-        
-        UILabel *tips = (UILabel *)[self.view viewWithTag:TIPSLABEL_TAG];
-        tips.text = @"分享场景:朋友圈";
     }
-    
-    
 }
 
 ////Wechat
-- (void)sendAppContent
+- (void) sendAppContentWithTitle:(NSString*)title  description:(NSString *)descriptoin image:(UIImage *)image urlLink :(NSString*)urlLink
 {
-    if (_delegate  && [_delegate respondsToSelector:@selector(sendAppContent)]
+    if (_delegate  && [_delegate respondsToSelector:@selector(sendAppContentWithTitle:description:image:urlLink:)]
 )
     {
         PPDebug(@"Share to Wechat！");
 
-        [_delegate sendAppContent];
+        [_delegate sendAppContentWithTitle:title description:descriptoin image:image urlLink:urlLink];
     }
 }
 

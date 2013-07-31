@@ -248,6 +248,12 @@
     _sheetView.textView.text = text;
 }
 
+-(void)setTextSize:(CGFloat)size
+{
+    [_sheetView.textView setFont:[UIFont systemFontOfSize:size]];
+}
+
+
 #pragma mark -
 #pragma mark REComposeSheetViewDelegate
 

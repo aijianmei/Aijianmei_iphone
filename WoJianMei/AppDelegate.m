@@ -60,7 +60,7 @@
     [super dealloc];
 }
 
--(AppDelegate*)getAppDelegate
++(AppDelegate*)getAppDelegate
 {
     return (AppDelegate*)[UIApplication sharedApplication].delegate;
 }
@@ -87,7 +87,7 @@
     [WXApi sendReq:req];
 }
 
--(void) RespNewsContent
+-(void)RespNewsContent
 {
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = @"欢迎下载爱健美客户端！";
@@ -108,18 +108,18 @@
 
 
 #define BUFFER_SIZE 1024 * 100
-- (void) sendAppContent
+- (void)sendAppContentWithTitle:(NSString*)title  description:(NSString *)descriptoin image:(UIImage *)image urlLink:(NSString*)urlLink
 {
     // 发送内容给微信
     WXMediaMessage *message = [WXMediaMessage message];
-    message.title = @"欢迎下载爱健美客户端！";
-    message.description = @"爱健美iphone 客户端是一个专业的健身运动知识汇总手机客户端！";
+    message.title = title;
+    message.description =descriptoin;
     //发送的图片不能太大，否则，不可以通过！
-    [message setThumbImage:[UIImage imageNamed:@"144x144.png"]];
+    [message setThumbImage:image];
     
     WXAppExtendObject *ext = [WXAppExtendObject object];
-    ext.extInfo = @"<xml>test</xml>";
-    ext.url = @"http://www.aijianmei.com";
+    ext.extInfo = @"<xml>爱健美</xml>";
+    ext.url = urlLink;
     
     Byte* pBuffer = (Byte *)malloc(BUFFER_SIZE);
     memset(pBuffer, 0, BUFFER_SIZE);
@@ -138,7 +138,8 @@
     [WXApi sendReq:req];
 }
 
--(void) RespAppContent
+-(void)RespAppContentWithTitle:(NSString*)title  description:(NSString *)descriptoin image:(UIImage *)image urlLink :(NSString*)urlLink
+
 {
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = @"欢迎下载爱健美客户端！";
@@ -176,7 +177,6 @@
 -(void) changeScene:(NSInteger)scene{
     _scene = scene;
 }
-
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

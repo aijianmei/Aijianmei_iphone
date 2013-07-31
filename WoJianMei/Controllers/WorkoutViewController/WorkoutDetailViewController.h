@@ -16,6 +16,8 @@
 #import "SinaWeibo.h"
 #import "REComposeViewController.h"
 #import "SinaWeiboManager.h"
+#import "MoreViewController.h"
+
 
 
 @interface WorkoutDetailViewController : PPViewController<RKObjectLoaderDelegate,UIWebViewDelegate,SinaWeiboRequestDelegate,REComposeViewControllerDelegate,UIGestureRecognizerDelegate,SinaWeiboDelegate>
@@ -28,6 +30,9 @@
     UIImage *postImage;
     
     SinaWeiboManager *_sinaweiboManager;
+    
+//    id<sendMsgToWeChatViewDelegate> _delegate;
+    
 }
 
 @property(nonatomic, retain) Article *article;
@@ -35,6 +40,8 @@
 @property(nonatomic, retain) UIWebView *webview;
 @property(nonatomic, retain) UIToolbar *toolBar;
 @property(nonatomic,retain)  UIButton *likeButton;
+@property (nonatomic, assign) id<sendMsgToWeChatViewDelegate> delegate;
+
 
 
 
@@ -43,6 +50,8 @@
 - (void)updateUserInterface;
 -(void)shareArticleWithTitle:(NSString*)title image:(UIImage *)image;
 -(void)tap;
+
+- (AppDelegate*)getAppDelegate;
 
 
 
