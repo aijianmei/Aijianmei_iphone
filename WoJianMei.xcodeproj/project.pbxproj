@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A03268F17A8EB3B0016F6C5 /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A03268E17A8EB390016F6C5 /* VideoCell.m */; };
+		4A03269317A8EE9A0016F6C5 /* PlayVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A03269117A8EE980016F6C5 /* PlayVideoViewController.m */; };
+		4A03269417A8EE9A0016F6C5 /* PlayVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A03269217A8EE990016F6C5 /* PlayVideoViewController.xib */; };
+		4A03269717A8EFA40016F6C5 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A03269617A8EFA30016F6C5 /* Video.m */; };
+		4A0326A917A8FEBF0016F6C5 /* VideoInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0326A817A8FEBD0016F6C5 /* VideoInfoView.xib */; };
+		4A0326AC17A8FFC60016F6C5 /* VideoInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0326AB17A8FFC40016F6C5 /* VideoInfoView.m */; };
 		4A071A21169D989D00F50D90 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A071A20169D989D00F50D90 /* MobileCoreServices.framework */; };
 		4A071A23169D991F00F50D90 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A071A22169D991F00F50D90 /* MediaPlayer.framework */; };
 		4A0E4DC3178C4B5B00E1287D /* ChangeNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4DC1178C4B5B00E1287D /* ChangeNameViewController.m */; };
@@ -657,6 +663,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A03268D17A8EB380016F6C5 /* VideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCell.h; sourceTree = "<group>"; };
+		4A03268E17A8EB390016F6C5 /* VideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCell.m; sourceTree = "<group>"; };
+		4A03269017A8EE980016F6C5 /* PlayVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayVideoViewController.h; sourceTree = "<group>"; };
+		4A03269117A8EE980016F6C5 /* PlayVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayVideoViewController.m; sourceTree = "<group>"; };
+		4A03269217A8EE990016F6C5 /* PlayVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayVideoViewController.xib; sourceTree = "<group>"; };
+		4A03269517A8EFA20016F6C5 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
+		4A03269617A8EFA30016F6C5 /* Video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
+		4A0326A817A8FEBD0016F6C5 /* VideoInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoInfoView.xib; sourceTree = "<group>"; };
+		4A0326AA17A8FFC30016F6C5 /* VideoInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoInfoView.h; sourceTree = "<group>"; };
+		4A0326AB17A8FFC40016F6C5 /* VideoInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoInfoView.m; sourceTree = "<group>"; };
 		4A071A20169D989D00F50D90 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4A071A22169D991F00F50D90 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4A0E4DC0178C4B5B00E1287D /* ChangeNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeNameViewController.h; sourceTree = "<group>"; };
@@ -3595,9 +3611,19 @@
 				C6DB202B1760D8E40060BD08 /* WorkoutDetailViewController.h */,
 				C6DB202C1760D8E40060BD08 /* WorkoutDetailViewController.m */,
 				4A308BA817A16AE100DED650 /* WorkoutDetailViewController.xib */,
+				4A03268D17A8EB380016F6C5 /* VideoCell.h */,
+				4A03268E17A8EB390016F6C5 /* VideoCell.m */,
 				4A4A5DAE179E512E00F00085 /* CommentViewController.h */,
 				4A4A5DAF179E512E00F00085 /* CommentViewController.m */,
 				4A4A5DB0179E512E00F00085 /* CommentViewController.xib */,
+				4A03269017A8EE980016F6C5 /* PlayVideoViewController.h */,
+				4A03269117A8EE980016F6C5 /* PlayVideoViewController.m */,
+				4A03269217A8EE990016F6C5 /* PlayVideoViewController.xib */,
+				4A0326AA17A8FFC30016F6C5 /* VideoInfoView.h */,
+				4A0326AB17A8FFC40016F6C5 /* VideoInfoView.m */,
+				4A0326A817A8FEBD0016F6C5 /* VideoInfoView.xib */,
+				4A03269517A8EFA20016F6C5 /* Video.h */,
+				4A03269617A8EFA30016F6C5 /* Video.m */,
 				4A4A5E0E179E76F900F00085 /* CommentCell.h */,
 				4A4A5E0F179E76FA00F00085 /* CommentCell.m */,
 				4A4A5E14179E7DC900F00085 /* CommentCell.xib */,
@@ -4321,6 +4347,8 @@
 				4A12202317A22E4C002F1A50 /* wczc_2@2x.png in Resources */,
 				4A12202417A22E4C002F1A50 /* 交互文档.doc in Resources */,
 				4A12202517A22E4C002F1A50 /* 注册.jpg in Resources */,
+				4A03269417A8EE9A0016F6C5 /* PlayVideoViewController.xib in Resources */,
+				4A0326A917A8FEBF0016F6C5 /* VideoInfoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4644,6 +4672,10 @@
 				4A308BA317A1698C00DED650 /* Util.m in Sources */,
 				4A12207C17A2448D002F1A50 /* UIKeyboardView.m in Sources */,
 				4A12207D17A2448D002F1A50 /* UIKeyboardViewController.m in Sources */,
+				4A03268F17A8EB3B0016F6C5 /* VideoCell.m in Sources */,
+				4A03269317A8EE9A0016F6C5 /* PlayVideoViewController.m in Sources */,
+				4A03269717A8EFA40016F6C5 /* Video.m in Sources */,
+				4A0326AC17A8FFC60016F6C5 /* VideoInfoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

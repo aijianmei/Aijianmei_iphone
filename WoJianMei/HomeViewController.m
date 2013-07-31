@@ -7,6 +7,8 @@
 //
 //
 #import "HomeViewController.h"
+#import "PlayVideoViewController.h"
+#import "VideoCell.h"
 #import "ArticleCell.h"
 #import "ArticleInfo.h"
 #import "ArticleManager.h"
@@ -20,6 +22,7 @@
 #import "MyselfViewController.h"
 #import "LoginViewController.h"
 #import "Result.h"
+#import "Video.h"
 
 
 #import "ImageManager.h"
@@ -503,7 +506,9 @@ typedef enum CONTENT_TYPE {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *CellIdentifier = [ArticleCell getCellIdentifier];
+    NSString *CellIdentifier =nil;
+    
+   CellIdentifier = [ArticleCell getCellIdentifier];
     ArticleCell *cell = (ArticleCell*)[self.dataTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell==nil) {
         cell  = [[[ArticleCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
@@ -512,6 +517,7 @@ typedef enum CONTENT_TYPE {
     if (article) {
         [cell setCellInfo:article];
     }
+    
     return cell;
 }
 
@@ -522,10 +528,23 @@ typedef enum CONTENT_TYPE {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WorkoutDetailViewController *workOutVc = [[WorkoutDetailViewController alloc]initWithNibName:@"WorkoutDetailViewController" bundle:nil];
-    workOutVc.article = [self.dataList objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:workOutVc animated:YES];
-    [workOutVc release];
+
+    if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==1)
+    {
+        WorkoutDetailViewController *workOutVc = [[WorkoutDetailViewController alloc]initWithNibName:@"WorkoutDetailViewController" bundle:nil];
+        workOutVc.article = [self.dataList objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:workOutVc animated:YES];
+        [workOutVc release];
+        
+    }else if (self.segmentedController.selectedSegmentIndex ==2 || self.segmentedController.selectedSegmentIndex ==3)
+    {
+    
+        PlayVideoViewController *playVc =[[PlayVideoViewController alloc]initWithNibName:@"PlayVideoViewController" bundle:nil];
+        playVc.video  = [self.dataList objectAtIndex:indexPath.row];
+       [self.navigationController pushViewController:playVc animated:YES];
+        [playVc release];
+    
+    }
 }
 
 #pragma mark -
