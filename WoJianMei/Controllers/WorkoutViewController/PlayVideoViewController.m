@@ -49,7 +49,7 @@
 -(void)addTitleButtonsSegmentedController{
     ////Configure The ButtonScrollView
     
-    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"详情",@"评论", nil];
+    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"详情",@"评论",nil];
     
     self.segmentedController=[[SDSegmentedControl alloc]initWithItems:buttonTitleArray];
     [_segmentedController setFrame:CGRectMake(0, 150, 320, 40)];
@@ -69,14 +69,7 @@
     }
     if (segmentedControl.selectedSegmentIndex ==1)
     {
-       /*
-    <iframe height=498 width=510 src="http://player.youku.com/embed/XNTM0OTEzNDE2" frameborder=0 allowfullscreen></iframe> 
-        */
         
-      //  http://player.youku.com/embed/XNTM0OTEzNDE2
-        
-        [self playVideo:self.video.shareurl withWebView:self.playerWebView];
-
     }
 }
 
@@ -132,7 +125,6 @@
     
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoPlayStarted:) name:@"UIMoviePlayerControllerDidEnterFullscreenNotification" object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoPlayFinished:) name:@"UIMoviePlayerControllerDidExitFullscreenNotification" object:nil];
     
 }
@@ -147,6 +139,7 @@
     // your code here
     // self.isInFullScreenMode = NO;
     PPDebug(@"video finish to paly ");
+    
 
 }
 
@@ -172,6 +165,8 @@
     
 
     [self.view addSubview:self.playerWebView];
+    
+    [self playVideo:self.video.shareurl withWebView:self.playerWebView];
 
 
 }
@@ -184,6 +179,12 @@
     [self setTimeLabel:nil];
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+
+    return YES;
+    
+}
 
 
 - (void)didReceiveMemoryWarning

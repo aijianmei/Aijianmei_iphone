@@ -23,6 +23,7 @@
 #import "MyselfViewController.h"
 #import "LoginViewController.h"
 #import "Result.h"
+#import "PlayVideoViewController.h"
 
 
 #import "ImageManager.h"
@@ -530,10 +531,22 @@ typedef enum CONTENT_TYPE {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WorkoutDetailViewController *workOutVc = [[WorkoutDetailViewController alloc]initWithNibName:@"WorkoutDetailViewController" bundle:nil];
-    workOutVc.article = [self.dataList objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:workOutVc animated:YES];
-    [workOutVc release];
+    if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==1 ||self.segmentedController.selectedSegmentIndex == -1)
+    {
+        WorkoutDetailViewController *workOutVc = [[WorkoutDetailViewController alloc]initWithNibName:@"WorkoutDetailViewController" bundle:nil];
+        workOutVc.article = [self.dataList objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:workOutVc animated:YES];
+        [workOutVc release];
+        
+    }else if (self.segmentedController.selectedSegmentIndex ==2 || self.segmentedController.selectedSegmentIndex ==3)
+    {
+        
+        PlayVideoViewController *playVc =[[PlayVideoViewController alloc]initWithNibName:@"PlayVideoViewController" bundle:nil];
+        playVc.video  = [self.dataList objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:playVc animated:YES];
+        [playVc release];
+        
+    }
 }
 
 #pragma mark -
@@ -575,13 +588,13 @@ typedef enum CONTENT_TYPE {
         [imageView release];
         
         
-        label = [[[UILabel alloc] initWithFrame:CGRectMake(0, view.frame.origin.y + 130, view.frame.size.width, view.frame.size.height - 130)] autorelease];
-        label.textAlignment = UITextAlignmentCenter;
-		label.font = [label.font fontWithSize:16];
-        [label setTextColor:[UIColor whiteColor]];
-        label.backgroundColor = [UIColor colorWithPatternImage:[ImageManager GobalScrollerTitleBG_Image]];
-        
-        [imageView  addSubview:label];
+//        label = [[[UILabel alloc] initWithFrame:CGRectMake(0, view.frame.origin.y + 130, view.frame.size.width, view.frame.size.height - 130)] autorelease];
+//        label.textAlignment = UITextAlignmentCenter;
+//		label.font = [label.font fontWithSize:16];
+//        [label setTextColor:[UIColor whiteColor]];
+//        label.backgroundColor = [UIColor colorWithPatternImage:[ImageManager GobalScrollerTitleBG_Image]];
+//        
+//        [imageView  addSubview:label];
         
 	}
 	else

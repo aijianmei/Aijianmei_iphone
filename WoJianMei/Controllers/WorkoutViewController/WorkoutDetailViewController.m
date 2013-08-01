@@ -138,11 +138,7 @@ enum TapOnItem {
 -(void)DidTapOnItemAtIndex:(NSInteger)index
 {
     PPDebug(@"tap on %d",index);
-    
-    NSString *bodyStringBegin = @"我正在使用 @爱健美网 iphone手机客户端，学习专业的健身运动、健康资信，很方便很好用，下载地址是";
-    NSString *bodyStringWebsite = @"http://www.aijianmei.com";
-    NSString *bodyString = [NSString stringWithFormat:@"%@%@", bodyStringBegin, bodyStringWebsite];
-    
+       
     int TapOnItem = index;
     
     
@@ -175,11 +171,17 @@ enum TapOnItem {
             break;
         case EMAIL:
         {
+            
+            NSString *title =_article.title;
+            NSString *description = _article.brief;
+            NSString *downLoadLink  =_article.url;
+            
+            NSString *postInfo = [NSString stringWithFormat:@"【%@】\n\n%@ 阅读链接:%@",title,description,downLoadLink];
             [self sendEmailTo:nil
                  ccRecipients:nil
                 bccRecipients:nil
-                      subject:@"下载爱健美客户端，学习如何健身"
-                         body:bodyString
+                      subject:_article.title
+                         body:postInfo
                        isHTML:NO
                      delegate:self];
             
@@ -187,8 +189,11 @@ enum TapOnItem {
             break;
         case MESSAGE:
         {
-            [self sendSms:nil body:bodyString];
-            
+            NSString *title =_article.title;
+            NSString *description = _article.brief;
+            NSString *downLoadLink  =_article.url;
+            NSString *postInfo = [NSString stringWithFormat:@"【%@】\n\n%@ 阅读链接:%@",title,description,downLoadLink];
+            [self sendSms:nil body:postInfo];
         }
             break;
         case COPY_LINK:
@@ -197,8 +202,6 @@ enum TapOnItem {
             NSString *downloadAPPUrl = [NSString stringWithFormat:@"www.aijianmei.com"];
             UIPasteboard *gpBoard = [UIPasteboard generalPasteboard];
             [gpBoard setString:downloadAPPUrl];
-            
-            
             [self popupHappyMessage:@"已成功复制下载链接" title:nil];
             
         }
@@ -740,7 +743,6 @@ enum TapOnItem {
         NSInteger errorCode =  [[result errorCode] integerValue];
         
         
-        
         if (errorCode ==ERROR_SUCCESS)
         {
           [self popupHappyMessage:@"赞了该这篇文章" title:nil];
@@ -754,7 +756,6 @@ enum TapOnItem {
             [self popupUnhappyMessage:@"已经赞了该文章,不可以贪心哦！" title:nil];
         }
 }
-    
     [self updateUserInterface];
 }
 
