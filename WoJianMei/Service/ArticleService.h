@@ -13,15 +13,6 @@
 
 +(ArticleService*)sharedService;
 
-
-
-- (void)loadArticleWithAucode:(NSString*)aucode
-                        auact:(NSString*)auact
-                          _id:(NSString*)_id
-                      channel:(NSString*)channel
-                  channelType:(NSString*)channelType
-                     delegate:(id<RKObjectLoaderDelegate>)delegate;
-
 - (void)findArticleWithAucode:(NSString*)aucode
                         auact:(NSString*)auact
                      listtype:(NSString*)listtype
@@ -40,7 +31,5 @@
                       channelType:(NSString*)channelType
                               uid:(NSString*)uid
                          delegate:(id<RKObjectLoaderDelegate>)delegate;
-
-- (void)findArticle:(id<RKObjectLoaderDelegate>)delegate;
 
 @end

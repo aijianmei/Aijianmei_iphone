@@ -10,9 +10,28 @@
 #import "SDSegmentedControl.h"
 #import "Video.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "CommentViewController.h"
+#import "AppDelegate.h"
+#import "ImageManager.h"
 
 
-@interface PlayVideoViewController ()
+#define kAppKey @"3622140445"
+#define kAppSecret @"f94d063d06365972215c62acaadf95c3"
+#define KAppRedirectURI @"http://aijianmei.com"
+
+enum TapOnItem {
+    
+    SINA_WEIBO = 0,
+    FREIND_CIRCLE = 1,
+    WECHAT = 2,
+    EMAIL = 3,
+    MESSAGE = 4,
+    COPY_LINK =5
+};
+
+
+@interface PlayVideoViewController ()<UIActionSheetDelegate,AWActionSheetDelegate>
+
 
 @end
 
@@ -23,6 +42,9 @@
 @synthesize titleLabel =_titleLabel;
 @synthesize timeLabel =_timeLabel;
 @synthesize playerWebView =_playerWebView;
+@synthesize commentViewController =_commentViewController;
+@synthesize delegate = _delegate;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,18 +53,30 @@
         // Custom initialization
        self.playerWebView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, 150)];
 
+        CommentViewController *comVC =[[CommentViewController alloc]initWithNibName:@"CommentViewController" bundle:nil];
+        [comVC.view setFrame:CGRectMake(0, 235, 320, 220)];
+        [comVC.dataTableView setBackgroundColor:[UIColor clearColor]];        
+        self.commentViewController = comVC;
+        [comVC release];
+       
+        
+        //Set the wechat deletgate
+        self.delegate =[self getAppDelegate];
         
     }
     return self;
 }
 -(void)dealloc{
-    [super dealloc];
+    
     [_video release];
     [_segmentedController release];
     [_titleLabel release];
     [_descriptionView release];
     [_timeLabel release];
     [_playerWebView release];
+    [_commentViewController release];
+    [super dealloc];
+    
 }
 
 #pragma mark-- addButtonScrollView Method
@@ -65,11 +99,13 @@
     
     if (segmentedControl.selectedSegmentIndex ==0)
     {
-        
+        [self.commentViewController.view removeFromSuperview];
     }
     if (segmentedControl.selectedSegmentIndex ==1)
     {
-        
+        [self.view addSubview:self.commentViewController.view];
+        self.commentViewController.video = [self video];
+        [self.commentViewController loadDatas];
     }
 }
 
@@ -143,6 +179,320 @@
 
 }
 
+////点击分享按钮
+-(void)clickShareButton:(UIButton *)sender{
+    
+    
+    PPDebug(@"////点击分享按钮");
+    
+    [self showAWSheet];
+    
+}
+/////only avaiable at ios 6
+- (void)showAWSheet
+{
+    AWActionSheet *sheet = [[AWActionSheet alloc] initwithIconSheetDelegate:self ItemCount:[self numberOfItemsInActionSheet]];
+    [sheet showInView:self.view];
+    [sheet release];
+}
+
+-(int)numberOfItemsInActionSheet
+{
+    return 6;
+}
+
+
+-(AWActionSheetCell *)cellForActionAtIndex:(NSInteger)index
+{
+    AWActionSheetCell* cell = [[[AWActionSheetCell alloc] init] autorelease];
+    
+    
+    //set title
+    NSArray *titleArray  = [ NSArray arrayWithObjects:
+                            @"新浪微博",
+                            @"朋友圈",
+                            @"微信",
+                            @"邮件",
+                            @"短信",
+                            @"复制链接",
+                            nil];
+    [[cell titleLabel] setText:[NSString stringWithFormat:@"%@",[titleArray objectAtIndex:index]]];
+    
+    
+    //set icons
+    NSArray *imageArray  = [ NSArray arrayWithObjects:
+                            @"sina.png",
+                            @"friendsCircle.png",
+                            @"wechat.png",
+                            @"email.png",
+                            @"message.png",
+                            @"copylink.png",
+                            nil];
+    
+    NSString *imageName = [NSString stringWithFormat:@"%@",[imageArray objectAtIndex:index]];
+    UIImage *image = [UIImage imageNamed:imageName];
+    [[cell iconView] setImage:image];
+    
+    
+    
+    cell.index = index;
+    
+    
+    return cell;
+    
+}
+
+-(void)DidTapOnItemAtIndex:(NSInteger)index
+{
+    PPDebug(@"tap on %d",index);
+    
+    int TapOnItem = index;
+    
+    
+    switch (TapOnItem) {
+        case SINA_WEIBO:
+        {
+            [self clickSinaShareButton];
+        }
+            break;
+        case FREIND_CIRCLE:
+        {
+            [self onSelectTimelineScene];
+            
+            UIImage *image = [self getImageFromURL:_video.img];
+            postImage = image;
+            
+            [self sendAppContentWithTitle:_video.title description:_video.brief image:postImage  urlLink:_video.shareurl];
+            
+        }
+            break;
+        case WECHAT:
+        {
+            
+            [self onSelectSessionScene];
+            UIImage *image = [self getImageFromURL:_video.img];
+            postImage = image;
+            [self sendAppContentWithTitle:_video.title description:_video.brief image:postImage urlLink:_video.shareurl];
+            
+        }
+            break;
+        case EMAIL:
+        {
+            
+            NSString *title =_video.title;
+            NSString *description = _video.brief;
+            NSString *downLoadLink  =_video.url;
+            
+            NSString *postInfo = [NSString stringWithFormat:@"【%@】\n\n%@ 阅读链接:%@",title,description,downLoadLink];
+            [self sendEmailTo:nil
+                 ccRecipients:nil
+                bccRecipients:nil
+                      subject:_video.title
+                         body:postInfo
+                       isHTML:NO
+                     delegate:self];
+            
+        }
+            break;
+        case MESSAGE:
+        {
+            NSString *title =_video.title;
+            NSString *description = _video.brief;
+            NSString *downLoadLink  =_video.url;
+            NSString *postInfo = [NSString stringWithFormat:@"【%@】\n\n%@ 阅读链接:%@",title,description,downLoadLink];
+            [self sendSms:nil body:postInfo];
+        }
+            break;
+        case COPY_LINK:
+        {
+            //copy one link
+            NSString *downloadAPPUrl = [NSString stringWithFormat:@"www.aijianmei.com"];
+            UIPasteboard *gpBoard = [UIPasteboard generalPasteboard];
+            [gpBoard setString:downloadAPPUrl];
+            [self popupHappyMessage:@"已成功复制下载链接" title:nil];
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
+- (void)doOAuth
+{
+    if (_delegate)
+    {
+        [_delegate doAuth];
+    }
+}
+
+- (void)onSelectSessionScene{
+    [_delegate changeScene:WXSceneSession];
+    [self popupHappyMessage:@"分享场景:会话" title:nil];
+    
+}
+
+- (void)onSelectTimelineScene{
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(changeScene:)]) {
+        
+        [_delegate changeScene:WXSceneTimeline];
+        [self popupHappyMessage:@"分享场景:朋友圈" title:nil];
+        
+    }
+    
+    
+}
+
+////Wechat
+- (void) sendAppContentWithTitle:(NSString*)title  description:(NSString *)descriptoin image:(UIImage *)image urlLink :(NSString*)urlLink
+{
+    if (_delegate  && [_delegate respondsToSelector:@selector(sendAppContentWithTitle:description:image:urlLink:)]
+        )
+    {
+        PPDebug(@"Share to Wechat！");
+        
+        [_delegate sendAppContentWithTitle:title description:descriptoin image:image urlLink:urlLink];
+    }
+}
+
+
+-(void)sendNewsContent{
+    
+    if (_delegate  && [_delegate respondsToSelector:@selector(sendNewsContent)]
+        )
+    {
+        PPDebug(@"Share to Wechat！");
+        
+        [_delegate sendNewsContent];
+    }
+    
+    
+}
+
+- (AppDelegate*)getAppDelegate
+{
+    return (AppDelegate*)[UIApplication sharedApplication].delegate;
+}
+
+//从网络下载图片
+-(UIImage *) getImageFromURL:(NSString *)fileURL {
+    NSLog(@"执行图片下载函数");
+    UIImage * result;
+    
+    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
+    result = [UIImage imageWithData:data];
+    
+    return result;
+}
+- (void)clickSinaShareButton
+{
+    
+    UIImage *image = [self getImageFromURL:_video.img];
+    postImage = image;
+    
+    _sinaweiboManager = [SinaWeiboManager sharedManager];
+    [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
+    
+    
+    if([_sinaweiboManager.sinaweibo isAuthValid])
+    {
+        REComposeViewController *composeViewController = [[REComposeViewController alloc] init];
+        composeViewController.hasAttachment = YES;
+        composeViewController.attachmentImage =postImage;
+        
+        
+        NSString *appendString =@"(分享自  @爱健美网)";
+        NSString *articleTitle =_video.title;
+        NSString *shareUrl = [NSString stringWithFormat:@"   详情点击:%@",_video.url];
+        
+        NSString *postText = [NSString stringWithFormat:@"%@%@%@",articleTitle,appendString,shareUrl];
+        
+        [composeViewController setText:postText];
+        
+        
+        
+        UIImageView *titleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+        titleImageView.frame = CGRectMake(0, 0, 110, 30);
+        composeViewController.navigationItem.titleView = titleImageView;
+        
+        // UIApperance setup
+        [composeViewController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topmenu_bg.png"] forBarMetrics:UIBarMetricsDefault];
+        
+        
+        [self presentViewController:composeViewController animated:YES completion:nil];
+        [composeViewController release];
+        
+        // Alternative use with REComposeViewControllerCompletionHandler
+        composeViewController.completionHandler = ^(REComposeResult result) {
+            if (result == REComposeResultCancelled) {
+                NSLog(@"Cancelled");
+                
+            }
+            
+            if (result == REComposeResultPosted) {
+                NSLog(@"Text = %@", composeViewController.text);
+                [self shareVideoWithTitle: composeViewController.text image:composeViewController.attachmentImage ];
+                
+            }
+        };
+        
+    }if(![_sinaweiboManager.sinaweibo isAuthValid])
+    {
+        [_sinaweiboManager.sinaweibo logIn];
+    }
+    
+}
+
+-(void)shareVideoWithTitle:(NSString*)title image:(UIImage *)image{
+    
+    NSMutableDictionary * params =[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   title, @"status",image,@"pic",nil];
+    [[SinaWeiboManager sharedManager].sinaweibo requestWithURL:@"statuses/upload.json"
+                                                        params:params
+                                                    httpMethod:@"POST"
+                                                      delegate:self];
+    [self showActivityWithText:@"正在分享"];
+}
+
+
+
+- (void)setRightBarButtons
+{
+    float buttonHigh = 27.5;
+    float buttonLen = 47.5;
+    float seporator = 5;
+    float leftOffest = 20;
+    
+    UIFont *font = [UIFont systemFontOfSize:14];
+    
+    UIView *rightButtonView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 3*(buttonLen+seporator) +30, buttonHigh)];
+    
+    
+    UIButton *shareBarButton = [[UIButton alloc]initWithFrame:CGRectMake(leftOffest+(buttonLen+seporator)*2 +30, 0, 22, 22)];
+    [shareBarButton setImage:[ImageManager GobalArticelShareButtonBG] forState:UIControlStateNormal];
+    [shareBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [shareBarButton addTarget:self action:@selector(clickShareButton:) forControlEvents:UIControlEventTouchUpInside];
+    [shareBarButton.titleLabel setFont:font];
+    [rightButtonView addSubview:shareBarButton];
+    [shareBarButton release];
+    
+    
+    
+    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]
+                                       initWithCustomView:rightButtonView];
+    
+    [rightButtonView release];
+    
+    self.navigationItem.rightBarButtonItem = rightBarButton;
+    
+    [rightBarButton release];
+}
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -155,6 +505,13 @@
     [self showBackgroundImage];
     
     [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+ 
+    
+    [self setRightBarButtons];
+    
+    
+    [self.view addSubview:self.commentViewController.view];
+
 
     
     [self.titleLabel setText:self.video.title];
@@ -164,19 +521,28 @@
     [self.timeLabel setText:self.video.create_time];
     
 
+    
+    
     [self.view addSubview:self.playerWebView];
+
+    
     
     [self playVideo:self.video.shareurl withWebView:self.playerWebView];
-
-
+    
+    
+    
+    /////设置开始
+    [_segmentedController setSelectedSegmentIndex:0];
+    [self buttonClicked:_segmentedController];
+    
+    
 }
 -(void)viewDidUnload{
-    
-   
     [super viewDidUnload];
     [self setTitleLabel:nil];
     [self setDescriptionView:nil];
     [self setTimeLabel:nil];
+    [self setCommentViewController:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation

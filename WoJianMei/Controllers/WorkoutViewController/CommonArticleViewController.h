@@ -17,10 +17,11 @@
 #import "REComposeViewController.h"
 #import "SinaWeiboManager.h"
 #import "MoreViewController.h"
+#import "CommentViewController.h"
 
 
 
-@interface WorkoutDetailViewController : PPViewController<RKObjectLoaderDelegate,UIWebViewDelegate,SinaWeiboRequestDelegate,REComposeViewControllerDelegate,UIGestureRecognizerDelegate,SinaWeiboDelegate>
+@interface CommonArticleViewController : PPViewController<RKObjectLoaderDelegate,UIWebViewDelegate,SinaWeiboRequestDelegate,REComposeViewControllerDelegate,UIGestureRecognizerDelegate,SinaWeiboDelegate>
 
 {
     UIToolbar *_toolBar;
@@ -32,6 +33,9 @@
     SinaWeiboManager *_sinaweiboManager;
     
 //    id<sendMsgToWeChatViewDelegate> _delegate;
+    
+    
+    CommentViewController *commentViewController;
     
 }
 

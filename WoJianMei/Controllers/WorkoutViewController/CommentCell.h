@@ -7,14 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPTableViewCell.h"
 
 
 @class Comment;
 
-@interface CommentCell : UITableViewCell
+@interface CommentCell : PPTableViewCell
+{
+    UIImageView   *_myImageView;
+    UILabel       *_nameLabel;
+    UILabel       *_commentLabel;
+    UILabel       *_commentTimeLabel;
+
+}
+@property (nonatomic,retain)  UIImageView *myImageView;
+@property (nonatomic,retain)  UILabel *nameLabel;
+@property (nonatomic,retain)  UILabel *commentLabel;
+@property (nonatomic,retain)  UILabel *commentTimeLabel;
 
 
-+ (Comment*) createCell:(id)delegate;
+
 + (NSString*)getCellIdentifier;
 + (CGFloat)getCellHeight;
 - (void)setCellInfo:(Comment *)comment;

@@ -16,7 +16,7 @@
 #import "iCarousel.h"
 #import "ArticleService.h"
 #import "Article.h"
-#import "WorkoutDetailViewController.h"
+#import "CommonArticleViewController.h"
 #import "IIViewDeckController.h"
 #import "AppDelegate.h"
 #import "MyselfViewController.h"
@@ -531,7 +531,7 @@ typedef enum CONTENT_TYPE {
 
     if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==1 || self.segmentedController.selectedSegmentIndex ==-1)
     {
-        WorkoutDetailViewController *workOutVc = [[WorkoutDetailViewController alloc]initWithNibName:@"WorkoutDetailViewController" bundle:nil];
+        CommonArticleViewController *workOutVc = [[CommonArticleViewController alloc]initWithNibName:@"CommonArticleViewController" bundle:nil];
         workOutVc.article = [self.dataList objectAtIndex:indexPath.row];
         [self.navigationController pushViewController:workOutVc animated:YES];
         [workOutVc release];
@@ -659,18 +659,22 @@ typedef enum CONTENT_TYPE {
 	[self dataSourceDidFinishLoadingNewData];
     [self dataSourceDidFinishLoadingMoreData];
     
-    if (_start == 0) {
-        self.dataList = objects;
-    } else {
-        NSMutableArray *newDataList = [NSMutableArray arrayWithArray:self.dataList];
-        [newDataList addObjectsFromArray:objects];
-        self.dataList = newDataList;
+    
+    if ([[objects objectAtIndex:0] isMemberOfClass:[Article class]])
+    {
+        
+        if (_start == 0) {
+            self.dataList = objects;
+        } else {
+            NSMutableArray *newDataList = [NSMutableArray arrayWithArray:self.dataList];
+            [newDataList addObjectsFromArray:objects];
+            self.dataList = newDataList;
+        }
+        _start += [objects count];
+        
+        //更新用户界面；
+        [self updateUserInterface];
     }
-    _start += [objects count];
-    
-    //更新用户界面；
-    [self updateUserInterface];
-    
 }
 
 @end

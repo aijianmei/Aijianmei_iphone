@@ -11,8 +11,19 @@
 #import "FaceToolBar.h"
 #import <RestKit/RestKit.h>
 
+@class Video;
+@class Article;
+
+@interface CommentViewController : PPTableViewController<UITextFieldDelegate,FaceToolBarDelegate,RKObjectLoaderDelegate>
+{
+      Video *_video;
+      Article *_article;
+
+}
+
+@property (nonatomic,retain) Video *video;
+@property (nonatomic,retain) Article *article;
 
 
-@interface CommentViewController : PPTableViewController<UITextFieldDelegate,FaceToolBarDelegate>
-
+-(void)loadDatas;
 @end

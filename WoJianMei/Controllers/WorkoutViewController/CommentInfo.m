@@ -6,9 +6,8 @@
 //
 //
 
-#import "Comment.h"
+#import "CommentInfo.h"
 
-@implementation Comment
-@synthesize _id =_id;
+@implementation CommentInfo
 
 @end

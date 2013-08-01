@@ -558,7 +558,7 @@ static UserService* _defaultUserService = nil;
                                   delegate:(id<SinaWeiboRequestDelegate>)delegate
 {
         NSString *status = @"我正在使用爱健美客户端！";
-        UIImage *pic =[UIImage imageNamed:@"Default-568h@2x.png"];
+        UIImage *pic =[UIImage imageNamed:@"Default.png"];
 
 
          NSMutableDictionary * params =[NSMutableDictionary dictionaryWithObjectsAndKeys:

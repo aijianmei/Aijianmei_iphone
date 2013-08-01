@@ -6,7 +6,7 @@
 //
 //
 
-#import "WorkoutDetailViewController.h"
+#import "CommonArticleViewController.h"
 #import "ArticleService.h"
 #import "NSString+HTML.h"
 #import "ImageManager.h"
@@ -35,12 +35,12 @@ enum TapOnItem {
 
 
 
-@interface WorkoutDetailViewController ()<UIActionSheetDelegate,AWActionSheetDelegate>
+@interface CommonArticleViewController ()<UIActionSheetDelegate,AWActionSheetDelegate>
 
 
 @end
 
-@implementation WorkoutDetailViewController
+@implementation CommonArticleViewController
 @synthesize article =_article;
 @synthesize toolBar =_toolBar;
 @synthesize likeButton =_likeButton;
@@ -290,6 +290,9 @@ enum TapOnItem {
     PPDebug(@"////点击评论按钮");
     CommentViewController *cVC = [[CommentViewController alloc]initWithNibName:@"CommentViewController" bundle:nil];
     [self.navigationController pushViewController:cVC animated:YES];
+    cVC.article =self.article;
+    
+    
     [cVC release];
     
 
@@ -326,15 +329,15 @@ enum TapOnItem {
 //    [rightButtonView addSubview:self.likeButton];
 //    
 //    
-//    UIButton * commentBarButton = [[UIButton alloc] initWithFrame:CGRectMake(leftOffest+buttonLen+seporator,3, 22, 22)];
-//    [commentBarButton addTarget:self action:@selector(clickCommentButton:) forControlEvents:UIControlEventTouchUpInside];
-//    [commentBarButton setImage:[ImageManager GobalArticelCommentButtonBG] forState:UIControlStateNormal];
-//    [commentBarButton setTitle:@"评论" forState:UIControlStateNormal];
-//    [commentBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    [commentBarButton.titleLabel setFont:font];
-//    [rightButtonView addSubview:commentBarButton];
-//    [commentBarButton release];
-//    
+    UIButton * commentBarButton = [[UIButton alloc] initWithFrame:CGRectMake(leftOffest+buttonLen+seporator,3, 22, 22)];
+    [commentBarButton addTarget:self action:@selector(clickCommentButton:) forControlEvents:UIControlEventTouchUpInside];
+    [commentBarButton setImage:[ImageManager GobalArticelCommentButtonBG] forState:UIControlStateNormal];
+    [commentBarButton setTitle:@"评论" forState:UIControlStateNormal];
+    [commentBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [commentBarButton.titleLabel setFont:font];
+    [rightButtonView addSubview:commentBarButton];
+    [commentBarButton release];
+    
     
     UIButton *shareBarButton = [[UIButton alloc]initWithFrame:CGRectMake(leftOffest+(buttonLen+seporator)*2 +30, 0, 22, 22)];
     [shareBarButton setImage:[ImageManager GobalArticelShareButtonBG] forState:UIControlStateNormal];
@@ -718,7 +721,7 @@ enum TapOnItem {
         [self.webview sizeToFit];
         [self.webview scalesPageToFit];
         [self.webview setUserInteractionEnabled:YES];
-        [self.webview setFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height + 50)];
+        [self.webview setFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height + 100)];
 
         
     }

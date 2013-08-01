@@ -17,7 +17,7 @@
 #import "iCarousel.h"
 #import "ArticleService.h"
 #import "Article.h"
-#import "WorkoutDetailViewController.h"
+#import "CommonArticleViewController.h"
 #import "IIViewDeckController.h"
 #import "AppDelegate.h"
 #import "MyselfViewController.h"
@@ -530,7 +530,7 @@ typedef enum CONTENT_TYPE {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WorkoutDetailViewController *workOutVc = [[WorkoutDetailViewController alloc]initWithNibName:@"WorkoutDetailViewController" bundle:nil];
+    CommonArticleViewController *workOutVc = [[CommonArticleViewController alloc]initWithNibName:@"CommonArticleViewController" bundle:nil];
     workOutVc.article = [self.dataList objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:workOutVc animated:YES];
     [workOutVc release];
@@ -574,14 +574,14 @@ typedef enum CONTENT_TYPE {
         [view addSubview:imageView];
         [imageView release];
         
-        
-        label = [[[UILabel alloc] initWithFrame:CGRectMake(0, view.frame.origin.y + 130, view.frame.size.width, view.frame.size.height - 130)] autorelease];
-        label.textAlignment = UITextAlignmentCenter;
-		label.font = [label.font fontWithSize:16];
-        [label setTextColor:[UIColor whiteColor]];
-        label.backgroundColor = [UIColor colorWithPatternImage:[ImageManager GobalScrollerTitleBG_Image]];
-        
-        [imageView  addSubview:label];
+//        
+//        label = [[[UILabel alloc] initWithFrame:CGRectMake(0, view.frame.origin.y + 130, view.frame.size.width, view.frame.size.height - 130)] autorelease];
+//        label.textAlignment = UITextAlignmentCenter;
+//		label.font = [label.font fontWithSize:16];
+//        [label setTextColor:[UIColor whiteColor]];
+//        label.backgroundColor = [UIColor colorWithPatternImage:[ImageManager GobalScrollerTitleBG_Image]];
+//        
+//        [imageView  addSubview:label];
         
 	}
 	else
@@ -604,7 +604,7 @@ typedef enum CONTENT_TYPE {
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
     PPDebug(@"I did selected the picture of %d",index);
     
-    WorkoutDetailViewController *workOutVc = [[WorkoutDetailViewController alloc]initWithNibName:@"WorkoutDetailViewController" bundle:nil];
+    CommonArticleViewController *workOutVc = [[CommonArticleViewController alloc]initWithNibName:@"CommonArticleViewController" bundle:nil];
     workOutVc.article = [self.dataList objectAtIndex:index];
     [self.navigationController pushViewController:workOutVc animated:YES];
     [workOutVc release];

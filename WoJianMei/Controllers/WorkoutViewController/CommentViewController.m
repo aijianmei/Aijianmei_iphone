@@ -9,45 +9,85 @@
 #import "CommentViewController.h"
 #import "CommentCell.h"
 #import "comment.h"
-
-
+#import "VideoService.h"
+#import "Video.h"
+#import "Article.h"
 @interface CommentViewController ()
 
 @end
 
 @implementation CommentViewController
+@synthesize video =_video;
+@synthesize article =_article;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+    
     }
     return self;
 }
 
+-(void)dealloc {
+    [_video release];
+    [_article release];
+    [super dealloc];
+
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+
+    [super viewDidAppear:YES];
+    //开始加载数据
+    [self loadDatas];
+
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
-    [self.view  setBounds:CGRectMake(0, 0, 320, 520)];
+    [self.view  setBounds:CGRectMake(0, 40, 320, 520)];
 
-//    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
 
-    [self.navigationController.navigationBar setHidden:YES];
-    [self setTitle:@"评论页面"];
+    [self.navigationController.navigationBar setHidden:NO];
+//    [self setTitle:@"评论页面"];
     
-    FaceToolBar* bar=[[FaceToolBar alloc]initWithFrame:CGRectMake(0.0f,self.view.frame.size.height - toolBarHeight,self.view.frame.size.width,toolBarHeight) superView:self.view];
-    bar.delegate=self;
-    [self.view addSubview:bar];
-    [bar release];
+//    FaceToolBar* bar=[[FaceToolBar alloc]initWithFrame:CGRectMake(0.0f,self.view.frame.size.height - toolBarHeight,self.view.frame.size.width,toolBarHeight) superView:self.view];
+//    bar.delegate=self;
+//    [self.view addSubview:bar];
+//    [bar release];
     
 
+    [self.dataTableView setContentSize:CGSizeMake(320, 800)];
     
+//    [self loadDatas];
 
 }
+
+-(void)loadDatas{
+    
+        
+    if (self.article) {
+        [[VideoService sharedService] loadVideCommentByVideId:self.article._id channelType:@"1" delegate:self];
+    }
+    
+    
+//        [[VideoService sharedService] loadVideCommentByVideId:@"117" channelType:@"1" delegate:self];
+
+    
+    if (self.video) {
+        [[VideoService sharedService] loadVideCommentByVideId:self.video._id channelType:@"2" delegate:self];
+    }
+
+}
+
 #pragma mark-
 #pragma mark- DelegateMethod
 
@@ -78,17 +118,22 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [dataList count];
+   return [self.dataList count];
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *CellIdentifier = [CommentCell getCellIdentifier];
     CommentCell *cell = (CommentCell*)[self.dataTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     if (cell==nil) {
         cell  = [[[CommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    Comment *comment  = [self.dataList objectAtIndex:indexPath.row];
+    
+    Comment *comment  = [dataList objectAtIndex:indexPath.row];
+
+    
     if (comment) {
         [cell setCellInfo:comment];
     }
@@ -156,8 +201,15 @@
 {
     NSLog(@"***Load objects count: %d", [objects count]);
     [self hideActivity];
-     dataList = objects;
-    [dataTableView reloadData];
+    
+    if ( [objects count]==0)
+    {
+        
+        [self popupHappyMessage:@"亲,没有如何评论！" title:nil];
+
+    }
+     self.dataList = objects;
+    [self.dataTableView reloadData];
 }
 
 @end

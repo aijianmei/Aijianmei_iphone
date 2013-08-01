@@ -92,7 +92,6 @@
 -(void)save{
     
     
-    
      didSave =YES;
     
     self.avtarImage = [self loadImage:nil ofType:nil inDirectory:self.user.profileImageUrl];
@@ -330,10 +329,7 @@
     
     CGSize size = CGSizeMake(320, 770);
     [tableView setContentSize:size];
-    
-    
-    
-
+  
 
      cell.accessoryView = nil;
 

@@ -17,7 +17,7 @@
 #import "iCarousel.h"
 #import "ArticleService.h"
 #import "Article.h"
-#import "WorkoutDetailViewController.h"
+#import "CommonArticleViewController.h"
 #import "IIViewDeckController.h"
 #import "AppDelegate.h"
 #import "MyselfViewController.h"
@@ -533,7 +533,7 @@ typedef enum CONTENT_TYPE {
 {
     if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==1 ||self.segmentedController.selectedSegmentIndex == -1)
     {
-        WorkoutDetailViewController *workOutVc = [[WorkoutDetailViewController alloc]initWithNibName:@"WorkoutDetailViewController" bundle:nil];
+        CommonArticleViewController *workOutVc = [[CommonArticleViewController alloc]initWithNibName:@"CommonArticleViewController" bundle:nil];
         workOutVc.article = [self.dataList objectAtIndex:indexPath.row];
         [self.navigationController pushViewController:workOutVc animated:YES];
         [workOutVc release];
