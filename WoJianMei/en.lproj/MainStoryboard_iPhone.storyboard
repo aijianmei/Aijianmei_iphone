@@ -1146,9 +1146,9 @@
         <image name="dlk_1@2x.png" width="496" height="72"/>
         <image name="fgx_1.png" width="640" height="2"/>
         <image name="fgx_2.png" width="16" height="16"/>
-        <image name="fl_1.png" width="16" height="16"/>
+        <image name="fl_1.png" width="43" height="26"/>
         <image name="fl_2.png" width="16" height="16"/>
-        <image name="fl_3.png" width="16" height="16"/>
+        <image name="fl_3.png" width="88" height="44"/>
         <image name="fz_1.png" width="16" height="16"/>
         <image name="fz_1s.png" width="16" height="16"/>
         <image name="fz_2.png" width="16" height="16"/>
@@ -1162,98 +1162,6 @@
         <image name="wczc_2@2x.png" width="16" height="16"/>
         <image name="xldl_1@2.png" width="482" height="80"/>
     </resources>
-    <classes>
-        <class className="AJM_CommonViewController" superclassName="PPViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AJM_CommonViewController.h"/>
-        </class>
-        <class className="ArticleCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ArticleCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="commentLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="imgView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="releasedTimeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ForumViewController" superclassName="AJM_CommonViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ForumViewController.h"/>
-        </class>
-        <class className="HomeViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
-        </class>
-        <class className="LifeStytleViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LifeStytleViewController.h"/>
-        </class>
-        <class className="LoginViewController" superclassName="PPViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="clickQQShareButton:" candidateClass="UIButton"/>
-                <relationship kind="action" name="clickSignupAijianmeiAccount:" candidateClass="UIButton"/>
-                <relationship kind="action" name="clickSinaWeiboButton:" candidateClass="UIButton"/>
-                <relationship kind="action" name="closeDoneEdit:"/>
-                <relationship kind="outlet" name="aijianmeiButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="qqButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="sinaButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="MakeFriendsViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MakeFriendsViewController.h"/>
-        </class>
-        <class className="MoreViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MoreViewController.h"/>
-        </class>
-        <class className="MyselfViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyselfViewController.h"/>
-        </class>
-        <class className="NutriViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NutriViewController.h"/>
-        </class>
-        <class className="PPTableViewController" superclassName="PPViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dataTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="PPViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPViewController.h"/>
-        </class>
-        <class className="REComposeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/REComposeViewController.h"/>
-        </class>
-        <class className="SignUpViewController" superclassName="PPViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SignUpViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="closeDoneEdit:"/>
-                <relationship kind="action" name="didPressLogin:"/>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="repeatPasswordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="userNameTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SupplementViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SupplementViewController.h"/>
-        </class>
-        <class className="WorkOutProcessViewController" superclassName="PPViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkOutProcessViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="WorkoutNoteViewController" superclassName="REComposeViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutNoteViewController.h"/>
-        </class>
-        <class className="WorkoutPlanViewController" superclassName="AJM_CommonViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutPlanViewController.h"/>
-        </class>
-        <class className="WorkoutViewController" superclassName="PPTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
