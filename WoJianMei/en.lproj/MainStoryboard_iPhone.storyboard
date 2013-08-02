@@ -1146,7 +1146,7 @@
         <image name="dlk_1@2x.png" width="496" height="72"/>
         <image name="fgx_1.png" width="640" height="2"/>
         <image name="fgx_2.png" width="16" height="16"/>
-        <image name="fl_1.png" width="43" height="26"/>
+        <image name="fl_1.png" width="16" height="16"/>
         <image name="fl_2.png" width="16" height="16"/>
         <image name="fl_3.png" width="88" height="44"/>
         <image name="fz_1.png" width="16" height="16"/>
