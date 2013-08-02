@@ -311,6 +311,18 @@
 
 #pragma mark - Table view data source
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section ==0 && indexPath.row ==0)
+    {
+        return 80;
+    }
+    
+    return 55;
+}
+
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
@@ -394,7 +406,7 @@
                     [cell.detailImageView setImage:image];
                 }
 
-                [cell.detailImageView setFrame:CGRectMake(200, 5.0f, 45.0f,45.0f)];
+                [cell.detailImageView setFrame:CGRectMake(180, 7.50f, 65.0f,65.0f)];
 
             }
             ///设置背景
@@ -459,9 +471,9 @@
                     NSString *gender;
                     if ([self.user.gender isEqualToString:@"0"])
                     {
-                        gender = [NSString stringWithFormat:@"男"];
-                    }else{
                         gender = [NSString stringWithFormat:@"女"];
+                    }else{
+                        gender = [NSString stringWithFormat:@"男"];
                         
                     }
 
@@ -599,13 +611,13 @@
 //            [self clickChangeAvatarBackgroundButton];
 //            }
             //Change name
-            else if(indexPath.row ==2){
+            else if(indexPath.row ==1){
             ChangeNameViewController *vc = [[ChangeNameViewController alloc]initWithNibName:@"ChangeNameViewController" bundle:nil];
            [self.navigationController pushViewController:vc animated:YES];
            [vc release];
             }
             //Change description
-            else if(indexPath.row ==3){
+            else if(indexPath.row ==2){
                 ChangeDescriptionViewController *vc = [[ChangeDescriptionViewController alloc]initWithNibName:@"ChangeDescriptionViewController" bundle:nil];
                 [self.navigationController pushViewController:vc animated:YES];
                 [vc release];
@@ -663,18 +675,11 @@
 
 - (void)didClickAddMoreButton:(id)sender atIndex:(NSIndexPath*)indexPath;
 {
-    
-   
-
-    
-
+    [self.dataTableView reloadData];
 }
 
 - (void)didClickLessButton:(id)sender atIndex:(NSIndexPath*)indexPath{
-    
-    
-    PPDebug(@"asdfasdfasdfasdfasdfasd");
-    
+    [self.dataTableView reloadData];
 }
 
 
@@ -704,8 +709,15 @@
             //取出用户
             User *newUser  =[[UserService defaultService] user];
             
+            
+            NSString *bmi = [self reCaluclateBMIValueByWeight:newUser.weight height:newUser.height];
+            
+            
             //修改用户
             [newUser setProfileImageUrl:user.profileImageUrl];
+            [newUser setBMIValue:bmi];
+            
+
             
             //保存用户
             [[UserService defaultService] storeUserInfoByUid:newUser.uid];
@@ -715,6 +727,19 @@
             
         }
     }
+}
+
+
+- (NSString *)reCaluclateBMIValueByWeight:(NSString *)aWeight height: (NSString *)aHeight{
+    
+    //重新计算BMI
+    int weight = [self.user.weight integerValue];
+    int height = [self.user.height integerValue];
+    float BMI =weight /(height * height * 0.01 *0.01);
+    
+    NSString *bmi = [NSString stringWithFormat:@"%.1f",BMI];
+    PPDebug(@"what the bmi: %@",bmi);
+    return bmi;
 }
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {

@@ -24,9 +24,6 @@
         _nameTextField.delegate = self;
         [_nameTextField setTextAlignment:NSTextAlignmentLeft];
         [self.contentView addSubview:_nameTextField];
-        [_nameTextField setText:@"输入用户名"];
-        [_nameTextField becomeFirstResponder];
-        
         
     }
     return self;

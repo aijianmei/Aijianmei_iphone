@@ -41,12 +41,12 @@
     if ([user.gender isEqualToString:@"0"])
     {
         
-        [self setTitle:@"男"];
+        [self setTitle:@"女"];
 
     }else
         
     {
-        [self setTitle:@"女"];
+        [self setTitle:@"男"];
     }
 
 }
@@ -96,7 +96,7 @@
                
             [cell.textLabel setText:@"男"];
             
-            if ([user.gender isEqualToString:@"0"]) {
+            if ([user.gender isEqualToString:@"1"]) {
                 cell.accessoryView = accessoryViewButton;
             }
         }
@@ -105,7 +105,7 @@
         {
             [cell.textLabel setText:@"女"];
             
-            if ([user.gender isEqualToString:@"1"]) {
+            if ([user.gender isEqualToString:@"0"]) {
                 /////
                 cell.accessoryView = accessoryViewButton;
             }
@@ -136,22 +136,24 @@
         case 0:
         {
             User *user = [[UserService defaultService]user];
-            [user setGender:@"0"];
+            [user setGender:@"1"];
+            [self setTitle:@"男"];
         }
             break;
         case 1:
         {
             User *user = [[UserService defaultService]user];
-            [user setGender:@"1"];
-            
+            [user setGender:@"0"];
+            [self setTitle:@"女"];
+
         }
             break;
             
         default:
             break;
     }
-    [dataTableView reloadData];
 
+     [self.dataTableView reloadData];
 }
 
 

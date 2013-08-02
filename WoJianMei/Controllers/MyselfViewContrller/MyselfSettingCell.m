@@ -165,13 +165,17 @@
             break;
     }
     
+    NSString *bmi = [self reCaluclateBMIValueByWeight:user.weight height:user.height];
+    
+    [user setBMIValue:bmi];
+    
     [[UserService defaultService] setUser:user];
     [[UserService defaultService] storeUserInfoByUid:user.uid];
     
-//    if (newdelegate && [newdelegate respondsToSelector:@selector(didClickAddMoreButton:atIndex:)]) {
-//        
-//        [newdelegate didClickLessButton:sender atIndex:indexPath];
-//    }
+    if (newdelegate && [newdelegate respondsToSelector:@selector(didClickAddMoreButton:atIndex:)]) {
+        
+        [newdelegate didClickLessButton:sender atIndex:indexPath];
+    }
     
     
 }
@@ -222,13 +226,39 @@
             break;
     }
     
+    
+    
+    
+    
+    
+    
+  NSString *bmi = [self reCaluclateBMIValueByWeight:user.weight height:user.height];
+    
+   [user setBMIValue:bmi];
+    
      [[UserService defaultService] setUser:user];
      [[UserService defaultService] storeUserInfoByUid:user.uid];
     
-//    if (newdelegate && [newdelegate respondsToSelector:@selector(didClickLessButton:atIndex:)]) {
-//        
-//        [newdelegate didClickLessButton:sender atIndex:indexPath];
-//    }
+
+    
+    
+    
+    if (newdelegate && [newdelegate respondsToSelector:@selector(didClickLessButton:atIndex:)]) {
+        
+        [newdelegate didClickLessButton:sender atIndex:indexPath];
+    }
+}
+
+
+- (NSString *)reCaluclateBMIValueByWeight:(NSString *)aWeight height: (NSString *)aHeight{
+    
+    //重新计算BMI
+    int weight = [aWeight integerValue];
+    int height = [aHeight integerValue];
+    float BMI =weight /(height * height * 0.01 *0.01);
+    
+    NSString *bmi = [NSString stringWithFormat:@"%.1f",BMI];
+    return bmi;
 }
 
 

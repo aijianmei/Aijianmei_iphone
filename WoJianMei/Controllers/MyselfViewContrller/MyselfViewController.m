@@ -20,6 +20,7 @@
 #import "UIButton+WebCache.h"
 #import "LabelsView.h"
 #import "BaiduMobStat.h"
+#import "BMIViewController.h"
 
 #define USER                          @"user"
 #define USER_NAME                     @"screen_name"
@@ -253,10 +254,19 @@
 #pragma mark  tableviewDelegate Method
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//第一个section  和header 的距离
+    if (section ==0) {
+        return 30;
+    }
+
+    return 0;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -264,13 +274,13 @@
     // Return the number of rows in the section.
 
     switch (section) {
+//        case 0:
+//            return 1;
+//            break;
         case 0:
-            return 1;
-            break;
-        case 1:
             return 5;
             break;
-        case 2:
+        case 1:
             return 1;
             break;
             
@@ -290,7 +300,6 @@
     MyselfTableViewCell *cell = (MyselfTableViewCell *)[self.dataTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
-    
     if (cell) {
         cell = [[[MyselfTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 
@@ -305,30 +314,30 @@
     accessoryViewButton.userInteractionEnabled = YES;
     
     switch (indexPath.section) {
+//        case 0:
+//            [cell.textLabel setText:@"标签"];
+//            
+//            /////显示数据接口
+////            LabelsView *lablesView = [[LabelsView alloc]initWithFrame:CGRectMake(50, 15, cell.bounds.size.width -90, cell.bounds.size.height)];
+////            [lablesView setDataList:self.user.labelsArray];
+////            [lablesView setNeedsDisplay];
+////            [cell addSubview:lablesView];
+////            [lablesView release];
+//            
+//            /////accessoryViewButton
+//            [accessoryViewButton setImage:normalImage forState:UIControlStateNormal];
+//            ////accessoryBGview 背景颜色
+//            UIView *accessoryBGview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+//            [accessoryBGview setBackgroundColor:[UIColor clearColor]];
+//            [accessoryViewButton setFrame:CGRectMake(10, 0, 40, 40)];
+//            [accessoryBGview addSubview:accessoryViewButton];
+//            
+//            cell.accessoryView = accessoryBGview;
+//            [accessoryBGview release];
+//            
+//            
+//            break;
         case 0:
-            [cell.textLabel setText:@"标签"];
-            
-            /////显示数据接口
-            LabelsView *lablesView = [[LabelsView alloc]initWithFrame:CGRectMake(50, 15, cell.bounds.size.width -90, cell.bounds.size.height)];
-            [lablesView setDataList:self.user.labelsArray];
-            [lablesView setNeedsDisplay];
-            [cell addSubview:lablesView];
-            [lablesView release];
-            
-            /////accessoryViewButton
-            [accessoryViewButton setImage:normalImage forState:UIControlStateNormal];
-            ////accessoryBGview 背景颜色
-            UIView *accessoryBGview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
-            [accessoryBGview setBackgroundColor:[UIColor clearColor]];
-            [accessoryViewButton setFrame:CGRectMake(10, 0, 40, 40)];
-            [accessoryBGview addSubview:accessoryViewButton];
-            
-            cell.accessoryView = accessoryBGview;
-            [accessoryBGview release];
-            
-            
-            break;
-        case 1:
             [cell.textLabel setText:[self.dataList objectAtIndex:indexPath.row]];
             
             /////accessoryViewButton
@@ -341,9 +350,9 @@
                     NSString *gender;
                     if ([self.user.gender isEqualToString:@"0"])
                     {
-                        gender = [NSString stringWithFormat:@"男"];
-                    }else{
                         gender = [NSString stringWithFormat:@"女"];
+                    }else{
+                        gender = [NSString stringWithFormat:@"男"];
 
                     }
                     [accessoryViewButton setTitle:gender forState:UIControlStateNormal];
@@ -372,7 +381,28 @@
                 case 4:
                 {
                     //BMI
-                    [accessoryViewButton setTitle:self.user.BMIValue forState:UIControlStateNormal];
+                    
+                    /*   最流行的检测：BMI
+                     　　BMI=体重(kg)/身高(m)的平方, 学名叫身体质量指数，19世纪中期比利时的凯特勒最先提出这个概念。
+                     　　评判标准：中国人与外国人的体型大不一样，BMI标准也不同。国外把24.9定为正常上限，≥30为肥胖。而国际生命科学学会中国肥胖问题工作组综合24万人资料，提出了中国成年人的标准，BMI在18.5～23.9为适宜范围，24～27.9为超重，28以上为肥胖。
+                     */
+                    
+                 int weight = [self.user.weight integerValue];
+                 int height = [self.user.height integerValue];
+                 float BMI =weight /(height * height * 0.01 *0.01);
+                    
+                 NSString *bmi = [NSString stringWithFormat:@"%.1f",BMI];
+                    PPDebug(@"what the bmi: %@",bmi);
+                 [self.user setBMIValue:bmi];
+                    
+                [accessoryViewButton setTitle:self.user.BMIValue forState:UIControlStateNormal];
+
+                  User *user =  [[UserService defaultService] user];
+                    
+                 [user setBMIValue:self.user.BMIValue];
+        
+                  [[UserService defaultService] storeUserInfoByUid:user.uid];
+                    
                 }
                     break;
                 default:
@@ -384,7 +414,7 @@
 
             
             break;
-        case 2:
+        case 1:
             [cell.textLabel setText:@"城市"];
         
             /////accessoryViewButton
@@ -399,6 +429,8 @@
         default:
             break;
     }
+    
+    
     
     
     
@@ -424,13 +456,13 @@
 //                
 //            [self performSegueWithIdentifier:@"WorkoutImageViewSegue" sender:self];
             
-            break;
+//            break;
+//        case 0:
+//            NSLog(@"I did click %@",@"标签");
+//            ////for testing
+//            
+//            break;
         case 0:
-            NSLog(@"I did click %@",@"标签");
-            ////for testing
-            
-            break;
-        case 1:
             switch (indexPath.row) {
                 case 0:
                     NSLog(@"this is %@",@"性别");
@@ -445,14 +477,25 @@
                     NSLog(@"this is %@",@"体重");
                     break;
                 case 4:
+                {
                     NSLog(@"this is %@",@"BMI");
+                    
+                    BMIViewController *bmiVC  = [[BMIViewController alloc]initWithNibName:@"BMIViewController" bundle:nil];
+                    
+                    UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:bmiVC];
+                    [bmiVC release];
+
+                    [self.navigationController presentModalViewController:navigation animated:YES];
+                    [navigation release];
+                    
+                }
                     break;
                     
                 default:
                     break;
             }
                     break;
-        case 2:
+        case 1:
             NSLog(@"I did click %@",@"城市");
             break;
             
