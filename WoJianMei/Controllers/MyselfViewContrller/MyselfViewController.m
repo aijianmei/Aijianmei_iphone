@@ -19,7 +19,7 @@
 #import "UIImageView+WebCache.h"
 #import "UIButton+WebCache.h"
 #import "LabelsView.h"
-
+#import "BaiduMobStat.h"
 
 #define USER                          @"user"
 #define USER_NAME                     @"screen_name"
@@ -69,10 +69,7 @@
     
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
+
 
 -(void)addHeaderView{
     self.myHeaderView  =[[UIView alloc]init];
@@ -179,13 +176,58 @@
 
 - (void)upgradeUI
 {
-    [self.headerVImageButton setImageWithURL:[NSURL URLWithString:_user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
+    [self.headerVImageButton setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
+    
+    
+    UIImage *image = [self loadImageInDirectory:self.user.profileImageUrl];
+    if (image) {
+        [self.headerVImageButton  setImage:image forState:UIControlStateNormal];
+    }
+    
+
+    
     [self.backGroundImageView setImageWithURL:[NSURL URLWithString:self.user.avatarBackGroundImage] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
     [self.userNameLabel setText:_user.name];
     [self.descriptionLabel setText:_user.description];
     
     [dataTableView reloadData];
 }
+
+
+//读取本地保存的图片
+-(UIImage *) loadImageInDirectory:(NSString *)directoryPath {
+
+    NSData *imageData =[NSData dataWithContentsOfFile:directoryPath];
+    UIImage *result =[UIImage imageWithData:imageData];
+    return result;
+}
+
+
+
+#pragma mark -
+#pragma mark - View lifecycle
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self loadUserData];
+    [self upgradeUI];
+    [self.dataTableView reloadData];
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[BaiduMobStat defaultStat] pageviewStartWithName:@"MyselfView"];
+    
+}
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:YES];
+    [[BaiduMobStat defaultStat] pageviewEndWithName:@"MyselfView"];
+}
+
 
 -(void)viewDidLoad
 {
@@ -431,17 +473,9 @@
 }
 
 
--(void)viewWillAppear:(BOOL)animated{
-
-    [super viewWillAppear:YES];
-    [self.dataTableView reloadData];
-    [self loadUserData];
-}
-
-
-
-
 -(void)clickVatarButton:(id)sender{
+    
+    return;
     
     UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
                                                        delegate:self
@@ -471,7 +505,6 @@
     }];
   }
 }
-
 
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{

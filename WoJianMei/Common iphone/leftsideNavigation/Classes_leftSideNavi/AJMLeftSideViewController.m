@@ -24,10 +24,14 @@
 #import "SVWebViewController.h"
 //#import <ShareSDK/ShareSDK.h>
 
+
 #import "SinaWeiboRequest.h"
 
 #import "ColorManager.h"
 #import "ImageManager.h"
+
+#import "BaiduMobStat.h"
+
 
 #define kAppKey @"3622140445"
 #define kAppSecret @"f94d063d06365972215c62acaadf95c3"
@@ -274,19 +278,20 @@
                 case 0:
                 {
                     ///首页
-                    
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         HomeViewController *homeVC = (HomeViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"HomeViewController"];
                         homeVC.title = @"首页";
                         _navigationController = [[UINavigationController alloc] initWithRootViewController:homeVC] ;
                         self.viewDeckController.centerController = _navigationController;
                         self.view.userInteractionEnabled = YES;
-                        
-                        
-                    }];
-                 break;
+                                            }];
+                    
+                    //百度统计;
+                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+                    [statTracker logEvent:@"HomeView" eventLabel:@"HomeView"];
+                    
                 }
-
+                break;
                 case 1:
                 {
                     ///锻炼
@@ -297,10 +302,16 @@
                         self.viewDeckController.centerController = _navigationController;
                         self.view.userInteractionEnabled = YES;
 
+                      
                         
                     }];
-                    break;
+                    
+                    //百度统计
+                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+                    [statTracker logEvent:@"WorkOutView" eventLabel:@"WorkOutView"];
                 }
+                break;
+
 //                case 2:
 //                {
 //                    ///健身计划
@@ -325,9 +336,15 @@
                         self.viewDeckController.centerController = _navigationController;
                         
                         self.view.userInteractionEnabled = YES;
+                        
+                       
                     }];
-                    break;
+                    
+                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+                    [statTracker logEvent:@"NutriView" eventLabel:@"NutriView"];
                 }
+                    break;
+                
                 case 3:
                 {
                     ///补充
@@ -339,9 +356,13 @@
                         self.viewDeckController.centerController = _navigationController;
                         
                         self.view.userInteractionEnabled = YES;
+                        
+                      
                     }];
-                    break;
+                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+                    [statTracker logEvent:@"SupplementView" eventLabel:@"SupplementView"];
                 }
+                break;
                 case 4:
                 {
                     ///生活方式
@@ -353,9 +374,15 @@
                         self.viewDeckController.centerController = _navigationController;
                         
                         self.view.userInteractionEnabled = YES;
+                     
                     }];
-                    break;
+                    
+                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+                    [statTracker logEvent:@"LifeStytleView" eventLabel:@"LifeStytleView"];
+                    
                 }
+                break;
+
 //                case 6:
 //                {
 //                   ////论坛
@@ -397,9 +424,12 @@
                         _tableView.userInteractionEnabled =YES;
                         
                     }];
-                    break;
-                }
                     
+                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+                    [statTracker logEvent:@"MoreView" eventLabel:@"MoreView"];
+                }
+                    break;
+
                 default:
                     break;
             }
@@ -433,18 +463,11 @@
 
                     }
 
-
-                }
-                    break;
-//                case 1:
-//                {
-//                ///关注腾讯微博
-//                //TODO
-
-
-//                }
+                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+                    [statTracker logEvent:@"FollowSina" eventLabel:@"FollowSina"];
                     
-                   break;
+                }
+                break;
                 case 1:
                 {
                 ///关注微信
@@ -461,9 +484,12 @@
                         
                     }
                     
+
+                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+                    [statTracker logEvent:@"FollowWechat" eventLabel:@"FollowWechat"];
+                }
                     break;
 
-                }
                 case 2:
                 {
                     ///关注爱健美网 www.aijianmei.com
@@ -475,10 +501,13 @@
                         [vc release];
                         self.viewDeckController.centerController = navController;
                     }];
-                    break;
+                    
+                    
+                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+                    [statTracker logEvent:@"VistWebSite" eventLabel:@"VistWebSite"];
                 }
                 
-
+                   break;
                 default:
                     break;
             }

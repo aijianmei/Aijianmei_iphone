@@ -17,6 +17,7 @@
 #import "REComposeViewController.h"
 #import "CustomURLCache.h"
 #import "AppDelegate.h"
+#import "BaiduMobStat.h"
 
 #define kAppKey @"3622140445"
 #define kAppSecret @"f94d063d06365972215c62acaadf95c3"
@@ -393,6 +394,21 @@ enum TapOnItem {
     
     [self hideNavigationBar];
 
+}
+
+#pragma mark -
+#pragma mark - View lifecycle
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    [[BaiduMobStat defaultStat] pageviewStartWithName:@"CommentArticleView"];
+}
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:YES];
+    [[BaiduMobStat defaultStat] pageviewEndWithName:@"CommentArticleView"];
 }
 
 - (void)viewDidLoad

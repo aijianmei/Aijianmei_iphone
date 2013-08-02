@@ -12,6 +12,7 @@
 #import "VideoService.h"
 #import "Video.h"
 #import "Article.h"
+#import "BaiduMobStat.h"
 @interface CommentViewController ()
 
 @end
@@ -38,14 +39,26 @@
 
 }
 
+#pragma mark -
+#pragma mark - View lifecycle
 -(void)viewDidAppear:(BOOL)animated
 {
 
     [super viewDidAppear:YES];
     //开始加载数据
+    [[BaiduMobStat defaultStat] pageviewStartWithName:@"CommentView"];
     [self loadDatas];
 
 }
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:YES];
+    [[BaiduMobStat defaultStat] pageviewEndWithName:@"CommentView"];
+}
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

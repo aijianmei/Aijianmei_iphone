@@ -28,7 +28,7 @@
 #import "ImageManager.h"
 #import "UIImageView+WebCache.h"
 #import "SDSegmentedControl.h"
-
+#import "BaiduMobStat.h"
 
 
 
@@ -91,7 +91,20 @@ typedef enum CONTENT_TYPE {
 
 
 #pragma mark -
-#pragma mark View life
+#pragma mark - View lifecycle
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    [[BaiduMobStat defaultStat] pageviewStartWithName:@"LifeStyleView"];
+}
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:YES];
+    [[BaiduMobStat defaultStat] pageviewEndWithName:@"LifeStyleView"];
+}
+
 
 - (void)viewDidLoad
 {

@@ -602,7 +602,7 @@ static UserService* _defaultUserService = nil;
      @"province",@"province",
      @"city",@"city",
      @"avatarimage", @"profileImageUrl",
-//     @"backgroundimage",@"avatarBackGroundImage",
+//   @"backgroundimage",@"avatarBackGroundImage",
      nil];
     [objectManager.mappingProvider addObjectMapping:userMapping];
     [objectManager.mappingProvider setMapping:userMapping forKeyPath:@""];
@@ -626,14 +626,18 @@ static UserService* _defaultUserService = nil;
     [params setValue:user.email forParam:@"email"];
     [params setValue:user.age forParam:@"age"];
     [params setValue:user.weight forParam:@"weight"];
+    [params setValue:user.height forParam:@"height"];
     [params setValue:user.BMIValue forParam:@"BMIValue"];
     [params setValue:user.province forParam:@"province"];
     [params setValue:user.city forParam:@"city"];
-    [params setValue:user.age forParam:@"age"];
     
-    
-    
+    if (image) {
     [params setData:imageData1 MIMEType:@"image/png" forParam:@"avatarimage"];
+    }
+    
+    
+
+    
 //    [params setData:imageData2 MIMEType:@"image/png" forParam:@"backgroundimage"];
     
     
@@ -643,8 +647,8 @@ static UserService* _defaultUserService = nil;
          loader.delegate = delegate;
          loader.params = params;
          loader.targetObject = nil;
-         loader.objectMapping = userMapping;
-         loader.method = RKRequestMethodPOST;
+//         loader.objectMapping = userMapping;
+//         loader.method = RKRequestMethodPOST;
          
          loader.onDidLoadResponse = ^(RKResponse *response) {
              NSLog(@"Response did arrive");

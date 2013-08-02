@@ -52,7 +52,7 @@
         
         
         
-        self.textField = [[UITextField alloc]initWithFrame:CGRectMake(100, 6, 142, 45)];
+        self.textField = [[UITextField alloc]initWithFrame:CGRectMake(100, 15, 142, 27)];
         _textField.delegate =self;
         [self.textField setBackground:[UIImage imageNamed:@"profile_data_BG.png"]];
         [_textField setTextAlignment:NSTextAlignmentCenter];
@@ -166,6 +166,7 @@
     }
     
     [[UserService defaultService] setUser:user];
+    [[UserService defaultService] storeUserInfoByUid:user.uid];
     
 //    if (newdelegate && [newdelegate respondsToSelector:@selector(didClickAddMoreButton:atIndex:)]) {
 //        

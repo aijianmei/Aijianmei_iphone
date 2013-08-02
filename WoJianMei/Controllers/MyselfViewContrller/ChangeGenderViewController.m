@@ -38,7 +38,16 @@
     [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(clickSaveButton:)];
     
     User *user = [[UserService defaultService]user];
-    [self setTitle:user.gender];
+    if ([user.gender isEqualToString:@"0"])
+    {
+        
+        [self setTitle:@"男"];
+
+    }else
+        
+    {
+        [self setTitle:@"女"];
+    }
 
 }
 

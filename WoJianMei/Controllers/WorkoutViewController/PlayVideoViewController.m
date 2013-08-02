@@ -13,6 +13,7 @@
 #import "CommentViewController.h"
 #import "AppDelegate.h"
 #import "ImageManager.h"
+#import "BaiduMobStat.h"
 
 
 #define kAppKey @"3622140445"
@@ -492,6 +493,20 @@ enum TapOnItem {
 }
 
 
+#pragma mark -
+#pragma mark - View lifecycle
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    [[BaiduMobStat defaultStat] pageviewStartWithName:@"PlayVideoView"];
+}
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:YES];
+    [[BaiduMobStat defaultStat] pageviewEndWithName:@"PlayVideoView"];
+}
 
 - (void)viewDidLoad
 {

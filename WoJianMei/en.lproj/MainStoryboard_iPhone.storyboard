@@ -274,7 +274,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="11.png" id="c0n-BH-LBA">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="place_holder.jpg" id="c0n-BH-LBA">
                                                     <rect key="frame" x="195" y="58" width="125" height="79"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -793,7 +793,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="11.png" id="Hk3-Gk-eQP">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="place_holder.jpg" id="Hk3-Gk-eQP">
                                                     <rect key="frame" x="200" y="60" width="113" height="74"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1005,8 +1005,8 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="11.png" id="k1J-Q9-998">
-                                                    <rect key="frame" x="199" y="54" width="109" height="71"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="place_holder.jpg" id="k1J-Q9-998">
+                                                    <rect key="frame" x="199" y="54" width="114" height="71"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -1104,7 +1104,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="11.png" id="hZi-ck-9LN">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="place_holder.jpg" id="hZi-ck-9LN">
                                                     <rect key="frame" x="199" y="54" width="109" height="71"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1157,6 +1157,7 @@
         <image name="fz_3s.png" width="16" height="16"/>
         <image name="login_BG.png" width="640" height="960"/>
         <image name="loin_LOGO.png" width="640" height="180"/>
+        <image name="place_holder.jpg" width="160" height="80"/>
         <image name="rq_1.png" width="16" height="16"/>
         <image name="wczc_2@2x.png" width="16" height="16"/>
         <image name="xldl_1@2.png" width="482" height="80"/>

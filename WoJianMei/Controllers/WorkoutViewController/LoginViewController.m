@@ -15,6 +15,7 @@
 #import "User.h"
 #import "Result.h"
 #import "SinaResult.h"
+#import "BaiduMobStat.h"
 
 
 #define kAppKey @"3622140445"
@@ -69,6 +70,21 @@ enum SinaResultErrorCode
         [_usernameField resignFirstResponder];
     }
 
+}
+
+#pragma mark -
+#pragma mark - View lifecycle
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    [[BaiduMobStat defaultStat] pageviewStartWithName:@"LoginView"];
+}
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:YES];
+    [[BaiduMobStat defaultStat] pageviewEndWithName:@"LoginView"];
 }
 
 - (void)viewDidLoad

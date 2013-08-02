@@ -38,5 +38,5 @@
 
 -(void)didClickBackButton:(UIButton *)button;
 
-
+-(UIImage*)loadImageInDirectory:(NSString *)directoryPath;
 @end

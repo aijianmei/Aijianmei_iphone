@@ -12,6 +12,8 @@
 #import "UserManager.h"
 #import "Result.h"
 #import "StringUtil.h"
+#import "BaiduMobStat.h"
+
 
 
 enum errorCode {
@@ -90,10 +92,29 @@ enum errorCode {
 - (void)alttextViewDidEndEditing:(UITextView *)textView {
     NSLog(@"%@", textView.text);
 }
+#pragma mark -
+#pragma mark - View lifecycle
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    [[BaiduMobStat defaultStat] pageviewStartWithName:@"SignupView"];
+}
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:YES];
+    [[BaiduMobStat defaultStat] pageviewEndWithName:@"SignupView"];
+}
+
+
+
 -(void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 	MCRelease(keyBoardController);
 }
+
+
 
 
 - (void)viewDidLoad

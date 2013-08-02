@@ -19,6 +19,8 @@
 #import "MyselfSettingCell.h"
 #import "UIImageView+WebCache.h"
 #import "Result.h"
+#import "BaiduMobStat.h"
+#import "CorpImageView.h"
 
 
 #define USER @"user"
@@ -78,8 +80,6 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-
-
 -(void)didClickBackButton:(UIButton *)button{
     
     if (didSave == NO) {
@@ -89,16 +89,26 @@
 }
 
 
--(void)save{
+-(void)clickSaveButton:(id)sender{
     
     
-     didSave =YES;
+    didSave =YES;
+
+    //把保存再文件夹里边的图片取出来，然后上传到服务器上面;
+    self.avtarImage = [self loadImageInDirectory:self.user.profileImageUrl];
     
-    self.avtarImage = [self loadImage:nil ofType:nil inDirectory:self.user.profileImageUrl];
-    [[UserService defaultService] postObject:nil withImage:self.avtarImage delegate:self];
     
+    if (self.avtarImage) {
+        [[UserService defaultService] postObject:nil withImage:self.avtarImage delegate:self];
+        [self showActivityWithText:@"加载中..."];
+
+    }else{
+        [[UserService defaultService] postObject:nil withImage:nil delegate:self];
+        [self showActivityWithText:@"加载中..."];
     
-    
+    }
+    //数据加载中的时候，按钮是禁止的再被点击的;
+    [self.navigationItem.rightBarButtonItem setEnabled:NO];
 }
 
 #pragma Image Picker Related
@@ -106,30 +116,36 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
-    if (image != nil){
-        
+    if (image != nil)
+    
+    {
         if (isChoosingAvtarImage)
         {
-        NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *path = [paths objectAtIndex:0];
-        NSString *tmpPathToFile = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/avtar.png", path]];
-            
+            NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *path = [paths objectAtIndex:0];
+            NSString *tmpPathToFile = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/avtar.png", path]];
             if([imageData writeToFile:tmpPathToFile atomically:YES]){
                 //Write was successful.
-                PPDebug(@"The path of the ProfileImageUrl :%@",tmpPathToFile);
-                [self.user setProfileImageUrl:tmpPathToFile];
-                
                 self.avtarImage = image;
+                self.user.profileImageUrl = tmpPathToFile;
+                
+                
+                
+                
             }
-            
         }
     }
     
-    
     User *user =[[UserService defaultService] user];
     [[UserService defaultService] setUser:user];
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [[UserService defaultService] storeUserInfoByUid:user.uid];
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+//        CorpImageView *cropImageView =[[CorpImageView alloc]initWithNibName:@"CorpImageView" bundle:nil];
+//        cropImageView.imgView.image =image;
+//        [self.navigationController presentModalViewController:cropImageView animated:YES];
+//        [cropImageView release];
+    }];
     
     [self loadDatas];
     [dataTableView reloadData];
@@ -172,15 +188,36 @@
 
 
 
+
+#pragma mark -
 #pragma mark - View lifecycle
-- (void)viewDidLoad
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    
+    [super viewDidAppear:YES];
+    [self loadDatas];
+    [self updateUI];
+    [[BaiduMobStat defaultStat] pageviewStartWithName:@"MyselfSettingView"];
+}
+
+
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:YES];
+    [[BaiduMobStat defaultStat] pageviewEndWithName:@"MyselfSettingView"];
+}
+
+
+- (void) viewDidLoad
 {
     [super viewDidLoad];
     ///设置背景
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
     /// 设置导航按钮
-    [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(save)];
+    [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(clickSaveButton:)];
     [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
 
 	// Do any additional setup after loading the view, typically from a nib.
@@ -191,19 +228,14 @@
 
 
 -(void)loadDatas{
-    
-    self.user = [[UserService defaultService]user];
+    self.user = [[UserService defaultService] user];
 }
 
 -(void)updateUI{
+    [self loadDatas];
     [dataTableView reloadData];
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:YES];
-    [self loadDatas];
-    [self updateUI];
-}
 
 #pragma mark --actionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -354,18 +386,15 @@
             
             ////设置头像
             if (indexPath.row ==0) {
-                
-                
+            
                 [cell.detailImageView setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
 
-                 UIImage *image = [self loadImage:@"avtar" ofType:@"png" inDirectory:self.user.profileImageUrl];
+                 UIImage *image = [self loadImageInDirectory:self.user.profileImageUrl];
                 if (image) {
                     [cell.detailImageView setImage:image];
                 }
 
-                
-                
-                [cell.detailImageView setFrame:CGRectMake(200, 5.0f, 45.0f,42.0f)];
+                [cell.detailImageView setFrame:CGRectMake(200, 5.0f, 45.0f,45.0f)];
 
             }
             ///设置背景
@@ -515,13 +544,9 @@
 
 
 //读取本地保存的图片
--(UIImage *) loadImage:(NSString *)fileName ofType:(NSString *)extension inDirectory:(NSString *)directoryPath {
-    
-//    UIImage * result = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@.%@", directoryPath, fileName, extension]];
-    
-    UIImage * result = [UIImage imageWithContentsOfFile: directoryPath];
-
-    
+-(UIImage*)loadImageInDirectory:(NSString *)directoryPath{
+    NSData *imageData =[NSData dataWithContentsOfFile:directoryPath];
+    UIImage *result =[UIImage imageWithData:imageData];
     return result;
 }
 
@@ -666,27 +691,29 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects;
 {
-    if ([objectLoader wasSentToResourcePath:@"/imgtest.php"]) {
-        
+    [self hideActivity];
+    if ([objectLoader wasSentToResourcePath:@"/imgtest.php"])
+    
+    {
         PPDebug(@"%@",[objects objectAtIndex:0]);
         if ([[objects objectAtIndex:0] isMemberOfClass:[User class]]) {
             User *user = [objects objectAtIndex:0];
             NSLog(@"******%@******",user.uid);
             NSLog(@"******%@******",user.profileImageUrl);
-            NSLog(@"******%@*****",user.avatarBackGroundImage);
             
             //取出用户
             User *newUser  =[[UserService defaultService] user];
             
             //修改用户
             [newUser setProfileImageUrl:user.profileImageUrl];
-            [newUser setAvatarBackGroundImage:user.avatarBackGroundImage];
             
             //保存用户
             [[UserService defaultService] storeUserInfoByUid:newUser.uid];
+    
+            [self updateUI];
+            [self.navigationItem.rightBarButtonItem setEnabled:YES];
             
         }
-        
     }
 }
 
