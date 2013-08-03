@@ -188,6 +188,8 @@
 		4A12207D17A2448D002F1A50 /* UIKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12205A17A2448D002F1A50 /* UIKeyboardViewController.m */; };
 		4A12A78017ACBC9700696CF2 /* IndexLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A12A77E17ACBC9700696CF2 /* IndexLine.png */; };
 		4A12A78117ACBC9700696CF2 /* IndexLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A12A77F17ACBC9700696CF2 /* IndexLine@2x.png */; };
+		4A12A78417ACE0D500696CF2 /* touxiang_40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A12A78217ACE0D400696CF2 /* touxiang_40x40.png */; };
+		4A12A78517ACE0D500696CF2 /* touxiang_40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A12A78317ACE0D400696CF2 /* touxiang_40x40@2x.png */; };
 		4A22152A17793C970079430D /* ColorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A22152917793C970079430D /* ColorManager.m */; };
 		4A257EF6178F9697001D153F /* ChangeNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A257EF5178F9697001D153F /* ChangeNameCell.m */; };
 		4A257F0E17900522001D153F /* AddLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A257F0C17900521001D153F /* AddLabelViewController.m */; };
@@ -869,6 +871,8 @@
 		4A12205A17A2448D002F1A50 /* UIKeyboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardViewController.m; sourceTree = "<group>"; };
 		4A12A77E17ACBC9700696CF2 /* IndexLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IndexLine.png; sourceTree = "<group>"; };
 		4A12A77F17ACBC9700696CF2 /* IndexLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndexLine@2x.png"; sourceTree = "<group>"; };
+		4A12A78217ACE0D400696CF2 /* touxiang_40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touxiang_40x40.png; sourceTree = "<group>"; };
+		4A12A78317ACE0D400696CF2 /* touxiang_40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "touxiang_40x40@2x.png"; sourceTree = "<group>"; };
 		4A22152817793C970079430D /* ColorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorManager.h; sourceTree = "<group>"; };
 		4A22152917793C970079430D /* ColorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorManager.m; sourceTree = "<group>"; };
 		4A257EF4178F9697001D153F /* ChangeNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeNameCell.h; sourceTree = "<group>"; };
@@ -1898,6 +1902,8 @@
 		4A0CA60717ABE65500314B8C /* myProfile */ = {
 			isa = PBXGroup;
 			children = (
+				4A12A78217ACE0D400696CF2 /* touxiang_40x40.png */,
+				4A12A78317ACE0D400696CF2 /* touxiang_40x40@2x.png */,
 				4A0CA60817ABE65500314B8C /* description_bround.png */,
 				4A0CA60917ABE65500314B8C /* dq_1.png */,
 				4A0CA60A17ABE65500314B8C /* dq_2.png */,
@@ -4161,6 +4167,8 @@
 				4A0CA6A417AC111700314B8C /* IndexSep@2x.png in Resources */,
 				4A12A78017ACBC9700696CF2 /* IndexLine.png in Resources */,
 				4A12A78117ACBC9700696CF2 /* IndexLine@2x.png in Resources */,
+				4A12A78417ACE0D500696CF2 /* touxiang_40x40.png in Resources */,
+				4A12A78517ACE0D500696CF2 /* touxiang_40x40@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
