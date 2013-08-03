@@ -103,9 +103,9 @@
 -(void)addUserNameLabel{
     
     ////// set the Username
-    self.userNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(30, 130, 145, 30)];
+    self.userNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(100, 130, 145, 30)];
     _userNameLabel.backgroundColor =[UIColor clearColor];
-    [_userNameLabel setTextAlignment:NSTextAlignmentRight];
+    [_userNameLabel setTextAlignment:NSTextAlignmentCenter];
     _userNameLabel.textColor = [UIColor whiteColor];
     [_userNameLabel setText:@"用户名"];
     [self.myHeaderView addSubview:self.userNameLabel];    
@@ -139,7 +139,7 @@
     
     
     self.descriptionLabel = descriptionLabel;
-    [self.descriptionLabel setTextAlignment:NSTextAlignmentLeft];
+    [self.descriptionLabel setTextAlignment:NSTextAlignmentCenter];
     [self.descriptionLabel setBackgroundColor:[UIColor clearColor]];
     [self.descriptionLabel  setLineBreakMode:NSLineBreakByTruncatingTail];
     [self.myHeaderView addSubview:self.descriptionLabel];
@@ -166,6 +166,25 @@
     if ([[UserService defaultService] getUserInfoByUid:uid]) {
         
         [self setUser:[[UserService defaultService] getUserInfoByUid:uid]];
+        
+        User *user = [[UserService defaultService] user];
+        if (!user.age && !user.height && !user.weight && !user.BMIValue && !user.city && !user.province) {
+            
+            [user setAge:@"?"];
+            [user setGender:@"?"];
+            [user setHeight:@"?"];
+            [user setWeight:@"?"];
+            [user setBMIValue:@"?"];
+            [user setCity:@"?"];
+            [user setProvince:@""];
+            [user setDescription:@"我的心情短语！"];
+
+            [[UserService defaultService] setUser:user];
+            [[UserService defaultService] storeUserInfoByUid:user.uid];
+        }
+        
+        
+        
         
         [self upgradeUI];
 
@@ -234,7 +253,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.dataList = [NSArray arrayWithObjects:@"性别",@"年龄",@"身高",@"体重",@"BMI", nil];
+    self.dataList = [NSArray arrayWithObjects:@"性别",@"年龄",@"身高(cm)",@"体重(kg)",@"BMI", nil];
 
     [self setTitle:@"我"];
     [self setNavigationRightButton:@"设置" imageName:@"top_bar_commonButton.png" action:@selector(clickSettingsButton:)];
@@ -347,13 +366,19 @@
                 case 0:
                 {
                    ///性别
-                    NSString *gender;
+                    NSString *gender =nil;
                     if ([self.user.gender isEqualToString:@"0"])
                     {
                         gender = [NSString stringWithFormat:@"女"];
-                    }else{
+                    }
+                    if ([self.user.gender isEqualToString:@"1"])
+                    {
                         gender = [NSString stringWithFormat:@"男"];
 
+                    }
+                    if([self.user.gender isEqualToString:@"?"]){
+                        gender = [NSString stringWithFormat:@"?"];
+                        
                     }
                     [accessoryViewButton setTitle:gender forState:UIControlStateNormal];
                 
@@ -389,19 +414,28 @@
                     
                  int weight = [self.user.weight integerValue];
                  int height = [self.user.height integerValue];
+                                      
                  float BMI =weight /(height * height * 0.01 *0.01);
                     
                  NSString *bmi = [NSString stringWithFormat:@"%.1f",BMI];
                     PPDebug(@"what the bmi: %@",bmi);
-                 [self.user setBMIValue:bmi];
+                    [self.user setBMIValue:bmi];
+
+                    if ([bmi isEqualToString:@"nan"]) {
+                        [self.user setBMIValue:@"?"];
+
+                    }
+                    
+                    
+
                     
                 [accessoryViewButton setTitle:self.user.BMIValue forState:UIControlStateNormal];
 
-                  User *user =  [[UserService defaultService] user];
+                User *user =  [[UserService defaultService] user];
                     
-                 [user setBMIValue:self.user.BMIValue];
-        
-                  [[UserService defaultService] storeUserInfoByUid:user.uid];
+                [user setBMIValue:self.user.BMIValue];
+                    
+                    [[UserService defaultService] storeUserInfoByUid:user.uid];
                     
                 }
                     break;

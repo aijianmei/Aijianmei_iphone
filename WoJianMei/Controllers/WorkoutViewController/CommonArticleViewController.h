@@ -21,13 +21,14 @@
 
 
 
-@interface CommonArticleViewController : PPViewController<RKObjectLoaderDelegate,UIWebViewDelegate,SinaWeiboRequestDelegate,REComposeViewControllerDelegate,UIGestureRecognizerDelegate,SinaWeiboDelegate>
+@interface CommonArticleViewController : PPViewController<RKObjectLoaderDelegate,UIWebViewDelegate,SinaWeiboRequestDelegate,REComposeViewControllerDelegate,UIGestureRecognizerDelegate,SinaWeiboDelegate,UIActionSheetDelegate>
 
 {
     UIToolbar *_toolBar;
     UIButton *_likeButton;
     ArticleDetail *_articleDetail;
-    
+    int whichAcctionSheet;
+
     UIImage *postImage;
     
     SinaWeiboManager *_sinaweiboManager;

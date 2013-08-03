@@ -30,7 +30,9 @@
     id <LoginViewDelegate> delegate;
     
     SignUpViewController*_signUpViewController;
-
+    
+    UIButton *_sinaButton;
+    UIButton *_aijianmeiButton;
     
 }
 
@@ -38,9 +40,9 @@
 @property (nonatomic, retain) IBOutlet UITextField *passwordField;
 @property (nonatomic, retain) NSString *snsId;
 @property (nonatomic, retain) NSString *userType;
-@property (nonatomic, retain) IBOutlet UIButton *sinaButton;
-@property (nonatomic, retain) IBOutlet UIButton *qqButton;
-@property (nonatomic, retain) IBOutlet UIButton *aijianmeiButton;
+@property (nonatomic, retain)  UIButton *sinaButton;
+@property (nonatomic, retain)  UIButton *qqButton;
+@property (nonatomic, retain)  UIButton *aijianmeiButton;
 @property (nonatomic,assign) id <LoginViewDelegate> delegate;
 @property (nonatomic,retain) SignUpViewController*signUpViewController;
 
@@ -48,7 +50,7 @@
 
 //实现closeDoneEdit点击done关闭键盘
 - (IBAction)closeDoneEdit:(id)sender;
-- (IBAction)clickSinaWeiboButton:(UIButton *)sender;
-- (IBAction)clickQQShareButton:(UIButton *)sender;
-- (IBAction)clickSignupAijianmeiAccount:(UIButton *)sender;
+- (void)clickSinaWeiboButton:(UIButton *)sender;
+- (void)clickQQShareButton:(UIButton *)sender;
+- (void)clickSignupAijianmeiAccount:(UIButton *)sender;
 @end

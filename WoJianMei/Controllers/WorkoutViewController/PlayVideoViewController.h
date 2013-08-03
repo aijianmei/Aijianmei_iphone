@@ -18,7 +18,7 @@
 @class SDSegmentedControl;
 @class CommentViewController;
 
-@interface PlayVideoViewController : PPViewController<UIWebViewDelegate,REComposeViewControllerDelegate,SinaWeiboRequestDelegate,SinaWeiboDelegate>
+@interface PlayVideoViewController : PPViewController<UIWebViewDelegate,REComposeViewControllerDelegate,SinaWeiboRequestDelegate,SinaWeiboDelegate,UIActionSheetDelegate>
 {
      Video *_video;
      SDSegmentedControl *_segmentedController;
@@ -32,6 +32,8 @@
     CommentViewController *_commentViewController;
     UIImage *postImage;
     
+    int whichAcctionSheet;
+
     SinaWeiboManager *_sinaweiboManager;
 
 

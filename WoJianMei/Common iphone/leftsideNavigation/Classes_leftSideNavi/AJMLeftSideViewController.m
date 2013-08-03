@@ -466,6 +466,9 @@
                     BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
                     [statTracker logEvent:@"FollowSina" eventLabel:@"FollowSina"];
                     
+                    self.view.userInteractionEnabled = YES;
+                    _tableView.userInteractionEnabled =YES;
+                    
                 }
                 break;
                 case 1:
@@ -484,6 +487,9 @@
                         
                     }
                     
+                    
+                    self.view.userInteractionEnabled = YES;
+                    _tableView.userInteractionEnabled =YES;
 
                     BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
                     [statTracker logEvent:@"FollowWechat" eventLabel:@"FollowWechat"];
@@ -501,6 +507,10 @@
                         [vc release];
                         self.viewDeckController.centerController = navController;
                     }];
+                    
+                    
+                    self.view.userInteractionEnabled = YES;
+                    _tableView.userInteractionEnabled =YES;
                     
                     
                     BaiduMobStat* statTracker = [BaiduMobStat defaultStat];

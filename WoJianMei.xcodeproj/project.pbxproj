@@ -175,6 +175,13 @@
 		4A0CA69517ABE65500314B8C /* fgx_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A0CA63C17ABE65500314B8C /* fgx_1.png */; };
 		4A0CA69817ABE65500314B8C /* fl_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A0CA63F17ABE65500314B8C /* fl_3.png */; };
 		4A0CA69A17ABE65500314B8C /* shj_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A0CA64117ABE65500314B8C /* shj_1.png */; };
+		4A0CA69C17ABE95100314B8C /* wczc_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A0CA69B17ABE95100314B8C /* wczc_2@2x.png */; };
+		4A0CA69F17AC103100314B8C /* IndexBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A0CA69D17AC103000314B8C /* IndexBG.png */; };
+		4A0CA6A017AC103100314B8C /* IndexBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A0CA69E17AC103100314B8C /* IndexBG@2x.png */; };
+		4A0CA6A317AC111700314B8C /* IndexSep.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A0CA6A117AC111700314B8C /* IndexSep.png */; };
+		4A0CA6A417AC111700314B8C /* IndexSep@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A0CA6A217AC111700314B8C /* IndexSep@2x.png */; };
+		4A0CA6A717AC11A900314B8C /* IndexLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A0CA6A517AC11A700314B8C /* IndexLine.png */; };
+		4A0CA6A817AC11A900314B8C /* IndexLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A0CA6A617AC11A800314B8C /* IndexLine@2x.png */; };
 		4A0E4DC3178C4B5B00E1287D /* ChangeNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4DC1178C4B5B00E1287D /* ChangeNameViewController.m */; };
 		4A0E4DC4178C4B5B00E1287D /* ChangeNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0E4DC2178C4B5B00E1287D /* ChangeNameViewController.xib */; };
 		4A0E4DCD178C50B000E1287D /* ChangeDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4DCB178C50AF00E1287D /* ChangeDescriptionViewController.m */; };
@@ -847,6 +854,13 @@
 		4A0CA63C17ABE65500314B8C /* fgx_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fgx_1.png; sourceTree = "<group>"; };
 		4A0CA63F17ABE65500314B8C /* fl_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fl_3.png; sourceTree = "<group>"; };
 		4A0CA64117ABE65500314B8C /* shj_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shj_1.png; sourceTree = "<group>"; };
+		4A0CA69B17ABE95100314B8C /* wczc_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wczc_2@2x.png"; path = "../SingleArticleView/wczc_2@2x.png"; sourceTree = "<group>"; };
+		4A0CA69D17AC103000314B8C /* IndexBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IndexBG.png; sourceTree = "<group>"; };
+		4A0CA69E17AC103100314B8C /* IndexBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndexBG@2x.png"; sourceTree = "<group>"; };
+		4A0CA6A117AC111700314B8C /* IndexSep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IndexSep.png; sourceTree = "<group>"; };
+		4A0CA6A217AC111700314B8C /* IndexSep@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndexSep@2x.png"; sourceTree = "<group>"; };
+		4A0CA6A517AC11A700314B8C /* IndexLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IndexLine.png; sourceTree = "<group>"; };
+		4A0CA6A617AC11A800314B8C /* IndexLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndexLine@2x.png"; sourceTree = "<group>"; };
 		4A0E4DC0178C4B5B00E1287D /* ChangeNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeNameViewController.h; sourceTree = "<group>"; };
 		4A0E4DC1178C4B5B00E1287D /* ChangeNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeNameViewController.m; sourceTree = "<group>"; };
 		4A0E4DC2178C4B5B00E1287D /* ChangeNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeNameViewController.xib; sourceTree = "<group>"; };
@@ -1914,6 +1928,12 @@
 		4A0CA61717ABE65500314B8C /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				4A0CA6A517AC11A700314B8C /* IndexLine.png */,
+				4A0CA6A617AC11A800314B8C /* IndexLine@2x.png */,
+				4A0CA6A117AC111700314B8C /* IndexSep.png */,
+				4A0CA6A217AC111700314B8C /* IndexSep@2x.png */,
+				4A0CA69D17AC103000314B8C /* IndexBG.png */,
+				4A0CA69E17AC103100314B8C /* IndexBG@2x.png */,
 				4A0CA61817ABE65500314B8C /* LeftSideViewIcon.png */,
 				4A0CA61917ABE65500314B8C /* LeftSideViewIcon@2x.png */,
 				4A0CA61A17ABE65500314B8C /* Navigation_avartar_Image@2x.png */,
@@ -1957,6 +1977,7 @@
 			isa = PBXGroup;
 			children = (
 				4A0CA63117ABE65500314B8C /* dlk_1@2x.png */,
+				4A0CA69B17ABE95100314B8C /* wczc_2@2x.png */,
 			);
 			path = SignUpViewController;
 			sourceTree = "<group>";
@@ -4145,6 +4166,13 @@
 				4A0CA69517ABE65500314B8C /* fgx_1.png in Resources */,
 				4A0CA69817ABE65500314B8C /* fl_3.png in Resources */,
 				4A0CA69A17ABE65500314B8C /* shj_1.png in Resources */,
+				4A0CA69C17ABE95100314B8C /* wczc_2@2x.png in Resources */,
+				4A0CA69F17AC103100314B8C /* IndexBG.png in Resources */,
+				4A0CA6A017AC103100314B8C /* IndexBG@2x.png in Resources */,
+				4A0CA6A317AC111700314B8C /* IndexSep.png in Resources */,
+				4A0CA6A417AC111700314B8C /* IndexSep@2x.png in Resources */,
+				4A0CA6A717AC11A900314B8C /* IndexLine.png in Resources */,
+				4A0CA6A817AC11A900314B8C /* IndexLine@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4638,6 +4666,7 @@
 		4AE394DA15C2DD9C00D06C61 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Callon (VQ5469GPCM)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -4647,7 +4676,7 @@
 				GCC_PREFIX_HEADER = "WoJianMei/WoJianMei-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "WoJianMei/WoJianMei-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/MobClick\"",
@@ -4661,7 +4690,9 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WoJianMei;
+				PROVISIONING_PROFILE = "E422EA9F-2F7E-4E8F-A62F-6F811E6809BF";
 				SHARED_PRECOMPS_DIR = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -4671,6 +4702,7 @@
 		4AE394DB15C2DD9C00D06C61 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Callon (VQ5469GPCM)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -4680,7 +4712,7 @@
 				GCC_PREFIX_HEADER = "WoJianMei/WoJianMei-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "WoJianMei/WoJianMei-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/MobClick\"",
@@ -4694,7 +4726,9 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WoJianMei;
+				PROVISIONING_PROFILE = "E422EA9F-2F7E-4E8F-A62F-6F811E6809BF";
 				SHARED_PRECOMPS_DIR = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

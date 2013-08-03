@@ -468,12 +468,19 @@
                 case 0:
                 {
                     
-                    NSString *gender;
+                    NSString *gender =nil;
                     if ([self.user.gender isEqualToString:@"0"])
                     {
                         gender = [NSString stringWithFormat:@"女"];
-                    }else{
+                    }
+                    if ([self.user.gender isEqualToString:@"1"])
+                    {
                         gender = [NSString stringWithFormat:@"男"];
+                        
+                    }
+                    if ([self.user.gender isEqualToString:@"?"])
+                    {
+                        gender = [NSString stringWithFormat:@"?"];
                         
                     }
 

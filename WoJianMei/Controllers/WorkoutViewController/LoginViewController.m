@@ -44,6 +44,10 @@ enum SinaResultErrorCode
 @synthesize  passwordField =_passwordField;
 @synthesize delegate;
 @synthesize signUpViewController =_signUpViewController;
+@synthesize sinaButton =_sinaButton;
+@synthesize aijianmeiButton =_aijianmeiButton;
+@synthesize qqButton =_qqButton;
+
 
 
 
@@ -54,6 +58,22 @@ enum SinaResultErrorCode
         // Custom initialization
     }
     return self;
+}
+
+
+- (void)dealloc {
+    
+    
+    [_usernameField release];
+    [_passwordField release];
+    [_snsId release];
+    [_userType release];
+    [_sinaButton release];
+    [_qqButton release];
+    [_aijianmeiButton release];
+    [_signUpViewController release];
+    
+    [super dealloc];
 }
 
 
@@ -93,19 +113,19 @@ enum SinaResultErrorCode
 	// Do any additional setup after loading the view.
     [self setNavigationRightButton:@"取消" imageName:@"top_bar_commonButton.png" action:@selector(clickCancleButton:)];
     
-    //轻触手势（单击，双击）
-    UITapGestureRecognizer *tapCgr=nil;
-    tapCgr=[[UITapGestureRecognizer alloc]initWithTarget:self
-                                                  action:@selector(tap)];
-    tapCgr.numberOfTapsRequired=1;
-    [self.view addGestureRecognizer:tapCgr];
-    [tapCgr release];
-    
+       
     
     
     [self.sinaButton setTag:10];
+    
+    [self.sinaButton addTarget:self action:@selector(clickSinaWeiboButton:) forControlEvents:UIControlEventTouchDown];
+    
+    
     [self.qqButton setTag:10];
     [self.aijianmeiButton setTag:10];
+    
+    [self.aijianmeiButton addTarget:self action:@selector(clickSignupAijianmeiAccount:) forControlEvents:UIControlEventTouchDown];
+
     
     
     UIStoryboard *currentInUseStoryBoard;
@@ -124,6 +144,15 @@ enum SinaResultErrorCode
     SignUpViewController *signupVC = (SignUpViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
     self.signUpViewController =signupVC;
 
+
+    
+    //轻触手势（单击，双击）
+    UITapGestureRecognizer *tapCgr=nil;
+    tapCgr=[[UITapGestureRecognizer alloc]initWithTarget:self
+                                                  action:@selector(tap)];
+    tapCgr.numberOfTapsRequired=1;
+    [self.view addGestureRecognizer:tapCgr];
+    [tapCgr release];
 
 }
 
@@ -204,20 +233,6 @@ enum SinaResultErrorCode
 }
 
 
-- (void)dealloc {
-    
-    
-    [_usernameField release];
-    [_passwordField release];
-    [_snsId release];
-    [_userType release];
-    [_sinaButton release];
-    [_qqButton release];
-    [_aijianmeiButton release];
-    [_signUpViewController release];
-
-    [super dealloc];
-}
 - (void)viewDidUnload {
     
     [self setUsernameField:nil];
@@ -230,8 +245,10 @@ enum SinaResultErrorCode
     [super viewDidUnload];
 }
 
-- (IBAction)clickSinaWeiboButton:(UIButton *)sender {
+- (void)clickSinaWeiboButton:(UIButton *)sender {
     
+    
+    PPDebug(@"asdfsaddsf");
         
         [self setUserType:@"sina"];
         _sinaweiboManager = [SinaWeiboManager sharedManager];
@@ -251,10 +268,10 @@ enum SinaResultErrorCode
     
 }
 
-- (IBAction)clickQQShareButton:(UIButton *)sender {
+- (void)clickQQShareButton:(UIButton *)sender {
     [self setUserType:@"qq"];
 }
-- (IBAction)clickSignupAijianmeiAccount:(UIButton *)sender {
+- (void)clickSignupAijianmeiAccount:(UIButton *)sender {
     
     self.userType =@"local";
     [self.navigationController pushViewController:self.signUpViewController animated:YES];
@@ -269,7 +286,6 @@ enum SinaResultErrorCode
 #pragma SinaWeiboDelegate methods
 - (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
 {
-    [self.navigationController popViewControllerAnimated:YES];
     NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
     [_sinaweiboManager storeAuthData];
     //微博登陆后获取用户数据

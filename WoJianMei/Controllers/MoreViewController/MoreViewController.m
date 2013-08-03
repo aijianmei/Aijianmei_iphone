@@ -505,9 +505,6 @@ enum TapOnItem {
     NSString *bodyStringWebsite = @"http://www.aijianmei.com";
     NSString *bodyString = [NSString stringWithFormat:@"%@%@", bodyStringBegin, bodyStringWebsite];
 
-    
-    
-       
     int TapOnItem = index;
     
     
@@ -516,7 +513,6 @@ enum TapOnItem {
         {
     
             [self clickSinaShareButton];
-            [self showActivityWithText:@"正在分享"];
 
         }
             break;
@@ -597,6 +593,10 @@ enum TapOnItem {
                                                             params:params
                                                         httpMethod:@"POST"
                                                           delegate:self];
+        
+        
+        [self showActivityWithText:@"正在分享"];
+
     
     }if(![_sinaweiboManager.sinaweibo isAuthValid])
     {
@@ -610,7 +610,7 @@ enum TapOnItem {
 {
     
     if ([DeviceDetection isOS6]){
-
+        
         [self showAWSheet];
         
     }
@@ -756,9 +756,7 @@ enum TapOnItem {
             case SEND_SINA_WEIBO:
             {
                 
-                [[UserService defaultService] shareThroughSinaWeiboWithImageArray:nil TextContent:@"" delegate:self];
-                [self showActivityWithText:@"正在分享"];
-                
+                [self clickSinaShareButton];
             }
                 break;
             case SEND_WECHAT_SOCIAL:
@@ -1004,9 +1002,5 @@ enum TapOnItem {
     }
  }
 }
-
-
-
-
 
  @end
