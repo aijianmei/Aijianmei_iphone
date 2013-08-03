@@ -228,7 +228,7 @@ typedef enum CONTENT_TYPE {
     //添加当前划片的提示
     [self addSpacePageControl];
     
-    //    [self showLoginView];
+    [self showLoginView];
 }
 
 
