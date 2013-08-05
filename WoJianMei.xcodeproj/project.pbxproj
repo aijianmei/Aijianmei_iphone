@@ -520,6 +520,7 @@
 		4AE52E281778327F00F61933 /* ForumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE52E271778327F00F61933 /* ForumViewController.m */; };
 		4AE52E2C1778336E00F61933 /* LifeStytleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE52E2B1778336E00F61933 /* LifeStytleViewController.m */; };
 		4AE52E3E177834A500F61933 /* MyselfTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE52E3D177834A500F61933 /* MyselfTableViewCell.m */; };
+		4AEF0B8317AE15CC00AFC722 /* gender_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AEF0B8217AE15CC00AFC722 /* gender_on.png */; };
 		4AFE7FC617928530006B5310 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4AFE7FA81792852F006B5310 /* .gitignore */; };
 		4AFE7FC717928530006B5310 /* articleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFE7FAB1792852F006B5310 /* articleViewController.m */; };
 		4AFE7FC817928530006B5310 /* UIColor+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFE7FAF1792852F006B5310 /* UIColor+Tools.m */; };
@@ -1467,6 +1468,7 @@
 		4AE52E2B1778336E00F61933 /* LifeStytleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifeStytleViewController.m; sourceTree = "<group>"; };
 		4AE52E3C177834A500F61933 /* MyselfTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyselfTableViewCell.h; sourceTree = "<group>"; };
 		4AE52E3D177834A500F61933 /* MyselfTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyselfTableViewCell.m; sourceTree = "<group>"; };
+		4AEF0B8217AE15CC00AFC722 /* gender_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gender_on.png; sourceTree = "<group>"; };
 		4AFE7FA81792852F006B5310 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4AFE7FAA1792852F006B5310 /* articleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = articleViewController.h; sourceTree = "<group>"; };
 		4AFE7FAB1792852F006B5310 /* articleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = articleViewController.m; sourceTree = "<group>"; };
@@ -1902,6 +1904,7 @@
 		4A0CA60717ABE65500314B8C /* myProfile */ = {
 			isa = PBXGroup;
 			children = (
+				4AEF0B8217AE15CC00AFC722 /* gender_on.png */,
 				4A12A78217ACE0D400696CF2 /* touxiang_40x40.png */,
 				4A12A78317ACE0D400696CF2 /* touxiang_40x40@2x.png */,
 				4A0CA60817ABE65500314B8C /* description_bround.png */,
@@ -4169,6 +4172,7 @@
 				4A12A78117ACBC9700696CF2 /* IndexLine@2x.png in Resources */,
 				4A12A78417ACE0D500696CF2 /* touxiang_40x40.png in Resources */,
 				4A12A78517ACE0D500696CF2 /* touxiang_40x40@2x.png in Resources */,
+				4AEF0B8317AE15CC00AFC722 /* gender_on.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

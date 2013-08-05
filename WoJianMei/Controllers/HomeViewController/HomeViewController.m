@@ -227,7 +227,7 @@ typedef enum CONTENT_TYPE {
     //添加当前划片的提示
     [self addSpacePageControl];
 
-    [self showLoginView];
+//    [self showLoginView];
 }
 
 
@@ -686,9 +686,48 @@ typedef enum CONTENT_TYPE {
         }
         _start += [objects count];
         
+    
+        //Write写入方式：永久保存在磁盘中。具体方法为：
+        // 第一步：获得文件即将保存的路径：
+        NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+        NSString *ourDocumentPath =[documentPaths objectAtIndex:0];
+        
+        //  第二步：生成在该路径下的文件：
+        NSString *FileName=[ourDocumentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"CurrentIndex%d",self.segmentedController.selectedSegmentIndex]];
+        //fileName就是保存文件的文件名
+
+        //第三步：往文件中写入数据：
+        //将NSData类型对象data写入文件，文件名为FileName
+        //     BOOL writeDataSuccess =  [self.dataList writeToFile:FileName atomically:YES];
+        
+        //将NSObject类型对象data写入文件，文件名为FileName
+        BOOL writeDataSuccess  = [NSKeyedArchiver archiveRootObject:self.dataList toFile:FileName];
+        
+        if (writeDataSuccess) {
+            PPDebug(@"********保存数据服务器下载数据成功********");
+        }
+        
+        // 第四步最后：从文件中读出数据：
+        //从FileName中读取出数据
+        // NSData *data=[NSData dataWithContentsOfFile:FileName options:0 error:NULL];
+        
+        
+        //从FileName中读取出数据
+        // NSArray *arr=[NSData dataWithContentsOfFile:FileName options:0 error:NULL];
+
+        NSArray *arr = [NSKeyedUnarchiver unarchiveObjectWithFile:FileName];
+        Article *article = [arr objectAtIndex:0];
+        PPDebug(@"what :%@",article.title);
+        
         //更新用户界面；
         [self updateUserInterface];
     }
+    
+    
+          
+    
+    
+    
 }
 
 @end

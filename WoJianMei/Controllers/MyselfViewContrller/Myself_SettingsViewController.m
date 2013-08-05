@@ -89,13 +89,45 @@
 }
 
 
+//从网络下载图片
+-(UIImage *) getImageFromURL:(NSString *)fileURL {
+    NSLog(@"执行图片下载函数");
+    UIImage * result;
+    
+    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
+    result = [UIImage imageWithData:data];
+    
+    return result;
+}
+
+
 -(void)clickSaveButton:(id)sender{
     
     
     didSave =YES;
 
+//    if ([self.user.profileImageUrl hasPrefix:@"http://tp4.sinaimg.cn/"]) {
+//        
+//        [[UserService defaultService] postObject:nil withImage:nil delegate:self];
+//        [self showActivityWithText:@"加载中..."];
+//        
+//        //数据加载中的时候，按钮是禁止的再被点击的;
+//        [self.navigationItem.rightBarButtonItem setEnabled:NO];
+//        
+//        return;
+//
+//        
+//    }
+    
+    
+    if (self.user.profileImageUrl) {
     //把保存再文件夹里边的图片取出来，然后上传到服务器上面;
-    self.avtarImage = [self loadImageInDirectory:self.user.profileImageUrl];
+        self.avtarImage = [self loadImageInDirectory:self.user.profileImageUrl];
+      
+    }
+
+//    UIImage *image = [self getImageFromURL:self.user.profileImageUrl];
+    
     
     
     if (self.avtarImage) {
@@ -651,15 +683,20 @@
             }
             //Change age
             else if (indexPath.row==1) {
+                
+                [self.dataTableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
 
             }
             //Change Height
             else if (indexPath.row==2) {
                 
-               
+                [self.dataTableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
+
             }
             //Change Weight
             else if (indexPath.row==3) {
+                [self.dataTableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
+
         }
             break;
          //Change area and city
@@ -716,22 +753,17 @@
             //取出用户
             User *newUser  =[[UserService defaultService] user];
             
-            
             NSString *bmi = [self reCaluclateBMIValueByWeight:newUser.weight height:newUser.height];
-            
             
             //修改用户
             [newUser setProfileImageUrl:user.profileImageUrl];
             [newUser setBMIValue:bmi];
-            
-
-            
+        
             //保存用户
             [[UserService defaultService] storeUserInfoByUid:newUser.uid];
     
             [self updateUI];
             [self.navigationItem.rightBarButtonItem setEnabled:YES];
-            
         }
     }
 }

@@ -112,7 +112,44 @@
             break;
     }
     [[UserService defaultService] setUser:user];
+    
 }
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+
+{
+
+    switch (textField.tag) {
+        case 1:
+        {
+            NSLog(@"age textfield");
+            [textField setKeyboardType:UIKeyboardTypeNumberPad];
+
+        }
+            break;
+        case 2:
+        {
+            NSLog(@"height textfield");
+            [textField setKeyboardType:UIKeyboardTypeNumberPad];
+
+        }
+            break;
+        case 3:
+        {
+            NSLog(@"weight textfield");
+            [textField setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+
+        }
+            break;
+            
+        default:
+            break;
+    }
+
+}
+
+
+
 
 -(void)clickAddMoreButton:(UIButton *)sender{
     
