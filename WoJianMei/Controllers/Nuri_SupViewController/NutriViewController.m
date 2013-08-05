@@ -36,7 +36,7 @@
 
 
 ///// the setings of the iCarousel
-#define NUMBER_OF_ITEMS 13
+#define NUMBER_OF_ITEMS 4
 #define NUMBER_OF_VISIBLE_ITEMS 18
 #define ITEM_SPACING 320
 #define EACH_FETCH_SIZE 5
@@ -208,7 +208,7 @@ typedef enum CONTENT_TYPE {
     [self hideActivity];
     [self.carousel reloadData];
     [self.dataTableView reloadData];
-    [_spacePageControl setNumberOfPages:[self.dataList count]];
+    [_spacePageControl setNumberOfPages:NUMBER_OF_ITEMS];
 }
 
 
@@ -228,7 +228,7 @@ typedef enum CONTENT_TYPE {
     //添加当前划片的提示
     [self addSpacePageControl];
     
-    //    [self showLoginView];
+    [self showLoginView];
 }
 
 
@@ -555,8 +555,7 @@ typedef enum CONTENT_TYPE {
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    //    return NUMBER_OF_ITEMS;
-    return [self.dataList count];
+    return NUMBER_OF_ITEMS;
 }
 
 - (NSUInteger)numberOfVisibleItemsInCarousel:(iCarousel *)carousel
@@ -626,6 +625,26 @@ typedef enum CONTENT_TYPE {
     //    self.navigationController.navigationBarHidden =YES;
     //    [self.navigationController pushViewController:controller animated:YES];
     
+    
+    if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==1 || self.segmentedController.selectedSegmentIndex ==-1)
+    {
+        CommonArticleViewController *workOutVc = [[CommonArticleViewController alloc]initWithNibName:@"CommonArticleViewController" bundle:nil];
+        workOutVc.article = [self.dataList objectAtIndex:index];
+        [self.navigationController pushViewController:workOutVc animated:YES];
+        [workOutVc release];
+        
+    }
+//        else if (self.segmentedController.selectedSegmentIndex ==2 || self.segmentedController.selectedSegmentIndex ==3)
+//    {
+//        
+//        PlayVideoViewController *playVc =[[PlayVideoViewController alloc]initWithNibName:@"PlayVideoViewController" bundle:nil];
+//        playVc.video  = [self.dataList objectAtIndex:index ];
+//        [self.navigationController pushViewController:playVc animated:YES];
+//        [playVc release];
+//        
+//    }
+    
+
     
 }
 

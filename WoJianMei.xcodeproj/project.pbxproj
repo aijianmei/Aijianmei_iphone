@@ -464,6 +464,7 @@
 		4A873BA816A54BD7005BDA45 /* Citypicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A873BA716A54BD7005BDA45 /* Citypicker.xib */; };
 		4A8A7226174E10FF00BD3AAE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8A7225174E10FF00BD3AAE /* LoginViewController.m */; };
 		4A8A7229174E557700BD3AAE /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8A7228174E557700BD3AAE /* SignUpViewController.m */; };
+		4A8BCACC17AF8DAB0019CBB1 /* AccessoryView.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8BCACB17AF8DAB0019CBB1 /* AccessoryView.png */; };
 		4A9449A516A94B0800A96815 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9449A416A94B0800A96815 /* CoreText.framework */; };
 		4A9449A716A94B2B00A96815 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9449A616A94B2B00A96815 /* libicucore.dylib */; };
 		4A9449A916A94B5800A96815 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9449A816A94B5700A96815 /* Security.framework */; };
@@ -1376,6 +1377,7 @@
 		4A8A7225174E10FF00BD3AAE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Controllers/WorkoutViewController/LoginViewController.m; sourceTree = "<group>"; };
 		4A8A7227174E557700BD3AAE /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignUpViewController.h; path = Controllers/WorkoutViewController/SignUpViewController.h; sourceTree = "<group>"; };
 		4A8A7228174E557700BD3AAE /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignUpViewController.m; path = Controllers/WorkoutViewController/SignUpViewController.m; sourceTree = "<group>"; };
+		4A8BCACB17AF8DAB0019CBB1 /* AccessoryView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AccessoryView.png; sourceTree = "<group>"; };
 		4A9449A416A94B0800A96815 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		4A9449A616A94B2B00A96815 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		4A9449A816A94B5700A96815 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -1950,6 +1952,7 @@
 		4A0CA62017ABE65500314B8C /* profile_settings */ = {
 			isa = PBXGroup;
 			children = (
+				4A8BCACB17AF8DAB0019CBB1 /* AccessoryView.png */,
 				4A0CA62117ABE65500314B8C /* ccccc.png */,
 				4A0CA62217ABE65500314B8C /* ddddd.png */,
 				4A0CA62417ABE65500314B8C /* dq_1.png */,
@@ -4173,6 +4176,7 @@
 				4A12A78417ACE0D500696CF2 /* touxiang_40x40.png in Resources */,
 				4A12A78517ACE0D500696CF2 /* touxiang_40x40@2x.png in Resources */,
 				4AEF0B8317AE15CC00AFC722 /* gender_on.png in Resources */,
+				4A8BCACC17AF8DAB0019CBB1 /* AccessoryView.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4660,7 +4664,7 @@
 		4AE394DA15C2DD9C00D06C61 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Callon (VQ5469GPCM)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Huang HaiZhi (VEC788Z89Q)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -4684,7 +4688,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WoJianMei;
-				PROVISIONING_PROFILE = "E422EA9F-2F7E-4E8F-A62F-6F811E6809BF";
+				PROVISIONING_PROFILE = "829AACF4-4823-41AD-AC7D-10691E0936B5";
 				SHARED_PRECOMPS_DIR = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
@@ -4696,7 +4700,7 @@
 		4AE394DB15C2DD9C00D06C61 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Callon (VQ5469GPCM)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Huang HaiZhi (VEC788Z89Q)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -4720,7 +4724,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WoJianMei;
-				PROVISIONING_PROFILE = "E422EA9F-2F7E-4E8F-A62F-6F811E6809BF";
+				PROVISIONING_PROFILE = "829AACF4-4823-41AD-AC7D-10691E0936B5";
 				SHARED_PRECOMPS_DIR = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";

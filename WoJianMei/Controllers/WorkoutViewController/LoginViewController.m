@@ -247,9 +247,6 @@ enum SinaResultErrorCode
 
 - (void)clickSinaWeiboButton:(UIButton *)sender {
     
-    
-    PPDebug(@"asdfsaddsf");
-        
         [self setUserType:@"sina"];
         _sinaweiboManager = [SinaWeiboManager sharedManager];
         [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
@@ -380,8 +377,6 @@ enum SinaResultErrorCode
             SinaResult *result =[objects objectAtIndex:0];
             if ([result.uid integerValue] !=0 && [result.errorCode integerValue] ==0)
             {
-                
-            
                 //正式创建新用户
                 User *user = [UserManager createUserWithUserId:result.uid sinaUserId:_sinaweiboManager.sinaweibo.userID qqUserId:nil userType:self.userType name:nil profileImageUrl:nil gender:nil email:nil password:nil];
                 [[UserService defaultService] setUser:user];

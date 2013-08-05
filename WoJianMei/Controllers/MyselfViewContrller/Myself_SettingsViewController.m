@@ -21,6 +21,7 @@
 #import "Result.h"
 #import "BaiduMobStat.h"
 #import "CorpImageView.h"
+#import "UIImage+Scale.h"
 
 
 #define USER @"user"
@@ -143,7 +144,10 @@
     [self.navigationItem.rightBarButtonItem setEnabled:NO];
 }
 
+
+#pragma mark --
 #pragma Image Picker Related
+
 // this is just for copy
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -153,21 +157,26 @@
     {
         if (isChoosingAvtarImage)
         {
-            NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+           
+           UIImage *cropImage=  [image crop:CGRectMake(0, 0, 640, 640)];
+           UIImage *reSizeImage= [cropImage scaleToSize:CGSizeMake(100, 100)];
+            
+            NSData *imageData = UIImageJPEGRepresentation(reSizeImage, 1.0);
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *path = [paths objectAtIndex:0];
             NSString *tmpPathToFile = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/avtar.png", path]];
             if([imageData writeToFile:tmpPathToFile atomically:YES]){
                 //Write was successful.
-                self.avtarImage = image;
+                self.avtarImage = cropImage;
                 self.user.profileImageUrl = tmpPathToFile;
-                
-                
-                
-                
+            
             }
         }
     }
+    
+    
+    
+    
     
     User *user =[[UserService defaultService] user];
     [[UserService defaultService] setUser:user];

@@ -137,7 +137,7 @@
         case 3:
         {
             NSLog(@"weight textfield");
-            [textField setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+            [textField setKeyboardType:UIKeyboardTypeNumberPad];
 
         }
             break;
