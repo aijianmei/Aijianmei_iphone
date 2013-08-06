@@ -231,11 +231,25 @@ enum errorCode {
         return NO;
     }
     
+    
+    if ([_passwordTextField.text length] <= 6){
+        [UIUtils alert:@"密码长度不能少于六位数"];
+        [_passwordTextField becomeFirstResponder];
+        return NO;
+    }
+
+    
     if ([_repeatPasswordTextField.text length] == 0){
         [UIUtils alert:@"密码不能为空"];
         [_passwordTextField becomeFirstResponder];
         return NO;
     }
+    if ([_repeatPasswordTextField.text length] <= 6){
+        [UIUtils alert:@"密码长度不能少于六位数"];
+        [_passwordTextField becomeFirstResponder];
+        return NO;
+    }
+
     
     if (![_repeatPasswordTextField.text isEqualToString:_passwordTextField.text]){
         [UIUtils alert:@"密码输入不一致"];

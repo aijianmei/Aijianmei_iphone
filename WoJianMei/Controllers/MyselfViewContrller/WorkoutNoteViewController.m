@@ -7,6 +7,7 @@
 //
 
 #import "WorkoutNoteViewController.h"
+#import "UINavigationController+UINavigationControllerAdditions.h"
 
 @interface WorkoutNoteViewController ()
 

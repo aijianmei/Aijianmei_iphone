@@ -103,9 +103,9 @@
 -(void)addUserNameLabel{
     
     ////// set the Username
-    self.userNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(100, 130, 145, 30)];
+    self.userNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(80, 130, 145, 30)];
     _userNameLabel.backgroundColor =[UIColor clearColor];
-    [_userNameLabel setTextAlignment:NSTextAlignmentCenter];
+    [_userNameLabel setTextAlignment:NSTextAlignmentRight];
     _userNameLabel.textColor = [UIColor whiteColor];
     [_userNameLabel setText:@"用户名"];
     [self.myHeaderView addSubview:self.userNameLabel];    
@@ -126,7 +126,8 @@
     UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 147, 270, 50)];
     //设置自动行数与字符换行
     [descriptionLabel setNumberOfLines:2];
-    descriptionLabel.lineBreakMode = UILineBreakModeWordWrap;
+    [descriptionLabel setLineBreakMode:NSLineBreakByWordWrapping];
+    
     // 测试字串
     NSString *s = @"这是一个测试！！！ADSFASDFASDFASDFSADFASDFASFASFASFASDFASDFASDFASFASDFASDFASDFASDFASDFASDFASFASDFASDFASDFASDFASDFASDFA";
     UIFont *font = [UIFont fontWithName:@"Arial" size:12];

@@ -10,18 +10,18 @@
 
 @interface Article : NSObject
 
-@property (nonatomic, copy)NSString *category_id;
-@property (nonatomic, copy)NSString *_id;
-@property (nonatomic, copy)NSString *title;
-@property (nonatomic, copy)NSString *brief;
-@property (nonatomic, copy)NSString *create_time;
-@property (nonatomic, copy)NSString *img;
-@property (nonatomic, copy)NSString *click;
-@property (nonatomic, copy)NSString *commentCount;
-@property (nonatomic, copy)NSString *channeltype;
-@property (nonatomic, copy)NSString *url;
-@property (nonatomic, copy)NSString *shareurl;
-@property (nonatomic, copy)NSString *channel;
+@property (nonatomic, retain)NSString *category_id;
+@property (nonatomic, retain)NSString *_id;
+@property (nonatomic, retain)NSString *title;
+@property (nonatomic, retain)NSString *brief;
+@property (nonatomic, retain)NSString *create_time;
+@property (nonatomic, retain)NSString *img;
+@property (nonatomic, retain)NSString *click;
+@property (nonatomic, retain)NSString *commentCount;
+@property (nonatomic, retain)NSString *channeltype;
+@property (nonatomic, retain)NSString *url;
+@property (nonatomic, retain)NSString *shareurl;
+@property (nonatomic, retain)NSString *channel;
 
 
 

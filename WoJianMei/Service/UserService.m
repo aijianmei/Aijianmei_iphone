@@ -601,7 +601,7 @@ static UserService* _defaultUserService = nil;
      @"BMIValue",@"BMIValue",
      @"province",@"province",
      @"city",@"city",
-     @"avatarimage", @"profileImageUrl",
+     @"profileImageUrl", @"profileImageUrl",
 //   @"backgroundimage",@"avatarBackGroundImage",
      nil];
     [objectManager.mappingProvider addObjectMapping:userMapping];
@@ -619,6 +619,7 @@ static UserService* _defaultUserService = nil;
     
     RKParams* params = [RKParams params];
     [params setValue:user.uid forParam:@"uid"];
+    [params setValue:user.profileImageUrl forParam:@"profileImageUrl"];
     [params setValue:user.name forParam:@"name"];
     [params setValue:user.description forParam:@"description"];
     [params setValue:user.gender forParam:@"gender"];

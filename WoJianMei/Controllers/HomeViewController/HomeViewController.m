@@ -36,7 +36,7 @@
 
 
 ///// the setings of the iCarousel
-#define NUMBER_OF_ITEMS 13
+#define NUMBER_OF_ITEMS 4
 #define NUMBER_OF_VISIBLE_ITEMS 18
 #define ITEM_SPACING 320
 #define EACH_FETCH_SIZE 5
@@ -208,7 +208,7 @@ typedef enum CONTENT_TYPE {
     [self hideActivity];
     [self.carousel reloadData];
     [self.dataTableView reloadData];
-    [_spacePageControl setNumberOfPages:[self.dataList count]];
+    [_spacePageControl setNumberOfPages:NUMBER_OF_ITEMS];
 }
 
 
@@ -227,7 +227,7 @@ typedef enum CONTENT_TYPE {
     //添加当前划片的提示
     [self addSpacePageControl];
 
-//    [self showLoginView];
+    [self showLoginView];
 }
 
 
@@ -566,8 +566,8 @@ typedef enum CONTENT_TYPE {
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    //    return NUMBER_OF_ITEMS;
-    return [self.dataList count];
+        return NUMBER_OF_ITEMS;
+//    return [self.dataList count];
 }
 
 - (NSUInteger)numberOfVisibleItemsInCarousel:(iCarousel *)carousel
@@ -637,6 +637,24 @@ typedef enum CONTENT_TYPE {
 //    self.navigationController.navigationBarHidden =YES;
 //    [self.navigationController pushViewController:controller animated:YES];
     
+    if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==1 || self.segmentedController.selectedSegmentIndex ==-1)
+    {
+        CommonArticleViewController *workOutVc = [[CommonArticleViewController alloc]initWithNibName:@"CommonArticleViewController" bundle:nil];
+        workOutVc.article = [self.dataList objectAtIndex:index];
+        [self.navigationController pushViewController:workOutVc animated:YES];
+        [workOutVc release];
+        
+    }else if (self.segmentedController.selectedSegmentIndex ==2 || self.segmentedController.selectedSegmentIndex ==3)
+    {
+        
+        PlayVideoViewController *playVc =[[PlayVideoViewController alloc]initWithNibName:@"PlayVideoViewController" bundle:nil];
+        playVc.video  = [self.dataList objectAtIndex:index ];
+        [self.navigationController pushViewController:playVc animated:YES];
+        [playVc release];
+        
+    }
+
+    
     
 }
 
@@ -678,17 +696,95 @@ typedef enum CONTENT_TYPE {
     {
         
         if (_start == 0) {
-            self.dataList = objects;
+            
+            
+           self.dataList = objects;
+            
+//          [self writeArticleListToDisk:objects];
+
+            
         } else {
             NSMutableArray *newDataList = [NSMutableArray arrayWithArray:self.dataList];
             [newDataList addObjectsFromArray:objects];
             self.dataList = newDataList;
+            
+//           [self writeArticleListToDisk:newDataList];
+            
         }
         _start += [objects count];
+        
+    
         
         //更新用户界面；
         [self updateUserInterface];
     }
+    
 }
+
+
+-(void)writeArticleListToDisk:(NSArray *)articleList{
+    
+    //Write写入方式：永久保存在磁盘中。具体方法为：
+    // 第一步：获得文件即将保存的路径：
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    NSString *ourDocumentPath =[documentPaths objectAtIndex:0];
+    
+    //  第二步：生成在该路径下的文件：
+    NSString *FileName=[ourDocumentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"CurrentIndex%d",self.segmentedController.selectedSegmentIndex]];
+    //fileName就是保存文件的文件名
+    
+    //第三步：往文件中写入数据：
+    //将NSData类型对象data写入文件，文件名为FileName
+    //     BOOL writeDataSuccess =  [self.dataList writeToFile:FileName atomically:YES];
+    
+    
+    
+//    if ([articleList isEqualToArray:self.dataList]) {
+//        return ;
+//    }
+    
+    
+
+    //将NSObject类型对象data写入文件，文件名为FileName
+    BOOL writeDataSuccess  = [NSKeyedArchiver archiveRootObject:articleList toFile:FileName];
+    
+    if (writeDataSuccess) {
+        PPDebug(@"********保存数据服务器下载数据成功********");
+        PPDebug(@"******%@*****",FileName);
+    }
+    
+    // 第四步最后：从文件中读出数据：
+    //从FileName中读取出数据
+    // NSData *data=[NSData dataWithContentsOfFile:FileName options:0 error:NULL];
+    
+    
+    //从FileName中读取出数据
+    // NSArray *arr=[NSData dataWithContentsOfFile:FileName options:0 error:NULL];
+    
+    NSArray *arr = [NSKeyedUnarchiver unarchiveObjectWithFile:FileName];
+    
+    self.dataList =arr;
+    
+    Article *article = [arr objectAtIndex:0];
+    PPDebug(@"what :%@",article.title);
+    
+}
+
+-(NSArray *)readArticleListFromDiskWithFileName:(NSString *)fileName
+{
+   /* /var/mobile/Applications/A2CE33CB-8713-44DC-A196-9017CAE9CC72/Documents/CurrentIndex-1
+   */
+    
+    NSString *path = [NSString stringWithFormat:@"/var/mobile/Applications/A2CE33CB-8713-44DC-A196-9017CAE9CC72/Documents/%@",fileName];
+    
+    NSArray *arr = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+
+    return arr;
+
+}
+
+
+
+
 
 @end

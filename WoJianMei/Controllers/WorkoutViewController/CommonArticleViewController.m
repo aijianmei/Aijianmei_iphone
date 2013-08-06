@@ -20,6 +20,7 @@
 #import "BaiduMobStat.h"
 #import "DeviceDetection.h"
 
+#define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
 
 #define kAppKey @"3622140445"
 #define kAppSecret @"f94d063d06365972215c62acaadf95c3"
@@ -549,6 +550,12 @@ enum actionsheetNumber{
     /////重新定位，设定NavigationBar 的位置
    [self.navigationController.navigationBar setFrame:CGRectMake(0, 420, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
     
+    
+    //548 480
+    if (IS_IPHONE5) {
+        /////重新定位，设定NavigationBar 的位置
+        [self.navigationController.navigationBar setFrame:CGRectMake(0, 508, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
+    }
     
     
     [[ArticleService sharedService] findArticleInfoWithAucode:@"aijianmei" auact:@"au_getinformationdetail" articleId:_article._id channel:@" " channelType:@" " uid:@"" delegate:self];
