@@ -444,6 +444,10 @@
 		4A634E1D1753431E00453C0D /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A634E1A1753431C00453C0D /* bg@2x.png */; };
 		4A634E1E1753431E00453C0D /* Flower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A634E1B1753431D00453C0D /* Flower.jpg */; };
 		4A634E1F1753431E00453C0D /* foursquare-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A634E1C1753431E00453C0D /* foursquare-logo@2x.png */; };
+		4A65859F17B0ACB10056DA91 /* SLNumberPickerTicks.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A65859A17B0ACB10056DA91 /* SLNumberPickerTicks.png */; };
+		4A6585A017B0ACB10056DA91 /* SLNumberPickerTicks@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A65859B17B0ACB10056DA91 /* SLNumberPickerTicks@2x.png */; };
+		4A6585A117B0ACB10056DA91 /* SLNumberPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A65859D17B0ACB10056DA91 /* SLNumberPickerView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		4A6585A217B0ACB10056DA91 /* SLNumberPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A65859E17B0ACB10056DA91 /* SLNumberPickerView.xib */; };
 		4A66C1F216A59E0000A2F22E /* AWActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A66C1E216A59E0000A2F22E /* AWActionSheet.m */; };
 		4A66C1FB16A59E0000A2F22E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A66C1F016A59E0000A2F22E /* ViewController.m */; };
 		4A7B7E96179A5CAC00FD6E56 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7B7E8B179A5C8B00FD6E56 /* libRestKit.a */; };
@@ -465,6 +469,8 @@
 		4A8A7226174E10FF00BD3AAE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8A7225174E10FF00BD3AAE /* LoginViewController.m */; };
 		4A8A7229174E557700BD3AAE /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8A7228174E557700BD3AAE /* SignUpViewController.m */; };
 		4A8BCACC17AF8DAB0019CBB1 /* AccessoryView.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8BCACB17AF8DAB0019CBB1 /* AccessoryView.png */; };
+		4A8BCAD717AFE2BE0019CBB1 /* WorkOutManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8BCAD517AFE2BB0019CBB1 /* WorkOutManagerViewController.m */; };
+		4A8BCAD817AFE2BE0019CBB1 /* WorkOutManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8BCAD617AFE2BD0019CBB1 /* WorkOutManagerViewController.xib */; };
 		4A9449A516A94B0800A96815 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9449A416A94B0800A96815 /* CoreText.framework */; };
 		4A9449A716A94B2B00A96815 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9449A616A94B2B00A96815 /* libicucore.dylib */; };
 		4A9449A916A94B5800A96815 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9449A816A94B5700A96815 /* Security.framework */; };
@@ -1348,6 +1354,11 @@
 		4A634E1A1753431C00453C0D /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg@2x.png"; path = "REComposeViewControllerExample/REComposeViewControllerExample/bg@2x.png"; sourceTree = "<group>"; };
 		4A634E1B1753431D00453C0D /* Flower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Flower.jpg; path = REComposeViewControllerExample/REComposeViewControllerExample/Flower.jpg; sourceTree = "<group>"; };
 		4A634E1C1753431E00453C0D /* foursquare-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "foursquare-logo@2x.png"; path = "REComposeViewControllerExample/REComposeViewControllerExample/foursquare-logo@2x.png"; sourceTree = "<group>"; };
+		4A65859A17B0ACB10056DA91 /* SLNumberPickerTicks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SLNumberPickerTicks.png; sourceTree = "<group>"; };
+		4A65859B17B0ACB10056DA91 /* SLNumberPickerTicks@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SLNumberPickerTicks@2x.png"; sourceTree = "<group>"; };
+		4A65859C17B0ACB10056DA91 /* SLNumberPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLNumberPickerView.h; sourceTree = "<group>"; };
+		4A65859D17B0ACB10056DA91 /* SLNumberPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLNumberPickerView.m; sourceTree = "<group>"; };
+		4A65859E17B0ACB10056DA91 /* SLNumberPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SLNumberPickerView.xib; sourceTree = "<group>"; };
 		4A66C1E116A59E0000A2F22E /* AWActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWActionSheet.h; sourceTree = "<group>"; };
 		4A66C1E216A59E0000A2F22E /* AWActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWActionSheet.m; sourceTree = "<group>"; };
 		4A66C1EF16A59E0000A2F22E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -1378,6 +1389,9 @@
 		4A8A7227174E557700BD3AAE /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignUpViewController.h; path = Controllers/WorkoutViewController/SignUpViewController.h; sourceTree = "<group>"; };
 		4A8A7228174E557700BD3AAE /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignUpViewController.m; path = Controllers/WorkoutViewController/SignUpViewController.m; sourceTree = "<group>"; };
 		4A8BCACB17AF8DAB0019CBB1 /* AccessoryView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AccessoryView.png; sourceTree = "<group>"; };
+		4A8BCAD417AFE2B90019CBB1 /* WorkOutManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOutManagerViewController.h; sourceTree = "<group>"; };
+		4A8BCAD517AFE2BB0019CBB1 /* WorkOutManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOutManagerViewController.m; sourceTree = "<group>"; };
+		4A8BCAD617AFE2BD0019CBB1 /* WorkOutManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkOutManagerViewController.xib; sourceTree = "<group>"; };
 		4A9449A416A94B0800A96815 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		4A9449A616A94B2B00A96815 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		4A9449A816A94B5700A96815 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -3283,6 +3297,18 @@
 			path = "关于我们";
 			sourceTree = "<group>";
 		};
+		4A65859917B0ACB10056DA91 /* SLNumberPicker */ = {
+			isa = PBXGroup;
+			children = (
+				4A65859A17B0ACB10056DA91 /* SLNumberPickerTicks.png */,
+				4A65859B17B0ACB10056DA91 /* SLNumberPickerTicks@2x.png */,
+				4A65859C17B0ACB10056DA91 /* SLNumberPickerView.h */,
+				4A65859D17B0ACB10056DA91 /* SLNumberPickerView.m */,
+				4A65859E17B0ACB10056DA91 /* SLNumberPickerView.xib */,
+			);
+			path = SLNumberPicker;
+			sourceTree = "<group>";
+		};
 		4A66C1DE16A59DFF00A2F22E /* AWIconSheet */ = {
 			isa = PBXGroup;
 			children = (
@@ -3363,6 +3389,16 @@
 			path = areapicker;
 			sourceTree = "<group>";
 		};
+		4A8BCAD917AFE2D30019CBB1 /* WorkoutManager */ = {
+			isa = PBXGroup;
+			children = (
+				4A8BCAD417AFE2B90019CBB1 /* WorkOutManagerViewController.h */,
+				4A8BCAD517AFE2BB0019CBB1 /* WorkOutManagerViewController.m */,
+				4A8BCAD617AFE2BD0019CBB1 /* WorkOutManagerViewController.xib */,
+			);
+			name = WorkoutManager;
+			sourceTree = "<group>";
+		};
 		4A959679168ED995006F1317 /* 3PP-SDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -3399,6 +3435,7 @@
 				4ADCFDFA169D614600A3E979 /* MakeFriendsViewcontrller */,
 				4ADCFE04169D614600A3E979 /* MyselfViewContrller */,
 				4ADCFDFD169D614600A3E979 /* MoreViewController */,
+				4A8BCAD917AFE2D30019CBB1 /* WorkoutManager */,
 			);
 			name = Entries;
 			sourceTree = "<group>";
@@ -3553,6 +3590,7 @@
 		4ADCFF50169D69F500A3E979 /* Common iphone */ = {
 			isa = PBXGroup;
 			children = (
+				4A65859917B0ACB10056DA91 /* SLNumberPicker */,
 				4A5AB6E017AB470A009B230F /* image cropper */,
 				4A12202B17A2448D002F1A50 /* UIKeyboard */,
 				4A308B8017A1698B00DED650 /* WebViewLocalCache */,
@@ -4177,6 +4215,10 @@
 				4A12A78517ACE0D500696CF2 /* touxiang_40x40@2x.png in Resources */,
 				4AEF0B8317AE15CC00AFC722 /* gender_on.png in Resources */,
 				4A8BCACC17AF8DAB0019CBB1 /* AccessoryView.png in Resources */,
+				4A8BCAD817AFE2BE0019CBB1 /* WorkOutManagerViewController.xib in Resources */,
+				4A65859F17B0ACB10056DA91 /* SLNumberPickerTicks.png in Resources */,
+				4A6585A017B0ACB10056DA91 /* SLNumberPickerTicks@2x.png in Resources */,
+				4A6585A217B0ACB10056DA91 /* SLNumberPickerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4509,6 +4551,8 @@
 				4A5AB6FD17AB470A009B230F /* UIOverView.m in Sources */,
 				4A5AB70D17AB4826009B230F /* CorpImageView.m in Sources */,
 				4A0CA5CF17AB969600314B8C /* BMIViewController.m in Sources */,
+				4A8BCAD717AFE2BE0019CBB1 /* WorkOutManagerViewController.m in Sources */,
+				4A6585A117B0ACB10056DA91 /* SLNumberPickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4622,7 +4666,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "829AACF4-4823-41AD-AC7D-10691E0936B5";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "829AACF4-4823-41AD-AC7D-10691E0936B5";
@@ -4650,7 +4694,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "829AACF4-4823-41AD-AC7D-10691E0936B5";

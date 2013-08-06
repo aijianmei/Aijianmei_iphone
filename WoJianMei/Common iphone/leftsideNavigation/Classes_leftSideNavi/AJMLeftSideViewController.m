@@ -22,6 +22,7 @@
 #import "MakeFriendsViewController.h"
 #import "LoginViewController.h"
 #import "SVWebViewController.h"
+#import "WorkOutManagerViewController.h"
 //#import <ShareSDK/ShareSDK.h>
 
 
@@ -108,7 +109,7 @@
 {
     switch (section) {
         case 0:
-            return 6;
+            return 7;
         case 1:
             return 3;
         default:
@@ -165,13 +166,13 @@
                 case 4:
                     cell.textLabel.text = @"生活方式";
                     break;
-//                case 6:
-//                    cell.textLabel.text = @"论坛";
-//                    break;
+                case 5:
+                    cell.textLabel.text = @"运动管理";
+                    break;
 //                case 7:
 //                    cell.textLabel.text = @"交友互动";
 //                    break;
-                case 5:
+                case 6:
                     cell.textLabel.text = @"更多";                
                     break;
             }
@@ -383,20 +384,18 @@
                 }
                 break;
 
-//                case 6:
-//                {
-//                   ////论坛
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        ForumViewController *forumVC = [currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"ForumViewController"];
-//                        forumVC.title = @"论坛";
-//
-//                        _navigationController = [[UINavigationController alloc] initWithRootViewController:forumVC];
-//                        self.viewDeckController.centerController = _navigationController;
-//                        
-//                        self.view.userInteractionEnabled = YES;
-//                    }];
-//                    break;
-//                }
+                case 5:
+                {
+                   ////论坛
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        WorkOutManagerViewController *vc = [[WorkOutManagerViewController alloc]initWithNibName:@"WorkOutManagerViewController" bundle:nil];
+                        _navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
+                        self.viewDeckController.centerController = _navigationController;
+                        self.view.userInteractionEnabled = YES;
+                    }];
+                    
+                }
+                    break;
 //                case 7:
 //                {
 //                    ////交友互动
@@ -410,7 +409,7 @@
 //                    }];
 //                    break;
 //                }
-                case 5:
+                case 6:
                 {
                     ///更多
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
