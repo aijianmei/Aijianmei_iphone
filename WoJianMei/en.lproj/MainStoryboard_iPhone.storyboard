@@ -1185,9 +1185,6 @@
         <class className="LoginViewController" superclassName="PPViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
-                <relationship kind="action" name="clickQQShareButton:" candidateClass="UIButton"/>
-                <relationship kind="action" name="clickSignupAijianmeiAccount:" candidateClass="UIButton"/>
-                <relationship kind="action" name="clickSinaWeiboButton:" candidateClass="UIButton"/>
                 <relationship kind="action" name="closeDoneEdit:"/>
                 <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
