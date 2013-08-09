@@ -130,8 +130,23 @@
         _number3Value = page;
     
     [self.delegate numberPickerViewDidChangeValue:self];
-    
 }
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSInteger page = scrollView.contentOffset.y / scrollView.bounds.size.height;
+    
+    if (scrollView == self.number1)
+        _number1Value = page;
+    if (scrollView == self.number2)
+        _number2Value = page;
+    if (scrollView == self.number3)
+        _number3Value = page;
+    
+    [self.delegate numberPickerViewDidChangeValue:self];
+
+}
+
 
 // On awakening, set up the columns if we're not a stand-in.
 - (void)awakeFromNib {
