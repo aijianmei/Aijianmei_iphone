@@ -20,8 +20,6 @@
 
 + (SLNumberPickerView*)numberPickerView;
 
-@property (strong, nonatomic) IBOutlet UIScrollView *number1;
-@property (strong, nonatomic) IBOutlet UIScrollView *number2;
 @property (strong, nonatomic) IBOutlet UIScrollView *number3;
 
 @property (readonly) NSInteger value;

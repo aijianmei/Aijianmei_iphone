@@ -8,9 +8,19 @@
 
 #import "SLNumberPickerView.h"
 
+
+#define WeightNumberFrom 25
+#define WeightNumberEnd 205
+
+#define HeightNumberFrom 60
+#define HeightNumberEnd 230
+
+#define AgeNumberFrom   1930
+#define AgeNumberEnd    2013
+
+
+
 @interface SLNumberPickerView () {
-    NSInteger _number1Value;
-    NSInteger _number2Value;
     NSInteger _number3Value;
     
     SLNumberPickerView* _internalPickerView;
@@ -25,7 +35,7 @@
 
 // What font should we use?
 + (UIFont*)numberFont {
-    return [UIFont fontWithName:@"Palatino" size:36];
+    return [UIFont fontWithName:@"Palatino" size:20];
 }
 
 // What color should the text be?
@@ -41,8 +51,6 @@
 // *** ^ CHANGE THESE METHODS FOR CUSTOM APPEARANCE! ^ ***
 
 
-@synthesize number1 = _number1;
-@synthesize number2 = _number2;
 @synthesize number3 = _number3;
 
 @synthesize delegate = _delegate;
@@ -83,13 +91,12 @@
 - (void)prepareScrollView:(UIScrollView*)scrollView {
         
     // Add 10 labels - 0 to 9.
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 230; i++) {
         UILabel* label = [[UILabel alloc] initWithFrame:scrollView.bounds];
         label.backgroundColor = [UIColor clearColor];
         label.textColor = [SLNumberPickerView numberColor];
         label.font = [SLNumberPickerView numberFont];
         label.textAlignment = UITextAlignmentCenter;
-        
         label.text = [NSString stringWithFormat:@"%i", i];
         
         CGRect frame = label.frame;
@@ -103,7 +110,7 @@
     // This scroll view is 10 pages tall, is paged, and does not clip to bounds.
     // This is important, since we want to be able to see the numbers above and below the
     // currently selected one.
-    scrollView.contentSize = CGSizeMake(scrollView.bounds.size.width, scrollView.bounds.size.height*10);
+    scrollView.contentSize = CGSizeMake(scrollView.bounds.size.width, scrollView.bounds.size.height * 230);
     scrollView.pagingEnabled = YES;
     scrollView.clipsToBounds = NO;
     
@@ -122,10 +129,6 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSInteger page = scrollView.contentOffset.y / scrollView.bounds.size.height;
     
-    if (scrollView == self.number1)
-        _number1Value = page;
-    if (scrollView == self.number2)
-        _number2Value = page;
     if (scrollView == self.number3)
         _number3Value = page;
     
@@ -135,11 +138,6 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSInteger page = scrollView.contentOffset.y / scrollView.bounds.size.height;
-    
-    if (scrollView == self.number1)
-        _number1Value = page;
-    if (scrollView == self.number2)
-        _number2Value = page;
     if (scrollView == self.number3)
         _number3Value = page;
     
@@ -153,10 +151,7 @@
     
     if (_isStandIn)
         return;
-    
-    [self prepareScrollView:_number1];
-    [self prepareScrollView:_number2];
-    [self prepareScrollView:_number3];
+       [self prepareScrollView:_number3];
 }
 
 // Figure out the value based on the current number values.
@@ -167,7 +162,7 @@
         return [_internalPickerView value];
     }
     
-    return _number1Value * 100 + _number2Value * 10 + _number3Value;
+    return _number3Value;
 }
 
 // We want to be able to tap and drag any part of a column to move it, but only the 
@@ -184,12 +179,6 @@
     
     // because all of the views are layed out in column fashion, the x coord of the touch corresponds to the view
     CGFloat x = point.x;
-    
-    if (x >= CGRectGetMinX(self.number1.frame) && x <= CGRectGetMaxX(self.number1.frame))
-        return self.number1;
-    
-    if (x >= CGRectGetMinX(self.number2.frame) && x <= CGRectGetMaxX(self.number2.frame))
-        return self.number2;
     
     if (x >= CGRectGetMinX(self.number3.frame) && x <= CGRectGetMaxX(self.number3.frame))
         return self.number3;
