@@ -33,6 +33,8 @@
     NSString *_BMIValue;
     NSString *_province;
     NSString *_city;
+    
+    UIImage *_avatarImage;
 }
 
 @property (retain, nonatomic)  NSString *uid;
@@ -57,6 +59,7 @@
 @property (retain, nonatomic)  NSString *province;
 
 @property (retain, nonatomic)  NSString *city;
+@property (retain, nonatomic)  UIImage *avatarImage;
 
 
 

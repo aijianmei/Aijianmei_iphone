@@ -8,7 +8,6 @@
 
 #import "WorkOutDataViewController.h"
 #import "REComposeViewController.h"
-#import "WorkoutNoteViewController.h"
 #import "WorkoutDataComposeViewController.h"
 #import "WorkOutInfo.h"
 
@@ -141,12 +140,12 @@
 
 - (void)workoutNoteButtonPressed
 {
-    WorkoutNoteViewController *notecomposeViewController = [[WorkoutNoteViewController alloc] init];
-    notecomposeViewController.title = @"健身日记";
-    notecomposeViewController.hasAttachment = YES;
-    notecomposeViewController.delegate = self;
-    notecomposeViewController.text = @"亲，写下你的健身心得吧！";
-    [self presentViewController:notecomposeViewController animated:YES completion:nil];
+//    WorkoutNoteViewController *notecomposeViewController = [[WorkoutNoteViewController alloc] init];
+//    notecomposeViewController.title = @"健身日记";
+//    notecomposeViewController.hasAttachment = YES;
+//    notecomposeViewController.delegate = self;
+//    notecomposeViewController.text = @"亲，写下你的健身心得吧！";
+//    [self presentViewController:notecomposeViewController animated:YES completion:nil];
     
 }
 

@@ -19,7 +19,7 @@
 #import "CommonArticleViewController.h"
 #import "IIViewDeckController.h"
 #import "AppDelegate.h"
-#import "MyselfViewController.h"
+#import "PublicMyselfViewController.h"
 #import "LoginViewController.h"
 #import "Result.h"
 #import "Video.h"
@@ -175,26 +175,13 @@ typedef enum CONTENT_TYPE {
 - (void)rightButtonClickHandler:(id)sender
 {
     [self.viewDeckController toggleRightViewAnimated:YES];
-
-    UIStoryboard *currentInUseStoryBoard;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-        
-        currentInUseStoryBoard = iPhoneStroyBoard;
-        
-    }else{
-        
-        UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-        currentInUseStoryBoard = iPadStroyBoard;
-    }
-    
-
     User *user = [[UserService defaultService] user];
     
     if (user.uid) {
-        MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
+        PublicMyselfViewController *myselfVC = [[PublicMyselfViewController alloc]initWithNibName:@"PublicMyselfViewController" bundle:nil];
         myselfVC.title = @"我";
         [self.navigationController pushViewController:myselfVC animated:YES];
+        [myselfVC release];
     
     }else{
         [self showLoginView];
@@ -240,8 +227,6 @@ typedef enum CONTENT_TYPE {
 -(void)pushToMyselfViewControllerFrom:(UIViewController *)viewController{
 
     [self rightButtonClickHandler:viewController];
-
-
 }
 
 #pragma mark-- addButtonScrollView Method
@@ -433,7 +418,7 @@ typedef enum CONTENT_TYPE {
 
 
 #pragma Pull Refresh Delegate
-- (void) reloadTableViewDataSource
+- (void)reloadTableViewDataSource
 {
     
     [self buttonClicked:self.segmentedController];

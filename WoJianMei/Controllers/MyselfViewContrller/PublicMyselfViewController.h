@@ -16,7 +16,7 @@
 @class PostViewController;
 
 
-@interface MyselfViewController : StatusViewBaseController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
+@interface PublicMyselfViewController : StatusViewBaseController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
 
 {
     
@@ -31,8 +31,8 @@
     User *_user;
     UserService *_userService;
     PostViewController *_postViewController;
-
-
+    
+    
 }
 
 
@@ -50,6 +50,13 @@
 
 
 - (void)drawRect:(CGRect)rect;
+
+
+
+
+
+
+
 
 
 @end

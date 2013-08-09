@@ -350,6 +350,7 @@ enum SinaResultErrorCode
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
 {
     NSLog(@"Error: %@", [error localizedDescription]);
+    [self hideActivity];
 }
 
 - (void)requestDidStartLoad:(RKRequest *)request

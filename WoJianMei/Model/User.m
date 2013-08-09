@@ -57,6 +57,7 @@
 @synthesize BMIValue =_BMIValue;
 @synthesize city =_city;
 @synthesize province =_province;
+@synthesize avatarImage= _avatarImage;
 
 
 
@@ -94,6 +95,8 @@
         self.BMIValue =[aDecoder decodeObjectForKey:BmiValue];
         self.city =[aDecoder decodeObjectForKey:City];
         self.province =[aDecoder decodeObjectForKey:Province];
+        self.avatarImage =[aDecoder decodeObjectForKey:AvatarImage];
+
 
     }
     return self;
@@ -127,6 +130,9 @@
     [aCoder encodeObject:self.BMIValue forKey:BmiValue];
     [aCoder encodeObject:self.city forKey:City];
     [aCoder encodeObject:self.province forKey:Province];
+    
+    [aCoder encodeObject:self.avatarImage forKey:AvatarImage];
+
 
 }
 
@@ -155,6 +161,7 @@
     [_BMIValue release];
     [_city release];
     [_province release];
+    [_avatarImage release];
 
     [super dealloc];
 }
