@@ -20,7 +20,7 @@
 #import "CommonArticleViewController.h"
 #import "IIViewDeckController.h"
 #import "AppDelegate.h"
-#import "MyselfViewController.h"
+#import "PublicMyselfViewController.h"
 #import "LoginViewController.h"
 #import "Result.h"
 
@@ -192,7 +192,8 @@ typedef enum CONTENT_TYPE {
     User *user = [[UserService defaultService] user];
     
     if (user.uid) {
-        MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
+        
+        PublicMyselfViewController *myselfVC = [[PublicMyselfViewController alloc]initWithNibName:@"PublicMyselfViewController" bundle:nil];                                   
         myselfVC.title = @"我";
         [self.navigationController pushViewController:myselfVC animated:YES];
         

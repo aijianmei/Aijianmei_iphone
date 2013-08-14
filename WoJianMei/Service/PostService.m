@@ -98,6 +98,7 @@
 #pragma mark --
 #pragma mark load Status
 -(void)loadStatusWithUid:(int)uid
+               targetUid:(int)targetUid
                 gymGroup:(int)gymGroup
                    start:(int)start
                   offSet:(int)offSet
@@ -134,24 +135,36 @@
     [params setValue:@"aijianmei" forParam:@"aucode"];
     [params setValue:@"getCircleList" forParam:@"auact"];
     
-    if (uid) {
-        NSString *uidInt = [NSString stringWithFormat:@"%d",uid];
+    if (uid){
+        NSString *uidInt = [NSString stringWithFormat:@"%i",uid];
         [params setValue:uidInt forParam:@"uid"];
     }
-    if (gymGroup) {
-        NSString *gymGroupInt = [NSString stringWithFormat:@"%d",gymGroup];
+    
+    if (targetUid)
+    {
+        NSString *targetUidInt = [NSString stringWithFormat:@"%i",targetUid];
+        [params setValue:targetUidInt forParam:@"targetUid"];
+    }
+
+    
+    if (gymGroup)
+    {
+        NSString *gymGroupInt = [NSString stringWithFormat:@"%i",gymGroup];
         [params setValue:gymGroupInt forParam:@"group"];
     }
+    
     if (start)
     {
-        NSString *startInt = [NSString stringWithFormat:@"%d",start];
+        NSString *startInt = [NSString stringWithFormat:@"%i",start];
         [params setValue:startInt forParam:@"start"];
     }
+    
     if (offSet)
     {
-        NSString *offSetInt = [NSString stringWithFormat:@"%d",offSet];
+        NSString *offSetInt = [NSString stringWithFormat:@"%i",offSet];
         [params setValue:offSetInt forParam:@"offSet"];
     }
+    
     
     //一定要加上这个方法
     PostStatus *postStatus = [[PostStatus alloc]init];

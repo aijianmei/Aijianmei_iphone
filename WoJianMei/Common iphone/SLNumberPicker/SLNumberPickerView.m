@@ -9,22 +9,14 @@
 #import "SLNumberPickerView.h"
 
 
-#define WeightNumberFrom 25
-#define WeightNumberEnd 205
-
-#define HeightNumberFrom 60
-#define HeightNumberEnd 230
-
-#define AgeNumberFrom   1930
-#define AgeNumberEnd    2013
-
-
-
 @interface SLNumberPickerView () {
-    NSInteger _number3Value;
     
+    NSInteger _number3Value;
     SLNumberPickerView* _internalPickerView;
+    
     BOOL _isStandIn;
+    
+
 }
 
 @end
@@ -45,14 +37,13 @@
 
 // Which tiled image should we use for each column?
 + (UIImage*)backgroundImage {
-    return [UIImage imageNamed:@"SLNumberPickerTicks"];
+    return [UIImage imageNamed:@"SLNumberPickerTicks.png"];
 }
 
 // *** ^ CHANGE THESE METHODS FOR CUSTOM APPEARANCE! ^ ***
 
 
-@synthesize number3 = _number3;
-
+@synthesize number3 =_number3;
 @synthesize delegate = _delegate;
 
 // Adapted from a technique from Yang Meyer:
@@ -89,13 +80,41 @@
 // Given a scroll view, fill it with labels from 0 to 9 - one label per "page".
 // Also add the tick marks as a background.
 - (void)prepareScrollView:(UIScrollView*)scrollView {
-        
+    
+    
+//#define WeightNumberFrom 25
+//#define WeightNumberEnd 205
+//    
+//#define HeightNumberFrom 60
+//#define HeightNumberEnd 230
+//    
+//#define AgeNumberFrom   1930
+//#define AgeNumberEnd    2013
+//    
+//    
+//       numberRange =AgeNumberEnd - AgeNumberFrom;
+//
+//    if (_isAgeSceen) {
+//        numberRange =AgeNumberEnd - AgeNumberFrom;
+//
+//    } else if(_isHeightSceen){
+//        numberRange =HeightNumberEnd - HeightNumberFrom ;
+//    }
+//    else if(_isWeightSceen){
+//        
+//        numberRange =WeightNumberEnd - WeightNumberFrom;
+//    }
+    
+    
+    numberRange = 230;
+
     // Add 10 labels - 0 to 9.
-    for (int i = 0; i < 230; i++) {
+    for (int i = 0; i < numberRange; i++) {
         UILabel* label = [[UILabel alloc] initWithFrame:scrollView.bounds];
         label.backgroundColor = [UIColor clearColor];
         label.textColor = [SLNumberPickerView numberColor];
         label.font = [SLNumberPickerView numberFont];
+        
         label.textAlignment = UITextAlignmentCenter;
         label.text = [NSString stringWithFormat:@"%i", i];
         
@@ -110,7 +129,7 @@
     // This scroll view is 10 pages tall, is paged, and does not clip to bounds.
     // This is important, since we want to be able to see the numbers above and below the
     // currently selected one.
-    scrollView.contentSize = CGSizeMake(scrollView.bounds.size.width, scrollView.bounds.size.height * 230);
+    scrollView.contentSize = CGSizeMake(scrollView.bounds.size.width, scrollView.bounds.size.height * numberRange);
     scrollView.pagingEnabled = YES;
     scrollView.clipsToBounds = NO;
     
@@ -118,7 +137,8 @@
     
     // Add a view behind all of the numbers that is extremely tall and uses a tiled background image. 
     UIView* backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-    CGRect frame = (CGRect){CGPointMake(0, -scrollView.bounds.size.height*20), CGSizeMake(scrollView.bounds.size.width, scrollView.bounds.size.height*50)};
+//    CGRect frame = (CGRect){CGPointMake(0, -scrollView.bounds.size.height*10), CGSizeMake(scrollView.bounds.size.width, scrollView.bounds.size.height* 200)};
+    CGRect frame = (CGRect){CGPointMake(0, 0), CGSizeMake(scrollView.bounds.size.width, scrollView.bounds.size.height* numberRange)};
     backgroundView.frame = frame;
     [scrollView insertSubview:backgroundView atIndex:0];
     
@@ -142,6 +162,8 @@
         _number3Value = page;
     
     [self.delegate numberPickerViewDidChangeValue:self];
+    
+    NSLog(@"%@",[scrollView description]);
 
 }
 
@@ -203,5 +225,19 @@
     else
         return _delegate;
 }
+
+
+-(void)scrollRectToVisible:(CGRect)frame animated :(BOOL)animated
+{
+//    
+//    [self awakeFromNib];
+//    [self prepareScrollView:_internalPickerView.number3];
+    [_internalPickerView.number3 scrollRectToVisible:frame
+                                        animated:animated];
+    
+    
+}
+
+
 
 @end

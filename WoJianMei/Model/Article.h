@@ -24,6 +24,7 @@
 @property (nonatomic, retain)NSString *channel;
 
 
+- (NSString*)timestamp;
 
 
 

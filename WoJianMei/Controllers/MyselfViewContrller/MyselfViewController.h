@@ -31,8 +31,9 @@
     User *_user;
     UserService *_userService;
     PostViewController *_postViewController;
-
-
+    
+    NSString   *_targetUid;
+    
 }
 
 
@@ -47,6 +48,7 @@
 @property (nonatomic,retain) User *user;
 @property (nonatomic,retain) PostViewController *postViewController;
 @property (assign, nonatomic) NSInteger start;
+@property (assign,nonatomic)  NSString *targetUid;
 
 
 - (void)drawRect:(CGRect)rect;

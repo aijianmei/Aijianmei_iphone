@@ -86,7 +86,6 @@
         self.uid = [aDecoder decodeObjectForKey:Uid];
         self.userType =[aDecoder decodeObjectForKey:UserType];
         self.profileImageUrl =[aDecoder decodeObjectForKey:ProfileImageUrl];
-//        self.loginStatus = [aDecoder decodeObjectForKey:LoginStatus];
         self.labelsArray =[aDecoder decodeObjectForKey:LabelsArray];
         
         self.age =[aDecoder decodeObjectForKey:Age];
@@ -119,7 +118,6 @@
     [aCoder encodeObject:self.uid forKey:Uid];
     [aCoder encodeObject:self.userType forKey:UserType];
     [aCoder encodeObject:self.profileImageUrl forKey:ProfileImageUrl];
-//    [aCoder encodeObject:self.loginStatus forKey:LoginStatus];
     [aCoder encodeObject:self.labelsArray forKey:LabelsArray];
     
     

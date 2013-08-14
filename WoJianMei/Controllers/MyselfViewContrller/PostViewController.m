@@ -8,11 +8,14 @@
 
 #import "PostViewController.h"
 #import "UIImage+Scale.h"
+#import "UIImageUtil.h"
 #import "PostService.h"
 #import "PostViewCell.h"
 #import "UserService.h"
 #import "User.h"
 #import "PostStatus.h"
+#import "UserService.h"
+#import "User.h"
 
 @interface PostViewController ()
 
@@ -53,8 +56,25 @@
 
 -(void)setup{
     
-    // 4：3 = 320 :240
-    UIImage *reSizeImage= [self.postImage scaleToSize:CGSizeMake(320, 240)];
+    //320
+    //2592-----1936
+    //1936-----2592
+
+    // 1:1.3    1.3 :1
+    
+    PPDebug(@"*****%f,%f****",
+            self.postImage.size.width,
+            self.postImage.size.height);
+    
+    UIImage *reSizeImage = nil;
+    
+    if (self.postImage.size.width  < self.postImage.size.height) {
+    reSizeImage= [self.postImage scaleToSize:CGSizeMake(320, 320 * 1.32)];
+    }else{
+    reSizeImage= [self.postImage scaleToSize:CGSizeMake(320, 320/1.32)];
+    }
+    
+    
     NSData *imageData = UIImageJPEGRepresentation(reSizeImage, 1.0);
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = [paths objectAtIndex:0];
@@ -66,7 +86,6 @@
         PPDebug(@"*******Save Image Successfully! %@",path);
       UIImage *image = [self readArticleListFromDiskWithFileName:@"currentPost.png"];
       [self setPostImage:image];
-        
     }
 }
 
@@ -77,15 +96,17 @@
 
     PostStatus *post = [[PostService sharedService] postStatus];
         
-    PPDebug(@"*****用户:%@****",post.uid);
+      User *user = [[UserService defaultService] user];
+        
+
+    PPDebug(@"*****用户:%@****",user.uid);
     PPDebug(@"*****内容:%@****",post.content);
 
         if (!self.postImage) {
             return ;
         }
         
-        
-    [[PostService sharedService] postStatusWithUid:post.uid
+    [[PostService sharedService] postStatusWithUid:user.uid
                                                  image:self.postImage
                                                content:post.content
                                               delegate:self.delegate];
@@ -120,6 +141,7 @@
 }
 #pragma mark --
 #pragma mark  tableviewDelegate Method
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 3;
@@ -203,11 +225,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
     switch (indexPath.section) {
         case 0:
         {
-            return 60;
+            return 80;
         }
             break;
             

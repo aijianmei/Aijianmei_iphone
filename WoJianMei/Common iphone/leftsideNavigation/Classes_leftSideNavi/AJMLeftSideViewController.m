@@ -111,7 +111,7 @@
         case 0:
             return 7;
         case 1:
-            return 3;
+            return 2;
         default:
             return 0;
     }
@@ -169,9 +169,6 @@
                 case 5:
                     cell.textLabel.text = @"运动管理";
                     break;
-//                case 7:
-//                    cell.textLabel.text = @"交友互动";
-//                    break;
                 case 6:
                     cell.textLabel.text = @"更多";                
                     break;
@@ -185,24 +182,14 @@
                 case 0:
                     cell.textLabel.text = @"关注新浪微博";
                     break;
-//                case 1:
-//                    cell.textLabel.text = @"关注腾讯微博";
-//                    break;
                 case 1:
                     cell.textLabel.text = @"关注官方微信";
                     break;
                 case 2:
                     cell.textLabel.text = @"访问官方网站";
                     break;
-//                case 3:
-//                {
-//                    NSBundle *bundle = [NSBundle mainBundle];
-//                    cell.textLabel.text = [NSString stringWithFormat:@"版本:ver%@",[[bundle infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey]];
-//                    break;
-//                }
-                default:
-                    break;
             }
+            break;
         }
         default:
             break;
@@ -388,8 +375,10 @@
                 {
                    ////论坛
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        
                         WorkOutManagerViewController *vc = [[WorkOutManagerViewController alloc]initWithNibName:@"WorkOutManagerViewController" bundle:nil];
                         _navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
+                        
                         self.viewDeckController.centerController = _navigationController;
                         self.view.userInteractionEnabled = YES;
                     }];
@@ -470,32 +459,32 @@
                     
                 }
                 break;
+//                case 1:
+//                {
+//                ///关注微信
+//                //TODO
+//                    
+//                    if ([WXApi isWXAppInstalled]) {
+//                        NSString *str = [NSString stringWithFormat:@"weixin://qr/%@",@"lXSTnL7EBoB5h6--nyGx"];
+//                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+//
+//                    }else
+//                    {
+//                        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"您没有安装微信，现在去安装" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+//                        [alertView show];
+//                        
+//                    }
+//                    
+//                    
+//                    self.view.userInteractionEnabled = YES;
+//                    _tableView.userInteractionEnabled =YES;
+//
+//                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+//                    [statTracker logEvent:@"FollowWechat" eventLabel:@"FollowWechat"];
+//                }
+//                    break;
+
                 case 1:
-                {
-                ///关注微信
-                //TODO
-                    
-                    if ([WXApi isWXAppInstalled]) {
-                        NSString *str = [NSString stringWithFormat:@"weixin://qr/%@",@"lXSTnL7EBoB5h6--nyGx"];
-                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-
-                    }else
-                    {
-                        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"您没有安装微信，现在去安装" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-                        [alertView show];
-                        
-                    }
-                    
-                    
-                    self.view.userInteractionEnabled = YES;
-                    _tableView.userInteractionEnabled =YES;
-
-                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
-                    [statTracker logEvent:@"FollowWechat" eventLabel:@"FollowWechat"];
-                }
-                    break;
-
-                case 2:
                 {
                     ///关注爱健美网 www.aijianmei.com
                     //TODO

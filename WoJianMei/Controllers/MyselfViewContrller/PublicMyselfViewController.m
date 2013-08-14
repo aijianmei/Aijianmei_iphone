@@ -111,7 +111,6 @@ enum ErrorCode
     _headerVImageButton.layer.borderColor = [UIColor clearColor].CGColor;
     [_headerVImageButton setFrame:CGRectMake(240, 155, 70, 70)];
     [_headerVImageButton setBackgroundColor:[UIColor clearColor]];
-    [_headerVImageButton setImage:[UIImage imageNamed:@"touxiang_40x40"] forState:UIControlStateNormal];
     [self.myHeaderView addSubview:_headerVImageButton];
     
     
@@ -132,7 +131,7 @@ enum ErrorCode
 {
     //// Descritpin broundground
     UIImageView *descriptionBG = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"description_bround.png"]];
-    [descriptionBG setFrame:CGRectMake(0, 200, 320, 50)];
+    [descriptionBG setFrame:CGRectMake(0, 200, 320, 40)];
     [self.myHeaderView addSubview:descriptionBG];
     [descriptionBG release];
 }
@@ -140,7 +139,7 @@ enum ErrorCode
 -(void)addDescriptionLabel{
     
     //初始化label
-    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 187, 270, 50)];
+    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 227, 270, 40)];
     //设置自动行数与字符换行
     [descriptionLabel setNumberOfLines:2];
     [descriptionLabel setLineBreakMode:NSLineBreakByWordWrapping];
@@ -149,11 +148,11 @@ enum ErrorCode
     NSString *s = @"这是一个测试！！！ADSFASDFASDFASDFSADFASDFASFASFASFASDFASDFASDFASFASDFASDFASDFASDFASDFASDFASFASDFASDFASDFASDFASDFASDFA";
     UIFont *font = [UIFont fontWithName:@"Arial" size:12];
     //设置一个行高上限
-    CGSize size = CGSizeMake(230,50);
+    CGSize size = CGSizeMake(230,40);
     
     //计算实际frame大小，并将label的frame变成实际大小
     CGSize labelsize = [s sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
-    [descriptionLabel setFrame:CGRectMake(0, 160, labelsize.width, labelsize.height)];
+    [descriptionLabel setFrame:CGRectMake(0, 200, labelsize.width, labelsize.height)];
     
     
     self.descriptionLabel = descriptionLabel;
@@ -163,6 +162,9 @@ enum ErrorCode
     [self.myHeaderView addSubview:self.descriptionLabel];
     [_myHeaderView bringSubviewToFront:_headerVImageButton];
 }
+
+
+
 
 -(void)initPostViewController{
     PostViewController *vc = [[PostViewController alloc]initWithNibName:
@@ -186,12 +188,18 @@ enum ErrorCode
 -(void)loadUserData{
     
     NSString *uid = [[[UserService defaultService] user] uid];
+    User *user =[[UserService defaultService] getUserInfoByUid:uid];
     
-    //本地数据存在的时候直接读取本地数据;
-    if ([[UserService defaultService] getUserInfoByUid:uid]) {
+    //本地用户数据存在的时候直接读取本地数据;
+    if (user) {
         
-        [self setUser:[[UserService defaultService] getUserInfoByUid:uid]];
+        User *user = [[UserService defaultService] getUserInfoByUid:uid];
+        [self setUser:user];
         [self upgradeUI];
+                
+        //加载新数据 
+        [self loadPublicDatas];
+
         
     }else{
         //本地数据不存在，用户第一次登陆的时候，就往服务器拉数据
@@ -208,8 +216,6 @@ enum ErrorCode
     if (image) {
         [self.headerVImageButton  setImage:image forState:UIControlStateNormal];
     }
-    
-    
     
     [self.backGroundImageView setImageWithURL:[NSURL URLWithString:self.user.avatarBackGroundImage] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
     [self.userNameLabel setText:_user.name];
@@ -233,10 +239,8 @@ enum ErrorCode
 #pragma mark - View lifecycle
 
 -(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:YES];
-    //    [self loadUserData];
     [self upgradeUI];
-    [self.dataTableView reloadData];
+    [super viewWillAppear:YES];
     
     
 }
@@ -274,50 +278,40 @@ enum ErrorCode
     [self showBackgroundImage];
     
     [self initUI];
-    
-//    [self loadUserData];
-    
-    
-    //开始加载新数据
-    [self loadPublicDatas];
-    
-    
+
+    [self loadUserData];
 
 }
 
 -(void)loadPublicDatas
 {
+
      [self showActivityWithText:@"数据加载中..."];
       _reloading = YES;
       shouldLoad =YES;
-    [[PostService sharedService] loadStatusWithUid:498
-                                      gymGroup:0
-                                         start:0
-                                        offSet:5
-                                      delegate:self];
+    
+    int uidPublic = 0;
+    int gymGroup = 0;
+    int start = 0;
+    int offSet = 5;
+    
+    [[PostService sharedService] loadStatusWithUid:uidPublic
+                                         targetUid:0
+                                          gymGroup:gymGroup
+                                             start:start
+                                            offSet:offSet
+                                          delegate:self];
 }
 
 
 -(void)clickPostStatusButton:(id)sender {
-    
-    
-    
-    UserInfoPickerViewController *vc = [[UserInfoPickerViewController alloc]initWithNibName:@"UserInfoPickerViewController" bundle:nil];    
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
-    
-    
-    
-    
-    
-    
-//    UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"取消"
-//                                         destructiveButtonTitle:@"照相"
-//                                              otherButtonTitles:@"相册",nil];
-//    [share showInView:self.view];
-//    [share release];
+     UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"取消"
+                                         destructiveButtonTitle:@"照相"
+                                              otherButtonTitles:@"相册",nil];
+    [share showInView:self.view];
+    [share release];
 }
 
 
@@ -396,11 +390,12 @@ enum ErrorCode
 
 
 -(void)cellAvatarButtonDidClick:(StatusCell *)theCell{
-    
-
+   
+    PostStatus *sts = [self.dataList objectAtIndex: theCell.indexPath.row];
     MyselfViewController *vc = [[MyselfViewController alloc]initWithNibName:@"MyselfViewController" bundle:nil];
+    vc.targetUid = sts.uid;
     [self.navigationController pushViewController:vc animated:YES];
-    
+    [vc release];
     
 }
 
@@ -410,10 +405,11 @@ enum ErrorCode
 - (void)reloadTableViewDataSource{
     _reloading =YES;
     [self showActivityWithText:@"数据加载中..."];
-    [[PostService sharedService] loadStatusWithUid:498
+    [[PostService sharedService] loadStatusWithUid:0
+                                         targetUid:0
                                           gymGroup:0
                                              start:0
-                                            offSet:0
+                                            offSet:5
                                           delegate:self];
 }
 
@@ -422,7 +418,8 @@ enum ErrorCode
     
     _reloading =NO;
     [self showActivityWithText:@"数据加载中..."];
-    [[PostService sharedService] loadStatusWithUid:498
+    [[PostService sharedService] loadStatusWithUid:0
+                                         targetUid:0
                                           gymGroup:0
                                              start:_start
                                             offSet:5
@@ -434,8 +431,6 @@ enum ErrorCode
     MyselfViewController *vc =[[MyselfViewController alloc]initWithNibName:@"MyselfViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
-    
-    
 }
 - (void)didReceiveMemoryWarning
 {
@@ -481,6 +476,7 @@ enum ErrorCode
     
     NSObject *object  = [objects objectAtIndex:0];
     
+    //PostStatus
     if ([object isMemberOfClass:[PostStatus class]]){
         PostStatus *postStatus =  [objects objectAtIndex:0];
         PPDebug(@"*****Get Statuses Successfully!!!*****");
@@ -497,8 +493,6 @@ enum ErrorCode
             
             newDataList = [NSMutableArray arrayWithArray:self.dataList];
             [newDataList addObjectsFromArray:objects];
-            
-            
             if (_reloading) {
                 [newDataList setArray:objects];
                 _start =0;
@@ -513,8 +507,7 @@ enum ErrorCode
         [self getImages];
         [self.navigationItem.rightBarButtonItem setEnabled:YES];
     }
-    
-    
+    //PostStatusRespose
     if ([object isMemberOfClass:[PostStatusRespose class]]){
         PostStatusRespose *postStatusRespose =  [objects objectAtIndex:0];
         PPDebug(@"*****Post one Status Successfully!!!*****");
@@ -524,7 +517,32 @@ enum ErrorCode
         [self.navigationItem.rightBarButtonItem setEnabled:YES];
         
     }
+    //User
+    if ([object isMemberOfClass:[User class]]) {
+        
+        User *user =  [objects objectAtIndex:0];
     
+        //当用户信息不完整的时候，要填写用户信息
+        if ([user.weight isEqualToString:@"0"] && [user.height isEqualToString:@"0"] && [user.age isEqualToString:@"0"] && [user.gender isEqualToString:@"0"]){
+            
+            UserInfoPickerViewController *vc = [[UserInfoPickerViewController alloc]initWithNibName:@"UserInfoPickerViewController" bundle:nil];
+            UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
+            [vc release];
+
+            [self.navigationController presentViewController:navigation animated:YES completion:^{} ];
+            [navigation release];
+            
+            
+        }
+        [[UserService defaultService] setUser:user];
+        [[UserService defaultService] storeUserInfoByUid:user.uid];
+        self.user =user;
+        [self upgradeUI];
+
+        //开始加载新数据
+        [self loadPublicDatas];
+    }
+    //PostLikeResponse
     if ([object isMemberOfClass:[PostLikeResponse class]]){
         PostLikeResponse *postLikeResponse =  [objects objectAtIndex:0];
         PPDebug(@"*****Post Like Successfully!!!*****");
@@ -554,7 +572,6 @@ enum ErrorCode
             NSArray     *arr        = [NSArray arrayWithObject:indexPath];
             [self.dataTableView reloadRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationFade];
             
-            
         }
         if (errorCode ==LACK_OF_PARAMATERS) {
             [self popupHappyMessage:@"未知错误" title:nil];
@@ -563,5 +580,7 @@ enum ErrorCode
             [self popupUnhappyMessage:@"已赞,不可以贪心哦！" title:nil];
         }
     }
+    
+    
 }
 @end

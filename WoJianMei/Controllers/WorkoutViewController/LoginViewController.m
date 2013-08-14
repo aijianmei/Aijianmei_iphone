@@ -113,9 +113,6 @@ enum SinaResultErrorCode
 	// Do any additional setup after loading the view.
     [self setNavigationRightButton:@"取消" imageName:@"top_bar_commonButton.png" action:@selector(clickCancleButton:)];
     
-       
-    
-    
     [self.sinaButton setTag:10];
     
     [self.sinaButton addTarget:self action:@selector(clickSinaWeiboButton:) forControlEvents:UIControlEventTouchDown];
@@ -380,6 +377,7 @@ enum SinaResultErrorCode
             {
                 //正式创建新用户
                 User *user = [UserManager createUserWithUserId:result.uid sinaUserId:_sinaweiboManager.sinaweibo.userID qqUserId:nil userType:self.userType name:nil profileImageUrl:nil gender:nil email:nil password:nil];
+                
                 [[UserService defaultService] setUser:user];
                 
                 [self dismissViewControllerAnimated:YES completion:^
@@ -392,6 +390,8 @@ enum SinaResultErrorCode
                  }];
             }
         }
+        
+        
         if (NO_Such_User ==errocde)
         {
             PPDebug(@"该用户不存在,用户要开始创建新的账户");

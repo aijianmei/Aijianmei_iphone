@@ -166,14 +166,8 @@ enum ErrorCode
     cell.delegate = self;
     cell.indexPath = indexPath;
     
-   [cell setupCell:status avatarImageData:avatarData contentImageData:imageData];
-//
-//    //开始绘制第一个cell时，隐藏indecator.
-//    if (isFirstCell) {
-//        //        [[SHKActivityIndicator currentIndicator] hide];
-//        [[ZJTStatusBarAlertWindow getInstance] hide];
-//        isFirstCell = NO;
-//    }
+   [cell setupCell:status avatarImageData:avatarData
+  contentImageData:imageData];
     
     
     return cell;

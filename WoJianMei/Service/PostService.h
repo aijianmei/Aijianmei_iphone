@@ -27,6 +27,7 @@
                 delegate:(id<RKObjectLoaderDelegate>)delegate;
 //获取分享
 -(void)loadStatusWithUid:(int)uid
+               targetUid:(int)targetUid
                 gymGroup:(int)gymGroup
                    start:(int)start
                   offSet:(int)offSet

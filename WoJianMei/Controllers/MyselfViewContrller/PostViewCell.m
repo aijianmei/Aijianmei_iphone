@@ -29,12 +29,14 @@
         self.nameTextField = [[UITextField alloc]initWithFrame:CGRectMake(5.0f, 12.0f, 250.0f,50.0f)];
         _nameTextField.delegate = self;
         [_nameTextField setTextAlignment:NSTextAlignmentLeft];
-        [_nameTextField setBackground:[UIImage imageNamed:@""]];
+        [_nameTextField setBackground:[UIImage imageNamed:@"feedback_bg2.png"]];
         [self.contentView addSubview:_nameTextField];
         
     }
     return self;
 }
+
+
 
 #pragma mark -
 #pragma mark - UITextFieldDelegate

@@ -330,6 +330,10 @@ enum errorCode {
         [UserService defaultService].user = user;
         [[UserService defaultService] storeUserInfoByUid:user.uid];
         
+        
+        
+        
+        
         //直接从注册页面，跳动到用户界面;
         [self dismissViewControllerAnimated:YES completion:^
          {
@@ -341,6 +345,9 @@ enum errorCode {
          }];
         
     }
+    
+    
+    
     //直接注册，用户名;
     if ([self.userType isEqualToString:@"local"]) {
         User *user = [UserManager createUserWithUserId:result.uid

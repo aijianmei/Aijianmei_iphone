@@ -298,10 +298,9 @@
         [[UINavigationBar appearance] setBackgroundImage:[ImageManager navigationBgImage] forBarMetrics:UIBarMetricsDefault];
     }else{
         
-       GlobalSetNavBarBackground(@"topmenu_bg@2x.png");
+       GlobalSetNavBarBackground(@"topmenu_bg.png");
     }
     
-//    [application setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
     
     // Register to WeChat   wxd930ea5d5a258f4f
     // aijianmei  :

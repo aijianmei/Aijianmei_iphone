@@ -515,8 +515,6 @@ static UserService* _defaultUserService = nil;
 
 -(User*)getUserInfoByUid:(NSString *)uid
 {
-    
-    
     NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:uid];
     User *user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
     [[NSUserDefaults standardUserDefaults] synchronize];

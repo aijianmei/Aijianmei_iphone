@@ -23,4 +23,8 @@
 @property (nonatomic, copy)NSString *shareurl;
 @property (nonatomic, copy)NSString *channel;
 
+
+- (NSString*)timestamp;
+
+
 @end

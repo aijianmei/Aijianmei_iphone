@@ -11,4 +11,18 @@
 
 @interface WorkOutManagerViewController : PPViewController
 
+
+- (IBAction)clickWeightManagerButton:(id)sender;
+
+- (IBAction)clickWorkoutManagerButton:(id)sender;
+
+- (IBAction)clickCheckoutWorkoutDatasButton:(id)sender;
+
+
+- (IBAction)clickRankingButton:(id)sender;
+
+- (IBAction)clickMoreButton:(id)sender;
+
+
+
 @end

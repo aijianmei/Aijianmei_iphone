@@ -18,6 +18,20 @@
 
 @interface SLNumberPickerView : UIView <UIScrollViewDelegate>
 
+{
+    UIScrollView *_number3;
+    
+    int numberRange;
+    
+    
+    BOOL isWeightSceen;
+    BOOL isHeightSceen;
+    BOOL isAgeSceen;
+
+
+    
+}
+
 + (SLNumberPickerView*)numberPickerView;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *number3;
@@ -25,5 +39,17 @@
 @property (readonly) NSInteger value;
 
 @property (nonatomic, weak) IBOutlet id <SLNumberPickerViewDelegate> delegate;
+@property (nonatomic,assign) BOOL isWeightSceen;
+@property (nonatomic,assign) BOOL isHeightSceen;
+@property (nonatomic,assign) BOOL isAgeSceen;
+
+
+
+
+-(void)scrollRectToVisible:(CGRect)frame animated :(BOOL)animated;
+
+- (void)awakeFromNib;
+
+
 
 @end

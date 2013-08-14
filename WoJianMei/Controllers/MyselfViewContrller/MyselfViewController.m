@@ -45,6 +45,7 @@
 @synthesize user =_user;
 @synthesize postViewController =_postViewController;
 @synthesize start  =_start;
+@synthesize targetUid =_targetUid;
 
 
 
@@ -59,6 +60,7 @@
     [_sina_userInfo release],_sina_userInfo = nil;
     [_user release];
     [_postViewController release];
+    [_targetUid release];
     [super dealloc];
 }
 
@@ -100,7 +102,6 @@
     _headerVImageButton.layer.borderColor = [UIColor clearColor].CGColor;
     [_headerVImageButton setFrame:CGRectMake(240, 155, 70, 70)];
     [_headerVImageButton setBackgroundColor:[UIColor clearColor]];
-    [_headerVImageButton setImage:[UIImage imageNamed:@"touxiang_40x40"] forState:UIControlStateNormal];
     [self.myHeaderView addSubview:_headerVImageButton];
 
      
@@ -142,7 +143,7 @@
     
     //计算实际frame大小，并将label的frame变成实际大小
     CGSize labelsize = [s sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
-    [descriptionLabel setFrame:CGRectMake(0, 160, labelsize.width, labelsize.height)];
+    [descriptionLabel setFrame:CGRectMake(0, 200, labelsize.width, labelsize.height)];
     
     
     self.descriptionLabel = descriptionLabel;
@@ -178,13 +179,17 @@
     
     //本地数据存在的时候直接读取本地数据;
     if ([[UserService defaultService] getUserInfoByUid:uid]) {
-        
-        [self setUser:[[UserService defaultService] getUserInfoByUid:uid]];
+        User *user = [[UserService defaultService] getUserInfoByUid:uid];
+        [self setUser:user];
         [self upgradeUI];
-
+        [[UserService defaultService] storeUserInfoByUid:user.uid];
+        //加载新数据
+        [self loadPublicDatas];
+        
+        
     }else{
-    //本地数据不存在，用户第一次登陆的时候，就往服务器拉数据
-         [[UserService defaultService] fecthUserInfoWithUid:uid delegate:self];
+        //本地数据不存在，用户第一次登陆的时候，就往服务器拉数据
+        [[UserService defaultService] fecthUserInfoWithUid:uid delegate:self];
     }
 }
 
@@ -265,8 +270,7 @@
     [self initUI];
     
     [self loadUserData];
-    
-    
+
     [self reloadTableViewDataSource];
 }
 
@@ -337,21 +341,38 @@
 }
 
 
+
+-(void)loadPublicDatas
+{
+    [self showActivityWithText:@"数据加载中..."];
+    _reloading = YES;
+    shouldLoad =YES;
+    [[PostService sharedService] loadStatusWithUid:[self.user.uid integerValue]
+                                         targetUid:[self.targetUid integerValue]
+                                          gymGroup:0
+                                             start:0
+                                            offSet:5
+                                          delegate:self];
+}
+
+
+
 #pragma mark --
 #pragma mark  Reload and LoadMore Method
 //加载新的数据
 - (void)reloadTableViewDataSource{
     [self showActivityWithText:@"数据加载中..."];
-    [[PostService sharedService] loadStatusWithUid:498
+    [[PostService sharedService] loadStatusWithUid:[self.user.uid integerValue]
+                                         targetUid:[self.targetUid  integerValue]
                                           gymGroup:0
                                              start:0
-                                            offSet:0
-                                          delegate:self];
-}
+                                            offSet:5
+                                          delegate:self];}
 //加载更多数据
 - (void)loadMoreTableViewDataSource {
     [self showActivityWithText:@"数据加载中..."];
-    [[PostService sharedService] loadStatusWithUid:498
+    [[PostService sharedService] loadStatusWithUid:[self.user.uid integerValue]
+                                         targetUid:[self.targetUid integerValue]
                                           gymGroup:0
                                              start:_start
                                             offSet:5
@@ -435,90 +456,96 @@
 
 
 -(void)clickVatarButton:(id)sender{
+    
+    PPDebug(@"进入个人资料页面!!!");
+    
+    
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-//#pragma mark -
-//#pragma mark - RKObjectLoaderDelegate
-//
-//- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-//    NSLog(@"Response code: %d", [response statusCode]);
-//    [self hideActivity];
-//}
-//
-//- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
-//{
-//    NSLog(@"Error: %@", [error localizedDescription]);
-//    [self hideActivity];
-//    if ([[error localizedDescription] isEqualToString:@"请求超时。"]) {
-//        PPDebug(@"请求超时");
-//    }
-//}
-//
-//- (void)requestDidStartLoad:(RKRequest *)request
-//{
-//    NSLog(@"Start load request...");
-//    [self showActivityWithText:@"数据加载中..."];
-//    
-//}
-//
-//- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
-//{
-//    [self dataSourceDidFinishLoadingNewData];
-//    [self dataSourceDidFinishLoadingMoreData];
-//    
-//    [self hideActivity];
-//    PPDebug(@"***Load objects count: %d", [objects count]);
-//    
-//    if ([objects count] <= 0) {
-//        [self popupMessage:@"亲,已经没有更多数据了！" title:nil];
-//        return;
-//    }
-//    
-//    NSObject *object  = [objects objectAtIndex:0];
-//
-//    if ([object isMemberOfClass:[User class]]) {
-//         User *user = [objects objectAtIndex:0];
-//        [[UserService defaultService] setUser:user];
-//        [[UserService defaultService] storeUserInfoByUid:user.uid];
-//        self.user =[[UserService defaultService] user];
-//        [self upgradeUI];
-//    }
-//    
-//    if ([object isMemberOfClass:[PostStatus class]]){
-//        PostStatus *postStatus =  [objects objectAtIndex:0];
-//        PPDebug(@"*****Get Statuses Successfully!!!*****");
-//        PPDebug(@"******%@******",postStatus._id);
-//        PPDebug(@"******%@******",postStatus.uid);
-//        PPDebug(@"******%@******",postStatus.content);
-//        PPDebug(@"******%@******",postStatus.imageurl);
-//        PPDebug(@"******%@******",postStatus.create_time);
-//
-//        [self.navigationItem.rightBarButtonItem setEnabled:YES];
-//        
-//        if (_start == 0) {
-//            self.dataList = objects;
-//        } else {
-//            NSMutableArray *newDataList = [NSMutableArray arrayWithArray:self.dataList];
-//            [newDataList addObjectsFromArray:objects];
-//            self.dataList = newDataList;
-//        }
-//           _start += [objects count];
-//        PPDebug(@"****objects %d******",[self.dataList count]);
-//    }
-//    
-//    if ([object isMemberOfClass:[PostStatusRespose class]]){
-//        PostStatusRespose *postStatusRespose =  [objects objectAtIndex:0];
-//        PPDebug(@"*****Post one Status Successfully!!!*****");
-//        PPDebug(@"*****%@*****",postStatusRespose.uid);
-//        PPDebug(@"*****%@*****",postStatusRespose.errorCode);
-//
-//        [self.navigationItem.rightBarButtonItem setEnabled:YES];
-//
-//    }
-//}
+
+
+#pragma mark -
+#pragma mark - RKObjectLoaderDelegate
+
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+    NSLog(@"Response code: %d", [response statusCode]);
+    [self hideActivity];
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", [error localizedDescription]);
+    [self hideActivity];
+    if ([[error localizedDescription] isEqualToString:@"请求超时。"]) {
+        PPDebug(@"请求超时");
+    }
+}
+
+- (void)requestDidStartLoad:(RKRequest *)request
+{
+    NSLog(@"Start load request...");
+    [self showActivityWithText:@"数据加载中..."];
+    
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
+    [self dataSourceDidFinishLoadingNewData];
+    [self dataSourceDidFinishLoadingMoreData];
+    
+    [self hideActivity];
+    PPDebug(@"***Load objects count: %d", [objects count]);
+    
+    if ([objects count] <= 0) {
+        [self popupMessage:@"亲,已经没有更多数据了！" title:nil];
+        return;
+    }
+    
+    NSObject *object  = [objects objectAtIndex:0];
+
+    if ([object isMemberOfClass:[User class]]) {
+         User *user = [objects objectAtIndex:0];
+        [[UserService defaultService] setUser:user];
+        [[UserService defaultService] storeUserInfoByUid:user.uid];
+        self.user =[[UserService defaultService] user];
+        [self upgradeUI];
+    }
+    
+    if ([object isMemberOfClass:[PostStatus class]]){
+        PostStatus *postStatus =  [objects objectAtIndex:0];
+        PPDebug(@"*****Get Statuses Successfully!!!*****");
+        PPDebug(@"******%@******",postStatus._id);
+        PPDebug(@"******%@******",postStatus.uid);
+        PPDebug(@"******%@******",postStatus.content);
+        PPDebug(@"******%@******",postStatus.imageurl);
+        PPDebug(@"******%@******",postStatus.create_time);
+
+        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+        
+        if (_start == 0) {
+            self.dataList = objects;
+        } else {
+            NSMutableArray *newDataList = [NSMutableArray arrayWithArray:self.dataList];
+            [newDataList addObjectsFromArray:objects];
+            self.dataList = newDataList;
+        }
+           _start += [objects count];
+        PPDebug(@"****objects %d******",[self.dataList count]);
+    }
+    
+    if ([object isMemberOfClass:[PostStatusRespose class]]){
+        PostStatusRespose *postStatusRespose =  [objects objectAtIndex:0];
+        PPDebug(@"*****Post one Status Successfully!!!*****");
+        PPDebug(@"*****%@*****",postStatusRespose.uid);
+        PPDebug(@"*****%@*****",postStatusRespose.errorCode);
+
+        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+
+    }
+}
 
 @end

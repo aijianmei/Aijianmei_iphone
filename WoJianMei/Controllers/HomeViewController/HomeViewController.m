@@ -677,6 +677,12 @@ typedef enum CONTENT_TYPE {
     [self dataSourceDidFinishLoadingMoreData];
     
     
+    
+    if ([objects count] <=0) {
+        return;
+    }
+
+    
     if ([[objects objectAtIndex:0] isMemberOfClass:[Article class]])
     {
         

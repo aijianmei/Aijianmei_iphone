@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "PPViewController.h"
+#import "SLNumberPickerView.h"
 
-@interface UserInfoPickerViewController : PPViewController
+
+@interface UserInfoPickerViewController : PPViewController<SLNumberPickerViewDelegate>
 {
     
     UIButton *_femaleButton;
@@ -17,12 +19,22 @@
     
     UIButton *_buttonForward;
     UIButton *_buttonBack;
-    UIButton *_finishButton;
     
     
     UILabel *_weightLabel;
     UILabel *_heightLabel;
     UILabel *_ageLabel;
+    
+    SLNumberPickerView *sLNumberPickerView;
+    
+    
+    UIImageView *_rulerbackgroundImageView;
+    UIImageView *_referenceImageView;
+    
+    
+    BOOL isFemale;
+   
+    
     
 }
 
@@ -31,11 +43,15 @@
 
 @property (nonatomic,retain) IBOutlet UIButton *buttonForward;
 @property (nonatomic,retain) IBOutlet UIButton *buttonBack;
-@property (nonatomic,retain) IBOutlet UIButton *finishButton;
 
 @property (nonatomic,retain) IBOutlet UILabel *weightLabel;
 @property (nonatomic,retain) IBOutlet UILabel *heightLabel;
 @property (nonatomic,retain) IBOutlet UILabel *ageLabel;
+
+@property (nonatomic,retain) IBOutlet UIImageView *rulerbackgroundImageView;
+@property (nonatomic,retain) IBOutlet UIImageView *referenceImageView;
+
+
 
 
 

@@ -67,9 +67,6 @@
         
         isChoosingAvtarImage =NO;
         isChoosingAvtarBackground = NO;
-        
-        self.user = [[UserService defaultService]user];
-  
     }
     return self;
 }
@@ -269,7 +266,11 @@
 
 
 -(void)loadDatas{
-    self.user = [[UserService defaultService] user];
+    
+    User *user = [[UserService defaultService] user];
+    user.BMIValue =[self reCaluclateBMIValueByWeight:user.weight height:user.height];
+    self.user =user;
+
 }
 
 -(void)updateUI{
