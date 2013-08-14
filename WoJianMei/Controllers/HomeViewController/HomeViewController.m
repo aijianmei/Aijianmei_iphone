@@ -70,6 +70,17 @@ typedef enum CONTENT_TYPE {
 
 
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -245,8 +256,10 @@ typedef enum CONTENT_TYPE {
     }
     
     if (![[UserService defaultService] user]){
-        
-        self.loginViewController = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    
+        LoginViewController *vc = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+        self.loginViewController = vc;
+        [vc release];
         UINavigationController *nv = [[[UINavigationController alloc]initWithRootViewController:_loginViewController] autorelease];
         self.loginViewController.delegate = self;
         [self.navigationController presentModalViewController:nv animated:YES];
@@ -505,18 +518,16 @@ typedef enum CONTENT_TYPE {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *CellIdentifier =nil;
-    
-   CellIdentifier = [ArticleCell getCellIdentifier];
-    ArticleCell *cell = (ArticleCell*)[self.dataTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell==nil) {
-        cell  = [[[ArticleCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    Article *article  = [dataList objectAtIndex:indexPath.row];
+    NSString *CellIdentifier = [ArticleCell getCellIdentifier];
+	ArticleCell *cell = (ArticleCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [ArticleCell createCell:self];
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	}
+    Article *article  = [self.dataList objectAtIndex:indexPath.row];
     if (article) {
         [cell setCellInfo:article];
     }
-    
     return cell;
 }
 
@@ -583,16 +594,7 @@ typedef enum CONTENT_TYPE {
         [imageView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@""]];
         [view addSubview:imageView];
         [imageView release];
-        
-        
-//        label = [[[UILabel alloc] initWithFrame:CGRectMake(0, view.frame.origin.y + 130, view.frame.size.width, view.frame.size.height - 130)] autorelease];
-//        label.textAlignment = UITextAlignmentCenter;
-//		label.font = [label.font fontWithSize:16];
-//        [label setTextColor:[UIColor whiteColor]];
-//        label.backgroundColor = [UIColor colorWithPatternImage:[ImageManager GobalScrollerTitleBG_Image]];
-//        
-//        [imageView  addSubview:label];
-        
+    
 	}
 	else
 	{
@@ -613,14 +615,6 @@ typedef enum CONTENT_TYPE {
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
     PPDebug(@"I did selected the picture of %d",index);
-    
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-//    
-//    WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
-//    
-//    controller.article = [self.dataList objectAtIndex:index];
-//    self.navigationController.navigationBarHidden =YES;
-//    [self.navigationController pushViewController:controller animated:YES];
     
     if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==1 || self.segmentedController.selectedSegmentIndex ==-1)
     {

@@ -46,14 +46,22 @@
 // just replace ProductDetailCell by the new Cell Class Name
 + (ArticleCell*) createCell:(id)delegate
 {
-     return  nil;    
+    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"ArticleCell" owner:self options:nil];
+    // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).
+    if (topLevelObjects == nil || [topLevelObjects count] <= 0){
+        NSLog(@"create <ArticleCell> but cannot find cell object from Nib");
+        return nil;
+    }
+    
+    ((ArticleCell*)[topLevelObjects objectAtIndex:0]).delegate = delegate;
+    
+    return (ArticleCell*)[topLevelObjects objectAtIndex:0];
 
 }
 
 + (NSString*)getCellIdentifier
 {
-    static NSString *string = @"ArticleCell";
-    return  string;
+    return @"ArticleCell";
 }
 
 + (CGFloat)getCellHeight
@@ -69,7 +77,7 @@
       //set articles cells
       [self.titleLabel setText:article.title];
       [self.descriptionLabel setText:article.brief];
-      [self.imgView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@"11.png"]];
+      [self.imgView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@"place_holder.png"]];
     
     CALayer * layer = [self.imgView layer];
     layer.borderColor = [[UIColor whiteColor] CGColor];

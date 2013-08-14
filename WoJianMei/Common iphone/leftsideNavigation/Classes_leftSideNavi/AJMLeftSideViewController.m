@@ -182,10 +182,8 @@
                 case 0:
                     cell.textLabel.text = @"关注新浪微博";
                     break;
+                
                 case 1:
-                    cell.textLabel.text = @"关注官方微信";
-                    break;
-                case 2:
                     cell.textLabel.text = @"访问官方网站";
                     break;
             }
@@ -267,7 +265,9 @@
                 {
                     ///首页
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        HomeViewController *homeVC = (HomeViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+                        HomeViewController *homeVC =
+                        [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+                        
                         homeVC.title = @"首页";
                         _navigationController = [[UINavigationController alloc] initWithRootViewController:homeVC] ;
                         self.viewDeckController.centerController = _navigationController;
@@ -318,8 +318,9 @@
                 {
                     ///营养
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        NutriViewController *nutriVC = (NutriViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"NutriViewController"];
+                        NutriViewController *nutriVC =[[NutriViewController  alloc]initWithNibName:@"NutriViewController" bundle:nil];
                         nutriVC.title = @"营养";
+                        [nutriVC release];
                         _navigationController = [[UINavigationController alloc] initWithRootViewController:nutriVC];
                         self.viewDeckController.centerController = _navigationController;
                         
@@ -338,8 +339,11 @@
                     ///补充
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         
-                        SupplementViewController *supplementVC = (SupplementViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"SupplementViewController"];
+                        SupplementViewController *supplementVC = [[SupplementViewController alloc]initWithNibName:@"SupplementViewController" bundle:nil];
+                        
                         supplementVC.title = @"补充";
+                        [supplementVC release];
+
                         _navigationController = [[UINavigationController alloc] initWithRootViewController:supplementVC];
                         self.viewDeckController.centerController = _navigationController;
                         
@@ -356,7 +360,8 @@
                     ///生活方式
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         
-                       LifeStytleViewController *lifeStytleVC = (LifeStytleViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LifeStytleViewController"];
+                        LifeStytleViewController *lifeStytleVC = [[LifeStytleViewController alloc]initWithNibName:@"LifeStytleViewController" bundle:nil];
+                        
                         lifeStytleVC.title = @"生活方式";
                         _navigationController = [[UINavigationController alloc] initWithRootViewController:lifeStytleVC];
                         self.viewDeckController.centerController = _navigationController;
@@ -385,27 +390,15 @@
                     
                 }
                     break;
-//                case 7:
-//                {
-//                    ////交友互动
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        MakeFriendsViewController *mfVC = [currentInUseStoryBoard  instantiateViewControllerWithIdentifier:@"MakeFriendsViewController"];
-//                        mfVC.title = @"交友互动";
-//                        _navigationController = [[UINavigationController alloc] initWithRootViewController:mfVC];
-//                        self.viewDeckController.centerController = _navigationController;
-//                        
-//                        self.view.userInteractionEnabled = YES;
-//                    }];
-//                    break;
-//                }
                 case 6:
                 {
                     ///更多
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        MoreViewController *moreVC = [currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MoreViewController"];
+                        MoreViewController *moreVC =
+                        [[MoreViewController alloc]initWithNibName:@"MoreViewController" bundle:nil];
                         [moreVC setTitle:@"更多"];
                         _navigationController = [[UINavigationController alloc] initWithRootViewController:moreVC];
-                        
+                        [moreVC release];
                         self.viewDeckController.centerController = _navigationController;
                         moreVC.delegate =[self getAppDelegate];
                         self.view.userInteractionEnabled = YES;

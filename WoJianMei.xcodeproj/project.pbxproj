@@ -91,6 +91,12 @@
 		4A071A21169D989D00F50D90 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A071A20169D989D00F50D90 /* MobileCoreServices.framework */; };
 		4A071A23169D991F00F50D90 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A071A22169D991F00F50D90 /* MediaPlayer.framework */; };
 		4A0A580817BB766F0089683A /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0A580717BB766F0089683A /* HomeViewController.xib */; };
+		4A0A580F17BB78C10089683A /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0A580E17BB78C10089683A /* ArticleCell.xib */; };
+		4A0A581117BB8C970089683A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0A581017BB8C970089683A /* LoginViewController.xib */; };
+		4A0A581317BB8CA50089683A /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0A581217BB8CA40089683A /* SignUpViewController.xib */; };
+		4A0A581517BB90210089683A /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0A581417BB90210089683A /* MoreViewController.xib */; };
+		4A0A581717BB909C0089683A /* MoreViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0A581617BB909C0089683A /* MoreViewCell.xib */; };
+		4A0A581A17BB912F0089683A /* MoreViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0A581917BB912F0089683A /* MoreViewCell.m */; };
 		4A0CA5CF17AB969600314B8C /* BMIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0CA5CD17AB969500314B8C /* BMIViewController.m */; };
 		4A0CA5D017AB969600314B8C /* BMIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0CA5CE17AB969500314B8C /* BMIViewController.xib */; };
 		4A0CA64217ABE65500314B8C /* login_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A0CA5DD17ABE65500314B8C /* login_2.png */; };
@@ -610,7 +616,6 @@
 		4AE394BC15C2DD9C00D06C61 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4AE394BA15C2DD9C00D06C61 /* InfoPlist.strings */; };
 		4AE394BE15C2DD9C00D06C61 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE394BD15C2DD9C00D06C61 /* main.m */; };
 		4AE394C215C2DD9C00D06C61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE394C115C2DD9C00D06C61 /* AppDelegate.m */; };
-		4AE394C515C2DD9C00D06C61 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE394C315C2DD9C00D06C61 /* MainStoryboard_iPhone.storyboard */; };
 		4AE52D9F177831A500F61933 /* WorkoutPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE52D9E177831A500F61933 /* WorkoutPlanViewController.m */; };
 		4AE52DA31778323400F61933 /* SupplementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE52DA21778323400F61933 /* SupplementViewController.m */; };
 		4AE52E281778327F00F61933 /* ForumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE52E271778327F00F61933 /* ForumViewController.m */; };
@@ -707,11 +712,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4A03268D17A8EB380016F6C5 /* VideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCell.h; sourceTree = "<group>"; };
-		4A03268E17A8EB390016F6C5 /* VideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCell.m; sourceTree = "<group>"; };
-		4A03269017A8EE980016F6C5 /* PlayVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayVideoViewController.h; sourceTree = "<group>"; };
-		4A03269117A8EE980016F6C5 /* PlayVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayVideoViewController.m; sourceTree = "<group>"; };
-		4A03269217A8EE990016F6C5 /* PlayVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayVideoViewController.xib; sourceTree = "<group>"; };
+		4A03268D17A8EB380016F6C5 /* VideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoCell.h; path = ../WorkoutViewController/VideoCell.h; sourceTree = "<group>"; };
+		4A03268E17A8EB390016F6C5 /* VideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoCell.m; path = ../WorkoutViewController/VideoCell.m; sourceTree = "<group>"; };
+		4A03269017A8EE980016F6C5 /* PlayVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayVideoViewController.h; path = ../WorkoutViewController/PlayVideoViewController.h; sourceTree = "<group>"; };
+		4A03269117A8EE980016F6C5 /* PlayVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayVideoViewController.m; path = ../WorkoutViewController/PlayVideoViewController.m; sourceTree = "<group>"; };
+		4A03269217A8EE990016F6C5 /* PlayVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayVideoViewController.xib; path = ../WorkoutViewController/PlayVideoViewController.xib; sourceTree = "<group>"; };
 		4A03269517A8EFA20016F6C5 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
 		4A03269617A8EFA30016F6C5 /* Video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
 		4A0326A817A8FEBD0016F6C5 /* VideoInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoInfoView.xib; sourceTree = "<group>"; };
@@ -864,6 +869,13 @@
 		4A071A20169D989D00F50D90 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4A071A22169D991F00F50D90 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4A0A580717BB766F0089683A /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		4A0A580E17BB78C10089683A /* ArticleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ArticleCell.xib; path = ../WorkoutViewController/ArticleCell.xib; sourceTree = "<group>"; };
+		4A0A581017BB8C970089683A /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		4A0A581217BB8CA40089683A /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		4A0A581417BB90210089683A /* MoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
+		4A0A581617BB909C0089683A /* MoreViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreViewCell.xib; sourceTree = "<group>"; };
+		4A0A581817BB912E0089683A /* MoreViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewCell.h; sourceTree = "<group>"; };
+		4A0A581917BB912F0089683A /* MoreViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewCell.m; sourceTree = "<group>"; };
 		4A0CA5CC17AB969500314B8C /* BMIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMIViewController.h; sourceTree = "<group>"; };
 		4A0CA5CD17AB969500314B8C /* BMIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMIViewController.m; sourceTree = "<group>"; };
 		4A0CA5CE17AB969500314B8C /* BMIViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BMIViewController.xib; sourceTree = "<group>"; };
@@ -1055,7 +1067,7 @@
 		4A308B9117A1698B00DED650 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		4A308B9217A1698B00DED650 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		4A308B9317A1698B00DED650 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
-		4A308BA817A16AE100DED650 /* CommonArticleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonArticleViewController.xib; sourceTree = "<group>"; };
+		4A308BA817A16AE100DED650 /* CommonArticleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommonArticleViewController.xib; path = ../WorkoutViewController/CommonArticleViewController.xib; sourceTree = "<group>"; };
 		4A34EB3117B36C2D00196793 /* PublicMyselfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicMyselfViewController.h; sourceTree = "<group>"; };
 		4A34EB3217B36C2D00196793 /* PublicMyselfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicMyselfViewController.m; sourceTree = "<group>"; };
 		4A34EB3617B36F6D00196793 /* MyselfViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyselfViewController.xib; sourceTree = "<group>"; };
@@ -1632,8 +1644,8 @@
 		4ADCFE0D169D614600A3E979 /* NutritionDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NutritionDetailCell.m; sourceTree = "<group>"; };
 		4ADCFE0E169D614600A3E979 /* NutritionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NutritionInfo.h; sourceTree = "<group>"; };
 		4ADCFE0F169D614600A3E979 /* NutritionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NutritionInfo.m; sourceTree = "<group>"; };
-		4ADCFE13169D614600A3E979 /* ArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCell.h; sourceTree = "<group>"; };
-		4ADCFE14169D614600A3E979 /* ArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCell.m; sourceTree = "<group>"; };
+		4ADCFE13169D614600A3E979 /* ArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArticleCell.h; path = ../WorkoutViewController/ArticleCell.h; sourceTree = "<group>"; };
+		4ADCFE14169D614600A3E979 /* ArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArticleCell.m; path = ../WorkoutViewController/ArticleCell.m; sourceTree = "<group>"; };
 		4ADCFE17169D614600A3E979 /* WorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutViewController.h; sourceTree = "<group>"; };
 		4ADCFE18169D614600A3E979 /* WorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutViewController.m; sourceTree = "<group>"; };
 		4ADCFF6D169D69F600A3E979 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -1675,7 +1687,6 @@
 		4AE394BF15C2DD9C00D06C61 /* WoJianMei-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WoJianMei-Prefix.pch"; sourceTree = "<group>"; };
 		4AE394C015C2DD9C00D06C61 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = WoJianMei/AppDelegate.h; sourceTree = "<group>"; };
 		4AE394C115C2DD9C00D06C61 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = WoJianMei/AppDelegate.m; sourceTree = "<group>"; };
-		4AE394C415C2DD9C00D06C61 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		4AE52D9D177831A500F61933 /* WorkoutPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutPlanViewController.h; sourceTree = "<group>"; };
 		4AE52D9E177831A500F61933 /* WorkoutPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutPlanViewController.m; sourceTree = "<group>"; };
 		4AE52DA11778323400F61933 /* SupplementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplementViewController.h; sourceTree = "<group>"; };
@@ -1747,8 +1758,8 @@
 		C6DB20101760CC9E0060BD08 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		C6DB20241760CDD40060BD08 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		C6DB20261760CDE00060BD08 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
-		C6DB202B1760D8E40060BD08 /* CommonArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonArticleViewController.h; sourceTree = "<group>"; };
-		C6DB202C1760D8E40060BD08 /* CommonArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonArticleViewController.m; sourceTree = "<group>"; };
+		C6DB202B1760D8E40060BD08 /* CommonArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonArticleViewController.h; path = ../WorkoutViewController/CommonArticleViewController.h; sourceTree = "<group>"; };
+		C6DB202C1760D8E40060BD08 /* CommonArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommonArticleViewController.m; path = ../WorkoutViewController/CommonArticleViewController.m; sourceTree = "<group>"; };
 		C6E027CA177862E100A7BA90 /* ArticleService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleService.h; sourceTree = "<group>"; };
 		C6E027CB177862E100A7BA90 /* ArticleService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleService.m; sourceTree = "<group>"; };
 		C6E027CC177862E100A7BA90 /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserService.h; sourceTree = "<group>"; };
@@ -1807,6 +1818,17 @@
 				4A0326C117AA63F80016F6C5 /* HomeViewController.h */,
 				4A0326C217AA63F80016F6C5 /* HomeViewController.m */,
 				4A0A580717BB766F0089683A /* HomeViewController.xib */,
+				4ADCFE13169D614600A3E979 /* ArticleCell.h */,
+				4ADCFE14169D614600A3E979 /* ArticleCell.m */,
+				4A0A580E17BB78C10089683A /* ArticleCell.xib */,
+				C6DB202B1760D8E40060BD08 /* CommonArticleViewController.h */,
+				C6DB202C1760D8E40060BD08 /* CommonArticleViewController.m */,
+				4A308BA817A16AE100DED650 /* CommonArticleViewController.xib */,
+				4A03268D17A8EB380016F6C5 /* VideoCell.h */,
+				4A03268E17A8EB390016F6C5 /* VideoCell.m */,
+				4A03269017A8EE980016F6C5 /* PlayVideoViewController.h */,
+				4A03269117A8EE980016F6C5 /* PlayVideoViewController.m */,
+				4A03269217A8EE990016F6C5 /* PlayVideoViewController.xib */,
 			);
 			name = HomeViewController;
 			path = Controllers/HomeViewController;
@@ -3427,8 +3449,10 @@
 			children = (
 				4A8A7224174E10FE00BD3AAE /* LoginViewController.h */,
 				4A8A7225174E10FF00BD3AAE /* LoginViewController.m */,
+				4A0A581017BB8C970089683A /* LoginViewController.xib */,
 				4A8A7227174E557700BD3AAE /* SignUpViewController.h */,
 				4A8A7228174E557700BD3AAE /* SignUpViewController.m */,
+				4A0A581217BB8CA40089683A /* SignUpViewController.xib */,
 				4ACD190916154F5C00567A24 /* Entries */,
 			);
 			name = Controllers;
@@ -3813,6 +3837,10 @@
 				4A5F3FD417914E2E00CD701A /* FeedBackViewController.xib */,
 				4ADCFE02169D614600A3E979 /* MoreViewController.h */,
 				4ADCFE03169D614600A3E979 /* MoreViewController.m */,
+				4A0A581417BB90210089683A /* MoreViewController.xib */,
+				4A0A581817BB912E0089683A /* MoreViewCell.h */,
+				4A0A581917BB912F0089683A /* MoreViewCell.m */,
+				4A0A581617BB909C0089683A /* MoreViewCell.xib */,
 				4ADCFDFE169D614600A3E979 /* AboutViewController.h */,
 				4ADCFDFF169D614600A3E979 /* AboutViewController.m */,
 				4A5F3FE617914F6700CD701A /* AboutViewController.xib */,
@@ -3930,16 +3958,6 @@
 			children = (
 				4ADCFE17169D614600A3E979 /* WorkoutViewController.h */,
 				4ADCFE18169D614600A3E979 /* WorkoutViewController.m */,
-				4ADCFE13169D614600A3E979 /* ArticleCell.h */,
-				4ADCFE14169D614600A3E979 /* ArticleCell.m */,
-				C6DB202B1760D8E40060BD08 /* CommonArticleViewController.h */,
-				C6DB202C1760D8E40060BD08 /* CommonArticleViewController.m */,
-				4A308BA817A16AE100DED650 /* CommonArticleViewController.xib */,
-				4A03268D17A8EB380016F6C5 /* VideoCell.h */,
-				4A03268E17A8EB390016F6C5 /* VideoCell.m */,
-				4A03269017A8EE980016F6C5 /* PlayVideoViewController.h */,
-				4A03269117A8EE980016F6C5 /* PlayVideoViewController.m */,
-				4A03269217A8EE990016F6C5 /* PlayVideoViewController.xib */,
 				4A0326AA17A8FFC30016F6C5 /* VideoInfoView.h */,
 				4A0326AB17A8FFC40016F6C5 /* VideoInfoView.m */,
 				4A0326A817A8FEBD0016F6C5 /* VideoInfoView.xib */,
@@ -4055,7 +4073,6 @@
 				4A0CA5DB17ABE65500314B8C /* Resources */,
 				4AE394C015C2DD9C00D06C61 /* AppDelegate.h */,
 				4AE394C115C2DD9C00D06C61 /* AppDelegate.m */,
-				4AE394C315C2DD9C00D06C61 /* MainStoryboard_iPhone.storyboard */,
 				4AE394B015C2DD9C00D06C61 /* Frameworks */,
 				4AE394AE15C2DD9C00D06C61 /* Products */,
 			);
@@ -4388,7 +4405,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AE394BC15C2DD9C00D06C61 /* InfoPlist.strings in Resources */,
-				4AE394C515C2DD9C00D06C61 /* MainStoryboard_iPhone.storyboard in Resources */,
 				4A4991D5168553A30073E682 /* Documentation.html in Resources */,
 				4A499225168553A30073E682 /* donedown.png in Resources */,
 				4A499226168553A30073E682 /* doneup.png in Resources */,
@@ -4652,6 +4668,11 @@
 				4A8F3F3817BA76B2000F553A /* CheckWorkoutDatasViewController.xib in Resources */,
 				4A8F3F3C17BB1E92000F553A /* place_holder@2x.png in Resources */,
 				4A0A580817BB766F0089683A /* HomeViewController.xib in Resources */,
+				4A0A580F17BB78C10089683A /* ArticleCell.xib in Resources */,
+				4A0A581117BB8C970089683A /* LoginViewController.xib in Resources */,
+				4A0A581317BB8CA50089683A /* SignUpViewController.xib in Resources */,
+				4A0A581517BB90210089683A /* MoreViewController.xib in Resources */,
+				4A0A581717BB909C0089683A /* MoreViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5009,6 +5030,7 @@
 				4A8F3E6F17BA6BAE000F553A /* WorkoutMainViewController.m in Sources */,
 				4A8F3F3217BA6FB3000F553A /* RankingViewController.m in Sources */,
 				4A8F3F3717BA76B2000F553A /* CheckWorkoutDatasViewController.m in Sources */,
+				4A0A581A17BB912F0089683A /* MoreViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5066,15 +5088,6 @@
 				4AE394BB15C2DD9C00D06C61 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		4AE394C315C2DD9C00D06C61 /* MainStoryboard_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4AE394C415C2DD9C00D06C61 /* en */,
-			);
-			name = MainStoryboard_iPhone.storyboard;
-			path = WoJianMei;
 			sourceTree = "<group>";
 		};
 		4AFE7FB61792852F006B5310 /* InfoPlist.strings */ = {
@@ -5175,7 +5188,7 @@
 				GCC_PREFIX_HEADER = "WoJianMei/WoJianMei-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "WoJianMei/WoJianMei-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/MobClick\"",
@@ -5213,7 +5226,7 @@
 				GCC_PREFIX_HEADER = "WoJianMei/WoJianMei-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "WoJianMei/WoJianMei-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/MobClick\"",

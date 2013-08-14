@@ -526,7 +526,7 @@ typedef enum CONTENT_TYPE {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *CellIdentifier = [ArticleCell getCellIdentifier];
-    ArticleCell *cell = (ArticleCell*)[self.dataTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ArticleCell *cell = (ArticleCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell==nil) {
         cell  = [[[ArticleCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
@@ -599,16 +599,7 @@ typedef enum CONTENT_TYPE {
         [imageView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@""]];
         [view addSubview:imageView];
         [imageView release];
-        
-        
-//        label = [[[UILabel alloc] initWithFrame:CGRectMake(0, view.frame.origin.y + 130, view.frame.size.width, view.frame.size.height - 130)] autorelease];
-//        label.textAlignment = UITextAlignmentCenter;
-//		label.font = [label.font fontWithSize:16];
-//        [label setTextColor:[UIColor whiteColor]];
-//        label.backgroundColor = [UIColor colorWithPatternImage:[ImageManager GobalScrollerTitleBG_Image]];
-//        
-//        [imageView  addSubview:label];
-        
+         
 	}
 	else
 	{
@@ -629,16 +620,7 @@ typedef enum CONTENT_TYPE {
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
     PPDebug(@"I did selected the picture of %d",index);
-    
-    //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    //
-    //    WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
-    //
-    //    controller.article = [self.dataList objectAtIndex:index];
-    //    self.navigationController.navigationBarHidden =YES;
-    //    [self.navigationController pushViewController:controller animated:YES];
-    
-    
+
     if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==1 || self.segmentedController.selectedSegmentIndex ==-1)
     {
         CommonArticleViewController *workOutVc = [[CommonArticleViewController alloc]initWithNibName:@"CommonArticleViewController" bundle:nil];

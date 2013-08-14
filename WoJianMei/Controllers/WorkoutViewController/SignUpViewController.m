@@ -122,13 +122,13 @@ enum errorCode {
     [super viewDidLoad];
         
         //轻触手势（单击，双击）
-        UITapGestureRecognizer *tapCgr=nil;
-        tapCgr=[[UITapGestureRecognizer alloc]initWithTarget:self
-                                                      action:@selector(tap)];
-        tapCgr.numberOfTapsRequired=1;
-        [self.view addGestureRecognizer:tapCgr];
-        [tapCgr release];
-        
+//        UITapGestureRecognizer *tapCgr=nil;
+//        tapCgr=[[UITapGestureRecognizer alloc]initWithTarget:self
+//                                                      action:@selector(tap)];
+//        tapCgr.numberOfTapsRequired=1;
+//        [self.view addGestureRecognizer:tapCgr];
+//        [tapCgr release];
+    
     
     
     

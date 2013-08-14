@@ -40,9 +40,9 @@
 @property (nonatomic, retain) IBOutlet UITextField *passwordField;
 @property (nonatomic, retain) NSString *snsId;
 @property (nonatomic, retain) NSString *userType;
-@property (nonatomic, retain)  UIButton *sinaButton;
-@property (nonatomic, retain)  UIButton *qqButton;
-@property (nonatomic, retain)  UIButton *aijianmeiButton;
+@property (nonatomic, retain)  IBOutlet UIButton *sinaButton;
+@property (nonatomic, retain) IBOutlet UIButton *qqButton;
+@property (nonatomic, retain) IBOutlet UIButton *aijianmeiButton;
 @property (nonatomic,assign) id <LoginViewDelegate> delegate;
 @property (nonatomic,retain) SignUpViewController*signUpViewController;
 

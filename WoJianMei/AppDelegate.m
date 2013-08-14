@@ -19,6 +19,7 @@
 #import "UINavigationBarExt.h"
 #import "AJMLeftSideViewController.h"
 #import "BaiduMobStat.h"
+#import "WorkoutViewController.h"
 
 
 
@@ -199,85 +200,86 @@
     objectManager.serializationMIMEType = RKMIMETypeJSON;
     objectManager.client.baseURL = baseURL;
     
-//    
-//    UIStoryboard *currentInUseStoryBoard ;
-//    
-//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-//        UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-//        
-//        currentInUseStoryBoard = iPhoneStroyBoard;
-//        
-//    }else{
-//        
-//        UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-//        currentInUseStoryBoard = iPadStroyBoard;
-//        
-//    }
-//
-  
-    
-    HomeViewController *homeVC ;
-//    MyselfViewController *rightVC;
-    
-    
 
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+//    
+//        HomeViewController *homeVC = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+//        homeVC.title = @"主页";
+//        self.navigationController = [[UINavigationController alloc] initWithRootViewController:homeVC];
         
-        
-        //初始化主视图，  当用户点击左右的导航栏，可以更换；
-        UIStoryboard * iPhonestroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-        
-       homeVC  = (HomeViewController*)[iPhonestroyBoard instantiateViewControllerWithIdentifier:@"HomeViewController"];
-        
-        
-        homeVC.title = @"主页";
-        _navigationController = [[UINavigationController alloc] initWithRootViewController:homeVC];
+//        [homeVC release];
         //左视图
-        AJMLeftSideViewController *leftVC = [[[AJMLeftSideViewController alloc] init] autorelease];
-    
-        //右视图
-//        rightVC = (MyselfViewController*)[iPhonestroyBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
-        
-//        AJMRightSideViewController *ajmVC = [[AJMRightSideViewController alloc]init];
+//        AJMLeftSideViewController *leftVC = [[[AJMLeftSideViewController alloc] init] autorelease];
 //        
-//        
-//        
-        IIViewDeckController *vc = [[IIViewDeckController alloc] initWithCenterViewController:_navigationController leftViewController:leftVC];
-//        
-//        vc.rightController =ajmVC;
-//        [ajmVC release];
-        
-        
-        vc.leftSize  = self.window.frame.size.width - (320 - 60.0);
-//        vc.rightSize = self.window.frame.size.width - (320 - 60.0);
-        self.viewController = vc;
+//        IIViewDeckController *vc = [[IIViewDeckController alloc] initWithCenterViewController:_navigationController leftViewController:leftVC];
+//    
+//        vc.leftSize  = self.window.frame.size.width - (320 - 60.0);
+//        self.viewController = vc;
 
        
-    } else {
-        //初始化主视图，  当用户点击左右的导航栏，可以更换；
-        UIStoryboard * iPadstroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-        homeVC  = (HomeViewController*)[iPadstroyBoard instantiateViewControllerWithIdentifier:@"HomeViewController"];
-        homeVC.title = @"锻炼";
-        UINavigationController *navVC = [[[UINavigationController alloc] initWithRootViewController:homeVC] autorelease];
-
-        //左视图
+//    } else {
+//        //初始化主视图，  当用户点击左右的导航栏，可以更换；
+//        UIStoryboard * iPadstroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+//        HomeViewController *homeVC = (HomeViewController*)[iPadstroyBoard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+//        homeVC.title = @"锻炼";
+//        UINavigationController *navVC = [[[UINavigationController alloc] initWithRootViewController:homeVC] autorelease];
+//
+//        //左视图
+//        AJMLeftSideViewController *leftVC = [[[AJMLeftSideViewController alloc] init] autorelease];
+//       IIViewDeckController *vc = [[[IIViewDeckController alloc] initWithCenterViewController:navVC leftViewController:leftVC] autorelease];
+//        vc.leftSize  = self.window.frame.size.width - (640 - 344.0);
+//        self.viewController = vc;
+//
+//    }
+//    
+//       
+//
+//        
+////    self.window.rootViewController =self.viewController;
+//    
+//    self.window.rootViewController =self.navigationController;
+//
+//    [self.window makeKeyAndVisible];
+    
+    
+    
+    
+    
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    // Override point for customization after application launch.
+    
+    HomeViewController *homeVC = nil;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+         homeVC = [[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil] autorelease];
+       self.navigationController = [[UINavigationController alloc]initWithRootViewController:homeVC];
+        
+        
+        
+        //添加left View 导航栏
         AJMLeftSideViewController *leftVC = [[[AJMLeftSideViewController alloc] init] autorelease];
         
-        //右视图
-//        rightVC = (MyselfViewController*)[iPadstroyBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
+        IIViewDeckController *vc = [[IIViewDeckController alloc] initWithCenterViewController:self.navigationController leftViewController:leftVC];
         
-       IIViewDeckController *vc = [[[IIViewDeckController alloc] initWithCenterViewController:navVC leftViewController:leftVC] autorelease];
-        
-//        vc.rightController =rightVC;
-        vc.leftSize  = self.window.frame.size.width - (640 - 344.0);
-//        vc.rightSize = self.window.frame.size.width - (640 - 344.0);
+        vc.leftSize  = self.window.frame.size.width - (320 - 60.0);
         self.viewController = vc;
-
+        
+        
+        
+        
+        
+    } else {
+         homeVC = [[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil] autorelease];
     }
-
+    
+    
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+
+    
+    
+    
+    
     
     //从本地获取用户信息
     //TOTO:根据用户uid登陆获取信息
@@ -289,7 +291,7 @@
     if (uid !=nil) {
         User *user  =[[UserService defaultService] getUserInfoByUid:uid];
         [[UserService defaultService] setUser: user];
-//        [[UserService defaultService] storeUserInfoByUid:uid];;
+       [[UserService defaultService] storeUserInfoByUid:uid];;
     }
 
 
