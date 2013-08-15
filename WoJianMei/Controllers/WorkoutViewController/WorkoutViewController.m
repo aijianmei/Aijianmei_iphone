@@ -526,11 +526,12 @@ typedef enum CONTENT_TYPE {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *CellIdentifier = [ArticleCell getCellIdentifier];
-    ArticleCell *cell = (ArticleCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell==nil) {
-        cell  = [[[ArticleCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    Article *article  = [dataList objectAtIndex:indexPath.row];
+	ArticleCell *cell = (ArticleCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [ArticleCell createCell:self];
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	}
+    Article *article  = [self.dataList objectAtIndex:indexPath.row];
     if (article) {
         [cell setCellInfo:article];
     }

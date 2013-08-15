@@ -23,7 +23,6 @@
 #import "LoginViewController.h"
 #import "SVWebViewController.h"
 #import "WorkOutManagerViewController.h"
-//#import <ShareSDK/ShareSDK.h>
 
 
 #import "SinaWeiboRequest.h"
@@ -48,6 +47,14 @@
 @end
 
 @implementation AJMLeftSideViewController
+@synthesize homeViewController =_homeViewController;
+@synthesize workoutPlanViewController =_workoutPlanViewController;
+@synthesize workoutViewController =_workoutViewController;
+@synthesize supplementViewController =_supplementViewController;
+@synthesize nutriViewController =_nutriViewController;
+@synthesize lifeStytleViewController =_lifeStytleViewController;
+@synthesize workOutManagerViewController =_workOutManagerViewController;
+@synthesize moreViewController =_moreViewController;
 
 - (id)init
 {
@@ -67,9 +74,30 @@
 {
 
     [_navigationController release];
+    [_homeViewController release];
+    [_workoutPlanViewController release];
+    [_workoutViewController release];
+    [_nutriViewController release];
+    [_supplementViewController release];
+    [_lifeStytleViewController release];
+    [_workOutManagerViewController release];
+    [_moreViewController release];
     [super dealloc];
 }
 
+- (void)viewDidUnload
+{
+    [self setHomeViewController:nil];
+    [self setWorkoutPlanViewController:nil];
+    [self setWorkoutViewController:nil];
+    [self setSupplementViewController:nil];
+    [self setNutriViewController:nil];
+    [self setLifeStytleViewController:nil];
+    [self setWorkOutManagerViewController:nil];
+    [self setMoreViewController:nil];
+    [super viewDidUnload];
+   
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -96,8 +124,106 @@
     [_tableView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
     [self.view addSubview:_tableView];
     [_tableView release];
+    
+    //
 }
 
+
+
+#pragma mark --
+#pragma mark - initViewControllers
+-(void)initHomeViewController{
+    
+    if (self.homeViewController == nil) {
+        
+        HomeViewController *vc =[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+        self.homeViewController =vc;
+        [vc release];
+        self.homeViewController.title = @"首页";
+    }
+    _navigationController = [[UINavigationController alloc] initWithRootViewController:self.homeViewController];
+}
+
+-(void)initWorkoutPlanViewController{
+    if (self.workoutPlanViewController ==nil) {
+        WorkoutPlanViewController *vc =[[WorkoutPlanViewController alloc] initWithNibName:@"WorkoutPlanViewController" bundle:nil];
+        self.workoutPlanViewController =vc;
+        [vc release];
+        self.workoutPlanViewController.title = @"健身计划";
+    }
+    
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:_workoutPlanViewController];
+}
+
+-(void)initWorkOutViewController{
+      if (self.workoutViewController ==nil) {
+
+        WorkoutViewController *vc =[[WorkoutViewController alloc] initWithNibName:@"WorkoutViewController" bundle:nil];
+        self.workoutViewController =vc;
+        [vc release];
+    
+        self.workoutViewController.title = @"锻炼";
+      
+      }
+    
+    
+    _navigationController = [[UINavigationController alloc] initWithRootViewController:_workoutViewController];
+}
+
+-(void)initSupplementViewController{
+    if (self.supplementViewController ==nil) {
+
+    self.supplementViewController =[[SupplementViewController alloc] initWithNibName:@"SupplementViewController" bundle:nil];
+    self.homeViewController.title = @"补充";
+        
+    }
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:_supplementViewController] ;
+}
+-(void)initNutriViewController{
+    
+    if (self.nutriViewController ==nil) {
+
+    self.nutriViewController =[[NutriViewController alloc] initWithNibName:@"NutriViewController" bundle:nil];
+    self.nutriViewController.title = @"营养";
+    }
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:_nutriViewController] ;
+}
+
+-(void)initLifeStytleViewController{
+    
+    if (self.lifeStytleViewController ==nil) {
+        
+        self.lifeStytleViewController =[[LifeStytleViewController alloc] initWithNibName:@"LifeStytleViewController" bundle:nil];
+        self.nutriViewController.title = @"生活方式";
+    }
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:_lifeStytleViewController] ;
+}
+
+
+-(void)initWorkOutManagerViewController{
+    
+    
+    if (self.workOutManagerViewController ==nil) {
+
+    self.workOutManagerViewController =[[WorkOutManagerViewController alloc] initWithNibName:@"WorkOutManagerViewController" bundle:nil];
+    self.workOutManagerViewController.title = @"运动管理";
+    }
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:_workOutManagerViewController] ;
+}
+-(void)initMoreController{
+    if (self.workoutPlanViewController ==nil) {
+
+    self.moreViewController =[[MoreViewController alloc] initWithNibName:@"MoreViewController" bundle:nil];
+    self.moreViewController.title = @"更多";
+    }
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:_moreViewController] ;
+}
+
+
+
+
+
+#pragma mark -- 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -239,17 +365,12 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     
-    UIStoryboard *currentInUseStoryBoard ;
 
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
         
-        currentInUseStoryBoard = iPhoneStroyBoard;
     
     }else{
     
-       UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-        currentInUseStoryBoard = iPadStroyBoard;
 
     }
     
@@ -265,15 +386,14 @@
                 {
                     ///首页
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        HomeViewController *homeVC =
-                        [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
-                        
-                        homeVC.title = @"首页";
-                        _navigationController = [[UINavigationController alloc] initWithRootViewController:homeVC] ;
-                        self.viewDeckController.centerController = _navigationController;
-                        self.view.userInteractionEnabled = YES;
+    
+                       [self initHomeViewController];
+                       self.viewDeckController.centerController = _navigationController;
                                             }];
                     
+                    self.view.userInteractionEnabled = YES;
+                    _tableView.userInteractionEnabled =YES;
+
                     //百度统计;
                     BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
                     [statTracker logEvent:@"HomeView" eventLabel:@"HomeView"];
@@ -284,15 +404,16 @@
                 {
                     ///锻炼
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                                        WorkoutViewController *workOutVC = (WorkoutViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"WorkoutViewController"];
-                        workOutVC.title = @"锻炼";
-                        _navigationController = [[UINavigationController alloc] initWithRootViewController:workOutVC] ;
-                        self.viewDeckController.centerController = _navigationController;
-                        self.view.userInteractionEnabled = YES;
-
-                      
                         
+                    [self initWorkOutViewController];
+                     self.viewDeckController.centerController = _navigationController;
+                
+                    
                     }];
+                    
+                    
+                    self.view.userInteractionEnabled = YES;
+                    _tableView.userInteractionEnabled =YES;
                     
                     //百度统计
                     BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
@@ -318,10 +439,8 @@
                 {
                     ///营养
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        NutriViewController *nutriVC =[[NutriViewController  alloc]initWithNibName:@"NutriViewController" bundle:nil];
-                        nutriVC.title = @"营养";
-                        [nutriVC release];
-                        _navigationController = [[UINavigationController alloc] initWithRootViewController:nutriVC];
+                        
+                        [self initNutriViewController];
                         self.viewDeckController.centerController = _navigationController;
                         
                         self.view.userInteractionEnabled = YES;
@@ -338,13 +457,8 @@
                 {
                     ///补充
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        
-                        SupplementViewController *supplementVC = [[SupplementViewController alloc]initWithNibName:@"SupplementViewController" bundle:nil];
-                        
-                        supplementVC.title = @"补充";
-                        [supplementVC release];
-
-                        _navigationController = [[UINavigationController alloc] initWithRootViewController:supplementVC];
+                    
+                        [self initSupplementViewController];
                         self.viewDeckController.centerController = _navigationController;
                         
                         self.view.userInteractionEnabled = YES;
@@ -360,14 +474,12 @@
                     ///生活方式
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         
-                        LifeStytleViewController *lifeStytleVC = [[LifeStytleViewController alloc]initWithNibName:@"LifeStytleViewController" bundle:nil];
-                        
-                        lifeStytleVC.title = @"生活方式";
-                        _navigationController = [[UINavigationController alloc] initWithRootViewController:lifeStytleVC];
+                        [self initLifeStytleViewController];
                         self.viewDeckController.centerController = _navigationController;
                         
                         self.view.userInteractionEnabled = YES;
-                     
+                        [_tableView setUserInteractionEnabled:YES];
+                        
                     }];
                     
                     BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
@@ -378,12 +490,10 @@
 
                 case 5:
                 {
-                   ////论坛
+                   ////运动管理
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         
-                        WorkOutManagerViewController *vc = [[WorkOutManagerViewController alloc]initWithNibName:@"WorkOutManagerViewController" bundle:nil];
-                        _navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
-                        
+                        [self initWorkOutManagerViewController];
                         self.viewDeckController.centerController = _navigationController;
                         self.view.userInteractionEnabled = YES;
                     }];
@@ -394,13 +504,11 @@
                 {
                     ///更多
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        MoreViewController *moreVC =
-                        [[MoreViewController alloc]initWithNibName:@"MoreViewController" bundle:nil];
-                        [moreVC setTitle:@"更多"];
-                        _navigationController = [[UINavigationController alloc] initWithRootViewController:moreVC];
-                        [moreVC release];
+            
+                        [self initMoreController];
+                        self.moreViewController.delegate =[self getAppDelegate];
                         self.viewDeckController.centerController = _navigationController;
-                        moreVC.delegate =[self getAppDelegate];
+
                         self.view.userInteractionEnabled = YES;
                         _tableView.userInteractionEnabled =YES;
                         
@@ -580,6 +688,8 @@
 - (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
 {
     
+    [self hideActivity];
+    
     //获取用户信息
     if ([request.url hasSuffix:@"users/show.json"])
     {
@@ -604,6 +714,7 @@
 
 -(void)createSinaFriendship{
     
+    [self showActivityWithText:@"连接服务器..."];
     PPDebug(@"%@",_sinaweiboManager.sinaweibo.userID);
     [[UserService defaultService] createSinaFriendshipWithUid:AIJIANMEI_SINAWEIBO_ID delegate:self];
 }
