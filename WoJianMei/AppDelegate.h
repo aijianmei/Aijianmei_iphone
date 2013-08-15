@@ -13,6 +13,7 @@
 #import "IIViewDeckController.h"
 #import "AJMLeftSideViewController.h"
 #import "AJMViewDelegate.h"
+#import "CommonDialog.h"
 
 
 
@@ -25,7 +26,7 @@ enum
 };
 
 
-@interface AppDelegate : PPApplication <UIApplicationDelegate,UITabBarControllerDelegate,WXApiDelegate,sendMsgToWeChatViewDelegate>
+@interface AppDelegate : PPApplication <UIApplicationDelegate,UITabBarControllerDelegate,WXApiDelegate,sendMsgToWeChatViewDelegate,RKObjectLoaderDelegate,CommonDialogDelegate>
 
 {
       UINavigationController *_navigationController;

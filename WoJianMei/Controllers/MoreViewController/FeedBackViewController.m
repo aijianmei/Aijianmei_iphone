@@ -49,11 +49,18 @@ enum errorCode {
     
     
     [_descriptionTextField setDelegate:self];
-    [_descriptionTextField setBackground:[UIImage imageNamed:@"description_BG"]];
+    [_descriptionTextField setBackground:[UIImage imageNamed:@"description_BG.png"]];
     [_descriptionTextField setText:@"欢迎告诉我们您的意见！"];
-    [_descriptionTextField resignFirstResponder];
 
     
+    
+    //停顿一会儿之后显示键盘
+    float duration =0.4;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:duration
+                                                  target:self
+                                                selector:@selector(showKeyBoard)
+                                                userInfo:nil
+                                                 repeats:NO];
     
 }
 
@@ -61,15 +68,27 @@ enum errorCode {
 #pragma mark - clickSendButton
 -(void)clickSendButton:(UIButton *)sender{
     
+    [_descriptionTextField resignFirstResponder];
+    
     User *getuser =[[UserService defaultService] user];
     NSString  *uid =getuser.uid;
     PPDebug(@"********用户UID%@,开始信息发送反馈*******",uid);
     
-    [[UserService defaultService] postFeedbackWithUid:@"122"
-content: @"buddy" delegate:self];  
+    [[UserService defaultService] postFeedbackWithUid:uid
+                                              content:_descriptionTextField.text
+                                             delegate:self];
     
 }
 
+
+
+#pragma mark -
+#pragma mark - ShowKeyBoard Method
+
+-(void)showKeyBoard{    
+    [_descriptionTextField becomeFirstResponder];
+    [self.timer invalidate];
+}
 
 #pragma mark -
 #pragma mark - UITextFieldDelegate
@@ -121,8 +140,8 @@ content: @"buddy" delegate:self];
     {
         PPDebug(@"********用户UID%@,信息反馈完成*******",uid);
         [self popupHappyMessage:@"信息反馈成功" title:nil];
+        [self.navigationController popViewControllerAnimated:YES];
     }
-    
 }
 
 

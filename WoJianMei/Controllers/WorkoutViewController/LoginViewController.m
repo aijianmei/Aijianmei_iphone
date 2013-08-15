@@ -99,19 +99,37 @@ enum SinaResultErrorCode
 {
     [super viewDidAppear:YES];
     [[BaiduMobStat defaultStat] pageviewStartWithName:@"LoginView"];
+    
 }
 
 -(void) viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:YES];
     [[BaiduMobStat defaultStat] pageviewEndWithName:@"LoginView"];
+    [self.navigationController.navigationBar setHidden:NO];
+
 }
+
+
+-(void)viewWillAppear:(BOOL)animated{
+
+    [super viewWillAppear:YES];
+    //隐藏导航栏
+    [self.navigationController.navigationBar setHidden:YES];
+
+}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self setNavigationRightButton:@"取消" imageName:@"top_bar_commonButton.png" action:@selector(clickCancleButton:)];
+    [_usernameField setClearsOnBeginEditing:NO];
+    [_passwordField setClearsOnBeginEditing:YES];
+
+    
+    
     
     [self.sinaButton setTag:10];
     
@@ -124,22 +142,17 @@ enum SinaResultErrorCode
     [self.aijianmeiButton addTarget:self action:@selector(clickSignupAijianmeiAccount:) forControlEvents:UIControlEventTouchDown];
 
     
-    
-    UIStoryboard *currentInUseStoryBoard;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         
-        currentInUseStoryBoard = iPhoneStroyBoard;
         
     }else{
         
-        UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-        currentInUseStoryBoard = iPadStroyBoard;
+        
     }
 
 
-    SignUpViewController *signupVC = (SignUpViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
-    self.signUpViewController =signupVC;
+    SignUpViewController *vc = [[SignUpViewController alloc]initWithNibName:@"SignUpViewController" bundle:nil];
+    self.signUpViewController =vc;
 
 
     
@@ -161,7 +174,6 @@ enum SinaResultErrorCode
 //实现closeDoneEdit点击done关闭键盘
 - (IBAction)closeDoneEdit:(id)sender
 {
-    
     
     if ([_usernameField isEditing]) {
         [_passwordField becomeFirstResponder];
@@ -269,6 +281,7 @@ enum SinaResultErrorCode
     
     self.userType =@"local";
     [self.navigationController pushViewController:self.signUpViewController animated:YES];
+    
     _signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;
     _signUpViewController.userType =[self userType];
     
@@ -340,7 +353,7 @@ enum SinaResultErrorCode
 #pragma mark - RKObjectLoaderDelegate
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
     NSLog(@"Response code: %d", [response statusCode]);
-    [self showActivityWithText:@"数据加载完成"];
+    [self showActivityWithText:@"成功登陆"];
 
 }
 
@@ -353,7 +366,7 @@ enum SinaResultErrorCode
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
-    [self showActivityWithText:@"数据加载中"];
+    [self showActivityWithText:@"登陆中..."];
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects

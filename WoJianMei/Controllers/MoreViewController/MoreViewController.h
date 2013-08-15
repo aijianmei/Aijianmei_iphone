@@ -11,6 +11,7 @@
 #import "UserService.h"
 #import "AWActionSheet.h"
 #import "WXApiObject.h"
+#import "CommonDialog.h"
 
 @protocol sendMsgToWeChatViewDelegate <NSObject>
 - (void) sendTextContent:(NSString*)nsText;
@@ -26,7 +27,7 @@
 
 @class AppDelegate;
 
-@interface MoreViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,RKObjectLoaderDelegate,SinaWeiboRequestDelegate,SinaWeiboDelegate>
+@interface MoreViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,RKObjectLoaderDelegate,SinaWeiboRequestDelegate,SinaWeiboDelegate,CommonDialogDelegate>
 
 {
  

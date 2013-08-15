@@ -13,6 +13,7 @@
 #import "Result.h"
 #import "StringUtil.h"
 #import "BaiduMobStat.h"
+#import "ImageManager.h"
 
 
 
@@ -35,8 +36,6 @@ enum errorCode {
 @synthesize userNameTextField =_userNameTextField;
 @synthesize emailTextField =_emailTextField;
 @synthesize passwordTextField =_passwordTextField;
-@synthesize repeatPasswordTextField =_repeatPasswordTextField;
-@synthesize loginButton =_loginButton;
 @synthesize snsId =_snsId;
 @synthesize userType =_userType;
 
@@ -65,11 +64,6 @@ enum errorCode {
         [_emailTextField resignFirstResponder];
     }
     
-    if ([_repeatPasswordTextField isEditing])
-    {
-        [_repeatPasswordTextField resignFirstResponder];
-    }
-    
     if ([_passwordTextField isEditing])
     {
         [_passwordTextField resignFirstResponder];
@@ -77,11 +71,7 @@ enum errorCode {
     
 }
 
--(void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-	keyBoardController=[[UIKeyboardViewController alloc] initWithControllerDelegate:self];
-	[keyBoardController addToolbarToKeyboard];
-}
+
 
 #pragma - UIKeyboardViewController delegate methods
 
@@ -111,7 +101,12 @@ enum errorCode {
 
 -(void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
-	MCRelease(keyBoardController);
+//	MCRelease(keyBoardController);
+}
+-(void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+//	keyBoardController=[[UIKeyboardViewController alloc] initWithControllerDelegate:self];
+//	[keyBoardController addToolbarToKeyboard];
 }
 
 
@@ -120,23 +115,32 @@ enum errorCode {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
-        //轻触手势（单击，双击）
-//        UITapGestureRecognizer *tapCgr=nil;
-//        tapCgr=[[UITapGestureRecognizer alloc]initWithTarget:self
-//                                                      action:@selector(tap)];
-//        tapCgr.numberOfTapsRequired=1;
-//        [self.view addGestureRecognizer:tapCgr];
-//        [tapCgr release];
+    
+    
+    [self setTitle:@"注册新用户"];
+    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+    [self setNavigationRightButton:@"注册" imageName:@"top_bar_commonButton.png"  action:@selector(didPressSignup:)];
+
+    [_userNameTextField  becomeFirstResponder];
+    [_userNameTextField setPlaceholder:@"用户名 : 如健美王子"];
+    [_emailTextField setPlaceholder:@"邮箱: 格式如 xxx@gmail.com"];
+    [_passwordTextField setPlaceholder:@"密码: 不得少于6为数字或字母"];
     
     
     
+
+    //轻触手势（单击，双击）
+    UITapGestureRecognizer *tapCgr=nil;
+    tapCgr=[[UITapGestureRecognizer alloc]initWithTarget:self
+                                                      action:@selector(tap)];
+    tapCgr.numberOfTapsRequired=1;
+    [self.view addGestureRecognizer:tapCgr];
+    [tapCgr release];
     
     
+
     
 	// Do any additional setup after loading the view.
-    [self setTitle:@"注册新用户"];
-    
     if ([self.userType isEqualToString:@"sina"]) {
         NSDictionary *userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
         
@@ -145,10 +149,10 @@ enum errorCode {
 
     }
     
-    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
-
 
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -161,8 +165,6 @@ enum errorCode {
     [_userNameTextField release];
     [_emailTextField release];
     [_passwordTextField release];
-    [_repeatPasswordTextField release];
-    [_loginButton release];
     [_snsId release];
     [_userType release];
     [super dealloc];
@@ -174,7 +176,7 @@ enum errorCode {
     [sender resignFirstResponder];
 }
 
-- (IBAction)didPressLogin:(id)sender
+- (void)didPressSignup:(id)sender
 {
     
     
@@ -194,6 +196,7 @@ enum errorCode {
 
     }
     if ([self.userType isEqualToString:@"local"]) {
+        [self showActivityWithText:@"注册中..."];
         [[UserService defaultService] registerAijianmeiUserWithUsername:self.userNameTextField.text
                                                                   email:self.emailTextField.text
                                                                password:self.passwordTextField.text
@@ -239,24 +242,6 @@ enum errorCode {
     }
 
     
-    if ([_repeatPasswordTextField.text length] == 0){
-        [UIUtils alert:@"密码不能为空"];
-        [_passwordTextField becomeFirstResponder];
-        return NO;
-    }
-    if ([_repeatPasswordTextField.text length] <= 6){
-        [UIUtils alert:@"密码长度不能少于六位数"];
-        [_passwordTextField becomeFirstResponder];
-        return NO;
-    }
-
-    
-    if (![_repeatPasswordTextField.text isEqualToString:_passwordTextField.text]){
-        [UIUtils alert:@"密码输入不一致"];
-        [_repeatPasswordTextField becomeFirstResponder];
-        return NO;
-    }
-
     return YES;
 }
 
@@ -333,7 +318,6 @@ enum errorCode {
         
         
         
-        
         //直接从注册页面，跳动到用户界面;
         [self dismissViewControllerAnimated:YES completion:^
          {
@@ -345,6 +329,8 @@ enum errorCode {
          }];
         
     }
+    
+    
     
     
     

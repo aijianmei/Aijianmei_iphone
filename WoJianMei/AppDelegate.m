@@ -20,10 +20,14 @@
 #import "AJMLeftSideViewController.h"
 #import "BaiduMobStat.h"
 #import "WorkoutViewController.h"
+#import "VersionInfo.h"
+
 
 
 
 // To be changed for each project
+#define kAppId			@"683646344"
+
 
 ///aijianmei
 #define WeChatId @"wxc996cdfc0f512dd7"
@@ -35,6 +39,7 @@
 
 
 #define IosAppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+
 
 #define BaiduMobileAnlyizeAppId @"eaca9d7cc8"
 
@@ -188,6 +193,23 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    
+    
+    
+    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+    statTracker.enableExceptionLog = YES; // 是否允许截获并发送崩溃信息，请设置YES或者NO
+    statTracker.channelId = @"ReplaceMeWithYourChannel";//设置您的app的发布渠道
+    statTracker.logStrategy = BaiduMobStatLogStrategyCustom;//根据开发者设定的时间间隔接口发送 也可以使用启动时发送策略
+    statTracker.logSendInterval = 1;  //为1时表示发送日志的时间间隔为1小时
+    statTracker.logSendWifiOnly = YES; //是否仅在WIfi情况下发送日志数据
+    statTracker.sessionResumeInterval = 60;//设置应用进入后台再回到前台为同一次session的间隔时间[0~600s],超过600s则设为600s，默认为30s
+    statTracker.shortAppVersion  = IosAppVersion; //参数为NSString * 类型,自定义app版本信息，如果不设置，默认从CFBundleVersion里取
+    [statTracker startWithAppId:BaiduMobileAnlyizeAppId];//设置您在mtj网站上添加的app的appkey
+    
+
+    
+    
 
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
@@ -252,7 +274,7 @@
     HomeViewController *homeVC = nil;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
          homeVC = [[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil] autorelease];
-       self.navigationController = [[UINavigationController alloc]initWithRootViewController:homeVC];
+       _navigationController = [[UINavigationController alloc]initWithRootViewController:homeVC];
         
         
         
@@ -273,6 +295,7 @@
     }
     
     
+    
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
 
@@ -283,7 +306,6 @@
     
     //从本地获取用户信息
     //TOTO:根据用户uid登陆获取信息
-    
     
      NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey: @"OriginalUserId"];
     PPDebug(@"*****OriginalUserId :%@*****",uid);
@@ -308,22 +330,11 @@
     // aijianmei  :
     
      [WXApi registerApp:WeChatId];
-//    [MobClick startWithAppkey:Mobclick reportPolicy:REALTIME channelId:nil];
 
-        
     
-    
-    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
-    statTracker.enableExceptionLog = YES; // 是否允许截获并发送崩溃信息，请设置YES或者NO
-    statTracker.channelId = @"ReplaceMeWithYourChannel";//设置您的app的发布渠道
-    statTracker.logStrategy = BaiduMobStatLogStrategyCustom;//根据开发者设定的时间间隔接口发送 也可以使用启动时发送策略
-    statTracker.logSendInterval = 1;  //为1时表示发送日志的时间间隔为1小时
-    statTracker.logSendWifiOnly = YES; //是否仅在WIfi情况下发送日志数据
-    statTracker.sessionResumeInterval = 60;//设置应用进入后台再回到前台为同一次session的间隔时间[0~600s],超过600s则设为600s，默认为30s
-    statTracker.shortAppVersion  = IosAppVersion; //参数为NSString * 类型,自定义app版本信息，如果不设置，默认从CFBundleVersion里取
-    [statTracker startWithAppId:BaiduMobileAnlyizeAppId];//设置您在mtj网站上添加的app的appkey
-    
-
+    //检测当前版本是否为最新的版本
+    [self updateApplication];
+   
     
     return YES;
 }
@@ -404,5 +415,79 @@
     }
 
 }
+
+
+-(void)updateApplication{
+    
+    [[UserService defaultService] queryVersionWithDelegate:self];
+}
+
+
+
+
+#pragma mark -
+#pragma mark - RKObjectLoaderDelegate
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+    NSLog(@"Response code: %d", [response statusCode]);
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", [error localizedDescription]);
+}
+
+- (void)requestDidStartLoad:(RKRequest *)request
+{
+    NSLog(@"Start load request...");
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
+    NSLog(@"***Load objects count: %d", [objects count]);
+    
+    NSObject *result =[objects objectAtIndex:0];
+    if ([result isMemberOfClass:[VersionInfo class]]){
+
+        
+        VersionInfo *versionInfo =[objects objectAtIndex:0];
+        NSLog(@"当前版本是:%@,下载URL:%@,标题:%@,更新内容:%@",      versionInfo.version,
+              versionInfo.downloadurl,
+              versionInfo.updateTitle,
+              versionInfo.updateContent);
+        
+        NSString *latestVersion = versionInfo.version;
+        NSString *localVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        
+        //    NSString *localVersion =@"1.0";
+        if ([latestVersion isEqualToString:localVersion]){
+            PPDebug(@"当前是最新版本");
+        }
+        else{
+        
+            CommonDialog *dialog = [CommonDialog createDialogWithTitle:@"新版本升级提示!"
+                                                              subTitle:versionInfo.updateTitle
+                                                               content:versionInfo.updateContent OKButtonTitle:@"立刻升级"                                               cancelButtonTitle:@"稍后提醒"
+                                                              delegate:self];
+    
+            [self.window addSubview:dialog];
+
+            
+        }
+    }
+}
+
+
+#pragma mark -
+#pragma CommonDialogDelegate methods
+- (void)didClickOkButton
+{
+    [UIUtils openApp:kAppId];
+}
+
+- (void)didClickCancelButton
+{
+    return;
+}
+
 
 @end

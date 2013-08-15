@@ -614,8 +614,9 @@ enum TapOnItem {
     [abVC release];
 }
 
--(void)updateApplication{    
+-(void)updateApplication{
     
+    [self showActivityWithText:@"连接服务器..."];
     [[UserService defaultService] queryVersionWithDelegate:self];
     
 }
@@ -676,9 +677,9 @@ enum TapOnItem {
             NSString *userId = [[[UserService defaultService] user] uid];
             NSString *uid  =nil;
             
-            if (userId)
+            if ([userId length] > 0)
             {
-            uid = [[[NSString  alloc]initWithString:userId] autorelease];
+            uid = [[[NSString  alloc] initWithString:userId] autorelease];
                 [uid retain];
             
             [[UserService defaultService] deleteUserByUid:uid];
@@ -964,19 +965,36 @@ enum TapOnItem {
     NSString *latestVersion = versionInfo.version;
     NSString *localVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
         
-//    NSString *localVersion =@"1.0";
-    if ([latestVersion isEqualToString:localVersion])
+
+        if ([latestVersion isEqualToString:localVersion])
     {
         [self popupHappyMessage:@"已经是最新版本" title:nil];
     }
-    else
-    {
-        NSString *title = [NSString stringWithFormat:@"版本更新%@",latestVersion];
-        UIAlertView *myalertView =[[UIAlertView alloc]initWithTitle:title message:versionInfo.updateContent delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"更新", nil];
-        [myalertView setTag:11];
-        [myalertView show];
+    else{
+                
+        CommonDialog *dialog = [CommonDialog createDialogWithTitle:@"新版本升级提示!"
+                    subTitle:versionInfo.updateTitle
+                     content:versionInfo.updateContent
+               OKButtonTitle:@"立刻升级"
+           cancelButtonTitle:@"稍后提醒"
+                    delegate:self];
+                [self.view addSubview:dialog];
+        }
     }
- }
 }
+
+
+#pragma mark -
+#pragma CommonDialogDelegate methods
+- (void)didClickOkButton
+{
+    [UIUtils openApp:kAppId];
+}
+
+- (void)didClickCancelButton
+{
+    return;
+}
+
 
  @end

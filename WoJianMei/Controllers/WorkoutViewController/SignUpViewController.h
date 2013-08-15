@@ -26,20 +26,16 @@
     id <SignUpViewControllerDelegate> delegate;
     UIKeyboardViewController *keyBoardController;
 
-
 }
 
 @property (retain, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (retain, nonatomic) IBOutlet UITextField *emailTextField;
 @property (retain, nonatomic) IBOutlet UITextField *passwordTextField;
-@property (retain, nonatomic) IBOutlet UITextField *repeatPasswordTextField;
-@property (retain, nonatomic) IBOutlet UIButton *loginButton;
 @property (retain, nonatomic) NSString *snsId;
 @property (retain, nonatomic) NSString *userType;
 @property (nonatomic,assign) id <SignUpViewControllerDelegate> delegate;
 
 
 - (IBAction)closeDoneEdit:(id)sender;
-- (IBAction)didPressLogin:(id)sender;
 
 @end

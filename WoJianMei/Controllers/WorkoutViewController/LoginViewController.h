@@ -13,6 +13,7 @@
 #import "SignUpViewController.h"
 
 
+
 @protocol LoginViewDelegate <NSObject>
 
 @optional
@@ -33,6 +34,8 @@
     
     UIButton *_sinaButton;
     UIButton *_aijianmeiButton;
+    
+
     
 }
 

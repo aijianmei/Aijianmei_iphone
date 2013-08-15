@@ -244,27 +244,29 @@ typedef enum CONTENT_TYPE {
 
 -(void)showLoginView{
 
-    UIStoryboard *currentInUseStoryBoard;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-        currentInUseStoryBoard = iPhoneStroyBoard;
-        
-    }else{
-        
-        UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-        currentInUseStoryBoard = iPadStroyBoard;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        if (![[UserService defaultService] user]){
+            
+            LoginViewController *vc = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+            self.loginViewController = vc;
+            [vc release];
+            self.loginViewController.delegate = self;
+            UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:self.loginViewController];
+            [self.navigationController presentModalViewController:navigation animated:NO];
+            [navigation release];
+            
+        }
     }
-    
-    if (![[UserService defaultService] user]){
-    
-        LoginViewController *vc = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
-        self.loginViewController = vc;
-        [vc release];
-        UINavigationController *nv = [[[UINavigationController alloc]initWithRootViewController:_loginViewController] autorelease];
-        self.loginViewController.delegate = self;
-        [self.navigationController presentModalViewController:nv animated:YES];
+    else
+    {
+        
     }
 }
+
+
+
+
 
 
 -(void)initTableHeaderView{
