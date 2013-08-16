@@ -187,12 +187,11 @@ typedef enum CONTENT_TYPE {
 {
     [self.viewDeckController toggleRightViewAnimated:YES];
     User *user = [[UserService defaultService] user];
-    
     if (user.uid) {
-        PublicMyselfViewController *myselfVC = [[PublicMyselfViewController alloc]initWithNibName:@"PublicMyselfViewController" bundle:nil];
-        myselfVC.title = @"我";
-        [self.navigationController pushViewController:myselfVC animated:YES];
-        [myselfVC release];
+    
+    PublicMyselfViewController *publicStatusViewController = [[AppDelegate getAppDelegate] initPublicStatusViewController];
+    [self.navigationController pushViewController:publicStatusViewController animated:YES];
+        
     
     }else{
         [self showLoginView];

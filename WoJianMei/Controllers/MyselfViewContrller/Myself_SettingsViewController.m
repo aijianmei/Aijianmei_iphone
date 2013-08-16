@@ -100,41 +100,22 @@
 
 
 -(void)clickSaveButton:(id)sender{
-    
-    
+
     didSave =YES;
-
-//    if ([self.user.profileImageUrl hasPrefix:@"http://tp4.sinaimg.cn/"]) {
-//        
-//        [[UserService defaultService] postObject:nil withImage:nil delegate:self];
-//        [self showActivityWithText:@"加载中..."];
-//        
-//        //数据加载中的时候，按钮是禁止的再被点击的;
-//        [self.navigationItem.rightBarButtonItem setEnabled:NO];
-//        
-//        return;
-//
-//        
+    
+//    if (self.user.profileImageUrl) {
+//    //把保存再文件夹里边的图片取出来，然后上传到服务器上面;
+//        self.avtarImage = [self loadImageInDirectory:self.user.profileImageUrl];
+//      
 //    }
-    
-    
-    if (self.user.profileImageUrl) {
-    //把保存再文件夹里边的图片取出来，然后上传到服务器上面;
-        self.avtarImage = [self loadImageInDirectory:self.user.profileImageUrl];
-      
-    }
-
-//    UIImage *image = [self getImageFromURL:self.user.profileImageUrl];
-    
-    
     
     if (self.avtarImage) {
         [[UserService defaultService] postObject:nil withImage:self.avtarImage delegate:self];
-        [self showActivityWithText:@"加载中..."];
+        [self showActivityWithText:@"连接服务器..."];
 
     }else{
         [[UserService defaultService] postObject:nil withImage:nil delegate:self];
-        [self showActivityWithText:@"加载中..."];
+        [self showActivityWithText:@"连接服务器..."];
     
     }
     //数据加载中的时候，按钮是禁止的再被点击的;
@@ -164,20 +145,18 @@
             NSString *tmpPathToFile = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/avtar.png", path]];
             if([imageData writeToFile:tmpPathToFile atomically:YES]){
                 //Write was successful.
-                self.avtarImage = cropImage;
-                self.user.profileImageUrl = tmpPathToFile;
-            
+                self.avtarImage = reSizeImage;
+                
+                
             }
         }
     }
     
-    
-    
-    
-    
-    User *user =[[UserService defaultService] user];
-    [[UserService defaultService] setUser:user];
+    [[UserService defaultService] setUser:self.user];
+    User *user = [[UserService defaultService] user];
+    [user setAvatarImage:self.avtarImage];
     [[UserService defaultService] storeUserInfoByUid:user.uid];
+    [[UserService defaultService] setUser:user];
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
 //        CorpImageView *cropImageView =[[CorpImageView alloc]initWithNibName:@"CorpImageView" bundle:nil];
 //        cropImageView.imgView.image =image;
@@ -226,6 +205,20 @@
 
 
 
+-(void)loadDatas{
+    
+    User *user = [[UserService defaultService] user];
+    [self setUser:user];
+    self.user.BMIValue =[self reCaluclateBMIValueByWeight:user.weight
+                                                   height:user.height];
+
+    
+}
+
+-(void)updateUI{
+    [dataTableView reloadData];
+}
+
 
 #pragma mark -
 #pragma mark - View lifecycle
@@ -234,9 +227,9 @@
 {
     
     [super viewDidAppear:YES];
-    [self loadDatas];
-    [self updateUI];
+    
     [[BaiduMobStat defaultStat] pageviewStartWithName:@"MyselfSettingView"];
+
 }
 
 
@@ -245,6 +238,15 @@
 {
     [super viewDidDisappear:YES];
     [[BaiduMobStat defaultStat] pageviewEndWithName:@"MyselfSettingView"];
+}
+
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    
+    [super viewWillAppear:YES];
+    [self loadDatas];
+    [self updateUI];
 }
 
 
@@ -262,22 +264,31 @@
     self.title = NSLocalizedString(@"编辑个人资料", @"Settings");
     
     didSave =NO;
-}
-
-
--(void)loadDatas{
     
-    User *user = [[UserService defaultService] user];
-    user.BMIValue =[self reCaluclateBMIValueByWeight:user.weight height:user.height];
-    self.user =user;
+    
+    
+//    //轻触手势（单击，双击）
+//    UITapGestureRecognizer *tapCgr=nil;
+//    tapCgr=[[UITapGestureRecognizer alloc]initWithTarget:self
+//                                                  action:@selector(tap)];
+//    tapCgr.numberOfTapsRequired=1;
+//    [self.dataTableView addGestureRecognizer:tapCgr];
+//    [tapCgr release];
+
+        
+}
+
+-(void)tap{
+
 
 }
 
--(void)updateUI{
-    [self loadDatas];
-    [dataTableView reloadData];
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
 }
-
 
 #pragma mark --actionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -325,16 +336,6 @@
             break;
     }
 
-}
-
-
-
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 
@@ -441,13 +442,14 @@
             ////设置头像
             if (indexPath.row ==0) {
             
-                [cell.detailImageView setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
-
-                 UIImage *image = [self loadImageInDirectory:self.user.profileImageUrl];
-                if (image) {
-                    [cell.detailImageView setImage:image];
+                
+                if (self.avtarImage) {
+                    [cell.detailImageView setImage:self.avtarImage];
+                }else{
+                    [cell.detailImageView setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
                 }
 
+                
                 [cell.detailImageView setFrame:CGRectMake(180, 7.50f, 65.0f,65.0f)];
 
             }
@@ -675,14 +677,6 @@
         
         }
             break;
-//        case 1:
-//        {
-//            //change Label
-//            ChangeLabelsViewController *vc = [[ChangeLabelsViewController alloc]initWithNibName:@"ChangeLabelsViewController" bundle:nil];
-//            [self.navigationController pushViewController:vc animated:YES];
-//            [vc release];
-//        }
-//            break;
         case 1:
         {
             //Change gender
@@ -729,11 +723,10 @@
 
 - (void)didClickAddMoreButton:(id)sender atIndex:(NSIndexPath*)indexPath;
 {
-    [self.dataTableView reloadData];
 }
 
-- (void)didClickLessButton:(id)sender atIndex:(NSIndexPath*)indexPath{
-    [self.dataTableView reloadData];
+- (void)didClickLessButton:(id)sender atIndex:(NSIndexPath*)indexPath
+{
 }
 
 
@@ -748,11 +741,45 @@
     }
 }
 
+
+
+
+- (NSString *)reCaluclateBMIValueByWeight:(NSString *)aWeight height: (NSString *)aHeight{
+    
+    //重新计算BMI
+    int weight = [self.user.weight integerValue];
+    int height = [self.user.height integerValue];
+    float BMI =weight /(height * height * 0.01 *0.01);
+    
+    NSString *bmi = [NSString stringWithFormat:@"%.1f",BMI];
+    PPDebug(@"what the bmi: %@",bmi);
+    return bmi;
+}
+
+
+
+#pragma mark -
+#pragma mark - RKObjectLoaderDelegate
+
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+    NSLog(@"Response code: %d", [response statusCode]);
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", [error localizedDescription]);
+}
+
+- (void)requestDidStartLoad:(RKRequest *)request
+{
+    NSLog(@"Start load request...");
+}
+
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects;
 {
     [self hideActivity];
     if ([objectLoader wasSentToResourcePath:@"/imgtest.php"])
-    
+        
     {
         PPDebug(@"%@",[objects objectAtIndex:0]);
         if ([[objects objectAtIndex:0] isMemberOfClass:[User class]]) {
@@ -768,41 +795,17 @@
             //修改用户
             [newUser setProfileImageUrl:user.profileImageUrl];
             [newUser setBMIValue:bmi];
-        
+            
+            //设置为当前用户
+            [[UserService defaultService] setUser:newUser];
+            
             //保存用户
             [[UserService defaultService] storeUserInfoByUid:newUser.uid];
-    
+            
             [self updateUI];
             [self.navigationItem.rightBarButtonItem setEnabled:YES];
         }
     }
-}
-
-
-- (NSString *)reCaluclateBMIValueByWeight:(NSString *)aWeight height: (NSString *)aHeight{
-    
-    //重新计算BMI
-    int weight = [self.user.weight integerValue];
-    int height = [self.user.height integerValue];
-    float BMI =weight /(height * height * 0.01 *0.01);
-    
-    NSString *bmi = [NSString stringWithFormat:@"%.1f",BMI];
-    PPDebug(@"what the bmi: %@",bmi);
-    return bmi;
-}
-
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    NSLog(@"Response code: %d", [response statusCode]);
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
-{
-    NSLog(@"Error: %@", [error localizedDescription]);
-}
-
-- (void)requestDidStartLoad:(RKRequest *)request
-{
-    NSLog(@"Start load request...");
 }
 
 

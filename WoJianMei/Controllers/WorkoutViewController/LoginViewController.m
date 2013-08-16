@@ -281,6 +281,7 @@ enum SinaResultErrorCode
     
     self.userType =@"local";
     [self.navigationController pushViewController:self.signUpViewController animated:YES];
+    [self.navigationController.navigationBar setHidden:NO];
     
     _signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;
     _signUpViewController.userType =[self userType];

@@ -89,6 +89,14 @@ enum errorCode {
 {
     [super viewDidAppear:YES];
     [[BaiduMobStat defaultStat] pageviewStartWithName:@"SignupView"];
+    
+    //停顿一会儿之后显示键盘
+    float duration =0.3;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:duration
+                                                  target:self
+                                                selector:@selector(showKeyBoard)
+                                                userInfo:nil
+                                                 repeats:NO];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -101,14 +109,34 @@ enum errorCode {
 
 -(void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
+    
+    if ([_emailTextField isEditing]) {
+        [_emailTextField resignFirstResponder];
+    }
+    if ([_userNameTextField isEditing]) {
+        [_userNameTextField resignFirstResponder];
+    }
+    if ([_passwordTextField isEditing]) {
+        [_passwordTextField resignFirstResponder];
+    }
+    
+    
 //	MCRelease(keyBoardController);
 }
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
+    
+    [self.navigationController.navigationBar setHidden:NO];
+    
 //	keyBoardController=[[UIKeyboardViewController alloc] initWithControllerDelegate:self];
 //	[keyBoardController addToolbarToKeyboard];
 }
 
+
+- (void)clickBack:(id)sender
+{
+	[self.navigationController popViewControllerAnimated:NO];
+}
 
 
 
@@ -121,7 +149,6 @@ enum errorCode {
     [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     [self setNavigationRightButton:@"注册" imageName:@"top_bar_commonButton.png"  action:@selector(didPressSignup:)];
 
-    [_userNameTextField  becomeFirstResponder];
     [_userNameTextField setPlaceholder:@"用户名 : 如健美王子"];
     [_emailTextField setPlaceholder:@"邮箱: 格式如 xxx@gmail.com"];
     [_passwordTextField setPlaceholder:@"密码: 不得少于6为数字或字母"];
@@ -150,8 +177,24 @@ enum errorCode {
     }
     
 
+    
+    //停顿一会儿之后显示键盘
+    float duration =0.4;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:duration
+                                                  target:self
+                                                selector:@selector(showKeyBoard)
+                                                userInfo:nil
+                                                 repeats:NO];
 }
 
+-(void)showKeyBoard{
+
+    //当键盘显示了之后就停止计时器
+    [_userNameTextField  becomeFirstResponder];
+    [self.timer invalidate];
+
+
+}
 
 
 - (void)didReceiveMemoryWarning

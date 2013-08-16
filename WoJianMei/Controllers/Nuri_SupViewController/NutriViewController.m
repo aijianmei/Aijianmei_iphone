@@ -30,7 +30,7 @@
 #import "SDSegmentedControl.h"
 
 #import "BaiduMobStat.h"
-
+#import "PublicMyselfViewController.h"
 
 
 
@@ -192,9 +192,9 @@ typedef enum CONTENT_TYPE {
     User *user = [[UserService defaultService] user];
     
     if (user.uid) {
-        MyselfViewController *myselfVC = (MyselfViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"MyselfViewController"];
-        myselfVC.title = @"我";
-        [self.navigationController pushViewController:myselfVC animated:YES];
+        PublicMyselfViewController *publicStatusViewController = [[AppDelegate getAppDelegate] initPublicStatusViewController];
+        [self.navigationController pushViewController:publicStatusViewController animated:YES];
+
         
     }else{
         [self showLoginView];

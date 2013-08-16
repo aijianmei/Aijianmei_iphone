@@ -21,6 +21,7 @@
 #import "BaiduMobStat.h"
 #import "WorkoutViewController.h"
 #import "VersionInfo.h"
+#import "PublicMyselfViewController.h"
 
 
 
@@ -49,6 +50,7 @@
 @synthesize window = _window;
 @synthesize navigationController =_navigationController;
 @synthesize viewDelegate = _viewDelegate;
+@synthesize publicStatusViewController =_publicStatusViewController;
 
 
 - (id)init{
@@ -68,12 +70,24 @@
     [_viewDelegate release];
     [_window release];
     [_viewController release];
+    [_publicStatusViewController release];
     [super dealloc];
 }
 
 +(AppDelegate*)getAppDelegate
 {
     return (AppDelegate*)[UIApplication sharedApplication].delegate;
+}
+
+
+-(PublicMyselfViewController *)initPublicStatusViewController{
+    if (self.publicStatusViewController ==nil) {
+        PublicMyselfViewController *myselfVC = [[PublicMyselfViewController alloc]initWithNibName:@"PublicMyselfViewController" bundle:nil];
+        myselfVC.title = @"我";
+        self.publicStatusViewController =myselfVC;
+        [myselfVC release];
+    }
+    return _publicStatusViewController;
 }
 
 

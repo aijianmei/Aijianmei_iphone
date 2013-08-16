@@ -646,8 +646,8 @@ static UserService* _defaultUserService = nil;
          loader.delegate = delegate;
          loader.params = params;
          loader.targetObject = nil;
-//         loader.objectMapping = userMapping;
-//         loader.method = RKRequestMethodPOST;
+         loader.objectMapping = userMapping;
+         loader.method = RKRequestMethodPOST;
          
          loader.onDidLoadResponse = ^(RKResponse *response) {
              NSLog(@"Response did arrive");

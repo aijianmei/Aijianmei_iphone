@@ -545,7 +545,6 @@
 		4A948FC617B1DD050037D9A0 /* ShareFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A948FC417B1DD050037D9A0 /* ShareFilterViewController.xib */; };
 		4A948FD117B1E2920037D9A0 /* StatusViewBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A948FCF17B1E2910037D9A0 /* StatusViewBaseController.m */; };
 		4A948FD217B1E2920037D9A0 /* StatusViewBaseController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A948FD017B1E2920037D9A0 /* StatusViewBaseController.xib */; };
-		4A948FD517B1E4E40037D9A0 /* LPBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A948FD417B1E4E30037D9A0 /* LPBaseCell.m */; };
 		4A948FD917B1F80A0037D9A0 /* StatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A948FD717B1F8080037D9A0 /* StatusCell.m */; };
 		4A948FDA17B1F80A0037D9A0 /* StatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A948FD817B1F8090037D9A0 /* StatusCell.xib */; };
 		4A94900417B238640037D9A0 /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A948FF517B238640037D9A0 /* CustomScrollView.m */; };
@@ -1586,8 +1585,6 @@
 		4A948FCE17B1E2910037D9A0 /* StatusViewBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewBaseController.h; sourceTree = "<group>"; };
 		4A948FCF17B1E2910037D9A0 /* StatusViewBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewBaseController.m; sourceTree = "<group>"; };
 		4A948FD017B1E2920037D9A0 /* StatusViewBaseController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusViewBaseController.xib; sourceTree = "<group>"; };
-		4A948FD317B1E4E30037D9A0 /* LPBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPBaseCell.h; sourceTree = "<group>"; };
-		4A948FD417B1E4E30037D9A0 /* LPBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPBaseCell.m; sourceTree = "<group>"; };
 		4A948FD617B1F8070037D9A0 /* StatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusCell.h; sourceTree = "<group>"; };
 		4A948FD717B1F8080037D9A0 /* StatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusCell.m; sourceTree = "<group>"; };
 		4A948FD817B1F8090037D9A0 /* StatusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusCell.xib; sourceTree = "<group>"; };
@@ -3909,8 +3906,6 @@
 				4A948FCE17B1E2910037D9A0 /* StatusViewBaseController.h */,
 				4A948FCF17B1E2910037D9A0 /* StatusViewBaseController.m */,
 				4A948FD017B1E2920037D9A0 /* StatusViewBaseController.xib */,
-				4A948FD317B1E4E30037D9A0 /* LPBaseCell.h */,
-				4A948FD417B1E4E30037D9A0 /* LPBaseCell.m */,
 				4A948FD617B1F8070037D9A0 /* StatusCell.h */,
 				4A948FD717B1F8080037D9A0 /* StatusCell.m */,
 				4A948FD817B1F8090037D9A0 /* StatusCell.xib */,
@@ -5072,7 +5067,6 @@
 				4A6585D517B127220056DA91 /* PostStatusRespose.m in Sources */,
 				4A948FC517B1DD050037D9A0 /* ShareFilterViewController.m in Sources */,
 				4A948FD117B1E2920037D9A0 /* StatusViewBaseController.m in Sources */,
-				4A948FD517B1E4E40037D9A0 /* LPBaseCell.m in Sources */,
 				4A948FD917B1F80A0037D9A0 /* StatusCell.m in Sources */,
 				4A94900417B238640037D9A0 /* CustomScrollView.m in Sources */,
 				4A94900517B238640037D9A0 /* GifView.m in Sources */,

@@ -614,10 +614,7 @@
         }
         default:
             break;
-    }
-     //Set the Image of the cell when you click
-//    [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
-    
+    }    
 }
 
 - (AppDelegate*)getAppDelegate
@@ -662,6 +659,8 @@
 #pragma mark - SinaWeiboRequest Delegate
 - (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
 {
+    [self hideActivity];
+
     //获取用户信息
     if ([request.url hasSuffix:@"users/show.json"])
     {
@@ -688,11 +687,11 @@
 - (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
 {
     
-    [self hideActivity];
     
     //获取用户信息
     if ([request.url hasSuffix:@"users/show.json"])
     {
+        [self hideActivity];
         NSLog(@"******%@",[result description]);
         [self createSinaFriendship];
     }
@@ -700,6 +699,8 @@
     //关注爱健美用户
     if ([request.url hasSuffix:@"friendships/create.json"])
     {
+        
+        [self hideActivity];
         NSLog(@"******%@",[result description]);
         UIAlertView *alerView  = [[UIAlertView alloc]initWithTitle:@"成功关注了@爱健美网"
                                                            message:@""
