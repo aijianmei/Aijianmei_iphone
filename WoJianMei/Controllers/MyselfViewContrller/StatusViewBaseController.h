@@ -16,7 +16,6 @@
 
 @interface StatusViewBaseController : PPTableViewController<StatusCellDelegate,RKObjectLoaderDelegate,ImageBrowserDelegate>{
     
-    UINib               *statusCellNib;
     NSMutableDictionary *_avatarDictionary;
     NSMutableDictionary *_imageDictionary;
     NSNotificationCenter *defaultNotifCenter;
@@ -26,19 +25,13 @@
     BOOL                shouldLoad;
     BOOL _reloading;
     
-    
     NSIndexPath * likeIndexPath;
-
-
-
 }
-@property (nonatomic, retain)   UINib                   *statusCellNib;
 @property (nonatomic, retain)   NSMutableDictionary     *avatarDictionary;
 @property (nonatomic, retain)   NSMutableDictionary     *imageDictionary;
 
 @property (assign, nonatomic) NSInteger start;
 @property (nonatomic, retain)   ImageBrowser            *browserView;
-- (void)reloadTableViewDataSource;
 -(void)getImages;
 
 

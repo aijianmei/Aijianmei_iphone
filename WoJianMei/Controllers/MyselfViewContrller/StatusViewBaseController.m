@@ -35,7 +35,6 @@ enum ErrorCode
 @end
 
 @implementation StatusViewBaseController
-@synthesize statusCellNib;
 @synthesize imageDictionary =_imageDictionary;
 @synthesize avatarDictionary =_avatarDictionary;
 @synthesize browserView =_browserView;
@@ -43,30 +42,25 @@ enum ErrorCode
 
 
 -(void)dealloc{
-    self.statusCellNib = nil;
     [_avatarDictionary release];
     [_imageDictionary release];
     [_browserView release];
     [super dealloc];
 }
 
--(UINib*)statusCellNib
-{
-    if (statusCellNib == nil)
-    {
-        [statusCellNib release];
-         statusCellNib = [[StatusCell nib] retain];
-    }
-    return statusCellNib;
-}
-
 
 -(void)setup{
      defaultNotifCenter = [NSNotificationCenter defaultCenter];
-    _avatarDictionary = [[NSMutableDictionary alloc] init];
-    _imageDictionary = [[NSMutableDictionary alloc] init];
+     _avatarDictionary = [[NSMutableDictionary alloc] init];
+     _imageDictionary = [[NSMutableDictionary alloc] init];
 }
 
+
+-(void)viewDidUnload{
+    
+    [defaultNotifCenter removeObserver:self name:HHNetDataCacheNotification object:nil];
+    [super viewDidUnload];
+}
 - (void)viewDidLoad
 {
     self.supportRefreshHeader = YES;
@@ -76,10 +70,8 @@ enum ErrorCode
     [self setup];
     
     // Do any additional setup after loading the view from its nib.
-    
-    
+
     [defaultNotifCenter addObserver:self selector:@selector(getAvatar:)         name:HHNetDataCacheNotification object:nil];
-    
     
 }
 
@@ -88,29 +80,9 @@ enum ErrorCode
 #pragma mark  Reload and LoadMore Method
 //加载新的数据
 - (void)reloadTableViewDataSource{
-    
-    [self showActivityWithText:@"数据加载中..."];
-    
-    _reloading = YES;
-    shouldLoad =YES;
-    
-    [[PostService sharedService] loadStatusWithUid:498
-                                          gymGroup:0
-                                             start:0
-                                            offSet:5
-                                          delegate:self];
 }
 //加载更多数据
 - (void)loadMoreTableViewDataSource {
-    _reloading =NO;
-    [self showActivityWithText:@"数据加载中..."];
-    [[PostService sharedService] loadStatusWithUid:498
-                                          gymGroup:0
-                                             start:_start
-                                            offSet:5
-                                          delegate:self];
-    
-    
 }
 
 //计算text field 的高度。
@@ -123,20 +95,7 @@ enum ErrorCode
     return height;
 }
 
-- (id)cellForTableView:(UITableView *)tableView fromNib:(UINib *)nib {
-    static NSString *cellID = @"StatusCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (cell == nil) {
-        NSLog(@"statuss cell new");
-        NSArray *nibObjects = [nib instantiateWithOwner:nil options:nil];
-        cell = [nibObjects objectAtIndex:0];
-    }
-    else {
-        [(LPBaseCell *)cell reset];
-    }
-    
-    return cell;
-}
+
 
 #pragma mark - UITableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -151,25 +110,26 @@ enum ErrorCode
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger  row = indexPath.row;
-    StatusCell *cell = [self cellForTableView:tableView fromNib:self.statusCellNib];
     
-    if (row >= [self.dataList count]) {
-        //        NSLog(@"cellForRowAtIndexPath error ,index = %d,count = %d",row,[statuesArr count]);
-        return cell;
-    }
+    NSString *CellIdentifier = [StatusCell getCellIdentifier];
+	StatusCell *cell = (StatusCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [StatusCell createCell:self];
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	}
     
     NSData *imageData = [_imageDictionary objectForKey:[NSNumber numberWithInt:[indexPath row]]];
     NSData *avatarData = [_avatarDictionary objectForKey:[NSNumber numberWithInt:[indexPath row]]];
-    
-    PostStatus *status = [self.dataList objectAtIndex:row];
+
+    PostStatus *status = [self.dataList objectAtIndex:indexPath.row];
     cell.delegate = self;
     cell.indexPath = indexPath;
     
-   [cell setupCell:status avatarImageData:avatarData
-  contentImageData:imageData];
+    if (status) {
+        [cell setupCell:status avatarImageData:avatarData
+       contentImageData:imageData];
     
-    
+    }
     return cell;
 }
 
@@ -258,20 +218,16 @@ enum ErrorCode
 
     //得到的是头像图片
     if ([url isEqualToString:sts.avatarProfileUrl])
-    {
-//        UIImage * image     = [UIImage imageWithData:data];
-        //同时显示图片；
-        
-//        User *user = [[User alloc]init];
-//        user.avatarImage  = image;
-        
-        [_avatarDictionary setObject:data forKey:indexNumber];
+    {        
+        [_avatarDictionary setObject:data
+                              forKey:indexNumber];
     }
     
     //得到的是博文图片
     if([url isEqualToString:sts.imageurl])
     {
-        [_imageDictionary setObject:data forKey:indexNumber];
+        [_imageDictionary setObject:data
+                             forKey:indexNumber];
     }
     
     //reload table
@@ -280,7 +236,6 @@ enum ErrorCode
     
     
     [self.dataTableView reloadRowsAtIndexPaths:arr withRowAnimation:NO];
-    
     [self.dataTableView reloadData];
 
 }
@@ -335,10 +290,6 @@ enum ErrorCode
     }
     else shouldShowIndicator = YES;
 }
-
-
-
-
 
 #pragma mark - StatusCellDelegate
 

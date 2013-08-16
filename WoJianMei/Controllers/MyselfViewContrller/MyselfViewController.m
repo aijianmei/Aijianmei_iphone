@@ -24,6 +24,8 @@
 #import "PostStatusRespose.h"
 #import "PostStatus.h"
 #import "PostService.h"
+#import "HHNetDataCacheManager.h"
+
 
 #define USER                          @"user"
 #define USER_NAME                     @"screen_name"
@@ -46,6 +48,7 @@
 @synthesize postViewController =_postViewController;
 @synthesize start  =_start;
 @synthesize targetUid =_targetUid;
+@synthesize settingViewController =_settingViewController;
 
 
 
@@ -61,6 +64,7 @@
     [_user release];
     [_postViewController release];
     [_targetUid release];
+    [_settingViewController release];
     [super dealloc];
 }
 
@@ -70,7 +74,6 @@
     self.headerVImageButton =nil;
     self.backGroundImageView =nil;
     self.userNameLabel = nil;
-    self.headerVImageButton =nil;
     self.footerVImageV =nil;
     self.myHeaderView =nil;
     self.userNameLabel =nil;
@@ -82,7 +85,7 @@
 
 -(void)addHeaderView{
     self.myHeaderView  =[[UIView alloc]init];
-    [_myHeaderView setFrame: CGRectMake(0, 0, 320, 240)];
+    [_myHeaderView setFrame: CGRectMake(0, 0, 320, 250)];
     [self.dataTableView setTableHeaderView:self.myHeaderView];
 
 }
@@ -95,15 +98,32 @@
 
 
 -(void)addAvtarImageButton{
+    
     self.headerVImageButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 40, 100, 100)];
+    
+    CALayer * layer = [self.headerVImageButton layer];
+    layer.borderColor = [[UIColor whiteColor] CGColor];
+    layer.borderWidth = 2.0f;
+    
+    //添加四个边阴影
+    _headerVImageButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    _headerVImageButton.layer.shadowOffset = CGSizeMake(0, 0);
+    _headerVImageButton.layer.shadowOpacity = 0.5;
+    _headerVImageButton.layer.shadowRadius = 10.0;
+    
+    //给iamgeview添加阴影 < wbr > 和边框
+    
+    //添加两个边阴影
+    _headerVImageButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    _headerVImageButton.layer.shadowOffset = CGSizeMake(4, 4);
+    _headerVImageButton.layer.shadowOpacity = 0.5;
+    _headerVImageButton.layer.shadowRadius = 2.0;
+    
+    
     [_headerVImageButton addTarget:self action:@selector(clickVatarButton:) forControlEvents:UIControlEventTouchUpInside];
-    _headerVImageButton.layer.borderWidth = 4.0f;
-    _headerVImageButton.layer.cornerRadius = 8.0f;
-    _headerVImageButton.layer.borderColor = [UIColor clearColor].CGColor;
     [_headerVImageButton setFrame:CGRectMake(240, 155, 70, 70)];
     [_headerVImageButton setBackgroundColor:[UIColor clearColor]];
     [self.myHeaderView addSubview:_headerVImageButton];
-
      
 }
 
@@ -180,9 +200,9 @@
     //本地数据存在的时候直接读取本地数据;
     if ([[UserService defaultService] getUserInfoByUid:uid]) {
         User *user = [[UserService defaultService] getUserInfoByUid:uid];
+        [[UserService defaultService] setUser:user];
         [self setUser:user];
         [self upgradeUI];
-        [[UserService defaultService] storeUserInfoByUid:user.uid];
         //加载新数据
         [self loadPublicDatas];
         
@@ -195,15 +215,17 @@
 
 - (void)upgradeUI
 {
-    [self.headerVImageButton setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
     
-    
-    UIImage *image = [self loadImageInDirectory:self.user.profileImageUrl];
-    if (image) {
-        [self.headerVImageButton  setImage:image forState:UIControlStateNormal];
+    if (self.user.avatarImage) {
+         [self.headerVImageButton setImage:self.user.avatarImage
+                              forState:UIControlStateNormal];
+    }else{
+        
+        [self.headerVImageButton setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
     }
+  
     
-
+    
     
     [self.backGroundImageView setImageWithURL:[NSURL URLWithString:self.user.avatarBackGroundImage] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
     [self.userNameLabel setText:_user.name];
@@ -228,9 +250,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-//    [self loadUserData];
+    [self loadUserData];
     [self upgradeUI];
-    [self.dataTableView reloadData];
     
 
 }
@@ -238,7 +259,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
     [[BaiduMobStat defaultStat] pageviewStartWithName:@"MyselfView"];
     
 }
@@ -249,29 +269,41 @@
 }
 
 
+-(void)setup{
+    defaultNotifCenter = [NSNotificationCenter defaultCenter];
+    _avatarDictionary = [[NSMutableDictionary alloc] init];
+    _imageDictionary = [[NSMutableDictionary alloc] init];
+}
+
+
+
 -(void)viewDidLoad
 {
-//    self.supportRefreshHeader = YES;
-//    self.supportRefreshFooter = YES;
+    self.supportRefreshHeader = YES;
+    self.supportRefreshFooter = YES;
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-//    self.dataList = [NSArray arrayWithObjects:@"性别",@"年龄",@"身高(cm)",@"体重(kg)",@"BMI", nil];
 
-    [self setTitle:@"我"];
-    
-    [self setNavigationRightButton:@"设置" imageName:@"top_bar_commonButton.png" action:@selector(clickSettingsButton:)];
-    
-    
-    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
+    [self setTitle:@"我"];
+    [self setNavigationRightButton:@"设置" imageName:@"top_bar_commonButton.png" action:@selector(clickSettingsButton:)];
+    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+   
 
+    
+    
     [self initUI];
+    
+    
+    [self setup];
+    
+    [defaultNotifCenter addObserver:self selector:@selector(getAvatar:)         name:HHNetDataCacheNotification object:nil];
+    
     
     [self loadUserData];
 
-    [self reloadTableViewDataSource];
 }
 
 -(void)clickPostStatusButton:(id)sender {
@@ -361,15 +393,20 @@
 #pragma mark  Reload and LoadMore Method
 //加载新的数据
 - (void)reloadTableViewDataSource{
+    
+    _reloading = YES;
     [self showActivityWithText:@"数据加载中..."];
     [[PostService sharedService] loadStatusWithUid:[self.user.uid integerValue]
                                          targetUid:[self.targetUid  integerValue]
                                           gymGroup:0
                                              start:0
                                             offSet:5
-                                          delegate:self];}
+                                          delegate:self];
+
+}
 //加载更多数据
 - (void)loadMoreTableViewDataSource {
+    _reloading = NO;
     [self showActivityWithText:@"数据加载中..."];
     [[PostService sharedService] loadStatusWithUid:[self.user.uid integerValue]
                                          targetUid:[self.targetUid integerValue]
@@ -380,75 +417,20 @@
     
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
 
-
-
-//#pragma mark --
-//#pragma mark  UITableViewDelegate Method
-//
-//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//    
-//    return 50;
-//    
-//
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-////第一个section  和header 的距离
-//    if (section ==0) {
-//        return 30;
-//    }
-//
-//    return 0;
-//}
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    // Return the number of sections.
-//    return 1;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    // Return the number of rows in the section.
-//
-//    return [self.dataList count];
-//    
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    
-//    NSString *CellIdentifier = [StatusCell getCellIdentifier];
-//    
-//    StatusCell *cell = (StatusCell *)[self.dataTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    
-//    // Configure the cell...
-//    if (cell) {
-//        cell = [[[StatusCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-//    }
-//    
-//    
-//    
-//        return cell;
-//}
-//
-//
-//
-//////Click the cell methos
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//
-//}
 
 -(void)clickSettingsButton:(id)sender{
     
-    Myself_SettingsViewController *vc = [[Myself_SettingsViewController alloc]initWithNibName:@"Myself_SettingsViewController" bundle:nil];
     
-    [self.navigationController pushViewController :vc animated:YES];
-     vc.user = self.user;
-    [vc release];
+    if (self.settingViewController ==nil) {
+      self.settingViewController = [[Myself_SettingsViewController alloc]initWithNibName:@"Myself_SettingsViewController" bundle:nil];
+
+    }
+    [self.navigationController pushViewController :_settingViewController animated:YES];
     
 }
 
@@ -515,6 +497,7 @@
         [self upgradeUI];
     }
     
+    
     if ([object isMemberOfClass:[PostStatus class]]){
         PostStatus *postStatus =  [objects objectAtIndex:0];
         PPDebug(@"*****Get Statuses Successfully!!!*****");
@@ -523,18 +506,27 @@
         PPDebug(@"******%@******",postStatus.content);
         PPDebug(@"******%@******",postStatus.imageurl);
         PPDebug(@"******%@******",postStatus.create_time);
-
-        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+        NSMutableArray *newDataList =nil;
         
         if (_start == 0) {
             self.dataList = objects;
         } else {
-            NSMutableArray *newDataList = [NSMutableArray arrayWithArray:self.dataList];
+            
+            newDataList = [NSMutableArray arrayWithArray:self.dataList];
             [newDataList addObjectsFromArray:objects];
+            if (_reloading) {
+                [newDataList setArray:objects];
+                _start =0;
+                
+            }
             self.dataList = newDataList;
         }
-           _start += [objects count];
+        
+        _start += [objects count];
         PPDebug(@"****objects %d******",[self.dataList count]);
+        [self.dataTableView reloadData];
+        [self getImages];
+        [self.navigationItem.rightBarButtonItem setEnabled:YES];
     }
     
     if ([object isMemberOfClass:[PostStatusRespose class]]){

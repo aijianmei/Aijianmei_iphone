@@ -28,6 +28,45 @@
 @synthesize likeButton;
 @synthesize likeCountLabel;
 
+- (void)dealloc {
+    [avatarImageButton release];
+    [contentTF release];
+    [userNameLB release];
+    [bgImage release];
+    [contentImage release];
+    [retwitterMainV release];
+    [retwitterBgImage release];
+    [retwitterContentTF release];
+    [retwitterContentImage release];
+    [cellIndexPath release];
+    [countLB release];
+    [fromLB release];
+    [timeLB release];
+    [likeCountLabel
+     release];
+    [likeButton release];
+    [super dealloc];
+}
+
+
+
+// just replace ProductDetailCell by the new Cell Class Name
++ (StatusCell*) createCell:(id)delegate
+{
+    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"StatusCell" owner:self options:nil];
+    // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).
+    if (topLevelObjects == nil || [topLevelObjects count] <= 0){
+        NSLog(@"create <StatusCell> but cannot find cell object from Nib");
+        return nil;
+    }
+    
+    ((StatusCell*)[topLevelObjects objectAtIndex:0]).delegate = delegate;
+    
+    return (StatusCell*)[topLevelObjects objectAtIndex:0];
+    
+}
+
+
 //
 -(void)setupCell:(PostStatus *)status avatarImageData:(NSData *)avatarData contentImageData:(NSData *)imageData
 {
@@ -100,27 +139,18 @@
     }
 }
 
-
-
-
-
-- (void)dealloc {
-    [avatarImageButton release];
-    [contentTF release];
-    [userNameLB release];
-    [bgImage release];
-    [contentImage release];
-    [retwitterMainV release];
-    [retwitterBgImage release];
-    [retwitterContentTF release];
-    [retwitterContentImage release];
-    [cellIndexPath release];
-    [countLB release];
-    [fromLB release];
-    [timeLB release];
-    [likeCountLabel
-      release];
-    [likeButton release];
-    [super dealloc];
++ (NSString*)getCellIdentifier{
+    
+    
+    return  @"StatusCell";
 }
+
+
++ (CGFloat)getCellHeight{
+    
+    return 100;
+
+}
+
+
 @end

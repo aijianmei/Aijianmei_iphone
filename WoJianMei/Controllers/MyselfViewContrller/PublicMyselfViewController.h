@@ -14,6 +14,7 @@
 
 @class User;
 @class PostViewController;
+@class MyselfViewController;
 
 
 @interface PublicMyselfViewController : StatusViewBaseController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
@@ -32,6 +33,7 @@
     UserService *_userService;
     PostViewController *_postViewController;
     
+    MyselfViewController *_myselfViewController;
     
 }
 
@@ -47,9 +49,7 @@
 @property (nonatomic,retain) User *user;
 @property (nonatomic,retain) PostViewController *postViewController;
 @property (assign, nonatomic) NSInteger start;
-
-
-- (void)drawRect:(CGRect)rect;
+@property (nonatomic,retain) MyselfViewController *myselfViewController;
 
 
 

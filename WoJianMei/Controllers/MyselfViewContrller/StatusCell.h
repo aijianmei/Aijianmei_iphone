@@ -6,7 +6,7 @@
 //  Copyright (c) 2012年 Dunbar Science & Technology. All rights reserved.
 //
 
-#import "LPBaseCell.h"
+#import "PPTableViewCell.h"
 #import "PostStatus.h"
 
 @class StatusCell;
@@ -19,7 +19,7 @@
 
 @end
 
-@interface StatusCell : LPBaseCell
+@interface StatusCell : PPTableViewCell
 {
     
     UIButton *avatarImageButton;
@@ -56,4 +56,15 @@
 
 -(CGFloat)setTFHeightWithImage:(BOOL)hasImage haveRetwitterImage:(BOOL)haveRetwitterImage;
 -(void)setupCell:(PostStatus*)status avatarImageData:(NSData*)avatarData contentImageData:(NSData*)imageData;
+
+
+
+
++ (StatusCell*) createCell:(id)delegate;
++ (NSString*)getCellIdentifier;
++ (CGFloat)getCellHeight;
+
+
+
+
 @end

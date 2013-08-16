@@ -26,6 +26,7 @@
 #import "PostService.h"
 #import "PostLikeResponse.h"
 #import "UserInfoPickerViewController.h"
+#import "HHNetDataCacheManager.h"
 
 
 
@@ -56,6 +57,7 @@ enum ErrorCode
 @synthesize user =_user;
 @synthesize postViewController =_postViewController;
 @synthesize start  =_start;
+@synthesize myselfViewController =_myselfViewController;
 
 
 
@@ -70,6 +72,7 @@ enum ErrorCode
     [_sina_userInfo release],_sina_userInfo = nil;
     [_user release];
     [_postViewController release];
+    [_myselfViewController release];
     [super dealloc];
 }
 
@@ -85,13 +88,14 @@ enum ErrorCode
     self.userNameLabel =nil;
     self.descriptionLabel =nil;
     self.postViewController =nil;
+    self.myselfViewController =nil;
 }
 
 
 
 -(void)addHeaderView{
     self.myHeaderView  =[[UIView alloc]init];
-    [_myHeaderView setFrame: CGRectMake(0, 0, 320, 240)];
+    [_myHeaderView setFrame: CGRectMake(0, 0, 320, 250)];
     [self.dataTableView setTableHeaderView:self.myHeaderView];
     
 }
@@ -105,14 +109,30 @@ enum ErrorCode
 
 -(void)addAvtarImageButton{
     self.headerVImageButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 40, 100, 100)];
-    [_headerVImageButton addTarget:self action:@selector(clickVatarButton:) forControlEvents:UIControlEventTouchUpInside];
-    _headerVImageButton.layer.borderWidth = 4.0f;
-    _headerVImageButton.layer.cornerRadius = 8.0f;
-    _headerVImageButton.layer.borderColor = [UIColor clearColor].CGColor;
+    
+    CALayer * layer = [self.headerVImageButton layer];
+    layer.borderColor = [[UIColor whiteColor] CGColor];
+    layer.borderWidth = 2.0f;
+    
+    //添加四个边阴影
+    _headerVImageButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    _headerVImageButton.layer.shadowOffset = CGSizeMake(0, 0);
+    _headerVImageButton.layer.shadowOpacity = 0.5;
+    _headerVImageButton.layer.shadowRadius = 10.0;
+    
+    //给iamgeview添加阴影 < wbr > 和边框
+    
+    //添加两个边阴影
+    _headerVImageButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    _headerVImageButton.layer.shadowOffset = CGSizeMake(4, 4);
+    _headerVImageButton.layer.shadowOpacity = 0.5;
+    _headerVImageButton.layer.shadowRadius = 2.0;
+    
+    
+    [_headerVImageButton addTarget:self action:@selector(clickVatarButton:) forControlEvents:UIControlEventTouchUpInside];    
     [_headerVImageButton setFrame:CGRectMake(240, 155, 70, 70)];
     [_headerVImageButton setBackgroundColor:[UIColor clearColor]];
     [self.myHeaderView addSubview:_headerVImageButton];
-    
     
 }
 
@@ -131,15 +151,17 @@ enum ErrorCode
 {
     //// Descritpin broundground
     UIImageView *descriptionBG = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"description_bround.png"]];
-    [descriptionBG setFrame:CGRectMake(0, 200, 320, 40)];
-    [self.myHeaderView addSubview:descriptionBG];
+    [descriptionBG setFrame:CGRectMake(0, 200, 320, 50)];
+    [_myHeaderView addSubview:descriptionBG];
     [descriptionBG release];
+
+    
 }
 
 -(void)addDescriptionLabel{
     
     //初始化label
-    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 227, 270, 40)];
+    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 177, 270, 50)];
     //设置自动行数与字符换行
     [descriptionLabel setNumberOfLines:2];
     [descriptionLabel setLineBreakMode:NSLineBreakByWordWrapping];
@@ -148,7 +170,7 @@ enum ErrorCode
     NSString *s = @"这是一个测试！！！ADSFASDFASDFASDFSADFASDFASFASFASFASDFASDFASDFASFASDFASDFASDFASDFASDFASDFASFASDFASDFASDFASDFASDFASDFA";
     UIFont *font = [UIFont fontWithName:@"Arial" size:12];
     //设置一个行高上限
-    CGSize size = CGSizeMake(230,40);
+    CGSize size = CGSizeMake(230,50);
     
     //计算实际frame大小，并将label的frame变成实际大小
     CGSize labelsize = [s sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
@@ -161,12 +183,12 @@ enum ErrorCode
     [self.descriptionLabel  setLineBreakMode:NSLineBreakByTruncatingTail];
     [self.myHeaderView addSubview:self.descriptionLabel];
     [_myHeaderView bringSubviewToFront:_headerVImageButton];
+    
+    
 }
 
-
-
-
 -(void)initPostViewController{
+    
     PostViewController *vc = [[PostViewController alloc]initWithNibName:
                               @"PostViewController" bundle:nil];
     self.postViewController =vc;
@@ -174,7 +196,6 @@ enum ErrorCode
 }
 
 -(void)initUI{
-    
     [self addHeaderView];
     [self addAvatarBGImageView];
     [self addAvtarImageButton];
@@ -194,6 +215,8 @@ enum ErrorCode
     if (user) {
         
         User *user = [[UserService defaultService] getUserInfoByUid:uid];
+        [[UserService defaultService] setUser:user];
+
         [self setUser:user];
         [self upgradeUI];
                 
@@ -209,14 +232,15 @@ enum ErrorCode
 
 - (void)upgradeUI
 {
-    [self.headerVImageButton setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
-    
-    
-    UIImage *image = [self loadImageInDirectory:self.user.profileImageUrl];
-    if (image) {
-        [self.headerVImageButton  setImage:image forState:UIControlStateNormal];
+    if (self.user.avatarImage) {
+        [self.headerVImageButton setImage:self.user.avatarImage
+                                 forState:UIControlStateNormal];
+    }else{
+        
+        [self.headerVImageButton setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
     }
-    
+
+
     [self.backGroundImageView setImageWithURL:[NSURL URLWithString:self.user.avatarBackGroundImage] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
     [self.userNameLabel setText:_user.name];
     [self.descriptionLabel setText:_user.description];
@@ -235,10 +259,14 @@ enum ErrorCode
 
 
 
+
+
+
 #pragma mark -
 #pragma mark - View lifecycle
 
 -(void)viewWillAppear:(BOOL)animated{
+    [self loadUserData];
     [self upgradeUI];
     [super viewWillAppear:YES];
     
@@ -261,8 +289,8 @@ enum ErrorCode
 
 -(void)viewDidLoad
 {
-    //    self.supportRefreshHeader = YES;
-    //    self.supportRefreshFooter = YES;
+    self.supportRefreshHeader = YES;
+    self.supportRefreshFooter = YES;
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
@@ -278,8 +306,11 @@ enum ErrorCode
     [self showBackgroundImage];
     
     [self initUI];
-
+    
     [self loadUserData];
+    
+    
+     [defaultNotifCenter addObserver:self selector:@selector(getAvatar:)         name:HHNetDataCacheNotification object:nil];
 
 }
 
@@ -392,10 +423,12 @@ enum ErrorCode
 -(void)cellAvatarButtonDidClick:(StatusCell *)theCell{
    
     PostStatus *sts = [self.dataList objectAtIndex: theCell.indexPath.row];
-    MyselfViewController *vc = [[MyselfViewController alloc]initWithNibName:@"MyselfViewController" bundle:nil];
-    vc.targetUid = sts.uid;
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
+    if (self.myselfViewController ==nil) {
+        self.myselfViewController = [[MyselfViewController alloc]initWithNibName:@"MyselfViewController" bundle:nil];
+    }
+    
+        self.myselfViewController.targetUid = sts.uid;
+       [self.navigationController pushViewController:_myselfViewController animated:YES];
     
 }
 
@@ -428,10 +461,15 @@ enum ErrorCode
 }
 
 -(void)clickVatarButton:(id)sender{
-    MyselfViewController *vc =[[MyselfViewController alloc]initWithNibName:@"MyselfViewController" bundle:nil];
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
+
+    if (self.myselfViewController ==nil) {
+        self.myselfViewController = [[MyselfViewController alloc]initWithNibName:@"MyselfViewController" bundle:nil];
+    }
+    self.myselfViewController.targetUid = self.user.uid;
+    [self.navigationController pushViewController:_myselfViewController animated:YES];
 }
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -463,6 +501,8 @@ enum ErrorCode
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
+    
+    
     [self dataSourceDidFinishLoadingNewData];
     [self dataSourceDidFinishLoadingMoreData];
     
@@ -580,7 +620,5 @@ enum ErrorCode
             [self popupUnhappyMessage:@"已赞,不可以贪心哦！" title:nil];
         }
     }
-    
-    
 }
 @end
