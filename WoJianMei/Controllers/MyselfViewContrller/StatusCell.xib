@@ -127,9 +127,9 @@
 								<int key="IBUIContentMode">1</int>
 								<array key="IBUIGestureRecognizers" id="0"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<object class="NSCustomResource" key="IBUIImage">
+								<object class="NSCustomResource" key="IBUIImage" id="1009982060">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">place_holder.png</string>
+									<string key="NSResourceName">place_holder@2x.png</string>
 								</object>
 							</object>
 							<object class="IBUILabel" id="311117490">
@@ -250,10 +250,7 @@
 										<int key="IBUIContentMode">1</int>
 										<reference key="IBUIGestureRecognizers" ref="0"/>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-										<object class="NSCustomResource" key="IBUIImage">
-											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">loadingImage_50x118.png</string>
-										</object>
+										<reference key="IBUIImage" ref="1009982060"/>
 									</object>
 								</array>
 								<string key="NSFrame">{{-5, 166}, {320, 160}}</string>
@@ -585,108 +582,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">80</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">LPBaseCell</string>
-					<string key="superclassName">PPTableViewCell</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/LPBaseCell.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PPTableViewCell</string>
-					<string key="superclassName">UITableViewCell</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/PPTableViewCell.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">StatusCell</string>
-					<string key="superclassName">LPBaseCell</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="avatarImageButton">UIButton</string>
-						<string key="bgImage">UIImageView</string>
-						<string key="contentImage">UIImageView</string>
-						<string key="contentTF">UITextView</string>
-						<string key="countLB">UILabel</string>
-						<string key="fromLB">UILabel</string>
-						<string key="likeButton">UIButton</string>
-						<string key="likeCountLabel">UILabel</string>
-						<string key="retwitterBgImage">UIImageView</string>
-						<string key="retwitterContentImage">UIImageView</string>
-						<string key="retwitterContentTF">UITextView</string>
-						<string key="retwitterMainV">UIView</string>
-						<string key="timeLB">UILabel</string>
-						<string key="userNameLB">UILabel</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="avatarImageButton">
-							<string key="name">avatarImageButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="bgImage">
-							<string key="name">bgImage</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="contentImage">
-							<string key="name">contentImage</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="contentTF">
-							<string key="name">contentTF</string>
-							<string key="candidateClassName">UITextView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="countLB">
-							<string key="name">countLB</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="fromLB">
-							<string key="name">fromLB</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="likeButton">
-							<string key="name">likeButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="likeCountLabel">
-							<string key="name">likeCountLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="retwitterBgImage">
-							<string key="name">retwitterBgImage</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="retwitterContentImage">
-							<string key="name">retwitterContentImage</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="retwitterContentTF">
-							<string key="name">retwitterContentTF</string>
-							<string key="candidateClassName">UITextView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="retwitterMainV">
-							<string key="name">retwitterMainV</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="timeLB">
-							<string key="name">timeLB</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="userNameLB">
-							<string key="name">userNameLB</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/StatusCell.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
@@ -694,8 +590,7 @@
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="Press_like_icon.png">{44, 44}</string>
 			<string key="like_icon.png">{44, 44}</string>
-			<string key="loadingImage_50x118.png">{100, 118}</string>
-			<string key="place_holder.png">{160, 80}</string>
+			<string key="place_holder@2x.png">{320, 160}</string>
 			<string key="touxiang_40x40.png">{50, 50}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>

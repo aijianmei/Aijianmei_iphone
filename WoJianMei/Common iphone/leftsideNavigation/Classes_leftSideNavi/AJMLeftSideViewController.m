@@ -33,9 +33,21 @@
 #import "BaiduMobStat.h"
 
 
-#define kAppKey @"3622140445"
-#define kAppSecret @"f94d063d06365972215c62acaadf95c3"
+//239725454
+//e2064ac8fab9d889a9eccecc5babad11
+
+//爱健美网
+//#define kAppKey @"3622140445"
+//#define kAppSecret @"f94d063d06365972215c62acaadf95c3"
+
+
+
+//爱健美
+#define kAppKey @"239725454"
+#define kAppSecret @"e2064ac8fab9d889a9eccecc5babad11"
 #define KAppRedirectURI @"http://aijianmei.com"
+
+
 
 #define AIJIANMEI_SINAWEIBO_ID @"2692984661"
 
@@ -55,6 +67,7 @@
 @synthesize lifeStytleViewController =_lifeStytleViewController;
 @synthesize workOutManagerViewController =_workOutManagerViewController;
 @synthesize moreViewController =_moreViewController;
+@synthesize webViewController =_webViewController;
 
 - (id)init
 {
@@ -82,6 +95,7 @@
     [_lifeStytleViewController release];
     [_workOutManagerViewController release];
     [_moreViewController release];
+    [_webViewController release];
     [super dealloc];
 }
 
@@ -95,6 +109,7 @@
     [self setLifeStytleViewController:nil];
     [self setWorkOutManagerViewController:nil];
     [self setMoreViewController:nil];
+    [self setWebViewController:nil];
     [super viewDidUnload];
    
 }
@@ -125,23 +140,18 @@
     [self.view addSubview:_tableView];
     [_tableView release];
     
-    //
 }
 
 
 
 #pragma mark --
 #pragma mark - initViewControllers
--(void)initHomeViewController{
+-(void)initHomeViewController
+
+{
     
-    if (self.homeViewController == nil) {
-        
-        HomeViewController *vc =[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
-        self.homeViewController =vc;
-        [vc release];
-        self.homeViewController.title = @"首页";
-    }
-    _navigationController = [[UINavigationController alloc] initWithRootViewController:self.homeViewController];
+    HomeViewController *homeViewVC =[[AppDelegate getAppDelegate] initHomeViewController];
+    _navigationController = [[UINavigationController alloc] initWithRootViewController:homeViewVC];
 }
 
 -(void)initWorkoutPlanViewController{
@@ -174,7 +184,7 @@
     if (self.supplementViewController ==nil) {
 
     self.supplementViewController =[[SupplementViewController alloc] initWithNibName:@"SupplementViewController" bundle:nil];
-    self.homeViewController.title = @"补充";
+    self.supplementViewController.title = @"补充";
         
     }
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_supplementViewController] ;
@@ -194,15 +204,13 @@
     if (self.lifeStytleViewController ==nil) {
         
         self.lifeStytleViewController =[[LifeStytleViewController alloc] initWithNibName:@"LifeStytleViewController" bundle:nil];
-        self.nutriViewController.title = @"生活方式";
+        self.lifeStytleViewController.title = @"生活方式";
     }
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_lifeStytleViewController] ;
 }
 
 
 -(void)initWorkOutManagerViewController{
-    
-    
     if (self.workOutManagerViewController ==nil) {
 
     self.workOutManagerViewController =[[WorkOutManagerViewController alloc] initWithNibName:@"WorkOutManagerViewController" bundle:nil];
@@ -220,10 +228,20 @@
 }
 
 
+-(void)initWebViewController{
+    if (self.webViewController ==nil) {
+        self.webViewController = [[SVWebViewController alloc] initWithAddress:@"http://aijianmei.com"];
+        self.webViewController.title = @"官方网站";
+  }
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:_webViewController];
+}
 
 
 
-#pragma mark -- 
+
+
+
+#pragma mark --
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -590,11 +608,10 @@
                     ///关注爱健美网 www.aijianmei.com
                     //TODO
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        SVWebViewController *vc = [[SVWebViewController alloc] initWithAddress:@"http://aijianmei.com"];
-                        vc.title = @"官方网站";
-                        UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
-                        [vc release];
-                        self.viewDeckController.centerController = navController;
+                        
+                        
+                        [self initWebViewController];
+                         self.viewDeckController.centerController = _navigationController;
                     }];
                     
                     

@@ -46,7 +46,6 @@
 @synthesize sina_userInfo =_sina_userInfo;
 @synthesize user =_user;
 @synthesize postViewController =_postViewController;
-@synthesize start  =_start;
 @synthesize targetUid =_targetUid;
 @synthesize settingViewController =_settingViewController;
 
@@ -99,7 +98,8 @@
 
 -(void)addAvtarImageButton{
     
-    self.headerVImageButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 40, 100, 100)];
+    self.headerVImageButton = [[UIButton alloc]init];
+    
     
     CALayer * layer = [self.headerVImageButton layer];
     layer.borderColor = [[UIColor whiteColor] CGColor];
@@ -121,7 +121,8 @@
     
     
     [_headerVImageButton addTarget:self action:@selector(clickVatarButton:) forControlEvents:UIControlEventTouchUpInside];
-    [_headerVImageButton setFrame:CGRectMake(240, 155, 70, 70)];
+    
+    [_headerVImageButton setFrame:CGRectMake(240,155,70,70)];
     [_headerVImageButton setBackgroundColor:[UIColor clearColor]];
     [self.myHeaderView addSubview:_headerVImageButton];
      
@@ -216,17 +217,7 @@
 - (void)upgradeUI
 {
     
-    if (self.user.avatarImage) {
-         [self.headerVImageButton setImage:self.user.avatarImage
-                              forState:UIControlStateNormal];
-    }else{
-        
-        [self.headerVImageButton setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
-    }
-  
-    
-    
-    
+    [self.headerVImageButton setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40@2x.png"]];
     [self.backGroundImageView setImageWithURL:[NSURL URLWithString:self.user.avatarBackGroundImage] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
     [self.userNameLabel setText:_user.name];
     [self.descriptionLabel setText:_user.description];
@@ -376,7 +367,7 @@
 
 -(void)loadPublicDatas
 {
-    [self showActivityWithText:@"数据加载中..."];
+//    [self showActivityWithText:@"数据加载中..."];
     _reloading = YES;
     shouldLoad =YES;
     [[PostService sharedService] loadStatusWithUid:[self.user.uid integerValue]
@@ -395,7 +386,7 @@
 - (void)reloadTableViewDataSource{
     
     _reloading = YES;
-    [self showActivityWithText:@"数据加载中..."];
+//    [self showActivityWithText:@"数据加载中..."];
     [[PostService sharedService] loadStatusWithUid:[self.user.uid integerValue]
                                          targetUid:[self.targetUid  integerValue]
                                           gymGroup:0
@@ -407,7 +398,7 @@
 //加载更多数据
 - (void)loadMoreTableViewDataSource {
     _reloading = NO;
-    [self showActivityWithText:@"数据加载中..."];
+//    [self showActivityWithText:@"数据加载中..."];
     [[PostService sharedService] loadStatusWithUid:[self.user.uid integerValue]
                                          targetUid:[self.targetUid integerValue]
                                           gymGroup:0

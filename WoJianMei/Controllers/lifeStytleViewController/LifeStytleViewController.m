@@ -203,7 +203,6 @@ typedef enum CONTENT_TYPE {
 #pragma mark -
 #pragma mark  UPDATEUI  Methods
 -(void)updateUserInterface{
-    [self hideActivity];
     [self.carousel reloadData];
     [self.dataTableView reloadData];
     [_spacePageControl setNumberOfPages:NUMBER_OF_ITEMS];
@@ -465,7 +464,7 @@ typedef enum CONTENT_TYPE {
         category = @"lifestyle";
         listtype = @"2";
         type = @"new";
-        cateid = @"";
+        cateid = @"1";
         
         
     }
@@ -474,25 +473,25 @@ typedef enum CONTENT_TYPE {
         category = @"lifestyle";
         listtype = @"2";
         type = @"hot";
-        cateid = @"0";
+        cateid = @"2";
         
     }
-    if (self.segmentedController.selectedSegmentIndex ==2) {
-        
-        category = @"lifestyle";
-        listtype = @"3";
-        type = @"new";
-        cateid = @"";
-        
-    }
-    if (self.segmentedController.selectedSegmentIndex ==3) {
-        
-        category = @"lifestyle";
-        listtype = @"3";
-        type = @"hot";
-        cateid = @"";
-        
-    }
+//    if (self.segmentedController.selectedSegmentIndex ==2) {
+//        
+//        category = @"lifestyle";
+//        listtype = @"3";
+//        type = @"new";
+//        cateid = @"";
+//        
+//    }
+//    if (self.segmentedController.selectedSegmentIndex ==3) {
+//        
+//        category = @"lifestyle";
+//        listtype = @"3";
+//        type = @"hot";
+//        cateid = @"";
+//        
+//    }
     
     
     [[ArticleService sharedService] findArticleWithAucode:aucode
@@ -668,7 +667,6 @@ typedef enum CONTENT_TYPE {
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
-    [self showActivityWithText:@"数据加载中..."];
 }
 
 
@@ -679,6 +677,14 @@ typedef enum CONTENT_TYPE {
 	[self dataSourceDidFinishLoadingNewData];
     [self dataSourceDidFinishLoadingMoreData];
     
+    
+    if ([objects count] <=0) {
+        [self popupUnhappyMessage:@"亲！没有更多数据了！" title:nil];
+        return;
+    }
+    
+    
+
     if (_start == 0) {
         self.dataList = objects;
     } else {

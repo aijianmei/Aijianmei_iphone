@@ -387,8 +387,8 @@ typedef enum CONTENT_TYPE {
         
         category = @"append";
         listtype = @"2";
-        type = @"hot";
-        cateid = @"1";
+        type = @"new";
+        cateid = @"2";
         _start=0;
         
     }
@@ -396,19 +396,11 @@ typedef enum CONTENT_TYPE {
         
         category = @"append";
         listtype = @"2";
-        type = @"hot";
-        cateid = @"0";
+        type = @"new";
+        cateid = @"3";
         _start=0;
     }
-    if (self.segmentedController.selectedSegmentIndex ==3) {
-        
-        category = @"append";
-        listtype = @"3";
-        type = @"hot";
-        cateid = @"0";
-        _start=0;
-        
-    }
+
     [[ArticleService sharedService] findArticleWithAucode:aucode
                                                     auact:auact
                                                  listtype:listtype
@@ -468,7 +460,7 @@ typedef enum CONTENT_TYPE {
         category = @"append";
         listtype = @"2";
         type = @"new";
-        cateid = @"";
+        cateid = @"1";
         
         
     }
@@ -477,7 +469,7 @@ typedef enum CONTENT_TYPE {
         category = @"append";
         listtype = @"2";
         type = @"new";
-        cateid = @"0";
+        cateid = @"2";
         
     }
     if (self.segmentedController.selectedSegmentIndex ==2) {
@@ -485,17 +477,17 @@ typedef enum CONTENT_TYPE {
         category = @"append";
         listtype = @"2";
         type = @"new";
-        cateid = @"";
+        cateid = @"3";
         
     }
-    if (self.segmentedController.selectedSegmentIndex ==3) {
-        
-        category = @"append";
-        listtype = @"3";
-        type = @"hot";
-        cateid = @"";
-        
-    }
+//    if (self.segmentedController.selectedSegmentIndex ==3) {
+//        
+//        category = @"append";
+//        listtype = @"3";
+//        type = @"hot";
+//        cateid = @"";
+//        
+//    }
     
     
     [[ArticleService sharedService] findArticleWithAucode:aucode
@@ -670,7 +662,6 @@ typedef enum CONTENT_TYPE {
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
-    [self showActivityWithText:@"数据加载中..."];
 }
 
 
@@ -681,6 +672,12 @@ typedef enum CONTENT_TYPE {
 	[self dataSourceDidFinishLoadingNewData];
     [self dataSourceDidFinishLoadingMoreData];
     
+    if ([objects count] <=0) {
+        
+        [self popupUnhappyMessage:@"亲！没有更多数据了！" title:nil];
+        return;
+    }
+
     if (_start == 0) {
         self.dataList = objects;
     } else {

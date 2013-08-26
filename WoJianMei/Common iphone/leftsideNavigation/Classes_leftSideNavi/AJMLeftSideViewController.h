@@ -22,7 +22,7 @@
 @class LifeStytleViewController;
 @class WorkOutManagerViewController;
 @class MoreViewController;
-
+@class SVWebViewController;
 
 @interface AJMLeftSideViewController : PPViewController <UITableViewDataSource,
                                                         UITableViewDelegate,SinaWeiboRequestDelegate,SinaWeiboDelegate,UIAlertViewDelegate>
@@ -41,6 +41,7 @@
     LifeStytleViewController      *_lifeStytleViewController;
     WorkOutManagerViewController  *_workOutManagerViewController;
     MoreViewController            *_moreViewController;
+    SVWebViewController           *_webViewController;
 }
 
 @property(nonatomic, retain) UINavigationController         *navigationController;
@@ -52,6 +53,7 @@
 @property(nonatomic, retain) LifeStytleViewController   *lifeStytleViewController;
 @property(nonatomic, retain) WorkOutManagerViewController *workOutManagerViewController;
 @property(nonatomic, retain) MoreViewController               *moreViewController;
+@property (nonatomic,retain)SVWebViewController *webViewController;
 
 
 

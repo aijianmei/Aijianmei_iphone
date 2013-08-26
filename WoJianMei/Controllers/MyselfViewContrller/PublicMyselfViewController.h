@@ -54,6 +54,7 @@
 
 
 
+-(PostViewController *)initPostViewController;
 
 
 

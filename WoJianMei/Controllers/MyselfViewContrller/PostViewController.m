@@ -16,6 +16,9 @@
 #import "PostStatus.h"
 #import "UserService.h"
 #import "User.h"
+#import "StatusView.h"
+#import "ZJTStatusBarAlertWindow.h"
+
 
 @interface PostViewController ()
 
@@ -26,7 +29,6 @@
 @synthesize postImage =_postImage;
 @synthesize delegate =_delegate;
 @synthesize postText =_postText;
-
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -74,7 +76,13 @@
     reSizeImage= [self.postImage scaleToSize:CGSizeMake(320, 320/1.32)];
     }
     
+    [self setPostImage:reSizeImage];
     
+    
+    [self setNavigationRightButton:@"发送" imageName:@"top_bar_commonButton.png" action:@selector(clickSendStatusButton:)];
+
+    
+
     NSData *imageData = UIImageJPEGRepresentation(reSizeImage, 1.0);
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = [paths objectAtIndex:0];
@@ -85,7 +93,8 @@
         //Write was successful.
         PPDebug(@"*******Save Image Successfully! %@",path);
       UIImage *image = [self readArticleListFromDiskWithFileName:@"currentPost.png"];
-      [self setPostImage:image];
+        
+        PPDebug(@"Get Image :%@",[image description]);
     }
 }
 
@@ -95,8 +104,7 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
 
     PostStatus *post = [[PostService sharedService] postStatus];
-        
-      User *user = [[UserService defaultService] user];
+    User *user = [[UserService defaultService] user];
         
 
     PPDebug(@"*****用户:%@****",user.uid);
@@ -106,23 +114,29 @@
             return ;
         }
         
+//    [StatusView showtStatusText:@"发送中..."
+//                        vibrate:NO
+//                       duration:3];
+   [[ZJTStatusBarAlertWindow getInstance] showWithString:@"发送中..."];
     [[PostService sharedService] postStatusWithUid:user.uid
                                                  image:self.postImage
                                                content:post.content
                                               delegate:self.delegate];
     }];
     
+    
+    
 }
 
 - (void)clickBack:(id)sender
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
-    
-       [self.navigationController.navigationItem.leftBarButtonItem setEnabled:YES
         
-        
-        ];
+    [self.navigationController.navigationItem.leftBarButtonItem setEnabled:YES];
+
     }];
+    
+    [self.navigationController.navigationItem.leftBarButtonItem setEnabled:YES];
 }
 
 -(void)initUI{
@@ -136,9 +150,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setup];
     [self initUI];
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    [super viewDidAppear:YES];
+    [self setup];
+    
+}
+
 #pragma mark --
 #pragma mark  tableviewDelegate Method
 
@@ -181,15 +202,19 @@
     if (cell==nil) {
         cell  = [[[PostViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    [cell setNameTextField:nil];
-    [cell.nameTextField setHidden:YES];
-
+    
     
     switch (indexPath.section) {
         case 0:
         {
             if (indexPath.row ==0) {
-                [cell.nameTextField setText:@"请填写你要发送内容！！！"];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+                [cell.imageView setImage:self.postImage];                
+                UIView *view = [[UIView alloc]init];
+                [cell setBackgroundView:view];
+                [view release];
+                
             }
             
         }
@@ -197,20 +222,22 @@
         case 1:
         {
             if (indexPath.row ==0) {
-                [cell.textLabel setText:@"man"];
-                [cell.imageView setImage:self.postImage];
                 
-            
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                [cell.nameTextField setText:@"dddd"];
+                [cell.nameTextField setHidden:NO];
+
             }
         }
             break;
         case 2:
         {
             if (indexPath.row ==0) {
-                [cell.textLabel setText:@"分享到..."];
-                UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"114X114.png"]];
-                [cell.accessoryView addSubview:imageView];
-                [imageView release];
+                
+                [cell.textLabel setText:@"分享到运动圈..."];
+                [cell.textLabel setTextColor:[UIColor grayColor]];
+                cell.selectionStyle = UITableViewCellSelectionStyleGray;
+
             }
 
         }
@@ -228,7 +255,7 @@
     switch (indexPath.section) {
         case 0:
         {
-            return 80;
+            return 50;
         }
             break;
             
@@ -254,6 +281,44 @@
     
 }
 
+
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSInteger  row = indexPath.row;
+//    
+//    if (row >= [self.dataList count]) {
+//        // NSLog(@"heightForRowAtIndexPath error ,index = %d,count = %d",row,[statuesArr count]);
+//        return 1;
+//    }
+//    PostStatus *status = [self.dataList objectAtIndex:row];
+//    NSString *url = status.imageurl;
+//    
+//    CGFloat height = 0.0f;
+//    height = [self cellHeight:status.content with:320.0f];
+//    
+//    if ( (url && [url length] != 0))
+//    {
+//        height = height + 80;
+//    }
+//    
+//    return height + 30;
+    
+//    return 49;
+//}
+
+//计算text field 的高度。
+-(CGFloat)cellHeight:(NSString*)contentText with:(CGFloat)with
+{
+//    UIFont * font=[UIFont  systemFontOfSize:14];
+//    CGSize size=[contentText sizeWithFont:font constrainedToSize:CGSizeMake(with - kTextViewPadding, 300000.0f) lineBreakMode:kLineBreakMode];
+//    
+//    CGFloat height = size.height + 44;
+    
+    
+//    return height;
+    
+    return 43;
+}
 
 
 

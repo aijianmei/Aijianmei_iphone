@@ -121,11 +121,7 @@ typedef enum CONTENT_TYPE {
     [_segmentedController setSelectedSegmentIndex:0];
     
     [self buttonClicked:sender];
-    
-    // 时间戳转时间的方法
-    //    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:1363948516];
-    //    NSLog(@"1363948516  = %@",confromTimesp);
-    
+
 }
 
 - (void)initMoreUI
@@ -370,9 +366,7 @@ typedef enum CONTENT_TYPE {
     if (userUid) {
         uid = userUid;
     }
-    
-    
-    
+
     if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==-1) {
         
         category = @"nutri";
@@ -387,7 +381,7 @@ typedef enum CONTENT_TYPE {
         category = @"nutri";
         listtype = @"2";
         type = @"new";
-        cateid = @"1";
+        cateid = @"2";
         _start=0;
         
     }
@@ -396,18 +390,10 @@ typedef enum CONTENT_TYPE {
         category = @"nutri";
         listtype = @"2";
         type = @"new";
-        cateid = @"0";
+        cateid = @"3";
         _start=0;
     }
-    if (self.segmentedController.selectedSegmentIndex ==3) {
-        
-        category = @"nutri";
-        listtype = @"3";
-        type = @"hot";
-        cateid = @"0";
-        _start=0;
-        
-    }
+
     [[ArticleService sharedService] findArticleWithAucode:aucode
                                                     auact:auact
                                                  listtype:listtype
@@ -467,7 +453,7 @@ typedef enum CONTENT_TYPE {
         category = @"nutri";
         listtype = @"2";
         type = @"new";
-        cateid = @"";
+        cateid = @"1";
         
         
     }
@@ -476,25 +462,28 @@ typedef enum CONTENT_TYPE {
         category = @"nutri";
         listtype = @"2";
         type = @"new";
-        cateid = @"0";
-        
+        cateid = @"2";
     }
+    
+    
     if (self.segmentedController.selectedSegmentIndex ==2) {
         
         category = @"nutri";
         listtype = @"2";
         type = @"new";
-        cateid = @"";
+        cateid = @"3";
         
     }
-    if (self.segmentedController.selectedSegmentIndex ==3) {
-        
-        category = @"nutri";
-        listtype = @"3";
-        type = @"hot";
-        cateid = @"";
-        
-    }
+    
+    
+//    if (self.segmentedController.selectedSegmentIndex ==3) {
+//        
+//        category = @"nutri";
+//        listtype = @"3";
+//        type = @"hot";
+//        cateid = @"";
+//        
+//    }
     
     
     [[ArticleService sharedService] findArticleWithAucode:aucode
@@ -588,14 +577,7 @@ typedef enum CONTENT_TYPE {
         [view addSubview:imageView];
         [imageView release];
         
-        
-//        label = [[[UILabel alloc] initWithFrame:CGRectMake(0, view.frame.origin.y + 130, view.frame.size.width, view.frame.size.height - 130)] autorelease];
-//        label.textAlignment = UITextAlignmentCenter;
-//		label.font = [label.font fontWithSize:16];
-//        [label setTextColor:[UIColor whiteColor]];
-//        label.backgroundColor = [UIColor colorWithPatternImage:[ImageManager GobalScrollerTitleBG_Image]];
-//        
-//        [imageView  addSubview:label];
+ 
         
 	}
 	else
@@ -618,13 +600,7 @@ typedef enum CONTENT_TYPE {
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
     PPDebug(@"I did selected the picture of %d",index);
     
-    //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    //
-    //    WorkoutDetailViewController *controller  = [storyboard instantiateViewControllerWithIdentifier:@"ArticleDetailSegue"];
-    //
-    //    controller.article = [self.dataList objectAtIndex:index];
-    //    self.navigationController.navigationBarHidden =YES;
-    //    [self.navigationController pushViewController:controller animated:YES];
+   
     
     
     if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==1 || self.segmentedController.selectedSegmentIndex ==-1)
@@ -671,7 +647,6 @@ typedef enum CONTENT_TYPE {
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
-    [self showActivityWithText:@"数据加载中..."];
 }
 
 
@@ -681,6 +656,13 @@ typedef enum CONTENT_TYPE {
     NSLog(@"***Load objects count: %d", [objects count]);
 	[self dataSourceDidFinishLoadingNewData];
     [self dataSourceDidFinishLoadingMoreData];
+    
+    
+    if ([objects count] <=0) {
+        [self popupUnhappyMessage:@"亲！没有更多数据了！" title:nil];
+        return;
+    }
+
     
     if (_start == 0) {
         self.dataList = objects;

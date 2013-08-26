@@ -43,7 +43,6 @@
 @property (nonatomic, retain) SDSegmentedControl *segmentedController;
 @property (assign, nonatomic) NSInteger start;
 @property (assign, nonatomic) NSInteger totalCount;
-@property (nonatomic,retain) LoginViewController *loginViewController;
 
 
 

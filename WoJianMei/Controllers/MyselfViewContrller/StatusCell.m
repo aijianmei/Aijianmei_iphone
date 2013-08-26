@@ -84,10 +84,14 @@
     [self.likeButton addTarget:self action:@selector(clickLikeButton:) forControlEvents:UIControlEventTouchUpInside];
 
     self.retwitterMainV.hidden = YES;
+    
+    [self.contentImage setImage:[UIImage imageNamed:@"place_holder.png"]];
     if (![imageData isEqual:[NSNull null]]) {       self.contentImage.image = [UIImage imageWithData:imageData];
     }
     NSString *url = status.imageurl;
     self.contentImage.hidden = url != nil && [url length] != 0 ? NO : YES;
+    
+    
     
     //计算cell的高度，以及背景图的处理
     [self setTFHeightWithImage:url != nil && [url length] != 0 ? YES : NO

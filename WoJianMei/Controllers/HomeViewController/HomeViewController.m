@@ -66,7 +66,6 @@ typedef enum CONTENT_TYPE {
 @synthesize segmentedController =_segmentedController;
 @synthesize buttonScrollView =_buttonScrollView;
 @synthesize currentButton = _currentButton;
-@synthesize loginViewController =_loginViewController;
 
 
 
@@ -96,8 +95,6 @@ typedef enum CONTENT_TYPE {
     [_segmentedController release];
     [_buttonScrollView release];
     [_currentButton release];
-    [_loginViewController release];
-
     [super dealloc];
 }
 
@@ -132,10 +129,6 @@ typedef enum CONTENT_TYPE {
     [_segmentedController setSelectedSegmentIndex:0];
     
     [self buttonClicked:sender];
-    
-    // 时间戳转时间的方法
-    //    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:1363948516];
-    //    NSLog(@"1363948516  = %@",confromTimesp);
     
 }
 
@@ -183,6 +176,8 @@ typedef enum CONTENT_TYPE {
 {
     [self.viewDeckController toggleLeftViewAnimated:YES];
 }
+
+
 - (void)rightButtonClickHandler:(id)sender
 {
     [self.viewDeckController toggleRightViewAnimated:YES];
@@ -192,7 +187,6 @@ typedef enum CONTENT_TYPE {
     PublicMyselfViewController *publicStatusViewController = [[AppDelegate getAppDelegate] initPublicStatusViewController];
     [self.navigationController pushViewController:publicStatusViewController animated:YES];
         
-    
     }else{
         [self showLoginView];
     }
@@ -229,8 +223,9 @@ typedef enum CONTENT_TYPE {
 
 
 -(void)pushToMyselfViewController:(id)sender{
-    
-    [self rightButtonClickHandler:sender];
+        
+    ///// 设置开始
+    [self buttonClicked:_segmentedController];
 
 }
 
@@ -246,12 +241,9 @@ typedef enum CONTENT_TYPE {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
         if (![[UserService defaultService] user]){
-            
-            LoginViewController *vc = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
-            self.loginViewController = vc;
-            [vc release];
-            self.loginViewController.delegate = self;
-            UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:self.loginViewController];
+         LoginViewController *loginViewController =    [[AppDelegate getAppDelegate] initLoginViewController];
+            loginViewController.delegate = self;
+            UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:loginViewController];
             [self.navigationController presentModalViewController:navigation animated:NO];
             [navigation release];
             
@@ -262,10 +254,6 @@ typedef enum CONTENT_TYPE {
         
     }
 }
-
-
-
-
 
 
 -(void)initTableHeaderView{
@@ -660,7 +648,6 @@ typedef enum CONTENT_TYPE {
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
-    [self showActivityWithText:@"数据加载中..."];
 }
 
 
@@ -674,6 +661,8 @@ typedef enum CONTENT_TYPE {
     
     
     if ([objects count] <=0) {
+        
+        [self popupUnhappyMessage:@"亲！没有更多数据了！" title:nil];
         return;
     }
 

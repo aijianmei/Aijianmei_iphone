@@ -29,8 +29,17 @@
 
 #define TIPSLABEL_TAG 10086
 
-#define kAppKey @"3622140445"
-#define kAppSecret @"f94d063d06365972215c62acaadf95c3"
+//239725454
+//e2064ac8fab9d889a9eccecc5babad11
+
+//爱健美网
+//#define kAppKey @"3622140445"
+//#define kAppSecret @"f94d063d06365972215c62acaadf95c3"
+
+
+//爱健美
+#define kAppKey @"239725454"
+#define kAppSecret @"e2064ac8fab9d889a9eccecc5babad11"
 #define KAppRedirectURI @"http://aijianmei.com"
 
 

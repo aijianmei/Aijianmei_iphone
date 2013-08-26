@@ -42,7 +42,7 @@
 							<object class="IBUITextField" id="601327906">
 								<reference key="NSNextResponder" ref="636877305"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{9, 15}, {300, 30}}</string>
+								<string key="NSFrame">{{9, 2}, {300, 55}}</string>
 								<reference key="NSSuperview" ref="636877305"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -52,10 +52,7 @@
 								<string key="IBUIText"/>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MAA</bytes>
-									<object class="NSColorSpace" key="NSCustomColorSpace">
-										<int key="NSID">2</int>
-									</object>
+									<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
 								</object>
 								<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 								<float key="IBUIMinimumFontSize">17</float>
@@ -160,7 +157,7 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="NS.key.0">description_BG.png</string>
-			<string key="NS.object.0">{16, 16}</string>
+			<string key="NS.object.0">{312, 151}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>

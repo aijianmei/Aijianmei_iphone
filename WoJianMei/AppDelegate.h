@@ -20,6 +20,9 @@
 
 @class AJMViewDelegate;
 @class PublicMyselfViewController;
+@class LoginViewController;
+
+
 enum
 {
     TAB_REALTIME_SCORE = 0,
@@ -34,17 +37,25 @@ enum
       enum WXScene _scene;
     
     PublicMyselfViewController *_publicStatusViewController;
-
+    HomeViewController         *_homeViewController;
+    LoginViewController       *_loginViewController;
+    
 }
 @property (nonatomic,retain)  UIWindow *window;
 @property (nonatomic,retain)   UINavigationController *navigationController;
 @property (nonatomic, retain)  IIViewDeckController *viewController;
 @property (nonatomic,readonly) AJMViewDelegate *viewDelegate;
 @property (nonatomic,retain) PublicMyselfViewController *publicStatusViewController;
+@property (nonatomic,retain) HomeViewController *homeViewController;
+@property (nonatomic,retain) LoginViewController *loginViewController;
+
 
 + (AppDelegate*)getAppDelegate;
 
 -(PublicMyselfViewController *)initPublicStatusViewController;
+-(HomeViewController *)initHomeViewController;
+-(LoginViewController *)initLoginViewController;
+
 
 
 @end

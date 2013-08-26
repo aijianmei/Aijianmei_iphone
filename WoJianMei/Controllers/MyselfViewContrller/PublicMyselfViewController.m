@@ -56,7 +56,6 @@ enum ErrorCode
 @synthesize sina_userInfo =_sina_userInfo;
 @synthesize user =_user;
 @synthesize postViewController =_postViewController;
-@synthesize start  =_start;
 @synthesize myselfViewController =_myselfViewController;
 
 
@@ -108,7 +107,9 @@ enum ErrorCode
 
 
 -(void)addAvtarImageButton{
-    self.headerVImageButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 40, 100, 100)];
+    
+    
+    self.headerVImageButton = [[UIButton alloc]init];
     
     CALayer * layer = [self.headerVImageButton layer];
     layer.borderColor = [[UIColor whiteColor] CGColor];
@@ -129,7 +130,9 @@ enum ErrorCode
     _headerVImageButton.layer.shadowRadius = 2.0;
     
     
-    [_headerVImageButton addTarget:self action:@selector(clickVatarButton:) forControlEvents:UIControlEventTouchUpInside];    
+    [_headerVImageButton addTarget:self
+                            action:@selector(clickVatarButton:)
+                  forControlEvents:UIControlEventTouchUpInside];
     [_headerVImageButton setFrame:CGRectMake(240, 155, 70, 70)];
     [_headerVImageButton setBackgroundColor:[UIColor clearColor]];
     [self.myHeaderView addSubview:_headerVImageButton];
@@ -187,12 +190,16 @@ enum ErrorCode
     
 }
 
--(void)initPostViewController{
+-(PostViewController *)initPostViewController{
     
-    PostViewController *vc = [[PostViewController alloc]initWithNibName:
-                              @"PostViewController" bundle:nil];
-    self.postViewController =vc;
-    [vc release];
+    if (self.postViewController == nil) {
+        PostViewController *vc = [[PostViewController alloc]initWithNibName:
+                                  @"PostViewController" bundle:nil];
+        self.postViewController =vc;
+        [vc release];
+
+    }
+    return _postViewController;
 }
 
 -(void)initUI{
@@ -202,7 +209,6 @@ enum ErrorCode
     [self addUserNameLabel];
     [self addDescriptionBG];
     [self addDescriptionLabel];
-    [self initPostViewController];
 }
 
 
@@ -232,15 +238,8 @@ enum ErrorCode
 
 - (void)upgradeUI
 {
-    if (self.user.avatarImage) {
-        [self.headerVImageButton setImage:self.user.avatarImage
-                                 forState:UIControlStateNormal];
-    }else{
         
-        [self.headerVImageButton setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
-    }
-
-
+    [self.headerVImageButton setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40@2x.png"]];
     [self.backGroundImageView setImageWithURL:[NSURL URLWithString:self.user.avatarBackGroundImage] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
     [self.userNameLabel setText:_user.name];
     [self.descriptionLabel setText:_user.description];
@@ -257,18 +256,14 @@ enum ErrorCode
     return result;
 }
 
-
-
-
-
-
 #pragma mark -
 #pragma mark - View lifecycle
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self loadUserData];
-    [self upgradeUI];
     [super viewWillAppear:YES];
+    
+      [self loadUserData];
+      [self upgradeUI];
     
     
 }
@@ -276,7 +271,6 @@ enum ErrorCode
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
     [[BaiduMobStat defaultStat] pageviewStartWithName:@"MyselfView"];
     
 }
@@ -298,20 +292,19 @@ enum ErrorCode
     
     [self setTitle:@"运动圈"];
     
-    [self setNavigationRightButton:@"分享" imageName:@"top_bar_commonButton.png" action:@selector(clickPostStatusButton:)];
-    
-    
+    [self setNavigationRightButton:@"" imageName:@"Camera.png" action:@selector(clickPostStatusButton:)];
     [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+    
+    
+    
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
     
     [self initUI];
-    
     [self loadUserData];
-    
-    
-     [defaultNotifCenter addObserver:self selector:@selector(getAvatar:)         name:HHNetDataCacheNotification object:nil];
 
+    [defaultNotifCenter addObserver:self selector:@selector(getAvatar:)         name:HHNetDataCacheNotification object:nil];
+    
 }
 
 -(void)loadPublicDatas
@@ -325,7 +318,7 @@ enum ErrorCode
     int gymGroup = 0;
     int start = 0;
     int offSet = 5;
-    
+    //加载的是公共部分
     [[PostService sharedService] loadStatusWithUid:uidPublic
                                          targetUid:0
                                           gymGroup:gymGroup
@@ -380,10 +373,14 @@ enum ErrorCode
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     if (image != nil)
     {
+    
         [self.navigationController  dismissViewControllerAnimated:NO completion:^{
-            self.postViewController.postImage =image;
-            self.postViewController.delegate =self;
-            UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:self.postViewController];
+            
+            PostViewController *postVC =  [self initPostViewController];
+            [postVC setPostImage:image];
+            postVC.delegate =self;
+            UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:postVC];
+            
             [self.navigationController presentViewController:navigation animated:YES completion:^{
                 
                 [self.navigationItem.rightBarButtonItem setEnabled:NO];
@@ -415,7 +412,9 @@ enum ErrorCode
     likeIndexPath = theCell.indexPath;
     PostStatus *sts = [self.dataList objectAtIndex:[theCell.indexPath row]];
     int statusId  = [sts._id integerValue];
-    [[PostService sharedService] postLikeWithUid:498 StatusId:statusId delegate:self];
+    [[PostService sharedService] postLikeWithUid:498
+                                        StatusId:statusId
+                                        delegate:self];
 }
 
 
@@ -427,7 +426,7 @@ enum ErrorCode
         self.myselfViewController = [[MyselfViewController alloc]initWithNibName:@"MyselfViewController" bundle:nil];
     }
     
-        self.myselfViewController.targetUid = sts.uid;
+        self.myselfViewController.targetUid = [sts uid];
        [self.navigationController pushViewController:_myselfViewController animated:YES];
     
 }
@@ -437,7 +436,7 @@ enum ErrorCode
 //加载新的数据
 - (void)reloadTableViewDataSource{
     _reloading =YES;
-    [self showActivityWithText:@"数据加载中..."];
+//    [self showActivityWithText:@"数据加载中..."];
     [[PostService sharedService] loadStatusWithUid:0
                                          targetUid:0
                                           gymGroup:0
@@ -450,7 +449,7 @@ enum ErrorCode
 - (void)loadMoreTableViewDataSource {
     
     _reloading =NO;
-    [self showActivityWithText:@"数据加载中..."];
+//    [self showActivityWithText:@"数据加载中..."];
     [[PostService sharedService] loadStatusWithUid:0
                                          targetUid:0
                                           gymGroup:0
@@ -465,7 +464,7 @@ enum ErrorCode
     if (self.myselfViewController ==nil) {
         self.myselfViewController = [[MyselfViewController alloc]initWithNibName:@"MyselfViewController" bundle:nil];
     }
-    self.myselfViewController.targetUid = self.user.uid;
+    self.myselfViewController.targetUid = [self.user uid];
     [self.navigationController pushViewController:_myselfViewController animated:YES];
 }
 
@@ -478,147 +477,157 @@ enum ErrorCode
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
 
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    NSLog(@"Response code: %d", [response statusCode]);
-    [self hideActivity];
-}
+//- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+//    NSLog(@"Response code: %d", [response statusCode]);
+//    [self hideActivity];
+//}
+//
+//- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+//{
+//    NSLog(@"Error: %@", [error localizedDescription]);
+//    [self hideActivity];
+//    if ([[error localizedDescription] isEqualToString:@"请求超时。"]) {
+//        PPDebug(@"请求超时");
+//    }
+//}
+//
+//- (void)requestDidStartLoad:(RKRequest *)request
+//{
+//    NSLog(@"Start load request...");
+//    [self showActivityWithText:@"数据加载中..."];
+//    
+//}
+//
+//- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+//{
+//    
+//    
+//    [self dataSourceDidFinishLoadingNewData];
+//    [self dataSourceDidFinishLoadingMoreData];
+//    
+//    [self hideActivity];
+//    PPDebug(@"***Load objects count: %d", [objects count]);
+//    
+//    if ([objects count] <= 0) {
+//        [self popupMessage:@"亲,已经没有更多数据了！" title:nil];
+//        return;
+//    }
+//    
+//    NSObject *object  = [objects objectAtIndex:0];
+//    
+//    //PostStatus
+//    if ([object isMemberOfClass:[PostStatus class]]){
+//        PostStatus *postStatus =  [objects objectAtIndex:0];
+//        PPDebug(@"*****Get Statuses Successfully!!!*****");
+//        PPDebug(@"******%@******",postStatus._id);
+//        PPDebug(@"******%@******",postStatus.uid);
+//        PPDebug(@"******%@******",postStatus.content);
+//        PPDebug(@"******%@******",postStatus.imageurl);
+//        PPDebug(@"******%@******",postStatus.create_time);
+//        NSMutableArray *newDataList =nil;
+//        
+//        if (_start == 0) {
+//            self.dataList = objects;
+//        } else {
+//            
+//            newDataList = [NSMutableArray arrayWithArray:self.dataList];
+//            [newDataList addObjectsFromArray:objects];
+//            if (_reloading) {
+//                [newDataList setArray:objects];
+//                _start =0;
+//
+//            }
+//            self.dataList = newDataList;
+//        }
+//    
+//        _start += [objects count];
+//        PPDebug(@"****objects %d******",[self.dataList count]);
+//
+//        
+//        [_avatarDictionary  removeAllObjects];
+//        [_imageDictionary   removeAllObjects];
+//        
+//        
+//        [self.dataTableView reloadData];
+//        
+//        
+//        
+//        [self getImages];
+//        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+//    }
+//    //PostStatusRespose
+//    if ([object isMemberOfClass:[PostStatusRespose class]]){
+//        PostStatusRespose *postStatusRespose =  [objects objectAtIndex:0];
+//        PPDebug(@"*****Post one Status Successfully!!!*****");
+//        PPDebug(@"*****%@*****",postStatusRespose.uid);
+//        PPDebug(@"*****%@*****",postStatusRespose.errorCode);
+//        
+//        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+//        
+//    }
+//    //User
+//    if ([object isMemberOfClass:[User class]]) {
+//        
+//        User *user =  [objects objectAtIndex:0];
+//    
+//        //当用户信息不完整的时候，要填写用户信息
+//        if ([user.weight isEqualToString:@"0"] && [user.height isEqualToString:@"0"] && [user.age isEqualToString:@"0"] && [user.gender isEqualToString:@"0"]){
+//            
+//            UserInfoPickerViewController *vc = [[UserInfoPickerViewController alloc]initWithNibName:@"UserInfoPickerViewController" bundle:nil];
+//            UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
+//            [vc release];
+//
+//            [self.navigationController presentViewController:navigation animated:YES completion:^{} ];
+//            [navigation release];
+//            
+//            
+//        }
+//        [[UserService defaultService] setUser:user];
+//        [[UserService defaultService] storeUserInfoByUid:user.uid];
+//        self.user =user;
+//        [self upgradeUI];
+//
+//        //开始加载新数据
+//        [self loadPublicDatas];
+//    }
+//    //PostLikeResponse
+//    if ([object isMemberOfClass:[PostLikeResponse class]]){
+//        PostLikeResponse *postLikeResponse =  [objects objectAtIndex:0];
+//        PPDebug(@"*****Post Like Successfully!!!*****");
+//        PPDebug(@"*****%@*****",postLikeResponse.uid);
+//        PPDebug(@"*****%@*****",postLikeResponse.errorCode);
+//        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+//        
+//        //  10001 参数错误 缺少uid用户id或者缺少文章id
+//        //  10002 用户已经赞过
+//        //  0 提交成功
+//        
+//        
+//        NSInteger errorCode =  [[postLikeResponse errorCode] integerValue];
+//        
+//        if (errorCode ==ERROR_SUCCESS)
+//        {
+//            [self popupHappyMessage:@"赞!" title:nil];
+//            
+//            //局部修改数据
+//            PostStatus *status = [self.dataList objectAtIndex:likeIndexPath.row];
+//            int like = 1;
+//            NSString *newLike = [NSString stringWithFormat:@"%d",like + [status.like integerValue]];
+//            [status setLike:newLike];
+//            
+//            //局部更新界面
+//            NSIndexPath *indexPath  = [NSIndexPath indexPathForRow:likeIndexPath.row inSection:0];
+//            NSArray     *arr        = [NSArray arrayWithObject:indexPath];
+//            [self.dataTableView reloadRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationFade];
+//            
+//        }
+//        if (errorCode ==LACK_OF_PARAMATERS) {
+//            [self popupHappyMessage:@"未知错误" title:nil];
+//        }
+//        if (errorCode ==REPEATED_POST) {
+//            [self popupUnhappyMessage:@"已赞,不可以贪心哦！" title:nil];
+//        }
+//    }
+//}
 
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
-{
-    NSLog(@"Error: %@", [error localizedDescription]);
-    [self hideActivity];
-    if ([[error localizedDescription] isEqualToString:@"请求超时。"]) {
-        PPDebug(@"请求超时");
-    }
-}
-
-- (void)requestDidStartLoad:(RKRequest *)request
-{
-    NSLog(@"Start load request...");
-    [self showActivityWithText:@"数据加载中..."];
-    
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
-{
-    
-    
-    [self dataSourceDidFinishLoadingNewData];
-    [self dataSourceDidFinishLoadingMoreData];
-    
-    [self hideActivity];
-    PPDebug(@"***Load objects count: %d", [objects count]);
-    
-    if ([objects count] <= 0) {
-        [self popupMessage:@"亲,已经没有更多数据了！" title:nil];
-        return;
-    }
-    
-    NSObject *object  = [objects objectAtIndex:0];
-    
-    //PostStatus
-    if ([object isMemberOfClass:[PostStatus class]]){
-        PostStatus *postStatus =  [objects objectAtIndex:0];
-        PPDebug(@"*****Get Statuses Successfully!!!*****");
-        PPDebug(@"******%@******",postStatus._id);
-        PPDebug(@"******%@******",postStatus.uid);
-        PPDebug(@"******%@******",postStatus.content);
-        PPDebug(@"******%@******",postStatus.imageurl);
-        PPDebug(@"******%@******",postStatus.create_time);
-        NSMutableArray *newDataList =nil;
-        
-        if (_start == 0) {
-            self.dataList = objects;
-        } else {
-            
-            newDataList = [NSMutableArray arrayWithArray:self.dataList];
-            [newDataList addObjectsFromArray:objects];
-            if (_reloading) {
-                [newDataList setArray:objects];
-                _start =0;
-
-            }
-            self.dataList = newDataList;
-        }
-    
-        _start += [objects count];
-        PPDebug(@"****objects %d******",[self.dataList count]);
-        [self.dataTableView reloadData];
-        [self getImages];
-        [self.navigationItem.rightBarButtonItem setEnabled:YES];
-    }
-    //PostStatusRespose
-    if ([object isMemberOfClass:[PostStatusRespose class]]){
-        PostStatusRespose *postStatusRespose =  [objects objectAtIndex:0];
-        PPDebug(@"*****Post one Status Successfully!!!*****");
-        PPDebug(@"*****%@*****",postStatusRespose.uid);
-        PPDebug(@"*****%@*****",postStatusRespose.errorCode);
-        
-        [self.navigationItem.rightBarButtonItem setEnabled:YES];
-        
-    }
-    //User
-    if ([object isMemberOfClass:[User class]]) {
-        
-        User *user =  [objects objectAtIndex:0];
-    
-        //当用户信息不完整的时候，要填写用户信息
-        if ([user.weight isEqualToString:@"0"] && [user.height isEqualToString:@"0"] && [user.age isEqualToString:@"0"] && [user.gender isEqualToString:@"0"]){
-            
-            UserInfoPickerViewController *vc = [[UserInfoPickerViewController alloc]initWithNibName:@"UserInfoPickerViewController" bundle:nil];
-            UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
-            [vc release];
-
-            [self.navigationController presentViewController:navigation animated:YES completion:^{} ];
-            [navigation release];
-            
-            
-        }
-        [[UserService defaultService] setUser:user];
-        [[UserService defaultService] storeUserInfoByUid:user.uid];
-        self.user =user;
-        [self upgradeUI];
-
-        //开始加载新数据
-        [self loadPublicDatas];
-    }
-    //PostLikeResponse
-    if ([object isMemberOfClass:[PostLikeResponse class]]){
-        PostLikeResponse *postLikeResponse =  [objects objectAtIndex:0];
-        PPDebug(@"*****Post Like Successfully!!!*****");
-        PPDebug(@"*****%@*****",postLikeResponse.uid);
-        PPDebug(@"*****%@*****",postLikeResponse.errorCode);
-        [self.navigationItem.rightBarButtonItem setEnabled:YES];
-        
-        //  10001 参数错误 缺少uid用户id或者缺少文章id
-        //  10002 用户已经赞过
-        //  0 提交成功
-        
-        
-        NSInteger errorCode =  [[postLikeResponse errorCode] integerValue];
-        
-        if (errorCode ==ERROR_SUCCESS)
-        {
-            [self popupHappyMessage:@"赞!" title:nil];
-            
-            //局部修改数据
-            PostStatus *status = [self.dataList objectAtIndex:likeIndexPath.row];
-            int like = 1;
-            NSString *newLike = [NSString stringWithFormat:@"%d",like + [status.like integerValue]];
-            [status setLike:newLike];
-            
-            //局部更新界面
-            NSIndexPath *indexPath  = [NSIndexPath indexPathForRow:likeIndexPath.row inSection:0];
-            NSArray     *arr        = [NSArray arrayWithObject:indexPath];
-            [self.dataTableView reloadRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationFade];
-            
-        }
-        if (errorCode ==LACK_OF_PARAMATERS) {
-            [self popupHappyMessage:@"未知错误" title:nil];
-        }
-        if (errorCode ==REPEATED_POST) {
-            [self popupUnhappyMessage:@"已赞,不可以贪心哦！" title:nil];
-        }
-    }
-}
 @end

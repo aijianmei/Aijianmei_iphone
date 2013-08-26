@@ -24,12 +24,15 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        
-        
-        self.nameTextField = [[UITextField alloc]initWithFrame:CGRectMake(5.0f, 12.0f, 250.0f,50.0f)];
+    
+        self.nameTextField = [[UITextField alloc]initWithFrame:CGRectMake(5.0f, 12.0f, 290.0f,50.0f)];
         _nameTextField.delegate = self;
         [_nameTextField setTextAlignment:NSTextAlignmentLeft];
-        [_nameTextField setBackground:[UIImage imageNamed:@"feedback_bg2.png"]];
+//        [_nameTextField setBackground:[UIImage imageNamed:@"feedback_bg2.png"]];
+        
+        [_nameTextField setAdjustsFontSizeToFitWidth:YES];
+         _nameTextField.placeholder =@"输入你的运动分享...";
+        [_nameTextField setHidden:YES];
         [self.contentView addSubview:_nameTextField];
         
     }

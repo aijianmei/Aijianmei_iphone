@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "PPTabBarController.h"
 #import "HomeViewController.h"
+#import "LoginViewController.h"
 #import "MyselfViewController.h"
 #import "NutriViewController.h"
 #import "MakeFriendsViewController.h"
@@ -51,6 +52,8 @@
 @synthesize navigationController =_navigationController;
 @synthesize viewDelegate = _viewDelegate;
 @synthesize publicStatusViewController =_publicStatusViewController;
+@synthesize homeViewController =_homeViewController;
+@synthesize loginViewController =_loginViewController;
 
 
 - (id)init{
@@ -71,6 +74,8 @@
     [_window release];
     [_viewController release];
     [_publicStatusViewController release];
+    [_homeViewController release];
+    [_loginViewController release];
     [super dealloc];
 }
 
@@ -89,6 +94,33 @@
     }
     return _publicStatusViewController;
 }
+
+-(HomeViewController *)initHomeViewController{
+
+    if (self.homeViewController == nil) {
+            
+        HomeViewController *vc =[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+        self.homeViewController =vc;
+            [vc release];
+        self.homeViewController.title = @"首页";
+        }
+    
+    return  _homeViewController;
+}
+
+-(LoginViewController *)initLoginViewController{
+    
+    if (self.loginViewController == nil) {
+        
+        LoginViewController *vc =[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        self.loginViewController =vc;
+        [vc release];
+        self.loginViewController.title = @"登陆";
+    }
+    
+    return  _loginViewController;
+}
+
 
 
 
@@ -285,10 +317,10 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     
-    HomeViewController *homeVC = nil;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-         homeVC = [[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil] autorelease];
-       _navigationController = [[UINavigationController alloc]initWithRootViewController:homeVC];
+        
+        HomeViewController *homeViewVC =[self initHomeViewController];
+       _navigationController = [[UINavigationController alloc]initWithRootViewController:homeViewVC];
         
         
         
@@ -299,13 +331,9 @@
         
         vc.leftSize  = self.window.frame.size.width - (320 - 60.0);
         self.viewController = vc;
-        
-        
-        
-        
-        
+    
     } else {
-         homeVC = [[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil] autorelease];
+        
     }
     
     
@@ -459,6 +487,10 @@
 {
     NSLog(@"***Load objects count: %d", [objects count]);
     
+    if ([objects count]<=0) {
+        return;
+    }
+    
     NSObject *result =[objects objectAtIndex:0];
     if ([result isMemberOfClass:[VersionInfo class]]){
 
@@ -485,7 +517,6 @@
     
             [self.window addSubview:dialog];
 
-            
         }
     }
 }
