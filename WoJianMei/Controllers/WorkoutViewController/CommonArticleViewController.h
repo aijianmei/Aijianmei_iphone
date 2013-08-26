@@ -21,10 +21,9 @@
 
 
 
-@interface CommonArticleViewController : PPViewController<RKObjectLoaderDelegate,UIWebViewDelegate,SinaWeiboRequestDelegate,REComposeViewControllerDelegate,UIGestureRecognizerDelegate,SinaWeiboDelegate,UIActionSheetDelegate>
+@interface CommonArticleViewController : PPViewController<RKObjectLoaderDelegate,SinaWeiboRequestDelegate,REComposeViewControllerDelegate,UIGestureRecognizerDelegate,SinaWeiboDelegate,UIActionSheetDelegate,UIScrollViewDelegate,UIWebViewDelegate>
 
 {
-    UIToolbar *_toolBar;
     UIButton *_likeButton;
     ArticleDetail *_articleDetail;
     int whichAcctionSheet;
@@ -38,13 +37,17 @@
     
     CommentViewController *commentViewController;
     
+    UIWebView *_webview;
+    UIToolbar *_toolBar;
+    
 }
 
 @property(nonatomic, retain) Article *article;
 @property(nonatomic, retain) ArticleDetail *articleDetail;
-@property(nonatomic, retain) UIWebView *webview;
-@property(nonatomic, retain) UIToolbar *toolBar;
+@property(nonatomic, retain) IBOutlet UIWebView *webview;
+@property(nonatomic, retain) IBOutlet UIToolbar *toolBar;
 @property(nonatomic,retain)  UIButton *likeButton;
+
 @property (nonatomic, assign) id<sendMsgToWeChatViewDelegate> delegate;
 
 
@@ -55,8 +58,6 @@
 - (void)updateUserInterface;
 -(void)shareArticleWithTitle:(NSString*)title image:(UIImage *)image;
 -(void)tap;
-
-- (AppDelegate*)getAppDelegate;
 
 
 

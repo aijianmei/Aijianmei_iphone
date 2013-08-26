@@ -349,7 +349,7 @@ enum errorCode {
                                             sinaUserId:self.snsId
                                               qqUserId:nil
                                               userType:self.userType name:[userInfo objectForKey:@"name"]
-                                       profileImageUrl:[userInfo objectForKey:@"profile_image_url"]
+                                       profileImageUrl:[userInfo objectForKey:@"profileLargeImageUrl"]
                                                 gender:[userInfo objectForKey:@"gender"]
                                                  email:_emailTextField.text
                                               password:_passwordTextField.text];
@@ -357,7 +357,6 @@ enum errorCode {
         NSLog(@"******Register success,return uid:%@",user.uid);
         [UserService defaultService].user = user;
         [[UserService defaultService] storeUserInfoByUid:user.uid];
-        
         
         
         
@@ -407,3 +406,18 @@ enum errorCode {
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

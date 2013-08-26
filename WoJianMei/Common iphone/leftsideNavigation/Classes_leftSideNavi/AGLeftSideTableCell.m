@@ -7,6 +7,7 @@
 //
 
 #import "AGLeftSideTableCell.h"
+#import "UITableViewCellUtil.h"
 
 @implementation AGLeftSideTableCell
 
@@ -16,6 +17,9 @@
     if (self)
     {
 //        self.accessoryView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"AccessoryView.png"]] autorelease];
+        
+        [self setSelected:NO];
+//        [self updateBackground];
     }
     return self;
 }
@@ -27,5 +31,22 @@
 //    int point = self.accessoryView.frame.origin.y;
 //    self.accessoryView.frame = CGRectMake(200, point, self.accessoryView.frame.size.width, self.accessoryView.frame.size.height);
 }
+
+
+- (void)updateBackground
+{
+    if ([self isSelected]) {
+        [self setBackgroundColor:[UIColor clearColor]];
+        [self setBackgroundImageByName:@"xyb_1.png"];
+    }
+}
+
+
+
+
+
+
+
+
 
 @end

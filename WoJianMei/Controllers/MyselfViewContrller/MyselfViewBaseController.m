@@ -6,7 +6,7 @@
 //
 //
 
-#import "StatusViewBaseController.h"
+#import "MyselfViewBaseController.h"
 #import "StatusCell.h"
 #import "PostService.h"
 #import "PostStatus.h"
@@ -32,11 +32,11 @@ enum ErrorCode
 #define kTextViewPadding            16.0
 #define kLineBreakMode              UILineBreakModeWordWrap
 
-@interface StatusViewBaseController ()
+@interface MyselfViewBaseController ()
 
 @end
 
-@implementation StatusViewBaseController
+@implementation MyselfViewBaseController
 @synthesize imageDictionary =_imageDictionary;
 @synthesize avatarDictionary =_avatarDictionary;
 @synthesize browserView =_browserView;
@@ -398,9 +398,7 @@ enum ErrorCode
         PPDebug(@"*****%@*****",postStatusRespose.errorCode);
         
         [self.navigationItem.rightBarButtonItem setEnabled:YES];
-        [[ZJTStatusBarAlertWindow getInstance] hide];
-        
-        
+            
         }
     
     

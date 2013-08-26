@@ -14,7 +14,7 @@
 
 
 
-@interface StatusViewBaseController : PPTableViewController<StatusCellDelegate,RKObjectLoaderDelegate,ImageBrowserDelegate>{
+@interface MyselfViewBaseController : PPTableViewController<StatusCellDelegate,RKObjectLoaderDelegate,ImageBrowserDelegate>{
     
     NSMutableDictionary *_avatarDictionary;
     NSMutableDictionary *_imageDictionary;

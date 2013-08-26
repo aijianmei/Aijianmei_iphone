@@ -25,9 +25,7 @@
 
 
 
-@class AppDelegate;
-
-@interface MoreViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,RKObjectLoaderDelegate,SinaWeiboRequestDelegate,SinaWeiboDelegate,CommonDialogDelegate>
+@interface MoreViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,RKObjectLoaderDelegate,CommonDialogDelegate>
 
 {
  
@@ -37,7 +35,6 @@
     SinaWeiboManager *_sinaweiboManager;
 
     
-    AppDelegate *_appDelegate;
 }
 
 @property (nonatomic, retain) NSArray *listData;

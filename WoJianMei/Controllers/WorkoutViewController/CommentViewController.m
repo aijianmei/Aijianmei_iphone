@@ -13,6 +13,21 @@
 #import "Video.h"
 #import "Article.h"
 #import "BaiduMobStat.h"
+#import "ImageManager.h"
+#import "PostService.h"
+#import "UserService.h"
+#import "Result.h"
+
+enum ErrorCode
+{
+    ERROR_SUCCESS =0,
+    LACK_OF_PARAMATERS =10001,
+    REPEATED_POST =10002
+};
+
+
+
+
 @interface CommentViewController ()
 
 @end
@@ -20,6 +35,7 @@
 @implementation CommentViewController
 @synthesize video =_video;
 @synthesize article =_article;
+@synthesize faceToolBar =_faceToolBar;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -35,12 +51,21 @@
 -(void)dealloc {
     [_video release];
     [_article release];
+    [_faceToolBar release];
     [super dealloc];
 
 }
 
 #pragma mark -
 #pragma mark - View lifecycle
+-(void)viewDidUnload
+{
+
+    [self setFaceToolBar:nil];
+    [super viewDidUnload];
+        
+}
+
 -(void)viewDidAppear:(BOOL)animated
 {
 
@@ -57,6 +82,13 @@
     [[BaiduMobStat defaultStat] pageviewEndWithName:@"CommentView"];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+
+    [super viewWillAppear:YES];
+    [self.navigationController setNavigationBarHidden:YES];
+
+}
+
 
 
 - (void)viewDidLoad
@@ -65,24 +97,45 @@
     // Do any additional setup after loading the view from its nib.
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
-    [self.view  setBounds:CGRectMake(0, 40, 320, 520)];
-
-    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
-
-    [self.navigationController.navigationBar setHidden:NO];
-//    [self setTitle:@"评论页面"];
     
-//    FaceToolBar* bar=[[FaceToolBar alloc]initWithFrame:CGRectMake(0.0f,self.view.frame.size.height - toolBarHeight,self.view.frame.size.width,toolBarHeight) superView:self.view];
-//    bar.delegate=self;
-//    [self.view addSubview:bar];
-//    [bar release];
     
-
+    
     [self.dataTableView setContentSize:CGSizeMake(320, 800)];
     
-//    [self loadDatas];
+    
+//    [self  setRightBarCommentTextField];
+    
+    
+    self.faceToolBar =[[FaceToolBar alloc]initWithFrame:CGRectMake(0.0f,self.view.frame.size.height - toolBarHeight,self.view.frame.size.width,toolBarHeight)
+                                             superView:self.view];
+    
+    self.faceToolBar.delegate = self;
+    [self.view addSubview:_faceToolBar];
+
+
+    [self loadDatas];
+    
+    
+    
+    //轻触手势（单击，双击）
+    UITapGestureRecognizer *tapCgr=nil;
+    tapCgr=[[UITapGestureRecognizer alloc]initWithTarget:self
+                                                  action:@selector(tap)];
+    tapCgr.numberOfTapsRequired=1;
+    [self.view addGestureRecognizer:tapCgr];
+    [tapCgr release];
+
+    
+
 
 }
+
+
+-(void)tap{
+    [self.faceToolBar dismissKeyBoard];
+}
+
+
 
 -(void)loadDatas{
     
@@ -101,17 +154,53 @@
 
 }
 
+
+
+
+
+
+
+
+
+
 #pragma mark-
 #pragma mark- DelegateMethod
 
 
 -(void)sendTextAction:(NSString *)inputText{
-    NSLog(@"sendTextAction%@",inputText);
+    
+    
+     User *user = [[UserService defaultService] user];
+    
+    
+    
+    
+    
+    
+    if (self.article) {
+        [[PostService sharedService] postCommentWithUid:
+         [user uid] targetContentId:self.article._id comment:inputText channelType:@"1" delegate:self];
+    }
+    
+    if (self.video) {
+        [[PostService sharedService] postCommentWithUid:
+         [user uid] targetContentId:self.article._id comment:inputText channelType:@"1" delegate:self];    }
+
+      
+    
 }
 
--(void)clickBackButton{
-    [self  clickBack:nil];
+
+
+
+-(void)clickBackButton:(UIButton *)sender;
+{
+    [self clickBack:sender];
 }
+
+
+
+
 
 - (void)clickBack:(id)sender
 {
@@ -159,30 +248,10 @@
 }
 
 
-- (void)setRightBarCommentTextField
-{
-    float buttonHigh = 27.5;
-    float buttonLen = 200;
-    float leftOffset  =0;
-        
-    UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(70, 0, buttonLen, buttonHigh)];
 
-    [rightView setBackgroundColor:[UIColor redColor]];
-    
-    UITextField * commentTextField = [[UITextField alloc] initWithFrame:CGRectMake(leftOffset, 3, 200, 30)];
-    [commentTextField setBackground:[UIImage imageNamed:@"dlk_1.png"]];
-    [commentTextField setDelegate:self];
-    [commentTextField resignFirstResponder];
-    [rightView addSubview:commentTextField];
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]
-                                       initWithCustomView:rightView];
-    
-    [rightView release];
-    
-    self.navigationItem.rightBarButtonItem = rightBarButton;
-    
-    [rightBarButton release];
-}
+
+
+
 
 
 
@@ -204,6 +273,7 @@
     NSLog(@"Error: %@", [error localizedDescription]);
 }
 
+
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
@@ -215,14 +285,51 @@
     NSLog(@"***Load objects count: %d", [objects count]);
     [self hideActivity];
     
-    if ( [objects count]==0)
-    {
-        
-        [self popupHappyMessage:@"亲,没有如何评论！" title:nil];
-
+    if ([objects count]==0) {
+        return;
     }
-     self.dataList = objects;
-    [self.dataTableView reloadData];
+    
+    
+    NSObject *object = [objects objectAtIndex:0];
+    
+    if ([object isMemberOfClass:[Result class]]) {
+        
+        //  10001 参数错误 缺少uid用户id或者缺少文章id
+        //  10002 用户已经赞过
+        //  0 提交成功
+        
+        
+        Result *result = [objects objectAtIndex:0];
+        NSInteger errorCode =  [[result errorCode] integerValue];
+        
+        
+        if (errorCode ==ERROR_SUCCESS)
+        {
+            [self popupHappyMessage:@"文章评论成功" title:nil];
+            [self loadDatas];
+        }
+        
+        if (errorCode ==LACK_OF_PARAMATERS) {
+            [self popupHappyMessage:@"未知错误" title:nil];
+        }
+        
+        if (errorCode ==REPEATED_POST) {
+            [self popupUnhappyMessage:@"已经评论文章,不可以重复哦！" title:nil];
+        }
+    }
+    
+    
+    
+    if ([object isMemberOfClass:[Comment class]]) {
+        if ([objects count]==0)
+        {
+            
+            [self popupHappyMessage:@"亲,没有如何评论！" title:nil];
+            
+        }
+        self.dataList = objects;
+        [self.dataTableView reloadData];
+    }
 }
 
 @end

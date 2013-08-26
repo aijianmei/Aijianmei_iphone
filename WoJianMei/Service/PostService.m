@@ -10,6 +10,7 @@
 #import "PostStatus.h"
 #import "PostStatusRespose.h"
 #import "PostLikeResponse.h"
+#import "Result.h"
 
 @protocol PostServiceDelegate <NSObject,RKObjectLoaderDelegate>
 @optional
@@ -225,9 +226,61 @@
 
 }
 
+//点击评论
+
+-(void)postCommentWithUid:(NSString*)uid
+          targetContentId:(NSString*)targetContentId
+                  comment:(NSString*)comment
+              channelType:(NSString*)channleType
+                 delegate:(id<RKObjectLoaderDelegate>)delegate{
+    
+    
+    /*
+     http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_sendcomment&uid=498&id=111&commentcontent=要好好睡才行&channeltype=1
+     channeltype 1表示文章 2表示视频
+     */
+    
+   //http://42.96.132.109/wapapi/emoji/test.php
+    
+    //Router setup:
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    [objectManager.router routeClass:[Result class] toResourcePath:@"/emoji/test.php" forMethod:RKRequestMethodPOST];
+    
+    NSLog(@"Post an Image baseURL %@%@",[objectManager baseURL],@"/ios.php");
+    
+    //Mapping setup:
+    RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[Result class]];
+    [userMapping mapKeyPathsToAttributes:
+     @"errorCode", @"errorCode",
+     @"uid",@"uid",
+     nil];
+    [objectManager.mappingProvider addObjectMapping:userMapping];
+    [objectManager.mappingProvider setMapping:userMapping forKeyPath:@""];
+    
+    Result *result = [[Result alloc]init];
+    
+    //The post
+    RKParams* params = [RKParams params];
+    [params setValue:@"aijianmei" forParam:@"aucode"];
+    [params setValue:@"au_sendcomment" forParam:@"auact"];
+    [params setValue:uid forParam:@"uid"];
+    [params setValue:targetContentId forParam:@"id"];
+    [params setValue:comment forParam:@"message"];
+    [params setValue:channleType forParam:@"channeltype"];
 
 
-
+    
+    [objectManager postObject:result usingBlock:^(RKObjectLoader *loader)
+     {
+         loader.delegate = delegate;
+         loader.params = params;
+         loader.targetObject = nil;
+         loader.onDidLoadResponse = ^(RKResponse *response) {
+             NSLog(@"Response did arrive");
+             NSLog(@"%@",response.bodyAsString);
+         };
+     }];
+}
 
 
 

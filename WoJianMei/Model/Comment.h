@@ -15,4 +15,7 @@
 @property (nonatomic,copy)NSString *create_time;
 @property (nonatomic,copy)NSString *userimg;
 @property (nonatomic,copy)NSString *username;
+
+
+-(NSString*)timestamp;
 @end

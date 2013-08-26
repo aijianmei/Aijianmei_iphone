@@ -267,13 +267,10 @@
     if (cell == nil)
     {
         cell = [[[AGLeftSideTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TABLE_CELL] autorelease];
+        
         cell.textLabel.textColor = [UIColor whiteColor];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:18.0];
-//       cell.textLabel.textColor = [UIColor colorWithRGB:0xc3c3c2];
-        
-//        cell.textLabel.textColor = [UIColor whiteColor];
         cell.textLabel.textColor = [ColorManager leftSideNaviFontColor] ;
-
         
         UIImageView *lineView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"IndexLine.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:1]];
         
@@ -294,6 +291,23 @@
             {
                 case 0:
                     cell.textLabel.text = @"首页";
+                    
+    
+//                    UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"pm_2.png"]];
+//                    [cell setSelectedBackgroundView:imageView];
+//                    [imageView release];
+                    
+                    
+
+                    
+                    [cell.imageView setImage:[UIImage imageNamed:@"pm_2.png"]];
+
+                    if ([cell isSelected]) {
+                        [cell.imageView setImage:[UIImage imageNamed:@"dqrq_1.png"]];
+                    }
+                    
+                    
+                                    
                     break;                    
                 case 1:
                     cell.textLabel.text = @"锻炼";
@@ -380,10 +394,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+        
     
-
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         
     
@@ -415,7 +432,7 @@
                     //百度统计;
                     BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
                     [statTracker logEvent:@"HomeView" eventLabel:@"HomeView"];
-                    
+                                        
                 }
                 break;
                 case 1:

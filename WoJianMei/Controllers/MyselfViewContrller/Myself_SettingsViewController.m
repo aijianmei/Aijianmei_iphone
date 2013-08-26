@@ -773,6 +773,8 @@
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
+    [self.navigationItem.leftBarButtonItem setEnabled:NO];
+
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects;
@@ -804,6 +806,9 @@
             
             [self updateUI];
             [self.navigationItem.rightBarButtonItem setEnabled:YES];
+            [self.navigationItem.leftBarButtonItem setEnabled:YES];
+
+            [self popupHappyMessage:@"保存成功" title:nil];
         }
     }
 }

@@ -172,6 +172,16 @@ static ImageManager *_defaultManager = nil;
 
     
 }
+
+///顶部导航栏目,普通背景图片；
++(UIImage*)GobalNavigationBackButtonBG{
+    
+    return [UIImage imageNamed:@"top_bar_backButton.png"];
+    
+    
+}
+
+
 ///文章单页喜欢按钮背景
 +(UIImage*)GobalArticelLikeButtonBG{
     

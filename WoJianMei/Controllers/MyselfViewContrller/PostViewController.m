@@ -114,10 +114,9 @@
             return ;
         }
         
-//    [StatusView showtStatusText:@"发送中..."
-//                        vibrate:NO
-//                       duration:3];
-   [[ZJTStatusBarAlertWindow getInstance] showWithString:@"发送中..."];
+    [StatusView showtStatusText:@"发送中..."
+                        vibrate:NO
+                       duration:30];
     [[PostService sharedService] postStatusWithUid:user.uid
                                                  image:self.postImage
                                                content:post.content

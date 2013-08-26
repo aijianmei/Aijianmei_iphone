@@ -10,14 +10,18 @@
 #import "StatusCell.h"
 #import "User.h"
 #import "UserService.h"
-#import "StatusViewBaseController.h"
+#import <RestKit/RestKit.h>
+#import "StatusCell.h"
+#import "ImageBrowser.h"
+#import "PPTableViewController.h"
+
 
 @class User;
 @class PostViewController;
 @class MyselfViewController;
 
 
-@interface PublicMyselfViewController : StatusViewBaseController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
+@interface PublicMyselfViewController : PPTableViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UIActionSheetDelegate,RKObjectLoaderDelegate,StatusCellDelegate,ImageBrowserDelegate>
 
 {
     
@@ -34,6 +38,24 @@
     PostViewController *_postViewController;
     
     MyselfViewController *_myselfViewController;
+    
+    
+    
+    
+    NSMutableDictionary *_avatarDictionary;
+    NSMutableDictionary *_imageDictionary;
+    NSNotificationCenter *defaultNotifCenter;
+    ImageBrowser        *_browserView;
+    
+    BOOL                shouldShowIndicator;
+    BOOL                shouldLoad;
+    BOOL _reloading;
+    
+    NSIndexPath * likeIndexPath;
+    
+    NSInteger _start;
+
+    
     
 }
 
@@ -53,7 +75,14 @@
 
 
 
+@property (nonatomic, retain)   NSMutableDictionary     *avatarDictionary;
+@property (nonatomic, retain)   NSMutableDictionary     *imageDictionary;
+@property (nonatomic, retain)   ImageBrowser            *browserView;
 
+
+
+
+-(void)getImages;
 -(PostViewController *)initPostViewController;
 
 

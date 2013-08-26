@@ -20,5 +20,9 @@
 @property (nonatomic, copy) NSString *create_time;
 @property (nonatomic, copy) NSString *CommentsCount;
 
+
+- (NSString*)timestamp;
+
+
 @end
 

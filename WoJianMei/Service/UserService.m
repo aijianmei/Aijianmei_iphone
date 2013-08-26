@@ -386,7 +386,6 @@ static UserService* _defaultUserService = nil;
      @"sinaUserId",@"sinaUserId",
      @"qqUserId",@"qqUserId",
      @"email", @"email",
-//     @"loginStatus",@"loginStatus",
      @"labelsArray", @"labelsArray",
      @"age", @"age",
      @"height", @"height",

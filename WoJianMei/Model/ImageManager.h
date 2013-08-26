@@ -69,6 +69,10 @@
 +(UIImage*)GobalNavigationCommonButtonBG;
 
 
+///顶部导航栏目,返回按钮图片;
++(UIImage*)GobalNavigationBackButtonBG;
+
+
 ///文章单页喜欢按钮
 +(UIImage*)GobalArticelLikeButtonBG;
 ///文章单页分享按钮背景

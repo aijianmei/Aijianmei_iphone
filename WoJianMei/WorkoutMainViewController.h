@@ -7,7 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPViewController.h"
 
-@interface WorkoutMainViewController : UIViewController
+@class NumberDataViewController;
+@class SDSegmentedControl;
+
+
+@interface WorkoutMainViewController : PPViewController
+
+{
+
+    NumberDataViewController *_numberDataViewController;
+    SDSegmentedControl *_segmentedController;
+
+}
+
+@property (nonatomic,retain) NumberDataViewController *numberDataViewController;
+@property (nonatomic, retain) SDSegmentedControl *segmentedController;
+
+
+
+
 
 @end

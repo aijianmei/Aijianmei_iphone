@@ -10,8 +10,8 @@
 #define _UIKeyboardFrameEndUserInfoKey (&UIKeyboardFrameEndUserInfoKey != NULL ? UIKeyboardFrameEndUserInfoKey : @"UIKeyboardBoundsUserInfoKey")
 
 @interface TPKeyboardAvoidingTableView () <UITextFieldDelegate, UITextViewDelegate> {
-    UIEdgeInsets    _priorInset;
     BOOL            _keyboardVisible;
+    UIEdgeInsets    _priorInset;
     CGRect          _keyboardRect;
 }
 - (UIView*)findFirstResponderBeneathView:(UIView*)view;
@@ -21,6 +21,8 @@
 @end
 
 @implementation TPKeyboardAvoidingTableView
+@synthesize _keyboardVisible;
+
 
 #pragma mark - Setup/Teardown
 
@@ -28,6 +30,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
+
+
 
 -(id)initWithFrame:(CGRect)frame {
     if ( !(self = [super initWithFrame:frame]) ) return nil;
@@ -40,6 +44,8 @@
     [self setup];
     return self;
 }
+
+
 
 -(void)awakeFromNib {
     [self setup];
@@ -68,7 +74,14 @@
 
 #pragma mark - Responders, events
 
+-(void)hideKeyboard
+{
+     [[self findFirstResponderBeneathView:self] resignFirstResponder];
+}
+
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    
     [[self findFirstResponderBeneathView:self] resignFirstResponder];
     [super touchesEnded:touches withEvent:event];
 }
@@ -112,7 +125,7 @@
     [UIView commitAnimations];
 }
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
     if ( ![self focusNextTextField] ) {
         [textField resignFirstResponder];
     }
@@ -262,5 +275,7 @@
         }
     }
 }
+
+
 
 @end

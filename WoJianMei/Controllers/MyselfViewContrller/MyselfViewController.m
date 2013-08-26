@@ -122,7 +122,7 @@
     
     [_headerVImageButton addTarget:self action:@selector(clickVatarButton:) forControlEvents:UIControlEventTouchUpInside];
     
-    [_headerVImageButton setFrame:CGRectMake(240,155,70,70)];
+    [_headerVImageButton setFrame:CGRectMake(240,155,50,50)];
     [_headerVImageButton setBackgroundColor:[UIColor clearColor]];
     [self.myHeaderView addSubview:_headerVImageButton];
      
@@ -473,11 +473,11 @@
     [self hideActivity];
     PPDebug(@"***Load objects count: %d", [objects count]);
     
-    if ([objects count] <= 0) {
+    if ([objects count] == 0) {
         [self popupMessage:@"亲,已经没有更多数据了！" title:nil];
         return;
     }
-    
+       
     NSObject *object  = [objects objectAtIndex:0];
 
     if ([object isMemberOfClass:[User class]]) {
@@ -529,6 +529,12 @@
         [self.navigationItem.rightBarButtonItem setEnabled:YES];
 
     }
+    
+    if ([objects count] == 0) {
+        [self popupMessage:@"亲,已经没有更多数据了！" title:nil];
+        return;
+    }
+
 }
 
 @end

@@ -14,6 +14,8 @@
 #import "AJMLeftSideViewController.h"
 #import "AJMViewDelegate.h"
 #import "CommonDialog.h"
+#import "SinaWeibo.h"
+#import "SinaWeiboAuthorizeView.h"
 
 
 
@@ -29,7 +31,7 @@ enum
 };
 
 
-@interface AppDelegate : PPApplication <UIApplicationDelegate,UITabBarControllerDelegate,WXApiDelegate,sendMsgToWeChatViewDelegate,RKObjectLoaderDelegate,CommonDialogDelegate>
+@interface AppDelegate : PPApplication <UIApplicationDelegate,UITabBarControllerDelegate,WXApiDelegate,sendMsgToWeChatViewDelegate,RKObjectLoaderDelegate,CommonDialogDelegate,SinaWeiboRequestDelegate,SinaWeiboDelegate>
 
 {
       UINavigationController *_navigationController;
@@ -55,6 +57,7 @@ enum
 -(PublicMyselfViewController *)initPublicStatusViewController;
 -(HomeViewController *)initHomeViewController;
 -(LoginViewController *)initLoginViewController;
+-(void)showLoginView;
 
 
 

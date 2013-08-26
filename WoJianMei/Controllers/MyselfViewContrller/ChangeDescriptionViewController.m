@@ -44,8 +44,45 @@
     [_descriptionTextField setDelegate:self];
     [_descriptionTextField setBackground:[UIImage imageNamed:@"description_BG"]];
     [_descriptionTextField setText:user.description];
-    [_descriptionTextField becomeFirstResponder];
+    [_descriptionTextField setFont:[UIFont systemFontOfSize:15]];
+
     
+    
+    //停顿一会儿之后显示键盘
+    float duration =0.4;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:duration
+                                                  target:self
+                                                selector:@selector(showKeyBoard)
+                                                userInfo:nil
+                                                 repeats:NO];
+ 
+    
+    
+    
+    //轻触手势（单击，双击）
+    UITapGestureRecognizer *tapCgr=nil;
+    tapCgr=[[UITapGestureRecognizer alloc]initWithTarget:self
+                                                  action:@selector(tap)];
+    tapCgr.numberOfTapsRequired=1;
+    [self.view addGestureRecognizer:tapCgr];
+    [tapCgr release];
+
+    
+    
+}
+
+#pragma mark -
+#pragma mark - ShowKeyBoard Method
+-(void)tap{
+    [_descriptionTextField resignFirstResponder];
+    
+}
+#pragma mark -
+#pragma mark - ShowKeyBoard Method
+-(void)showKeyBoard{
+        [_descriptionTextField becomeFirstResponder];
+        [self.timer invalidate];
+
     
 }
 #pragma mark -
@@ -58,6 +95,8 @@
     User *user =[[UserService defaultService] user];
     [user setDescription: textField.text];
     [[UserService defaultService] setUser:user];
+    [[UserService defaultService] storeUserInfoByUid:user.uid];
+
         
 }
 

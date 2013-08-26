@@ -6,8 +6,41 @@
 //
 //
 
-#import "WorkDataService.h"
+#import "WorkoutDataService.h"
 
-@implementation WorkDataService
+
+@implementation WorkoutDataService
+
+
+
++(WorkoutDataService *)sharedService;
+
+{
+    static WorkoutDataService *_sharedService = nil;
+    @synchronized(self)
+    {
+        if (_sharedService == nil) {
+            _sharedService = [[WorkoutDataService alloc] init];
+        }
+    }
+    return _sharedService;
+}
+
+- (id)init
+{
+    if (self ==nil) {
+        self = [super init];
+    }
+    return self;
+}
+
+
+-(void)postWorkoutDataWithUserId:(NSString *)uid                    delegate:(id<RKObjectLoaderDelegate>)delegate{
+
+
+}
+
+
+
 
 @end

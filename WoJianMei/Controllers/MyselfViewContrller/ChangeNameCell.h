@@ -12,8 +12,6 @@
 @interface ChangeNameCell : UITableViewCell<UITextFieldDelegate>
 {
     UITextField *_nameTextField;
-
-
 }
 @property (nonatomic,retain) UITextField *nameTextField;
 

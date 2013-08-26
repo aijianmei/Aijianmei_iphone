@@ -19,6 +19,9 @@
 #import "AppDelegate.h"
 #import "BaiduMobStat.h"
 #import "DeviceDetection.h"
+#import "StatusView.h"
+
+
 
 #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
 
@@ -76,17 +79,7 @@ enum actionsheetNumber{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-
-//        CustomURLCache *urlCache = [[CustomURLCache alloc] initWithMemoryCapacity:20 * 1024 * 1024
-//                                                                     diskCapacity:200 * 1024 * 1024
-//                                                                         diskPath:nil
-//                                                                        cacheTime:0];
-//        [CustomURLCache setSharedURLCache:urlCache];
-//        [urlCache release];
-        
-        
         self.delegate =[AppDelegate getAppDelegate];
-        
     }
     return self;
 }
@@ -102,6 +95,382 @@ enum actionsheetNumber{
     [super dealloc];
 }
 
+#pragma mark -
+#pragma mark - View lifecycle
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    [[BaiduMobStat defaultStat] pageviewStartWithName:@"CommentArticleView"];
+}
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:YES];
+    [[BaiduMobStat defaultStat] pageviewEndWithName:@"CommentArticleView"];
+}
+
+-(void)viewDidUnload{
+    
+    
+    [self setLikeButton:nil];
+    [self setWebview:nil];
+    [self setToolBar:nil];
+    [self setWebview:nil];
+    [super viewDidUnload];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    self.navigationController.navigationBarHidden =YES;
+
+    [super viewWillAppear:YES];
+
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBarHidden =NO;
+    [super viewWillDisappear:YES];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self.view  setBounds:CGRectMake(0, 0, 320, 480)];
+    
+    [self setRightBarButtons];
+    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+    
+ 
+    
+
+    [self.webview setFrame:CGRectMake(0, 0, 320, UIScreen.mainScreen.bounds.size.height)];
+    [self.webview setDelegate:self];
+    [self.webview.scrollView setDelegate:self];
+    self.navigationController.navigationBarHidden =YES;
+    
+    
+
+    
+    
+    /////重新定位，设定NavigationBar 的位置
+    [self.navigationController.navigationBar setFrame:CGRectMake(0, 420, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
+    
+    
+    //548 480
+//        if (IS_IPHONE5) {
+    /////重新定位，设定NavigationBar 的位置
+//    [self.navigationController.navigationBar setFrame:CGRectMake(0, 508, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
+    //    }
+    
+
+    
+    [[ArticleService sharedService] findArticleInfoWithAucode:@"aijianmei" auact:@"au_getinformationdetail" articleId:_article._id channel:@" " channelType:@" " uid:@"" delegate:self];
+    
+    
+}
+
+- (AppDelegate*)getAppDelegate
+{
+    return (AppDelegate*)[UIApplication sharedApplication].delegate;
+}
+
+
+////点击喜欢按钮
+-(void)clickLikeButton:(id)sender{    
+   ArticleDetail *article =[self articleDetail];
+   User *user =  [[UserService defaultService] user];
+    
+    if ( user.uid ==nil) {
+        return;
+    }
+    
+    
+   [[UserService defaultService] sendLikeWithContentId:[article _id] userId:user.uid  channeltype:@"1"  delegate:self];
+    
+}
+////点击评论按钮
+-(void)clickCommentButton:(UIButton *)sender{
+    
+    PPDebug(@"////点击评论按钮");
+    CommentViewController *cVC = [[CommentViewController alloc]initWithNibName:@"CommentViewController" bundle:nil];
+    [self.navigationController pushViewController:cVC animated:YES];
+    cVC.article =self.article;
+    
+    [cVC release];
+    
+
+}
+
+////点击分享按钮
+-(void)clickShareButton:(UIButton *)sender{
+    
+    PPDebug(@"////点击分享按钮");
+    
+    if ([DeviceDetection isOS6]){
+        
+        [self showAWSheet];
+        
+    }
+    else{
+        whichAcctionSheet = RECOMMENDATION;
+        [self shareToSocialnetWorks];
+        
+    }
+
+}
+
+- (void)setRightBarButtons
+{
+    float buttonHigh = 44.0f;
+    float seporator = 50;
+    
+    UIFont *font = [UIFont systemFontOfSize:14];
+    
+    UIView *rightButtonView = [[UIView alloc]initWithFrame:CGRectMake(0,0,320, buttonHigh)];
+    
+    
+    
+    [rightButtonView setBackgroundColor:[UIColor clearColor]];
+    
+    
+    
+    
+    UIButton * BackBarButton = [[UIButton alloc] initWithFrame:CGRectMake(0,9, 48, 29)];
+    [BackBarButton addTarget:self action:@selector(clickBack:) forControlEvents:UIControlEventTouchUpInside];
+    [BackBarButton setBackgroundImage:[ImageManager GobalNavigationBackButtonBG] forState:UIControlStateNormal];
+    [BackBarButton setTitle:@"返回" forState:UIControlStateNormal];
+    [BackBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [BackBarButton.titleLabel setFont:font];
+    [rightButtonView addSubview:BackBarButton];
+    [BackBarButton release];
+
+    
+    
+    
+    
+    
+    
+    
+    
+    self.likeButton = [[UIButton alloc] initWithFrame:CGRectMake(270 - 2 * seporator,12, 25, 25)];
+    [_likeButton setImage:[ImageManager GobalArticelLikeButtonBG] forState:UIControlStateNormal];
+    [_likeButton setTitle:@"喜欢" forState:UIControlStateNormal];
+    [_likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_likeButton.titleLabel setFont:font];
+    [_likeButton addTarget:self action:@selector(clickLikeButton:) forControlEvents:UIControlEventTouchUpInside];
+    [rightButtonView addSubview:self.likeButton];
+    
+    
+    UIButton * commentBarButton = [[UIButton alloc] initWithFrame:CGRectMake(270 - seporator,12, 25, 25)];
+    [commentBarButton addTarget:self action:@selector(clickCommentButton:) forControlEvents:UIControlEventTouchUpInside];
+    [commentBarButton setImage:[ImageManager GobalArticelCommentButtonBG] forState:UIControlStateNormal];
+    [commentBarButton setTitle:@"评论" forState:UIControlStateNormal];
+    [commentBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [commentBarButton.titleLabel setFont:font];
+    [rightButtonView addSubview:commentBarButton];
+    [commentBarButton release];
+    
+    
+    UIButton *shareBarButton = [[UIButton alloc]initWithFrame:CGRectMake(270,12, 25, 25)];
+    [shareBarButton setImage:[ImageManager GobalArticelShareButtonBG] forState:UIControlStateNormal];
+    [shareBarButton setTitle:@"分享" forState:UIControlStateNormal];
+    [shareBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [shareBarButton addTarget:self action:@selector(clickShareButton:) forControlEvents:UIControlEventTouchUpInside];
+    [shareBarButton.titleLabel setFont:font];
+    [rightButtonView addSubview:shareBarButton];
+    [shareBarButton release];
+
+    
+    
+    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]
+                                       initWithCustomView:rightButtonView];
+    
+    [rightButtonView release];
+    
+    
+    
+    [self.toolBar setItems:[NSArray arrayWithObject:rightBarButton] animated:YES];
+    
+
+    [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"topmenu_bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+
+}
+
+
+- (void)clickBack:(id)sender
+{
+    
+    if ([self.webview isLoading]) {
+        [self.webview   stopLoading];
+        PPDebug(@"webView stop loading");
+    }
+    
+    
+    
+    [self.navigationController.navigationBar setHidden:NO];
+    [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
+
+	[self.navigationController popViewControllerAnimated:YES];
+}
+
+
+//从网络下载图片
+-(UIImage *) getImageFromURL:(NSString *)fileURL {
+    NSLog(@"执行图片下载函数");
+    UIImage * result;
+    
+    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
+    result = [UIImage imageWithData:data];
+    
+    return result;
+}
+
+-(void)tap{
+    
+    [self hideNavigationBar];
+
+}
+
+
+#pragma mark -
+#pragma mark Hide and Show TabBar Methods
+
+- (void)showNavigationBar {
+    UINavigationBar *tabBar = self.navigationController.navigationBar;
+    UIView *parent = tabBar.superview; // UILayoutContainerView
+    UIView *content = [parent.subviews objectAtIndex:0]; // UITransitionView
+    UIView *window = parent.superview;
+    [UIView animateWithDuration:1.5
+                     animations:^{
+                         CGRect tabFrame = tabBar.frame;
+                         tabFrame.origin.y = CGRectGetMaxY(window.bounds) - CGRectGetHeight(tabBar.frame);
+                         tabBar.frame = tabFrame;
+                         CGRect contentFrame = content.frame;
+                         contentFrame.size.height -= tabFrame.size.height;
+                     }];
+}
+
+
+- (void)hideNavigationBar {
+    UINavigationBar *tabBar = self.navigationController.navigationBar;
+    UIView *parent = tabBar.superview; // UILayoutContainerView
+    UIView *content = [parent.subviews objectAtIndex:0];  // UITransitionView
+    UIView *window = parent.superview;
+    
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         CGRect tabFrame = tabBar.frame;
+                         tabFrame.origin.y = CGRectGetMaxY(window.bounds);
+                         tabBar.frame = tabFrame;
+                         content.frame = window.bounds;
+                     }];
+}
+
+
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+    CustomURLCache *urlCache = (CustomURLCache *)[NSURLCache sharedURLCache];
+    [urlCache removeAllCachedResponses];
+
+}
+
+-(void)updateUserInterface{
+    
+     [_likeButton setImage:[UIImage imageNamed:@"like_icon.png"] forState:UIControlStateNormal];
+    
+    NSString *newLike = _articleDetail.like;
+    int likeValue = [newLike integerValue];
+    
+    if (likeValue ==1) {
+        
+        [_likeButton setImage:[UIImage imageNamed:@"Press_like_icon.png"] forState:UIControlStateNormal];
+    }
+}
+
+
+
+-(void)shareArticleWithTitle:(NSString*)title image:(UIImage *)image
+
+{
+    
+    
+    NSMutableDictionary * params =[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   title, @"status",image,@"pic",nil];
+    [[SinaWeiboManager sharedManager].sinaweibo requestWithURL:@"statuses/upload.json"
+                                                        params:params
+                                                    httpMethod:@"POST"
+                                                      delegate:[AppDelegate getAppDelegate]];
+    
+    [StatusView showtStatusText:@"正在分享..." vibrate:NO duration:30];
+    
+    
+}
+
+
+- (void)clickSinaShareButton
+{
+    
+    UIImage *image = [self getImageFromURL:_article.img];
+    postImage = image;
+    
+    [[SinaWeiboManager sharedManager] createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
+    
+    
+    if([[SinaWeiboManager sharedManager].sinaweibo isAuthValid])
+    {
+        REComposeViewController *composeViewController = [[REComposeViewController alloc] init];
+        composeViewController.hasAttachment = YES;
+        composeViewController.attachmentImage =postImage;
+        
+        
+        NSString *appendString =@"(分享自  @爱健美网)";
+        NSString *articleTitle =_article.title;
+        NSString *shareUrl = [NSString stringWithFormat:@"   详情点击:%@",_article.shareurl];
+        
+        NSString *postText = [NSString stringWithFormat:@"%@%@%@",articleTitle,appendString,shareUrl];
+        
+        [composeViewController setText:postText];
+        
+        
+        
+        UIImageView *titleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+        titleImageView.frame = CGRectMake(0, 0, 110, 30);
+        composeViewController.navigationItem.titleView = titleImageView;
+        
+        // UIApperance setup
+        [composeViewController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topmenu_bg.png"] forBarMetrics:UIBarMetricsDefault];
+        
+        
+        [self presentViewController:composeViewController animated:YES completion:nil];
+        [composeViewController release];
+
+        // Alternative use with REComposeViewControllerCompletionHandler
+        composeViewController.completionHandler = ^(REComposeResult result) {
+            if (result == REComposeResultCancelled) {
+                NSLog(@"Cancelled");
+
+            }
+            if (result == REComposeResultPosted) {
+                NSLog(@"Text = %@", composeViewController.text);
+                [self shareArticleWithTitle: composeViewController.text image:composeViewController.attachmentImage ];
+                
+            }
+        };
+        
+               
+
+    }if(![_sinaweiboManager.sinaweibo isAuthValid])
+    {
+        [_sinaweiboManager.sinaweibo logIn];
+    }
+
+}
 
 -(void)shareToSocialnetWorks
 {
@@ -167,16 +536,16 @@ enum actionsheetNumber{
     
     
     cell.index = index;
-
-
+    
+    
     return cell;
-
+    
 }
 
 -(void)DidTapOnItemAtIndex:(NSInteger)index
 {
     PPDebug(@"tap on %d",index);
-       
+    
     int TapOnItem = index;
     
     
@@ -237,10 +606,19 @@ enum actionsheetNumber{
         case COPY_LINK:
         {
             //copy one link
-            NSString *downloadAPPUrl = [NSString stringWithFormat:@"www.aijianmei.com"];
+            NSString *downloadAPPUrl = [NSString stringWithFormat:@"http://www.aijianmei.com/AppDownload.html"];
             UIPasteboard *gpBoard = [UIPasteboard generalPasteboard];
             [gpBoard setString:downloadAPPUrl];
-            [self popupHappyMessage:@"已成功复制下载链接" title:nil];
+            
+            //停顿一会儿之后显示键盘
+            float duration =0.7;
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:duration
+                                                          target:self
+                                                        selector:@selector(popHappyNewsByTimer)
+                                                        userInfo:nil
+                                                         repeats:NO];
+            
+            
             
         }
             break;
@@ -251,6 +629,13 @@ enum actionsheetNumber{
     
 }
 
+
+-(void)popHappyNewsByTimer{
+
+    [self popupHappyMessage:@"已成功复制下载链接" title:nil];
+    [self.timer invalidate];
+
+}
 
 #pragma mark --actionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -341,7 +726,7 @@ enum actionsheetNumber{
 - (void)onSelectSessionScene{
     [_delegate changeScene:WXSceneSession];
     [self popupHappyMessage:@"分享场景:会话" title:nil];
-   
+    
 }
 
 - (void)onSelectTimelineScene{
@@ -350,7 +735,7 @@ enum actionsheetNumber{
         
         [_delegate changeScene:WXSceneTimeline];
         [self popupHappyMessage:@"分享场景:朋友圈" title:nil];
-
+        
     }
     
     
@@ -381,340 +766,6 @@ enum actionsheetNumber{
     
     
 }
-
-- (AppDelegate*)getAppDelegate
-{
-    return (AppDelegate*)[UIApplication sharedApplication].delegate;
-}
-
-
-////点击喜欢按钮
--(void)clickLikeButton:(id)sender{    
-   ArticleDetail *article =[self articleDetail];
-   User *user =  [[UserService defaultService] user];
-    
-    if ( user.uid ==nil) {
-        return;
-    }
-    
-    
-   [[UserService defaultService] sendLikeWithContentId:[article _id] userId:user.uid  channeltype:@"1"  delegate:self];
-    
-}
-////点击评论按钮
--(void)clickCommentButton:(UIButton *)sender{
-    
-    PPDebug(@"////点击评论按钮");
-    CommentViewController *cVC = [[CommentViewController alloc]initWithNibName:@"CommentViewController" bundle:nil];
-    [self.navigationController pushViewController:cVC animated:YES];
-    cVC.article =self.article;
-    
-    
-    [cVC release];
-    
-
-}
-
-
-
-
-////点击分享按钮
--(void)clickShareButton:(UIButton *)sender{
-    
-    PPDebug(@"////点击分享按钮");
-    
-    if ([DeviceDetection isOS6]){
-        
-        [self showAWSheet];
-        
-    }
-    else{
-        whichAcctionSheet = RECOMMENDATION;
-        [self shareToSocialnetWorks];
-        
-    }
-
-}
-
-- (void)setRightBarButtons
-{
-    float buttonHigh = 27.5;
-    float buttonLen = 47.5;
-    float seporator = 5;
-    float leftOffest = 20;
-    
-    UIFont *font = [UIFont systemFontOfSize:14];
-    
-    UIView *rightButtonView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 3*(buttonLen+seporator) +30, buttonHigh)];
-//    
-//    
-//    
-//    self.likeButton = [[UIButton alloc] initWithFrame:CGRectMake(leftOffest, 3, 22, 22)];
-//    [_likeButton setImage:[ImageManager GobalArticelLikeButtonBG] forState:UIControlStateNormal];
-//    [_likeButton setTitle:@"喜欢" forState:UIControlStateNormal];
-//    [_likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    [_likeButton.titleLabel setFont:font];
-//    [_likeButton addTarget:self action:@selector(clickLikeButton:) forControlEvents:UIControlEventTouchUpInside];
-//    [rightButtonView addSubview:self.likeButton];
-//    
-//    
-    UIButton * commentBarButton = [[UIButton alloc] initWithFrame:CGRectMake(leftOffest+buttonLen+seporator,3, 22, 22)];
-    [commentBarButton addTarget:self action:@selector(clickCommentButton:) forControlEvents:UIControlEventTouchUpInside];
-    [commentBarButton setImage:[ImageManager GobalArticelCommentButtonBG] forState:UIControlStateNormal];
-    [commentBarButton setTitle:@"评论" forState:UIControlStateNormal];
-    [commentBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [commentBarButton.titleLabel setFont:font];
-    [rightButtonView addSubview:commentBarButton];
-    [commentBarButton release];
-    
-    
-    UIButton *shareBarButton = [[UIButton alloc]initWithFrame:CGRectMake(leftOffest+(buttonLen+seporator)*2 +30, 0, 22, 22)];
-    [shareBarButton setImage:[ImageManager GobalArticelShareButtonBG] forState:UIControlStateNormal];
-    [shareBarButton setTitle:@"分享" forState:UIControlStateNormal];
-    [shareBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [shareBarButton addTarget:self action:@selector(clickShareButton:) forControlEvents:UIControlEventTouchUpInside];
-    [shareBarButton.titleLabel setFont:font];
-    [rightButtonView addSubview:shareBarButton];
-    [shareBarButton release];
-
-    
-    
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]
-                                       initWithCustomView:rightButtonView];
-    
-    [rightButtonView release];
-    
-    self.navigationItem.rightBarButtonItem = rightBarButton;
-    
-    [rightBarButton release];
-}
-
-
-- (void)clickBack:(id)sender
-{
-    
-    if ([self.webview isLoading]) {
-        [self.webview   stopLoading];
-        PPDebug(@"webView stop loading");
-    }
-    
-    
-    
-    [self.navigationController.navigationBar setHidden:NO];
-    [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
-
-	[self.navigationController popViewControllerAnimated:YES];
-}
-
-
-//从网络下载图片
--(UIImage *) getImageFromURL:(NSString *)fileURL {
-    NSLog(@"执行图片下载函数");
-    UIImage * result;
-    
-    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
-    result = [UIImage imageWithData:data];
-    
-    return result;
-}
-
--(void)tap{
-    
-    [self hideNavigationBar];
-
-}
-
-#pragma mark -
-#pragma mark - View lifecycle
-
--(void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:YES];
-    [[BaiduMobStat defaultStat] pageviewStartWithName:@"CommentArticleView"];
-}
-
--(void) viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:YES];
-    [[BaiduMobStat defaultStat] pageviewEndWithName:@"CommentArticleView"];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    
-
-    [self.view  setBounds:CGRectMake(0, 40, 320, 480)];
-
-    [self setRightBarButtons];
-    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
-    
-    
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height + 50)];
-    self.webview = webView;
-    [webView release];
-    
-    self.webview.delegate = self;
-    [self.view addSubview:_webview];
-        
-
-    self.navigationController.navigationBarHidden =NO;
-    /////重新定位，设定NavigationBar 的位置
-   [self.navigationController.navigationBar setFrame:CGRectMake(0, 420, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
-    
-    
-    //548 480
-    if (IS_IPHONE5) {
-        /////重新定位，设定NavigationBar 的位置
-        [self.navigationController.navigationBar setFrame:CGRectMake(0, 508, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
-    }
-    
-    
-    [[ArticleService sharedService] findArticleInfoWithAucode:@"aijianmei" auact:@"au_getinformationdetail" articleId:_article._id channel:@" " channelType:@" " uid:@"" delegate:self];
-
-    
-}
-
-
-
-#pragma mark -
-#pragma mark Hide and Show TabBar Methods
-
-- (void)showNavigationBar {
-    UINavigationBar *tabBar = self.navigationController.navigationBar;
-    UIView *parent = tabBar.superview; // UILayoutContainerView
-    UIView *content = [parent.subviews objectAtIndex:0]; // UITransitionView
-    UIView *window = parent.superview;
-    [UIView animateWithDuration:1.5
-                     animations:^{
-                         CGRect tabFrame = tabBar.frame;
-                         tabFrame.origin.y = CGRectGetMaxY(window.bounds) - CGRectGetHeight(tabBar.frame);
-                         tabBar.frame = tabFrame;
-                         CGRect contentFrame = content.frame;
-                         contentFrame.size.height -= tabFrame.size.height;
-                     }];
-}
-
-
-- (void)hideNavigationBar {
-    UINavigationBar *tabBar = self.navigationController.navigationBar;
-    UIView *parent = tabBar.superview; // UILayoutContainerView
-    UIView *content = [parent.subviews objectAtIndex:0];  // UITransitionView
-    UIView *window = parent.superview;
-    
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         CGRect tabFrame = tabBar.frame;
-                         tabFrame.origin.y = CGRectGetMaxY(window.bounds);
-                         tabBar.frame = tabFrame;
-                         content.frame = window.bounds;
-                     }];
-}
-
-
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-    CustomURLCache *urlCache = (CustomURLCache *)[NSURLCache sharedURLCache];
-    [urlCache removeAllCachedResponses];
-
-}
-
--(void)updateUserInterface{
-    
-     [_likeButton setImage:[UIImage imageNamed:@"like_icon.png"] forState:UIControlStateNormal];
-    
-    NSString *newLike = _articleDetail.like;
-    int likeValue = [newLike integerValue];
-    
-    if (likeValue ==1) {
-        
-        [_likeButton setImage:[UIImage imageNamed:@"Press_like_icon.png"] forState:UIControlStateNormal];
-    }
-}
-
-
-
--(void)shareArticleWithTitle:(NSString*)title image:(UIImage *)image
-
-{
-    
-    
-    NSMutableDictionary * params =[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   title, @"status",image,@"pic",nil];
-    [[SinaWeiboManager sharedManager].sinaweibo requestWithURL:@"statuses/upload.json"
-                                                        params:params
-                                                    httpMethod:@"POST"
-                                                      delegate:self];
-    [self showActivityWithText:@"正在分享"];
-    
-}
-
-
-- (void)clickSinaShareButton
-{
-    
-    UIImage *image = [self getImageFromURL:_article.img];
-    postImage = image;
-    
-    _sinaweiboManager = [SinaWeiboManager sharedManager];
-    [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
-    
-    
-    if([_sinaweiboManager.sinaweibo isAuthValid])
-    {
-        REComposeViewController *composeViewController = [[REComposeViewController alloc] init];
-        composeViewController.hasAttachment = YES;
-        composeViewController.attachmentImage =postImage;
-        
-        
-        NSString *appendString =@"(分享自  @爱健美网)";
-        NSString *articleTitle =_article.title;
-        NSString *shareUrl = [NSString stringWithFormat:@"   详情点击:%@",_article.shareurl];
-        
-        NSString *postText = [NSString stringWithFormat:@"%@%@%@",articleTitle,appendString,shareUrl];
-        
-        [composeViewController setText:postText];
-        
-        
-        
-        UIImageView *titleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
-        titleImageView.frame = CGRectMake(0, 0, 110, 30);
-        composeViewController.navigationItem.titleView = titleImageView;
-        
-        // UIApperance setup
-        [composeViewController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topmenu_bg.png"] forBarMetrics:UIBarMetricsDefault];
-        
-        
-        [self presentViewController:composeViewController animated:YES completion:nil];
-        [composeViewController release];
-
-        // Alternative use with REComposeViewControllerCompletionHandler
-        composeViewController.completionHandler = ^(REComposeResult result) {
-            if (result == REComposeResultCancelled) {
-                NSLog(@"Cancelled");
-
-            }
-            if (result == REComposeResultPosted) {
-                NSLog(@"Text = %@", composeViewController.text);
-                [self shareArticleWithTitle: composeViewController.text image:composeViewController.attachmentImage ];
-                
-            }
-        };
-        
-               
-
-    }if(![_sinaweiboManager.sinaweibo isAuthValid])
-    {
-        [_sinaweiboManager.sinaweibo logIn];
-    }
-
-}
-
 
 #pragma mark -
 #pragma mark UIWebViewDelegate
@@ -866,11 +917,12 @@ enum actionsheetNumber{
         ArticleDetail *article  = [objects objectAtIndex:0];
         [self setArticleDetail:article];
         [self loadWebViewWithHtmlString:self.articleDetail.content];
-        [self.webview sizeToFit];
-        [self.webview scalesPageToFit];
-        [self.webview setUserInteractionEnabled:YES];
-        [self.webview setFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height + 100)];
-
+        [_webview sizeToFit];
+        [_webview scalesPageToFit];
+        [_webview setUserInteractionEnabled:YES];
+        [_webview setFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height + 100)];
+        [_webview.scrollView setContentSize:CGSizeMake(320, 400)];
+        
         
     }
     

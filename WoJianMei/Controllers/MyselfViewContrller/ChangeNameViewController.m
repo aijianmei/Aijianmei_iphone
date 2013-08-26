@@ -44,8 +44,29 @@
 //    [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(clickSaveButton)];
     
     [currentTextField setClearsOnBeginEditing:NO];
+    
+    
+    //停顿一会儿之后显示键盘
+    float duration =0.4;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:duration
+                                                  target:self
+                                                selector:@selector(showKeyBoard)
+                                                userInfo:nil
+                                                 repeats:NO];
+    
 
 }
+
+
+#pragma mark -
+#pragma mark - ShowKeyBoard Method
+
+-(void)showKeyBoard{
+    [currentTextField becomeFirstResponder];
+    [self.timer invalidate];
+}
+
+
 -(void)clickSaveButton{
 
     PPDebug(@"Did click save button!");

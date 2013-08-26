@@ -30,7 +30,6 @@
 }
 
 
-
 -(void)dealloc{
     [_nameTextField release];
     [super dealloc];

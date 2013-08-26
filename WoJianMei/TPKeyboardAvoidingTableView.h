@@ -8,6 +8,14 @@
 #import <UIKit/UIKit.h>
 
 @interface TPKeyboardAvoidingTableView : UITableView
+{
+}
+@property (nonatomic,assign) BOOL _keyboardVisible
+;
+
+
 - (BOOL)focusNextTextField;
 - (void)scrollToActiveTextField;
+-(void)hideKeyboard;
+
 @end

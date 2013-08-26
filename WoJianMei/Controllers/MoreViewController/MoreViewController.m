@@ -14,13 +14,13 @@
 #import "FontSize.h"
 #import "DeviceDetection.h"
 #import "AppDelegate.h"
-//#import "MobClick.h"
 #import "Result.h"
 #import "VersionInfo.h"
 
 #import "SinaWeibo.h"
 #import "TLAlertView.h"
 #import "UIUtils.h"
+#import "StatusView.h"
 
 
 #define kAppId			@"683646344"
@@ -91,7 +91,7 @@ enum TapOnItem {
 
 - (void)initMoreUI
 {
-    _appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
     
     ////leftBtn
     UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
@@ -103,19 +103,7 @@ enum TapOnItem {
     [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
     
-    
-    ////rightBtn
-//    UIButton *rightBtn = [[[UIButton alloc] init] autorelease];
-//    
-//    [rightBtn setBackgroundImage:[UIImage imageNamed:@"NavigationButtonBG.png"]
-//                        forState:UIControlStateNormal];
-//    
-//    [rightBtn setImage:[UIImage imageNamed:@"LeftSideViewIcon.png"] forState:UIControlStateNormal];
-//    rightBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
-//    [rightBtn addTarget:self action:@selector(rightButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-//    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:rightBtn] autorelease];
-//    
-    
+
     
     if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPad)
     {
@@ -168,16 +156,6 @@ enum TapOnItem {
     self.listData = array;
     [array release];
 }
-
--(AppDelegate *)appDelegate{
-    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication];
-
-    return appDelegate;
-    
-}
-
-
-
 
 
 #pragma mark -lifeCycle
@@ -382,12 +360,6 @@ enum TapOnItem {
                 [self updateApplication];
             }
                 break;
-//            case 1:
-//            {
-//                [self recommmendedApps];
-//                
-//            }
-//                break;
                 
             default:
                 break;
@@ -452,7 +424,6 @@ enum TapOnItem {
                             @"新浪微博",
                             @"朋友圈",
                             @"微信",
-//                            @"腾讯微博",
                             @"邮件",
                             @"短信",
                             @"复制链接",
@@ -544,7 +515,15 @@ enum TapOnItem {
             [gpBoard setString:downloadAPPUrl];
             
             
-            [self popupHappyMessage:@"已成功复制下载链接" title:nil];
+            //停顿一会儿之后显示键盘
+            float duration =0.7;
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:duration
+                                                          target:self
+                                                        selector:@selector(popHappyNewsByTimer)
+                                                        userInfo:nil
+                                                         repeats:NO];
+
+            
 
         }
             break;
@@ -554,11 +533,15 @@ enum TapOnItem {
     }
 }
 
+-(void)popHappyNewsByTimer{
+    [self popupHappyMessage:@"已成功复制下载链接" title:nil];
+}
+
 -(void)clickSinaShareButton
 {
     
     _sinaweiboManager = [SinaWeiboManager sharedManager];
-    [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
+    [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:[AppDelegate getAppDelegate]];
     
     
     if([_sinaweiboManager.sinaweibo isAuthValid]){
@@ -577,10 +560,13 @@ enum TapOnItem {
         [[SinaWeiboManager sharedManager].sinaweibo requestWithURL:@"statuses/upload.json"
                                                             params:params
                                                         httpMethod:@"POST"
-                                                          delegate:self];
+                                                          delegate:        [AppDelegate getAppDelegate]];
         
+         
         
-        [self showActivityWithText:@"正在分享"];
+        [StatusView showtStatusText:@"正在分享..."
+                            vibrate:NO
+                           duration:30];
 
     
     }if(![_sinaweiboManager.sinaweibo isAuthValid])
@@ -688,12 +674,14 @@ enum TapOnItem {
             
             if ([userId length] > 0)
             {
-            uid = [[[NSString  alloc] initWithString:userId] autorelease];
+                uid = [[[NSString  alloc] initWithString:userId] autorelease];
                 [uid retain];
             
-            [[UserService defaultService] deleteUserByUid:uid];
+                [[UserService defaultService] deleteUserByUid:uid];
                 
                 [dataTableView reloadData];
+                
+                [[AppDelegate getAppDelegate] showLoginView];
 
             }else {
                 
@@ -896,47 +884,7 @@ enum TapOnItem {
     [self dismissModalViewControllerAnimated:YES];
 }
 
-#pragma mark - 
-#pragma mark - SinaWeiboRequest Delegate
-- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
-{
-    
-    if ([request.url hasSuffix:@"statuses/upload.json"])
-    {
-        NSLog(@"******%@",[error description]);
-        [self hideActivity];
-        [self popupHappyMessage:@"分享失败" title:@""];
-    }
-    
-    if ([request.url hasSuffix:@"users/show.json"])
-    {
-        NSLog(@"******%@",[error description]);
-    }
 
-}
-
-- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
-{
-    
-    if ([request.url hasSuffix:@"statuses/upload.json"])
-    {
-        NSLog(@"******%@",[result description]);
-        [self hideActivity];
-        [self popupHappyMessage:@"分享成功" title:@""];
-    }
-    
-    if ([request.url hasSuffix:@"users/show.json"])
-    {
-        [[UserService defaultService] storeSinaUserInfo:result];
-        
-        NSDictionary *userInfo = result;
-        NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);
-        
-        
-        [self  clickSinaShareButton];
-    }
-
-}
 
 
 #pragma mark -

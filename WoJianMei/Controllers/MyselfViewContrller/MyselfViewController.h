@@ -10,13 +10,13 @@
 #import "StatusCell.h"
 #import "User.h"
 #import "UserService.h"
-#import "StatusViewBaseController.h"
+#import "MyselfViewBaseController.h"
 
 @class User;
 @class PostViewController;
 @class Myself_SettingsViewController;
 
-@interface MyselfViewController : StatusViewBaseController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
+@interface MyselfViewController : MyselfViewBaseController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
 
 {
     

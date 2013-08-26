@@ -23,6 +23,8 @@
 #import "WorkoutViewController.h"
 #import "VersionInfo.h"
 #import "PublicMyselfViewController.h"
+#import "StatusView.h"
+
 
 
 
@@ -120,6 +122,33 @@
     
     return  _loginViewController;
 }
+
+
+-(void)showLoginView{
+
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        if (![[UserService defaultService] user]){
+            LoginViewController *loginViewController =    [[AppDelegate getAppDelegate] initLoginViewController];
+            loginViewController.delegate = [self homeViewController];
+            UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:loginViewController];
+            [self.window.rootViewController presentModalViewController:navigation animated:NO];
+            [navigation release];
+            
+        }
+        
+        
+        
+        
+    }
+    else
+    {
+        
+    }
+    
+
+}
+
 
 
 
@@ -253,10 +282,6 @@
     statTracker.shortAppVersion  = IosAppVersion; //参数为NSString * 类型,自定义app版本信息，如果不设置，默认从CFBundleVersion里取
     [statTracker startWithAppId:BaiduMobileAnlyizeAppId];//设置您在mtj网站上添加的app的appkey
     
-
-    
-    
-
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
@@ -465,6 +490,52 @@
 }
 
 
+
+
+#pragma mark -
+#pragma mark - SinaWeiboRequest Delegate
+- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
+{
+    //  发送微博
+    if ([request.url hasSuffix:@"statuses/upload.json"])
+    {
+        NSLog(@"******%@",[error description]);
+        
+        [StatusView hideStatusText];
+
+    }
+    
+    //获取用户个人信息
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        NSLog(@"******%@",[error description]);
+        [StatusView hideStatusText];
+
+    }
+    
+}
+
+- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
+{
+    //  发送微博
+    if ([request.url hasSuffix:@"statuses/upload.json"])
+    {
+        NSLog(@"******%@",[result description]);
+        [StatusView hideStatusText];
+    }
+    
+    //获取用户个人信息
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        [[UserService defaultService] storeSinaUserInfo:result];
+        
+        NSDictionary *userInfo = result;
+        NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);
+        [StatusView hideStatusText];
+        
+    }
+    
+}
 
 
 #pragma mark -

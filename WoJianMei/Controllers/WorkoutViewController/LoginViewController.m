@@ -425,7 +425,6 @@ enum SinaResultErrorCode
             _signUpViewController.userType =[self userType];
             
             [self.navigationController pushViewController:self.signUpViewController animated:YES];
-
             
         }
     

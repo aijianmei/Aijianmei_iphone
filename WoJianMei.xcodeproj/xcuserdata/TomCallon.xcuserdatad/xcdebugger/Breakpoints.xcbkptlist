@@ -7,13 +7,39 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "WoJianMei/Controllers/MyselfViewContrller/StatusViewBaseController.m"
-         timestampString = "398335187.099167"
+         filePath = "WoJianMei/TPKeyboardAvoidingTableView.m"
+         timestampString = "399192806.912721"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "200"
-         endingLineNumber = "200"
-         landmarkName = "-getAvatar:"
+         startingLineNumber = "38"
+         endingLineNumber = "38"
+         landmarkName = "-initWithFrame:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "WoJianMei/TPKeyboardAvoidingTableView.m"
+         timestampString = "399192806.912721"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "44"
+         endingLineNumber = "44"
+         landmarkName = "-initWithFrame:style:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "WoJianMei/TPKeyboardAvoidingTableView.m"
+         timestampString = "399192806.912721"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "84"
+         endingLineNumber = "84"
+         landmarkName = "-touchesEnded:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

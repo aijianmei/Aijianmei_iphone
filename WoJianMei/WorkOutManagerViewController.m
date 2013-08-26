@@ -55,7 +55,7 @@
     
     
     //设置顶部导航栏
-    [self setRightBarButtons];
+//    [self setRightBarButtons];
 
     
 //    //设置应用程序的状态栏到指定的方向

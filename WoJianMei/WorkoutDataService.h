@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <RestKit/RestKit.h>
 
-@interface WorkDataService : NSObject
+
+@interface WorkoutDataService : NSObject<RKObjectLoaderDelegate>
+
+
+
++(WorkoutDataService *)sharedService;
 
 @end

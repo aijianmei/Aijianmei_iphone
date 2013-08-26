@@ -181,6 +181,8 @@ typedef enum CONTENT_TYPE {
 - (void)rightButtonClickHandler:(id)sender
 {
     [self.viewDeckController toggleRightViewAnimated:YES];
+    
+    
     User *user = [[UserService defaultService] user];
     if (user.uid) {
     
@@ -188,7 +190,8 @@ typedef enum CONTENT_TYPE {
     [self.navigationController pushViewController:publicStatusViewController animated:YES];
         
     }else{
-        [self showLoginView];
+        
+        [[AppDelegate  getAppDelegate] showLoginView];
     }
 }
 
@@ -218,7 +221,7 @@ typedef enum CONTENT_TYPE {
     //添加当前划片的提示
     [self addSpacePageControl];
 
-    [self showLoginView];
+    [[AppDelegate getAppDelegate] showLoginView];
 }
 
 
@@ -236,27 +239,7 @@ typedef enum CONTENT_TYPE {
 
 #pragma mark-- addButtonScrollView Method
 
--(void)showLoginView{
-
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
-        if (![[UserService defaultService] user]){
-         LoginViewController *loginViewController =    [[AppDelegate getAppDelegate] initLoginViewController];
-            loginViewController.delegate = self;
-            UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:loginViewController];
-            [self.navigationController presentModalViewController:navigation animated:NO];
-            [navigation release];
-            
-        }
-    }
-    else
-    {
-        
-    }
-}
-
-
--(void)initTableHeaderView{
+-(id)initTableHeaderView{
     
     UIView *headerView =[[UIView alloc]init];
     [headerView setFrame: CGRectMake(0, 0, 320, 200)];
