@@ -6,8 +6,33 @@
 //
 //
 
-#import "PPViewController.h"
+#import "PPTableViewController.h"
+#import <RestKit/RestKit.h>
 
-@interface WorkoutDetailViewController : PPViewController
+
+@class Workout;
+
+@protocol WorkoutDetailDelegate <NSObject>
+
+
+-(void)loadWorkoutCatalogMenueWithWorkout :(Workout *)workout;
+
+@end
+
+
+@class Workout;
+
+
+@interface WorkoutDetailViewController : PPTableViewController<RKObjectLoaderDelegate>
+{
+    NSArray *_workoutArray;
+    id <WorkoutDetailDelegate> _delegate;
+    
+    Workout  *_choosenWorkout;
+
+}
+@property (nonatomic,retain) NSArray *workoutArray;
+@property (nonatomic,assign) id <WorkoutDetailDelegate> delegate;
+
 
 @end

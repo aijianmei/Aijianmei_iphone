@@ -14,6 +14,7 @@
 #import "StringUtil.h"
 #import "BaiduMobStat.h"
 #import "ImageManager.h"
+#import "DeviceDetection.h"
 
 
 
@@ -119,15 +120,22 @@ enum errorCode {
     if ([_passwordTextField isEditing]) {
         [_passwordTextField resignFirstResponder];
     }
-    
+
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+
     
 //	MCRelease(keyBoardController);
 }
+
+
+
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
     
     [self.navigationController.navigationBar setHidden:NO];
-    
+
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+
 //	keyBoardController=[[UIKeyboardViewController alloc] initWithControllerDelegate:self];
 //	[keyBoardController addToolbarToKeyboard];
 }
@@ -138,6 +146,15 @@ enum errorCode {
 	[self.navigationController popViewControllerAnimated:NO];
 }
 
+- (IBAction)closeDoneEdit:(id)sender{
+    
+    
+    [self didPressSignup:sender];
+    [sender resignFirstResponder];
+     
+    
+}
+
 
 
 - (void)viewDidLoad
@@ -146,7 +163,7 @@ enum errorCode {
     
     
     [self setTitle:@"注册新用户"];
-    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+    [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     [self setNavigationRightButton:@"注册" imageName:@"top_bar_commonButton.png"  action:@selector(didPressSignup:)];
 
     [_userNameTextField setPlaceholder:@"用户名 : 如健美王子"];
@@ -154,6 +171,20 @@ enum errorCode {
     [_passwordTextField setPlaceholder:@"密码: 不得少于6为数字或字母"];
     
     
+    if([DeviceDetection isIPhone5])
+    {
+        [self setBackgroundImageName:@"640X1136.png"];
+    }
+    else
+    {
+        [self setBackgroundImageName:@"640X960.png"];
+    }
+    [self showBackgroundImage];
+    [self showBackgroundImage];
+
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+
+
     
 
     //轻触手势（单击，双击）
@@ -212,11 +243,6 @@ enum errorCode {
     [_userType release];
     [super dealloc];
     
-}
-
-- (IBAction)closeDoneEdit:(id)sender
-{
-    [sender resignFirstResponder];
 }
 
 - (void)didPressSignup:(id)sender

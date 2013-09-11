@@ -112,6 +112,15 @@
             break;
     }
     [[UserService defaultService] setUser:user];
+    [[UserService defaultService] storeUserInfoByUid:user.uid];
+    
+    
+    if (newdelegate && [newdelegate respondsToSelector:@selector(didUpdateDatasByKeyboradInput:atIndex:)]) {
+        
+        [newdelegate didUpdateDatasByKeyboradInput:nil atIndex:indexPath];
+    }
+
+
     
 }
 

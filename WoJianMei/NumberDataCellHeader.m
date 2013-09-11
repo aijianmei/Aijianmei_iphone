@@ -10,14 +10,14 @@
 
 
 @interface NumberDataCellHeader()
-@property (assign, nonatomic) id<NumberDataCellHeaderDelegate> delegate;
 @end
 
 
-
-
-
 @implementation NumberDataCellHeader
+@synthesize delegate =_delegate;
+
+
+
 
 -(void)dealloc {
     [_nameButton release];
@@ -54,11 +54,42 @@
     
     NumberDataCellHeader *header = (NumberDataCellHeader*)[topLevelObjects objectAtIndex:0];
     
-    [header.numberButton.titleLabel setText:name];
+    //获得系统时间
+    NSDate *  senddate=[NSDate date];
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+//    [dateformatter setDateFormat:@"HH:mm"];
+//    NSString *  locationString=[dateformatter stringFromDate:senddate];
+    
+//    [dateformatter setDateFormat:@"YYYY-MM-dd-HH-mm-ss"];
+
+    [dateformatter setDateFormat:@"YYYY-MM-dd"];
+    NSString *  morelocationString=[dateformatter stringFromDate:senddate];
+    
+    NSString *timeAndName = [NSString stringWithFormat:@"%@\n%@",name,morelocationString];
+    
+    [header.nameButton setTitle:timeAndName forState:UIControlStateNormal];
+    
+    //点击按钮
+//    [header.nameButton addTarget:header action:@selector(clickChangeStytle:) forControlEvents:UIControlEventTouchUpInside];
+    
+      
+    [header.weightButton setTitle:weight forState:UIControlStateNormal];
+    [header.numberButton setTitle:number forState:UIControlStateNormal];
+    [header.timeButton setTitle:time forState:UIControlStateNormal];
+    [header.caloriesButton setTitle:calories forState:UIControlStateNormal];
     header.delegate = delegate;
     
     return header;
 }
+
+
+-(void)clickChangeStytle:(UIButton *)sender{
+    
+//    if ([self.delegate respondsToSelector:@selector(didClickHeaderButton:atIndex:)]){
+//        [self.delegate  didClickHeaderButton:sender atIndex:0];
+//    }
+}
+
 
 
 

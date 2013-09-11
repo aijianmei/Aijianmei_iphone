@@ -32,7 +32,7 @@
     [self showBackgroundImage];
     
 //    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
-    [self setNavigationRightButton:@"返回" imageName:@"top_bar_commonButton.png" action:@selector(clickDismissButton:)];
+    [self setNavigationRightButton:@"" imageName:@"top_bar_commonButton.png" action:@selector(clickDismissButton:)];
 }
 
 -(void)clickDismissButton:(id)sender{

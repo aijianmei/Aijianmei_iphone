@@ -87,6 +87,7 @@
 {
     return 80.0f;
 }
+
 - (void)setCellInfo:(Comment *)comment{
     
     [self.myImageView setImageWithURL:[NSURL URLWithString:comment.userimg] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"] options:SDWebImageCacheMemoryOnly];

@@ -10,6 +10,8 @@
 #import "PPTableViewController.h"
 #import <RestKit/RestKit.h>
 #import "MyselfSettingCell.h"
+#import "TPKeyboardAvoidingTableView.h"
+
 
 
 @class User;
@@ -28,7 +30,7 @@
         
     BOOL isChoosingAvtarImage;
     BOOL isChoosingAvtarBackground;
-
+    NSIndexPath *BMIindexPath;
 
     
 }

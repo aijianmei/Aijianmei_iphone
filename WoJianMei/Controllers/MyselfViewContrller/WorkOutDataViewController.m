@@ -114,7 +114,7 @@
    
     [self setNavigationRightButton:@"设置" imageName:@"settings.png" action:@selector(clickEditButton:)];
     
-   [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+   [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     
     
     

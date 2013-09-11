@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPViewController.h"
 
-@interface RankingViewController : UIViewController
+@interface RankingViewController : PPViewController
 
 @end

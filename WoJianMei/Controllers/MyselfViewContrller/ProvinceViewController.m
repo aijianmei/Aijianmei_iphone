@@ -43,7 +43,7 @@
     [self showBackgroundImage];
     /// 设置导航按钮
     
-    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+    [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     
     [self updateUI];
 }
@@ -88,11 +88,8 @@
     [cell.textLabel setText:nil];
     
     /////
-    UIImage *normalImage = [UIImage imageNamed:@"AccessoryView.png"];
-    //    UIImage *mySelectedImage = [UIImage imageNamed:@"144x144.png"];
-    
+    UIImage *normalImage = [UIImage imageNamed:@"jt_1.png"];    
     UIButton *accessoryViewButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    
     accessoryViewButton.frame = CGRectMake(0.0f, 0.0f, 32.0f,32.0f);
     accessoryViewButton.userInteractionEnabled = YES;
     [accessoryViewButton setImage:normalImage forState:UIControlStateNormal];

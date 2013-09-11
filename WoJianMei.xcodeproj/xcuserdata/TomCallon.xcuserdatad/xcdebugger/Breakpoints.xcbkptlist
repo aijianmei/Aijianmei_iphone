@@ -7,45 +7,32 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "WoJianMei/TPKeyboardAvoidingTableView.m"
-         timestampString = "399192806.912721"
+         filePath = "WoJianMei/Common iphone/leftsideNavigation/Classes_leftSideNavi/AJMViewDelegate.m"
+         timestampString = "399781876.035502"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "38"
-         endingLineNumber = "38"
-         landmarkName = "-initWithFrame:"
+         startingLineNumber = "29"
+         endingLineNumber = "29"
+         landmarkName = "-viewOnWillDisplay:shareType:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "WoJianMei/TPKeyboardAvoidingTableView.m"
-         timestampString = "399192806.912721"
+         filePath = "WoJianMei/Common iphone/leftsideNavigation/Classes_leftSideNavi/AJMViewDelegate.m"
+         timestampString = "399781885.874644"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "44"
-         endingLineNumber = "44"
-         landmarkName = "-initWithFrame:style:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "WoJianMei/TPKeyboardAvoidingTableView.m"
-         timestampString = "399192806.912721"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "84"
-         endingLineNumber = "84"
-         landmarkName = "-touchesEnded:withEvent:"
+         startingLineNumber = "79"
+         endingLineNumber = "79"
+         landmarkName = "-view:autorotateToInterfaceOrientation:shareType:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
    <ExceptionBreakpoints>
       <ExceptionBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          scope = "0"

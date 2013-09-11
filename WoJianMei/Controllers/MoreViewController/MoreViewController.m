@@ -21,6 +21,10 @@
 #import "TLAlertView.h"
 #import "UIUtils.h"
 #import "StatusView.h"
+#import "UIImageUtil.h"
+#import "UIImage+Scale.h"
+
+
 
 
 #define kAppId			@"683646344"
@@ -72,6 +76,19 @@ enum TapOnItem {
 };
 
 
+enum BUTTON_INDEX {
+    
+    SEND_SINA_WEIBO= 0,
+    SEND_WECHAT_SOCIAL,
+    SEND_WECHAT_FRIENDS,
+    SEND_EMAIL ,
+    SEND_MESSAGE ,
+    CANCLE_BUTTON
+};
+
+
+
+
 
 @interface MoreViewController ()<UIActionSheetDelegate,AWActionSheetDelegate>
 
@@ -91,14 +108,9 @@ enum TapOnItem {
 
 - (void)initMoreUI
 {
-    
-    
     ////leftBtn
     UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
-    
-    [leftBtn setBackgroundImage:[ImageManager GobalNavigationLeftSideButtonImage]
-                       forState:UIControlStateNormal];
-    
+    [leftBtn setImage:[ImageManager GobalNavigationLeftSideButtonImage] forState:UIControlStateNormal];
     leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
     [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
@@ -144,10 +156,7 @@ enum TapOnItem {
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
     ///Set the right bar button 
-//    [self setNavigationRightButton:@"设置"
-//                          fontSize:FONT_SIZE
-//                         imageName:@"setting.png"
-//                            action:@selector(clickSettingsButton:)];
+
 }
 
 - (void)initOptionList
@@ -184,6 +193,8 @@ enum TapOnItem {
 }
 -(void)viewWillAppear:(BOOL)animated{
 
+    
+    self.delegate =[AppDelegate getAppDelegate];
     [super viewWillAppear:YES];
     
 }
@@ -478,15 +489,23 @@ enum TapOnItem {
             
             UIImage *image =[UIImage imageNamed:@"Default.png"];
             
-            [self sendAppContentWithTitle:@"下载爱健美iphone客户端" description:@"学习专业的运动、健身、健康资讯，就下载爱健美手机客户端啦！" image:image urlLink:@"www.aijianmei.com" ];        }
+            postImage = [image scaleToSize:CGSizeMake(100,100)];
+
+            [self sendAppContentWithTitle:@"下载爱健美手机客户端" description:@"学习专业的运动、健身、健康资讯，就下载爱健美手机客户端啦！" image:postImage urlLink:@"https://itunes.apple.com/us/app/ai-jian-mei/id683646344?ls=1&mt=8"];
+            
+            
+        }
             break;
         case WECHAT:
         {
             [self onSelectSessionScene];
             
             UIImage *image =[UIImage imageNamed:@"Default.png"];
+            postImage = [image scaleToSize:CGSizeMake(100,100)];
             
-            [self sendAppContentWithTitle:@"下载爱健美iphone客户端" description:@"学习专业的运动、健身、健康资讯，就下载爱健美手机客户端啦！" image:image urlLink:@"www.aijianmei.com" ];
+            [self sendAppContentWithTitle:@"爱健美手机客户端" description:@"专业的健身、运动、健康资讯，就下载爱健美手机客户端啦！" image:postImage urlLink:@"https://itunes.apple.com/us/app/ai-jian-mei/id683646344?ls=1&mt=8" ];
+            
+            
         }
             break;
         case EMAIL:
@@ -598,6 +617,7 @@ enum TapOnItem {
     [fbVc release];
 }
 
+
 -(void)likeUs{
     [UIUtils openApp:kAppId];
 }
@@ -608,6 +628,8 @@ enum TapOnItem {
     [self.navigationController pushViewController:abVC animated:YES];
     [abVC release];
 }
+
+
 
 -(void)updateApplication{
     
@@ -620,6 +642,7 @@ enum TapOnItem {
     
     PPDebug(@"Show me the recommended Apps");
 }
+
 -(void)logout{
     
     PPDebug(@"User is trying to logout");
@@ -628,6 +651,8 @@ enum TapOnItem {
     [alert release];
 
 }
+
+
 
 #pragma mark -
 #pragma mark --AlertViewDelegate
@@ -674,10 +699,14 @@ enum TapOnItem {
             
             if ([userId length] > 0)
             {
-                uid = [[[NSString  alloc] initWithString:userId] autorelease];
+                uid = [[NSString  alloc] initWithString:userId];
                 [uid retain];
+                
+                
             
                 [[UserService defaultService] deleteUserByUid:uid];
+                
+                
                 
                 [dataTableView reloadData];
                 
@@ -714,22 +743,13 @@ enum TapOnItem {
         
         NSString *bodyString = [NSString stringWithFormat:@"%@%@", bodyStringBegin, bodyStringWebsite];
         
-        enum BUTTON_INDEX {
-            
-            SEND_SINA_WEIBO= 0,
-            SEND_WECHAT_SOCIAL,
-            SEND_WECHAT_FRIENDS,
-            SEND_EMAIL ,
-            SEND_MESSAGE ,
-            CANCLE_BUTTON
-        };
-                
+                     
         NSInteger BUTTON_INDEX  =buttonIndex;
 
         switch (BUTTON_INDEX) {
             case SEND_SINA_WEIBO:
             {
-                
+
                 [self clickSinaShareButton];
             }
                 break;
@@ -739,14 +759,22 @@ enum TapOnItem {
                 
                 UIImage *image =[UIImage imageNamed:@"Default.png"];
                 
-                [self sendAppContentWithTitle:@"下载爱健美iphone客户端" description:@"学习专业的运动、健身、健康资讯，就下载爱健美手机客户端啦！" image:image urlLink:@"www.aijianmei.com" ];
+                
+                postImage =[image scaleToSize:CGSizeMake(70,70)];
+
+                [self sendAppContentWithTitle:@"下载爱健美iphone客户端" description:@"学习专业的运动、健身、健康资讯，就下载爱健美手机客户端啦！" image:postImage urlLink:@"https://itunes.apple.com/us/app/ai-jian-mei/id683646344?ls=1&mt=8" ];
+                
             }
             case SEND_WECHAT_FRIENDS:
             {
                 ///调用微信接口
                 [self  onSelectSessionScene];
                 UIImage *image =[UIImage imageNamed:@"Default.png"];
-                [self sendAppContentWithTitle:@"下载爱健美iphone客户端" description:@"学习专业的运动、健身、健康资讯，就下载爱健美手机客户端啦！" image:image urlLink:@"www.aijianmei.com" ];
+                
+                
+                postImage =[image scaleToSize:CGSizeMake(70,70)];
+
+                [self sendAppContentWithTitle:@"下载爱健美iphone客户端" description:@"学习专业的运动、健身、健康资讯，就下载爱健美手机客户端啦！" image:postImage urlLink:@"https://itunes.apple.com/us/app/ai-jian-mei/id683646344?ls=1&mt=8" ];
                 
             }
                 break;
@@ -778,8 +806,6 @@ enum TapOnItem {
                 break;
         }
     }
-    
-    
 }
 
 - (void)doOAuth
@@ -789,6 +815,8 @@ enum TapOnItem {
         [_delegate doAuth];
     }
 }
+
+
 
 - (void)onSelectSessionScene{
     [_delegate changeScene:WXSceneSession];
@@ -801,15 +829,18 @@ enum TapOnItem {
     }
 }
 
+
+
 ////Wechat
 - (void) sendAppContentWithTitle:(NSString*)title  description:(NSString *)descriptoin image:(UIImage *)image urlLink :(NSString*)urlLink
 {
     if (_delegate  && [_delegate respondsToSelector:@selector(sendAppContentWithTitle:description:image:urlLink:)]
 )
     {
-        PPDebug(@"Share to Wechat！");
-
-        [_delegate sendAppContentWithTitle:title description:descriptoin image:image urlLink:urlLink];
+        [_delegate sendAppContentWithTitle:title
+                               description:descriptoin
+                                     image:image
+                                   urlLink:urlLink];
     }
 }
 

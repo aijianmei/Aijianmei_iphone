@@ -12,7 +12,12 @@
 
 @protocol NumberDataCellHeaderDelegate <NSObject>
 
+
+- (void)didClickHeaderButton:(UIButton *)button atIndex:(int)buttonIndex;
+
 @end
+
+
 
 @interface NumberDataCellHeader : UIView
 
@@ -22,13 +27,19 @@
     UIButton *_weightButton;
     UIButton *_timeButton;
     UIButton *_caloriesButton;
+    
+    id <NumberDataCellHeaderDelegate> _delegate;
 }
+
+
 
 @property (retain, nonatomic) IBOutlet UIButton *nameButton;
 @property (retain, nonatomic) IBOutlet UIButton *numberButton;
 @property (retain, nonatomic) IBOutlet UIButton *weightButton;
 @property (retain, nonatomic) IBOutlet UIButton *timeButton;
 @property (retain, nonatomic) IBOutlet UIButton *caloriesButton;
+@property (nonatomic, assign)    id <NumberDataCellHeaderDelegate> delegate;
+
 
 
 
@@ -40,7 +51,6 @@
                                           time:(NSString *)time
                                       calories:(NSString *)calories
                                       delegate:(id<NumberDataCellHeaderDelegate>)delegate;
-
 
 
 

@@ -31,6 +31,7 @@
 #import "SDSegmentedControl.h"
 #import "BaiduMobStat.h"
 #import "PublicMyselfViewController.h"
+#import "Myself_SettingsViewController.h"
 
 
 
@@ -123,9 +124,6 @@ typedef enum CONTENT_TYPE {
     
     [self buttonClicked:sender];
     
-    // 时间戳转时间的方法
-    //    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:1363948516];
-    //    NSLog(@"1363948516  = %@",confromTimesp);
     
 }
 
@@ -177,29 +175,23 @@ typedef enum CONTENT_TYPE {
 {
     [self.viewDeckController toggleRightViewAnimated:YES];
     
-    UIStoryboard *currentInUseStoryBoard;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-        
-        currentInUseStoryBoard = iPhoneStroyBoard;
-        
-    }else{
-        
-        UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-        currentInUseStoryBoard = iPadStroyBoard;
-    }
-    
-    
     User *user = [[UserService defaultService] user];
     
     if (user.uid) {
         
-        PublicMyselfViewController *publicStatusViewController = [[AppDelegate getAppDelegate] initPublicStatusViewController];
-        [self.navigationController pushViewController:publicStatusViewController animated:YES];
-
-
+        
+        //    PublicMyselfViewController *publicStatusViewController = [[AppDelegate getAppDelegate] initPublicStatusViewController];
+        //    [self.navigationController pushViewController:publicStatusViewController animated:YES];
+        
+        Myself_SettingsViewController *vc =[[Myself_SettingsViewController alloc]initWithNibName:@"Myself_SettingsViewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        
+        
+        
     }else{
-        [self showLoginView];
+        
+        [[AppDelegate  getAppDelegate] showLoginView];
     }
 }
 
@@ -250,25 +242,8 @@ typedef enum CONTENT_TYPE {
 #pragma mark-- addButtonScrollView Method
 
 -(void)showLoginView{
-    
-    UIStoryboard *currentInUseStoryBoard;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-        currentInUseStoryBoard = iPhoneStroyBoard;
-        
-    }else{
-        
-        UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-        currentInUseStoryBoard = iPadStroyBoard;
-    }
-    
-    if (![[UserService defaultService] user]){
-        
-        self.loginViewController = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        UINavigationController *nv = [[[UINavigationController alloc]initWithRootViewController:_loginViewController] autorelease];
-        self.loginViewController.delegate = self;
-        [self.navigationController presentModalViewController:nv animated:YES];
-    }
+            
+        [[AppDelegate  getAppDelegate] showLoginView];
 }
 
 

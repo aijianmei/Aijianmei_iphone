@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface NumberData : NSObject
 {
     NSString *_id;
@@ -18,6 +17,7 @@
     NSString *_time;
     NSString *_calories;
 }
+
 @property (nonatomic,retain) NSString *numerDataId;
 @property (nonatomic,retain) NSString *name;
 @property (nonatomic,retain) NSString *number;
@@ -31,6 +31,43 @@
                                         weight:(NSString *)weight
                                           time:(NSString *)time
                                       calories:(NSString *)calories;
+
+
+
+
+
+@end
+
+
+@interface NumberDataInfo : NSObject
+{
+    NSString *_uid;
+    NSString *_errorCode;
+    
+    NSString *_coureName;
+    NSString *_numAvg;
+    NSString *_weightAvg;
+    NSString *_timeAvg;
+    NSString *_caloriesAvg;
+
+
+
+    
+    NSArray *_numberDataArray;
+
+}
+@property (nonatomic,retain) NSString *uid;
+@property (nonatomic,retain) NSString *errorCode;
+@property (nonatomic,retain) NSString *coureName;
+@property (nonatomic,retain) NSString *numAvg;
+@property (nonatomic,retain) NSString *weightAvg;
+@property (nonatomic,retain) NSString *timeAvg;
+@property (nonatomic,retain) NSString *caloriesAvg;
+
+@property (nonatomic,retain) NSArray *numberDataArray;
+
+
+
 
 
 

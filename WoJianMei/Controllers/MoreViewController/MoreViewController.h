@@ -33,6 +33,8 @@
     int whichAcctionSheet;
     
     SinaWeiboManager *_sinaweiboManager;
+    
+    UIImage *postImage;
 
     
 }

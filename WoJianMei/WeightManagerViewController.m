@@ -31,26 +31,34 @@
 {
     [super viewDidLoad];
     
-    //设置应用程序的状态栏到指定的方向
-    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];
-    //view旋转
-    [self.view setTransform:CGAffineTransformMakeRotation(M_PI/2)];
+//    //设置应用程序的状态栏到指定的方向
+//    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];
+//    //view旋转
+//    [self.view setTransform:CGAffineTransformMakeRotation(M_PI/2)];
+ 
     
+    [self setBackgroundImageName:@"gobal_background.png"];
+    [self showBackgroundImage];
+    
+    [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     //隐藏navigationController
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-    //隐藏状态栏
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];}
+//    [self.navigationController setNavigationBarHidden:YES animated:NO];
+//    //隐藏状态栏
+//    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+
+}
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    //显示状态栏
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-    //显示navigationController
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+//    //显示状态栏
+//    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+//    //显示navigationController
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
 }
 
@@ -58,7 +66,7 @@
 //返回前一页
 - (IBAction)clickBack:(id)sender {
     //状态栏旋转
-    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];
+//    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

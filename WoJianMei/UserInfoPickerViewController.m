@@ -136,10 +136,7 @@
     [self.referenceImageView setHidden:NO];
 
     
-    [self.buttonForward
-     setTitle:@"下一步" forState:UIControlStateNormal];
-    [self.buttonForward setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-   
+       
     if (isFemale)
     {
         [self.femaleButton setHidden:NO];
@@ -191,10 +188,6 @@
     [self.referenceImageView setHidden:NO];
 
     
-    [self.buttonForward
-     setTitle:@"下一步" forState:UIControlStateNormal];
-    [self.buttonForward setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-
     if (isFemale)
     {
         [self.femaleButton setHidden:NO];
@@ -333,12 +326,18 @@
     [self.buttonBack addTarget:self action:@selector(clickBackButton:) forControlEvents:UIControlEventTouchUpInside];
     
     
-   [self.buttonBack setTitle:@"上一步" forState:UIControlStateNormal];
-   [self.buttonBack setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.buttonBack  setTitle:@"下一步"
+                                    forState:UIControlStateNormal];
+    
+    [self.buttonBack setTitleColor:[UIColor whiteColor]
+                         forState:UIControlStateNormal];
     
     
-    [self.buttonForward setTitle:@"下一步" forState:UIControlStateNormal];
-    [self.buttonForward setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.buttonForward setTitle:@"下一步"
+                        forState:UIControlStateNormal];
+    
+    [self.buttonForward setTitleColor:[UIColor whiteColor]
+                             forState:UIControlStateNormal];
 
     
 

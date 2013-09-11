@@ -29,12 +29,17 @@
 
 
 
-// To be changed for each project
+// To be changed for each project  在苹果商店上面的ID
 #define kAppId			@"683646344"
+
+
 
 
 ///aijianmei
 #define WeChatId @"wxc996cdfc0f512dd7"
+
+
+
 #define kAppRedirectURI     @"http://aijianmei.com"
 #define Mobclick @"51b942ae56240bd8cb009671"
 
@@ -46,6 +51,11 @@
 
 
 #define BaiduMobileAnlyizeAppId @"eaca9d7cc8"
+
+
+#define SPLASH_VIEW_TAG 20130909
+
+
 
 
 @implementation AppDelegate
@@ -83,7 +93,7 @@
 
 +(AppDelegate*)getAppDelegate
 {
-    return (AppDelegate*)[UIApplication sharedApplication].delegate;
+    return (AppDelegate*)[UIApplication sharedApplication].delegate;    
 }
 
 
@@ -134,24 +144,13 @@
             UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:loginViewController];
             [self.window.rootViewController presentModalViewController:navigation animated:NO];
             [navigation release];
-            
         }
-        
-        
-        
-        
     }
     else
     {
         
     }
-    
-
 }
-
-
-
-
 
 - (void)sendNewsContent
 {
@@ -193,15 +192,21 @@
 }
 
 
-#define BUFFER_SIZE 1024 * 100
-- (void)sendAppContentWithTitle:(NSString*)title  description:(NSString *)descriptoin image:(UIImage *)image urlLink:(NSString*)urlLink
+#define BUFFER_SIZE  1024 * 100
+- (void)sendAppContentWithTitle:(NSString*)title
+                    description:(NSString *)descriptoin
+                          image:(UIImage *)image
+                        urlLink:(NSString*)urlLink
 {
     // 发送内容给微信
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = title;
     message.description =descriptoin;
-    //发送的图片不能太大，否则，不可以通过！
+    
+    
+    //发送的图片不能太大，否则，不可以通过！ 大小不能够超过32k 
     [message setThumbImage:image];
+    
     
     WXAppExtendObject *ext = [WXAppExtendObject object];
     ext.extInfo = @"<xml>爱健美</xml>";
@@ -222,6 +227,9 @@
     req.scene = _scene;
     
     [WXApi sendReq:req];
+    
+    
+    
 }
 
 -(void)RespAppContentWithTitle:(NSString*)title  description:(NSString *)descriptoin image:(UIImage *)image urlLink :(NSString*)urlLink
@@ -251,18 +259,14 @@
     [WXApi sendResp:resp];
 }
 
-- (void)doAuth
-{
-    SendAuthReq* req = [[[SendAuthReq alloc] init] autorelease];
-    req.scope = @"post_timeline";
-    req.state = @"xxx";
-    
-    [WXApi sendReq:req];
-}
-
 -(void) changeScene:(NSInteger)scene{
     _scene = scene;
 }
+
+
+
+
+
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -393,19 +397,49 @@
     }
     
     
+    UIImage *startImage = nil;
+    if ([DeviceDetection isIPhone5]) {
+        startImage = [UIImage imageNamed:@"Default-568h.png"];
+    } else {
+        startImage = [UIImage imageNamed:@"Default.png"];
+    }
+    UIView* splashView = [[UIImageView alloc] initWithImage:startImage];
+    splashView.frame = [self.window bounds];
+    splashView.tag = SPLASH_VIEW_TAG;
+    [self.window addSubview:splashView];
+    [splashView release];
+    [self performSelector:@selector(removeSplashView) withObject:nil afterDelay:2.0f];
+
+
+    
     // Register to WeChat   wxd930ea5d5a258f4f
     // aijianmei  :
     
      [WXApi registerApp:WeChatId];
 
     
-    //检测当前版本是否为最新的版本
-    [self updateApplication];
-   
+    
     
     return YES;
 }
 
+- (void)removeSplashView
+{
+    [UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:2.0f];
+	
+	[UIView setAnimationTransition:UIViewAnimationTransitionCurlUp
+						   forView:self.window
+                             cache:YES];
+    [UIView commitAnimations];
+    [[self.window viewWithTag:SPLASH_VIEW_TAG] removeFromSuperview];
+    
+    
+    
+    //检测当前版本是否为最新的版本
+    [self performSelector:@selector(updateApplication) withObject:nil afterDelay:5.0f];
+    
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -449,8 +483,7 @@
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
     
-    
-    
+
     if ([url.absoluteString hasSuffix:SinaweibossoLogin]) {
         return [[SinaWeiboManager sharedManager].sinaweibo handleOpenURL:url];
     } else {

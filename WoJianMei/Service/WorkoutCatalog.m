@@ -8,6 +8,22 @@
 
 #import "WorkoutCatalog.h"
 
-@implementation WorkoutCatalog
 
+
+@implementation Workout
+@synthesize _id =_id;
 @end
+
+
+
+
+@implementation WorkoutCatalog
+@end
+
+
+
+
+
+
+
+

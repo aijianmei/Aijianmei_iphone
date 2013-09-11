@@ -238,13 +238,15 @@
     /*
      http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_sendcomment&uid=498&id=111&commentcontent=要好好睡才行&channeltype=1
      channeltype 1表示文章 2表示视频
+     
+
+     
      */
     
-   //http://42.96.132.109/wapapi/emoji/test.php
     
     //Router setup:
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    [objectManager.router routeClass:[Result class] toResourcePath:@"/emoji/test.php" forMethod:RKRequestMethodPOST];
+    [objectManager.router routeClass:[Result class] toResourcePath:@"/ios.php" forMethod:RKRequestMethodPOST];
     
     NSLog(@"Post an Image baseURL %@%@",[objectManager baseURL],@"/ios.php");
     
@@ -265,7 +267,7 @@
     [params setValue:@"au_sendcomment" forParam:@"auact"];
     [params setValue:uid forParam:@"uid"];
     [params setValue:targetContentId forParam:@"id"];
-    [params setValue:comment forParam:@"message"];
+    [params setValue:comment forParam:@"commentcontent"];
     [params setValue:channleType forParam:@"channeltype"];
 
 

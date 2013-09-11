@@ -121,21 +121,18 @@ static ImageManager *_defaultManager = nil;
 
 ///////AVATAR
 +(UIImage*)leftSideNaviHighLightImage{
-    
     return [UIImage imageNamed:@"leftSide_Click.png"];
 }
 
 
 ///////AVATAR
 +(UIImage*)GobalBGImage{
-    
     return [UIImage imageNamed:@"gobal_background.png"];
 }
 
 
 ///顶部导航栏目，头像图片；
 +(UIImage*)GobalNavigationAvatarImage{
-    
     return [UIImage imageNamed:@"Navigation_avartar_Image.png"];
 }
 

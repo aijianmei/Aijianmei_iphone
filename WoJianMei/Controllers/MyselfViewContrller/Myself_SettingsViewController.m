@@ -22,6 +22,7 @@
 #import "BaiduMobStat.h"
 #import "CorpImageView.h"
 #import "UIImage+Scale.h"
+#import "UserInfoPickerViewController.h"
 
 
 #define USER @"user"
@@ -102,13 +103,7 @@
 -(void)clickSaveButton:(id)sender{
 
     didSave =YES;
-    
-//    if (self.user.profileImageUrl) {
-//    //把保存再文件夹里边的图片取出来，然后上传到服务器上面;
-//        self.avtarImage = [self loadImageInDirectory:self.user.profileImageUrl];
-//      
-//    }
-    
+
     if (self.avtarImage) {
         [[UserService defaultService] postObject:nil withImage:self.avtarImage delegate:self];
         [self showActivityWithText:@"连接服务器..."];
@@ -206,17 +201,36 @@
 
 
 -(void)loadDatas{
+            
+        NSString *uid = [[[UserService defaultService] user] uid];
+        User *user =  [[UserService defaultService] getUserInfoByUid:uid];
     
-    User *user = [[UserService defaultService] user];
-    [self setUser:user];
-    self.user.BMIValue =[self reCaluclateBMIValueByWeight:user.weight
-                                                   height:user.height];
+        if (!user.height && !user.weight && !user.age) {
+        
+        UserInfoPickerViewController *vc = [[UserInfoPickerViewController alloc]initWithNibName:@"UserInfoPickerViewController" bundle:nil];
+        [self.navigationController presentViewController:vc animated:YES completion:^{}];
+        [vc release];
+    }
 
     
+        //本地数据存在的时候直接读取本地数据;
+        if (user) {
+            User *user = [[UserService defaultService] getUserInfoByUid:uid];
+            [[UserService defaultService] setUser:user];
+            [self setUser:user];
+            [self updateUI];
+            
+        }else{
+            //本地数据不存在，用户第一次登陆的时候，就往服务器拉数据
+            [[UserService defaultService] fecthUserInfoWithUid:uid delegate:self];
+            [self showActivityWithText:@"数据更新中..."];
+        }
 }
 
+
+
 -(void)updateUI{
-    [dataTableView reloadData];
+    [self.dataTableView reloadData];
 }
 
 
@@ -234,19 +248,18 @@
 
 
 
--(void) viewDidDisappear:(BOOL)animated
+-(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:YES];
     [[BaiduMobStat defaultStat] pageviewEndWithName:@"MyselfSettingView"];
 }
 
 
--(void) viewWillAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
     
     [super viewWillAppear:YES];
     [self loadDatas];
-    [self updateUI];
 }
 
 
@@ -258,7 +271,7 @@
     [self showBackgroundImage];
     /// 设置导航按钮
     [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(clickSaveButton:)];
-    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+    [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
 
 	// Do any additional setup after loading the view, typically from a nib.
     self.title = NSLocalizedString(@"编辑个人资料", @"Settings");
@@ -379,9 +392,6 @@
         case 0:
             return 3;
             break;
-//        case 1:
-//            return 1;
-//            break;
         case 1:
             return 5;
             break;
@@ -403,6 +413,10 @@
     if (cell == nil) {
         cell = [[[MyselfSettingCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
+    cell.indexPath = indexPath;
+    
+    
+    
     [cell.imageView  setImage:nil];
     [cell.textLabel setText:nil];
     [cell.detailLabelView setText:nil];
@@ -413,16 +427,13 @@
     [cell.moreButton setHidden:NO];
     cell.newdelegate =self;
 
-    
-    CGSize size = CGSizeMake(320, 770);
-    [tableView setContentSize:size];
-  
+
 
      cell.accessoryView = nil;
 
     
     /////
-    UIImage *normalImage = [UIImage imageNamed:@"AccessoryView.png"];
+    UIImage *normalImage = [UIImage imageNamed:@"jt_1.png"];
     
     UIButton *accessoryViewButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -492,17 +503,6 @@
 
     }
         break;
-//        case 1:
-//        {
-//            [cell.textLabel setText:@"标签"];
-//            [cell.detailLabelView setText:@"修改标签"];
-//             cell.accessoryView = accessoryViewButton;
-//            [cell.textField setHidden:YES];
-//            [cell.lessButton setHidden:YES];
-//            [cell.moreButton setHidden:YES];
-//
-//        }
-//            break;
         case 1:
         {
             [cell.textLabel setText:[self.dataList objectAtIndex:indexPath.row]];
@@ -574,7 +574,8 @@
                     [cell.textField setHidden:YES];
                     [cell.lessButton setHidden:YES];
                     [cell.moreButton setHidden:YES];
-                    
+                    BMIindexPath =cell.indexPath;
+
                 }
                     break;
                 default:
@@ -723,12 +724,24 @@
 
 - (void)didClickAddMoreButton:(id)sender atIndex:(NSIndexPath*)indexPath;
 {
+    NSArray *array = [NSArray arrayWithObjects:BMIindexPath, nil];
+    [self.dataTableView reloadRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationFade];
+    
 }
 
 - (void)didClickLessButton:(id)sender atIndex:(NSIndexPath*)indexPath
 {
+    NSArray *array = [NSArray arrayWithObjects:BMIindexPath, nil];
+    [self.dataTableView reloadRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationFade];
+    
 }
 
+-(void)didUpdateDatasByKeyboradInput:(id)sender atIndex:(NSIndexPath *)indexPath{
+
+    NSArray *array = [NSArray arrayWithObjects:BMIindexPath, nil];
+    [self.dataTableView reloadRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationFade];
+
+}
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -756,6 +769,32 @@
     return bmi;
 }
 
+#pragma --mark
+#pragma --UIScrollViewDelegate Method
+//当UIScrollView 变化的时候要隐藏键盘,方便用户使用;
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    
+    TPKeyboardAvoidingTableView *tableView =  (TPKeyboardAvoidingTableView *)scrollView;
+    [tableView  hideKeyboard];
+    
+    
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{  // called on finger up as we are moving
+    
+    TPKeyboardAvoidingTableView *tableView =  (TPKeyboardAvoidingTableView *)scrollView;
+    [tableView  hideKeyboard];
+    
+    
+}
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{     // called when scroll view grinds to a halt
+    
+    TPKeyboardAvoidingTableView *tableView =  (TPKeyboardAvoidingTableView *)scrollView;
+    [tableView  hideKeyboard];
+        
+}
+
+
 
 
 #pragma mark -
@@ -780,8 +819,8 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects;
 {
     [self hideActivity];
-    if ([objectLoader wasSentToResourcePath:@"/imgtest.php"])
-        
+//    if ([objectLoader wasSentToResourcePath:@"/imgtest.php"])
+    if ([[objects objectAtIndex:0] isMemberOfClass:[User class]])
     {
         PPDebug(@"%@",[objects objectAtIndex:0]);
         if ([[objects objectAtIndex:0] isMemberOfClass:[User class]]) {
@@ -789,25 +828,27 @@
             NSLog(@"******%@******",user.uid);
             NSLog(@"******%@******",user.profileImageUrl);
             
-            //取出用户
-            User *newUser  =[[UserService defaultService] user];
             
-            NSString *bmi = [self reCaluclateBMIValueByWeight:newUser.weight height:newUser.height];
             
-            //修改用户
-            [newUser setProfileImageUrl:user.profileImageUrl];
-            [newUser setBMIValue:bmi];
+            NSString *bmi = [self reCaluclateBMIValueByWeight:user.weight height:user.height];
             
+    
             //设置为当前用户
-            [[UserService defaultService] setUser:newUser];
+            [[UserService defaultService] setUser:user];
+            
+            [user setBMIValue:bmi];
             
             //保存用户
-            [[UserService defaultService] storeUserInfoByUid:newUser.uid];
+            [[UserService defaultService] storeUserInfoByUid:user.uid];
+            
+            self.user = user;
+            
+            
             
             [self updateUI];
+            
             [self.navigationItem.rightBarButtonItem setEnabled:YES];
             [self.navigationItem.leftBarButtonItem setEnabled:YES];
-
             [self popupHappyMessage:@"保存成功" title:nil];
         }
     }

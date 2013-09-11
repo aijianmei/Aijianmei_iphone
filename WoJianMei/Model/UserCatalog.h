@@ -7,7 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+@interface Catalog : NSObject
+@property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *_id;
+@end
+
+
+
 
 @interface UserCatalog : NSObject
+@property (nonatomic, retain) NSString *errorCode;
+@property (nonatomic, retain) NSString *uid;
+@property (nonatomic, retain) NSArray *catalogList;
 
 @end

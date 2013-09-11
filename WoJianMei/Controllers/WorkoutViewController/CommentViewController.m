@@ -17,6 +17,8 @@
 #import "PostService.h"
 #import "UserService.h"
 #import "Result.h"
+#import <AGCommon/UIDevice+Common.h>
+
 
 enum ErrorCode
 {
@@ -103,11 +105,21 @@ enum ErrorCode
     [self.dataTableView setContentSize:CGSizeMake(320, 800)];
     
     
-//    [self  setRightBarCommentTextField];
+    
+    
     
     
     self.faceToolBar =[[FaceToolBar alloc]initWithFrame:CGRectMake(0.0f,self.view.frame.size.height - toolBarHeight,self.view.frame.size.width,toolBarHeight)
                                              superView:self.view];
+    
+    
+    
+    
+    if ([[UIDevice currentDevice] isPhone5])
+    {
+        [self.faceToolBar setFrame:CGRectMake(0.0f,self.view.frame.size.height + 100 - toolBarHeight,self.view.frame.size.width,toolBarHeight)];
+    }
+    
     
     self.faceToolBar.delegate = self;
     [self.view addSubview:_faceToolBar];
@@ -155,28 +167,14 @@ enum ErrorCode
 }
 
 
-
-
-
-
-
-
-
-
 #pragma mark-
 #pragma mark- DelegateMethod
-
-
 -(void)sendTextAction:(NSString *)inputText{
     
     
      User *user = [[UserService defaultService] user];
     
-    
-    
-    
-    
-    
+
     if (self.article) {
         [[PostService sharedService] postCommentWithUid:
          [user uid] targetContentId:self.article._id comment:inputText channelType:@"1" delegate:self];
@@ -184,10 +182,8 @@ enum ErrorCode
     
     if (self.video) {
         [[PostService sharedService] postCommentWithUid:
-         [user uid] targetContentId:self.article._id comment:inputText channelType:@"1" delegate:self];    }
+         [user uid] targetContentId:self.video._id comment:inputText channelType:@"2" delegate:self];    }
 
-      
-    
 }
 
 
@@ -208,6 +204,7 @@ enum ErrorCode
     [self.navigationController.navigationBar setFrame:CGRectMake(0, 420, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
 	[self.navigationController popViewControllerAnimated:YES];
     
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -298,7 +295,6 @@ enum ErrorCode
         //  10002 用户已经赞过
         //  0 提交成功
         
-        
         Result *result = [objects objectAtIndex:0];
         NSInteger errorCode =  [[result errorCode] integerValue];
         
@@ -316,16 +312,14 @@ enum ErrorCode
         if (errorCode ==REPEATED_POST) {
             [self popupUnhappyMessage:@"已经评论文章,不可以重复哦！" title:nil];
         }
+
     }
-    
     
     
     if ([object isMemberOfClass:[Comment class]]) {
         if ([objects count]==0)
         {
-            
             [self popupHappyMessage:@"亲,没有如何评论！" title:nil];
-            
         }
         self.dataList = objects;
         [self.dataTableView reloadData];

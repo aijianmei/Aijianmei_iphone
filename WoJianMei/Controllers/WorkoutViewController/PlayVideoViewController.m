@@ -108,11 +108,21 @@ enum TapOnItem {
     {
         [self.commentViewController.view removeFromSuperview];
     }
+    
+    
     if (segmentedControl.selectedSegmentIndex ==1)
     {
-        [self.view addSubview:self.commentViewController.view];
+//        [self.view addSubview:self.commentViewController.view];
+        
+        
+        [self.navigationController presentViewController:self.commentViewController animated:YES completion:^{}];
+        
         self.commentViewController.video = [self video];
         [self.commentViewController loadDatas];
+        
+        
+        
+        
     }
 }
 
@@ -632,7 +642,7 @@ enum TapOnItem {
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
     
-    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+    [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
  
     
     [self setRightBarButtons];

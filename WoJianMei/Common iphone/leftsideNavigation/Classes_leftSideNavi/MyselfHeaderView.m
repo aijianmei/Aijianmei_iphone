@@ -29,7 +29,6 @@
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0, 0.0, frame.size.width - 20.0, frame.size.height)];
         _titleLabel.font = [UIFont systemFontOfSize:16];
         _titleLabel.backgroundColor = [UIColor clearColor];
-        //        _titleLabel.textColor = [UIColor colorWithRGB:0xc9beaa];
         _titleLabel.textColor =[UIColor whiteColor];
         [self addSubview:_titleLabel];
         [_titleLabel release];

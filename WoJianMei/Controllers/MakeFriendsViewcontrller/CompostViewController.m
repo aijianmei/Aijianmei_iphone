@@ -50,7 +50,7 @@ enum BUTTON_TYPE {
     
     [self createDefaultNavigationTitleToolbar: array defaultSelectIndex:0];
 
-    [self setNavigationLeftButton:@"返回" imageName:@"back_composeView.png" action:@selector(didClickBackButton:)];
+    [self setNavigationLeftButton:@"" imageName:@"back_composeView.png" action:@selector(didClickBackButton:)];
     
     [self setNavigationRightButton:@"发送" imageName:@"setting.png" action:@selector(didClickBackButton:)];
     

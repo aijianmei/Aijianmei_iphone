@@ -28,6 +28,16 @@ static ColorManager *_defaultManager = nil;
 + (UIColor *)leftSideNaviFontColor{
     
     //#555555
+    UIColor *color= [UIColor colorWithRed:255.0/255.0
+                                    green:255.0/255.0
+                                     blue:255.0/255.0
+                                    alpha:1];
+    return color;
+    
+}
++ (UIColor *)dddddddadfasdfasdf{
+    
+    //#555555
     UIColor *color= [UIColor colorWithRed:55/255.0
                                     green:55/255.0
                                      blue:55/255.0
@@ -35,6 +45,7 @@ static ColorManager *_defaultManager = nil;
     return color;
     
 }
+
 
 
 

@@ -21,6 +21,10 @@
 #import "DeviceDetection.h"
 #import "StatusView.h"
 
+#import "UIImageUtil.h"
+#import "UIImage+Scale.h"
+
+
 
 
 #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
@@ -140,7 +144,7 @@ enum actionsheetNumber{
     [self.view  setBounds:CGRectMake(0, 0, 320, 480)];
     
     [self setRightBarButtons];
-    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+    [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     
  
     
@@ -239,8 +243,8 @@ enum actionsheetNumber{
     
     UIButton * BackBarButton = [[UIButton alloc] initWithFrame:CGRectMake(0,9, 48, 29)];
     [BackBarButton addTarget:self action:@selector(clickBack:) forControlEvents:UIControlEventTouchUpInside];
-    [BackBarButton setBackgroundImage:[ImageManager GobalNavigationBackButtonBG] forState:UIControlStateNormal];
-    [BackBarButton setTitle:@"返回" forState:UIControlStateNormal];
+    [BackBarButton setImage:[ImageManager GobalNavigationBackButtonBG] forState:UIControlStateNormal];
+    [BackBarButton setTitle:@"" forState:UIControlStateNormal];
     [BackBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [BackBarButton.titleLabel setFont:font];
     [rightButtonView addSubview:BackBarButton];
@@ -273,7 +277,7 @@ enum actionsheetNumber{
     [commentBarButton release];
     
     
-    UIButton *shareBarButton = [[UIButton alloc]initWithFrame:CGRectMake(270,12, 25, 25)];
+    UIButton *shareBarButton = [[UIButton alloc]initWithFrame:CGRectMake(270,7, 30, 30)];
     [shareBarButton setImage:[ImageManager GobalArticelShareButtonBG] forState:UIControlStateNormal];
     [shareBarButton setTitle:@"分享" forState:UIControlStateNormal];
     [shareBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -291,8 +295,9 @@ enum actionsheetNumber{
     
     
     
-    [self.toolBar setItems:[NSArray arrayWithObject:rightBarButton] animated:YES];
     
+    
+    [self.toolBar setItems:[NSArray arrayWithObject:rightBarButton] animated:YES];
 
     [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"topmenu_bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
 
@@ -560,9 +565,10 @@ enum actionsheetNumber{
             [self onSelectTimelineScene];
             
             UIImage *image = [self getImageFromURL:_article.img];
-            postImage = image;
-            
+    
+            postImage =[image scaleToSize:CGSizeMake(70,70)];
             [self sendAppContentWithTitle:_article.title description:_article.brief image:postImage  urlLink:_article.shareurl];
+            
             
         }
             break;
@@ -571,7 +577,7 @@ enum actionsheetNumber{
             
             [self onSelectSessionScene];
             UIImage *image = [self getImageFromURL:_article.img];
-            postImage = image;
+            postImage =[image scaleToSize:CGSizeMake(70,70)];
             [self sendAppContentWithTitle:_article.title description:_article.brief image:postImage urlLink:_article.shareurl];
             
         }
@@ -669,16 +675,23 @@ enum actionsheetNumber{
             {
                 [self onSelectTimelineScene];
                 
-                UIImage *image =[UIImage imageNamed:@"Default.png"];
+                UIImage *image = [self getImageFromURL:_article.img];
                 
-                [self sendAppContentWithTitle:@"下载爱健美iphone客户端" description:@"学习专业的运动、健身、健康资讯，就下载爱健美手机客户端啦！" image:image urlLink:@"www.aijianmei.com" ];
+                postImage =[image scaleToSize:CGSizeMake(50,50)];
+                [self sendAppContentWithTitle:_article.title description:_article.brief image:postImage  urlLink:_article.shareurl];
+                
+                
             }
             case SEND_WECHAT_FRIENDS:
             {
                 ///调用微信接口
                 [self  onSelectSessionScene];
-                UIImage *image =[UIImage imageNamed:@"Default.png"];
-                [self sendAppContentWithTitle:@"下载爱健美iphone客户端" description:@"学习专业的运动、健身、健康资讯，就下载爱健美手机客户端啦！" image:image urlLink:@"www.aijianmei.com" ];
+                
+                
+                UIImage *image = [self getImageFromURL:_article.img];
+                
+                postImage =[image scaleToSize:CGSizeMake(50,50)];
+                [self sendAppContentWithTitle:_article.title description:_article.brief image:postImage  urlLink:_article.shareurl];
                 
             }
                 break;
@@ -744,28 +757,34 @@ enum actionsheetNumber{
 ////Wechat
 - (void) sendAppContentWithTitle:(NSString*)title  description:(NSString *)descriptoin image:(UIImage *)image urlLink :(NSString*)urlLink
 {
-    if (_delegate  && [_delegate respondsToSelector:@selector(sendAppContentWithTitle:description:image:urlLink:)]
+    
+    
+    
+    if (self.delegate  && [self.delegate respondsToSelector:@selector(sendAppContentWithTitle:description:image:urlLink:)]
         )
     {
-        PPDebug(@"Share to Wechat！");
         
-        [_delegate sendAppContentWithTitle:title description:descriptoin image:image urlLink:urlLink];
+        [self.delegate sendAppContentWithTitle:title
+                                   description:descriptoin
+                                         image:image
+                                       urlLink:urlLink];
     }
 }
 
 
 -(void)sendNewsContent{
     
+
     if (_delegate  && [_delegate respondsToSelector:@selector(sendNewsContent)]
         )
     {
-        PPDebug(@"Share to Wechat！");
-        
-        [_delegate sendNewsContent];
+     [_delegate sendNewsContent];
     }
     
     
 }
+
+
 
 #pragma mark -
 #pragma mark UIWebViewDelegate

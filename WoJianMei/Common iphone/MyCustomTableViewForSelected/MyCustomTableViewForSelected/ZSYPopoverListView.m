@@ -126,6 +126,8 @@ static const char * const kZSYPopoverListButtonClickForDone = "kZSYPopoverListBu
         return [self.datasource popoverListView:self numberOfRowsInSection:section];
     }
     return 0;
+    
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -12,7 +12,7 @@
 #import "WorkoutMainViewController.h"
 #import "WeightManagerViewController.h"
 #import "RankingViewController.h"
-#import "CheckWorkoutDatasViewController.h"
+#import "ChartViewController.h"
 
 
 @interface WorkOutManagerViewController ()
@@ -20,6 +20,11 @@
 @end
 
 @implementation WorkOutManagerViewController
+@synthesize  workoutMainViewController =_workoutMainViewController;
+@synthesize weightManagerViewController =_weightManagerViewController;
+@synthesize chartViewController =_chartViewController;
+@synthesize rankingViewController = _rankingViewController;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,6 +36,15 @@
 }
 
 
+-(void)dealloc{
+
+    [_workoutMainViewController release];
+    [_weightManagerViewController release];
+    [_chartViewController release];
+    [_rankingViewController release];
+    [super dealloc];
+
+}
 
 
 - (void)viewDidLoad
@@ -40,10 +54,9 @@
     
     ////leftBtn
     UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
-
-    [leftBtn setBackgroundImage:[ImageManager GobalNavigationLeftSideButtonImage]
+    [leftBtn setImage:[ImageManager GobalNavigationLeftSideButtonImage]
                        forState:UIControlStateNormal];
-    
+
     leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
     [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
@@ -163,18 +176,27 @@
 }
 
 - (IBAction)clickWorkoutManagerButton:(id)sender {
-    WorkoutMainViewController *control = [[WorkoutMainViewController alloc]initWithNibName:@"WorkoutMainViewController" bundle:nil];
-    [self.navigationController pushViewController:control animated:YES];
-    [control release];
+    if (_workoutMainViewController ==nil) {
+        WorkoutMainViewController *control = [[WorkoutMainViewController alloc]initWithNibName:@"WorkoutMainViewController" bundle:nil];
+        
+        self.workoutMainViewController = control;
+        [control release];
+        
+    }
+    [self.navigationController pushViewController:_workoutMainViewController animated:YES];
 }
 
 - (IBAction)clickCheckoutWorkoutDatasButton:(id)sender {
     
     
-    CheckWorkoutDatasViewController *control = [[CheckWorkoutDatasViewController alloc]initWithNibName:@"CheckWorkoutDatasViewController" bundle:nil];
-    [self.navigationController pushViewController:control animated:YES];
-    [control release];
+    if (_chartViewController ==nil) {
+         ChartViewController *control = [[ChartViewController alloc]initWithNibName:@"ChartViewController" bundle:nil];
+        
+        self.chartViewController = control;
+        [control release];
 
+    }
+    [self.navigationController pushViewController:_chartViewController animated:YES];
 }
 
 
@@ -185,18 +207,18 @@
 
 
 - (IBAction)clickRankingButton:(id)sender {
-    RankingViewController *control = [[RankingViewController alloc]initWithNibName:@"RankingViewController" bundle:nil];
-    [self.navigationController pushViewController:control animated:YES];
-    [control release];
+    
+    
+    if (_rankingViewController ==nil) {
+        RankingViewController *control = [[RankingViewController alloc]initWithNibName:@"RankingViewController" bundle:nil];
+        self.rankingViewController = control;
+        [control release];
+        
+    }
+
+        [self.navigationController pushViewController:_rankingViewController animated:YES];
 }
 
 
 
-
-
-
-- (IBAction)clickMoreButton:(id)sender {
-    
-    
-}
 @end

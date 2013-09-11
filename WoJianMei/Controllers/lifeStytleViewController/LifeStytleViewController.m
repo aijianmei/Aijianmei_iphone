@@ -30,6 +30,7 @@
 #import "SDSegmentedControl.h"
 #import "BaiduMobStat.h"
 #import "PublicMyselfViewController.h"
+#import "Myself_SettingsViewController.h"
 
 
 
@@ -137,6 +138,8 @@ typedef enum CONTENT_TYPE {
     [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
     
+    
+    
     ////rightBtn
     UIButton *rightBtn = [[[UIButton alloc] init] autorelease];
     [rightBtn setImage:[ImageManager GobalNavigationAvatarImage] forState:UIControlStateNormal];
@@ -175,27 +178,23 @@ typedef enum CONTENT_TYPE {
 - (void)rightButtonClickHandler:(id)sender
 {
     [self.viewDeckController toggleRightViewAnimated:YES];
-    
-    UIStoryboard *currentInUseStoryBoard;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-        
-        currentInUseStoryBoard = iPhoneStroyBoard;
-        
-    }else{
-        
-        UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-        currentInUseStoryBoard = iPadStroyBoard;
-    }
-    
-    
     User *user = [[UserService defaultService] user];
     
     if (user.uid) {
-        PublicMyselfViewController *publicStatusViewController = [[AppDelegate getAppDelegate] initPublicStatusViewController];
-        [self.navigationController pushViewController:publicStatusViewController animated:YES];        
+        
+        
+        //    PublicMyselfViewController *publicStatusViewController = [[AppDelegate getAppDelegate] initPublicStatusViewController];
+        //    [self.navigationController pushViewController:publicStatusViewController animated:YES];
+        
+        Myself_SettingsViewController *vc =[[Myself_SettingsViewController alloc]initWithNibName:@"Myself_SettingsViewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        
+        
+        
     }else{
-        [self showLoginView];
+        
+        [[AppDelegate  getAppDelegate] showLoginView];
     }
 }
 
@@ -225,7 +224,6 @@ typedef enum CONTENT_TYPE {
     //添加当前划片的提示
     [self addSpacePageControl];
     
-    [self showLoginView];
 }
 
 
@@ -243,29 +241,6 @@ typedef enum CONTENT_TYPE {
 }
 
 #pragma mark-- addButtonScrollView Method
-
--(void)showLoginView{
-    
-    UIStoryboard *currentInUseStoryBoard;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        UIStoryboard * iPhoneStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-        currentInUseStoryBoard = iPhoneStroyBoard;
-        
-    }else{
-        
-        UIStoryboard * iPadStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-        currentInUseStoryBoard = iPadStroyBoard;
-    }
-    
-    if (![[UserService defaultService] user]){
-        
-        self.loginViewController = (LoginViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        UINavigationController *nv = [[[UINavigationController alloc]initWithRootViewController:_loginViewController] autorelease];
-        self.loginViewController.delegate = self;
-        [self.navigationController presentModalViewController:nv animated:YES];
-    }
-}
-
 
 -(void)initTableHeaderView{
     
@@ -667,6 +642,8 @@ typedef enum CONTENT_TYPE {
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
+    [self showActivityWithText:@"数据加载..."];
+
 }
 
 
@@ -677,6 +654,8 @@ typedef enum CONTENT_TYPE {
 	[self dataSourceDidFinishLoadingNewData];
     [self dataSourceDidFinishLoadingMoreData];
     
+    
+    [self hideActivity];
     
     if ([objects count] <=0) {
         [self popupUnhappyMessage:@"亲！没有更多数据了！" title:nil];

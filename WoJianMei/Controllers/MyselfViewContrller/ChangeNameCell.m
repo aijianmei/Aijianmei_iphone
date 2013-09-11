@@ -51,6 +51,8 @@
     User *user =[[UserService defaultService] user];
     user.name = textField.text;
     [[UserService defaultService] setUser:user];
+    [[UserService defaultService] storeUserInfoByUid:user.uid];
+
     
 }
 

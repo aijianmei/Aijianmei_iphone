@@ -23,6 +23,7 @@
 #import "LoginViewController.h"
 #import "Result.h"
 #import "Video.h"
+#import "Myself_SettingsViewController.h"
 
 
 #import "ImageManager.h"
@@ -181,13 +182,19 @@ typedef enum CONTENT_TYPE {
 - (void)rightButtonClickHandler:(id)sender
 {
     [self.viewDeckController toggleRightViewAnimated:YES];
-    
-    
     User *user = [[UserService defaultService] user];
+    
     if (user.uid) {
     
-    PublicMyselfViewController *publicStatusViewController = [[AppDelegate getAppDelegate] initPublicStatusViewController];
-    [self.navigationController pushViewController:publicStatusViewController animated:YES];
+        
+//    PublicMyselfViewController *publicStatusViewController = [[AppDelegate getAppDelegate] initPublicStatusViewController];
+//    [self.navigationController pushViewController:publicStatusViewController animated:YES];
+        
+        Myself_SettingsViewController *vc =[[Myself_SettingsViewController alloc]initWithNibName:@"Myself_SettingsViewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+
+        
+        
         
     }else{
         
@@ -631,6 +638,7 @@ typedef enum CONTENT_TYPE {
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
+    [self showActivityWithText:@"数据加载..."];
 }
 
 
@@ -641,6 +649,7 @@ typedef enum CONTENT_TYPE {
 	[self dataSourceDidFinishLoadingNewData];
     [self dataSourceDidFinishLoadingMoreData];
     
+    [self hideActivity];
     
     
     if ([objects count] <=0) {

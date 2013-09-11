@@ -46,7 +46,7 @@
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
     
-    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+    [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     
     self.dataList =_citiesList;
     // 当前所在省份或者区域

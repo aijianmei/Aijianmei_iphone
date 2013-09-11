@@ -13,23 +13,32 @@
 #import "NumberDataCell.h"
 #import "TPKeyboardAvoidingTableView.h"
 #import <RestKit/RestKit.h>
+#import "UserCatalog.h"
+#import "ZSYPopoverListView.h"
+#import "NumberData.h"
 
-
-@interface NumberDataViewController : PPTableViewController<NumberDataCellFooterDelegate,NumberDataCellHeaderDelegate,NumberDataCellDelegate,UITextFieldDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate,RKObjectLoaderDelegate>
+@interface NumberDataViewController : PPTableViewController<NumberDataCellFooterDelegate,NumberDataCellHeaderDelegate,NumberDataCellDelegate,UITextFieldDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate,RKObjectLoaderDelegate,ZSYPopoverListDatasource, ZSYPopoverListDelegate>
 {
     
     NumberDataCellHeader *_header;
     NumberDataCellFooter *_footer;
     
     UITextField *_currentTextField;
+    Catalog     * _selectedCatalog;
+    NumberDataInfo *_numberDataInfo;
+    
     
 }
 @property (nonatomic,retain)   NumberDataCellHeader * header;
 @property (nonatomic,retain)   NumberDataCellFooter * footer;
 @property (nonatomic,retain)   UITextField *currentTextField;
+@property  (nonatomic,retain)  Catalog  * selectedCatalog;
+@property  (nonatomic,retain)  NumberDataInfo *numberDataInfo;
+
 
 
 
 -(void)tap;
+-(void)updateFooterAndHeader;
 
 @end

@@ -8,6 +8,12 @@
 
 #import "UserCatalog.h"
 
+@implementation Catalog
+@synthesize _id =_id;
+@end
+
+
+
 @implementation UserCatalog
 
 @end

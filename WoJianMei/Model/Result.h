@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface Result : NSObject
 
 @property (nonatomic, retain) NSString *errorCode;

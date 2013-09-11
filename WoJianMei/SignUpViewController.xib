@@ -12,7 +12,6 @@
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
-			<string>IBUIImageView</string>
 			<string>IBUITextField</string>
 			<string>IBUIView</string>
 		</array>
@@ -36,21 +35,6 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIImageView" id="295656988">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">1316</int>
-						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrameSize">{320, 548}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="531721161"/>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">login_BG.png</string>
-						</object>
-					</object>
 					<object class="IBUITextField" id="531721161">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">1316</int>
@@ -108,7 +92,7 @@
 						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 						<float key="IBUIMinimumFontSize">17</float>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
-							<int key="IBUIReturnKeyType">4</int>
+							<int key="IBUIReturnKeyType">9</int>
 							<bool key="IBUISecureTextEntry">YES</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
@@ -143,10 +127,10 @@
 						<reference key="IBUIFont" ref="205231776"/>
 					</object>
 				</array>
-				<string key="NSFrame">{{0, 20}, {320, 548}}</string>
+				<string key="NSFrameSize">{320, 568}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="295656988"/>
+				<reference key="NSNextKeyView" ref="531721161"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -154,7 +138,6 @@
 						<int key="NSID">2</int>
 					</object>
 				</object>
-				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<object class="IBUIScreenMetrics" key="IBUISimulatedDestinationMetrics">
 					<string key="IBUISimulatedSizeMetricsClass">IBUIScreenMetrics</string>
 					<object class="NSMutableDictionary" key="IBUINormalizedOrientationToSizeMap">
@@ -209,6 +192,15 @@
 					</object>
 					<int key="connectionID">50</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">closeDoneEdit:</string>
+						<reference key="source" ref="782994126"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">20</int>
+					</object>
+					<int key="connectionID">58</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -225,7 +217,6 @@
 							<reference ref="531721161"/>
 							<reference ref="782994126"/>
 							<reference ref="728462170"/>
-							<reference ref="295656988"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -258,11 +249,6 @@
 						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">10</int>
-						<reference key="object" ref="295656988"/>
-						<reference key="parent" ref="191373211"/>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -271,9 +257,6 @@
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="10.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<reference key="10.IBUserGuides" ref="0"/>
-				<boolean value="NO" key="10.showNotes"/>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<reference key="12.IBUserGuides" ref="0"/>
 				<boolean value="NO" key="12.showNotes"/>
@@ -288,7 +271,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">56</int>
+			<int key="maxID">58</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -344,10 +327,10 @@
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="dlk_1@2x.png">{496, 72}</string>
-			<string key="login_BG.png">{640, 960}</string>
-		</dictionary>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NS.key.0">dlk_1@2x.png</string>
+			<string key="NS.object.0">{496, 72}</string>
+		</object>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
 </archive>

@@ -13,6 +13,8 @@
 
 - (void)didClickAddMoreButton:(id)sender atIndex:(NSIndexPath*)indexPath;
 - (void)didClickLessButton:(id)sender atIndex:(NSIndexPath*)indexPath;
+- (void)didUpdateDatasByKeyboradInput:(id)sender atIndex:(NSIndexPath*)indexPath;
+
 
 @end
 

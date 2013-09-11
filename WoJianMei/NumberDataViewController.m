@@ -10,9 +10,14 @@
 #import "NumberDataCell.h"
 #import "NumberData.h"
 #import "NumberDataManager.h"
+#import "WorkoutDataService.h"
+#import "UserService.h"
+#import "NumberData.h"
 
 
 @interface NumberDataViewController ()
+@property (nonatomic, retain) NSIndexPath *selectedIndexPath;
+
 
 @end
 
@@ -20,6 +25,10 @@
 @synthesize header =_header;
 @synthesize footer = _footer;
 @synthesize currentTextField =_currentTextField;
+@synthesize selectedCatalog =_selectedCatalog;
+@synthesize selectedIndexPath = _selectedIndexPath;
+@synthesize numberDataInfo =_numberDataInfo;
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -38,6 +47,8 @@
     [_header release];
     [_footer release];
     [_currentTextField release];
+    [_selectedCatalog release];
+    [_numberDataInfo release];
     [super dealloc];
 }
 
@@ -52,12 +63,181 @@
 
 -(void)tap{
     
-     BOOL  yes = [self.currentTextField  resignFirstResponder];
+    TPKeyboardAvoidingTableView *tableView =  (TPKeyboardAvoidingTableView *)self.dataTableView;
+    [tableView  hideKeyboard];
+    //重新计算平均值
+    [[NumberDataManager defaultManager] countAvgOfTheData];
+    [self updateFooterAndHeader];
+}
+
+
+
+-(void)updateFooterAndHeader{
+
+    //header
     
-    if (yes) {
-        PPDebug(@"dsds");
+    //获得系统时间
+    NSDate *  senddate=[NSDate date];
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    //    [dateformatter setDateFormat:@"HH:mm"];
+    //    NSString *  locationString=[dateformatter stringFromDate:senddate];
+    
+    //    [dateformatter setDateFormat:@"YYYY-MM-dd-HH-mm-ss"];
+    
+    [dateformatter setDateFormat:@"YYYY-MM-dd"];
+    NSString *  morelocationString=[dateformatter stringFromDate:senddate];
+    
+    NSString *timeAndName = [NSString stringWithFormat:@"%@\n%@",_selectedCatalog.name,morelocationString];
+    
+    [self.header.nameButton setTitle:timeAndName forState:UIControlStateNormal];
+    [self.header.weightButton setTitle:@"重量(kg)" forState: UIControlStateNormal];
+    [self.header.numberButton setTitle:@"数量" forState: UIControlStateNormal];
+    [self.header.timeButton setTitle:@"时间(s)" forState: UIControlStateNormal];
+    [self.header.caloriesButton setTitle:@"卡路里" forState: UIControlStateNormal];
+
+    
+    
+    [[NumberDataManager defaultManager] countAvgOfTheData];
+    
+    //footer 
+    //renew the average value locally
+    [self.footer.averageButton setTitle:@"平均值" forState:UIControlStateNormal];
+    [self.footer.numberButton setTitle:[[NumberDataManager defaultManager] numAvg] forState:UIControlStateNormal];
+    [self.footer.weightButton setTitle:[[NumberDataManager defaultManager] weightAvg] forState:UIControlStateNormal];
+    [self.footer.timeButton setTitle:[[NumberDataManager defaultManager] timeAvg] forState:UIControlStateNormal];
+    [self.footer.caloriesButton setTitle:[[NumberDataManager defaultManager] caloriesAvg] forState:UIControlStateNormal];
+
+}
+
+
+#pragma --mark
+#pragma -- NumberDataCellHeaderDelegate Method
+
+- (void)didClickHeaderButton:(UIButton *)button atIndex:(int)buttonIndex{
+    
+    ZSYPopoverListView *listView = [[ZSYPopoverListView alloc] initWithFrame:CGRectMake(0,0,200,120)];
+    listView.titleName.text = @"组数选择";
+    listView.datasource = self;
+    listView.delegate = self;
+    
+    
+//    [listView setCancelButtonTitle:@"Cancel" block:^{
+//            NSLog(@"cancel");
+//        }];
+//    [listView setDoneButtonWithTitle:@"OK" block:^{
+//            NSLog(@"Ok%d", [listView indexPathForSelectedRow].row);
+//        }];
+    [listView show];
+    [listView release];
+
+}
+
+#pragma --mark
+#pragma -- NumberDataCellHeaderDelegate Method
+
+- (void)didClickFooterAddButton:(UIButton *)button atIndex:(int)buttonIndex{
+    [self addGroupByCurrentGroupNumber];
+}
+
+- (void)didClickFooterDeleteButton:(UIButton *)button atIndex:(int)buttonIndex{
+    [self deleteGroupByCurrentGroupNumber];
+}
+
+
+#pragma mark -
+- (NSInteger)popoverListView:(ZSYPopoverListView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
+}
+
+- (UITableViewCell *)popoverListView:(ZSYPopoverListView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier = @"identifier";
+    UITableViewCell *cell = [tableView dequeueReusablePopoverCellWithIdentifier:identifier];
+    
+    [cell setSelected:NO];
+    if (nil == cell)
+    {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
+    }
+    if ( self.selectedIndexPath && NSOrderedSame == [self.selectedIndexPath compare:indexPath])
+    {
+        cell.imageView.image = [UIImage imageNamed:@"fs_main_login_selected.png"];
+    }
+    else
+    {
+        cell.imageView.image = [UIImage imageNamed:@"fs_main_login_normal.png"];
     }
     
+    if (indexPath.row ==0) {
+        cell.textLabel.text = [NSString stringWithFormat:@"添加一组数据"];
+
+    }
+    if (indexPath.row ==1) {
+        cell.textLabel.text = [NSString stringWithFormat:@"删除组数据"];
+    }
+    
+    return cell;
+}
+
+- (void)popoverListView:(ZSYPopoverListView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView popoverCellForRowAtIndexPath:indexPath];
+    cell.imageView.image = [UIImage imageNamed:@"fs_main_login_normal.png"];
+    NSLog(@"deselect:%d", indexPath.row);
+}
+
+- (void)popoverListView:(ZSYPopoverListView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.selectedIndexPath = indexPath;
+    UITableViewCell *cell = [tableView popoverCellForRowAtIndexPath:indexPath];
+    cell.imageView.image = [UIImage imageNamed:@"fs_main_login_selected.png"];
+    NSLog(@"select:%d", indexPath.row);
+    
+
+    if (indexPath.row ==0) {
+        [self addGroupByCurrentGroupNumber];
+    }
+    
+    if (indexPath.row ==1) {
+        [self deleteGroupByCurrentGroupNumber];
+    }
+}
+
+
+-(void)addGroupByCurrentGroupNumber{
+
+    
+    int currentGroupCount =  [[[NumberDataManager defaultManager] dataList] count];
+    
+    if (currentGroupCount >=7) {
+        [self popupHappyMessage:@"亲，最多能够添加7组数据" title:nil];
+        return;
+    }
+    
+    [[NumberDataManager defaultManager] addNumberDataWithId:@"0" name:@"" number:@"0" weight:@"0" time:@"0" calories:@"0"];
+    self.dataList = [[NumberDataManager defaultManager] dataList];
+    [self.dataTableView reloadData];
+    
+    //往服务器,保存数据
+    [self postDataArray];
+
+}
+-(void)deleteGroupByCurrentGroupNumber {
+    
+    int currentGroupCount =  [[[NumberDataManager defaultManager] dataList] count];
+    
+    if (currentGroupCount <=1) {
+        [self popupHappyMessage:@"亲,不能删除最后的一组数据" title:nil];
+        return;
+    }
+
+    [[NumberDataManager defaultManager].dataList removeLastObject];
+    self.dataList = [[NumberDataManager defaultManager] dataList];
+    [self.dataTableView reloadData];
+    
+    //往服务器,保存数据
+    [self postDataArray];
 }
 
 
@@ -72,6 +252,7 @@
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
     
+    [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
 
     
     
@@ -80,14 +261,14 @@
     tapCgr=[[UITapGestureRecognizer alloc]initWithTarget:self
                                                   action:@selector(tap)];
     tapCgr.numberOfTapsRequired=1;
-    [self.view addGestureRecognizer:tapCgr];
+    [self.dataTableView addGestureRecognizer:tapCgr];
     [tapCgr release];
 
     
     
 
     self.header = [NumberDataCellHeader
-                   createHeaderWithName:@"名称"
+                   createHeaderWithName:_selectedCatalog.name
                                                          weight:@"90"
                                                          number:@"34"
                                                            time:@"43"
@@ -109,19 +290,23 @@
     [self.dataTableView setTableHeaderView:_header];
     [self.dataTableView setTableFooterView:_footer];
 
+
+
+    self.dataList = [[NumberDataManager defaultManager] dataList];
     
+    [self.dataTableView setContentOffset:CGPointMake(0, 190)];
     
     
     
 
-    [self loadloadDatasFromSever];
+}
+
+-(void)postDataArray{
     
+    User *user =[[UserService defaultService] user];
+    [[WorkoutDataService sharedService]  postUserWorkoutDataWithUserId:user.uid workoutId:self.selectedCatalog._id delegate:self];
     
-    self.dataList = [[NumberDataManager defaultManager] dataList];
-    
-    
-        
-    [self.dataTableView setContentOffset:CGPointMake(0, 190)];
+    [self showActivityWithText:@"正在保存..."];
 
 }
 
@@ -169,13 +354,12 @@
     if (numberData) {
         [cell setCellInfo:numberData];
     }
-    
-
 
     return cell;
     
 
 }
+
 
 //当用户点击了cell中的textfield 就对应修改其值；
 -(void)didClickCellTextField:(UITextField *)textField
@@ -192,7 +376,6 @@
         //第一行
         case 1:
         {
-            
         [self setDataByRow:row coloum:column textField:textField];
         }
             break;
@@ -200,8 +383,6 @@
         case 2:
         {
             [self setDataByRow:row coloum:column textField:textField];
-
-            
         }
             break;
         case 3:
@@ -244,35 +425,36 @@
              coloum:(int)coloumn
           textField:(UITextField*)textField{
 
-    NSString *rowString = [NSString stringWithFormat:@"%i",row -1];
+    NSString *rowString = [NSString stringWithFormat:@"%i",row];
+
     NumberData *data = [[NumberDataManager defaultManager] getNumberDataById:rowString];
     
     switch (coloumn) {
         case 1:
         {
             [data setNumber:textField.text];
+            PPDebug(@"number :%@",data.number);
+
         }
             break;
         case 2:
         {
             [data setWeight:textField.text];
+            PPDebug(@"weight :%@",data.weight);
+
         }
             break;
             
         case 3:
         {
             [data setTime:textField.text];
+            PPDebug(@"time :%@",data.time);
+
         }
             break;
         default:
             break;
     }
-    
-    PPDebug(@"number :%@",data.number);
-    PPDebug(@"weight :%@",data.weight);
-    PPDebug(@"time :%@",data.time);
-
-    
 }
 
 #pragma --mark
@@ -282,6 +464,7 @@
 
     TPKeyboardAvoidingTableView *tableView =  (TPKeyboardAvoidingTableView *)scrollView;
     [tableView  hideKeyboard];
+    
 
 }
 
@@ -296,27 +479,20 @@
     
     TPKeyboardAvoidingTableView *tableView =  (TPKeyboardAvoidingTableView *)scrollView;
     [tableView  hideKeyboard];
+    
+    [self postDataArray];
+
 }
 
+
+
+  
 
 -(void)loadloadDatasFromSever
 
 {
     //初始化数据
     [[NumberDataManager defaultManager] addNumberDataWithId:@"0" name:@"腹肌" number:@"0" weight:@"0" time:@"0" calories:@"0"];
-    
-    [[NumberDataManager defaultManager] addNumberDataWithId:@"0" name:@"腹肌" number:@"0" weight:@"0" time:@"0" calories:@"0"];
-
-    [[NumberDataManager defaultManager] addNumberDataWithId:@"0" name:@"腹肌" number:@"0" weight:@"0" time:@"0" calories:@"0"];
-
-    [[NumberDataManager defaultManager] addNumberDataWithId:@"0" name:@"腹肌" number:@"0" weight:@"0" time:@"0" calories:@"0"];
-
-    [[NumberDataManager defaultManager] addNumberDataWithId:@"0" name:@"腹肌" number:@"0" weight:@"0" time:@"0" calories:@"0"];
-
-    [[NumberDataManager defaultManager] addNumberDataWithId:@"0" name:@"腹肌" number:@"0" weight:@"0" time:@"0" calories:@"0"];
-
-    [[NumberDataManager defaultManager] addNumberDataWithId:@"0" name:@"腹肌" number:@"0" weight:@"0" time:@"0" calories:@"0"];
-
 }
 
 
@@ -340,16 +516,16 @@
 {
     NSLog(@"***Load objects count: %d", [objects count]);
     [self hideActivity];
+    [self popupHappyMessage:@"保存数据成功！" title:nil];
     
+    
+    
+    
+    
+    //footer
+    //renew the average value locally
+    [[NumberDataManager defaultManager] countAvgOfTheData];
+    [self updateFooterAndHeader];
 }
-
-
-
-
-
-
-
-
-
 
 @end

@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPTableViewController.h"
+#import <RestKit/RestKit.h>
 
-@interface WorkoutFirstTypeViewController : UITableViewController
+
+@interface WorkoutFirstTypeViewController : PPTableViewController<RKObjectLoaderDelegate>
+
+{
+
+
+}
 
 @end

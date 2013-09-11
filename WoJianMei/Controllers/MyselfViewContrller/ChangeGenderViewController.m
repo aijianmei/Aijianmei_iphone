@@ -34,26 +34,36 @@
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
     
-    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+    [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(clickSaveButton:)];
     
+   
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+
     User *user = [[UserService defaultService]user];
     if ([user.gender isEqualToString:@"0"])
     {
         
         [self setTitle:@"女"];
-
+        
     }else
         
     {
         [self setTitle:@"男"];
     }
 
+    [super viewWillAppear:YES];
 }
 
 -(void)clickSaveButton:(UIButton *)sender{
 
+    
+    [self showActivityWithText:@"保存成功"];
     [self.navigationController popViewControllerAnimated:YES];
+    
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -131,18 +141,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    
+    User *user = nil;
     switch (indexPath.row) {
         case 0:
         {
-            User *user = [[UserService defaultService]user];
+            user = [[UserService defaultService]user];
             [user setGender:@"1"];
             [self setTitle:@"男"];
         }
             break;
         case 1:
         {
-            User *user = [[UserService defaultService]user];
+            user = [[UserService defaultService]user];
             [user setGender:@"0"];
             [self setTitle:@"女"];
 
@@ -152,6 +162,9 @@
         default:
             break;
     }
+
+    [[UserService defaultService] setUser:user];
+    [[UserService defaultService] storeUserInfoByUid:user.uid];
 
      [self.dataTableView reloadData];
 }

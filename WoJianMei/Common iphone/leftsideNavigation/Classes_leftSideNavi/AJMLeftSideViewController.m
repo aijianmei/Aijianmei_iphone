@@ -147,9 +147,7 @@
 #pragma mark --
 #pragma mark - initViewControllers
 -(void)initHomeViewController
-
 {
-    
     HomeViewController *homeViewVC =[[AppDelegate getAppDelegate] initHomeViewController];
     _navigationController = [[UINavigationController alloc] initWithRootViewController:homeViewVC];
 }
@@ -171,9 +169,7 @@
         WorkoutViewController *vc =[[WorkoutViewController alloc] initWithNibName:@"WorkoutViewController" bundle:nil];
         self.workoutViewController =vc;
         [vc release];
-    
         self.workoutViewController.title = @"锻炼";
-      
       }
     
     
@@ -219,7 +215,7 @@
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_workOutManagerViewController] ;
 }
 -(void)initMoreController{
-    if (self.workoutPlanViewController ==nil) {
+    if (self.moreViewController ==nil) {
 
     self.moreViewController =[[MoreViewController alloc] initWithNibName:@"MoreViewController" bundle:nil];
     self.moreViewController.title = @"更多";
@@ -253,7 +249,7 @@
 {
     switch (section) {
         case 0:
-            return 7;
+            return 8;
         case 1:
             return 2;
         default:
@@ -268,10 +264,8 @@
     {
         cell = [[[AGLeftSideTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TABLE_CELL] autorelease];
         
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.font = [UIFont boldSystemFontOfSize:18.0];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:15.0];
         cell.textLabel.textColor = [ColorManager leftSideNaviFontColor] ;
-        
         UIImageView *lineView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"IndexLine.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:1]];
         
         CGRect frame = cell.contentView.frame;
@@ -283,6 +277,12 @@
         [lineView release];
     }
     
+    
+    UIImageView *imvaew = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cbdqx_1.png"]];
+    [cell setSelectedBackgroundView:imvaew];
+    
+    
+    
     switch (indexPath.section)
     {
         case 0:
@@ -291,44 +291,42 @@
             {
                 case 0:
                     cell.textLabel.text = @"首页";
-                    
-    
-//                    UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"pm_2.png"]];
-//                    [cell setSelectedBackgroundView:imageView];
-//                    [imageView release];
-                    
-                    
-
-                    
-                    [cell.imageView setImage:[UIImage imageNamed:@"pm_2.png"]];
-
-                    if ([cell isSelected]) {
-                        [cell.imageView setImage:[UIImage imageNamed:@"dqrq_1.png"]];
-                    }
-                    
-                    
-                                    
+                    [cell.imageView setImage:[UIImage imageNamed:@"Home_Icon.png"]
+                     ];
                     break;                    
                 case 1:
                     cell.textLabel.text = @"锻炼";
+                    [cell.imageView setImage:[UIImage imageNamed:@"Workout_Icon.png"]];
+
                     break;
-//                case 2:
-//                    cell.textLabel.text = @"健身计划";
-//                    break;
                 case 2:
-                    cell.textLabel.text = @"营养";
-                    break;
+                    cell.textLabel.text = @"健身计划";
+                    [cell.imageView setImage:[UIImage imageNamed:@"Plan_Icon.png"]];
+
+                   break;
                 case 3:
-                    cell.textLabel.text = @"补充";
+                    cell.textLabel.text = @"营养";
+                    [cell.imageView setImage:[UIImage imageNamed:@"Nuri_Icon.png"]];
+                    
                     break;
                 case 4:
-                    cell.textLabel.text = @"生活方式";
+                    cell.textLabel.text = @"补充";
+                    [cell.imageView setImage:[UIImage
+                                  imageNamed:@"Supplement_Icon.png"]];
                     break;
                 case 5:
-                    cell.textLabel.text = @"运动管理";
+                    cell.textLabel.text = @"生活方式";
+                    [cell.imageView setImage:[UIImage
+                                  imageNamed:@"LifeStyle_Icon.png"]];
                     break;
                 case 6:
-                    cell.textLabel.text = @"更多";                
+                    cell.textLabel.text = @"运动管理";
+                    [cell.imageView setImage:[UIImage imageNamed:
+                                              @"Manager_Icon.png"]];
+                    break;
+                case 7:
+                    cell.textLabel.text = @"更多";
+                    [cell.imageView setImage:[UIImage imageNamed:@"More_Icon.png"]];
                     break;
             }
             break;
@@ -339,10 +337,16 @@
             {
                 case 0:
                     cell.textLabel.text = @"关注新浪微博";
+                    [cell.imageView setImage:[UIImage imageNamed:
+                                              @"Weibo_Icon.png"]];
+
                     break;
                 
                 case 1:
                     cell.textLabel.text = @"访问官方网站";
+                    [cell.imageView setImage:[UIImage imageNamed:
+                                              @"Aijianmei_Icon.png"]];
+
                     break;
             }
             break;
@@ -350,10 +354,6 @@
         default:
             break;
     }
-    
-    [cell.textLabel setTextColor:[UIColor grayColor]];
-
-    
     return cell;
 }
 
@@ -394,13 +394,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-        
-    
-    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         
     
@@ -456,21 +449,19 @@
                 }
                 break;
 
-//                case 2:
-//                {
-//                    ///健身计划
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        WorkoutPlanViewController *WorkoutPlanVC = (WorkoutPlanViewController *)[currentInUseStoryBoard instantiateViewControllerWithIdentifier:@"WorkoutPlanViewController"];
-//                        WorkoutPlanVC.title = @"健身计划";
-//                        _navigationController = [[UINavigationController alloc] initWithRootViewController:WorkoutPlanVC];
-//                        self.viewDeckController.centerController = _navigationController;
-//                        
-//                        self.view.userInteractionEnabled = YES;
-//                    }];
-//                    break;
-//                }
-
                 case 2:
+                {
+                    ///健身计划
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+
+                        [self initWorkoutPlanViewController];
+                        self.viewDeckController.centerController = _navigationController;
+                        self.view.userInteractionEnabled = YES;
+                    }];
+                }
+                    break;
+
+                case 3:
                 {
                     ///营养
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
@@ -488,7 +479,7 @@
                 }
                     break;
                 
-                case 3:
+                case 4:
                 {
                     ///补充
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
@@ -504,7 +495,7 @@
                     [statTracker logEvent:@"SupplementView" eventLabel:@"SupplementView"];
                 }
                 break;
-                case 4:
+                case 5:
                 {
                     ///生活方式
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
@@ -523,31 +514,33 @@
                 }
                 break;
 
-                case 5:
+                case 6:
                 {
                    ////运动管理
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         
                         [self initWorkOutManagerViewController];
                         self.viewDeckController.centerController = _navigationController;
-                        self.view.userInteractionEnabled = YES;
                     }];
                     
+                    self.view.userInteractionEnabled = YES;
+                    _tableView.userInteractionEnabled =YES;
+
+                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+                    [statTracker logEvent:@"WorkoutManagerView" eventLabel:@"WorkoutManagerView"];
                 }
                     break;
-                case 6:
+                case 7:
                 {
                     ///更多
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
             
                         [self initMoreController];
-                        self.moreViewController.delegate =[self getAppDelegate];
+                        self.moreViewController.delegate =[AppDelegate getAppDelegate];
                         self.viewDeckController.centerController = _navigationController;
-
-                        self.view.userInteractionEnabled = YES;
-                        _tableView.userInteractionEnabled =YES;
-                        
                     }];
+                    self.view.userInteractionEnabled = YES;
+                    _tableView.userInteractionEnabled =YES;
                     
                     BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
                     [statTracker logEvent:@"MoreView" eventLabel:@"MoreView"];
@@ -595,31 +588,6 @@
                     
                 }
                 break;
-//                case 1:
-//                {
-//                ///关注微信
-//                //TODO
-//                    
-//                    if ([WXApi isWXAppInstalled]) {
-//                        NSString *str = [NSString stringWithFormat:@"weixin://qr/%@",@"lXSTnL7EBoB5h6--nyGx"];
-//                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-//
-//                    }else
-//                    {
-//                        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"您没有安装微信，现在去安装" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-//                        [alertView show];
-//                        
-//                    }
-//                    
-//                    
-//                    self.view.userInteractionEnabled = YES;
-//                    _tableView.userInteractionEnabled =YES;
-//
-//                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
-//                    [statTracker logEvent:@"FollowWechat" eventLabel:@"FollowWechat"];
-//                }
-//                    break;
-
                 case 1:
                 {
                     ///关注爱健美网 www.aijianmei.com

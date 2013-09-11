@@ -14,9 +14,22 @@
 {
    
     NSMutableArray *_dataList;
+    
+    NSString *_numAvg;
+    NSString *_weightAvg;
+    NSString *_timeAvg;
+    NSString *_caloriesAvg;
 
 }
 @property (nonatomic,retain) NSMutableArray *dataList;
+
+
+@property (nonatomic,retain) NSString *numAvg;
+@property (nonatomic,retain) NSString *weightAvg;
+@property (nonatomic,retain) NSString *timeAvg;
+@property (nonatomic,retain) NSString *caloriesAvg;
+
+
 
 +(NumberDataManager *)defaultManager;
 -(void)addNumberDataWithId:(NSString*)aId
@@ -26,6 +39,6 @@
                       time:(NSString *)time
                   calories:(NSString*)calories;
 - (NumberData *)getNumberDataById:(NSString *)numberDataId;
-
+-(void)countAvgOfTheData;
 
 @end

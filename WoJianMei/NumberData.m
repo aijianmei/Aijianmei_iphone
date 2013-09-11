@@ -16,7 +16,30 @@
 @synthesize time =_time;
 @synthesize calories =_calories;
 
++(NumberData *)creatNumberDatasWithNumerDataId:(NSString *)numberDataId
+                                          Name:(NSString *)name
+                                        number:(NSString *)number
+                                        weight:(NSString *)weight
+                                          time:(NSString *)time
+                                      calories:(NSString *)calories
+{
+    
+    NumberData *numberData = [[[NumberData alloc] init] autorelease];
+    [numberData setNumerDataId:numberDataId];
+    [numberData setName:name];
+    [numberData setWeight:weight];
+    [numberData setNumber:number];
+    [numberData setTime:time];
+    [numberData setCalories:calories];
+    
+    return numberData;
+}
+
+
+
+
 -(void)dealloc{
+    
     [_id release];
     [_name release];
     [_number release];
@@ -26,23 +49,42 @@
     [super dealloc];
 }
 
-+(NumberData *)creatNumberDatasWithNumerDataId:(NSString *)numberDataId
-                                          Name:(NSString *)name
-                                        number:(NSString *)number
-                                        weight:(NSString *)weight
-                                          time:(NSString *)time
-                                      calories:(NSString *)calories
-{
 
-     NumberData *numberData = [[[NumberData alloc] init] autorelease];
-    [numberData setNumerDataId:numberDataId];
-    [numberData setName:name];
-    [numberData setWeight:weight];
-    [numberData setNumber:number];
-    [numberData setTime:time];
-    [numberData setCalories:calories];
+@end
+
+
+@implementation NumberDataInfo
+@synthesize uid =_uid;
+@synthesize errorCode =_errorCode;
+@synthesize coureName =_coureName;
+@synthesize numAvg =_numAvg;
+@synthesize weightAvg =_weightAvg;
+@synthesize timeAvg =_timeAvg;
+@synthesize caloriesAvg =_caloriesAvg;
+
+
+
+@synthesize numberDataArray =_numberDataArray;
+
+
+
+
+-(void)dealloc{
     
-    return numberData;
+    [_uid release];
+    [_errorCode release];
+    
+    
+    [_coureName release];
+    [_numAvg release];
+    [_weightAvg release];
+    [_timeAvg release];
+    [_caloriesAvg release];
+    
+    
+    [_numberDataArray release];
+    
+    [super dealloc];
 }
 
 

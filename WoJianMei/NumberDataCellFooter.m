@@ -10,7 +10,6 @@
 
 
 @interface NumberDataCellFooter()
-@property (assign, nonatomic) id<NumberDataCellFooterDelegate> delegate;
 @end
 
 
@@ -20,7 +19,6 @@
 @synthesize weightButton =_weightButton;
 @synthesize timeButton =_timeButton;
 @synthesize caloriesButton =_caloriesButton;
-
 @synthesize delegate = _delegate;
 
 
@@ -39,6 +37,9 @@
     [_weightButton release];
     [_timeButton release];
     [_caloriesButton release];
+    
+    [_addButton release];
+    [_delegate release];
     [super dealloc];
 }
 
@@ -58,11 +59,37 @@
     
     NumberDataCellFooter *footer = (NumberDataCellFooter*)[topLevelObjects objectAtIndex:0];
     
-    [footer.averageButton.titleLabel setText:average];
-     footer.delegate = delegate;
+    
+    [footer.averageButton setTitle:average forState:UIControlStateNormal];
+    [footer.weightButton setTitle:weight forState:UIControlStateNormal];
+    [footer.numberButton setTitle:number forState:UIControlStateNormal];
+    [footer.timeButton setTitle:time forState:UIControlStateNormal];
+    [footer.caloriesButton setTitle:calories forState:UIControlStateNormal];
+
+    
+    [footer.addButton addTarget:footer action:@selector(clickAddButton:) forControlEvents:UIControlEventTouchUpInside];
+    [footer.deleteButton addTarget:footer action:@selector(clickDeleteButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+
+    footer.delegate = delegate;
     
     return footer;
 }
+
+
+-(void)clickAddButton:(UIButton *)sender{
+    
+    if ([_delegate respondsToSelector:@selector(didClickFooterAddButton:atIndex:)]){
+        [_delegate  didClickFooterAddButton: sender atIndex:0];
+    }
+}
+
+-(void)clickDeleteButton:(UIButton *)sender{
+    if ([_delegate respondsToSelector:@selector(didClickFooterDeleteButton:atIndex:)]){
+        [_delegate  didClickFooterDeleteButton: sender atIndex:0];
+    }
+}
+
 
 
 

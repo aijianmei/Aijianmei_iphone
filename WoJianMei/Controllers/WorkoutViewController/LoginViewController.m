@@ -16,7 +16,7 @@
 #import "Result.h"
 #import "SinaResult.h"
 #import "BaiduMobStat.h"
-
+#import "DeviceDetection.h"
 
 //239725454
 //e2064ac8fab9d889a9eccecc5babad11
@@ -113,11 +113,20 @@ enum SinaResultErrorCode
     
 }
 
--(void) viewDidDisappear:(BOOL)animated
+-(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:YES];
     [[BaiduMobStat defaultStat] pageviewEndWithName:@"LoginView"];
     [self.navigationController.navigationBar setHidden:NO];
+    
+
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:YES];
+
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 
 }
 
@@ -127,6 +136,8 @@ enum SinaResultErrorCode
     [super viewWillAppear:YES];
     //隐藏导航栏
     [self.navigationController.navigationBar setHidden:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+
 
 }
 
@@ -134,14 +145,31 @@ enum SinaResultErrorCode
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    
 	// Do any additional setup after loading the view.
     [self setNavigationRightButton:@"取消" imageName:@"top_bar_commonButton.png" action:@selector(clickCancleButton:)];
     [_usernameField setClearsOnBeginEditing:NO];
     [_passwordField setClearsOnBeginEditing:YES];
 
     
+    if([DeviceDetection isIPhone5])
+    {
+        [self setBackgroundImageName:@"640X1136.png"];
+    }
+    else
+    {
+        [self setBackgroundImageName:@"640X960.png"];
+    }
+        [self showBackgroundImage];
+
+
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+
     
     
+
     [self.sinaButton setTag:10];
     
     [self.sinaButton addTarget:self action:@selector(clickSinaWeiboButton:) forControlEvents:UIControlEventTouchDown];

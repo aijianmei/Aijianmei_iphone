@@ -332,10 +332,9 @@ enum ErrorCode
     [self setTitle:@"运动圈"];
     
     [self setNavigationRightButton:@"" imageName:@"Camera.png" action:@selector(clickPostStatusButton:)];
-    [self setNavigationLeftButton:@"返回" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
+    [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     
-    
-    
+
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
     

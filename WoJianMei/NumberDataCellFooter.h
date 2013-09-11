@@ -12,6 +12,9 @@
 
 @protocol NumberDataCellFooterDelegate <NSObject>
 
+- (void)didClickFooterAddButton:(UIButton *)button atIndex:(int)buttonIndex;
+- (void)didClickFooterDeleteButton:(UIButton *)button atIndex:(int)buttonIndex;
+
 @end
 
 
@@ -24,6 +27,17 @@
     UIButton *_weightButton;
     UIButton *_timeButton;
     UIButton *_caloriesButton;
+    
+    UIButton *_addButton;
+    UIButton *_deleteButton;
+
+
+    
+    
+    
+    
+    id <NumberDataCellFooterDelegate> _delegate;
+
 
 }
 
@@ -34,6 +48,13 @@
 @property (retain, nonatomic) IBOutlet UIButton *timeButton;
 @property (retain, nonatomic) IBOutlet UIButton *caloriesButton;
 
+
+@property (retain, nonatomic) IBOutlet UIButton *addButton;
+@property (retain, nonatomic) IBOutlet UIButton *deleteButton;
+
+
+
+@property (nonatomic, assign)    id <NumberDataCellFooterDelegate> delegate;
 
 
 + (NumberDataCellFooter *)createFooterWithAverage:(NSString *)average
