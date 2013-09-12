@@ -20,7 +20,6 @@
 #import "UIImageView+WebCache.h"
 #import "Result.h"
 #import "BaiduMobStat.h"
-#import "CorpImageView.h"
 #import "UIImage+Scale.h"
 #import "UserInfoPickerViewController.h"
 
@@ -153,10 +152,6 @@
     [[UserService defaultService] storeUserInfoByUid:user.uid];
     [[UserService defaultService] setUser:user];
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
-//        CorpImageView *cropImageView =[[CorpImageView alloc]initWithNibName:@"CorpImageView" bundle:nil];
-//        cropImageView.imgView.image =image;
-//        [self.navigationController presentModalViewController:cropImageView animated:YES];
-//        [cropImageView release];
     }];
     
     [self loadDatas];
@@ -205,24 +200,28 @@
         NSString *uid = [[[UserService defaultService] user] uid];
         User *user =  [[UserService defaultService] getUserInfoByUid:uid];
     
-        if (!user.height && !user.weight && !user.age) {
-        
-        UserInfoPickerViewController *vc = [[UserInfoPickerViewController alloc]initWithNibName:@"UserInfoPickerViewController" bundle:nil];
-        [self.navigationController presentViewController:vc animated:YES completion:^{}];
-        [vc release];
-    }
 
-    
         //本地数据存在的时候直接读取本地数据;
         if (user) {
             User *user = [[UserService defaultService] getUserInfoByUid:uid];
+            
+       //判断用户的数据是否完整
+            if (!user.height && !user.weight && !user.age) {
+                
+                UserInfoPickerViewController *vc = [[UserInfoPickerViewController alloc]initWithNibName:@"UserInfoPickerViewController" bundle:nil];
+                [self.navigationController presentViewController:vc animated:YES completion:^{}];
+                [vc release];
+            }
+
             [[UserService defaultService] setUser:user];
             [self setUser:user];
             [self updateUI];
             
         }else{
             //本地数据不存在，用户第一次登陆的时候，就往服务器拉数据
-            [[UserService defaultService] fecthUserInfoWithUid:uid delegate:self];
+            [[UserService defaultService] fecthUserInfoWithUid:uid
+                                                      delegate:self];
+            
             [self showActivityWithText:@"数据更新中..."];
         }
 }
@@ -406,7 +405,8 @@
     return 0;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     MyselfSettingCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -464,16 +464,6 @@
                 [cell.detailImageView setFrame:CGRectMake(180, 7.50f, 65.0f,65.0f)];
 
             }
-            ///设置背景
-//            if (indexPath.row ==1) {
-//                                
-//                
-//                [cell.detailImageView setImageWithURL:[NSURL URLWithString:self.user.avatarBackGroundImage] placeholderImage:[UIImage imageNamed:@"profile_backgroud.png"]];
-//               
-//                [cell.detailImageView setFrame:CGRectMake(150, 2, 120, 50)];
-//                
-//            }
-            
             //更改用户名
             if (indexPath.row ==1) {
                 if (!self.user.name) {
@@ -570,7 +560,12 @@
                     //BMI
                 case 4:
                 {
-                [cell.detailLabelView setText:self.user.BMIValue];
+                    
+                self.user.BMIValue =[self reCaluclateBMIValueByWeight:self.user.weight
+                                                               height:self.user.height];
+                    
+                    
+                    [cell.detailLabelView setText:self.user.BMIValue];
                     [cell.textField setHidden:YES];
                     [cell.lessButton setHidden:YES];
                     [cell.moreButton setHidden:YES];
@@ -640,8 +635,6 @@
     [share setTag:1];
     [share showInView:self.view];
     [share release];
-
-
 }
 
 
@@ -819,7 +812,6 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects;
 {
     [self hideActivity];
-//    if ([objectLoader wasSentToResourcePath:@"/imgtest.php"])
     if ([[objects objectAtIndex:0] isMemberOfClass:[User class]])
     {
         PPDebug(@"%@",[objects objectAtIndex:0]);

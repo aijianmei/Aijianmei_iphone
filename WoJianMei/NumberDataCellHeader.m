@@ -77,6 +77,7 @@
     [header.numberButton setTitle:number forState:UIControlStateNormal];
     [header.timeButton setTitle:time forState:UIControlStateNormal];
     [header.caloriesButton setTitle:calories forState:UIControlStateNormal];
+    
     header.delegate = delegate;
     
     return header;

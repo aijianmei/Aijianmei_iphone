@@ -11,6 +11,8 @@
 #import "User.h"
 #import "AnimationManager.h"
 #import "SLNumberPickerView.h"
+#import "DeviceDetection.h"
+
 
 
 @interface UserInfoPickerViewController ()
@@ -23,6 +25,9 @@
 @synthesize maleButton =_maleButton;
 @synthesize buttonBack =_buttonBack;
 @synthesize buttonForward =_buttonForward;
+
+@synthesize genderDesLabel =_genderDesLabel;
+
 @synthesize weightLabel =_weightLabel;
 @synthesize heightLabel =_heightLabel;
 @synthesize ageLabel =_ageLabel;
@@ -45,6 +50,7 @@
     [_maleButton    release];
     [_buttonForward release];
     [_buttonBack    release];
+    [_genderDesLabel release];
     [_weightLabel   release];
     [_heightLabel   release];
     [_ageLabel      release];
@@ -59,6 +65,7 @@
     [self.heightLabel   setHidden:YES];
     [self.weightLabel   setHidden:YES];
     [self.ageLabel      setHidden:YES];
+    [self.genderDesLabel setHidden:YES];
     [self.femaleButton  setHidden:YES];
     [self.maleButton    setHidden:YES];
     [self.buttonForward setHidden:YES];
@@ -86,14 +93,14 @@
     [self.referenceImageView setHidden:NO];
 
 
-    [self.buttonForward
-     setTitle:@"完成" forState:UIControlStateNormal];
-    [self.buttonForward setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-
-    
+    [self.buttonForward setTitle:@"完成"
+                        forState:UIControlStateNormal];
+    [self.buttonForward setTitleColor:[UIColor whiteColor]
+                             forState:UIControlStateNormal];
     [self.buttonForward  addTarget:self
                             action:@selector(dissmissViewController:)
                   forControlEvents:UIControlEventTouchUpInside];
+    
 
     if (isFemale)
     {
@@ -109,8 +116,7 @@
 
     }
 
-    [self setTitle:@"请选择你的年龄!"];
-    [self.ageLabel setFrame:CGRectMake(0,11,320,21)];
+    [self.ageLabel setFrame:CGRectMake(100,11,320,21)];
 
     
     //add animations
@@ -127,6 +133,8 @@
     
 }
 -(void)setHeightView{
+    
+    
     [self hideAllSubviewsInView];
     [self.heightLabel   setHidden:NO];
     [self.buttonBack    setHidden:NO];
@@ -152,7 +160,7 @@
     }
     
     [self setTitle:@"请选择你的身高!"];
-    [self.heightLabel setFrame:CGRectMake(0,11,320,21)];
+    [self.heightLabel setFrame:CGRectMake(100,11,320,21)];
 
 
     
@@ -202,8 +210,8 @@
     
     
     [self setTitle:@"请选择你的体重!"];
-    [self.weightLabel setFrame:CGRectMake(0,11,320,21)];
-    
+    [self.weightLabel setFrame:CGRectMake(100,11,320,21)];
+
     
     //add animations
     [self showWeightButtons:self.femaleButton];
@@ -227,7 +235,8 @@
     [self.maleButton   setFrame:CGRectMake(124,222,72,167)];
     [self.femaleButton   setHidden:NO];
     [self.maleButton     setHidden:NO];
-   
+    [self.genderDesLabel     setHidden:NO];
+
     
     [self setTitle:@"请选择你的性别!"];
     
@@ -275,13 +284,15 @@
     //从体重跳到身高
     if (!self.weightLabel.isHidden) {
         [self setHeightView];
-        [self popupMessage:self.weightLabel.text title:nil];
+        [self popupMessage:self.weightLabel.text
+                     title:nil];
         return;
     }
     //从身高跳到年龄
     if (!self.heightLabel.isHidden) {
         [self setAgeView];
-        [self popupMessage:self.heightLabel.text title:nil];
+        [self popupMessage:self.heightLabel.text
+                     title:nil];
 
         return;
     }
@@ -312,9 +323,8 @@
 }
 
 -(void)clickDone{
+    
     [self.navigationController popViewControllerAnimated:YES];
-    
-    
 }
 
 -(void)initUI{
@@ -322,20 +332,23 @@
     [self.femaleButton addTarget:self action:@selector(clickFemaleButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.maleButton addTarget:self action:@selector(clickMaleButton:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.buttonForward addTarget:self action:@selector(clickForwardButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.buttonBack addTarget:self action:@selector(clickBackButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.buttonForward addTarget:self
+                           action:@selector(clickForwardButton:)
+                 forControlEvents:UIControlEventTouchUpInside];
+    [self.buttonBack addTarget:self
+                        action:@selector(clickBackButton:)
+              forControlEvents:UIControlEventTouchUpInside];
     
     
-    [self.buttonBack  setTitle:@"下一步"
-                                    forState:UIControlStateNormal];
-    
+    [self.buttonBack  setTitle:@"上一步"
+                      forState:UIControlStateNormal];
     [self.buttonBack setTitleColor:[UIColor whiteColor]
                          forState:UIControlStateNormal];
     
     
+    
     [self.buttonForward setTitle:@"下一步"
                         forState:UIControlStateNormal];
-    
     [self.buttonForward setTitleColor:[UIColor whiteColor]
                              forState:UIControlStateNormal];
 
@@ -360,6 +373,22 @@
     [self.ageLabel setTextAlignment:NSTextAlignmentLeft];
     [self.ageLabel setTextColor:[UIColor grayColor]];
 
+    
+    
+ 
+    
+    if([DeviceDetection isIPhone5])
+    {
+        
+    }
+    else
+    {
+        [sLNumberPickerView setFrame:CGRectMake(0, 0, 30, 20)];
+
+    }
+
+    
+    
     [self setGenderView];
     
 }

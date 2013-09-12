@@ -15,7 +15,6 @@
 #import "UserService.h"
 #import "Result.h"
 #import "REComposeViewController.h"
-#import "CustomURLCache.h"
 #import "AppDelegate.h"
 #import "BaiduMobStat.h"
 #import "DeviceDetection.h"
@@ -380,8 +379,7 @@ enum actionsheetNumber{
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    CustomURLCache *urlCache = (CustomURLCache *)[NSURLCache sharedURLCache];
-    [urlCache removeAllCachedResponses];
+
 
 }
 
@@ -423,9 +421,10 @@ enum actionsheetNumber{
     
     UIImage *image = [self getImageFromURL:_article.img];
     postImage = image;
-    
-    [[SinaWeiboManager sharedManager] createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
-    
+    [[SinaWeiboManager sharedManager] createSinaweiboWithAppKey:kAppKey
+                                                      appSecret:kAppSecret
+                                                 appRedirectURI:KAppRedirectURI
+                                                       delegate:self];
     
     if([[SinaWeiboManager sharedManager].sinaweibo isAuthValid])
     {
@@ -467,14 +466,16 @@ enum actionsheetNumber{
                 
             }
         };
-        
-               
-
-    }if(![_sinaweiboManager.sinaweibo isAuthValid])
+    }
+    
+    
+    if(![[SinaWeiboManager sharedManager].sinaweibo isAuthValid])
     {
-        [_sinaweiboManager.sinaweibo logIn];
+        [SinaWeiboManager sharedManager].sinaweibo.delegate = self;
+        [[SinaWeiboManager sharedManager].sinaweibo logIn];
     }
 
+    
 }
 
 -(void)shareToSocialnetWorks
@@ -898,7 +899,6 @@ enum actionsheetNumber{
         NSDictionary *userInfo = result;
         NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);
         
-       
         [self  clickSinaShareButton];
     }
 

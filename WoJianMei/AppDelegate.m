@@ -437,7 +437,7 @@
     
     
     //检测当前版本是否为最新的版本
-    [self performSelector:@selector(updateApplication) withObject:nil afterDelay:5.0f];
+    [self performSelector:@selector(updateApplication) withObject:nil afterDelay:30.0f];
     
 }
 

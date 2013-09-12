@@ -92,6 +92,8 @@
     [_timeField addTarget:self action:@selector(didClickTextField:) forControlEvents:UIControlEventEditingDidEnd];
     
     [_caloriesLabel setText:numberData.calories];
+    
+    
 }
 
 

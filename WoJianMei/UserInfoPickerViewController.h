@@ -21,6 +21,8 @@
     UIButton *_buttonBack;
     
     
+    UILabel *_genderDesLabel;
+    
     UILabel *_weightLabel;
     UILabel *_heightLabel;
     UILabel *_ageLabel;
@@ -43,6 +45,9 @@
 
 @property (nonatomic,retain) IBOutlet UIButton *buttonForward;
 @property (nonatomic,retain) IBOutlet UIButton *buttonBack;
+
+@property (nonatomic,retain) IBOutlet UILabel *genderDesLabel;
+
 
 @property (nonatomic,retain) IBOutlet UILabel *weightLabel;
 @property (nonatomic,retain) IBOutlet UILabel *heightLabel;

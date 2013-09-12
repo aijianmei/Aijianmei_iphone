@@ -229,7 +229,7 @@
     [self showBackgroundImage];
     
     
-    [self setNavigationRightButton:@"动作" imageName:@"top_bar_commonButton.png" action:@selector(clickActionButton:)];
+//    [self setNavigationRightButton:@"动作" imageName:@"top_bar_commonButton.png" action:@selector(clickActionButton:)];
     
     [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
 

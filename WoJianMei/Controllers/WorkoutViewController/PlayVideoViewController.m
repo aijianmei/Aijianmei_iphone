@@ -15,6 +15,12 @@
 #import "ImageManager.h"
 #import "BaiduMobStat.h"
 #import "DeviceDetection.h"
+#import "UIImageUtil.h"
+#import "UIImage+Scale.h"
+
+#import "StatusView.h"
+
+
 
 
 #define kAppKey @"3622140445"
@@ -396,16 +402,19 @@ enum TapOnItem {
             {
                 [self onSelectTimelineScene];
                 
-                UIImage *image =[UIImage imageNamed:@"Default.png"];
+                UIImage *image = [self getImageFromURL:_video.img];
+                postImage =[image scaleToSize:CGSizeMake(70,70)];
+                [self sendAppContentWithTitle:_video.title description:_video.brief image:postImage  urlLink:_video.shareurl];
                 
-                [self sendAppContentWithTitle:@"下载爱健美iphone客户端" description:@"学习专业的运动、健身、健康资讯，就下载爱健美手机客户端啦！" image:image urlLink:@"www.aijianmei.com" ];
             }
             case SEND_WECHAT_FRIENDS:
             {
                 ///调用微信接口
                 [self  onSelectSessionScene];
-                UIImage *image =[UIImage imageNamed:@"Default.png"];
-                [self sendAppContentWithTitle:@"下载爱健美iphone客户端" description:@"学习专业的运动、健身、健康资讯，就下载爱健美手机客户端啦！" image:image urlLink:@"www.aijianmei.com" ];
+                UIImage *image = [self getImageFromURL:_video.img];
+                
+                postImage =[image scaleToSize:CGSizeMake(70,70)];
+                [self sendAppContentWithTitle:_video.title description:_video.brief image:postImage  urlLink:_video.shareurl];
                 
             }
                 break;
@@ -567,10 +576,12 @@ enum TapOnItem {
     {
         [_sinaweiboManager.sinaweibo logIn];
     }
-    
 }
 
+
 -(void)shareVideoWithTitle:(NSString*)title image:(UIImage *)image{
+    
+    
     
     NSMutableDictionary * params =[NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    title, @"status",image,@"pic",nil];
@@ -578,9 +589,12 @@ enum TapOnItem {
                                                         params:params
                                                     httpMethod:@"POST"
                                                       delegate:self];
-    [self showActivityWithText:@"正在分享"];
+    
+    
+    [StatusView showtStatusText:@"分享中..."
+                        vibrate:NO
+                       duration:20];
 }
-
 
 
 - (void)setRightBarButtons
@@ -595,7 +609,7 @@ enum TapOnItem {
     UIView *rightButtonView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 3*(buttonLen+seporator) +30, buttonHigh)];
     
     
-    UIButton *shareBarButton = [[UIButton alloc]initWithFrame:CGRectMake(leftOffest+(buttonLen+seporator)*2 +30, 0, 22, 22)];
+    UIButton *shareBarButton = [[UIButton alloc]initWithFrame:CGRectMake(leftOffest+(buttonLen+seporator)*2 +30,0,32,32)];
     [shareBarButton setImage:[ImageManager GobalArticelShareButtonBG] forState:UIControlStateNormal];
     [shareBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [shareBarButton addTarget:self action:@selector(clickShareButton:) forControlEvents:UIControlEventTouchUpInside];

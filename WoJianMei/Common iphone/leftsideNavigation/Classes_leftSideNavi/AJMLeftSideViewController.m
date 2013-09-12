@@ -402,7 +402,7 @@
 
     }
     
-
+    
     switch (indexPath.section)
     {
         case 0:
@@ -421,6 +421,7 @@
                     
                     self.view.userInteractionEnabled = YES;
                     _tableView.userInteractionEnabled =YES;
+                    
 
                     //百度统计;
                     BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
