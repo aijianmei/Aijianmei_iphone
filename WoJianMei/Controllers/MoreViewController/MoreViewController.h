@@ -35,12 +35,15 @@
     SinaWeiboManager *_sinaweiboManager;
     
     UIImage *postImage;
+    
+    NSString *_uid;
 
     
 }
 
 @property (nonatomic, retain) NSArray *listData;
 @property (nonatomic, assign) id<sendMsgToWeChatViewDelegate> delegate;
+@property (nonatomic,retain) NSString *uid;
 
 
 - (void)initMoreUI;

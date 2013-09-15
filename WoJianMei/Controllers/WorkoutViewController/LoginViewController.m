@@ -134,6 +134,10 @@ enum SinaResultErrorCode
 -(void)viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:YES];
+    
+    
+    [_passwordField setPlaceholder:@"请输入密码.."];
+
     //隐藏导航栏
     [self.navigationController.navigationBar setHidden:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
@@ -151,7 +155,7 @@ enum SinaResultErrorCode
 	// Do any additional setup after loading the view.
     [self setNavigationRightButton:@"取消" imageName:@"top_bar_commonButton.png" action:@selector(clickCancleButton:)];
     [_usernameField setClearsOnBeginEditing:NO];
-    [_passwordField setClearsOnBeginEditing:YES];
+    [_passwordField setClearsOnBeginEditing:NO];
 
     
     if([DeviceDetection isIPhone5])
@@ -296,19 +300,18 @@ enum SinaResultErrorCode
 - (void)clickSinaWeiboButton:(UIButton *)sender {
     
         [self setUserType:@"sina"];
-        _sinaweiboManager = [SinaWeiboManager sharedManager];
-        [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
+        [[SinaWeiboManager sharedManager] createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
     
        //授权不可用的时候,用户要重新登录
-        if ([_sinaweiboManager.sinaweibo isAuthValid])
+        if ([[SinaWeiboManager sharedManager].sinaweibo isAuthValid])
         {
-            PPDebug(@"%@",_sinaweiboManager.sinaweibo.userID);
-           [[UserService defaultService]  fechUserIdBySnsId :_sinaweiboManager.sinaweibo.userID delegate:self];
+            PPDebug(@"%@",[SinaWeiboManager sharedManager].sinaweibo.userID);
+           [[UserService defaultService]  fechUserIdBySnsId :[SinaWeiboManager sharedManager].sinaweibo.userID delegate:self];
         }
     //授权不可用的时候,就获取新浪微博的id，再通过sns 的id 来获取用户信息；
-        else if(![_sinaweiboManager.sinaweibo isAuthValid])
+        else if(![[SinaWeiboManager sharedManager].sinaweibo isAuthValid])
         {
-            [_sinaweiboManager.sinaweibo logIn];
+            [[SinaWeiboManager sharedManager].sinaweibo logIn];
         }
     
 }
@@ -322,7 +325,7 @@ enum SinaResultErrorCode
     [self.navigationController pushViewController:self.signUpViewController animated:YES];
     [self.navigationController.navigationBar setHidden:NO];
     
-    _signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;
+    _signUpViewController.snsId = [SinaWeiboManager sharedManager].sinaweibo.userID;
     _signUpViewController.userType =[self userType];
     
     self.signUpViewController.delegate = (id) self.delegate;
@@ -334,7 +337,7 @@ enum SinaResultErrorCode
 - (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
 {
     NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
-    [_sinaweiboManager storeAuthData];
+    [[SinaWeiboManager sharedManager] storeAuthData];
     //微博登陆后获取用户数据
     [[UserService defaultService] fetchSinaUserInfo:sinaweibo.userID delegate:self];
 }
@@ -342,7 +345,7 @@ enum SinaResultErrorCode
 - (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
 {
     NSLog(@"sinaweiboDidLogOut");
-    [_sinaweiboManager removeAuthData];
+    [[SinaWeiboManager sharedManager] removeAuthData];
 }
 
 - (void)sinaweiboLogInDidCancel:(SinaWeibo *)sinaweibo
@@ -358,7 +361,7 @@ enum SinaResultErrorCode
 - (void)sinaweibo:(SinaWeibo *)sinaweibo accessTokenInvalidOrExpired:(NSError *)error
 {
     NSLog(@"sinaweiboAccessTokenInvalidOrExpired %@", error);
-    [_sinaweiboManager removeAuthData];
+    [[SinaWeiboManager sharedManager] removeAuthData];
 }
 
 #pragma mark - SinaWeiboRequest Delegate
@@ -367,6 +370,8 @@ enum SinaResultErrorCode
     if ([request.url hasSuffix:@"users/show.json"])
     {
         NSLog(@"******%@",[error description]);
+        
+        [self hideActivity];
     }
 }
 
@@ -429,9 +434,10 @@ enum SinaResultErrorCode
             if ([result.uid integerValue] !=0 && [result.errorCode integerValue] ==0)
             {
                 //正式创建新用户
-                User *user = [UserManager createUserWithUserId:result.uid sinaUserId:_sinaweiboManager.sinaweibo.userID qqUserId:nil userType:self.userType name:nil profileImageUrl:nil gender:nil email:nil password:nil];
+                User *user = [UserManager createUserWithUserId:result.uid sinaUserId:[SinaWeiboManager sharedManager].sinaweibo.userID qqUserId:nil userType:self.userType name:nil profileImageUrl:nil gender:nil email:nil password:nil];
                 
                 [[UserService defaultService] setUser:user];
+
                 
                 [self dismissViewControllerAnimated:YES completion:^
                  {

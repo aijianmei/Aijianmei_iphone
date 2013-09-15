@@ -38,6 +38,10 @@ enum
       AJMViewDelegate *_viewDelegate;
       enum WXScene _scene;
     
+    
+    SinaWeiboManager *_sinaweiboManager;
+
+    
     PublicMyselfViewController *_publicStatusViewController;
     HomeViewController         *_homeViewController;
     LoginViewController       *_loginViewController;

@@ -662,17 +662,19 @@
 #pragma mark - SinaWeiboRequest Delegate
 - (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
 {
-    [self hideActivity];
 
     //获取用户信息
     if ([request.url hasSuffix:@"users/show.json"])
     {
         NSLog(@"******%@",[error description]);
+        [self hideActivity];
+
     }
 
     //关注爱健美用户
     if ([request.url hasSuffix:@"friendships/create.json"])
     {
+        [self hideActivity];
         NSLog(@"******%@",[error description]);
         if ([error code]==20506) {
             UIAlertView *alerView  = [[UIAlertView alloc]initWithTitle:@"您已关注了 @爱健美网"
@@ -681,7 +683,11 @@
                                                      cancelButtonTitle:@"确定"
                                                      otherButtonTitles:nil, nil];
             [alerView show];
+        }else{
+        
+            [self popupUnhappyMessage:@"未知错误！" title:nil];
         }
+        
     }
     
 

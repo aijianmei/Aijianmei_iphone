@@ -26,6 +26,10 @@
 
 
 @interface IZValueSelectorView : UIView <UITableViewDataSource,UITableViewDelegate>
+{
+    UITableView *_contentTableView;
+
+}
 
 @property (nonatomic,assign) IBOutlet id <IZValueSelectorViewDelegate> delegate;
 @property (nonatomic,assign) IBOutlet id <IZValueSelectorViewDataSource> dataSource;
@@ -33,6 +37,9 @@
 @property (nonatomic,assign) BOOL horizontalScrolling;
 
 @property (nonatomic,assign) BOOL debugEnabled;
+
+@property (nonatomic,retain) UITableView *contentTableView;
+
 
 
 - (void)reloadData;

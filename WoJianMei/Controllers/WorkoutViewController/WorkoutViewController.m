@@ -396,6 +396,8 @@ typedef enum CONTENT_TYPE {
                                                       uid:uid
                                                  delegate:self];
     
+    
+    
 }
 
 #pragma mark--
@@ -643,6 +645,7 @@ typedef enum CONTENT_TYPE {
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
+    [self showActivityWithText:@"加载中..."];
 }
 
 

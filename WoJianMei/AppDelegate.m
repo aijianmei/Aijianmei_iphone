@@ -24,6 +24,7 @@
 #import "VersionInfo.h"
 #import "PublicMyselfViewController.h"
 #import "StatusView.h"
+#import "Reachability.h"
 
 
 
@@ -296,7 +297,9 @@
     objectManager.acceptMIMEType = RKMIMETypeJSON;
     objectManager.serializationMIMEType = RKMIMETypeJSON;
     objectManager.client.baseURL = baseURL;
-    
+    [objectManager.client setTimeoutInterval:30];
+    objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
+
 
     
 //    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -434,12 +437,13 @@
     [UIView commitAnimations];
     [[self.window viewWithTag:SPLASH_VIEW_TAG] removeFromSuperview];
     
-    
-    
-    //检测当前版本是否为最新的版本
-    [self performSelector:@selector(updateApplication) withObject:nil afterDelay:30.0f];
-    
+     
+        
+        //检测当前版本是否为最新的版本
+        [self performSelector:@selector(updateApplication) withObject:nil afterDelay:30.0f];
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -523,6 +527,44 @@
 }
 
 
+
+
+
+
+
+#pragma mark -
+#pragma SinaWeiboDelegate methods
+- (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
+    [[SinaWeiboManager sharedManager] storeAuthData];
+    
+    //微博登陆后获取用户数据
+    [[UserService defaultService] fetchSinaUserInfo:sinaweibo.userID delegate:self];
+}
+
+- (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
+{
+    NSLog(@"sinaweiboDidLogOut");
+    [[SinaWeiboManager sharedManager] removeAuthData];
+}
+
+- (void)sinaweiboLogInDidCancel:(SinaWeibo *)sinaweibo
+{
+    NSLog(@"sinaweiboLogInDidCancel");
+}
+
+- (void)sinaweibo:(SinaWeibo *)sinaweibo logInDidFailWithError:(NSError *)error
+{
+    NSLog(@"sinaweibo logInDidFailWithError %@", error);
+}
+
+- (void)sinaweibo:(SinaWeibo *)sinaweibo accessTokenInvalidOrExpired:(NSError *)error
+{
+    NSLog(@"sinaweiboAccessTokenInvalidOrExpired %@", error);
+    [[SinaWeiboManager sharedManager] removeAuthData];
+}
 
 
 #pragma mark -

@@ -274,7 +274,7 @@ enum ErrorCode
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
-    [self showActivityWithText:@"数据加载中..."];
+    [self showActivityWithText:@"加载中..."];
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects

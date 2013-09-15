@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "PPViewController.h"
-#import "SLNumberPickerView.h"
+#import "IZValueSelectorView.h"
 
 
-@interface UserInfoPickerViewController : PPViewController<SLNumberPickerViewDelegate>
+
+@interface UserInfoPickerViewController : PPViewController<IZValueSelectorViewDataSource,IZValueSelectorViewDelegate>
 {
     
     UIButton *_femaleButton;
@@ -27,11 +28,12 @@
     UILabel *_heightLabel;
     UILabel *_ageLabel;
     
-    SLNumberPickerView *sLNumberPickerView;
     
     
-    UIImageView *_rulerbackgroundImageView;
-    UIImageView *_referenceImageView;
+    UIImageView *_rulerVerticalBGView;
+    UIImageView *_rulerHorizonBGView;
+    
+    
     
     
     BOOL isFemale;
@@ -53,8 +55,25 @@
 @property (nonatomic,retain) IBOutlet UILabel *heightLabel;
 @property (nonatomic,retain) IBOutlet UILabel *ageLabel;
 
-@property (nonatomic,retain) IBOutlet UIImageView *rulerbackgroundImageView;
+@property (nonatomic,retain) IBOutlet UIImageView *rulerVerticalBGView;
+@property (nonatomic,retain) IBOutlet UIImageView *
+rulerHorizonBGView;
+
+
+
 @property (nonatomic,retain) IBOutlet UIImageView *referenceImageView;
+
+@property (nonatomic,retain) IBOutlet UIImageView *horizenReferenceView;
+
+
+@property (nonatomic,retain) IBOutlet IZValueSelectorView *selectorHeight;
+
+@property (nonatomic,retain) IBOutlet IZValueSelectorView *selectorWeight;
+
+@property (nonatomic,retain) IBOutlet IZValueSelectorView *selectorAge;
+
+
+
 
 
 

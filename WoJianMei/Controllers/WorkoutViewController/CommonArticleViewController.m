@@ -39,8 +39,6 @@
 //爱健美
 #define kAppKey @"239725454"
 #define kAppSecret @"e2064ac8fab9d889a9eccecc5babad11"
-
-
 #define KAppRedirectURI @"http://aijianmei.com"
 
 
@@ -421,10 +419,12 @@ enum actionsheetNumber{
     
     UIImage *image = [self getImageFromURL:_article.img];
     postImage = image;
+    
+    
     [[SinaWeiboManager sharedManager] createSinaweiboWithAppKey:kAppKey
                                                       appSecret:kAppSecret
                                                  appRedirectURI:KAppRedirectURI
-                                                       delegate:self];
+                                                       delegate:[AppDelegate getAppDelegate]];
     
     if([[SinaWeiboManager sharedManager].sinaweibo isAuthValid])
     {
@@ -830,17 +830,18 @@ enum actionsheetNumber{
 #pragma SinaWeiboDelegate methods
 - (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
 {
-    [self.navigationController popViewControllerAnimated:YES];
     NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
-    [_sinaweiboManager storeAuthData];
+    [[SinaWeiboManager sharedManager] storeAuthData];
+    
     //微博登陆后获取用户数据
-    [[UserService defaultService] fetchSinaUserInfo:sinaweibo.userID delegate:self];
+    [[UserService defaultService] fetchSinaUserInfo:sinaweibo.userID
+                                           delegate:self];
 }
 
 - (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
 {
     NSLog(@"sinaweiboDidLogOut");
-    [_sinaweiboManager removeAuthData];
+    [[SinaWeiboManager sharedManager] removeAuthData];
 }
 
 - (void)sinaweiboLogInDidCancel:(SinaWeibo *)sinaweibo
@@ -856,7 +857,7 @@ enum actionsheetNumber{
 - (void)sinaweibo:(SinaWeibo *)sinaweibo accessTokenInvalidOrExpired:(NSError *)error
 {
     NSLog(@"sinaweiboAccessTokenInvalidOrExpired %@", error);
-    [_sinaweiboManager removeAuthData];
+    [[SinaWeiboManager sharedManager] removeAuthData];
 }
 
 

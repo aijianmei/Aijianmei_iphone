@@ -18,7 +18,6 @@
 #import "VersionInfo.h"
 
 #import "SinaWeibo.h"
-#import "TLAlertView.h"
 #import "UIUtils.h"
 #import "StatusView.h"
 #import "UIImageUtil.h"
@@ -102,6 +101,7 @@ enum BUTTON_INDEX {
 -(void)dealloc{
     
     [_listData release];
+    [_uid release];
     [super dealloc];
     
 }
@@ -559,11 +559,14 @@ enum BUTTON_INDEX {
 -(void)clickSinaShareButton
 {
     
-    _sinaweiboManager = [SinaWeiboManager sharedManager];
-    [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:[AppDelegate getAppDelegate]];
+    [[SinaWeiboManager sharedManager]
+     createSinaweiboWithAppKey:kAppKey
+     appSecret:kAppSecret
+     appRedirectURI:KAppRedirectURI
+     delegate:[AppDelegate getAppDelegate]];
     
     
-    if([_sinaweiboManager.sinaweibo isAuthValid]){
+    if([[SinaWeiboManager sharedManager].sinaweibo isAuthValid]){
         
         NSString *bodyStringBegin = @"我正在使用 @爱健美网 iphone手机客户端，学习专业的运动、健身、健康资信，里边的健身运动小知识，和健身计划很适合要增肌、减肥的用户哦！下载地址是";
         NSString *bodyStringWebsite = @"http://www.aijianmei.com";
@@ -588,9 +591,9 @@ enum BUTTON_INDEX {
                            duration:30];
 
     
-    }if(![_sinaweiboManager.sinaweibo isAuthValid])
+    }if(![[SinaWeiboManager sharedManager].sinaweibo isAuthValid])
     {
-        [_sinaweiboManager.sinaweibo logIn];
+        [[SinaWeiboManager sharedManager].sinaweibo logIn];
         
     }
     
@@ -694,27 +697,19 @@ enum BUTTON_INDEX {
         case 1:
         {
             
-            NSString *userId = [[[UserService defaultService] user] uid];
-            NSString *uid  =nil;
+             self.uid = [[[UserService defaultService] user] uid];
             
-            if ([userId length] > 0)
+            if (self.uid)
             {
-                uid = [[NSString  alloc] initWithString:userId];
-                [uid retain];
                 
-                
-            
-                [[UserService defaultService] deleteUserByUid:uid];
-                
-                
-                
+                [[UserService defaultService] deleteUserByUid:self.uid];
                 [dataTableView reloadData];
                 
                 [[AppDelegate getAppDelegate] showLoginView];
 
             }else {
                 
-                PPDebug(@"******User does not exit********");
+            PPDebug(@"******User does not exit********");
                 
             }
             

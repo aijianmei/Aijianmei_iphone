@@ -11,11 +11,12 @@
 
 
 @implementation IZValueSelectorView {
-    UITableView *_contentTableView;
     CGRect _selectionRect;
 }
 
 @synthesize shouldBeTransparent = _shouldBeTransparent;
+@synthesize contentTableView = _contentTableView;
+
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -139,6 +140,25 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    
+    if (self.horizontalScrolling) {
+        UIImageView  *backGround = [[UIImageView alloc]init];
+        [backGround setImage:[UIImage imageNamed:@"kdjl_1.png"]];
+        [backGround setFrame:CGRectMake(0, 0, 70, 25)];
+        [cell addSubview:backGround];
+
+    }
+    
+    if (!self.horizontalScrolling) {
+        UIImageView  *backGround = [[UIImageView alloc]init];
+        [backGround setImage:[UIImage imageNamed:@"SLNumberPickerTicks.png"]];
+        [backGround setFrame:CGRectMake(0, 0,15,70)];
+        [cell addSubview:backGround];
+
+    }
+    
+    
+    
     NSArray *contentSubviews = [cell.contentView subviews];
     //We the content view already has a subview we just replace it, no need to add it again
     //hopefully ARC will do the rest and release the old retained view
@@ -177,6 +197,8 @@
         CGAffineTransform rotateTable = CGAffineTransformMakeRotation(M_PI_2);
         cell.transform = rotateTable;
     }
+    
+    
     return cell;
 }
 
@@ -198,6 +220,7 @@
         [self scrollToTheSelectedCell];
     }
 }
+
 
 - (void)scrollToTheSelectedCell {
     

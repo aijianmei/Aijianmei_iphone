@@ -93,14 +93,16 @@
 #pragma mark-- addButtonSegcontrol  Method
 -(void)addButtonControl{
     ////Configure The Buttons
-
-    self.buttonTitleArray =[NSMutableArray arrayWithObjects:@"稍后...",nil];
-    self.segmentedController=[[SDSegmentedControl alloc]initWithItems:_buttonTitleArray];
-    [_segmentedController setFrame:CGRectMake(0, 0, 640, 40)];
-    [_segmentedController setSelectedSegmentIndex:0];
-    [_segmentedController addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventValueChanged];
+    if (_segmentedController ==nil) {
+        self.buttonTitleArray =[NSMutableArray arrayWithObjects:@"",nil];
+        self.segmentedController=[[SDSegmentedControl alloc]initWithItems:_buttonTitleArray];
+        [_segmentedController setFrame:CGRectMake(0, 0, 640, 40)];
+        [_segmentedController setSelectedSegmentIndex:0];
+        [_segmentedController addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventValueChanged];
+        
+    }
+    
     [self.view addSubview:_segmentedController];
-
 }
 
 
@@ -122,11 +124,8 @@
     selectedCatalog = [self.userCatalogMenue objectAtIndex:selectedIndex];
     
     User *user = [[UserService defaultService] user];
-    
     [[WorkoutDataService sharedService]  loadUserWorkoutDataWithUserId:user.uid workoutId:selectedCatalog._id delegate:self];
-    
-    [self showActivityWithText:@"数据加载中..."];
-    
+        
 }
 
 //点击页面的时候要隐藏键盘
@@ -151,6 +150,8 @@
         [_numberDataViewController.view setTag:DATA_VIEW_TAG ];
     }
     [self.view addSubview:_numberDataViewController.view];
+    
+    
 }
 -(void)didClickImageButton:(UIButton *)sender{
 
@@ -163,21 +164,10 @@
     [[self.view viewWithTag:DATA_VIEW_TAG] removeFromSuperview];
 }
 
-
-
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    
-    //设置应用程序的状态栏到指定的方向
-//   [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];
-//    
-//    //view旋转
-//    [self.view setTransform:CGAffineTransformMakeRotation(M_PI/2)];
-
     
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
@@ -192,17 +182,6 @@
     [_dataButton addTarget:self action:@selector(didClickDataButton:) forControlEvents:UIControlEventTouchUpInside];
     [_imageButton addTarget:self action:@selector(didClickImageButton:) forControlEvents:UIControlEventTouchUpInside];
     [_noteButton addTarget:self action:@selector(didClickNoteButton:) forControlEvents:UIControlEventTouchUpInside];
-
-    
-    
-    //默认点击了数据按钮
-    [self didClickDataButton:nil];
-    
-    
-       
-    [self addButtonControl];
-    
-        
         
     //轻触手势（单击）
     UITapGestureRecognizer *tapCgr=nil;
@@ -220,21 +199,7 @@
     
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    //隐藏navigationController
-//    [self.navigationController setNavigationBarHidden:YES animated:YES];
-//    //隐藏状态栏
-//    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
-}
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    //显示状态栏
-//    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-//    //显示navigationController
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
-}
 
 //返回前一页
 - (IBAction)clickBack:(id)sender {
@@ -279,7 +244,6 @@
 
 -(void)upgradeUI{
     
-    
     [self.segmentedController removeFromSuperview];
     self.segmentedController=[[SDSegmentedControl alloc]initWithItems:self.buttonTitleArray];
     [_segmentedController setFrame:CGRectMake(0, 0, 680, 40)];
@@ -295,13 +259,8 @@
     [scrollView setScrollEnabled:YES];
 
     [self.view addSubview:scrollView];
-    
-    
+
     [scrollView release];
-    
-    
-    
-    
     
 }
 
@@ -317,16 +276,20 @@
 #pragma mark - RKObjectLoaderDelegate
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
     NSLog(@"Response code: %d", [response statusCode]);
+    [self hideActivity];
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
 {
     NSLog(@"Error: %@", [error localizedDescription]);
+    [self hideActivity];
 }
 
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
+    [self showActivityWithText:@"加载中..."];
+    
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
@@ -343,7 +306,9 @@
     //更新用户目录
     if ([object isMemberOfClass:[UserCatalog class]]) {
         UserCatalog *userCatalog= (UserCatalog *)object;
-
+        
+        //添加按钮
+        [self addButtonControl];
         [self.buttonTitleArray removeAllObjects];
         
         for (int i=0;i<=3;i++) {
@@ -355,8 +320,11 @@
             }
         }
         
+        //更新顶部导航数据
         [self upgradeUI];
-        [self  buttonClicked:nil];
+        
+        [self buttonClicked:nil];
+        
     }
     
     if ([object isMemberOfClass:[NumberDataInfo class]]) {
@@ -368,6 +336,11 @@
             
         [self popupMessage:[NSString stringWithFormat: @"亲，你今天没有记录 %@ 数据哦!",selectedCatalog.name] title:selectedCatalog.name];
         }
+        
+        
+        //默认点击了数据按钮
+        [self didClickDataButton:nil];
+        
         
         
         //显示数据的tableview,
@@ -394,12 +367,9 @@
         
         
         
-        
         //更新table 的内容
         [_numberDataViewController.dataTableView reloadData];
         [_numberDataViewController updateFooterAndHeader];
-
-        
       }
 }
 

@@ -620,7 +620,7 @@ typedef enum CONTENT_TYPE {
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
-    [self showActivityWithText:@"数据加载..."];
+    [self showActivityWithText:@"加载中..."];
 
 }
 

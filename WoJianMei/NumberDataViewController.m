@@ -505,6 +505,8 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
 {
     NSLog(@"Error: %@", [error localizedDescription]);
+    
+    [self hideActivity];
 }
 
 - (void)requestDidStartLoad:(RKRequest *)request
@@ -516,14 +518,16 @@
 {
     NSLog(@"***Load objects count: %d", [objects count]);
     [self hideActivity];
-    [self popupHappyMessage:@"保存数据成功！" title:nil];
-    
-    
+    [self popupHappyMessage:@"保存成功" title:nil];
     
     //footer
     //renew the average value locally
     [[NumberDataManager defaultManager] countAvgOfTheData];
     [self updateFooterAndHeader];
+    
+    
+    
+    
 }
 
 @end

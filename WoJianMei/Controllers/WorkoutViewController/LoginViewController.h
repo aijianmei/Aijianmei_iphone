@@ -25,6 +25,8 @@
 @interface LoginViewController : PPViewController<SinaWeiboDelegate, SinaWeiboRequestDelegate,RKObjectLoaderDelegate>
 {
     SinaWeiboManager *_sinaweiboManager;
+    
+    
     UITextField    *_usernameField;
     UITextField    *_passwordField;
     

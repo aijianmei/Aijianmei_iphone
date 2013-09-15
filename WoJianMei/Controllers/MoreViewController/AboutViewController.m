@@ -7,12 +7,15 @@
 //
 
 #import "AboutViewController.h"
+#import "DeviceDetection.h"
 
 @interface AboutViewController ()
 
 @end
 
 @implementation AboutViewController
+@synthesize versionLable =_versionLabel;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,6 +26,20 @@
     return self;
 }
 
+-(void)dealloc{
+
+    [_versionLabel release];
+    [super dealloc];
+
+}
+
+-(void)viewDidUnload{
+    
+    [self setVersionLable:nil];
+    [super viewDidUnload];
+
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -30,9 +47,28 @@
 	// Do any additional setup after loading the view.
     
     [self setBackgroundImageName:@"gobal_background.png"];
+    
+    
+    if([DeviceDetection isIPhone5])
+    {
+        [self setBackgroundImageName:@"640X1136.png"];
+    }
+    else
+    {
+        [self setBackgroundImageName:@"640X960.png"];
+    }
     [self showBackgroundImage];
+    
+    
+    
+    
     [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     [self setTitle:@"关于我们"];
+    NSString *localVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+
+    NSString *versionNumber = [NSString stringWithFormat:@"%@版本",localVersion];
+    [self.versionLable setText:versionNumber];
+    [self.versionLable setTextColor:[UIColor whiteColor]];
     
 }
 

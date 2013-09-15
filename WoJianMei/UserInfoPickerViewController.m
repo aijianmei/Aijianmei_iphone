@@ -10,12 +10,13 @@
 #import "UserService.h"
 #import "User.h"
 #import "AnimationManager.h"
-#import "SLNumberPickerView.h"
 #import "DeviceDetection.h"
 
 
 
 @interface UserInfoPickerViewController ()
+@property (nonatomic,assign) BOOL wantHorizontal;
+
 
 @end
 
@@ -31,8 +32,19 @@
 @synthesize weightLabel =_weightLabel;
 @synthesize heightLabel =_heightLabel;
 @synthesize ageLabel =_ageLabel;
-@synthesize rulerbackgroundImageView =_rulerbackgroundImageView;
+@synthesize rulerHorizonBGView =_rulerHorizonBGView;
+@synthesize rulerVerticalBGView =_rulerVerticalBGView;
+
+
 @synthesize referenceImageView =_referenceImageView;
+@synthesize horizenReferenceView =_horizenreferenceView;
+
+@synthesize selectorHeight = _selectorHeight;
+@synthesize selectorWeight = _selectorWeight;
+@synthesize selectorAge    = _selectorAge;
+
+
+
 
 
 
@@ -54,8 +66,16 @@
     [_weightLabel   release];
     [_heightLabel   release];
     [_ageLabel      release];
-    [_rulerbackgroundImageView release];
+    [_rulerVerticalBGView release];
+    [_rulerHorizonBGView release];
+
     [_referenceImageView release];
+    [_horizenreferenceView release];
+    
+    [_selectorHeight release];
+    [_selectorWeight release];
+    [_selectorAge release];
+
 
     [super dealloc];
 
@@ -70,16 +90,18 @@
     [self.maleButton    setHidden:YES];
     [self.buttonForward setHidden:YES];
     [self.buttonBack    setHidden:YES];
-    [self.rulerbackgroundImageView setHidden:YES];
-    [self.referenceImageView setHidden:YES];
+    [self.rulerVerticalBGView setHidden:YES];
+    [self.rulerHorizonBGView setHidden:YES];
 
-    //Hide the  SLNumberLablel
-    for (UIView *view  in [self.view subviews]){
-        if ([view isMemberOfClass:[SLNumberPickerView class]]){
-            sLNumberPickerView = (SLNumberPickerView *)view;
-            [sLNumberPickerView setHidden:YES];
-        }
-    }
+    [self.referenceImageView setHidden:YES];
+    [self.horizenReferenceView setHidden:YES];
+
+
+    [self.selectorAge    setHidden:YES];
+    [self.selectorHeight setHidden:YES];
+    [self.selectorWeight setHidden:YES];
+
+    
     
 }
 -(void)setAgeView{
@@ -88,17 +110,21 @@
     [self.ageLabel      setHidden:NO];
     [self.buttonBack    setHidden:NO];
     [self.buttonForward setHidden:NO];
-    [sLNumberPickerView setHidden:NO];
-    [self.rulerbackgroundImageView setHidden:NO];
-    [self.referenceImageView setHidden:NO];
+    [self.selectorAge setHidden:NO];
+    [self.rulerHorizonBGView setHidden:NO];
+    [self.rulerVerticalBGView setHidden:YES];
+
+    [self.referenceImageView setHidden:YES];
+    [self.horizenReferenceView setHidden:NO];
 
 
     [self.buttonForward setTitle:@"完成"
                         forState:UIControlStateNormal];
     [self.buttonForward setTitleColor:[UIColor whiteColor]
                              forState:UIControlStateNormal];
+    
     [self.buttonForward  addTarget:self
-                            action:@selector(dissmissViewController:)
+                            action:@selector(clickForwardButton:)
                   forControlEvents:UIControlEventTouchUpInside];
     
 
@@ -106,30 +132,62 @@
     {
         [self.femaleButton setHidden:NO];
         [self.maleButton   setHidden:YES];
-        [self.femaleButton setFrame:CGRectMake(28,70,196,264)];
-
+        [self.femaleButton setFrame:CGRectMake(68,10,196,264)];
         
+        //默认为20岁
+        [self.ageLabel setText:@"1990年出生"];
+
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:60
+                                                     inSection:0];
+        [_selectorAge.contentTableView scrollToRowAtIndexPath:indexPath
+                                             atScrollPosition:UITableViewScrollPositionNone
+                                                     animated:YES];
     }else {
         [self.maleButton   setHidden:NO];
         [self.femaleButton setHidden:YES];
-        [self.maleButton setFrame:CGRectMake(48,70,110,262)];
+        [self.maleButton setFrame:CGRectMake(105,10,110,262)];
+        
+        
+        [self.ageLabel setText:@"1990年出生"];
+        
+        
+        //默认为20岁
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:60
+                                                     inSection:0];
+        [_selectorAge.contentTableView scrollToRowAtIndexPath:indexPath
+                                                atScrollPosition:UITableViewScrollPositionNone
+                                                        animated:YES];
+        
+    }
+
+    [self.ageLabel setFrame:CGRectMake(100,300,120,20)];
+        
+    
+    
+    if([DeviceDetection isIPhone5])
+    {
+        [self.rulerHorizonBGView setFrame:CGRectMake(20,380,270,77)];
+        [self.selectorAge setFrame:CGRectMake(42, 400, 228, 49)];
+        [self.horizenReferenceView setFrame:CGRectMake(117,400,4, 24)];
+        PPDebug(@"This is iphone 5");
+        
+    }
+    else
+    {
+        PPDebug(@"This is iphone 4");
+        [self.rulerHorizonBGView setFrame:CGRectMake(20,326,270,77)];
+        [self.selectorAge setFrame:CGRectMake(42, 345, 228, 49)];
+        [self.horizenReferenceView setFrame:CGRectMake(117, 345,4, 24)];
+        
 
     }
 
-    [self.ageLabel setFrame:CGRectMake(100,11,320,21)];
-
+    
     
     //add animations
     [self showWeightButtons:self.femaleButton];
     [self showWeightButtons:self.maleButton];
     
-    
-    //设置年龄的初始值  8600 == 172cm
-    sLNumberPickerView.isWeightSceen =NO;
-    sLNumberPickerView.isHeightSceen =NO;
-    sLNumberPickerView.isAgeSceen =YES;
-    
-    [sLNumberPickerView scrollRectToVisible:CGRectMake(0, 3526, 40, 40) animated:YES];
     
 }
 -(void)setHeightView{
@@ -139,8 +197,9 @@
     [self.heightLabel   setHidden:NO];
     [self.buttonBack    setHidden:NO];
     [self.buttonForward setHidden:NO];
-    [sLNumberPickerView setHidden:NO];
-    [self.rulerbackgroundImageView setHidden:NO];
+    [self.rulerHorizonBGView setHidden:YES];
+    [self.rulerVerticalBGView setHidden:NO];
+    
     [self.referenceImageView setHidden:NO];
 
     
@@ -150,33 +209,59 @@
         [self.femaleButton setHidden:NO];
         [self.maleButton   setHidden:YES];
         [self.femaleButton setFrame:CGRectMake(28,70,196,264)];
+        [self.heightLabel setText:@"160cm"];
 
+        
+        //女为160cm
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:100
+                                                     inSection:0];
+        [_selectorHeight.contentTableView scrollToRowAtIndexPath:indexPath
+                                                atScrollPosition:UITableViewScrollPositionNone
+                                                        animated:YES];
         
     }else {
         [self.maleButton   setHidden:NO];
         [self.femaleButton setHidden:YES];
         [self.maleButton setFrame:CGRectMake(48,70,110,262)];
+        [self.heightLabel setText:@"175cm"];
 
+        //男性为175cm
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:115
+                                                     inSection:0];
+        [_selectorHeight.contentTableView scrollToRowAtIndexPath:indexPath
+                                                atScrollPosition:UITableViewScrollPositionNone
+                                                        animated:YES];
     }
     
-    [self setTitle:@"请选择你的身高!"];
+    
+    [self.selectorHeight setHidden:NO];
     [self.heightLabel setFrame:CGRectMake(100,11,320,21)];
 
+    [self.buttonForward setTitle:@"下一步"
+                        forState:UIControlStateNormal];
 
+    if([DeviceDetection isIPhone5])
+    {
+        PPDebug(@"This is iphone 5");
+        [self.referenceImageView setFrame:CGRectMake(239,205.5,24,4)];
+    }
+    else
+    {
+        PPDebug(@"This is iphone 4");
+        [self.referenceImageView setFrame:CGRectMake(239,161,24,4)];
+        
+    }
+
+
+    
+    
+    
     
     //add animations
     [self showWeightButtons:self.femaleButton];
     [self showWeightButtons:self.maleButton];
     
     
-    
-    //设置身高的初始值 7000 == 170cm
-    
-    sLNumberPickerView.isWeightSceen =NO;
-    sLNumberPickerView.isHeightSceen =YES;
-    sLNumberPickerView.isAgeSceen =NO;
-
-    [sLNumberPickerView scrollRectToVisible:CGRectMake(0, 7011, 40, 40) animated:YES];
     
       
 
@@ -190,27 +275,44 @@
     [self.buttonForward  setHidden:NO];
     
     //show the number picker
-    [sLNumberPickerView  setHidden:NO];
     [self.weightLabel    setHidden:NO];
-    [self.rulerbackgroundImageView setHidden:NO];
-    [self.referenceImageView setHidden:NO];
+    [self.rulerHorizonBGView setHidden:NO];
+    [self.horizenReferenceView setHidden:NO];
 
     
     if (isFemale)
     {
         [self.femaleButton setHidden:NO];
         [self.maleButton   setHidden:YES];
-        [self.femaleButton setFrame:CGRectMake(28,70,196,264)];
+        [self.femaleButton setFrame:CGRectMake(68,10,196,264)];
+        [self.weightLabel setText:@"45KG"];
+        //男性为45kg
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:20
+                                                     inSection:0];
+        [_selectorWeight.contentTableView scrollToRowAtIndexPath:indexPath
+                                                atScrollPosition:UITableViewScrollPositionNone
+                                                        animated:YES];
+        
+
+
     }else {
         [self.maleButton   setHidden:NO];
         [self.femaleButton setHidden:YES];
-        [self.maleButton setFrame:CGRectMake(70,70,110,262)];
+        [self.maleButton setFrame:CGRectMake(105,10,110,262)];
+        [self.weightLabel setText:@"60KG"];
+        //男性为60kg
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:35
+                                                     inSection:0];
+        [_selectorWeight.contentTableView scrollToRowAtIndexPath:indexPath
+                                                atScrollPosition:UITableViewScrollPositionNone
+                                                        animated:YES];
+        
+
 
     }
     
     
-    [self setTitle:@"请选择你的体重!"];
-    [self.weightLabel setFrame:CGRectMake(100,11,320,21)];
+    [self.weightLabel setFrame:CGRectMake(140,300,80,20)];
 
     
     //add animations
@@ -218,21 +320,60 @@
     [self showWeightButtons:self.maleButton];
     
     
-    //设置体重的初始值 //2500 = 50kg
-    
-    sLNumberPickerView.isWeightSceen =YES;
-    sLNumberPickerView.isHeightSceen =NO;
-    sLNumberPickerView.isAgeSceen =NO;
-    
-    [sLNumberPickerView scrollRectToVisible:CGRectMake(0, 2501, 40, 40) animated:NO];
-    
+    [self.selectorWeight setHidden:NO];
+    [self.rulerHorizonBGView setHidden:NO];
 
     
+    
+    if([DeviceDetection isIPhone5])
+    {
+        [self.rulerHorizonBGView setFrame:CGRectMake(20,380,270,77)];
+        [self.selectorWeight setFrame:CGRectMake(42, 400, 228, 49)];
+        [self.horizenReferenceView setFrame:CGRectMake(117,400,4, 24)];
+        PPDebug(@"This is iphone 5");
+
+    }
+    else
+    {
+        PPDebug(@"This is iphone 4");
+        [self.rulerHorizonBGView setFrame:CGRectMake(20,326,270,77)];
+        [self.selectorWeight setFrame:CGRectMake(42, 345, 228, 49)];
+        [self.horizenReferenceView setFrame:CGRectMake(117, 345,4, 24)];
+
+    }
+    
+    [self.buttonForward setTitle:@"下一步"
+                        forState:UIControlStateNormal];
+    
+    
+    
+    
 }
+
 -(void)setGenderView{
     [self hideAllSubviewsInView];
-    [self.femaleButton setFrame:CGRectMake(104,27,116,180)];
-    [self.maleButton   setFrame:CGRectMake(124,222,72,167)];
+    
+    
+    
+    if([DeviceDetection isIPhone5])
+    {
+               PPDebug(@"This is iphone 5");
+        
+        [self.femaleButton setFrame:CGRectMake(104,27,116,180)];
+        [self.maleButton   setFrame:CGRectMake(114,252,82,187)];
+
+        
+    }
+    else
+    {
+        PPDebug(@"This is iphone 4");
+        
+        [self.femaleButton setFrame:CGRectMake(104,27,116,180)];
+        [self.maleButton   setFrame:CGRectMake(124,222,72,167)];
+
+        
+    }
+
     [self.femaleButton   setHidden:NO];
     [self.maleButton     setHidden:NO];
     [self.genderDesLabel     setHidden:NO];
@@ -243,6 +384,11 @@
     //Add animations
     [self showGenderButtons:self.femaleButton];
     [self showGenderButtons:self.maleButton];
+    
+    
+    
+    
+    
 
 }
 -(void)clickFemaleButton:(id)sender{
@@ -296,10 +442,15 @@
 
         return;
     }
+    
+    
+    
     //从年龄跳到结束
     if (!self.ageLabel.isHidden) {
+        [self popupMessage:self.ageLabel.text
+                     title:nil];
+        
         [self clickDone];
-        [self popupMessage:self.ageLabel.text title:nil];
         return;
     }
 }
@@ -323,8 +474,7 @@
 }
 
 -(void)clickDone{
-    
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 -(void)initUI{
@@ -375,18 +525,43 @@
 
     
     
+    
+    
+    //YOU CAN ALSO ASSIGN THE DATA SOURCE AND THE DELEGATE IN CODE (IT'S ALREADY DONE IN NIB, BUT DO AS YOU PREFER)
+    //垂直
+    self.selectorHeight.dataSource = self;
+    self.selectorHeight.delegate = self;
+    self.selectorHeight.shouldBeTransparent = YES;
+    self.selectorHeight.horizontalScrolling = NO;
+    [self.selectorHeight setBackgroundColor:[UIColor clearColor]];
+    
+    
+    //水平
+    self.selectorWeight.dataSource = self;
+    self.selectorWeight.delegate = self;
+    self.selectorWeight.shouldBeTransparent = YES;
+    self.selectorWeight.horizontalScrolling = YES;
+    [self.selectorWeight setBackgroundColor:[UIColor clearColor]];
+
+    
+    
+    self.selectorAge.dataSource = self;
+    self.selectorAge.delegate = self;
+    self.selectorAge.shouldBeTransparent = YES;
+    self.selectorAge.horizontalScrolling = YES;
+    [self.selectorAge setBackgroundColor:[UIColor clearColor]];
+
+
+    
+    
+    //You can toggle Debug mode on selectors to see the layout
+    self.selectorHeight.debugEnabled = NO;
+    self.selectorWeight.debugEnabled = NO;
+    self.selectorAge.debugEnabled = NO;
+
  
     
-    if([DeviceDetection isIPhone5])
-    {
-        
-    }
-    else
-    {
-        [sLNumberPickerView setFrame:CGRectMake(0, 0, 30, 20)];
-
-    }
-
+    
     
     
     [self setGenderView];
@@ -446,59 +621,162 @@
     
 }
 
-- (void)numberPickerViewDidChangeValue:(SLNumberPickerView *)picker {
-    NSString* valueString = [NSString stringWithFormat:@"%i", picker.value];
+
+#pragma IZValueSelector dataSource
+- (NSInteger)numberOfRowsInSelector:(IZValueSelectorView *)valueSelector {
     
-    PPDebug(@"***** value %@*****",valueString);
+    if ([valueSelector isDescendantOfView:_selectorHeight])
+    {
+        return 170;
+
+    }
     
-    [picker setBackgroundColor:[UIColor clearColor]];
+    if ([valueSelector isDescendantOfView:_selectorWeight])
+    {
+        return 200;
+
+    }
     
-    NSString *weight = [NSString stringWithFormat:@"您的体重为:%@kg",valueString];
+    if ([valueSelector isDescendantOfView: _selectorAge])
+    {
+        return 80;
+        
+    }
+
     
-    [_weightLabel setText:weight];
     
-    if (![self.weightLabel isHidden]) {
+    return 30;
+}
+
+
+
+//ONLY ONE OF THESE WILL GET CALLED (DEPENDING ON the horizontalScrolling property Value)
+- (CGFloat)rowHeightInSelector:(IZValueSelectorView *)valueSelector {
+    return 70.0;
+}
+
+- (CGFloat)rowWidthInSelector:(IZValueSelectorView *)valueSelector {
+    return 70.0;
+}
+
+
+- (UIView *)selector:(IZValueSelectorView *)valueSelector
+   viewForRowAtIndex:(NSInteger)index
+{
+    UILabel * label = nil;
+    
+    if (valueSelector == self.selectorWeight) {
+        label = [[UILabel alloc] initWithFrame:CGRectMake(-35, 10, 70, self.selectorWeight.frame.size.height)];
+
+        int weightBase = 25 ;
+        label.text = [NSString stringWithFormat:@"%d",        index + weightBase];
+        label.textAlignment =  NSTextAlignmentCenter;
+        label.backgroundColor = [UIColor clearColor];
+        
+        
+    }
+    
+    if(valueSelector == self.selectorHeight) {
+        label = [[UILabel alloc] initWithFrame:CGRectMake(5, -35, self.selectorHeight.frame.size.width, 70)];
+        
+        int heightBase = 60 ;
+        label.text = [NSString stringWithFormat:@"%d",        index + heightBase];
+        label.textAlignment =  NSTextAlignmentCenter;
+        label.backgroundColor = [UIColor clearColor];
+
+    }
+    
+    if(valueSelector == self.selectorAge) {
+        label = [[UILabel alloc] initWithFrame:CGRectMake(-35, 10, 70, self.selectorAge.frame.size.height)];
+        int ageBase = 1930 ;
+        label.text = [NSString stringWithFormat:@"%d",        index + ageBase];
+        label.textAlignment =  NSTextAlignmentCenter;
+        label.backgroundColor = [UIColor clearColor];
+
+    
+    }
+
+    return label;
+}
+
+- (CGRect)rectForSelectionInSelector:(IZValueSelectorView *)valueSelector {
+    //Just return a rect in which you want the selector image to appear
+    //Use the IZValueSelector coordinates
+    //Basically the x will be 0
+    //y will be the origin of your image
+    //width and height will be the same as in your selector image
+    if (valueSelector == self.selectorWeight) {
+        //
+        return CGRectMake(self.selectorWeight.frame.size.width/2 - 35.0, 0.0, 70.0, 50.0);
+    }
+    if(valueSelector == self.selectorHeight) {
+        return CGRectMake(0.0, self.selectorHeight.frame.size.height/2 - 35.0, 50.0, 70.0);
+    }
+    if(valueSelector == self.selectorAge) {
+        return CGRectMake(self.selectorAge.frame.size.width/2 - 35.0, 0.0, 70.0, 50.0);
+    }
+    
+    return CGRectMake(0, 0, 0, 0);
+
+}
+
+#pragma IZValueSelector delegate
+- (void)selector:(IZValueSelectorView *)valueSelector didSelectRowAtIndex:(NSInteger)index {
+    
+    NSLog(@"Selected index %d",index);
+    
+    if ([self.selectorWeight isEqual:valueSelector])
+    {
+       
+        int weightBase = 25;
+        NSString *weight = [NSString stringWithFormat:@"%dkg",index + weightBase];
+        
+        [self.weightLabel setText:weight];
         User *user = [[UserService defaultService] user];
-        [user setWeight: valueString];
-        [[UserService defaultService]storeUserInfoByUid:user.uid];
+            [user setWeight: weight];
+            [[UserService defaultService]storeUserInfoByUid:user.uid];
     }
     
-    
-
-    NSString *height = [NSString stringWithFormat:@"您的身高为:%@cm",valueString];
-    
-    [_heightLabel setText:height];
-    
-    
-    if (![self.heightLabel isHidden]) {
+    if ([self.selectorHeight isEqual:valueSelector])
+    {
+        int heightBase = 60;
+        NSString *height = [NSString stringWithFormat:@"%dcm",heightBase +index];
         
-        User *user =  [[UserService defaultService] user];
-        [user setHeight:valueString];
-        [[UserService defaultService]storeUserInfoByUid:user.uid];
+        [self.heightLabel setText:height];
+            
+            User *user =  [[UserService defaultService] user];
+            [user setHeight:height];
+            [[UserService defaultService]storeUserInfoByUid:user.uid];
+
     }
+    
+    int age = 0;
+    if ([self.selectorAge isEqual:valueSelector])
 
-
-    
-
-    int age = [valueString integerValue];
-    int withNewValue = age  + 1899;
-    NSString *newAge = [NSString stringWithFormat: @"您的出生年:%i",withNewValue];
-    
-    [_ageLabel    setText:newAge];
-    
-    
-    if (![self.ageLabel isHidden]) {
+    {
         
-        int age = [valueString integerValue];
-        int withNewValue = 2013 - (age  + 1899);
+        int ageBase = 1930 ;
+
+        //出生时间
+         age = index   +  ageBase ;
+        
+        //岁数
+        int withNewValue = 2013 - age;
+        
         NSString *ageValue = [NSString stringWithFormat:@"%i",withNewValue];
+        
         User *user =  [[UserService defaultService] user];
         [user setAge:ageValue];
         [[UserService defaultService]storeUserInfoByUid:user.uid];
-    }
-
+        
+        
+        }
     
+        NSString *birthYear = [NSString stringWithFormat:@"%d年出生",age];
+        [self.ageLabel setText:birthYear];
+
 }
+
 
 
 -(void)dissmissViewController:(id)sender{

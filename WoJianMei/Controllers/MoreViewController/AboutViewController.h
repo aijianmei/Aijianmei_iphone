@@ -9,5 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "PPViewController.h"
 @interface AboutViewController : PPViewController
+{
+    UILabel *_versionLabel;
+}
+
+@property (nonatomic,retain) IBOutlet UILabel *versionLable;
+
+
+
 
 @end

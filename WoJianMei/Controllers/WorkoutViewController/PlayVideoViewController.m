@@ -23,9 +23,11 @@
 
 
 
-#define kAppKey @"3622140445"
-#define kAppSecret @"f94d063d06365972215c62acaadf95c3"
+#define kAppKey @"239725454"
+#define kAppSecret @"e2064ac8fab9d889a9eccecc5babad11"
 #define KAppRedirectURI @"http://aijianmei.com"
+
+
 
 enum actionsheetNumber{
     LANGUAGE_SELECTION=0,
@@ -526,11 +528,13 @@ enum TapOnItem {
     UIImage *image = [self getImageFromURL:_video.img];
     postImage = image;
     
-    _sinaweiboManager = [SinaWeiboManager sharedManager];
-    [_sinaweiboManager createSinaweiboWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:KAppRedirectURI delegate:self];
+    [[SinaWeiboManager sharedManager] createSinaweiboWithAppKey:kAppKey
+                                                      appSecret:kAppSecret
+                                                 appRedirectURI:KAppRedirectURI
+                                                       delegate:[AppDelegate getAppDelegate]];
     
     
-    if([_sinaweiboManager.sinaweibo isAuthValid])
+    if([[SinaWeiboManager sharedManager].sinaweibo isAuthValid])
     {
         REComposeViewController *composeViewController = [[REComposeViewController alloc] init];
         composeViewController.hasAttachment = YES;
@@ -572,9 +576,12 @@ enum TapOnItem {
             }
         };
         
-    }if(![_sinaweiboManager.sinaweibo isAuthValid])
+    }if(![[SinaWeiboManager sharedManager].sinaweibo isAuthValid])
     {
-        [_sinaweiboManager.sinaweibo logIn];
+        
+        [SinaWeiboManager sharedManager].sinaweibo.delegate = self;
+        [[SinaWeiboManager sharedManager].sinaweibo logIn];
+
     }
 }
 
@@ -606,7 +613,7 @@ enum TapOnItem {
     
     UIFont *font = [UIFont systemFontOfSize:14];
     
-    UIView *rightButtonView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 3*(buttonLen+seporator) +30, buttonHigh)];
+    UIView *rightButtonView = [[UIView alloc]initWithFrame:CGRectMake(0, -5, 3*(buttonLen+seporator) +30, buttonHigh)];
     
     
     UIButton *shareBarButton = [[UIButton alloc]initWithFrame:CGRectMake(leftOffest+(buttonLen+seporator)*2 +30,0,32,32)];
@@ -697,6 +704,8 @@ enum TapOnItem {
     [self setCommentViewController:nil];
 }
 
+
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
 
@@ -709,5 +718,87 @@ enum TapOnItem {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark -
+#pragma SinaWeiboDelegate methods
+- (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
+{
+    NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
+    [[SinaWeiboManager sharedManager] storeAuthData];
+    
+    //微博登陆后获取用户数据
+    [[UserService defaultService] fetchSinaUserInfo:sinaweibo.userID
+                                           delegate:self];
+}
+
+- (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
+{
+    NSLog(@"sinaweiboDidLogOut");
+    [[SinaWeiboManager sharedManager] removeAuthData];
+}
+
+- (void)sinaweiboLogInDidCancel:(SinaWeibo *)sinaweibo
+{
+    NSLog(@"sinaweiboLogInDidCancel");
+}
+
+- (void)sinaweibo:(SinaWeibo *)sinaweibo logInDidFailWithError:(NSError *)error
+{
+    NSLog(@"sinaweibo logInDidFailWithError %@", error);
+}
+
+- (void)sinaweibo:(SinaWeibo *)sinaweibo accessTokenInvalidOrExpired:(NSError *)error
+{
+    NSLog(@"sinaweiboAccessTokenInvalidOrExpired %@", error);
+    [[SinaWeiboManager sharedManager] removeAuthData];
+}
+
+
+#pragma mark -
+#pragma mark - SinaWeiboRequest Delegate
+
+- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
+{
+    
+    if ([request.url hasSuffix:@"statuses/upload.json"])
+    {
+        NSLog(@"******%@",[error description]);
+        [self hideActivity];
+        [self popupHappyMessage:@"分享失败" title:@""];
+    }
+    
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        NSLog(@"******%@",[error description]);
+        [self hideActivity];
+        [self popupHappyMessage:@"用户资料获取失败" title:@""];
+    }
+    
+}
+
+- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
+{
+    
+    if ([request.url hasSuffix:@"statuses/upload.json"])
+    {
+        NSLog(@"******%@",[result description]);
+        [self hideActivity];
+        [self popupHappyMessage:@"分享成功" title:@""];
+    }
+    
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        [[UserService defaultService] storeSinaUserInfo:result];
+        
+        NSDictionary *userInfo = result;
+        NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);
+        
+        [self  clickSinaShareButton];
+    }
+    
+}
+
+
+
+
 
 @end

@@ -126,10 +126,10 @@ typedef enum CONTENT_TYPE {
     [self initMoreUI];
     
     ///// 设置开始
-    SDSegmentedControl *sender =[[SDSegmentedControl alloc]init];
-    [_segmentedController setSelectedSegmentIndex:0];
-    
-    [self buttonClicked:sender];
+//    SDSegmentedControl *sender =[[SDSegmentedControl alloc]init];
+//    [_segmentedController setSelectedSegmentIndex:0];
+//    
+//    [self buttonClicked:sender];
     
 }
 
@@ -246,7 +246,7 @@ typedef enum CONTENT_TYPE {
 
 #pragma mark-- addButtonScrollView Method
 
--(id)initTableHeaderView{
+-(void)initTableHeaderView{
     
     UIView *headerView =[[UIView alloc]init];
     [headerView setFrame: CGRectMake(0, 0, 320, 200)];
@@ -638,7 +638,7 @@ typedef enum CONTENT_TYPE {
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
-    [self showActivityWithText:@"数据加载..."];
+    [self showActivityWithText:@"加载中..."];
 }
 
 
