@@ -685,7 +685,7 @@
             [alerView show];
         }else{
         
-            [self popupUnhappyMessage:@"未知错误！" title:nil];
+            [self popupUnhappyMessage:@"网络不给力，请稍后再试！" title:nil];
         }
         
     }

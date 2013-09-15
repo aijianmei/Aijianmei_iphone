@@ -406,6 +406,8 @@ enum SinaResultErrorCode
 {
     NSLog(@"Error: %@", [error localizedDescription]);
     [self hideActivity];
+    [self popupUnhappyMessage:@"网络不给力，请稍后再试！" title:nil];
+
 }
 
 - (void)requestDidStartLoad:(RKRequest *)request

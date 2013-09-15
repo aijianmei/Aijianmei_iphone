@@ -105,11 +105,9 @@
 
     if (self.avtarImage) {
         [[UserService defaultService] postObject:nil withImage:self.avtarImage delegate:self];
-        [self showActivityWithText:@"连接服务器..."];
 
     }else{
         [[UserService defaultService] postObject:nil withImage:nil delegate:self];
-        [self showActivityWithText:@"连接服务器..."];
     
     }
     //数据加载中的时候，按钮是禁止的再被点击的;
@@ -800,12 +798,17 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
 {
     NSLog(@"Error: %@", [error localizedDescription]);
+    [self hideActivity];
+    [self popupUnhappyMessage:@"网络不给力，请稍后再试！" title:nil];
+
 }
 
 - (void)requestDidStartLoad:(RKRequest *)request
 {
     NSLog(@"Start load request...");
     [self.navigationItem.leftBarButtonItem setEnabled:NO];
+    [self showActivityWithText:@"连接服务器..."];
+
 
 }
 
