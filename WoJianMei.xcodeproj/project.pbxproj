@@ -11,8 +11,12 @@
 		4A01494E17E3FD9700D16E28 /* kddq_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A01494B17E3FD9700D16E28 /* kddq_2.png */; };
 		4A01494F17E3FD9700D16E28 /* kdjl_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A01494C17E3FD9700D16E28 /* kdjl_1.png */; };
 		4A01495517E4645000D16E28 /* 120X120.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A01495417E4645000D16E28 /* 120X120.png */; };
-		4A03195717E6EF1600D7A45D /* UIKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A03194917E6EF1600D7A45D /* UIKeyboardView.m */; };
-		4A03195817E6EF1600D7A45D /* UIKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A03194B17E6EF1600D7A45D /* UIKeyboardViewController.m */; };
+		4A03198417E6F06E00D7A45D /* UIKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A03198017E6F06E00D7A45D /* UIKeyboardViewController.m */; };
+		4A03198517E6F06E00D7A45D /* UIKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A03198217E6F06E00D7A45D /* UIKeyboardView.m */; };
+		4A03198D17E72F0C00D7A45D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4A03198717E72F0C00D7A45D /* .gitignore */; };
+		4A03198E17E72F0C00D7A45D /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A03198817E72F0C00D7A45D /* libMobClickLibrary.a */; };
+		4A03198F17E72F0C00D7A45D /* MobClickUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A03198B17E72F0C00D7A45D /* MobClickUtils.m */; };
+		4A03199017E72F0C00D7A45D /* tips.html in Resources */ = {isa = PBXBuildFile; fileRef = 4A03198C17E72F0C00D7A45D /* tips.html */; };
 		4A03268F17A8EB3B0016F6C5 /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A03268E17A8EB390016F6C5 /* VideoCell.m */; };
 		4A03269317A8EE9A0016F6C5 /* PlayVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A03269117A8EE980016F6C5 /* PlayVideoViewController.m */; };
 		4A03269417A8EE9A0016F6C5 /* PlayVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A03269217A8EE990016F6C5 /* PlayVideoViewController.xib */; };
@@ -721,10 +725,16 @@
 		4A01494B17E3FD9700D16E28 /* kddq_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kddq_2.png; sourceTree = "<group>"; };
 		4A01494C17E3FD9700D16E28 /* kdjl_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kdjl_1.png; sourceTree = "<group>"; };
 		4A01495417E4645000D16E28 /* 120X120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120X120.png; sourceTree = "<group>"; };
-		4A03194817E6EF1600D7A45D /* UIKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardView.h; sourceTree = "<group>"; };
-		4A03194917E6EF1600D7A45D /* UIKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardView.m; sourceTree = "<group>"; };
-		4A03194A17E6EF1600D7A45D /* UIKeyboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardViewController.h; sourceTree = "<group>"; };
-		4A03194B17E6EF1600D7A45D /* UIKeyboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardViewController.m; sourceTree = "<group>"; };
+		4A03198017E6F06E00D7A45D /* UIKeyboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardViewController.m; sourceTree = "<group>"; };
+		4A03198117E6F06E00D7A45D /* UIKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardView.h; sourceTree = "<group>"; };
+		4A03198217E6F06E00D7A45D /* UIKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardView.m; sourceTree = "<group>"; };
+		4A03198317E6F06E00D7A45D /* UIKeyboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardViewController.h; sourceTree = "<group>"; };
+		4A03198717E72F0C00D7A45D /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		4A03198817E72F0C00D7A45D /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		4A03198917E72F0C00D7A45D /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		4A03198A17E72F0C00D7A45D /* MobClickUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickUtils.h; sourceTree = "<group>"; };
+		4A03198B17E72F0C00D7A45D /* MobClickUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobClickUtils.m; sourceTree = "<group>"; };
+		4A03198C17E72F0C00D7A45D /* tips.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tips.html; sourceTree = "<group>"; };
 		4A03268D17A8EB380016F6C5 /* VideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoCell.h; path = ../WorkoutViewController/VideoCell.h; sourceTree = "<group>"; };
 		4A03268E17A8EB390016F6C5 /* VideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoCell.m; path = ../WorkoutViewController/VideoCell.m; sourceTree = "<group>"; };
 		4A03269017A8EE980016F6C5 /* PlayVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayVideoViewController.h; path = ../WorkoutViewController/PlayVideoViewController.h; sourceTree = "<group>"; };
@@ -1818,22 +1828,24 @@
 				4A5F3FCC17912B3200CD701A /* WeChatConnection.framework in Frameworks */,
 				4A03282717AA8CDB0016F6C5 /* libBaiduMobStat.a in Frameworks */,
 				4AC1589D17DF44F600E97B27 /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
+				4A03198E17E72F0C00D7A45D /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4A03193917E6EF1600D7A45D /* UIKeyboard */ = {
+		4A03198617E72F0C00D7A45D /* MobClick */ = {
 			isa = PBXGroup;
 			children = (
-				4A03194817E6EF1600D7A45D /* UIKeyboardView.h */,
-				4A03194917E6EF1600D7A45D /* UIKeyboardView.m */,
-				4A03194A17E6EF1600D7A45D /* UIKeyboardViewController.h */,
-				4A03194B17E6EF1600D7A45D /* UIKeyboardViewController.m */,
+				4A03198717E72F0C00D7A45D /* .gitignore */,
+				4A03198817E72F0C00D7A45D /* libMobClickLibrary.a */,
+				4A03198917E72F0C00D7A45D /* MobClick.h */,
+				4A03198A17E72F0C00D7A45D /* MobClickUtils.h */,
+				4A03198B17E72F0C00D7A45D /* MobClickUtils.m */,
+				4A03198C17E72F0C00D7A45D /* tips.html */,
 			);
-			name = UIKeyboard;
-			path = UIKeyboard/UIKeyboard;
+			path = MobClick;
 			sourceTree = "<group>";
 		};
 		4A0326BE17AA63F40016F6C5 /* HomeViewController */ = {
@@ -3769,6 +3781,7 @@
 		4A959679168ED995006F1317 /* 3PP-SDK */ = {
 			isa = PBXGroup;
 			children = (
+				4A03198617E72F0C00D7A45D /* MobClick */,
 				4AC1589717DF44F600E97B27 /* WeixinSDK */,
 				C6630B97176D3CC400A5ACBA /* JSONKit */,
 				C668C2B6176C63DC007CC7FF /* SinaWeiBoSDK_sso */,
@@ -4001,7 +4014,10 @@
 		4ADCFF50169D69F500A3E979 /* Common iphone */ = {
 			isa = PBXGroup;
 			children = (
-				4A03193917E6EF1600D7A45D /* UIKeyboard */,
+				4A03198017E6F06E00D7A45D /* UIKeyboardViewController.m */,
+				4A03198117E6F06E00D7A45D /* UIKeyboardView.h */,
+				4A03198217E6F06E00D7A45D /* UIKeyboardView.m */,
+				4A03198317E6F06E00D7A45D /* UIKeyboardViewController.h */,
 				4A151D0217E3608F005329CA /* IZValueSelector */,
 				4A183E7617CDEA7B000793C2 /* MyCustomTableViewForSelected */,
 				4A20194217C71DD2003D4E54 /* EmojiKeyboard */,
@@ -4645,6 +4661,8 @@
 				4A01494E17E3FD9700D16E28 /* kddq_2.png in Resources */,
 				4A01494F17E3FD9700D16E28 /* kdjl_1.png in Resources */,
 				4A01495517E4645000D16E28 /* 120X120.png in Resources */,
+				4A03198D17E72F0C00D7A45D /* .gitignore in Resources */,
+				4A03199017E72F0C00D7A45D /* tips.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5000,8 +5018,9 @@
 				4A183E9017CDEA7B000793C2 /* CacheMemoryTestViewController.m in Sources */,
 				4A183E9B17CDEA7B000793C2 /* ZSYPopoverListView.m in Sources */,
 				4A151D2617E3608F005329CA /* IZValueSelectorView.m in Sources */,
-				4A03195717E6EF1600D7A45D /* UIKeyboardView.m in Sources */,
-				4A03195817E6EF1600D7A45D /* UIKeyboardViewController.m in Sources */,
+				4A03198417E6F06E00D7A45D /* UIKeyboardViewController.m in Sources */,
+				4A03198517E6F06E00D7A45D /* UIKeyboardView.m in Sources */,
+				4A03198F17E72F0C00D7A45D /* MobClickUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5092,8 +5111,8 @@
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "829AACF4-4823-41AD-AC7D-10691E0936B5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "829AACF4-4823-41AD-AC7D-10691E0936B5";
+				PROVISIONING_PROFILE = "04535278-F43A-48B9-B1C2-646D615B6DC6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "04535278-F43A-48B9-B1C2-646D615B6DC6";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -5121,7 +5140,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "829AACF4-4823-41AD-AC7D-10691E0936B5";
+				PROVISIONING_PROFILE = "04535278-F43A-48B9-B1C2-646D615B6DC6";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "829AACF4-4823-41AD-AC7D-10691E0936B5";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -5143,7 +5162,7 @@
 				GCC_PREFIX_HEADER = "WoJianMei/WoJianMei-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "WoJianMei/WoJianMei-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/MobClick\"",
@@ -5181,7 +5200,7 @@
 				GCC_PREFIX_HEADER = "WoJianMei/WoJianMei-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "WoJianMei/WoJianMei-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/MobClick\"",

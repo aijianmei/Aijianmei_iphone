@@ -8,9 +8,29 @@
 
 #import "UserManager.h"
 #import "User.h"
+#define USERID @"AijianmeiUserId"
+
 
 @implementation UserManager:NSObject
 @synthesize user =_user;
+
+
++ (BOOL)isUserExisted
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *userId = [userDefaults objectForKey:USERID];
+    if (userId) {
+        return YES ;
+    }
+    return NO;
+}
+
++ (NSString *)getUserId
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults objectForKey:USERID];
+}
+
 
 
 + (User*)createUserWithUserId:(NSString *)userId
@@ -36,6 +56,7 @@
 //    user.loginStatus = [NSNumber numberWithBool:YES];
     return user;
 }
+
 
 
 

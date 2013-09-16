@@ -16,6 +16,8 @@
 }
 @property (nonatomic,retain) User *user;
 
++ (BOOL)isUserExisted;
++ (NSString *)getUserId;
 
 + (User*)createUserWithUserId:(NSString *)userId
                    sinaUserId:(NSString *)sinaUserId

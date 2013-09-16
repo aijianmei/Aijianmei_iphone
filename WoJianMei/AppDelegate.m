@@ -25,6 +25,9 @@
 #import "PublicMyselfViewController.h"
 #import "StatusView.h"
 #import "Reachability.h"
+#import "MobClick.h"
+#import "NetworkDetector.h"
+#import "UserManager.h"
 
 
 
@@ -42,7 +45,9 @@
 
 
 #define kAppRedirectURI     @"http://aijianmei.com"
-#define Mobclick @"51b942ae56240bd8cb009671"
+
+//友盟统计的 key
+#define kMobClickKey @"51b942ae56240bd8cb009671"
 
 
 #define SinaweibossoLogin @"sinaweibosso"
@@ -90,6 +95,14 @@
     [_homeViewController release];
     [_loginViewController release];
     [super dealloc];
+}
+
+
+#pragma mark Mob Click Delegates
+
+- (NSString *)appKey
+{
+	return kMobClickKey;	// shall be changed for each application
 }
 
 +(AppDelegate*)getAppDelegate
@@ -269,11 +282,46 @@
 
 
 
+- (void)initUserService
+{
+    [UserService defaultService] ;
+}
+
+- (void)userRegister
+{
+    if (![UserManager isUserExisted]) {
+        [[UserService  defaultService] userRegisterByToken:[self getDeviceToken]];
+    }
+    else {
+        NSLog(@"User exist,User ID is <%@>, Skip Registration",[UserManager getUserId]);
+    }
+}
+
+- (void)initMobClick
+{
+    [MobClick setDelegate:self reportPolicy:BATCH];
+}
+
+
+
+- (void)initNetworkDetector
+{
+    _networkDetector = [[NetworkDetector alloc]
+                        initWithErrorMsg:@"应用检测到无法连接到互联网，请检查您的网络连接设置。"
+                        detectInterval:2];
+    [_networkDetector start];
+}
+
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    
+    [self initNetworkDetector];
+    
+    
     
     
     
@@ -420,6 +468,14 @@
     // aijianmei  :
     
      [WXApi registerApp:WeChatId];
+    
+    
+    
+    ///
+    if (![self isPushNotificationEnable]){
+        [self bindDevice];
+    }
+
 
     
     
@@ -444,14 +500,15 @@
         [self performSelector:@selector(updateApplication) withObject:nil afterDelay:30.0f];
 }
 
-
-
-- (void)applicationWillResignActive:(UIApplication *)application
-{
+- (void)applicationWillResignActive:(UIApplication *)application {
+    
     /*
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
+	NSLog(@"applicationWillResignActive");
+	[MobClick appTerminated];
+    
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -460,6 +517,10 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
+    
+    //不再检测网络
+    [_networkDetector stop];
+
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -467,6 +528,9 @@
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
+    
+    //检测网络
+    [_networkDetector start];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -529,7 +593,57 @@
 
 
 
+#pragma mark -
+#pragma mark Device Notification Delegate
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+	
+    //    // Get a hex string from the device token with no spaces or < >
+	[self saveDeviceToken:deviceToken];
+    //TODO post the device token to the server.
+    
+    // user already register
+    
+}
 
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *) error {
+	NSString *message = [error localizedDescription];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"错误"
+													message: message
+                                                   delegate: nil
+                                          cancelButtonTitle: @"确认"
+                                          otherButtonTitles: nil];
+    [alert show];
+    [alert release];
+	
+	// try again
+	 [self bindDevice];
+}
+
+- (void)showNotification:(NSDictionary*)payload
+{
+	NSDictionary *dict = [[payload objectForKey:@"aps"] objectForKey:@"alert"];
+	NSString* msg = [dict valueForKey:@"loc-key"];
+	NSArray*  args = [dict objectForKey:@"loc-args"];
+	
+	if (args != nil && [args count] >= 2){
+		NSString* from = nil; //[args objectAtIndex:0];
+		NSString* text = nil; //[args objectAtIndex:1];
+		[UIUtils alert:[NSString stringWithFormat:NSLS(msg), from, text]];
+	}
+}
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+	NSDictionary *payload = userInfo;
+    
+#ifdef DEBUG
+	NSLog(@"receive push notification, payload=%@", [payload description]);
+#endif
+    
+	if (nil != payload) {
+        //        NSString *itemId = [[payload objectForKey:@"aps"] valueForKey:@"ii"];
+	}
+}
 
 
 

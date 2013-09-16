@@ -23,6 +23,8 @@
 @class AJMViewDelegate;
 @class PublicMyselfViewController;
 @class LoginViewController;
+@class NetworkDetector;
+
 
 
 enum
@@ -45,6 +47,10 @@ enum
     PublicMyselfViewController *_publicStatusViewController;
     HomeViewController         *_homeViewController;
     LoginViewController       *_loginViewController;
+    
+    
+    NetworkDetector *_networkDetector;
+
     
 }
 @property (nonatomic,retain)  UIWindow *window;

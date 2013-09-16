@@ -34,6 +34,8 @@
 
 + (UserService*)defaultService;
 
+- (void)userRegisterByToken:(NSString*)token;
+
 //注册新用户
 - (void)registerUserWithUsername:(NSString*)name
                            email:(NSString*)email

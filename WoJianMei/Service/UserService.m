@@ -39,6 +39,29 @@ static UserService* _defaultUserService = nil;
     return _defaultUserService;
 }
 
+
+- (void)userRegisterByToken:(NSString*)token
+{
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        //        CommonNetworkOutput *output = [FootballNetworkRequest getRegisterUserId:1 token:token];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            //            if (output.textData != nil) {
+            //                [UserManager createUser:output.textData];
+            //                PPDebug(@"<UserService>)userRegisterByToken: Created User <%@>",output.textData);
+            //            }
+            //            else {
+            //                PPDebug(@"<UserService>)userRegisterByToken:　Get User ID faild");
+            //            }
+            
+        });
+    });
+}
+
+
 //更新版本的接口
 - (void)initVersionMap
 {
