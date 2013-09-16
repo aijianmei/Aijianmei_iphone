@@ -729,6 +729,14 @@
     [[UserService defaultService] createSinaFriendshipWithUid:AIJIANMEI_SINAWEIBO_ID delegate:self];
 }
 
+- (BOOL)shouldAutorotate
+
+{
+    
+    return NO;
+    
+}
+
 
 
 

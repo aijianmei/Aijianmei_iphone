@@ -332,6 +332,8 @@ enum SinaResultErrorCode
     
 }
 
+
+
 #pragma mark -
 #pragma SinaWeiboDelegate methods
 - (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
@@ -392,6 +394,7 @@ enum SinaResultErrorCode
                                                delegate:self];
    }
 }
+
 
 
 #pragma mark -

@@ -126,10 +126,9 @@ typedef enum CONTENT_TYPE {
     [self initMoreUI];
     
     ///// 设置开始
-//    SDSegmentedControl *sender =[[SDSegmentedControl alloc]init];
-//    [_segmentedController setSelectedSegmentIndex:0];
-//    
-//    [self buttonClicked:sender];
+    SDSegmentedControl *sender =[[SDSegmentedControl alloc]init];
+    [_segmentedController setSelectedSegmentIndex:0];
+    [self buttonClicked:sender];
     
 }
 
@@ -611,9 +610,6 @@ typedef enum CONTENT_TYPE {
         [playVc release];
         
     }
-
-    
-    
 }
 
 -(void)carouselCurrentItemIndexUpdated:(iCarousel *)carousel{
@@ -621,6 +617,15 @@ typedef enum CONTENT_TYPE {
     PPDebug(@"%d",[carousel currentItemIndex]);
     
     [self.spacePageControl setCurrentPage:[carousel currentItemIndex]];
+}
+
+
+- (BOOL)shouldAutorotate
+
+{
+    
+    return NO;
+    
 }
 
 #pragma mark -

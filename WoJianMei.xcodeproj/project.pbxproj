@@ -536,7 +536,6 @@
 		4A8A7229174E557700BD3AAE /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8A7228174E557700BD3AAE /* SignUpViewController.m */; };
 		4A8BCAD717AFE2BE0019CBB1 /* WorkOutManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8BCAD517AFE2BB0019CBB1 /* WorkOutManagerViewController.m */; };
 		4A8BCAD817AFE2BE0019CBB1 /* WorkOutManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8BCAD617AFE2BD0019CBB1 /* WorkOutManagerViewController.xib */; };
-		4A8F3E6117BA6795000F553A /* UINavigationController+Autorotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F3E6017BA6795000F553A /* UINavigationController+Autorotate.m */; };
 		4A8F3E6A17BA6B64000F553A /* WeightManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F3E6817BA6B64000F553A /* WeightManagerViewController.m */; };
 		4A8F3E6B17BA6B64000F553A /* WeightManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8F3E6917BA6B64000F553A /* WeightManagerViewController.xib */; };
 		4A8F3E6F17BA6BAE000F553A /* WorkoutMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F3E6D17BA6BAD000F553A /* WorkoutMainViewController.m */; };
@@ -1576,8 +1575,6 @@
 		4A8BCAD417AFE2B90019CBB1 /* WorkOutManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOutManagerViewController.h; sourceTree = "<group>"; };
 		4A8BCAD517AFE2BB0019CBB1 /* WorkOutManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOutManagerViewController.m; sourceTree = "<group>"; };
 		4A8BCAD617AFE2BD0019CBB1 /* WorkOutManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkOutManagerViewController.xib; sourceTree = "<group>"; };
-		4A8F3E5F17BA6795000F553A /* UINavigationController+Autorotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Autorotate.h"; sourceTree = "<group>"; };
-		4A8F3E6017BA6795000F553A /* UINavigationController+Autorotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Autorotate.m"; sourceTree = "<group>"; };
 		4A8F3E6717BA6B63000F553A /* WeightManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeightManagerViewController.h; sourceTree = "<group>"; };
 		4A8F3E6817BA6B64000F553A /* WeightManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeightManagerViewController.m; sourceTree = "<group>"; };
 		4A8F3E6917BA6B64000F553A /* WeightManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeightManagerViewController.xib; sourceTree = "<group>"; };
@@ -3154,8 +3151,6 @@
 		4A49910D168553A20073E682 /* Core-Utils-Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4A8F3E5F17BA6795000F553A /* UINavigationController+Autorotate.h */,
-				4A8F3E6017BA6795000F553A /* UINavigationController+Autorotate.m */,
 				4A49910E168553A20073E682 /* PPViewController+NumPadReturn.h */,
 				4A49910F168553A20073E682 /* PPViewController+NumPadReturn.m */,
 				4A499110168553A20073E682 /* UINavigationController+UINavigationControllerAdditions.h */,
@@ -4152,6 +4147,7 @@
 				4AC2BDAD17BCCC040061E396 /* CommonDialog.h */,
 				4AC2BDAE17BCCC040061E396 /* CommonDialog.m */,
 				4AC2BDAF17BCCC050061E396 /* CommonDialog.xib */,
+				4AE394B815C2DD9C00D06C61 /* Supporting Files */,
 				4AE394B015C2DD9C00D06C61 /* Frameworks */,
 				4AE394AE15C2DD9C00D06C61 /* Products */,
 			);
@@ -4205,7 +4201,6 @@
 				4A27AE1E1777EF7A009978C5 /* Service */,
 				4A58805215C52B89005F8415 /* Controllers */,
 				4A27ADFA1777EED1009978C5 /* NetWorkRequest */,
-				4AE394B815C2DD9C00D06C61 /* Supporting Files */,
 			);
 			path = WoJianMei;
 			sourceTree = "<group>";
@@ -4219,6 +4214,7 @@
 				4AE394BF15C2DD9C00D06C61 /* WoJianMei-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = WoJianMei;
 			sourceTree = "<group>";
 		};
 		4AE52D9C177831A500F61933 /* Workout_planViewController */ = {
@@ -5029,7 +5025,6 @@
 				4A34EB3417B36C2F00196793 /* PublicMyselfViewController.m in Sources */,
 				4A34EB3C17B37B2300196793 /* PostLikeResponse.m in Sources */,
 				4A34EB4017B3CDA500196793 /* UserInfoPickerViewController.m in Sources */,
-				4A8F3E6117BA6795000F553A /* UINavigationController+Autorotate.m in Sources */,
 				4A8F3E6A17BA6B64000F553A /* WeightManagerViewController.m in Sources */,
 				4A8F3E6F17BA6BAE000F553A /* WorkoutMainViewController.m in Sources */,
 				4A8F3F3217BA6FB3000F553A /* RankingViewController.m in Sources */,

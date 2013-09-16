@@ -150,6 +150,7 @@
     else
     {
         
+        return;
     }
 }
 
@@ -342,7 +343,18 @@
 //
 //    [self.window makeKeyAndVisible];
     
+    //从本地获取用户信息
+    //TOTO:根据用户uid登陆获取信息
     
+    NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey: @"OriginalUserId"];
+    PPDebug(@"*****OriginalUserId :%@*****",uid);
+    
+    if (uid !=nil) {
+        User *user  =[[UserService defaultService] getUserInfoByUid:uid];
+        [[UserService defaultService] setUser: user];
+        [[UserService defaultService] storeUserInfoByUid:uid];;
+    }
+
     
     
     
@@ -378,18 +390,7 @@
     
     
     
-    //从本地获取用户信息
-    //TOTO:根据用户uid登陆获取信息
     
-     NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey: @"OriginalUserId"];
-    PPDebug(@"*****OriginalUserId :%@*****",uid);
-    
-    if (uid !=nil) {
-        User *user  =[[UserService defaultService] getUserInfoByUid:uid];
-        [[UserService defaultService] setUser: user];
-       [[UserService defaultService] storeUserInfoByUid:uid];;
-    }
-
 
 
     if ([DeviceDetection isOS5]){

@@ -907,7 +907,7 @@ enum BUTTON_INDEX {
         default:
             break;
     }
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 
@@ -922,6 +922,9 @@ enum BUTTON_INDEX {
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
 {
     NSLog(@"Error: %@", [error localizedDescription]);
+    [self hideActivity];
+    [self popupUnhappyMessage:@"网络不给力，请稍后再试！" title:nil];
+
 }
 
 - (void)requestDidStartLoad:(RKRequest *)request

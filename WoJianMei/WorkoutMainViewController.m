@@ -75,20 +75,6 @@
 }
 
 
-#pragma mark -
-#pragma mark Orientation
-
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskLandscape;
-    
-}
-//默认为No
-- (BOOL)shouldAutorotate{
-    return YES;
-}
-
-
 
 #pragma mark-- addButtonSegcontrol  Method
 -(void)addButtonControl{

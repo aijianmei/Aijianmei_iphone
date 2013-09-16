@@ -183,7 +183,9 @@
         [control release];
         
     }
+    
     [self.navigationController pushViewController:_workoutMainViewController animated:YES];
+    
 }
 
 - (IBAction)clickCheckoutWorkoutDatasButton:(id)sender {
