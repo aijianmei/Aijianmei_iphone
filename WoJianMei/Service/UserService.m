@@ -508,6 +508,8 @@ static UserService* _defaultUserService = nil;
     
     //以后程序启动的时候就是要读取默认的这个Uid数据;
     [[NSUserDefaults standardUserDefaults] setObject:uid forKey:@"OriginalUserId"];
+    
+    
     NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.user];
     [[NSUserDefaults standardUserDefaults] setObject:userData forKey:uid];
     
@@ -527,16 +529,13 @@ static UserService* _defaultUserService = nil;
     
     if ([self.user sinaUserId])
     {
-        
-        
         [self deleteSinaUserInfoWithUid:[self.user sinaUserId]];
-        
-        
     }
     
     if ([self getUserInfoByUid:uid])
     {
         [[NSUserDefaults standardUserDefaults]  removeObjectForKey:uid];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OriginalUserId"];
         NSLog(@"####Delete User with ID :%@ Successfully!",uid);
     }
     

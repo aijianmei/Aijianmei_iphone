@@ -438,8 +438,23 @@ enum SinaResultErrorCode
             SinaResult *result =[objects objectAtIndex:0];
             if ([result.uid integerValue] !=0 && [result.errorCode integerValue] ==0)
             {
+                
+                
+             NSDictionary *sinaUserInfo =[[UserService defaultService] getSinaUserInfoWithUid:[SinaWeiboManager sharedManager].sinaweibo.userID];
+             NSString *profileImageUrl = [sinaUserInfo objectForKey:@"profileImageUrl"];
+                
+                
+                
                 //正式创建新用户
-                User *user = [UserManager createUserWithUserId:result.uid sinaUserId:[SinaWeiboManager sharedManager].sinaweibo.userID qqUserId:nil userType:self.userType name:nil profileImageUrl:nil gender:nil email:nil password:nil];
+                User *user = [UserManager createUserWithUserId:result.uid
+                                                    sinaUserId:[SinaWeiboManager sharedManager].sinaweibo.userID
+                                                      qqUserId:nil
+                                                      userType:self.userType
+                                                          name:nil
+                                               profileImageUrl:profileImageUrl
+                                                        gender:nil
+                                                         email:nil
+                                                      password:nil];
                 
                 [[UserService defaultService] setUser:user];
 
@@ -495,7 +510,16 @@ enum SinaResultErrorCode
             if ([result.uid integerValue] !=0 && [result.errorCode integerValue] ==0)
                 {
                     //正式创建新用户
-                    User *user = [UserManager createUserWithUserId:result.uid sinaUserId:nil qqUserId:nil userType:self.userType name:nil profileImageUrl:nil gender:nil email:nil password:nil];
+                    User *user = [UserManager createUserWithUserId:result.uid
+                                                        sinaUserId:nil
+                                                          qqUserId:nil
+                                                          userType:self.userType
+                                                              name:nil
+                                                   profileImageUrl:nil
+                                                            gender:nil
+                                                             email:nil
+                                                          password:nil];
+                    
                     [[UserService defaultService] setUser:user];
                     [self dismissViewControllerAnimated:YES completion:^
                     {

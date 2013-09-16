@@ -219,7 +219,6 @@
             //本地数据不存在，用户第一次登陆的时候，就往服务器拉数据
             [[UserService defaultService] fecthUserInfoWithUid:uid
                                                       delegate:self];
-            
             [self showActivityWithText:@"数据更新中..."];
         }
 }
@@ -833,11 +832,28 @@
             
             [user setBMIValue:bmi];
             
-            //保存用户
-            [[UserService defaultService] storeUserInfoByUid:user.uid];
+            
+            
+            
+            NSDictionary *sinaUserInfo =[[UserService defaultService] getSinaUserInfoWithUid:[SinaWeiboManager sharedManager].sinaweibo.userID];
+            NSString *profileImageUrl = [sinaUserInfo objectForKey:@"profileImageUrl"];
+            
+            
+            if ([user.profileImageUrl length] == 0 && profileImageUrl) {
+                [self.user setProfileImageUrl:profileImageUrl];
+            }
+            
+            if ([user.city length] == 0 ) {
+                [self.user setCity:@"您的所在地"];
+            }
+            
+            if ([user.description length]) {
+                [self.user setDescription:@"您的心情短语！"];
+            }
             
             self.user = user;
-            
+            //保存用户
+            [[UserService defaultService] storeUserInfoByUid:user.uid];
             
             
             [self updateUI];
