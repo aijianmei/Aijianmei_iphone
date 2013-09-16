@@ -59,7 +59,7 @@ enum
 + (AppDelegate*)getAppDelegate;
 
 -(PublicMyselfViewController *)initPublicStatusViewController;
--(HomeViewController *)initHomeViewController;
+-(HomeViewController *)initHomeViewControllerFromAppDelegate;
 -(LoginViewController *)initLoginViewController;
 -(void)showLoginView;
 

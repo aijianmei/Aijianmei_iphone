@@ -22,6 +22,7 @@
 #import "StatusView.h"
 #import "UIImageUtil.h"
 #import "UIImage+Scale.h"
+#import "IIViewDeckController.h"
 
 
 

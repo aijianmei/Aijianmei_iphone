@@ -7,7 +7,6 @@
 //
 
 #import "AJMLeftSideViewController.h"
-#import "AppDelegate.h"
 #import "AGLeftSideTableCell.h"
 #import "MyselfViewController.h"
 #import "HomeViewController.h"
@@ -23,6 +22,8 @@
 #import "LoginViewController.h"
 #import "SVWebViewController.h"
 #import "WorkOutManagerViewController.h"
+#import "IIViewDeckController.h"
+#import "AppDelegate.h"
 
 
 #import "SinaWeiboRequest.h"
@@ -148,8 +149,11 @@
 #pragma mark - initViewControllers
 -(void)initHomeViewController
 {
-    HomeViewController *homeViewVC =[[AppDelegate getAppDelegate] initHomeViewController];
+    
+    
+    HomeViewController *homeViewVC =[[AppDelegate getAppDelegate] initHomeViewControllerFromAppDelegate];
     _navigationController = [[UINavigationController alloc] initWithRootViewController:homeViewVC];
+    
 }
 
 -(void)initWorkoutPlanViewController{
@@ -620,10 +624,6 @@
     }    
 }
 
-- (AppDelegate*)getAppDelegate
-{
-    return (AppDelegate*)[UIApplication sharedApplication].delegate;
-}
 
 
 #pragma mark -

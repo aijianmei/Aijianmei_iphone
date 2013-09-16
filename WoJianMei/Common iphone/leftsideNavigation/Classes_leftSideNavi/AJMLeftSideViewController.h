@@ -57,6 +57,4 @@
 
 
 
--(AppDelegate*)getAppDelegate;
-
 @end

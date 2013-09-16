@@ -11,6 +11,8 @@
 		4A01494E17E3FD9700D16E28 /* kddq_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A01494B17E3FD9700D16E28 /* kddq_2.png */; };
 		4A01494F17E3FD9700D16E28 /* kdjl_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A01494C17E3FD9700D16E28 /* kdjl_1.png */; };
 		4A01495517E4645000D16E28 /* 120X120.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A01495417E4645000D16E28 /* 120X120.png */; };
+		4A03195717E6EF1600D7A45D /* UIKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A03194917E6EF1600D7A45D /* UIKeyboardView.m */; };
+		4A03195817E6EF1600D7A45D /* UIKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A03194B17E6EF1600D7A45D /* UIKeyboardViewController.m */; };
 		4A03268F17A8EB3B0016F6C5 /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A03268E17A8EB390016F6C5 /* VideoCell.m */; };
 		4A03269317A8EE9A0016F6C5 /* PlayVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A03269117A8EE980016F6C5 /* PlayVideoViewController.m */; };
 		4A03269417A8EE9A0016F6C5 /* PlayVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A03269217A8EE990016F6C5 /* PlayVideoViewController.xib */; };
@@ -169,8 +171,6 @@
 		4A0E4DCE178C50B000E1287D /* ChangeDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0E4DCC178C50AF00E1287D /* ChangeDescriptionViewController.xib */; };
 		4A0E4DD2178C559E00E1287D /* ChangeGenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4DD0178C559E00E1287D /* ChangeGenderViewController.m */; };
 		4A0E4DD3178C559E00E1287D /* ChangeGenderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0E4DD1178C559E00E1287D /* ChangeGenderViewController.xib */; };
-		4A12207C17A2448D002F1A50 /* UIKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12205817A2448D002F1A50 /* UIKeyboardView.m */; };
-		4A12207D17A2448D002F1A50 /* UIKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12205A17A2448D002F1A50 /* UIKeyboardViewController.m */; };
 		4A129C0C17CAED6100FD18B2 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A129C0B17CAED6100FD18B2 /* TPKeyboardAvoidingTableView.m */; };
 		4A129D7617CB46A700FD18B2 /* hxdhl_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D0717CB46A600FD18B2 /* hxdhl_1.png */; };
 		4A129D9A17CB46A700FD18B2 /* fgx_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D2D17CB46A600FD18B2 /* fgx_1.png */; };
@@ -320,13 +320,6 @@
 		4A2FA998178D5E5C006A1EFB /* apphead@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA996178D5E5A006A1EFB /* apphead@2x.png */; };
 		4A2FA999178D5E5C006A1EFB /* deleteTag.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA997178D5E5B006A1EFB /* deleteTag.png */; };
 		4A2FA99C178D5E70006A1EFB /* AppButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FA99B178D5E6F006A1EFB /* AppButton.m */; };
-		4A2FA9A4178D8F2F006A1EFB /* PickerBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA99E178D8F2E006A1EFB /* PickerBG.png */; };
-		4A2FA9A5178D8F2F006A1EFB /* PickerBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA99F178D8F2E006A1EFB /* PickerBG@2x.png */; };
-		4A2FA9A6178D8F2F006A1EFB /* pickerGlass.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA9A0178D8F2F006A1EFB /* pickerGlass.png */; };
-		4A2FA9A7178D8F2F006A1EFB /* pickerGlass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA9A1178D8F2F006A1EFB /* pickerGlass@2x.png */; };
-		4A2FA9A8178D8F2F006A1EFB /* PickerShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA9A2178D8F2F006A1EFB /* PickerShadow.png */; };
-		4A2FA9A9178D8F2F006A1EFB /* PickerShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA9A3178D8F2F006A1EFB /* PickerShadow@2x.png */; };
-		4A2FA9AE178D8F68006A1EFB /* AFPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FA9AD178D8F68006A1EFB /* AFPickerView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4A308BA917A16AE100DED650 /* CommonArticleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A308BA817A16AE100DED650 /* CommonArticleViewController.xib */; };
 		4A34EB3417B36C2F00196793 /* PublicMyselfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34EB3217B36C2D00196793 /* PublicMyselfViewController.m */; };
 		4A34EB3717B36F6D00196793 /* MyselfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A34EB3617B36F6D00196793 /* MyselfViewController.xib */; };
@@ -728,6 +721,10 @@
 		4A01494B17E3FD9700D16E28 /* kddq_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kddq_2.png; sourceTree = "<group>"; };
 		4A01494C17E3FD9700D16E28 /* kdjl_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kdjl_1.png; sourceTree = "<group>"; };
 		4A01495417E4645000D16E28 /* 120X120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120X120.png; sourceTree = "<group>"; };
+		4A03194817E6EF1600D7A45D /* UIKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardView.h; sourceTree = "<group>"; };
+		4A03194917E6EF1600D7A45D /* UIKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardView.m; sourceTree = "<group>"; };
+		4A03194A17E6EF1600D7A45D /* UIKeyboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardViewController.h; sourceTree = "<group>"; };
+		4A03194B17E6EF1600D7A45D /* UIKeyboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardViewController.m; sourceTree = "<group>"; };
 		4A03268D17A8EB380016F6C5 /* VideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoCell.h; path = ../WorkoutViewController/VideoCell.h; sourceTree = "<group>"; };
 		4A03268E17A8EB390016F6C5 /* VideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoCell.m; path = ../WorkoutViewController/VideoCell.m; sourceTree = "<group>"; };
 		4A03269017A8EE980016F6C5 /* PlayVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayVideoViewController.h; path = ../WorkoutViewController/PlayVideoViewController.h; sourceTree = "<group>"; };
@@ -964,10 +961,6 @@
 		4A0E4DCF178C559E00E1287D /* ChangeGenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeGenderViewController.h; sourceTree = "<group>"; };
 		4A0E4DD0178C559E00E1287D /* ChangeGenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeGenderViewController.m; sourceTree = "<group>"; };
 		4A0E4DD1178C559E00E1287D /* ChangeGenderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeGenderViewController.xib; sourceTree = "<group>"; };
-		4A12205717A2448D002F1A50 /* UIKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardView.h; sourceTree = "<group>"; };
-		4A12205817A2448D002F1A50 /* UIKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardView.m; sourceTree = "<group>"; };
-		4A12205917A2448D002F1A50 /* UIKeyboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardViewController.h; sourceTree = "<group>"; };
-		4A12205A17A2448D002F1A50 /* UIKeyboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardViewController.m; sourceTree = "<group>"; };
 		4A129C0A17CAED6100FD18B2 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
 		4A129C0B17CAED6100FD18B2 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		4A129D0717CB46A600FD18B2 /* hxdhl_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hxdhl_1.png; sourceTree = "<group>"; };
@@ -1177,14 +1170,6 @@
 		4A2FA997178D5E5B006A1EFB /* deleteTag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteTag.png; sourceTree = "<group>"; };
 		4A2FA99A178D5E6E006A1EFB /* AppButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppButton.h; sourceTree = "<group>"; };
 		4A2FA99B178D5E6F006A1EFB /* AppButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppButton.m; sourceTree = "<group>"; };
-		4A2FA99E178D8F2E006A1EFB /* PickerBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PickerBG.png; sourceTree = "<group>"; };
-		4A2FA99F178D8F2E006A1EFB /* PickerBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PickerBG@2x.png"; sourceTree = "<group>"; };
-		4A2FA9A0178D8F2F006A1EFB /* pickerGlass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pickerGlass.png; sourceTree = "<group>"; };
-		4A2FA9A1178D8F2F006A1EFB /* pickerGlass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pickerGlass@2x.png"; sourceTree = "<group>"; };
-		4A2FA9A2178D8F2F006A1EFB /* PickerShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PickerShadow.png; sourceTree = "<group>"; };
-		4A2FA9A3178D8F2F006A1EFB /* PickerShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PickerShadow@2x.png"; sourceTree = "<group>"; };
-		4A2FA9AC178D8F68006A1EFB /* AFPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPickerView.h; sourceTree = "<group>"; };
-		4A2FA9AD178D8F68006A1EFB /* AFPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPickerView.m; sourceTree = "<group>"; };
 		4A308BA817A16AE100DED650 /* CommonArticleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommonArticleViewController.xib; path = ../WorkoutViewController/CommonArticleViewController.xib; sourceTree = "<group>"; };
 		4A34EB3117B36C2D00196793 /* PublicMyselfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicMyselfViewController.h; sourceTree = "<group>"; };
 		4A34EB3217B36C2D00196793 /* PublicMyselfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicMyselfViewController.m; sourceTree = "<group>"; };
@@ -1839,6 +1824,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A03193917E6EF1600D7A45D /* UIKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				4A03194817E6EF1600D7A45D /* UIKeyboardView.h */,
+				4A03194917E6EF1600D7A45D /* UIKeyboardView.m */,
+				4A03194A17E6EF1600D7A45D /* UIKeyboardViewController.h */,
+				4A03194B17E6EF1600D7A45D /* UIKeyboardViewController.m */,
+			);
+			name = UIKeyboard;
+			path = UIKeyboard/UIKeyboard;
+			sourceTree = "<group>";
+		};
 		4A0326BE17AA63F40016F6C5 /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -2281,25 +2278,6 @@
 			path = Workout;
 			sourceTree = "<group>";
 		};
-		4A12202B17A2448D002F1A50 /* UIKeyboard */ = {
-			isa = PBXGroup;
-			children = (
-				4A12204817A2448D002F1A50 /* UIKeyboard */,
-			);
-			path = UIKeyboard;
-			sourceTree = "<group>";
-		};
-		4A12204817A2448D002F1A50 /* UIKeyboard */ = {
-			isa = PBXGroup;
-			children = (
-				4A12205717A2448D002F1A50 /* UIKeyboardView.h */,
-				4A12205817A2448D002F1A50 /* UIKeyboardView.m */,
-				4A12205917A2448D002F1A50 /* UIKeyboardViewController.h */,
-				4A12205A17A2448D002F1A50 /* UIKeyboardViewController.m */,
-			);
-			path = UIKeyboard;
-			sourceTree = "<group>";
-		};
 		4A129CF317CB46A600FD18B2 /* 健身管理 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2664,30 +2642,6 @@
 				4A2FA997178D5E5B006A1EFB /* deleteTag.png */,
 			);
 			name = AppButtonClass;
-			sourceTree = "<group>";
-		};
-		4A2FA9AA178D8F37006A1EFB /* PickerResource */ = {
-			isa = PBXGroup;
-			children = (
-				4A2FA99E178D8F2E006A1EFB /* PickerBG.png */,
-				4A2FA99F178D8F2E006A1EFB /* PickerBG@2x.png */,
-				4A2FA9A0178D8F2F006A1EFB /* pickerGlass.png */,
-				4A2FA9A1178D8F2F006A1EFB /* pickerGlass@2x.png */,
-				4A2FA9A2178D8F2F006A1EFB /* PickerShadow.png */,
-				4A2FA9A3178D8F2F006A1EFB /* PickerShadow@2x.png */,
-			);
-			name = PickerResource;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		4A2FA9AB178D8F68006A1EFB /* AFPickerView */ = {
-			isa = PBXGroup;
-			children = (
-				4A2FA9AA178D8F37006A1EFB /* PickerResource */,
-				4A2FA9AC178D8F68006A1EFB /* AFPickerView.h */,
-				4A2FA9AD178D8F68006A1EFB /* AFPickerView.m */,
-			);
-			path = AFPickerView;
 			sourceTree = "<group>";
 		};
 		4A498D711685500F0073E682 /* Component-Service */ = {
@@ -4047,12 +4001,11 @@
 		4ADCFF50169D69F500A3E979 /* Common iphone */ = {
 			isa = PBXGroup;
 			children = (
+				4A03193917E6EF1600D7A45D /* UIKeyboard */,
 				4A151D0217E3608F005329CA /* IZValueSelector */,
 				4A183E7617CDEA7B000793C2 /* MyCustomTableViewForSelected */,
 				4A20194217C71DD2003D4E54 /* EmojiKeyboard */,
-				4A12202B17A2448D002F1A50 /* UIKeyboard */,
 				4A7B7E97179A7AAA00FD6E56 /* SDSegmentedControl */,
-				4A2FA9AB178D8F68006A1EFB /* AFPickerView */,
 				4A27AE881777F18E009978C5 /* leftsideNavigation */,
 				4A66C1DE16A59DFF00A2F22E /* AWIconSheet */,
 				4A873B8916A54AD2005BDA45 /* areapicker */,
@@ -4456,12 +4409,6 @@
 				4A2FA98F178D3E02006A1EFB /* ChangeLabelsViewController.xib in Resources */,
 				4A2FA998178D5E5C006A1EFB /* apphead@2x.png in Resources */,
 				4A2FA999178D5E5C006A1EFB /* deleteTag.png in Resources */,
-				4A2FA9A4178D8F2F006A1EFB /* PickerBG.png in Resources */,
-				4A2FA9A5178D8F2F006A1EFB /* PickerBG@2x.png in Resources */,
-				4A2FA9A6178D8F2F006A1EFB /* pickerGlass.png in Resources */,
-				4A2FA9A7178D8F2F006A1EFB /* pickerGlass@2x.png in Resources */,
-				4A2FA9A8178D8F2F006A1EFB /* PickerShadow.png in Resources */,
-				4A2FA9A9178D8F2F006A1EFB /* PickerShadow@2x.png in Resources */,
 				4A257F0F17900522001D153F /* AddLabelViewController.xib in Resources */,
 				4A5F3FC617912B3200CD701A /* Resource.bundle in Resources */,
 				4A5F3FC917912B3200CD701A /* ShareSDKLocalizable.strings in Resources */,
@@ -4920,7 +4867,6 @@
 				4A2FA992178D494C006A1EFB /* LabelManager.m in Sources */,
 				4A2FA995178D495E006A1EFB /* Label.m in Sources */,
 				4A2FA99C178D5E70006A1EFB /* AppButton.m in Sources */,
-				4A2FA9AE178D8F68006A1EFB /* AFPickerView.m in Sources */,
 				4AC523AF178E44E7003D9729 /* ProvinceCell.m in Sources */,
 				4AC523B7178E4DE1003D9729 /* PickCityCell.m in Sources */,
 				4AC523BA178E9011003D9729 /* MyselfSettingCell.m in Sources */,
@@ -4933,8 +4879,6 @@
 				4A4A5DB1179E512E00F00085 /* CommentViewController.m in Sources */,
 				4A4A5E10179E76FB00F00085 /* CommentCell.m in Sources */,
 				4A4A5E13179E77B000F00085 /* CommentInfo.m in Sources */,
-				4A12207C17A2448D002F1A50 /* UIKeyboardView.m in Sources */,
-				4A12207D17A2448D002F1A50 /* UIKeyboardViewController.m in Sources */,
 				4A03268F17A8EB3B0016F6C5 /* VideoCell.m in Sources */,
 				4A03269317A8EE9A0016F6C5 /* PlayVideoViewController.m in Sources */,
 				4A03269717A8EFA40016F6C5 /* Video.m in Sources */,
@@ -5056,6 +5000,8 @@
 				4A183E9017CDEA7B000793C2 /* CacheMemoryTestViewController.m in Sources */,
 				4A183E9B17CDEA7B000793C2 /* ZSYPopoverListView.m in Sources */,
 				4A151D2617E3608F005329CA /* IZValueSelectorView.m in Sources */,
+				4A03195717E6EF1600D7A45D /* UIKeyboardView.m in Sources */,
+				4A03195817E6EF1600D7A45D /* UIKeyboardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

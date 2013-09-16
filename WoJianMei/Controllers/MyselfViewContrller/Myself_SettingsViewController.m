@@ -15,7 +15,6 @@
 #import "ChangeGenderViewController.h"
 #import "ProvinceViewController.h"
 #import "ChangeLabelsViewController.h"
-#import "AFPickerView.h"
 #import "MyselfSettingCell.h"
 #import "UIImageView+WebCache.h"
 #import "Result.h"

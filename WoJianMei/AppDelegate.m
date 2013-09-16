@@ -108,7 +108,7 @@
     return _publicStatusViewController;
 }
 
--(HomeViewController *)initHomeViewController{
+-(HomeViewController *)initHomeViewControllerFromAppDelegate{
 
     if (self.homeViewController == nil) {
             
@@ -363,7 +363,7 @@
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         
-        HomeViewController *homeViewVC =[self initHomeViewController];
+        HomeViewController *homeViewVC =[self initHomeViewControllerFromAppDelegate];
        _navigationController = [[UINavigationController alloc]initWithRootViewController:homeViewVC];
         
         
