@@ -168,6 +168,9 @@
 }
 
 -(void)initWorkOutViewController{
+    
+    
+    
       if (self.workoutViewController ==nil) {
 
         WorkoutViewController *vc =[[WorkoutViewController alloc] initWithNibName:@"WorkoutViewController" bundle:nil];
@@ -177,7 +180,7 @@
       }
     
     
-    _navigationController = [[UINavigationController alloc] initWithRootViewController:_workoutViewController];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:_workoutViewController];
 }
 
 -(void)initSupplementViewController{

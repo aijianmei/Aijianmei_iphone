@@ -8,55 +8,23 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WoJianMei/AppDelegate.m"
-         timestampString = "401032794.06008"
+         timestampString = "401085500.870159"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "601"
-         endingLineNumber = "601"
+         startingLineNumber = "609"
+         endingLineNumber = "609"
          landmarkName = "-application:didRegisterForRemoteNotificationsWithDeviceToken:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "WoJianMei/AppDelegate.m"
-         timestampString = "401032798.008849"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "614"
-         endingLineNumber = "614"
-         landmarkName = "-application:didFailToRegisterForRemoteNotificationsWithError:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "WoJianMei/AppDelegate.m"
-         timestampString = "401032801.045858"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "628"
-         endingLineNumber = "628"
-         landmarkName = "-showNotification:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "WoJianMei/AppDelegate.m"
-         timestampString = "401032805.352239"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "638"
-         endingLineNumber = "638"
-         landmarkName = "-application:didReceiveRemoteNotification:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
    <ExceptionBreakpoints>
+      <ExceptionBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         scope = "0"
+         stopOnStyle = "0">
+      </ExceptionBreakpoint>
       <ExceptionBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"

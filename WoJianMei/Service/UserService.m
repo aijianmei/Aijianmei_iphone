@@ -506,9 +506,15 @@ static UserService* _defaultUserService = nil;
     [[NSUserDefaults standardUserDefaults] setObject:userData forKey:[[userInfo objectForKey:@"id"] stringValue]];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
+
 //读取新浪微博的信息
 - (NSDictionary*)getSinaUserInfoWithUid:(NSString *)uid
 {
+    if (!uid) {
+        return nil;
+    }
+    
     NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:uid];
     NSDictionary *userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
     return userInfo;

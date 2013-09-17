@@ -5141,7 +5141,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "04535278-F43A-48B9-B1C2-646D615B6DC6";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "829AACF4-4823-41AD-AC7D-10691E0936B5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "04535278-F43A-48B9-B1C2-646D615B6DC6";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -5151,8 +5151,8 @@
 		4AE394DA15C2DD9C00D06C61 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Callon (VQ5469GPCM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tom Callon (VQ5469GPCM)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -5176,8 +5176,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WoJianMei;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "7B047A25-5E0A-40F5-8CF8-B0FFD7F8270C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B047A25-5E0A-40F5-8CF8-B0FFD7F8270C";
 				SHARED_PRECOMPS_DIR = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
@@ -5189,8 +5189,8 @@
 		4AE394DB15C2DD9C00D06C61 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Callon (VQ5469GPCM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tom Callon (VQ5469GPCM)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -5214,8 +5214,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WoJianMei;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "7B047A25-5E0A-40F5-8CF8-B0FFD7F8270C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B047A25-5E0A-40F5-8CF8-B0FFD7F8270C";
 				SHARED_PRECOMPS_DIR = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";

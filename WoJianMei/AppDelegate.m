@@ -323,6 +323,15 @@
     
     
     
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    NSLog(@"Initiating remoteNoticationssAreActive");
+    if(!application.enabledRemoteNotificationTypes){
+        NSLog(@"Initiating remoteNoticationssAreActive1");
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge)];
+    }
+    UIApplication* myapp = [UIApplication sharedApplication];
+    myapp.idleTimerDisabled = YES;
+    
     
     
     
@@ -597,7 +606,7 @@
 #pragma mark Device Notification Delegate
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 	
-    //    // Get a hex string from the device token with no spaces or < >
+    // Get a hex string from the device token with no spaces or < >
 	[self saveDeviceToken:deviceToken];
     //TODO post the device token to the server.
     
@@ -641,7 +650,8 @@
 #endif
     
 	if (nil != payload) {
-        //        NSString *itemId = [[payload objectForKey:@"aps"] valueForKey:@"ii"];
+        NSString *alert = [[payload objectForKey:@"aps"] valueForKey:@"alert"];
+        PPDebug(@"%@",alert);
 	}
 }
 
