@@ -443,19 +443,14 @@
     [self.window makeKeyAndVisible];
 
     
+    if ([DeviceDetection isOS5]){
+        [[UINavigationBar appearance] setBackgroundImage:[ImageManager navigationBgImage] forBarMetrics:UIBarMetricsDefault];
+    }else{
+        
+       GlobalSetNavBarBackground(@"topmenu_bg.png");
+    }
     
     
-    
-    
-    
-
-
-//    if ([DeviceDetection isOS5]){
-//        [[UINavigationBar appearance] setBackgroundImage:[ImageManager navigationBgImage] forBarMetrics:UIBarMetricsDefault];
-//    }else{
-//        
-//       GlobalSetNavBarBackground(@"topmenu_bg.png");
-//    }
     
     
     UIImage *startImage = nil;
