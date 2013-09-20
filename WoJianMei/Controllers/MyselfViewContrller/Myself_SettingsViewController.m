@@ -265,31 +265,16 @@
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
     /// 设置导航按钮
-    [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(clickSaveButton:)];
+    [self setNavigationRightButton:@"" imageName:@"Save.png" action:@selector(clickSaveButton:)];
     [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
 
 	// Do any additional setup after loading the view, typically from a nib.
     self.title = NSLocalizedString(@"编辑个人资料", @"Settings");
     
     didSave =NO;
-    
-    
-    
-//    //轻触手势（单击，双击）
-//    UITapGestureRecognizer *tapCgr=nil;
-//    tapCgr=[[UITapGestureRecognizer alloc]initWithTarget:self
-//                                                  action:@selector(tap)];
-//    tapCgr.numberOfTapsRequired=1;
-//    [self.dataTableView addGestureRecognizer:tapCgr];
-//    [tapCgr release];
-
-        
 }
 
--(void)tap{
 
-
-}
 
 - (void)viewDidUnload
 {

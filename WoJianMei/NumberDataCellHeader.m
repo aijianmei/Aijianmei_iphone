@@ -72,11 +72,26 @@
     //点击按钮
 //    [header.nameButton addTarget:header action:@selector(clickChangeStytle:) forControlEvents:UIControlEventTouchUpInside];
     
-      
-    [header.weightButton setTitle:weight forState:UIControlStateNormal];
-    [header.numberButton setTitle:number forState:UIControlStateNormal];
-    [header.timeButton setTitle:time forState:UIControlStateNormal];
-    [header.caloriesButton setTitle:calories forState:UIControlStateNormal];
+    
+    NSString *weightWithKG = [NSString stringWithFormat:@"%@\n%@",weight,@"千克"];
+    
+    [header.weightButton setTitle:weightWithKG forState:UIControlStateNormal];
+    
+    NSString *numberWithci = [NSString stringWithFormat:@"%@\n%@",weight,@"数量|组数\n  (次)"];
+    [header.numberButton setTitle:numberWithci forState:UIControlStateNormal];
+
+    
+    NSString *timeWithS = [NSString stringWithFormat:@"%@\n%@",weight,@"(秒)"];
+
+    [header.timeButton setTitle:timeWithS forState:UIControlStateNormal];
+    
+    
+    
+    NSString *caloriesWithDaka = [NSString stringWithFormat:@"%@\n%@",weight,@"(大卡)"];
+
+    [header.caloriesButton setTitle:caloriesWithDaka forState:UIControlStateNormal];
+    
+
     
     header.delegate = delegate;
     

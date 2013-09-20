@@ -40,7 +40,7 @@
     [self showBackgroundImage];
     
     [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
-     [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(clickBack:)];
+     [self setNavigationRightButton:@"" imageName:@"Save.png" action:@selector(clickBack:)];
 //    [self setNavigationRightButton:@"保存" imageName:@"top_bar_commonButton.png" action:@selector(clickSaveButton)];
     
     [currentTextField setClearsOnBeginEditing:NO];

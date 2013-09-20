@@ -320,7 +320,8 @@
         
         if ([numberDataInfo.numberDataArray count] ==0) {
             
-        [self popupMessage:[NSString stringWithFormat: @"亲，你今天没有记录 %@ 数据哦!",selectedCatalog.name] title:selectedCatalog.name];
+//        [self popupMessage:[NSString stringWithFormat: @"亲，你今天没有记录 %@ 数据哦!",selectedCatalog.name] title:selectedCatalog.name];
+            
         }
         
         

@@ -100,10 +100,10 @@ extern NumberDataManager   *GlobalNumberDataManager()
 
 -(void)countAvgOfTheData{
     
-    self.numAvg =@"0";
-    self.weightAvg =@"0";
+    self.numAvg      =@"0";
+    self.weightAvg   =@"0";
     self.caloriesAvg =@"0";
-    self.timeAvg =@"0";
+    self.timeAvg     =@"0";
     
     float numSumFloat = [[self numAvg] integerValue];
     float weightSumFloat = [[self weightAvg] integerValue];
@@ -152,6 +152,10 @@ extern NumberDataManager   *GlobalNumberDataManager()
 
 }
 
+-(void)countCalorisOfTheData{
+
+
+}
 
 
 @end

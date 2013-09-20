@@ -120,11 +120,7 @@ enum errorCode {
     if ([_passwordTextField isEditing]) {
         [_passwordTextField resignFirstResponder];
     }
-
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-
     
-//	MCRelease(keyBoardController);
 }
 
 
@@ -133,17 +129,14 @@ enum errorCode {
 	[super viewWillAppear:animated];
     
     [self.navigationController.navigationBar setHidden:NO];
-
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-
-//	keyBoardController=[[UIKeyboardViewController alloc] initWithControllerDelegate:self];
-//	[keyBoardController addToolbarToKeyboard];
+    
 }
 
 
 - (void)clickBack:(id)sender
 {
-	[self.navigationController popViewControllerAnimated:NO];
+	[self.navigationController dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (IBAction)closeDoneEdit:(id)sender{
@@ -216,6 +209,9 @@ enum errorCode {
                                                 selector:@selector(showKeyBoard)
                                                 userInfo:nil
                                                  repeats:NO];
+    
+    //隐藏导航栏
+
 }
 
 -(void)showKeyBoard{

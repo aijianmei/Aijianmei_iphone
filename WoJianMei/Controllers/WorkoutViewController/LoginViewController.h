@@ -36,6 +36,8 @@
     
     UIButton *_sinaButton;
     UIButton *_aijianmeiButton;
+    UIButton *_loginButton;
+
     
 
     
@@ -48,6 +50,10 @@
 @property (nonatomic, retain)  IBOutlet UIButton *sinaButton;
 @property (nonatomic, retain) IBOutlet UIButton *qqButton;
 @property (nonatomic, retain) IBOutlet UIButton *aijianmeiButton;
+@property (nonatomic, retain) IBOutlet UIButton *loginButton;
+
+
+
 @property (nonatomic,assign) id <LoginViewDelegate> delegate;
 @property (nonatomic,retain) SignUpViewController*signUpViewController;
 

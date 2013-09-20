@@ -25,7 +25,7 @@
 #import "PublicMyselfViewController.h"
 #import "StatusView.h"
 #import "Reachability.h"
-#import "MobClick.h"
+//#import "MobClick.h"
 #import "NetworkDetector.h"
 #import "UserManager.h"
 
@@ -297,10 +297,10 @@
     }
 }
 
-- (void)initMobClick
-{
-    [MobClick setDelegate:self reportPolicy:BATCH];
-}
+//- (void)initMobClick
+//{
+//    [MobClick setDelegate:self reportPolicy:BATCH];
+//}
 
 
 
@@ -450,12 +450,12 @@
     
 
 
-    if ([DeviceDetection isOS5]){
-        [[UINavigationBar appearance] setBackgroundImage:[ImageManager navigationBgImage] forBarMetrics:UIBarMetricsDefault];
-    }else{
-        
-       GlobalSetNavBarBackground(@"topmenu_bg.png");
-    }
+//    if ([DeviceDetection isOS5]){
+//        [[UINavigationBar appearance] setBackgroundImage:[ImageManager navigationBgImage] forBarMetrics:UIBarMetricsDefault];
+//    }else{
+//        
+//       GlobalSetNavBarBackground(@"topmenu_bg.png");
+//    }
     
     
     UIImage *startImage = nil;
@@ -516,7 +516,7 @@
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
 	NSLog(@"applicationWillResignActive");
-	[MobClick appTerminated];
+//	[MobClick appTerminated];
     
 }
 

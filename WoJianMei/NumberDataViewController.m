@@ -90,10 +90,10 @@
     NSString *timeAndName = [NSString stringWithFormat:@"%@\n%@",_selectedCatalog.name,morelocationString];
     
     [self.header.nameButton setTitle:timeAndName forState:UIControlStateNormal];
-    [self.header.weightButton setTitle:@"重量(kg)" forState: UIControlStateNormal];
-    [self.header.numberButton setTitle:@"数量" forState: UIControlStateNormal];
-    [self.header.timeButton setTitle:@"时间(s)" forState: UIControlStateNormal];
-    [self.header.caloriesButton setTitle:@"卡路里（大卡）" forState: UIControlStateNormal];
+    [self.header.weightButton setTitle:@"重量\n(千克)" forState: UIControlStateNormal];
+    [self.header.numberButton setTitle:@"数量|组数\n     (次)" forState: UIControlStateNormal];
+    [self.header.timeButton setTitle:@"时间\n  (s)" forState: UIControlStateNormal];
+    [self.header.caloriesButton setTitle:@"卡路里\n (大卡)" forState: UIControlStateNormal];
 
     
     
@@ -518,11 +518,15 @@
 {
     NSLog(@"***Load objects count: %d", [objects count]);
     [self hideActivity];
-    [self popupHappyMessage:@"保存成功" title:nil];
+//    [self popupHappyMessage:@"保存成功" title:nil];
     
     //footer
     //renew the average value locally
     [[NumberDataManager defaultManager] countAvgOfTheData];
+    [[NumberDataManager defaultManager] countCalorisOfTheData];
+    
+    
+
     [self updateFooterAndHeader];
     
     

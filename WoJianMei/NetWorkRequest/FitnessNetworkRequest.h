@@ -20,4 +20,8 @@ typedef void (^FitnessNetworkResponseBlock)(NSDictionary* jsonDictionary, NSData
 + (CommonNetworkOutput *)queryVersion;
 + (CommonNetworkOutput *)login;
 
+
+
+
+
 @end

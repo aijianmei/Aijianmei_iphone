@@ -40,5 +40,6 @@
                   calories:(NSString*)calories;
 - (NumberData *)getNumberDataById:(NSString *)numberDataId;
 -(void)countAvgOfTheData;
+-(void)countCalorisOfTheData;
 
 @end

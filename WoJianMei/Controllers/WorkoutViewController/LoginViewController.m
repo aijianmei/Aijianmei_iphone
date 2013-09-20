@@ -58,6 +58,7 @@ enum SinaResultErrorCode
 @synthesize sinaButton =_sinaButton;
 @synthesize aijianmeiButton =_aijianmeiButton;
 @synthesize qqButton =_qqButton;
+@synthesize loginButton =_loginButton;
 
 
 
@@ -83,10 +84,23 @@ enum SinaResultErrorCode
     [_qqButton release];
     [_aijianmeiButton release];
     [_signUpViewController release];
+    [_loginButton release];
     
     [super dealloc];
 }
 
+
+-(void)viewDidUnload{
+    
+    [self setUsernameField:nil];
+    [self setPasswordField:nil];
+    [self setSinaButton:nil];
+    [self setQqButton:nil];
+    [self setAijianmeiButton:nil];
+    [self setLoginButton:nil];
+    [self setLoginButton:nil];
+    [super viewDidUnload];
+}
 
 -(void)tap{
 
@@ -192,6 +206,10 @@ enum SinaResultErrorCode
         
         
     }
+    
+    
+    [self.loginButton addTarget:self action:@selector(closeDoneEdit:) forControlEvents:UIControlEventTouchUpInside];
+    
 
 
     SignUpViewController *vc = [[SignUpViewController alloc]initWithNibName:@"SignUpViewController" bundle:nil];
@@ -285,18 +303,6 @@ enum SinaResultErrorCode
 }
 
 
-- (void)viewDidUnload {
-    
-    [self setUsernameField:nil];
-    [self setPasswordField :nil];
-    [self setSinaButton:nil];
-    [self setQqButton: nil];
-    [self setAijianmeiButton:nil];
-    [self setSignUpViewController:nil];
-    
-    [super viewDidUnload];
-}
-
 - (void)clickSinaWeiboButton:(UIButton *)sender {
     
         [self setUserType:@"sina"];
@@ -322,8 +328,11 @@ enum SinaResultErrorCode
 - (void)clickSignupAijianmeiAccount:(UIButton *)sender {
     
     self.userType =@"local";
-    [self.navigationController pushViewController:self.signUpViewController animated:YES];
-    [self.navigationController.navigationBar setHidden:NO];
+    
+    [self.navigationController presentViewController:self.signUpViewController animated:YES completion:^{}];
+    
+   
+     [self.navigationController.navigationBar setHidden:NO];
     
     _signUpViewController.snsId = [SinaWeiboManager sharedManager].sinaweibo.userID;
     _signUpViewController.userType =[self userType];

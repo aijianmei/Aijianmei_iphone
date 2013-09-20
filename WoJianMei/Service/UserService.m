@@ -62,6 +62,9 @@ static UserService* _defaultUserService = nil;
 }
 
 
+
+
+
 //更新版本的接口
 - (void)initVersionMap
 {
@@ -196,6 +199,24 @@ static UserService* _defaultUserService = nil;
         NSLog(@"query: %@", [url query]);
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            
+//            [objectManager loadObjectsAtResourcePath:@"" usingBlock:^(RKObjectLoader *loader)
+//            {
+//                loader.delegate = delegate;
+//                loader.targetObject = nil;
+//                loader.method = RKRequestMethodPOST;
+//                loader.onDidLoadResponse = ^(RKResponse *response) {
+//                    NSLog(@"Response did arrive");
+//                    NSLog(@"%@",response.bodyAsString);
+//                    
+//                    loader.params =queryParams;
+//                    
+//                };
+//            }];
+
+            
+
+            
             [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
         });
     });
@@ -250,7 +271,7 @@ static UserService* _defaultUserService = nil;
     [self initSinaResultMap];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        //http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_getuidbysnsid&snsid=1787966731
+    //http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_getuidbysnsid&snsid=1787966731
         
         NSMutableDictionary *queryParams = [[[NSMutableDictionary  alloc]init] autorelease];
         [queryParams setObject:@"aijianmei" forKey:@"aucode"];
