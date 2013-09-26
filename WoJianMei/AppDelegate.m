@@ -442,13 +442,13 @@
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
 
-    
-    if ([DeviceDetection isOS5]){
-        [[UINavigationBar appearance] setBackgroundImage:[ImageManager navigationBgImage] forBarMetrics:UIBarMetricsDefault];
-    }else{
-        
-       GlobalSetNavBarBackground(@"topmenu_bg.png");
-    }
+//    
+//    if ([DeviceDetection isOS5]){
+//        [[UINavigationBar appearance] setBackgroundImage:[ImageManager navigationBgImage] forBarMetrics:UIBarMetricsDefault];
+//    }else{
+//        
+//       GlobalSetNavBarBackground(@"topmenu_bg.png");
+//    }
     
     
     
@@ -459,6 +459,9 @@
     } else {
         startImage = [UIImage imageNamed:@"Default.png"];
     }
+    
+    
+    
     UIView* splashView = [[UIImageView alloc] initWithImage:startImage];
     splashView.frame = [self.window bounds];
     splashView.tag = SPLASH_VIEW_TAG;

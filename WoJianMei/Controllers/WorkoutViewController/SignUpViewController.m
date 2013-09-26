@@ -72,6 +72,10 @@ enum errorCode {
     
 }
 
+-(IBAction)cancleButton:(id)sender{
+
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{}];
+}
 
 
 #pragma - UIKeyboardViewController delegate methods
@@ -128,8 +132,7 @@ enum errorCode {
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
     
-    [self.navigationController.navigationBar setHidden:NO];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+  
     
 }
 
@@ -175,7 +178,6 @@ enum errorCode {
     [self showBackgroundImage];
     [self showBackgroundImage];
 
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 
 
     

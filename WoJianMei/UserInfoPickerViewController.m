@@ -443,8 +443,6 @@
         return;
     }
     
-    
-    
     //从年龄跳到结束
     if (!self.ageLabel.isHidden) {
         [self popupMessage:self.ageLabel.text

@@ -30,7 +30,7 @@
                     </connections>
                 </textField>
                 <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="53">
-                    <rect key="frame" x="27" y="493" width="270" height="44"/>
+                    <rect key="frame" x="25" y="497" width="270" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" title="还没有爱健美账号，注册一个！Go！">

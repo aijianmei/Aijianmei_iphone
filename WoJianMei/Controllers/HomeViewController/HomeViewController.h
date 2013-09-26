@@ -19,7 +19,7 @@
 @class SDSegmentedControl;
 
 
-@interface HomeViewController : PPTableViewController<iCarouselDataSource, iCarouselDelegate,RKObjectLoaderDelegate,LoginViewDelegate,SignUpViewControllerDelegate>
+@interface HomeViewController : PPTableViewController<iCarouselDataSource, iCarouselDelegate,RKObjectLoaderDelegate,LoginViewDelegate,SignUpViewControllerDelegate,UIScrollViewDelegate>
 
 {
     UIView                      *_myHeaderView;
