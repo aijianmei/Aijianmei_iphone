@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "SinaweiboManager.h"
 #import "PPViewController.h"
-#import <RestKit/RestKit.h>
 #import "SignUpViewController.h"
+#import "UserService.h"
 
 
 
@@ -22,7 +22,7 @@
 
 
 
-@interface LoginViewController : PPViewController<SinaWeiboDelegate, SinaWeiboRequestDelegate,RKObjectLoaderDelegate>
+@interface LoginViewController : PPViewController<SinaWeiboDelegate, SinaWeiboRequestDelegate,UserServiceDelegate>
 {
     SinaWeiboManager *_sinaweiboManager;
     

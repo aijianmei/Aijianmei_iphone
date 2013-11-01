@@ -8,14 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
-#import <RestKit/RestKit.h>
 #import "MyselfSettingCell.h"
 #import "TPKeyboardAvoidingTableView.h"
 
 
 
 @class User;
-@interface Myself_SettingsViewController: PPTableViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIAlertViewDelegate,RKObjectLoaderDelegate,MyselfSettingCellDelegate>
+@interface Myself_SettingsViewController: PPTableViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIAlertViewDelegate,MyselfSettingCellDelegate>
 
 {
 

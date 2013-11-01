@@ -264,7 +264,7 @@ enum SinaResultErrorCode
     [[UserService defaultService] loginUserWithEmail:_usernameField.text
                                             password:_passwordField.text
                                             usertype:self.userType
-                                            delegate:self];
+                                            viewController:self];
     
     
 }
@@ -312,7 +312,9 @@ enum SinaResultErrorCode
         if ([[SinaWeiboManager sharedManager].sinaweibo isAuthValid])
         {
             PPDebug(@"%@",[SinaWeiboManager sharedManager].sinaweibo.userID);
-           [[UserService defaultService]  fechUserIdBySnsId :[SinaWeiboManager sharedManager].sinaweibo.userID delegate:self];
+            
+           [[UserService defaultService]  fechUserIdBySnsId:SinaWeiboManager.sharedManager.sinaweibo.userID
+                                             viewController:self];
         }
     //授权不可用的时候,就获取新浪微博的id，再通过sns 的id 来获取用户信息；
         else if(![[SinaWeiboManager sharedManager].sinaweibo isAuthValid])
@@ -399,63 +401,30 @@ enum SinaResultErrorCode
       如果用户已经注册过，就直接返回用户的所有个人数据
       如果用户没有注册过，就让其注册；
     */
-     [[UserService defaultService] fechUserIdBySnsId:[userInfo objectForKey:@"id"]
-                                               delegate:self];
+     [[UserService defaultService] fechUserIdBySnsId:[userInfo objectForKey:@"id"] viewController:self];
    }
 }
 
 
 
 #pragma mark -
-#pragma mark - RKObjectLoaderDelegate
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    NSLog(@"Response code: %d", [response statusCode]);
-    [self showActivityWithText:@"成功登陆"];
-
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+#pragma mark - LoginBySinaWeiboAccountMethod
+-(void)loginBySinaWeiboAccount:(int)resultCode uid:(NSString *)uid
 {
-    NSLog(@"Error: %@", [error localizedDescription]);
-    [self hideActivity];
-    [self popupUnhappyMessage:@"网络不给力，请稍后再试！" title:nil];
-
-}
-
-- (void)requestDidStartLoad:(RKRequest *)request
-{
-    NSLog(@"Start load request...");
-    [self showActivityWithText:@"登陆中..."];
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
-{
-     NSLog(@"***Load objects count: %d", [objects count]);
-    NSObject *result =[objects objectAtIndex:0];
-    [self hideActivity];
-    
     //通过新浪微博或者腾讯微博等第三方账号登陆
-    if ([result isMemberOfClass:[SinaResult class]])
-    {
-        SinaResult *result =[objects objectAtIndex:0];
-        int errocde = [result.errorCode integerValue];
-        
-        if (SINA_ERROR_SUCCESS ==errocde)
+        int errorCode = resultCode;
+        if (SINA_ERROR_SUCCESS ==errorCode)
         {
-            PPDebug(@"登陆成功,用户ID:%@",result.uid);
             
-            SinaResult *result =[objects objectAtIndex:0];
-            if ([result.uid integerValue] !=0 && [result.errorCode integerValue] ==0)
+            if ([uid integerValue] !=0 && errorCode ==0)
             {
                 
-                
-             NSDictionary *sinaUserInfo =[[UserService defaultService] getSinaUserInfoWithUid:[SinaWeiboManager sharedManager].sinaweibo.userID];
-             NSString *profileImageUrl = [sinaUserInfo objectForKey:@"profileImageUrl"];
-                
+                NSDictionary *sinaUserInfo =[[UserService defaultService] getSinaUserInfoWithUid:[SinaWeiboManager sharedManager].sinaweibo.userID];
+                NSString *profileImageUrl = [sinaUserInfo objectForKey:@"profileImageUrl"];
                 
                 
                 //正式创建新用户
-                User *user = [UserManager createUserWithUserId:result.uid
+                User *user = [UserManager createUserWithUserId:uid
                                                     sinaUserId:[SinaWeiboManager sharedManager].sinaweibo.userID
                                                       qqUserId:nil
                                                       userType:self.userType
@@ -466,24 +435,21 @@ enum SinaResultErrorCode
                                                       password:nil];
                 
                 [[UserService defaultService] setUser:user];
-
                 
-                [self dismissViewControllerAnimated:YES completion:^
-                 {
+                
                      // 调用该方法进入用户资料界面
-                     if (delegate &&[delegate respondsToSelector:@selector(pushToMyselfViewController:)])
+                if (delegate &&[delegate respondsToSelector:@selector(pushToMyselfViewController:)])
                      {
                          [delegate pushToMyselfViewController:self];
                      }
-                 }];
             }
-        }
+    }
         
         
-        if (NO_Such_User ==errocde)
+        if (NO_Such_User ==errorCode)
         {
             PPDebug(@"该用户不存在,用户要开始创建新的账户");
-                        
+            
             _signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;
             _signUpViewController.userType =[self userType];
             
@@ -491,56 +457,53 @@ enum SinaResultErrorCode
             
         }
     
-    }
+    
+}
 
-    if ([result isMemberOfClass:[Result class]])
+- (void)didUserLogined:(int)resultCode uid:(NSString *)uid
+{
+    //使用用户登陆接口，只是需要填写 邮箱以及密码
+    /*
+     10002 用户密码错误
+     */
+    
+    int errorCode = 0;
+    errorCode = resultCode;
+    if (WRONG_NAME_PASSWORD == errorCode)
     {
-        //使用用户登陆接口，只是需要填写 邮箱以及密码
-        /*
-         10002 用户密码错误
-         */
-        Result *result =[objects objectAtIndex:0];
-        int errocde = [result.errorCode integerValue];
-        
-        
-        if (WRONG_NAME_PASSWORD == errocde)
+        [UIUtils alert:@"用户名或密码 错误"];
+        [_usernameField becomeFirstResponder];
+        [_passwordField becomeFirstResponder];
+        return;
+    }
+    
+    if (ERROR_SUCCESS ==errorCode)
+    {
+        PPDebug(@"本地登陆成功,用户ID:%@",uid);
+        if ([uid integerValue] !=0 && errorCode  ==0)
         {
-            [UIUtils alert:@"用户名或密码 错误"];
-//            [_usernameField becomeFirstResponder];
-//            [_passwordField becomeFirstResponder];
-            return;
-        }
-        
-        if (ERROR_SUCCESS ==errocde)
-        {
-            PPDebug(@"本地登陆成功,用户ID:%@",result.uid);
+            //正式创建新用户
+            User *user = [UserManager createUserWithUserId:uid
+                                                sinaUserId:nil
+                                                  qqUserId:nil
+                                                  userType:self.userType
+                                                      name:nil
+                                           profileImageUrl:nil
+                                                    gender:nil
+                                                     email:nil
+                                                  password:nil];
             
-            Result *result =[objects objectAtIndex:0];
-            if ([result.uid integerValue] !=0 && [result.errorCode integerValue] ==0)
-                {
-                    //正式创建新用户
-                    User *user = [UserManager createUserWithUserId:result.uid
-                                                        sinaUserId:nil
-                                                          qqUserId:nil
-                                                          userType:self.userType
-                                                              name:nil
-                                                   profileImageUrl:nil
-                                                            gender:nil
-                                                             email:nil
-                                                          password:nil];
-                    
-                    [[UserService defaultService] setUser:user];
-                    [self dismissViewControllerAnimated:YES completion:^
-                    {
-                        // 调用该方法进入用户资料界面
-                        if (delegate &&[delegate respondsToSelector:@selector(pushToMyselfViewController:)])
-                        {
-                            [delegate pushToMyselfViewController:self];
-                        }
-                    }];
-                }            
-               }
-         }
+            [[UserService defaultService] setUser:user];
+            
+            [self dismissViewControllerAnimated:YES completion:^{}];
+            
+            // 调用该方法进入用户资料界面
+            if (delegate &&[delegate respondsToSelector:@selector(pushToMyselfViewController:)])
+            {
+                [delegate pushToMyselfViewController:self];
+            }
+        }
+    }
 }
 
 

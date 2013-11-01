@@ -186,16 +186,10 @@ typedef enum CONTENT_TYPE {
     
     if (user.uid) {
     
-        
-//    PublicMyselfViewController *publicStatusViewController = [[AppDelegate getAppDelegate] initPublicStatusViewController];
-//    [self.navigationController pushViewController:publicStatusViewController animated:YES];
-        
+
         Myself_SettingsViewController *vc =[[Myself_SettingsViewController alloc]initWithNibName:@"Myself_SettingsViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
 
-        
-        
-        
     }else{
         
         [[AppDelegate  getAppDelegate] showLoginView];
@@ -404,6 +398,7 @@ typedef enum CONTENT_TYPE {
         _start=0;
         
     }
+    
     [[ArticleService sharedService] findArticleWithAucode:aucode
                                                     auact:auact
                                                  listtype:listtype
@@ -413,7 +408,7 @@ typedef enum CONTENT_TYPE {
                                                    offset:offset
                                                    cateid:cateid
                                                       uid:uid
-                                                 delegate:self];
+                                           viewController:self];
     
 }
 
@@ -500,7 +495,7 @@ typedef enum CONTENT_TYPE {
                                                    offset:offset
                                                    cateid:cateid
                                                       uid:uid
-                                                 delegate:self];
+                                           viewController:self];
     
     
 }
@@ -661,28 +656,8 @@ typedef enum CONTENT_TYPE {
 
 
 #pragma mark -
-#pragma mark - RKObjectLoaderDelegate
-
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    NSLog(@"Response code: %d", [response statusCode]);
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
-{
-    NSLog(@"Error: %@", [error localizedDescription]);
-    [self hideActivity];
-    [self popupUnhappyMessage:@"网络不给力，请稍后再试！" title:nil];
-
-}
-
-- (void)requestDidStartLoad:(RKRequest *)request
-{
-    NSLog(@"Start load request...");
-    [self showActivityWithText:@"加载中..."];
-}
-
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+#pragma mark - DidGetArticleArrayMethods
+-(void)didGetArticleArray:(NSArray *)objects
 {
 
     NSLog(@"***Load objects count: %d", [objects count]);
@@ -697,6 +672,7 @@ typedef enum CONTENT_TYPE {
         [self popupUnhappyMessage:@"亲！没有更多数据了！" title:nil];
         return;
     }
+    
 
     
     if ([[objects objectAtIndex:0] isMemberOfClass:[Article class]])

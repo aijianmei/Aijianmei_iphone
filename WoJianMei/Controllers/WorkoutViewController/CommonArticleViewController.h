@@ -18,10 +18,11 @@
 #import "SinaWeiboManager.h"
 #import "MoreViewController.h"
 #import "CommentViewController.h"
+#import "ArticleService.h"
 
 
 
-@interface CommonArticleViewController : PPViewController<RKObjectLoaderDelegate,SinaWeiboRequestDelegate,REComposeViewControllerDelegate,UIGestureRecognizerDelegate,SinaWeiboDelegate,UIActionSheetDelegate,UIScrollViewDelegate,UIWebViewDelegate>
+@interface CommonArticleViewController : PPViewController<RKObjectLoaderDelegate,SinaWeiboRequestDelegate,REComposeViewControllerDelegate,UIGestureRecognizerDelegate,SinaWeiboDelegate,UIActionSheetDelegate,UIScrollViewDelegate,UIWebViewDelegate,ArticleServiceDelegate>
 
 {
     UIButton *_likeButton;

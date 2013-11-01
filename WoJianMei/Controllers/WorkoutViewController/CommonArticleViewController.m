@@ -167,7 +167,17 @@ enum actionsheetNumber{
     
 
     
-    [[ArticleService sharedService] findArticleInfoWithAucode:@"aijianmei" auact:@"au_getinformationdetail" articleId:_article._id channel:@" " channelType:@" " uid:@"" delegate:self];
+    
+    [[ArticleService sharedService] findArticleInfoWithAucode:@"aijianmei"
+                                                        auact:@"au_getinformationdetail"
+                                                    articleId:_article._id
+                                                      channel:@"1"
+                                                  channelType:@""
+                                                          uid:@""
+                                               viewController:self];
+
+    
+     
     
     
 }
@@ -907,22 +917,14 @@ enum actionsheetNumber{
 
 
 #pragma mark -
-#pragma mark - RKObjectLoaderDelegate
+#pragma mark - DidGetArticleDetailMethod
 
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    NSLog(@"Response code: %d", [response statusCode]);
+
+-(void)didGetArticleDetail:(ArticleDetail *)articleDetail{
+
+
 }
 
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
-{
-    NSLog(@"Error: %@", [error localizedDescription]);
-}
-
-- (void)requestDidStartLoad:(RKRequest *)request
-{
-    NSLog(@"Start load request...");
-    [self showActivityWithText:@"数据加载中..."];
-}
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {

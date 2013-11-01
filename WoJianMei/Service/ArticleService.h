@@ -7,9 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <RestKit/RestKit.h>
+#import "CommonService.h"
 
-@interface ArticleService : NSObject
+@class ArticleDetail;
+
+
+
+@protocol ArticleServiceDelegate <NSObject>
+
+@optional
+-(void)didGetArticleArray:(NSArray *)objects;
+-(void)didGetArticleDetail:(ArticleDetail *)articleDetail;
+
+
+
+
+@end
+
+@class PPViewController;
+
+@interface ArticleService : CommonService
 
 +(ArticleService*)sharedService;
 
@@ -22,7 +39,7 @@
                         offset:(int)offset
                        cateid:(NSString*)cateid
                           uid:(NSString*)uid
-                     delegate:(id<RKObjectLoaderDelegate>)delegate;
+               viewController:(PPViewController<ArticleServiceDelegate>* )viewController;
 
 - (void)findArticleInfoWithAucode:(NSString*)aucode
                             auact:(NSString*)auact
@@ -30,6 +47,7 @@
                           channel:(NSString*)channel
                       channelType:(NSString*)channelType
                               uid:(NSString*)uid
-                         delegate:(id<RKObjectLoaderDelegate>)delegate;
+                   viewController:(PPViewController<ArticleServiceDelegate>* )viewController;
+
 
 @end

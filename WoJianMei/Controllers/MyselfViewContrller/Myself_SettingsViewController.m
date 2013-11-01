@@ -100,15 +100,15 @@
 
 -(void)clickSaveButton:(id)sender{
 
-    didSave =YES;
-
-    if (self.avtarImage) {
-        [[UserService defaultService] postObject:nil withImage:self.avtarImage delegate:self];
-
-    }else{
-        [[UserService defaultService] postObject:nil withImage:nil delegate:self];
-    
-    }
+//    didSave =YES;
+//
+//    if (self.avtarImage) {
+//        [[UserService defaultService] postObject:nil withImage:self.avtarImage delegate:self];
+//
+//    }else{
+//        [[UserService defaultService] postObject:nil withImage:nil delegate:self];
+//    
+//    }
     //数据加载中的时候，按钮是禁止的再被点击的;
     [self.navigationItem.rightBarButtonItem setEnabled:NO];
 }
@@ -216,9 +216,10 @@
             
         }else{
             //本地数据不存在，用户第一次登陆的时候，就往服务器拉数据
-            [[UserService defaultService] fecthUserInfoWithUid:uid
-                                                      delegate:self];
-            [self showActivityWithText:@"数据更新中..."];
+//            [[UserService defaultService] fecthUserInfoWithUid:uid
+//    self];
+            
+            
         }
 }
 
@@ -774,80 +775,59 @@
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
 
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    NSLog(@"Response code: %d", [response statusCode]);
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
-{
-    NSLog(@"Error: %@", [error localizedDescription]);
-    [self hideActivity];
-    [self popupUnhappyMessage:@"网络不给力，请稍后再试！" title:nil];
-
-}
-
-- (void)requestDidStartLoad:(RKRequest *)request
-{
-    NSLog(@"Start load request...");
-    [self.navigationItem.leftBarButtonItem setEnabled:NO];
-    [self showActivityWithText:@"连接服务器..."];
-
-
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects;
-{
-    [self hideActivity];
-    if ([[objects objectAtIndex:0] isMemberOfClass:[User class]])
-    {
-        PPDebug(@"%@",[objects objectAtIndex:0]);
-        if ([[objects objectAtIndex:0] isMemberOfClass:[User class]]) {
-            User *user = [objects objectAtIndex:0];
-            NSLog(@"******%@******",user.uid);
-            NSLog(@"******%@******",user.profileImageUrl);
-            
-            
-            
-            NSString *bmi = [self reCaluclateBMIValueByWeight:user.weight height:user.height];
-            
-    
-            //设置为当前用户
-            [[UserService defaultService] setUser:user];
-            
-            [user setBMIValue:bmi];
-            
-            
-            
-            
-            NSDictionary *sinaUserInfo =[[UserService defaultService] getSinaUserInfoWithUid:[SinaWeiboManager sharedManager].sinaweibo.userID];
-            NSString *profileImageUrl = [sinaUserInfo objectForKey:@"profileImageUrl"];
-            
-            
-            if ([user.profileImageUrl length] == 0 && profileImageUrl) {
-                [self.user setProfileImageUrl:profileImageUrl];
-            }
-            
-            if ([user.city length] == 0 ) {
-                [self.user setCity:@"您的所在地"];
-            }
-            
-            if ([user.description length]) {
-                [self.user setDescription:@"您的心情短语！"];
-            }
-            
-            self.user = user;
-            //保存用户
-            [[UserService defaultService] storeUserInfoByUid:user.uid];
-            
-            
-            [self updateUI];
-            
-            [self.navigationItem.rightBarButtonItem setEnabled:YES];
-            [self.navigationItem.leftBarButtonItem setEnabled:YES];
-            [self popupHappyMessage:@"保存成功" title:nil];
-        }
-    }
-}
+//- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects;
+//{
+//    [self hideActivity];
+//    if ([[objects objectAtIndex:0] isMemberOfClass:[User class]])
+//    {
+//        PPDebug(@"%@",[objects objectAtIndex:0]);
+//        if ([[objects objectAtIndex:0] isMemberOfClass:[User class]]) {
+//            User *user = [objects objectAtIndex:0];
+//            NSLog(@"******%@******",user.uid);
+//            NSLog(@"******%@******",user.profileImageUrl);
+//            
+//            
+//            
+//            NSString *bmi = [self reCaluclateBMIValueByWeight:user.weight height:user.height];
+//            
+//    
+//            //设置为当前用户
+//            [[UserService defaultService] setUser:user];
+//            
+//            [user setBMIValue:bmi];
+//            
+//            
+//            
+//            
+//            NSDictionary *sinaUserInfo =[[UserService defaultService] getSinaUserInfoWithUid:[SinaWeiboManager sharedManager].sinaweibo.userID];
+//            NSString *profileImageUrl = [sinaUserInfo objectForKey:@"profileImageUrl"];
+//            
+//            
+//            if ([user.profileImageUrl length] == 0 && profileImageUrl) {
+//                [self.user setProfileImageUrl:profileImageUrl];
+//            }
+//            
+//            if ([user.city length] == 0 ) {
+//                [self.user setCity:@"您的所在地"];
+//            }
+//            
+//            if ([user.description length]) {
+//                [self.user setDescription:@"您的心情短语！"];
+//            }
+//            
+//            self.user = user;
+//            //保存用户
+//            [[UserService defaultService] storeUserInfoByUid:user.uid];
+//            
+//            
+//            [self updateUI];
+//            
+//            [self.navigationItem.rightBarButtonItem setEnabled:YES];
+//            [self.navigationItem.leftBarButtonItem setEnabled:YES];
+//            [self popupHappyMessage:@"保存成功" title:nil];
+//        }
+//    }
+//}
 
 
 @end

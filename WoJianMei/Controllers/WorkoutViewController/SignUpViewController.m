@@ -74,7 +74,7 @@ enum errorCode {
 
 -(IBAction)cancleButton:(id)sender{
 
-    [self.navigationController dismissViewControllerAnimated:YES completion:^{}];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 
@@ -139,7 +139,8 @@ enum errorCode {
 
 - (void)clickBack:(id)sender
 {
-	[self.navigationController dismissViewControllerAnimated:YES completion:^{}];
+	[self.navigationController dismissViewControllerAnimated:YES
+                                                  completion:^{}];
 }
 
 - (IBAction)closeDoneEdit:(id)sender{

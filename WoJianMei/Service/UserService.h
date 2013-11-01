@@ -10,17 +10,23 @@
 #import "CommonService.h"
 #import "SinaWeiboManager.h"
 #import "User.h"
-#import <RestKit/RestKit.h>
+#import "PPViewController.h"
 
-@protocol UserServiceDelegate <NSObject,RKObjectLoaderDelegate>
+@protocol UserServiceDelegate <NSObject>
+
+
 
 
 @optional
-
 - (void)queryVersionFinish:(NSString*)version
                dataVersion:(NSString*)dataVersion
                      title:(NSString *)title
                    content:(NSString *)content;
+
+-(void)loginBySinaWeiboAccount:(int)resultCode uid:(NSString *)uid;
+- (void)didUserLogined:(int)resultCode uid:(NSString *)uid;
+
+
 @end
 
 @interface UserService : CommonService
@@ -33,6 +39,17 @@
 @property(nonatomic, retain) User *user;
 
 + (UserService*)defaultService;
+
+
+
+//不再使用restkit，后的登陆接口
+- (void)registerUser:(NSString*)email
+            password:(NSString*)password
+      viewController:(PPViewController<UserServiceDelegate>*)viewController;
+
+
+
+
 
 - (void)userRegisterByToken:(NSString*)token;
 
@@ -49,49 +66,59 @@
                           height:(NSString*)height
                          keyword:(NSString*)keyword
                         province:(NSString*)province
-                            city:(NSString*)city
-                        delegate:(id<RKObjectLoaderDelegate>)delegate;
+                            city:(NSString*)city;
+//                        delegate:(id<RKObjectLoaderDelegate>)delegate;
+
+
+
 
 ///获取新版本
-- (void)queryVersionWithDelegate:(id<RKObjectLoaderDelegate>)delegate;
+//- (void)queryVersionWithDelegate:(id<RKObjectLoaderDelegate>)delegate;
 
 
 -(void)sendLikeWithContentId:(NSString *)contentId
                      userId :(NSString *)uid
                  channeltype:(NSString *)channeltype
-                    delegate:(id<RKObjectLoaderDelegate>)delegate;
+//                    delegate:(id<RKObjectLoaderDelegate>)delegate
+;
 
 
 
 //意见反馈
 - (void)postFeedbackWithUid:(NSString*)uid
                     content:(NSString*)content
-                   delegate:(id<RKObjectLoaderDelegate>)delegate;
+//                   delegate:(id<RKObjectLoaderDelegate>)delegate
+;
 
 
 // 用户登录，只是使用邮箱密码马上可以登录
 - (void)loginUserWithEmail:(NSString*)email
                      password:(NSString*)password
                      usertype:(NSString*)usertype
-                     delegate:(id<RKObjectLoaderDelegate>)delegate;
+            viewController:(PPViewController<UserServiceDelegate>*)viewController;
+
 
 //通过用户的id 来获取用户的信息;
 - (void)fecthUserInfoWithUid:(NSString*)uid
-                    delegate:(id<RKObjectLoaderDelegate>)delegate;
+//                    delegate:(id<RKObjectLoaderDelegate>)delegate
+;
 
 //通过用户的sns id 来获取用户的id
 - (void)fechUserIdBySnsId:(NSString*)snsID
-                 delegate:(id<RKObjectLoaderDelegate>)delegate;
+           viewController:(PPViewController<UserServiceDelegate>*)viewController;
 
 //新浪微博用户数据注册
 - (void)registerUserWithSinaUserInfo:(NSDictionary*)userInfo
-                            delegate:(id<RKObjectLoaderDelegate>)delegate;
+//                            delegate:(id<RKObjectLoaderDelegate>)delegate
+;
 
 //本地注册
 - (void)loginUserWithUseremail:(NSString*)email
                       password:(NSString*)password
                       usertype:(NSString*)usertype
-                      delegate:(id<RKObjectLoaderDelegate>)delegate;
+//                      delegate:(id<RKObjectLoaderDelegate>)delegate
+
+;
 
 
 
@@ -99,10 +126,12 @@
                                     email:(NSString*)email
                                  password:(NSString*)password
                                  usertype:(NSString*)usertype
-                                 delegate:(id<RKObjectLoaderDelegate>)delegate;
+//                                 delegate:(id<RKObjectLoaderDelegate>)delegate
+;
 //获取新浪用户信息
 - (void)fetchSinaUserInfo:(NSString*)uid
-                    delegate:(id<SinaWeiboRequestDelegate>)delegate;
+//                    delegate:(id<SinaWeiboRequestDelegate>)delegate
+;
 
 //保存新浪用户信息
 - (void)storeSinaUserInfo:(NSDictionary*)userInfo;
@@ -112,8 +141,8 @@
 
 
 - (void)fechUserBySnsId:(NSString*)snsID
-               userType:(NSString*)userType
-               delegate:(id<RKObjectLoaderDelegate>)delegate;
+               userType:(NSString*)userType;
+//               delegate:(id<RKObjectLoaderDelegate>)delegate;
 
 //保存用户信息到本地
 -(void)storeUserInfoByUid:(NSString *)uid;
@@ -138,7 +167,9 @@
 + (void)followWeixinUser:(NSString *)userData;
 
 
--(void)postObject:(NSObject *)object withImage:(UIImage *)image delegate:(id<RKObjectLoaderDelegate>)delegate;
+-(void)postObject:(NSObject *)object withImage:(UIImage *)image
+//delegate:(id<RKObjectLoaderDelegate>)delegate
+;
 
 //是否绑定邮箱
 - (BOOL)hasBindEmail;

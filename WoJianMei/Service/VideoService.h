@@ -17,7 +17,10 @@
 /*  http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=getcommentbyid&id=117&channeltype=1
 */
 
--(void)loadVideCommentByVideId:(NSString *)VideoId channelType:(NSString *)channleType  delegate:(id<RKObjectLoaderDelegate>)delegate;
+-(void)loadVideCommentByVideId:(NSString *)VideoId
+                   channelType:(NSString *)channleType
+//                      delegate:(id<RKObjectLoaderDelegate>)delegate
+;
 
 
 @end

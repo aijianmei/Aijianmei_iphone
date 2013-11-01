@@ -24,6 +24,19 @@
 @property (nonatomic, retain)NSString *channel;
 
 
+-(id)initWithid:(NSString *)articleId
+    category_id:(NSString *)category_id
+          title:(NSString *)title
+          brief:(NSString *)brief
+    create_time:(NSString *)create_time
+            img:(NSString *)img
+          click:(NSString *)click
+   commentCount:(NSString *)commentCount
+    channeltype:(NSString *)channeltype
+            url:(NSString *)url
+       shareurl:(NSString *)shareurl
+        channel:(NSString *)channel;
+
 - (NSString*)timestamp;
 
 

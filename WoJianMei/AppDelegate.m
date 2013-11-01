@@ -25,9 +25,12 @@
 #import "PublicMyselfViewController.h"
 #import "StatusView.h"
 #import "Reachability.h"
-//#import "MobClick.h"
 #import "NetworkDetector.h"
 #import "UserManager.h"
+
+
+
+
 
 
 
@@ -61,6 +64,38 @@
 
 #define SPLASH_VIEW_TAG 20130909
 
+
+
+
+
+
+
+
+NSString* GlobalGetServerURL()
+{
+    
+//#ifdef DEBUG
+//    //    return @"http://192.168.1.13:8001/api/i?";
+//    //    return @"http://58.215.160.100:8002/api/i?";
+//    
+//    //    return @"http://58.215.160.100:8888/api/i?";
+//    //    return @"http://192.168.1.5:8000/api/i?";
+//    
+//    NSUserDefaults* def = [NSUserDefaults standardUserDefaults];
+//    NSString* str = [def objectForKey:@"api_server"];
+//    if (str && str.length > 5) {
+//        PPDebug(@"<for test!!!!!!> get api server %@", str);
+//        return [NSString stringWithFormat:@"http://%@/api/i?",str];
+//    }
+//#endif
+//    
+//    return [ConfigManager getAPIServerURL];
+    
+    
+    
+     return @"http://42.96.132.109/wapapi/ios.php?";
+    
+}
 
 
 
@@ -346,18 +381,7 @@
     [statTracker startWithAppId:BaiduMobileAnlyizeAppId];//设置您在mtj网站上添加的app的appkey
     
     
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
-    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
   
-  //RestKit initialized...
-    RKURL *baseURL = [RKURL URLWithBaseURLString:kServerUrl];
-    RKObjectManager *objectManager = [RKObjectManager objectManagerWithBaseURL:baseURL];
-    objectManager.acceptMIMEType = RKMIMETypeJSON;
-    objectManager.serializationMIMEType = RKMIMETypeJSON;
-    objectManager.client.baseURL = baseURL;
-    [objectManager.client setTimeoutInterval:30];
-    objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
-
 
     
 //    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -595,7 +619,7 @@
 
 -(void)updateApplication{
     
-    [[UserService defaultService] queryVersionWithDelegate:self];
+//    [[UserService defaultService] queryVersionWithDelegate:self];
 }
 
 
@@ -664,7 +688,7 @@
     [[SinaWeiboManager sharedManager] storeAuthData];
     
     //微博登陆后获取用户数据
-    [[UserService defaultService] fetchSinaUserInfo:sinaweibo.userID delegate:self];
+//    [[UserService defaultService] fetchSinaUserInfo:sinaweibo.userID delegate:self];
 }
 
 - (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo

@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <RestKit/RestKit.h>
 
 
-@interface WorkoutDataService : NSObject<RKObjectLoaderDelegate>
+@interface WorkoutDataService : NSObject
 
 
 - (id)init;
@@ -41,7 +40,8 @@
  */
 //下载锻炼目录列表数据,总目录
 -(void)loadWorkoutCatalogListWithUid:(NSString *)uid
-                            delegate:(id<RKObjectLoaderDelegate>)delegate;
+//                            delegate:(id<RKObjectLoaderDelegate>)delegate
+;
 
 
 
@@ -58,7 +58,8 @@
 //更新锻炼目录列表数据,每个用户点击选择之后都会进行更新
 -(void)postWorkoutCatalogListWithUserId:(NSString *)uid
                                actionId:(NSString *)actionId
-                               delegate:(id<RKObjectLoaderDelegate>)delegate;
+//                               delegate:(id<RKObjectLoaderDelegate>)delegate
+;
 
 
 
@@ -116,7 +117,9 @@
  
  */
 //下载锻炼个人目录数据是个人的目录,每个人的目录都不一定相同
--(void)loadUserSpecificWorkoutDataWithUserId:(NSString *)uid                    delegate:(id<RKObjectLoaderDelegate>)delegate;
+-(void)loadUserSpecificWorkoutDataWithUserId:(NSString *)uid
+//                                    delegate:(id<RKObjectLoaderDelegate>)delegate
+;
 
 
 
@@ -165,7 +168,8 @@
 //下载锻炼个人单个锻炼的数据，包括组数、次数、时间、重量、卡路里
 -(void)loadUserWorkoutDataWithUserId:(NSString *)uid
                            workoutId:(NSString *)workoutId
-                            delegate:(id<RKObjectLoaderDelegate>)delegate;
+//                            delegate:(id<RKObjectLoaderDelegate>)delegate
+;
 
 
 
@@ -178,7 +182,8 @@
 //下载锻炼个人单个锻炼的数据，包括组数、次数、时间、重量、卡路里
 -(void)postUserWorkoutDataWithUserId:(NSString *)uid
                            workoutId:(NSString *)workoutId
-                            delegate:(id<RKObjectLoaderDelegate>)delegate;
+//                            delegate:(id<RKObjectLoaderDelegate>)delegate
+;
 
     
 

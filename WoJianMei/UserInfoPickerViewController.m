@@ -472,7 +472,7 @@
 }
 
 -(void)clickDone{
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 -(void)initUI{

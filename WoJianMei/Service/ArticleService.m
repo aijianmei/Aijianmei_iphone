@@ -9,31 +9,19 @@
 #import "ArticleService.h"
 #import "Article.h"
 #import "ArticleDetail.h"
+#import "PPViewController.h"
+#import "CommonService.h"
+#import "FitnessNetworkRequest.h"
+#import "FitnessNetworkConstants.h"
 
-////数据
-#define Aucode       @"aucode"
-#define Auact        @"auact"
-#define Listtype     @"listtype"
-#define Category     @"category"
-#define Type         @"type"
-#define Start         @"start"
-#define Offset        @"offset"
-#define Cateid       @"cateid"
-#define Uid          @"uid"
+
+
+
+
+
 
 ////文章Article 类
 
-//@"id", @"_id",
-//@"title", @"_title",
-//@"brief", @"_brief",
-//@"create_time", @"_create_time",
-//@"img", @"_img",
-//@"clikc", @"_click",
-//@"channel", @"_channel",
-//@"commentCount",@"_commentCount",
-//@"channeltype",@"_channeltype",
-//@"url", @"url",
-//@"shareurl",@"shareurl",
 
 #define id
 
@@ -62,45 +50,45 @@
 
 - (void)initArticleMap
 {
-    //获取在AppDelegate中生成的第一个RKObjectManager对象
-    RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    //将json映射到class
-    RKObjectMapping *articleMapping =[RKObjectMapping mappingForClass:[Article class]];
-    [articleMapping mapKeyPathsToAttributes:
-     @"category_id",@"category_id",
-     @"id", @"_id",
-     @"title", @"_title",
-     @"brief", @"_brief",
-     @"create_time", @"_create_time",
-     @"img", @"_img",
-     @"click", @"_click",
-     @"commentCount",@"_commentCount",
-     @"channeltype",@"_channeltype",
-     @"url", @"url",
-     @"shareurl",@"shareurl",
-     @"channel", @"_channel",nil];
-    
-    [objectManager.mappingProvider setMapping:articleMapping forKeyPath:@""];
+//    //获取在AppDelegate中生成的第一个RKObjectManager对象
+//    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+//    //将json映射到class
+//    RKObjectMapping *articleMapping =[RKObjectMapping mappingForClass:[Article class]];
+//    [articleMapping mapKeyPathsToAttributes:
+//     @"category_id",@"category_id",
+//     @"id", @"_id",
+//     @"title", @"_title",
+//     @"brief", @"_brief",
+//     @"create_time", @"_create_time",
+//     @"img", @"_img",
+//     @"click", @"_click",
+//     @"commentCount",@"_commentCount",
+//     @"channeltype",@"_channeltype",
+//     @"url", @"url",
+//     @"shareurl",@"shareurl",
+//     @"channel", @"_channel",nil];
+//    
+//    [objectManager.mappingProvider setMapping:articleMapping forKeyPath:@""];
 }
 
 - (void)initArticleDetailMap
 {
-    //获取在AppDelegate中生成的第一个RKObjectManager对象
-    RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    //将json映射到class
-    RKObjectMapping *articleMapping =[RKObjectMapping mappingForClass:[ArticleDetail class]];
-    [articleMapping mapKeyPathsToAttributes:
-     @"id", @"_id",
-     @"title", @"_title",
-     @"author", @"_author",
-     @"content", @"content",
-     @"brief", @"_brief",
-     @"create_time", @"_create_time",
-     @"img", @"_img",
-     @"like", @"like",
-     @"clikc", @"_click",
-     @"commentsCount",@"_commentsCount",nil];
-    [objectManager.mappingProvider setMapping:articleMapping forKeyPath:@""];
+//    //获取在AppDelegate中生成的第一个RKObjectManager对象
+//    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+//    //将json映射到class
+//    RKObjectMapping *articleMapping =[RKObjectMapping mappingForClass:[ArticleDetail class]];
+//    [articleMapping mapKeyPathsToAttributes:
+//     @"id", @"_id",
+//     @"title", @"_title",
+//     @"author", @"_author",
+//     @"content", @"content",
+//     @"brief", @"_brief",
+//     @"create_time", @"_create_time",
+//     @"img", @"_img",
+//     @"like", @"like",
+//     @"clikc", @"_click",
+//     @"commentsCount",@"_commentsCount",nil];
+//    [objectManager.mappingProvider setMapping:articleMapping forKeyPath:@""];
 }
 
 - (void)findArticleWithAucode:(NSString*)aucode
@@ -112,36 +100,96 @@
                        offset:(int)offset
                        cateid:(NSString*)cateid
                           uid:(NSString*)uid
-                     delegate:(id<RKObjectLoaderDelegate>)delegate
+               viewController:(PPViewController<ArticleServiceDelegate>* )viewController
 {
-    [self initArticleMap];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        //传入api接口参数,例如：
-        //aucode=aijianmei&auact=au_getinformationlist&listtype=2&category=train&type=hot&page=1&punms=5
-        
-        NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:aucode,Aucode,
-                                          auact,Auact,
-                                       listtype,Listtype,
-                                       category,Category,
-                                           type,Type,
-                                           [NSString stringWithFormat:@"%d",start ],Start,
-                                          [NSString stringWithFormat:@"%d",offset ],Offset,
-                                         cateid,Cateid,                                            uid,Uid, nil];
-        
-        RKObjectManager *objectManager = [RKObjectManager sharedManager];
-        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
-        
-        NSLog(@"url: %@", [url absoluteString]);
-        NSLog(@"resourcePath: %@", [url resourcePath]);
-        NSLog(@"query: %@", [url query]);
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
-        });
-    });
+    [viewController showActivityWithText:@"连接中..."];
+    
+    dispatch_async(workingQueue, ^{
+    
+        CommonNetworkOutput* output = nil;
+        output = [FitnessNetworkRequest findArticleWithAucode:SERVER_URL
+                                                       aucode:aucode
+                                                        auact:auact
+                                                     listtype:listtype
+                                                     category:category
+                                                         type:type
+                                                        start:start
+                                                       offset:offset
+                                                       cateid:cateid
+                                                          uid:uid];
 
-}
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [viewController hideActivity];
+            NSMutableArray    *array;
+            NSDictionary *dictionary;
+            NSMutableArray *newArray;
+            
+            
+            if (output.resultCode == ERROR_SUCCESS) {
+                
+
+                array =  (NSMutableArray *)output.jsonDataArray;
+                newArray  =[NSMutableArray arrayWithObject:array];
+                [newArray removeAllObjects];
+
+                int i = 0;
+                for (i = 0;  i <= [array count] -1; i++) {
+                    
+                dictionary = [array objectAtIndex:i];
+
+                Article *article = [[Article alloc] initWithid:[dictionary objectForKey:@"id"]
+                                                   category_id:[dictionary objectForKey:@"channel"]
+                                                         title:[dictionary objectForKey:@"title"]
+                                                         brief:[dictionary objectForKey:@"brief"]
+                                                   create_time:[dictionary objectForKey:@"create_time"]
+                                                           img:[dictionary objectForKey:@"img"]
+                                                         click:[dictionary objectForKey:@"click"]
+                                                  commentCount:[dictionary objectForKey:@"commentCount"]
+                                                   channeltype:[dictionary objectForKey:@"channeltype"]
+                                                           url:[dictionary objectForKey:@"url"]
+                                                      shareurl:[dictionary objectForKey:@"shareurl"]
+                                                       channel:nil];
+                    
+                    [newArray addObject:article];
+//                    [article release];
+                }
+                
+            }
+            
+            else if (output.resultCode == ERROR_NETWORK) {
+                [viewController popupUnhappyMessage:NSLS(@"kSystemFailure") title:nil];
+                
+                
+            }
+            else if (output.resultCode == ERROR_EMAIL_VERIFIED) {
+                // @"对不起，用户注册无法完成，请联系我们的技术支持以便解决问题"
+                [viewController popupUnhappyMessage:NSLS(@"用户名或密码错误") title:nil];
+                
+            }
+            
+            else {
+                // @"对不起，注册失败，请稍候再试"
+                //                [viewController popupUnhappyMessage:NSLS(@"kGeneralFailure") title:nil];
+                
+            }
+            
+        
+            if ([viewController respondsToSelector:@selector(didGetArticleArray:)]){
+                
+                
+                [viewController didGetArticleArray:newArray];
+
+            }
+
+        });
+});
+    
+    
+    
+    
+ }
 
 - (void)findArticleInfoWithAucode:(NSString*)aucode
                             auact:(NSString*)auact
@@ -149,70 +197,65 @@
                         channel:(NSString*)channel
                      channelType:(NSString*)channelType
                           uid:(NSString*)uid
-                     delegate:(id<RKObjectLoaderDelegate>)delegate
-{
-    [self initArticleDetailMap];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        //传入api接口参数,例如：
-        //aucode=aijianmei&auact=au_getinformationlist&listtype=2&category=train&type=hot&page=1&punms=5
-        
-        NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:aucode,@"aucode",
-                                     auact, @"auact",
-                                     _id,@"id",
-                                     channel,@"channel",
-                                     channelType,@"channelType",
-                                     uid, @"uid", nil];
-        
-        RKObjectManager *objectManager = [RKObjectManager sharedManager];
-        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
-        
-        NSLog(@"url: %@", [url absoluteString]);
-        NSLog(@"resourcePath: %@", [url resourcePath]);
-        NSLog(@"query: %@", [url query]);
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
-        });
-    });
-    
-}
+                   viewController:(PPViewController<ArticleServiceDelegate>* )viewController
 
-- (void)findArticle:(id<RKObjectLoaderDelegate>)delegate
+
 {
-    //映射所需类对象
-    [self initArticleMap];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    [viewController showActivityWithText:@"连接中..."];
+    dispatch_async(workingQueue, ^{
         
-        NSString *aucode= @"aijianmei";
-        NSString *auact = @"au_getinformationlist";
-        NSString *listtype = @"2";
-        NSString *category = @"train";
-        NSString *type = @"hot";
-        NSString *page = @"1";
-        NSString *pnums = @"10";
-        NSString *cateid = @"1";
-        NSString *uid = @"265";
-                
-        NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:aucode, @"aucode",
-                                         auact,  @"auact",
-                                         listtype, @"listtype",
-                                         category, @"category",
-                                         type, @"type",
-                                         page, @"page",
-                                         pnums, @"pnums",
-                                         cateid,@"cateid",
-                                         uid, @"uid", nil];
-        RKObjectManager *objectManager = [RKObjectManager sharedManager];
-        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
-        
-        NSLog(@"url: %@", [url absoluteString]);
-        NSLog(@"resourcePath: %@", [url resourcePath]);
-        NSLog(@"query: %@", [url query]);
+        CommonNetworkOutput* output = nil;
+        output = [FitnessNetworkRequest findArticleInfoWithAucode:SERVER_URL
+                                                       aucode:aucode
+                                                        auact:auact
+                                                    articleId:_id
+                                                      channel:channel
+                                                  channelType:channelType
+                                                          uid:uid];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
+            
+            [viewController hideActivity];
+            
+            NSDictionary *dictionary;
+            NSMutableArray *array;
+
+            
+            if (output.resultCode == ERROR_SUCCESS) {
+                
+                
+                array =  (NSMutableArray *)output.jsonDataArray;
+
+                
+                
+            }
+            
+            else if (output.resultCode == ERROR_NETWORK) {
+                [viewController popupUnhappyMessage:NSLS(@"kSystemFailure") title:nil];
+                
+                
+            }
+            else if (output.resultCode == ERROR_EMAIL_VERIFIED) {
+                // @"对不起，用户注册无法完成，请联系我们的技术支持以便解决问题"
+                [viewController popupUnhappyMessage:NSLS(@"用户名或密码错误") title:nil];
+                
+            }
+            
+            else {
+                // @"对不起，注册失败，请稍候再试"
+                //                [viewController popupUnhappyMessage:NSLS(@"kGeneralFailure") title:nil];
+                
+            }
+            
+            
+            if ([viewController respondsToSelector:@selector(didGetArticleDetail:)]){
+                
+                
+                [viewController didGetArticleDetail:nil];
+                
+            }
+            
         });
     });
 }

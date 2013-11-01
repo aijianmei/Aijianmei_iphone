@@ -50,6 +50,39 @@
 }
 
 
+-(id)initWithid:(NSString *)articleId
+      category_id:(NSString *)category_id
+            title:(NSString *)title
+            brief:(NSString *)brief
+      create_time:(NSString *)create_time
+              img:(NSString *)img
+            click:(NSString *)click
+     commentCount:(NSString *)commentCount
+      channeltype:(NSString *)channeltype
+              url:(NSString *)url
+         shareurl:(NSString *)shareurl
+        channel:(NSString *)channel{
+
+    self = [super init];
+    if (self) {
+        //customrize
+        
+        self._id = articleId;
+        self.category_id = category_id;
+        self.title = title;
+        self.brief = brief;
+        self.create_time = create_time;
+        self.img  =img;
+        self.click = click;
+        self.commentCount = commentCount;
+        self.channeltype = self.channeltype;
+        self.url =url;
+        self.shareurl =shareurl;
+        self.channel =channel;
+    }
+    return self;
+}
+
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {

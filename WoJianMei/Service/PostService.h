@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <RestKit/RestKit.h>
 #import "PostStatus.h"
 
 
@@ -24,20 +23,23 @@
 -(void)postStatusWithUid:(NSString *)uid
                    image:(UIImage *)image
                  content:(NSString*)content
-                delegate:(id<RKObjectLoaderDelegate>)delegate;
+//                delegate:(id<RKObjectLoaderDelegate>)delegate
+;
 //获取分享
 -(void)loadStatusWithUid:(int)uid
                targetUid:(int)targetUid
                 gymGroup:(int)gymGroup
                    start:(int)start
                   offSet:(int)offSet
-                delegate:(id<RKObjectLoaderDelegate>)delegate;
+//                delegate:(id<RKObjectLoaderDelegate>)delegate
+;
 
 
 //点击喜欢
 -(void)postLikeWithUid:(int)uid
               StatusId:(int)StatusId
-              delegate:(id<RKObjectLoaderDelegate>)delegate;
+//              delegate:(id<RKObjectLoaderDelegate>)delegate
+;
 
 //点击评论
 /*
@@ -48,7 +50,8 @@ channeltype 1表示文章 2表示视频
           targetContentId:(NSString*)targetContentId
                   comment:(NSString*)comment
               channelType:(NSString*)channleType
-                 delegate:(id<RKObjectLoaderDelegate>)delegate;
+//                 delegate:(id<RKObjectLoaderDelegate>)delegate
+;
 
 
 

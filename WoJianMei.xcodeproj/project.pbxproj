@@ -577,7 +577,6 @@
 		4AD66B1415CFCEEC000F7CB8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD66B1315CFCEEC000F7CB8 /* MapKit.framework */; };
 		4AD9FC3816A114AF00BA766D /* SinaUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9FC3716A114AF00BA766D /* SinaUserCell.m */; };
 		4ADA285417EB305100721A87 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADA285317EB305100721A87 /* AudioToolbox.framework */; };
-		4ADA285717EB307900721A87 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADA284917EB20AB00721A87 /* libRestKit.a */; };
 		4ADCFE19169D614600A3E979 /* MakeFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFDFC169D614600A3E979 /* MakeFriendsViewController.m */; };
 		4ADCFE1A169D614600A3E979 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFDFF169D614600A3E979 /* AboutViewController.m */; };
 		4ADCFE1C169D614600A3E979 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE03169D614600A3E979 /* MoreViewController.m */; };
@@ -660,51 +659,6 @@
 		C6E027CE177862E100A7BA90 /* ArticleService.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E027CB177862E100A7BA90 /* ArticleService.m */; };
 		C6E027CF177862E100A7BA90 /* UserService.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E027CD177862E100A7BA90 /* UserService.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		4ADA284817EB20AB00721A87 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4ADA284017EB20AA00721A87 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160D1614564E810060A5C5;
-			remoteInfo = RestKit;
-		};
-		4ADA284A17EB20AB00721A87 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4ADA284017EB20AA00721A87 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160D2614564E820060A5C5;
-			remoteInfo = RestKitTests;
-		};
-		4ADA284C17EB20AB00721A87 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4ADA284017EB20AA00721A87 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160E62145651060060A5C5;
-			remoteInfo = RestKitFramework;
-		};
-		4ADA284E17EB20AB00721A87 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4ADA284017EB20AA00721A87 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160E78145651060060A5C5;
-			remoteInfo = RestKitFrameworkTests;
-		};
-		4ADA285017EB20AB00721A87 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4ADA284017EB20AA00721A87 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 259C301615128079003066A2;
-			remoteInfo = RestKitResources;
-		};
-		4ADA285A17EB31C700721A87 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4ADA284017EB20AA00721A87 /* RestKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 25160D1514564E810060A5C5;
-			remoteInfo = RestKit;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4A01494A17E3FD9700D16E28 /* hkdjm_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hkdjm_1.png; sourceTree = "<group>"; };
@@ -1625,7 +1579,6 @@
 		4AD66B1315CFCEEC000F7CB8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4AD9FC3616A114AE00BA766D /* SinaUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaUserCell.h; sourceTree = "<group>"; };
 		4AD9FC3716A114AF00BA766D /* SinaUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaUserCell.m; sourceTree = "<group>"; };
-		4ADA284017EB20AA00721A87 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		4ADA285217EB305000721A87 /* WoJianMei.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WoJianMei.entitlements; sourceTree = "<group>"; };
 		4ADA285317EB305100721A87 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4ADCFDFB169D614600A3E979 /* MakeFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeFriendsViewController.h; sourceTree = "<group>"; };
@@ -1765,7 +1718,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4ADA285717EB307900721A87 /* libRestKit.a in Frameworks */,
 				4A03270417AA89580016F6C5 /* CoreTelephony.framework in Frameworks */,
 				4A03270217AA89170016F6C5 /* libstdc++.dylib in Frameworks */,
 				4A03270017AA89030016F6C5 /* libz.1.2.5.dylib in Frameworks */,
@@ -2587,7 +2539,6 @@
 		4A27AEC41777F474009978C5 /* ThirdParty_Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4ADA284017EB20AA00721A87 /* RestKit.xcodeproj */,
 				4A5F3FAB17912B3200CD701A /* ShareSDK */,
 			);
 			path = ThirdParty_Frameworks;
@@ -3544,13 +3495,6 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		4A5AB70817AB47AB009B230F /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
 		4A5F3FAB17912B3200CD701A /* ShareSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -3769,18 +3713,6 @@
 				4A8BCAD917AFE2D30019CBB1 /* WorkoutManager */,
 			);
 			name = Entries;
-			sourceTree = "<group>";
-		};
-		4ADA284117EB20AA00721A87 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4ADA284917EB20AB00721A87 /* libRestKit.a */,
-				4ADA284B17EB20AB00721A87 /* RestKitTests.octest */,
-				4ADA284D17EB20AB00721A87 /* RestKit.framework */,
-				4ADA284F17EB20AB00721A87 /* RestKitFrameworkTests.octest */,
-				4ADA285117EB20AB00721A87 /* RestKitResources.bundle */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		4ADCFDFA169D614600A3E979 /* MakeFriendsViewcontrller */ = {
@@ -4094,11 +4026,10 @@
 			children = (
 				4A1B25CF17EEAB6500FC6194 /* Images.xcassets */,
 				4ADA285217EB305000721A87 /* WoJianMei.entitlements */,
-				4A5AB70817AB47AB009B230F /* View */,
 				4A27AE4F1777F006009978C5 /* Model */,
+				4A27ADFA1777EED1009978C5 /* NetWorkRequest */,
 				4A27AE1E1777EF7A009978C5 /* Service */,
 				4A58805215C52B89005F8415 /* Controllers */,
-				4A27ADFA1777EED1009978C5 /* NetWorkRequest */,
 			);
 			path = WoJianMei;
 			sourceTree = "<group>";
@@ -4223,7 +4154,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				4ADA285B17EB31C700721A87 /* PBXTargetDependency */,
 			);
 			name = WoJianMei;
 			productName = WoJianMei;
@@ -4262,56 +4192,12 @@
 			mainGroup = 4AE394A215C2DD9C00D06C61;
 			productRefGroup = 4AE394AE15C2DD9C00D06C61 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 4ADA284117EB20AA00721A87 /* Products */;
-					ProjectRef = 4ADA284017EB20AA00721A87 /* RestKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				4AE394AC15C2DD9C00D06C61 /* WoJianMei */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		4ADA284917EB20AB00721A87 /* libRestKit.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRestKit.a;
-			remoteRef = 4ADA284817EB20AB00721A87 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4ADA284B17EB20AB00721A87 /* RestKitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RestKitTests.octest;
-			remoteRef = 4ADA284A17EB20AB00721A87 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4ADA284D17EB20AB00721A87 /* RestKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RestKit.framework;
-			remoteRef = 4ADA284C17EB20AB00721A87 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4ADA284F17EB20AB00721A87 /* RestKitFrameworkTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RestKitFrameworkTests.octest;
-			remoteRef = 4ADA284E17EB20AB00721A87 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4ADA285117EB20AB00721A87 /* RestKitResources.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RestKitResources.bundle;
-			remoteRef = 4ADA285017EB20AB00721A87 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4AE394AB15C2DD9C00D06C61 /* Resources */ = {
@@ -4951,14 +4837,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		4ADA285B17EB31C700721A87 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = RestKit;
-			targetProxy = 4ADA285A17EB31C700721A87 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		4A03274B17AA8CB70016F6C5 /* NSDate+TKCategory.strings */ = {
 			isa = PBXVariantGroup;
@@ -5101,7 +4979,7 @@
 				GCC_PREFIX_HEADER = "WoJianMei/WoJianMei-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "WoJianMei/WoJianMei-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/MobClick\"",
@@ -5142,7 +5020,7 @@
 				GCC_PREFIX_HEADER = "WoJianMei/WoJianMei-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "WoJianMei/WoJianMei-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/MobClick\"",
