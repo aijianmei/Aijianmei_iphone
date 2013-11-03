@@ -153,7 +153,7 @@
                                                        channel:nil];
                     
                     [newArray addObject:article];
-//                    [article release];
+                    [article release];
                 }
                 
             }
@@ -178,18 +178,13 @@
         
             if ([viewController respondsToSelector:@selector(didGetArticleArray:)]){
                 
-                
                 [viewController didGetArticleArray:newArray];
 
             }
-
         });
-});
+    });
     
-    
-    
-    
- }
+}
 
 - (void)findArticleInfoWithAucode:(NSString*)aucode
                             auact:(NSString*)auact
