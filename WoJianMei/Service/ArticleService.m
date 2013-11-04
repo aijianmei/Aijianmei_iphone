@@ -136,9 +136,7 @@
 
                 int i = 0;
                 for (i = 0;  i <= [array count] -1; i++) {
-                    
                 dictionary = [array objectAtIndex:i];
-
                 Article *article = [[Article alloc] initWithid:[dictionary objectForKey:@"id"]
                                                    category_id:[dictionary objectForKey:@"channel"]
                                                          title:[dictionary objectForKey:@"title"]
@@ -199,15 +197,14 @@
     
     [viewController showActivityWithText:@"连接中..."];
     dispatch_async(workingQueue, ^{
-        
         CommonNetworkOutput* output = nil;
         output = [FitnessNetworkRequest findArticleInfoWithAucode:SERVER_URL
-                                                       aucode:aucode
-                                                        auact:auact
-                                                    articleId:_id
-                                                      channel:channel
-                                                  channelType:channelType
-                                                          uid:uid];
+                                                           aucode:aucode
+                                                            auact:auact
+                                                        articleId:_id
+                                                          channel:channel
+                                                      channelType:channelType
+                                                              uid:uid];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -215,13 +212,25 @@
             
             NSDictionary *dictionary;
             NSMutableArray *array;
+            ArticleDetail *artileDetail;
 
             
             if (output.resultCode == ERROR_SUCCESS) {
-                
-                
                 array =  (NSMutableArray *)output.jsonDataArray;
-
+                dictionary = [array objectAtIndex:0];
+                artileDetail = [[ArticleDetail alloc] initWithid:[dictionary objectForKey:@"id"]
+                                                          wapimg:[dictionary objectForKey:@"wapimg"]
+                                                      wapcontent:[dictionary objectForKey:@"wapcontent"]
+                                                           title:[dictionary objectForKey:@"title"]
+                                                   CommentsCount:[dictionary objectForKey:@"CommentsCount"]
+                                                           click:[dictionary objectForKey:@"click"]
+                                                             img:[dictionary objectForKey:@"img"]
+                                                      creat_time:[dictionary objectForKey:@"create_time"]
+                                                          author:[dictionary objectForKey:@"author"]
+                                                         content:[dictionary objectForKey:@"content"]
+                                                            like:[dictionary objectForKey:@"like"]
+                                                    CommentsList:[dictionary objectForKey:@"CommentsList"]
+                                                           brief:[dictionary objectForKey:@"brief"]];
                 
                 
             }
@@ -245,9 +254,8 @@
             
             
             if ([viewController respondsToSelector:@selector(didGetArticleDetail:)]){
-                
-                
-                [viewController didGetArticleDetail:nil];
+
+                [viewController didGetArticleDetail:artileDetail];
                 
             }
             

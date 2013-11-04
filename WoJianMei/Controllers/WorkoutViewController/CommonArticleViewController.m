@@ -919,53 +919,39 @@ enum actionsheetNumber{
 #pragma mark -
 #pragma mark - DidGetArticleDetailMethod
 
-
 -(void)didGetArticleDetail:(ArticleDetail *)articleDetail{
 
-
-}
-
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
-{
-    NSLog(@"***Load objects count: %d", [objects count]);
-    [self hideActivity];
-
-    NSObject *object = [objects objectAtIndex:0];
-
-    if ([object isMemberOfClass:[ArticleDetail class]])
-    {
-        
-        ArticleDetail *article  = [objects objectAtIndex:0];
-        [self setArticleDetail:article];
+        [self setArticleDetail:articleDetail];
         [self loadWebViewWithHtmlString:self.articleDetail.content];
         [_webview sizeToFit];
         [_webview scalesPageToFit];
         [_webview setUserInteractionEnabled:YES];
         [_webview setFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height + 100)];
         [_webview.scrollView setContentSize:CGSizeMake(320, 400)];
-        
-        
-    }
     
+       [self updateUserInterface];
+
     
-    if ([object isMemberOfClass:[Result class]])
-    {
-        
+}
+
+-(void)didPostLike:(Result *)result
+
+{
       //  10001 参数错误 缺少uid用户id或者缺少文章id
       //  10002 用户已经赞过
       //  0 提交成功
-        
-        
+    
         enum ErrorCode
         {
             ERROR_SUCCESS =0,
             LACK_OF_PARAMATERS =10001,
             REPEATED_POST =10002
         };
+    
+    
         
-        Result *result = [objects objectAtIndex:0];
-        NSInteger errorCode =  [[result errorCode] integerValue];
+        Result *newResult = result;
+        NSInteger errorCode =  [[newResult errorCode] integerValue];
         
         
         if (errorCode ==ERROR_SUCCESS)
@@ -980,8 +966,6 @@ enum actionsheetNumber{
         if (errorCode ==REPEATED_POST) {
             [self popupUnhappyMessage:@"已经赞了该文章,不可以贪心哦！" title:nil];
         }
-}
-    [self updateUserInterface];
 }
 
 

@@ -10,7 +10,7 @@
 #import "PPTableViewController.h"
 #import "SMPageControl.h"
 #import "iCarousel.h"
-#import <RestKit/RestKit.h>
+#import "ArticleService.h"
 #import "LoginViewController.h"
 #import "SignUpViewController.h"
 
@@ -19,7 +19,7 @@
 @class SDSegmentedControl;
 
 
-@interface NutriViewController : PPTableViewController<iCarouselDataSource, iCarouselDelegate,RKObjectLoaderDelegate,LoginViewDelegate,SignUpViewControllerDelegate>
+@interface NutriViewController : PPTableViewController<iCarouselDataSource, iCarouselDelegate,ArticleServiceDelegate,LoginViewDelegate,SignUpViewControllerDelegate>
 
 {
     UIView                      *_myHeaderView;

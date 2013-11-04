@@ -24,7 +24,6 @@
 #import "PostStatusRespose.h"
 #import "PostStatus.h"
 #import "PostService.h"
-#import "PostLikeResponse.h"
 #import "UserInfoPickerViewController.h"
 #import "HHNetDataCacheManager.h"
 #import "ZJTStatusBarAlertWindow.h"
@@ -863,45 +862,45 @@ enum ErrorCode
     
     
     
-    
-    
-    if ([object isMemberOfClass:[PostLikeResponse class]]){
-        PostLikeResponse *postLikeResponse =  [objects objectAtIndex:0];
-        PPDebug(@"*****Post Like Successfully!!!*****");
-        PPDebug(@"*****%@*****",postLikeResponse.uid);
-        PPDebug(@"*****%@*****",postLikeResponse.errorCode);
-        [self.navigationItem.rightBarButtonItem setEnabled:YES];
-        
-        //  10001 参数错误 缺少uid用户id或者缺少文章id
-        //  10002 用户已经赞过
-        //  0 提交成功
-        
-        
-        NSInteger errorCode =  [[postLikeResponse errorCode] integerValue];
-        
-        if (errorCode ==ERROR_SUCCESS)
-        {
-            [self popupHappyMessage:@"赞!" title:nil];
-            
-            //局部修改数据
-            PostStatus *status = [self.dataList objectAtIndex:likeIndexPath.row];
-            int like = 1;
-            NSString *newLike = [NSString stringWithFormat:@"%d",like + [status.like integerValue]];
-            [status setLike:newLike];
-            
-            //局部更新界面
-            NSIndexPath *indexPath  = [NSIndexPath indexPathForRow:likeIndexPath.row inSection:0];
-            NSArray     *arr        = [NSArray arrayWithObject:indexPath];
-            [self.dataTableView reloadRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationFade];
-        
-        }
-        if (errorCode ==LACK_OF_PARAMATERS) {
-            [self popupHappyMessage:@"未知错误" title:nil];
-        }
-        if (errorCode ==REPEATED_POST) {
-            [self popupUnhappyMessage:@"已赞,不可以贪心哦！" title:nil];
-        }
-    }
+//    
+//    
+//    if ([object isMemberOfClass:[PostLikeResponse class]]){
+//        PostLikeResponse *postLikeResponse =  [objects objectAtIndex:0];
+//        PPDebug(@"*****Post Like Successfully!!!*****");
+//        PPDebug(@"*****%@*****",postLikeResponse.uid);
+//        PPDebug(@"*****%@*****",postLikeResponse.errorCode);
+//        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+//        
+//        //  10001 参数错误 缺少uid用户id或者缺少文章id
+//        //  10002 用户已经赞过
+//        //  0 提交成功
+//        
+//        
+//        NSInteger errorCode =  [[postLikeResponse errorCode] integerValue];
+//        
+//        if (errorCode ==ERROR_SUCCESS)
+//        {
+//            [self popupHappyMessage:@"赞!" title:nil];
+//            
+//            //局部修改数据
+//            PostStatus *status = [self.dataList objectAtIndex:likeIndexPath.row];
+//            int like = 1;
+//            NSString *newLike = [NSString stringWithFormat:@"%d",like + [status.like integerValue]];
+//            [status setLike:newLike];
+//            
+//            //局部更新界面
+//            NSIndexPath *indexPath  = [NSIndexPath indexPathForRow:likeIndexPath.row inSection:0];
+//            NSArray     *arr        = [NSArray arrayWithObject:indexPath];
+//            [self.dataTableView reloadRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationFade];
+//        
+//        }
+//        if (errorCode ==LACK_OF_PARAMATERS) {
+//            [self popupHappyMessage:@"未知错误" title:nil];
+//        }
+//        if (errorCode ==REPEATED_POST) {
+//            [self popupUnhappyMessage:@"已赞,不可以贪心哦！" title:nil];
+//        }
+//    }
 }
 
 

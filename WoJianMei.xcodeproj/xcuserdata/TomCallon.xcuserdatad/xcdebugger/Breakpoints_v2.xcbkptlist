@@ -84,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WoJianMei/Service/ArticleService.m"
-            timestampString = "404989591.875268"
+            timestampString = "405262797.87075"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "-findArticleInfoWithAucode:auact:articleId:channel:channelType:uid:viewController:"
             landmarkType = "5">
          </BreakpointContent>

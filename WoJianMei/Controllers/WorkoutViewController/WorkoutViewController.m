@@ -385,6 +385,7 @@ typedef enum CONTENT_TYPE {
 //        _start=0;
 //        
 //    }
+    
     [[ArticleService sharedService] findArticleWithAucode:aucode
                                                     auact:auact
                                                  listtype:listtype
@@ -394,8 +395,7 @@ typedef enum CONTENT_TYPE {
                                                    offset:offset
                                                    cateid:cateid
                                                       uid:uid
-                                                 delegate:self];
-    
+                                           viewController:self];
     
     
 }
@@ -485,7 +485,7 @@ typedef enum CONTENT_TYPE {
                                                    offset:offset
                                                    cateid:cateid
                                                       uid:uid
-                                                 delegate:self];
+                                           viewController:self];
     
     
 }
@@ -631,33 +631,15 @@ typedef enum CONTENT_TYPE {
 }
 
 #pragma mark -
-#pragma mark - RKObjectLoaderDelegate
-
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    NSLog(@"Response code: %d", [response statusCode]);
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
-{
-    NSLog(@"Error: %@", [error localizedDescription]);
-    [self hideActivity];
-    [self popupUnhappyMessage:@"网络不给力，请稍后再试！" title:nil];
-
-}
-
-- (void)requestDidStartLoad:(RKRequest *)request
-{
-    NSLog(@"Start load request...");
-    [self showActivityWithText:@"加载中..."];
-}
-
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+#pragma mark - DidGetArticleArrayMethods
+-(void)didGetArticleArray:(NSArray *)objects
 {
     
     NSLog(@"***Load objects count: %d", [objects count]);
 	[self dataSourceDidFinishLoadingNewData];
     [self dataSourceDidFinishLoadingMoreData];
+    
+    [self hideActivity];
     
     
     if ([objects count] <=0) {
@@ -665,19 +647,35 @@ typedef enum CONTENT_TYPE {
         [self popupUnhappyMessage:@"亲！没有更多数据了！" title:nil];
         return;
     }
-
     
-    if (_start == 0) {
-        self.dataList = objects;
-    } else {
-        NSMutableArray *newDataList = [NSMutableArray arrayWithArray:self.dataList];
-        [newDataList addObjectsFromArray:objects];
-        self.dataList = newDataList;
+    
+    
+    if ([[objects objectAtIndex:0] isMemberOfClass:[Article class]])
+    {
+        
+        if (_start == 0) {
+            
+            
+            self.dataList = objects;
+            
+            //          [self writeArticleListToDisk:objects];
+            
+            
+        } else {
+            NSMutableArray *newDataList = [NSMutableArray arrayWithArray:self.dataList];
+            [newDataList addObjectsFromArray:objects];
+            self.dataList = newDataList;
+            
+            //           [self writeArticleListToDisk:newDataList];
+            
+        }
+        _start += [objects count];
+        
+        
+        
+        //更新用户界面；
+        [self updateUserInterface];
     }
-    _start += [objects count];
-    
-    //更新用户界面；
-    [self updateUserInterface];
     
 }
 

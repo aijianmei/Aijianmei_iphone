@@ -367,6 +367,7 @@ typedef enum CONTENT_TYPE {
         _start=0;
     }
 
+
     [[ArticleService sharedService] findArticleWithAucode:aucode
                                                     auact:auact
                                                  listtype:listtype
@@ -376,7 +377,7 @@ typedef enum CONTENT_TYPE {
                                                    offset:offset
                                                    cateid:cateid
                                                       uid:uid
-                                                 delegate:self];
+                                           viewController:self];
     
 }
 
@@ -607,27 +608,8 @@ typedef enum CONTENT_TYPE {
 
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
+-(void)didGetArticleArray:(NSArray *)objects
 
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    NSLog(@"Response code: %d", [response statusCode]);
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
-{
-    NSLog(@"Error: %@", [error localizedDescription]);
-    [self hideActivity];
-    [self popupUnhappyMessage:@"网络不给力，请稍后再试！" title:nil];
-}
-
-- (void)requestDidStartLoad:(RKRequest *)request
-{
-    NSLog(@"Start load request...");
-    [self showActivityWithText:@"加载中..."];
-
-}
-
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     
     NSLog(@"***Load objects count: %d", [objects count]);

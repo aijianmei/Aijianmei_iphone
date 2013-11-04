@@ -9,7 +9,6 @@
 #import "PostService.h"
 #import "PostStatus.h"
 #import "PostStatusRespose.h"
-#import "PostLikeResponse.h"
 #import "Result.h"
 
 @protocol PostServiceDelegate <NSObject>

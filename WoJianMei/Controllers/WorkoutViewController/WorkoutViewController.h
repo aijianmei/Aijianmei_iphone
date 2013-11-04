@@ -10,16 +10,17 @@
 #import "PPTableViewController.h"
 #import "SMPageControl.h"
 #import "iCarousel.h"
-#import <RestKit/RestKit.h>
 #import "LoginViewController.h"
 #import "SignUpViewController.h"
+#import "ArticleService.h"
+
 
 
 @class AppDelegate;
 @class SDSegmentedControl;
 
 
-@interface WorkoutViewController : PPTableViewController<iCarouselDataSource, iCarouselDelegate,RKObjectLoaderDelegate,LoginViewDelegate,SignUpViewControllerDelegate>
+@interface WorkoutViewController : PPTableViewController<iCarouselDataSource, iCarouselDelegate,ArticleServiceDelegate,LoginViewDelegate,SignUpViewControllerDelegate>
 
 {
     UIView                      *_myHeaderView;

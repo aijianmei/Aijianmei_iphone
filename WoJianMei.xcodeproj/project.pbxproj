@@ -304,6 +304,8 @@
 		4A27AEC11777F303009978C5 /* AGSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AEBB1777F303009978C5 /* AGSectionView.m */; };
 		4A27AEC21777F303009978C5 /* AJMLeftSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AEBD1777F303009978C5 /* AJMLeftSideViewController.m */; };
 		4A27AEC31777F303009978C5 /* AJMViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AEBF1777F303009978C5 /* AJMViewDelegate.m */; };
+		4A28447F1827DE9D006A38EA /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A28447E1827DE9D006A38EA /* PassKit.framework */; };
+		4A2844811827DEA0006A38EA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A2844801827DEA0006A38EA /* GameKit.framework */; };
 		4A2BCF801793919D006ED7C8 /* VersionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2BCF7F1793919D006ED7C8 /* VersionInfo.m */; };
 		4A2C9ECF17BE67010079DEEA /* update_5_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2C9ECA17BE67010079DEEA /* update_5_btn@2x.png */; };
 		4A2C9ED117BE67010079DEEA /* update_6_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2C9ECC17BE67010079DEEA /* update_6_btn@2x.png */; };
@@ -323,7 +325,6 @@
 		4A34EB3417B36C2F00196793 /* PublicMyselfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34EB3217B36C2D00196793 /* PublicMyselfViewController.m */; };
 		4A34EB3717B36F6D00196793 /* MyselfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A34EB3617B36F6D00196793 /* MyselfViewController.xib */; };
 		4A34EB3917B36F7A00196793 /* PublicMyselfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A34EB3817B36F7900196793 /* PublicMyselfViewController.xib */; };
-		4A34EB3C17B37B2300196793 /* PostLikeResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34EB3B17B37B2300196793 /* PostLikeResponse.m */; };
 		4A34EB4017B3CDA500196793 /* UserInfoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34EB3E17B3CDA500196793 /* UserInfoPickerViewController.m */; };
 		4A34EB4117B3CDA500196793 /* UserInfoPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A34EB3F17B3CDA500196793 /* UserInfoPickerViewController.xib */; };
 		4A3AB807175060F20045729D /* WorkOutProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB806175060F10045729D /* WorkOutProcessViewController.m */; };
@@ -1091,6 +1092,8 @@
 		4A27AEBD1777F303009978C5 /* AJMLeftSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJMLeftSideViewController.m; sourceTree = "<group>"; };
 		4A27AEBE1777F303009978C5 /* AJMViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJMViewDelegate.h; sourceTree = "<group>"; };
 		4A27AEBF1777F303009978C5 /* AJMViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJMViewDelegate.m; sourceTree = "<group>"; };
+		4A28447E1827DE9D006A38EA /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
+		4A2844801827DEA0006A38EA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		4A2BCF7E1793919D006ED7C8 /* VersionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionInfo.h; sourceTree = "<group>"; };
 		4A2BCF7F1793919D006ED7C8 /* VersionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionInfo.m; sourceTree = "<group>"; };
 		4A2C9ECA17BE67010079DEEA /* update_5_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "update_5_btn@2x.png"; sourceTree = "<group>"; };
@@ -1118,8 +1121,6 @@
 		4A34EB3217B36C2D00196793 /* PublicMyselfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicMyselfViewController.m; sourceTree = "<group>"; };
 		4A34EB3617B36F6D00196793 /* MyselfViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyselfViewController.xib; sourceTree = "<group>"; };
 		4A34EB3817B36F7900196793 /* PublicMyselfViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublicMyselfViewController.xib; sourceTree = "<group>"; };
-		4A34EB3A17B37B2200196793 /* PostLikeResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostLikeResponse.h; sourceTree = "<group>"; };
-		4A34EB3B17B37B2300196793 /* PostLikeResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostLikeResponse.m; sourceTree = "<group>"; };
 		4A34EB3D17B3CDA500196793 /* UserInfoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoPickerViewController.h; sourceTree = "<group>"; };
 		4A34EB3E17B3CDA500196793 /* UserInfoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoPickerViewController.m; sourceTree = "<group>"; };
 		4A34EB3F17B3CDA500196793 /* UserInfoPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoPickerViewController.xib; sourceTree = "<group>"; };
@@ -1724,8 +1725,10 @@
 				4A9449A916A94B5800A96815 /* Security.framework in Frameworks */,
 				C6DB20271760CDE10060BD08 /* CoreImage.framework in Frameworks */,
 				C6DB20251760CDD40060BD08 /* ImageIO.framework in Frameworks */,
+				4A28447F1827DE9D006A38EA /* PassKit.framework in Frameworks */,
 				4A7CF99215D74EF000206B14 /* SystemConfiguration.framework in Frameworks */,
 				4A9449A716A94B2B00A96815 /* libicucore.dylib in Frameworks */,
+				4A2844811827DEA0006A38EA /* GameKit.framework in Frameworks */,
 				4A9449A516A94B0800A96815 /* CoreText.framework in Frameworks */,
 				4A071A23169D991F00F50D90 /* MediaPlayer.framework in Frameworks */,
 				4A071A21169D989D00F50D90 /* MobileCoreServices.framework in Frameworks */,
@@ -2435,8 +2438,6 @@
 				4A129DDA17CB9A6000FD18B2 /* WorkoutCatalog.m */,
 				4A6585D017B0F2120056DA91 /* PostStatus.h */,
 				4A6585D117B0F2120056DA91 /* PostStatus.m */,
-				4A34EB3A17B37B2200196793 /* PostLikeResponse.h */,
-				4A34EB3B17B37B2300196793 /* PostLikeResponse.m */,
 				4A6585D317B127210056DA91 /* PostStatusRespose.h */,
 				4A6585D417B127210056DA91 /* PostStatusRespose.m */,
 				4A129DD117CB4FC000FD18B2 /* WorkoutDataService.h */,
@@ -3991,6 +3992,8 @@
 		4AE394B015C2DD9C00D06C61 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A2844801827DEA0006A38EA /* GameKit.framework */,
+				4A28447E1827DE9D006A38EA /* PassKit.framework */,
 				4ADA285317EB305100721A87 /* AudioToolbox.framework */,
 				4A27AEC41777F474009978C5 /* ThirdParty_Frameworks */,
 				4A03270317AA89520016F6C5 /* CoreTelephony.framework */,
@@ -4171,6 +4174,12 @@
 					4AE394AC15C2DD9C00D06C61 = {
 						DevelopmentTeam = VEC788Z89Q;
 						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.Passbook = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 0;
 							};
@@ -4797,7 +4806,6 @@
 				4A94901017B239D40037D9A0 /* ZJTHelpler.m in Sources */,
 				4A94901117B239D40037D9A0 /* ZJTStatusBarAlertWindow.m in Sources */,
 				4A34EB3417B36C2F00196793 /* PublicMyselfViewController.m in Sources */,
-				4A34EB3C17B37B2300196793 /* PostLikeResponse.m in Sources */,
 				4A34EB4017B3CDA500196793 /* UserInfoPickerViewController.m in Sources */,
 				4A8F3E6A17BA6B64000F553A /* WeightManagerViewController.m in Sources */,
 				4A8F3E6F17BA6BAE000F553A /* WorkoutMainViewController.m in Sources */,
@@ -4916,7 +4924,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "爱健美";
@@ -4950,7 +4958,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "爱健美";
@@ -4996,7 +5004,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BE37ECBA-45B5-460E-B5B4-D8513C3771C8";
 				SHARED_PRECOMPS_DIR = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -5037,7 +5045,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BE37ECBA-45B5-460E-B5B4-D8513C3771C8";
 				SHARED_PRECOMPS_DIR = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

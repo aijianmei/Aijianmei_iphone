@@ -63,6 +63,7 @@
 	<array>
 		<string>armv7</string>
 		<string>armv6</string>
+		<string>gamekit</string>
 	</array>
 	<key>UIStatusBarHidden</key>
 	<true/>

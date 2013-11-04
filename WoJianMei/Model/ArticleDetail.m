@@ -13,6 +13,48 @@
 @synthesize _id = _id;
 
 
+
+
+-(id)initWithid:(NSString *)articleId
+         wapimg:(NSString *)wapimg
+     wapcontent:(NSString *)wapcontent
+          title:(NSString *)title
+  CommentsCount:(NSString *)CommentsCount
+          click:(NSString *)click
+            img:(NSString *)img
+     creat_time:(NSString *)creat_time
+         author:(NSString *)author
+        content:(NSString *)content
+           like:(NSString *)like
+   CommentsList:(NSString *)CommentsList
+          brief:(NSString *)brief
+{
+    
+    
+    self = [super init];
+    if (self) {
+        //customrize
+        self._id = articleId;
+        self.wapimg =wapimg;
+        self.content = wapcontent;
+        self.title =title;
+        self.CommentsCount =CommentsCount;
+        self.click =click;
+        self.img =img;
+        self.create_time =creat_time;
+        self.author =author;
+        self.like =like;
+        self.brief =brief;
+    }
+    return self;
+
+    
+
+
+}
+
+
+
 - (NSString*)timestamp
 {
 	NSString *_timestamp;

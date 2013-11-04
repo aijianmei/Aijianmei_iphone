@@ -10,7 +10,6 @@
 #import "PPViewController.h"
 #import "Article.h"
 #import "ArticleDetail.h"
-#import <RestKit/RestKit.h>
 #import "PPViewController.h"
 #import "AWActionSheet.h"
 #import "SinaWeibo.h"
@@ -22,7 +21,7 @@
 
 
 
-@interface CommonArticleViewController : PPViewController<RKObjectLoaderDelegate,SinaWeiboRequestDelegate,REComposeViewControllerDelegate,UIGestureRecognizerDelegate,SinaWeiboDelegate,UIActionSheetDelegate,UIScrollViewDelegate,UIWebViewDelegate,ArticleServiceDelegate>
+@interface CommonArticleViewController : PPViewController<SinaWeiboRequestDelegate,REComposeViewControllerDelegate,UIGestureRecognizerDelegate,SinaWeiboDelegate,UIActionSheetDelegate,UIScrollViewDelegate,UIWebViewDelegate,ArticleServiceDelegate>
 
 {
     UIButton *_likeButton;
@@ -32,9 +31,7 @@
     UIImage *postImage;
     
     SinaWeiboManager *_sinaweiboManager;
-    
-//    id<sendMsgToWeChatViewDelegate> _delegate;
-    
+
     
     CommentViewController *commentViewController;
     
