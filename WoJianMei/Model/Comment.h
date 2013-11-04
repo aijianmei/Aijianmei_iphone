@@ -17,5 +17,12 @@
 @property (nonatomic,copy)NSString *username;
 
 
+-(id)initWithid:(NSString *)Id
+            uid:(NSString *)uid
+        content:(NSString *)content
+    create_time:(NSString *)create_time
+        userimg:(NSString *)userimg
+       username:(NSString*)username;
+
 -(NSString*)timestamp;
 @end

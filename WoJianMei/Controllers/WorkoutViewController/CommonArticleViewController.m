@@ -198,7 +198,10 @@ enum actionsheetNumber{
     }
     
     
-   [[UserService defaultService] sendLikeWithContentId:[article _id] userId:user.uid  channeltype:@"1"  delegate:self];
+   [[ArticleService sharedService] sendLikeWithContentId:[article _id]
+                                                userId:user.uid
+                                           channeltype:@"1"
+                                        viewController:self];
     
 }
 ////点击评论按钮
@@ -934,7 +937,7 @@ enum actionsheetNumber{
     
 }
 
--(void)didPostLike:(Result *)result
+-(void)didPostLikeSucceeded:(int)errorCode
 
 {
       //  10001 参数错误 缺少uid用户id或者缺少文章id
@@ -950,10 +953,6 @@ enum actionsheetNumber{
     
     
         
-        Result *newResult = result;
-        NSInteger errorCode =  [[newResult errorCode] integerValue];
-        
-        
         if (errorCode ==ERROR_SUCCESS)
         {
           [self popupHappyMessage:@"赞了该这篇文章" title:nil];
@@ -966,6 +965,9 @@ enum actionsheetNumber{
         if (errorCode ==REPEATED_POST) {
             [self popupUnhappyMessage:@"已经赞了该文章,不可以贪心哦！" title:nil];
         }
+    
+       [self updateUserInterface];
+
 }
 
 

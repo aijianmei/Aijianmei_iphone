@@ -13,6 +13,32 @@
 
 
 
+-(id)initWithid:(NSString *)Id
+            uid:(NSString *)uid
+        content:(NSString *)content
+    create_time:(NSString *)create_time
+        userimg:(NSString *)userimg
+       username:(NSString*)username
+
+{
+    
+    self = [super init];
+    if (self) {
+        //customrize
+        
+        self._id = Id;
+        self.uid =uid;
+        self.content =content;
+        self.create_time =create_time;
+        self.userimg = userimg;
+        self.username = username;
+        
+    }
+    return self;
+}
+
+
+
 - (NSString*)timestamp
 {
 	NSString *_timestamp;

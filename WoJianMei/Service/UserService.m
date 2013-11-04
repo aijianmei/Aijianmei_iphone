@@ -109,7 +109,8 @@ static UserService* _defaultUserService = nil;
 
 - (void)registerUser:(NSString*)email
             password:(NSString*)password
-      viewController:(PPViewController<UserServiceDelegate>*)viewController{
+      viewController:(PPViewController<UserServiceDelegate>*)viewController
+{
 //    NSString* deviceToken = [[UserManager defaultManager] deviceToken];
 //    NSString* deviceId = [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier];
     
@@ -241,43 +242,6 @@ static UserService* _defaultUserService = nil;
 //    });
 //}
 
--(void)sendLikeWithContentId:(NSString *)contentId
-                     userId :(NSString *)uid
-                 channeltype:(NSString *)channeltype
-
-//                    delegate:(id<RKObjectLoaderDelegate>)delegate
-
-{
-
-//    [self initResultMap];
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        
-//        //42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_sendlike&id=111&uid=333&channeltype=1
-//
-//      
-//        
-//        NSMutableDictionary *queryParams = [[NSMutableDictionary alloc] init];
-//        [queryParams setObject:@"aijianmei" forKey:@"aucode"];
-//        [queryParams setObject:@"au_sendlike" forKey:@"auact"];
-//        [queryParams setObject:contentId forKey:@"id"];
-//        [queryParams setObject:uid forKey:@"uid"];
-//        [queryParams setObject:channeltype forKey:@"channeltype"];
-//
-//        
-//        
-//        
-//        RKObjectManager *objectManager = [RKObjectManager sharedManager];
-//        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
-//        
-//        NSLog(@"url: %@", [url absoluteString]);
-//        NSLog(@"resourcePath: %@", [url resourcePath]);
-//        NSLog(@"query: %@", [url query]);
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
-//        });
-//    });
-}
 
 
 //用户反馈

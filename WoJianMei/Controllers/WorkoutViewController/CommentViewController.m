@@ -153,15 +153,18 @@ enum ErrorCode
     
         
     if (self.article) {
-        [[VideoService sharedService] loadVideCommentByVideId:self.article._id channelType:@"1" delegate:self];
+        [[ArticleService sharedService] loadCommentById:self.article._id
+                                            channelType:@"1"
+                                         viewController:self];
     }
     
     
-//        [[VideoService sharedService] loadVideCommentByVideId:@"117" channelType:@"1" delegate:self];
 
     
     if (self.video) {
-        [[VideoService sharedService] loadVideCommentByVideId:self.video._id channelType:@"2" delegate:self];
+        [[ArticleService sharedService] loadCommentById:self.video._id
+                                            channelType:@"2"
+                                         viewController:self];
     }
 
 }
@@ -176,13 +179,19 @@ enum ErrorCode
     
 
     if (self.article) {
-        [[PostService sharedService] postCommentWithUid:
-         [user uid] targetContentId:self.article._id comment:inputText channelType:@"1" delegate:self];
+        [[ArticleService sharedService] postCommentWithUid:user.uid
+                                           targetContentId:self.article._id
+                                                   comment:inputText
+                                               channelType:@"1"
+                                            viewController:self];
     }
     
     if (self.video) {
-        [[PostService sharedService] postCommentWithUid:
-         [user uid] targetContentId:self.video._id comment:inputText channelType:@"2" delegate:self];    }
+        [[ArticleService sharedService] postCommentWithUid:user.uid
+                                           targetContentId:self.video._id
+                                                   comment:inputText
+                                               channelType:@"2"
+                                            viewController:self];}
 
 }
 
@@ -261,43 +270,8 @@ enum ErrorCode
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
 
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    NSLog(@"Response code: %d", [response statusCode]);
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+-(void)didPostCommentSucceeded:(int)errorCode
 {
-    NSLog(@"Error: %@", [error localizedDescription]);
-}
-
-
-- (void)requestDidStartLoad:(RKRequest *)request
-{
-    NSLog(@"Start load request...");
-    [self showActivityWithText:@"加载中..."];
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
-{
-    NSLog(@"***Load objects count: %d", [objects count]);
-    [self hideActivity];
-    
-    if ([objects count]==0) {
-        return;
-    }
-    
-    
-    NSObject *object = [objects objectAtIndex:0];
-    
-    if ([object isMemberOfClass:[Result class]]) {
-        
-        //  10001 参数错误 缺少uid用户id或者缺少文章id
-        //  10002 用户已经赞过
-        //  0 提交成功
-        
-        Result *result = [objects objectAtIndex:0];
-        NSInteger errorCode =  [[result errorCode] integerValue];
-        
         
         if (errorCode ==ERROR_SUCCESS)
         {
@@ -315,15 +289,19 @@ enum ErrorCode
 
     }
     
-    
-    if ([object isMemberOfClass:[Comment class]]) {
+-(void)didReceiveCommentListSucceeded:(NSArray *)objects  errorCode:(int)errorCode
+
+{
+
         if ([objects count]==0)
         {
             [self popupHappyMessage:@"亲,没有如何评论！" title:nil];
         }
-        self.dataList = objects;
+    
+    
+         self.dataList = objects;
         [self.dataTableView reloadData];
-    }
+
 }
 
 @end

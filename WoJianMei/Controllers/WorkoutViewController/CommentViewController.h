@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
-#import <RestKit/RestKit.h>
+#import "ArticleService.h"
 #import "FaceToolBar.h"
 
 @class Video;
 @class Article;
 
-@interface CommentViewController : PPTableViewController<UITextFieldDelegate,RKObjectLoaderDelegate,FaceToolBarDelegate>
+@interface CommentViewController : PPTableViewController<UITextFieldDelegate,ArticleServiceDelegate,FaceToolBarDelegate>
 {
       Video *_video;
       Article *_article;

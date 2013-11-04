@@ -42,17 +42,6 @@
 //              delegate:(id<RKObjectLoaderDelegate>)delegate
 ;
 
-//点击评论
-/*
-http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_sendcomment&uid=498&id=111&commentcontent=要好好睡才行&channeltype=1
-channeltype 1表示文章 2表示视频
-*/
--(void)postCommentWithUid:(NSString*)uid
-          targetContentId:(NSString*)targetContentId
-                  comment:(NSString*)comment
-              channelType:(NSString*)channleType
-//                 delegate:(id<RKObjectLoaderDelegate>)delegate
-;
 
 
 

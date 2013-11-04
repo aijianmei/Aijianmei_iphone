@@ -91,9 +91,17 @@
 - (void)setCellInfo:(Comment *)comment{
     
     [self.myImageView setImageWithURL:[NSURL URLWithString:comment.userimg] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"] options:SDWebImageCacheMemoryOnly];
-    [self.nameLabel setText:comment.username];
     [self.commentLabel setText:comment.content];
     [self.commentTimeLabel setText:[NSString stringWithFormat:@"发表于:%@", comment.timestamp]];
+    
+    
+    if (comment.username == NULL) {
+        [comment setUsername:@"用户名"];
+    }
+   [self.nameLabel setText:comment.username];
+    
+    
+   
  
 }
 

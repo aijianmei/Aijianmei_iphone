@@ -393,9 +393,154 @@
 
 
 }
++ (CommonNetworkOutput *)postLikeByContentId:(NSString *)baseURL
+                                   contentId:(NSString *)contentId
+                                      userId:(NSString *)uid
+                                 channeltype:(NSString *)channeltype{
+
+    CommonNetworkOutput* output = [[[CommonNetworkOutput alloc] init] autorelease];
+    ConstructURLBlock constructURLHandler = ^NSString *(NSString *baseURL)
+    {
+        
+        // set input parameters
+        NSString* str = [NSString stringWithString:baseURL];
+        
+        str = [str stringByAddQueryParameter:AUCODE
+                                       value:AIJIANMEI];
+        str = [str stringByAddQueryParameter:PARA_AUACT
+                                       value:@"au_sendlike"];
+        str = [str stringByAddQueryParameter:PARA_ARTICLE_ID
+                                       value:contentId];
+        str = [str stringByAddQueryParameter:PARA_UID
+                                       value:uid];
+        str = [str stringByAddQueryParameter:PARA_ARTICLE_CHANNLE_TYPE
+                                       value:channeltype];
+     
+        
+        return str;
+        
+    };
+    
+    PPNetworkResponseBlock responseHandler = ^(NSDictionary *dict, CommonNetworkOutput *output) {
+    
+        //确定返回的数据类型
+        // output.jsonDataDict = [dict objectForKey:RET_DATA];
+        
+        output.jsonDataArray = (NSArray *) dict;
+        
+        
+        
+        
+        return;
+    };
+    
+    return [PPNetworkRequest sendRequest:baseURL
+                     constructURLHandler:constructURLHandler
+                         responseHandler:responseHandler
+                                  output:output];
+}
+
++ (CommonNetworkOutput *)postCommentWithUid:(NSString*)baseURL
+                                        uid:(NSString*)uid
+                            targetContentId:(NSString*)targetContentId
+                                    comment:(NSString *)comment
+                                channelType:(NSString *)channelType{
+
+    
+    
+   //  http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_sendcomment&uid=498&id=111&commentcontent=要好好睡才行&channeltype=1
+    
+    CommonNetworkOutput* output = [[[CommonNetworkOutput alloc] init] autorelease];
+    ConstructURLBlock constructURLHandler = ^NSString *(NSString *baseURL)
+    {
+        
+        // set input parameters
+        NSString* str = [NSString stringWithString:baseURL];
+        
+        str = [str stringByAddQueryParameter:AUCODE
+                                       value:AIJIANMEI];
+        str = [str stringByAddQueryParameter:PARA_AUACT
+                                       value:@"au_sendcomment"];
+        str = [str stringByAddQueryParameter:PARA_UID
+                                       value:uid];
+        str = [str stringByAddQueryParameter:PARA_ARTICLE_ID
+                                       value:targetContentId];
+        str = [str stringByAddQueryParameter:PARA_ARTICLE_COMMENT_CONTENT
+                                       value:comment];
+        str = [str stringByAddQueryParameter:@"channeltype"
+                                       value:channelType];
+        
+        return str;
+        
+    };
+    
+    PPNetworkResponseBlock responseHandler = ^(NSDictionary *dict, CommonNetworkOutput *output) {
+        
+        //确定返回的数据类型
+        // output.jsonDataDict = [dict objectForKey:RET_DATA];
+        
+        output.jsonDataArray = (NSArray *) dict;
+        
+        
+        
+        return;
+    };
+    
+    return [PPNetworkRequest sendRequest:baseURL
+                     constructURLHandler:constructURLHandler
+                         responseHandler:responseHandler
+                                  output:output];
+
+
+}
 
 
 
+//  http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=getcommentbyid&id=117&channeltype=1
++ (CommonNetworkOutput *)loadCommentById:(NSString*)baseURL
+                                      Id:(NSString*)Id
+                             channelType:(NSString*)channleType{
+
+
+    CommonNetworkOutput* output = [[[CommonNetworkOutput alloc] init] autorelease];
+    ConstructURLBlock constructURLHandler = ^NSString *(NSString *baseURL)
+    {
+        
+        // set input parameters
+        NSString* str = [NSString stringWithString:baseURL];
+        
+        str = [str stringByAddQueryParameter:AUCODE
+                                       value:AIJIANMEI];
+        str = [str stringByAddQueryParameter:PARA_AUACT
+                                       value:@"getcommentbyid"];
+        str = [str stringByAddQueryParameter:PARA_ARTICLE_ID
+                                       value:Id];
+        str = [str stringByAddQueryParameter:@"channeltype"
+                                       value:channleType];
+        
+        return str;
+        
+    };
+    
+    PPNetworkResponseBlock responseHandler = ^(NSDictionary *dict, CommonNetworkOutput *output) {
+        
+        //确定返回的数据类型
+        // output.jsonDataDict = [dict objectForKey:RET_DATA];
+        
+        output.jsonDataArray = (NSArray *) dict;
+        
+        
+        
+        return;
+    };
+    
+    return [PPNetworkRequest sendRequest:baseURL
+                     constructURLHandler:constructURLHandler
+                         responseHandler:responseHandler
+                                  output:output];
+
+
+}
 
 
 

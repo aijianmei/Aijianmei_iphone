@@ -98,6 +98,8 @@
 #define PARA_ARTICLE_ID                   @"id"
 #define PARA_ARTICLE_CHANNLE              @"channel"
 #define PARA_ARTICLE_CHANNLE_TYPE         @"channelType"
+#define PARA_ARTICLE_COMMENT_CONTENT      @"commentcontent"
+
 
 
 

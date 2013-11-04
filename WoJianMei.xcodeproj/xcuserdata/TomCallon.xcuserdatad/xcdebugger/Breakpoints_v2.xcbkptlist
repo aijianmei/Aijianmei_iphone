@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WoJianMei/Service/UserService.m"
-            timestampString = "404981245.382791"
+            timestampString = "405269517.491119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "466"
-            endingLineNumber = "466"
+            startingLineNumber = "430"
+            endingLineNumber = "430"
             landmarkName = "-fechUserIdBySnsId:viewController:"
             landmarkType = "5">
          </BreakpointContent>
@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WoJianMei/Service/UserService.m"
-            timestampString = "404981245.382791"
+            timestampString = "405269517.491119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "474"
-            endingLineNumber = "474"
+            startingLineNumber = "438"
+            endingLineNumber = "438"
             landmarkName = "-fechUserIdBySnsId:viewController:"
             landmarkType = "5">
          </BreakpointContent>
@@ -84,12 +84,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WoJianMei/Service/ArticleService.m"
-            timestampString = "405262797.87075"
+            timestampString = "405274206.800608"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "-findArticleInfoWithAucode:auact:articleId:channel:channelType:uid:viewController:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WoJianMei/Service/ArticleService.m"
+            timestampString = "405274206.800608"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
+            landmarkName = "-postCommentWithUid:targetContentId:comment:channelType:viewController:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

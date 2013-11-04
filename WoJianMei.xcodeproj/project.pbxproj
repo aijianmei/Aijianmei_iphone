@@ -552,6 +552,14 @@
 		4A9C3FCC177AE36F0088AA6D /* LabelsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A9C3FCB177AE36D0088AA6D /* LabelsView.xib */; };
 		4A9C3FCF177AE3F00088AA6D /* LabelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9C3FCE177AE3EF0088AA6D /* LabelsView.m */; };
 		4AA7ECE5169F0F78003E8949 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA7ECE4169F0F78003E8949 /* SMPageControl.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		4AA8D4591827E5F600036560 /* AccessoryView.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA8D4501827E5F600036560 /* AccessoryView.png */; };
+		4AA8D45A1827E5F600036560 /* AccessoryView@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA8D4511827E5F600036560 /* AccessoryView@2x.png */; };
+		4AA8D45B1827E5F600036560 /* IndexBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA8D4521827E5F600036560 /* IndexBG.png */; };
+		4AA8D45C1827E5F600036560 /* IndexBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA8D4531827E5F600036560 /* IndexBG@2x.png */; };
+		4AA8D45D1827E5F600036560 /* IndexLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA8D4541827E5F600036560 /* IndexLine.png */; };
+		4AA8D45E1827E5F600036560 /* IndexLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA8D4551827E5F600036560 /* IndexLine@2x.png */; };
+		4AA8D45F1827E5F600036560 /* IndexSep.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA8D4561827E5F600036560 /* IndexSep.png */; };
+		4AA8D4601827E5F600036560 /* IndexSep@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA8D4571827E5F600036560 /* IndexSep@2x.png */; };
 		4AABA20E1753907B000C4F68 /* DEComposeBackgroundScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AABA20D1753907B000C4F68 /* DEComposeBackgroundScrollView.m */; };
 		4ABD0DA115D7F4EB00B08DDA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABD0DA015D7F4EB00B08DDA /* CFNetwork.framework */; };
 		4ABD0DAE15D7F86200B08DDA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABD0DAD15D7F86200B08DDA /* MessageUI.framework */; };
@@ -1409,11 +1417,11 @@
 		4A4992BA1685562D0073E682 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		4A4992BE168556700073E682 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4A4992C0168556D00073E682 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
-		4A4A5DAE179E512E00F00085 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
-		4A4A5DAF179E512E00F00085 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
-		4A4A5DB0179E512E00F00085 /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentViewController.xib; sourceTree = "<group>"; };
-		4A4A5E0E179E76F900F00085 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
-		4A4A5E0F179E76FA00F00085 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		4A4A5DAE179E512E00F00085 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentViewController.h; path = ../WorkoutViewController/CommentViewController.h; sourceTree = "<group>"; };
+		4A4A5DAF179E512E00F00085 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentViewController.m; path = ../WorkoutViewController/CommentViewController.m; sourceTree = "<group>"; };
+		4A4A5DB0179E512E00F00085 /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentViewController.xib; path = ../WorkoutViewController/CommentViewController.xib; sourceTree = "<group>"; };
+		4A4A5E0E179E76F900F00085 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentCell.h; path = ../WorkoutViewController/CommentCell.h; sourceTree = "<group>"; };
+		4A4A5E0F179E76FA00F00085 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentCell.m; path = ../WorkoutViewController/CommentCell.m; sourceTree = "<group>"; };
 		4A4A5E11179E77AF00F00085 /* CommentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentInfo.h; path = ../Controllers/WorkoutViewController/CommentInfo.h; sourceTree = "<group>"; };
 		4A4A5E12179E77AF00F00085 /* CommentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentInfo.m; path = ../Controllers/WorkoutViewController/CommentInfo.m; sourceTree = "<group>"; };
 		4A4EE72E16AD3D92005C3ADA /* ComposeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComposeViewCell.h; path = ../MyselfViewContrller/ComposeViewCell.h; sourceTree = "<group>"; };
@@ -1544,6 +1552,14 @@
 		4A9C3FCE177AE3EF0088AA6D /* LabelsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelsView.m; sourceTree = "<group>"; };
 		4AA7ECE3169F0F78003E8949 /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPageControl.h; sourceTree = "<group>"; };
 		4AA7ECE4169F0F78003E8949 /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPageControl.m; sourceTree = "<group>"; };
+		4AA8D4501827E5F600036560 /* AccessoryView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AccessoryView.png; sourceTree = "<group>"; };
+		4AA8D4511827E5F600036560 /* AccessoryView@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AccessoryView@2x.png"; sourceTree = "<group>"; };
+		4AA8D4521827E5F600036560 /* IndexBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IndexBG.png; sourceTree = "<group>"; };
+		4AA8D4531827E5F600036560 /* IndexBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndexBG@2x.png"; sourceTree = "<group>"; };
+		4AA8D4541827E5F600036560 /* IndexLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IndexLine.png; sourceTree = "<group>"; };
+		4AA8D4551827E5F600036560 /* IndexLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndexLine@2x.png"; sourceTree = "<group>"; };
+		4AA8D4561827E5F600036560 /* IndexSep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IndexSep.png; sourceTree = "<group>"; };
+		4AA8D4571827E5F600036560 /* IndexSep@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndexSep@2x.png"; sourceTree = "<group>"; };
 		4AABA20C1753907B000C4F68 /* DEComposeBackgroundScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEComposeBackgroundScrollView.h; sourceTree = "<group>"; };
 		4AABA20D1753907B000C4F68 /* DEComposeBackgroundScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEComposeBackgroundScrollView.m; sourceTree = "<group>"; };
 		4ABD0DA015D7F4EB00B08DDA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -1779,6 +1795,11 @@
 				4A03269017A8EE980016F6C5 /* PlayVideoViewController.h */,
 				4A03269117A8EE980016F6C5 /* PlayVideoViewController.m */,
 				4A03269217A8EE990016F6C5 /* PlayVideoViewController.xib */,
+				4A4A5DAE179E512E00F00085 /* CommentViewController.h */,
+				4A4A5DAF179E512E00F00085 /* CommentViewController.m */,
+				4A4A5DB0179E512E00F00085 /* CommentViewController.xib */,
+				4A4A5E0E179E76F900F00085 /* CommentCell.h */,
+				4A4A5E0F179E76FA00F00085 /* CommentCell.m */,
 			);
 			name = HomeViewController;
 			path = Controllers/HomeViewController;
@@ -2498,6 +2519,7 @@
 		4A27AE881777F18E009978C5 /* leftsideNavigation */ = {
 			isa = PBXGroup;
 			children = (
+				4AA8D44F1827E5F600036560 /* leftsideNavi_Resource */,
 				4A27AE891777F18E009978C5 /* AJMWebViewController */,
 				4A27AE8F1777F18E009978C5 /* Classes_leftSideNavi */,
 				4A27AE941777F18E009978C5 /* IIViewDeckController.h */,
@@ -3667,6 +3689,21 @@
 			path = ../Controllers/WorkoutViewController;
 			sourceTree = "<group>";
 		};
+		4AA8D44F1827E5F600036560 /* leftsideNavi_Resource */ = {
+			isa = PBXGroup;
+			children = (
+				4AA8D4501827E5F600036560 /* AccessoryView.png */,
+				4AA8D4511827E5F600036560 /* AccessoryView@2x.png */,
+				4AA8D4521827E5F600036560 /* IndexBG.png */,
+				4AA8D4531827E5F600036560 /* IndexBG@2x.png */,
+				4AA8D4541827E5F600036560 /* IndexLine.png */,
+				4AA8D4551827E5F600036560 /* IndexLine@2x.png */,
+				4AA8D4561827E5F600036560 /* IndexSep.png */,
+				4AA8D4571827E5F600036560 /* IndexSep@2x.png */,
+			);
+			path = leftsideNavi_Resource;
+			sourceTree = "<group>";
+		};
 		4AC1588B17DEB46B00E97B27 /* 登陆背景 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3863,11 +3900,6 @@
 				4A0326A817A8FEBD0016F6C5 /* VideoInfoView.xib */,
 				4A03269517A8EFA20016F6C5 /* Video.h */,
 				4A03269617A8EFA30016F6C5 /* Video.m */,
-				4A4A5DAE179E512E00F00085 /* CommentViewController.h */,
-				4A4A5DAF179E512E00F00085 /* CommentViewController.m */,
-				4A4A5DB0179E512E00F00085 /* CommentViewController.xib */,
-				4A4A5E0E179E76F900F00085 /* CommentCell.h */,
-				4A4A5E0F179E76FA00F00085 /* CommentCell.m */,
 			);
 			name = WorkoutViewController;
 			path = Controllers/WorkoutViewController;
@@ -4304,6 +4336,7 @@
 				4A0CA66917ABE65500314B8C /* dq_2.png in Resources */,
 				4A0CA66A17ABE65500314B8C /* jt_1@2x.png in Resources */,
 				4A0CA66B17ABE65500314B8C /* Label_Type@2x.png in Resources */,
+				4AA8D45B1827E5F600036560 /* IndexBG.png in Resources */,
 				4A0CA66C17ABE65500314B8C /* less_data_Button.png in Resources */,
 				4A0CA66D17ABE65500314B8C /* less_data_Button@2x.png in Resources */,
 				4A0CA66E17ABE65500314B8C /* more_data_Button.png in Resources */,
@@ -4328,6 +4361,7 @@
 				4A0CA68A17ABE65500314B8C /* sina.png in Resources */,
 				4A0CA68B17ABE65500314B8C /* wechat.png in Resources */,
 				4A0CA68C17ABE65500314B8C /* dlk_1@2x.png in Resources */,
+				4AA8D45D1827E5F600036560 /* IndexLine.png in Resources */,
 				4A0CA68D17ABE65500314B8C /* comment_icon.png in Resources */,
 				4A0CA68E17ABE65500314B8C /* like_icon.png in Resources */,
 				4A0CA68F17ABE65500314B8C /* Press_like_icon.png in Resources */,
@@ -4347,9 +4381,11 @@
 				4A34EB3717B36F6D00196793 /* MyselfViewController.xib in Resources */,
 				4A34EB3917B36F7A00196793 /* PublicMyselfViewController.xib in Resources */,
 				4A34EB4117B3CDA500196793 /* UserInfoPickerViewController.xib in Resources */,
+				4AA8D45A1827E5F600036560 /* AccessoryView@2x.png in Resources */,
 				4AE356A817B4E70800ADD258 /* kdbj_1.png in Resources */,
 				4AE356A917B4E70800ADD258 /* kddq_1.png in Resources */,
 				4AE356AA17B4E70800ADD258 /* kdjm_1.png in Resources */,
+				4AA8D4601827E5F600036560 /* IndexSep@2x.png in Resources */,
 				4AE356AB17B4E70800ADD258 /* SLNumberPickerTicks.png in Resources */,
 				4AE356B217B4E92200ADD258 /* girl_big.png in Resources */,
 				4AE356B317B4E92200ADD258 /* boy_big.png in Resources */,
@@ -4361,6 +4397,7 @@
 				4A8F3E6B17BA6B64000F553A /* WeightManagerViewController.xib in Resources */,
 				4A8F3E7017BA6BAE000F553A /* WorkoutMainViewController.xib in Resources */,
 				4A1B25D617EED06300FC6194 /* 120X120.png in Resources */,
+				4AA8D45F1827E5F600036560 /* IndexSep.png in Resources */,
 				4A8F3F3817BA76B2000F553A /* ChartViewController.xib in Resources */,
 				4A8F3F3C17BB1E92000F553A /* place_holder@2x.png in Resources */,
 				4A0A580817BB766F0089683A /* HomeViewController.xib in Resources */,
@@ -4383,11 +4420,13 @@
 				4A20190217C1E348003D4E54 /* MyselfViewBaseController.xib in Resources */,
 				4A20190417C25014003D4E54 /* NumberDataCellHeader.xib in Resources */,
 				4A20190617C251B0003D4E54 /* NumberDataCell.xib in Resources */,
+				4AA8D45C1827E5F600036560 /* IndexBG@2x.png in Resources */,
 				4A20190817C2531C003D4E54 /* NumberDataCellFooter.xib in Resources */,
 				4A20190D17C255F3003D4E54 /* NumberDataViewController.xib in Resources */,
 				4A20192F17C35461003D4E54 /* qxzs_1.png in Resources */,
 				4A20193017C35461003D4E54 /* qxzs_２.png in Resources */,
 				4A20193117C35461003D4E54 /* sjgl_1.png in Resources */,
+				4AA8D45E1827E5F600036560 /* IndexLine@2x.png in Resources */,
 				4A20193217C35461003D4E54 /* sjgl_２.png in Resources */,
 				4A20193317C35461003D4E54 /* tzgl_1.png in Resources */,
 				4A20193417C35461003D4E54 /* tzgl_2.png in Resources */,
@@ -4468,6 +4507,7 @@
 				4AE18AEB17D42E8E00F0EBB0 /* IndexLine@2x.png in Resources */,
 				4AE18AF017D43E1E00F0EBB0 /* sjjyz_2.png in Resources */,
 				4AE18AF117D43E1E00F0EBB0 /* sjjyz_4.png in Resources */,
+				4AA8D4591827E5F600036560 /* AccessoryView.png in Resources */,
 				4AE18AF317D4444D00F0EBB0 /* RankingViewController.xib in Resources */,
 				4A711E2817D5B93100E35B98 /* LeftSideViewIcon@2x.png in Resources */,
 				4A711E2F17D5B97C00E35B98 /* top_bar_backButton@2x.png in Resources */,
@@ -4905,7 +4945,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Callon (VQ5469GPCM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Huang HaiZhi (VEC788Z89Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tom Callon (VQ5469GPCM)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -4924,12 +4964,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "爱健美";
-				PROVISIONING_PROFILE = "BE37ECBA-45B5-460E-B5B4-D8513C3771C8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BE37ECBA-45B5-460E-B5B4-D8513C3771C8";
+				PROVISIONING_PROFILE = "0882F3C5-F8CF-4A96-BB85-3F7CC2F72EC5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0882F3C5-F8CF-4A96-BB85-3F7CC2F72EC5";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -4946,7 +4986,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Callon (VQ5469GPCM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Huang HaiZhi (VEC788Z89Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tom Callon (VQ5469GPCM)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -4958,12 +4998,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "爱健美";
-				PROVISIONING_PROFILE = "BE37ECBA-45B5-460E-B5B4-D8513C3771C8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BE37ECBA-45B5-460E-B5B4-D8513C3771C8";
+				PROVISIONING_PROFILE = "0882F3C5-F8CF-4A96-BB85-3F7CC2F72EC5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0882F3C5-F8CF-4A96-BB85-3F7CC2F72EC5";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;

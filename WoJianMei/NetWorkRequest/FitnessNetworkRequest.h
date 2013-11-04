@@ -20,6 +20,8 @@ typedef void (^FitnessNetworkResponseBlock)(NSDictionary* jsonDictionary, NSData
 + (CommonNetworkOutput *)queryVersion;
 
 
+
+///////用户接口
 + (CommonNetworkOutput *)fetchUserSinaWeiboId:(NSString*)baseURL
                                         snsId:(NSString*)snsId;
 
@@ -36,6 +38,7 @@ typedef void (^FitnessNetworkResponseBlock)(NSDictionary* jsonDictionary, NSData
                                    deviceId:(NSString*)deviceId;
 
 
+//////文章接口
 + (CommonNetworkOutput *)findArticleWithAucode:(NSString*)baseURL
                                         aucode:(NSString*)aucode
                                           auact:(NSString*)auact
@@ -54,6 +57,23 @@ typedef void (^FitnessNetworkResponseBlock)(NSDictionary* jsonDictionary, NSData
                                            channel:(NSString*)channel
                                        channelType:(NSString*)channelType
                                                uid:(NSString*)uid;
+
++ (CommonNetworkOutput *)postLikeByContentId:(NSString *)baseURL
+                                   contentId:(NSString *)contentId
+                                      userId:(NSString *)uid
+                                 channeltype:(NSString *)channeltype;
+
++ (CommonNetworkOutput *)postCommentWithUid:(NSString*)baseURL
+                                        uid:(NSString*)uid
+                            targetContentId:(NSString*)targetContentId
+                                    comment:(NSString *)comment
+                                channelType:(NSString *)channelType;
+
++ (CommonNetworkOutput *)loadCommentById:(NSString*)baseURL
+                                      Id:(NSString*)Id
+                             channelType:(NSString*)channleType;
+
+
 
 
 @end

@@ -273,21 +273,22 @@
         
         cell.textLabel.font = [UIFont boldSystemFontOfSize:15.0];
         cell.textLabel.textColor = [ColorManager leftSideNaviFontColor] ;
-        UIImageView *lineView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"IndexLine.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:1]];
+        UIImageView *lineView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"IndexLine.png"] stretchableImageWithLeftCapWidth:1
+                                                                                                                topCapHeight:1]];
         
         CGRect frame = cell.contentView.frame;
         
         lineView.frame = CGRectMake(0.0, frame.size.height - lineView.frame.size.height , cell.contentView.frame.size.width, lineView.frame.size.height);
         
         lineView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        [cell addSubview:lineView];
-        [lineView release];
+          [cell addSubview:lineView];
+          [lineView release];
     }
     
     
     UIImageView *imvaew = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cbdqx_1.png"]];
     [cell setSelectedBackgroundView:imvaew];
-    
+    [imvaew release];
     
     
     switch (indexPath.section)
