@@ -9,6 +9,7 @@
 #import "Myself_SettingsViewController.h"
 #import "User.h"
 #import "UserService.h"
+#import "UserManager.h"
 #import "Citypicker.h"
 #import "ChangeNameViewController.h"
 #import "ChangeDescriptionViewController.h"
@@ -21,6 +22,7 @@
 #import "BaiduMobStat.h"
 #import "UIImage+Scale.h"
 #import "UserInfoPickerViewController.h"
+#import "PPNetworkRequest.h"
 
 
 #define USER @"user"
@@ -100,17 +102,52 @@
 
 -(void)clickSaveButton:(id)sender{
 
-//    didSave =YES;
-//
-//    if (self.avtarImage) {
-//        [[UserService defaultService] postObject:nil withImage:self.avtarImage delegate:self];
-//
-//    }else{
-//        [[UserService defaultService] postObject:nil withImage:nil delegate:self];
-//    
-//    }
+    if (self.avtarImage) {
+        [[UserService defaultService] uploadUserAvatar:self.avtarImage
+                                           resultBlock:^(int resultCode, NSString *imageRemoteURL)
+        
+        {
+            [self hideActivity];
+            
+            if (resultCode == ERROR_SUCCESS && [imageRemoteURL length] > 0){
+                
+//                [_pbUserBuilder setAvatar:imageRemoteURL];
+                
+//                  [self updateAvatar:self.avtarImage];
+                   [self updateUI];
+            }
+            else{
+                
+//                [[CommonMessageCenter defaultCenter] postMessageWithText:NSLS(@"kUpdateAvatarFail") delayTime:1.5];
+            }
+        }];
+
+        
+        
+
+    }else{
+        [[UserService defaultService] uploadUserAvatar:self.avtarImage
+                                           resultBlock:^(int resultCode, NSString *imageRemoteURL)
+         {
+            [self hideActivity];
+            if (resultCode == ERROR_SUCCESS && [imageRemoteURL length] > 0){
+                                                   
+            //                [_pbUserBuilder setAvatar:imageRemoteURL];
+                                                   
+           //                  [self updateAvatar:self.avtarImage];
+                    [self updateUI];
+        }
+            else{
+                                                   
+            //                [[CommonMessageCenter defaultCenter] postMessageWithText:NSLS(@"kUpdateAvatarFail") delayTime:1.5];
+                }
+             
+         }];
+   
+    }
+    
     //数据加载中的时候，按钮是禁止的再被点击的;
-    [self.navigationItem.rightBarButtonItem setEnabled:NO];
+   //    [self.navigationItem.rightBarButtonItem setEnabled:NO];
 }
 
 
@@ -184,7 +221,9 @@
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         picker.allowsEditing = YES;
         picker.delegate = self; 
-        [self.navigationController presentViewController:picker animated:YES completion:nil];
+        [self.navigationController presentViewController:picker
+                                                animated:YES
+                                              completion:nil];
         [picker release];
     }
 
@@ -194,7 +233,7 @@
 
 -(void)loadDatas{
             
-        NSString *uid = [[[UserService defaultService] user] uid];
+        NSString *uid = [[[UserManager defaultManager] user] uid];
         User *user =  [[UserService defaultService] getUserInfoByUid:uid];
     
 
@@ -216,9 +255,8 @@
             
         }else{
             //本地数据不存在，用户第一次登陆的时候，就往服务器拉数据
-//            [[UserService defaultService] fecthUserInfoWithUid:uid
-//    self];
-            
+            [[UserService defaultService] fecthUserInfoWithUid:uid
+                                                viewController:self];
             
         }
 }
@@ -775,59 +813,50 @@
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
 
-//- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects;
-//{
-//    [self hideActivity];
-//    if ([[objects objectAtIndex:0] isMemberOfClass:[User class]])
-//    {
-//        PPDebug(@"%@",[objects objectAtIndex:0]);
-//        if ([[objects objectAtIndex:0] isMemberOfClass:[User class]]) {
-//            User *user = [objects objectAtIndex:0];
-//            NSLog(@"******%@******",user.uid);
-//            NSLog(@"******%@******",user.profileImageUrl);
-//            
-//            
-//            
-//            NSString *bmi = [self reCaluclateBMIValueByWeight:user.weight height:user.height];
-//            
-//    
-//            //设置为当前用户
-//            [[UserService defaultService] setUser:user];
-//            
-//            [user setBMIValue:bmi];
-//            
-//            
-//            
-//            
-//            NSDictionary *sinaUserInfo =[[UserService defaultService] getSinaUserInfoWithUid:[SinaWeiboManager sharedManager].sinaweibo.userID];
-//            NSString *profileImageUrl = [sinaUserInfo objectForKey:@"profileImageUrl"];
-//            
-//            
-//            if ([user.profileImageUrl length] == 0 && profileImageUrl) {
-//                [self.user setProfileImageUrl:profileImageUrl];
-//            }
-//            
-//            if ([user.city length] == 0 ) {
-//                [self.user setCity:@"您的所在地"];
-//            }
-//            
-//            if ([user.description length]) {
-//                [self.user setDescription:@"您的心情短语！"];
-//            }
-//            
-//            self.user = user;
-//            //保存用户
-//            [[UserService defaultService] storeUserInfoByUid:user.uid];
-//            
-//            
-//            [self updateUI];
-//            
-//            [self.navigationItem.rightBarButtonItem setEnabled:YES];
-//            [self.navigationItem.leftBarButtonItem setEnabled:YES];
-//            [self popupHappyMessage:@"保存成功" title:nil];
-//        }
-//    }
-//}
+- (void)didLoadUserInfoSucceeded:(int)errorCode;
+{
+    
+            User *user = [[UserManager defaultManager] user];
+    
+            NSString *bmi = [self reCaluclateBMIValueByWeight:user.weight
+                                                       height:user.height];
+            
+    
+            //设置为当前用户
+            [[UserService defaultService] setUser:user];
+            
+            [user setBMIValue:bmi];
+            
+            
+            
+            
+            NSDictionary *sinaUserInfo =[[UserService defaultService] getSinaUserInfoWithUid:[SinaWeiboManager sharedManager].sinaweibo.userID];
+            NSString *profileImageUrl = [sinaUserInfo objectForKey:@"profileImageUrl"];
+            
+            
+            if ([user.profileImageUrl length] == 0 && profileImageUrl) {
+                [self.user setProfileImageUrl:profileImageUrl];
+            }
+            
+            if ([user.city length] == 0 ) {
+                [self.user setCity:@"您的所在地"];
+            }
+            
+            if ([user.description length]) {
+                [self.user setDescription:@"您的心情短语！"];
+            }
+            
+            self.user = user;
+            //保存用户
+            [[UserService defaultService] storeUserInfoByUid:user.uid];
+            
+            
+            [self updateUI];
+            
+            [self.navigationItem.rightBarButtonItem setEnabled:YES];
+            [self.navigationItem.leftBarButtonItem setEnabled:YES];
+            [self popupHappyMessage:@"保存成功" title:nil];
+}
 
 
 @end

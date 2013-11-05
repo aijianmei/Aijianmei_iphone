@@ -12,6 +12,10 @@
 #import "User.h"
 #import "PPViewController.h"
 
+
+typedef void(^UploadImageResultBlock)(int resultCode, NSString* imageRemoteURL);
+
+
 @protocol UserServiceDelegate <NSObject>
 
 
@@ -25,6 +29,7 @@
 
 -(void)loginBySinaWeiboAccount:(int)resultCode uid:(NSString *)uid;
 - (void)didUserLogined:(int)resultCode uid:(NSString *)uid;
+- (void)didLoadUserInfoSucceeded:(int)errorCode;
 
 
 @end
@@ -41,15 +46,9 @@
 + (UserService*)defaultService;
 
 
-
-//不再使用restkit，后的登陆接口
 - (void)registerUser:(NSString*)email
             password:(NSString*)password
       viewController:(PPViewController<UserServiceDelegate>*)viewController;
-
-
-
-
 
 - (void)userRegisterByToken:(NSString*)token;
 
@@ -78,9 +77,7 @@
 
 //意见反馈
 - (void)postFeedbackWithUid:(NSString*)uid
-                    content:(NSString*)content
-//                   delegate:(id<RKObjectLoaderDelegate>)delegate
-;
+                    content:(NSString*)content;
 
 
 // 用户登录，只是使用邮箱密码马上可以登录
@@ -92,17 +89,15 @@
 
 //通过用户的id 来获取用户的信息;
 - (void)fecthUserInfoWithUid:(NSString*)uid
-//                    delegate:(id<RKObjectLoaderDelegate>)delegate
-;
+              viewController:(PPViewController<UserServiceDelegate>*)viewController;
+
 
 //通过用户的sns id 来获取用户的id
 - (void)fechUserIdBySnsId:(NSString*)snsID
            viewController:(PPViewController<UserServiceDelegate>*)viewController;
 
 //新浪微博用户数据注册
-- (void)registerUserWithSinaUserInfo:(NSDictionary*)userInfo
-//                            delegate:(id<RKObjectLoaderDelegate>)delegate
-;
+- (void)registerUserWithSinaUserInfo:(NSDictionary*)userInfo;
 
 //本地注册
 - (void)loginUserWithUseremail:(NSString*)email
@@ -125,6 +120,9 @@
 //                    delegate:(id<SinaWeiboRequestDelegate>)delegate
 ;
 
+
+
+
 //保存新浪用户信息
 - (void)storeSinaUserInfo:(NSDictionary*)userInfo;
 
@@ -138,6 +136,7 @@
 
 //保存用户信息到本地
 -(void)storeUserInfoByUid:(NSString *)uid;
+
 //获取保存在本地的用户信息
 -(User*)getUserInfoByUid:(NSString *)uid;
 
@@ -159,9 +158,14 @@
 + (void)followWeixinUser:(NSString *)userData;
 
 
--(void)postObject:(NSObject *)object withImage:(UIImage *)image
-//delegate:(id<RKObjectLoaderDelegate>)delegate
-;
+//上传头像
+- (void)uploadUserAvatar:(UIImage*)image
+             resultBlock:(UploadImageResultBlock)resultBlock;
+
+//上传背景图片
+- (void)uploadUserBackground:(UIImage*)image
+                 resultBlock:(UploadImageResultBlock)resultBlock;
+
 
 //是否绑定邮箱
 - (BOOL)hasBindEmail;

@@ -30,14 +30,84 @@ static UserManager* _defaultManager;
     return _defaultManager;
 }
 
-- (void)saveUserId:(NSString*)userId
-             email:(NSString*)email
-          password:(NSString*)password
-          nickName:(NSString*)nickName
-         avatarURL:(NSString*)avatarURL
+- (NSString*)userId
+{
+    //    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    //    return [userDefaults objectForKey:KEY_USERID];
+    
+    return self.user.uid;
+}
+
+
++ (User*)createUserWithUserId:(NSString *)userId
+                   sinaUserId:(NSString *)sinaUserId
+                     qqUserId:(NSString *)qqUserId
+                     userType:(NSString *)userType
+                         name:(NSString *)name
+              profileImageUrl:(NSString *)profileImageUrl
+                       gender:(NSString *)gender
+                        email:(NSString *)email
+                     password:(NSString *)password
+{
+    User *user = [[[User alloc] init] autorelease];
+    user.uid = userId;
+    user.sinaUserId = sinaUserId;
+    user.qqUserId = qqUserId;
+    user.userType = userType;
+    user.name = name;
+    user.profileImageUrl = profileImageUrl;
+    user.gender = gender;
+    user.email = email;
+    user.password = password;
+    
+    
+    return user;
+}
+
+
+- (void)    saveUserId:(NSString*)userId
+                 email:(NSString*)email
+                height:(NSString *)height
+              password:(NSString*)password
+              nickName:(NSString*)nickName
+             avatarURL:(NSString*)avatarURL
+                  city:(NSString *)city
+           loginStatus:(NSString *)loginStatus
+            sinaUserId:(NSString *)sinaUserId
+              qqUserId:(NSString *)qqUserId
+              userType:(NSString *)userType
+           labelsArray:(NSString *)labelsArray
+                gender:(NSString *)gender
+              BMIValue:(NSString *)BMIValue
+              province:(NSString *)province
+                   age:(NSString *)age
+           description:(NSString *)description
+                weight:(NSString *)weight
+avatarBackgroundImageURL:(NSString *)avatarBackgroundImageURL;
+
 {
     
+    [self.user setUid:userId];
+    [self.user setEmail:email];
+    [self.user setHeight:height];
+    [self.user setPassword:password];
+    [self.user setName:nickName];
+    [self.user setProfileImageUrl:avatarURL];
+    [self.user setSinaUserId:sinaUserId];
+    [self.user setQqUserId:qqUserId];
+    [self.user setUserType:userType];
+    [self.user setLabelsArray:nil];
+    [self.user setGender:gender];
+    [self.user setBMIValue:BMIValue];
+    [self.user setProvince:province];
+    [self.user setAge:age];
+    [self.user setWeight:weight];
+    [self.user setDescription:description];
+    [self.user setAvatarImage:nil];
+    
+    
 }
+
 
 - (void)setUserId:(NSString *)userId
 {
@@ -60,6 +130,8 @@ static UserManager* _defaultManager;
 - (void)setBackground:(NSString*)url
 {
 }
+
+
 
 - (NSString*)avatarURLFromOldStorage
 {
@@ -89,29 +161,6 @@ static UserManager* _defaultManager;
 
 
 
-+ (User*)createUserWithUserId:(NSString *)userId
-                   sinaUserId:(NSString *)sinaUserId
-                     qqUserId:(NSString *)qqUserId
-                     userType:(NSString *)userType
-                         name:(NSString *)name
-              profileImageUrl:(NSString *)profileImageUrl
-                       gender:(NSString *)gender
-                        email:(NSString *)email
-                     password:(NSString *)password
-{
-    User *user = [[[User alloc] init] autorelease];
-    user.uid = userId;
-    user.sinaUserId = sinaUserId;
-    user.qqUserId = qqUserId;
-    user.userType = userType;
-    user.name = name;
-    user.profileImageUrl = profileImageUrl;
-    user.gender = gender;
-    user.email = email;
-    user.password = password;
-    
-    return user;
-}
 
 
 

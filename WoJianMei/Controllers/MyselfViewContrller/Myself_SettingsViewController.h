@@ -10,11 +10,12 @@
 #import "PPTableViewController.h"
 #import "MyselfSettingCell.h"
 #import "TPKeyboardAvoidingTableView.h"
+#import "UserService.h"
 
 
 
 @class User;
-@interface Myself_SettingsViewController: PPTableViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIAlertViewDelegate,MyselfSettingCellDelegate>
+@interface Myself_SettingsViewController: PPTableViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIAlertViewDelegate,MyselfSettingCellDelegate,UserServiceDelegate>
 
 {
 

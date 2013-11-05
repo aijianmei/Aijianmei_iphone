@@ -543,6 +543,81 @@
 }
 
 
++ (CommonNetworkOutput *)fetchUserInfoByUid:(NSString *)baseURL
+                                        uid:(NSString *)uid{
+    
+    //   http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_getuserinfobyuid&uid=435
+    CommonNetworkOutput* output = [[[CommonNetworkOutput alloc] init] autorelease];
+    ConstructURLBlock constructURLHandler = ^NSString *(NSString *baseURL)
+    {
+        
+        // set input parameters
+        NSString* str = [NSString stringWithString:baseURL];
+        
+        str = [str stringByAddQueryParameter:AUCODE
+                                       value:AIJIANMEI];
+        str = [str stringByAddQueryParameter:PARA_AUACT
+                                       value:@"au_getuserinfobyuid"];
+        str = [str stringByAddQueryParameter:PARA_UID
+                                       value:uid];
+     
+        return str;
+        
+    };
+    
+    PPNetworkResponseBlock responseHandler = ^(NSDictionary *dict, CommonNetworkOutput *output) {
+        
+        //确定返回的数据类型
+        // output.jsonDataDict = [dict objectForKey:RET_DATA];
+        
+        output.jsonDataArray = (NSArray *) dict;
+        
+        
+        
+        return;
+    };
+    
+    return [PPNetworkRequest sendRequest:baseURL
+                     constructURLHandler:constructURLHandler
+                         responseHandler:responseHandler
+                                  output:output];
+
+
+
+}
+
++ (CommonNetworkOutput*)uploadUserImage:(NSString*)baseURL
+                                 userId:(NSString*)userId
+                              imageData:(NSData*)imageData
+                              imageType:(NSString*)imageType{
+
+    CommonNetworkOutput* output = [[[CommonNetworkOutput alloc] init] autorelease];
+    
+    ConstructURLBlock constructURLHandler = ^NSString *(NSString *baseURL) {
+        
+        // set input parameters
+        NSString* str = [NSString stringWithString:baseURL];
+        str = [str stringByAddQueryParameter:PARA_USERID value:userId];
+        
+        
+        return str;
+    };
+    
+    
+    PPNetworkResponseBlock responseHandler = ^(NSDictionary *dict, CommonNetworkOutput *output) {
+        output.jsonDataDict = [dict objectForKey:RET_DATA];
+        return;
+    };
+    
+    return [PPNetworkRequest uploadRequest:baseURL
+                                uploadData:imageData
+                       constructURLHandler:constructURLHandler
+                           responseHandler:responseHandler
+                                    output:output];
+
+
+}
+
 
 
 

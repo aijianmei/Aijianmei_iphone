@@ -17,6 +17,18 @@ typedef void (^FitnessNetworkResponseBlock)(NSDictionary* jsonDictionary, NSData
 
 
 
+//所有返回数据的格式都是如此的格式，在Benson 那里学习到的数据解析；
+/*{"dat":{"fec":0,
+          "mc":0,
+          "fac":0,
+          "rc":0,
+          "comc":0,
+          "dtc":0,
+          "bac":0,
+          "tlgc":0,
+          "tloc":0},
+   "ret":0} */
+
 + (CommonNetworkOutput *)queryVersion;
 
 
@@ -72,6 +84,15 @@ typedef void (^FitnessNetworkResponseBlock)(NSDictionary* jsonDictionary, NSData
 + (CommonNetworkOutput *)loadCommentById:(NSString*)baseURL
                                       Id:(NSString*)Id
                              channelType:(NSString*)channleType;
+
++ (CommonNetworkOutput *)fetchUserInfoByUid:(NSString *)baseURL
+                                        uid:(NSString *)uid;
+
++ (CommonNetworkOutput*)uploadUserImage:(NSString*)baseURL
+                                 userId:(NSString*)userId
+                              imageData:(NSData*)imageData
+                              imageType:(NSString*)imageType;
+
 
 
 

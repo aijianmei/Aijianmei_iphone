@@ -10,10 +10,7 @@
 #import "User.h"
 #import "UserService.h"
 #import "Result.h"
-
-enum errorCode {
-    ERROR_SUCCESS =0,
-};
+#import "PPNetworkRequest.h"
 
 
 

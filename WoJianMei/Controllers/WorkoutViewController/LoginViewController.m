@@ -327,6 +327,8 @@ enum SinaResultErrorCode
 - (void)clickQQShareButton:(UIButton *)sender {
     [self setUserType:@"qq"];
 }
+
+
 - (void)clickSignupAijianmeiAccount:(UIButton *)sender {
     
     self.userType =@"local";
@@ -352,7 +354,8 @@ enum SinaResultErrorCode
     NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
     [[SinaWeiboManager sharedManager] storeAuthData];
     //微博登陆后获取用户数据
-    [[UserService defaultService] fetchSinaUserInfo:sinaweibo.userID delegate:self];
+    [[UserService defaultService] fetchSinaUserInfo:sinaweibo.userID
+                                           delegate:self];
 }
 
 - (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
@@ -401,7 +404,8 @@ enum SinaResultErrorCode
       如果用户已经注册过，就直接返回用户的所有个人数据
       如果用户没有注册过，就让其注册；
     */
-     [[UserService defaultService] fechUserIdBySnsId:[userInfo objectForKey:@"id"] viewController:self];
+     [[UserService defaultService] fechUserIdBySnsId:[userInfo objectForKey:@"id"]
+                                      viewController:self];
    }
 }
 
@@ -409,7 +413,8 @@ enum SinaResultErrorCode
 
 #pragma mark -
 #pragma mark - LoginBySinaWeiboAccountMethod
--(void)loginBySinaWeiboAccount:(int)resultCode uid:(NSString *)uid
+-(void)loginBySinaWeiboAccount:(int)resultCode
+                           uid:(NSString *)uid
 {
     //通过新浪微博或者腾讯微博等第三方账号登陆
         int errorCode = resultCode;
@@ -434,8 +439,7 @@ enum SinaResultErrorCode
                                                          email:nil
                                                       password:nil];
                 
-                [[UserService defaultService] setUser:user];
-                
+                [[UserManager defaultManager] setUser:user];
                 
                      // 调用该方法进入用户资料界面
                 if (delegate &&[delegate respondsToSelector:@selector(pushToMyselfViewController:)])

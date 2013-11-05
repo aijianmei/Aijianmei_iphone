@@ -187,7 +187,7 @@ NSString* GlobalGetServerURL()
 
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
-        if (![[UserService defaultService] user]){
+        if (![[UserManager defaultManager] user]){
             LoginViewController *loginViewController =    [[AppDelegate getAppDelegate] initLoginViewController];
             loginViewController.delegate = [self homeViewController];
             UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:loginViewController];

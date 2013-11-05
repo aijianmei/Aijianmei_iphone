@@ -40,6 +40,9 @@
 #define PARA_AUACT  @"auact"
 #define PARA_SNSID  @"snsid"
 
+#define PARA_URL                        @"url"
+#define PARA_AVATAR                     @"av"
+
 
 
 
@@ -73,16 +76,16 @@
 
 
 
-#define PARA_USERS @"users"
-#define PARA_USERID @"uid"
-#define PARA_CREATOR_USERID @"cuid"
-#define PARA_LOGINID @"lid"
-#define PARA_LOGINIDTYPE @"lty"
-#define PARA_USERTYPE @"uty"
-#define PARA_PASSWORD @"userpassword"
-#define PARA_REGISTER_TYPE  @"usertype"
-#define PARA_NEW_PASSWORD @"npwd"
-#define PARA_EMAIL @"email"
+#define PARA_USERS           @"users"
+#define PARA_USERID          @"uid"
+#define PARA_CREATOR_USERID  @"cuid"
+#define PARA_LOGINID         @"lid"
+#define PARA_LOGINIDTYPE     @"lty"
+#define PARA_USERTYPE        @"uty"
+#define PARA_PASSWORD        @"userpassword"
+#define PARA_REGISTER_TYPE   @"usertype"
+#define PARA_NEW_PASSWORD    @"npwd"
+#define PARA_EMAIL           @"email"
 
 
 //文章传入参数
@@ -94,11 +97,38 @@
 #define PARA_CATEID       @"cateid"
 #define PARA_UID          @"uid"
 
-
 #define PARA_ARTICLE_ID                   @"id"
 #define PARA_ARTICLE_CHANNLE              @"channel"
 #define PARA_ARTICLE_CHANNLE_TYPE         @"channelType"
 #define PARA_ARTICLE_COMMENT_CONTENT      @"commentcontent"
+
+
+///用户
+#define PARA_USER_UID                    @"uid"
+#define PARA_USER_GENDER                 @"gender"
+#define PARA_USER_PROVINCE               @"province"
+#define PARA_USER_HEIGHT                 @"height"
+#define PARA_USER_CITY                   @"city"
+#define PARA_USER_PROFILE_IMAGE_URL      @"profileImageUrl"
+#define PARA_USER_LOGIN_STATUS           @"loginStatus"
+#define PARA_USER_SINA_USER_ID           @"sinaUserId"
+#define PARA_USER_QQ_USER_ID             @"qqUserId"
+#define PARA_USER_NAME                   @"name"
+#define PARA_USER_EMAIL                  @"email"
+#define PARA_USER_TYPE                   @"userType"
+#define PARA_USER_LABELS_ARRAY           @"labelsArray"
+#define PARA_USER_PASSWORD               @"password"
+#define PARA_USER_AGE                    @"age"
+#define PARA_USER_Weight                 @"weight"
+#define PARA_USER_BMI_VALUE              @"BMIValue"
+#define PARA_USER_DESCRIPTION            @"description"
+#define PARA_USER_BACKGROUND_IMAGE_URL   @"avatarBackGroundImage"
+
+
+
+
+
+
 
 
 

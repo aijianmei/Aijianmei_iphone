@@ -24,6 +24,7 @@
 #import "Result.h"
 #import "Video.h"
 #import "Myself_SettingsViewController.h"
+#import "UserManager.h"
 
 
 #import "ImageManager.h"
@@ -182,11 +183,9 @@ typedef enum CONTENT_TYPE {
 - (void)rightButtonClickHandler:(id)sender
 {
     [self.viewDeckController toggleRightViewAnimated:YES];
-    User *user = [[UserService defaultService] user];
+    User *user = [[UserManager defaultManager] user];
     
     if (user.uid) {
-    
-
         Myself_SettingsViewController *vc =[[Myself_SettingsViewController alloc]initWithNibName:@"Myself_SettingsViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
 

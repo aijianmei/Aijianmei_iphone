@@ -39,6 +39,7 @@
 
 @property (nonatomic,retain) User *user;
 
+- (NSString*)userId;
 + (BOOL)isUserExisted;
 + (NSString *)getUserId;
 
@@ -53,10 +54,25 @@
                         email:(NSString *)email
                      password:(NSString *)password;
 
-- (void)saveUserId:(NSString*)userId
-             email:(NSString*)email
-          password:(NSString*)password
-          nickName:(NSString*)nickName
-         avatarURL:(NSString*)avatarURL;
+- (void)    saveUserId:(NSString*)userId
+                 email:(NSString*)email
+                height:(NSString *)height
+              password:(NSString*)password
+              nickName:(NSString*)nickName
+             avatarURL:(NSString*)avatarURL
+                  city:(NSString *)city
+           loginStatus:(NSString *)loginStatus
+            sinaUserId:(NSString *)sinaUserId
+              qqUserId:(NSString *)qqUserId
+              userType:(NSString *)userType
+           labelsArray:(NSString *)labelsArray
+                gender:(NSString *)gender
+              BMIValue:(NSString *)BMIValue
+              province:(NSString *)province
+                   age:(NSString *)age
+           description:(NSString *)description
+                weight:(NSString *)weight
+ avatarBackgroundImageURL:(NSString *)avatarBackgroundImageURL;
+
 
 @end
