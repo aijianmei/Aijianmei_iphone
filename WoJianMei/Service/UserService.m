@@ -17,6 +17,8 @@
 #import "VersionInfo.h"
 #import "UIDevice+IdentifierAddition.h"
 #import "UserManager.h"
+#import "UIImageExt.h"
+#import "BlockUtils.h"
 
 
 
@@ -338,48 +340,84 @@ static UserService* _defaultUserService = nil;
 
 // 用户登录，只是使用邮箱密码马上可以登录
 - (void)fecthUserInfoWithUid:(NSString*)uid
-
+              viewController:(PPViewController<UserServiceDelegate>*)viewController;
 {
-    /*
-      [self initUserMap];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSMutableDictionary *queryParams = [[[NSMutableDictionary alloc] init] autorelease];
+    
+    [viewController showActivityWithText:@"..."];
+     //http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_getuserinfobyuid&uid=435
 
-     /*   http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_getuserinfobyuid&uid=435
-      */
-    
-    /*
-        [queryParams setObject:@"aijianmei" forKey:@"aucode"];
-        [queryParams setObject:@"au_getuserinfobyuid" forKey:@"auact"];
-        [queryParams setObject:uid forKey:@"uid"];
+    //A new working Queue
+    dispatch_async(workingQueue, ^{
         
+        CommonNetworkOutput* output = nil;
+        output = [FitnessNetworkRequest fetchUserInfoByUid:SERVER_URL
+                                                       uid:uid];
         
-        RKObjectManager *objectManager = [RKObjectManager sharedManager];
-        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
-        
-        NSLog(@"url: %@", [url absoluteString]);
-        NSLog(@"resourcePath: %@", [url resourcePath]);
-        NSLog(@"query: %@", [url query]);
-        
+        //Back to the Main Queue
         dispatch_async(dispatch_get_main_queue(), ^{
-            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
-        });
-    });
+            
+            [viewController hideActivity];
+            
+            NSArray           *array ;
+            NSDictionary *dictionary;
+            
+            if (output.resultCode == ERROR_SUCCESS) {
+                
+                array  = (NSArray *)output.jsonDataArray;
+                dictionary = [array objectAtIndex:0];
+                [[UserManager  defaultManager] saveUserId:[dictionary objectForKey:PARA_USER_UID]
+                                                    email:[dictionary objectForKey:PARA_USER_EMAIL]
+                                                   height:[dictionary objectForKey:PARA_USER_HEIGHT]
+                                                 password:[dictionary objectForKey:PARA_USER_PASSWORD]
+                                                 nickName:[dictionary objectForKey:PARA_USER_NAME]
+                                                avatarURL:[dictionary objectForKey:PARA_USER_PROFILE_IMAGE_URL]
+                                                     city:[dictionary objectForKey:PARA_USER_CITY]
+                                              loginStatus:[dictionary objectForKey:PARA_USER_LOGIN_STATUS]
+                                               sinaUserId:[dictionary objectForKey:PARA_USER_SINA_USER_ID]
+                                                 qqUserId:[dictionary objectForKey:PARA_USER_QQ_USER_ID]
+                                                 userType:[dictionary objectForKey:PARA_USER_TYPE]
+                                              labelsArray:[dictionary objectForKey:PARA_USER_LABELS_ARRAY]
+                                                   gender:[dictionary objectForKey:PARA_USER_GENDER]
+                                                 BMIValue:[dictionary objectForKey:PARA_USER_BMI_VALUE]
+                                                 province:[dictionary objectForKey:PARA_USER_PROVINCE]
+                                                      age:[dictionary objectForKey:PARA_USER_AGE]
+                                              description:[dictionary objectForKey:PARA_USER_DESCRIPTION]
+                                                   weight:[dictionary objectForKey:PARA_USER_Weight]
+                                 avatarBackgroundImageURL:[dictionary objectForKey:PARA_USER_BACKGROUND_IMAGE_URL]];
+                
+
+                
+                
+            }
+            
+            else if (output.resultCode == ERROR_NETWORK) {
+                [viewController popupUnhappyMessage:NSLS(@"kSystemFailure") title:nil];
+                
+                
+            }
+            else if (output.resultCode == ERROR_EMAIL_VERIFIED) {
+                // @"对不起，用户注册无法完成，请联系我们的技术支持以便解决问题"
+                [viewController popupUnhappyMessage:NSLS(@"用户名或密码错误") title:nil];
+                
+            }
+            
+            else {
+                // @"对不起，注册失败，请稍候再试"
+                //                [viewController popupUnhappyMessage:NSLS(@"kGeneralFailure") title:nil];
+                
+            }
+            
+            if ([viewController respondsToSelector:@selector(didLoadUserInfoSucceeded:)]){
+                
+                [viewController didLoadUserInfoSucceeded:output.resultCode];
+                
+                
+            }});});
     
-    */
+    
 }
 
-//- (void)initSinaResultMap
-//{
-//    RKObjectManager *objectManager = [RKObjectManager sharedManager];
-//    RKObjectMapping *resultMapping =[RKObjectMapping mappingForClass:[SinaResult class]];
-//    [resultMapping mapKeyPathsToAttributes:
-//     @"uid", @"_uid",
-//     @"errorCode", @"errorCode",
-//     nil];
-//    [objectManager.mappingProvider setMapping:resultMapping forKeyPath:@""];
-    
-//}
+
 
 
 - (void)fechUserIdBySnsId:(NSString*)snsID
@@ -775,35 +813,57 @@ static UserService* _defaultUserService = nil;
 
 }
 
-//-(void)postObject:(NSObject *)object withImage:(UIImage *)image delegate:(id<RKObjectLoaderDelegate>)delegate
-//{
+- (void)uploadUserAvatar:(UIImage*)image
+             resultBlock:(UploadImageResultBlock)resultBlock
+{
     //    http://42.96.132.109/wapapi/imgtest.php
+    
+    // save data locally firstly
+//    [[UserManager defaultManager] saveAvatarLocally:image];
+//    [[UserManager defaultManager] storeUserData];
+
+    NSString* userId = [[UserManager defaultManager] userId];
+    NSData* data = [image data];
+    dispatch_async(workingQueue, ^{
+        CommonNetworkOutput* output = [FitnessNetworkRequest uploadUserImage:SERVER_URL
+                                                                      userId:userId
+                                                                   imageData:data
+                                                                   imageType:PARA_AVATAR];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (output.resultCode == ERROR_SUCCESS){
+                
+                // update avatar
+                NSString* retURL = [[output jsonDataDict] objectForKey:PARA_URL];
+//                [[UserManager defaultManager] setAvatar:retURL];
+//                [[UserManager defaultManager] storeUserData];
+                EXECUTE_BLOCK(resultBlock, output.resultCode, retURL);
+            }
+            else{
+                EXECUTE_BLOCK(resultBlock, output.resultCode, nil);
+            }
+            
+        });
+    });
+    
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
     //Router setup: 
 //    RKObjectManager *objectManager = [RKObjectManager sharedManager];
 //    [objectManager.router routeClass:[User class] toResourcePath:@"/imgtest.php" forMethod:RKRequestMethodPOST];
 //    
 //    NSLog(@"Post an Image baseURL %@%@",[objectManager baseURL],@"/imgtest.php");
 //    
-//    //Mapping setup:
-//    RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[User class]];
-//    [userMapping mapKeyPathsToAttributes:
-//     @"uid", @"uid",
-//     @"name",@"name",
-//     @"description",@"description",
-//     @"gender",@"gender",
-//     @"sinaUserId",@"sinaUserId",
-//     @"email",@"email",
-//     @"age",@"age",
-//     @"height",@"height",
-//     @"weight",@"weight",
-//     @"BMIValue",@"BMIValue",
-//     @"province",@"province",
-//     @"city",@"city",
-//     @"profileImageUrl", @"profileImageUrl",
-////   @"backgroundimage",@"avatarBackGroundImage",
-//     nil];
-//    [objectManager.mappingProvider addObjectMapping:userMapping];
-//    [objectManager.mappingProvider setMapping:userMapping forKeyPath:@""];
+
 //    
 //    //The post
 //   User *user =[[UserService defaultService] user];
@@ -812,9 +872,7 @@ static UserService* _defaultUserService = nil;
 ////    UIImage *image2 = [UIImage imageNamed:@"table_header_bg.png"];
 //    NSData *imageData1 = UIImagePNGRepresentation(image);
 ////    NSData *imageData2 = UIImagePNGRepresentation(image2);
-//    
-//    
-//    
+ 
 //    RKParams* params = [RKParams params];
 //    [params setValue:user.uid forParam:@"uid"];
 //    [params setValue:user.profileImageUrl forParam:@"profileImageUrl"];
@@ -854,8 +912,8 @@ static UserService* _defaultUserService = nil;
 //             NSLog(@"%@",response.bodyAsString);
 //         };
 //     }];
-//}
-//
+}
+
 
 - (BOOL)hasBindAccount
 {
