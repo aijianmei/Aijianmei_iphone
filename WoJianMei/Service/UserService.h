@@ -30,6 +30,7 @@ typedef void(^UploadImageResultBlock)(int resultCode, NSString* imageRemoteURL);
 -(void)loginBySinaWeiboAccount:(int)resultCode uid:(NSString *)uid;
 - (void)didUserLogined:(int)resultCode uid:(NSString *)uid;
 - (void)didLoadUserInfoSucceeded:(int)errorCode;
+- (void)signUpSucceeded :(int)errorCode;
 
 
 @end
@@ -113,11 +114,12 @@ typedef void(^UploadImageResultBlock)(int resultCode, NSString* imageRemoteURL);
                                     email:(NSString*)email
                                  password:(NSString*)password
                                  usertype:(NSString*)usertype
-//                                 delegate:(id<RKObjectLoaderDelegate>)delegate
+                           viewController:(PPViewController<UserServiceDelegate>*)viewController
+
 ;
 //获取新浪用户信息
 - (void)fetchSinaUserInfo:(NSString*)uid
-//                    delegate:(id<SinaWeiboRequestDelegate>)delegate
+                    delegate:(id<SinaWeiboRequestDelegate>)delegate
 ;
 
 

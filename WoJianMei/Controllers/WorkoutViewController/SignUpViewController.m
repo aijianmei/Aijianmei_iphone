@@ -35,10 +35,10 @@ enum errorCode {
 @implementation SignUpViewController
 @synthesize delegate;
 @synthesize userNameTextField =_userNameTextField;
-@synthesize emailTextField =_emailTextField;
+@synthesize emailTextField    =_emailTextField;
 @synthesize passwordTextField =_passwordTextField;
-@synthesize snsId =_snsId;
-@synthesize userType =_userType;
+@synthesize snsId             =_snsId;
+@synthesize userType          =_userType;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -256,7 +256,7 @@ enum errorCode {
     if ([self.userType isEqualToString:@"sina"]) {
         userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
         
-        [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.emailTextField.text password:self.passwordTextField.text usertype:self.userType snsId:self.snsId profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:@"23" body_weight:@"65" height:@"175" keyword:@"1233|33|eerw" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] delegate:self];
+        [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.emailTextField.text password:self.passwordTextField.text usertype:self.userType snsId:self.snsId profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:@"23" body_weight:@"65" height:@"175" keyword:@"1233|33|eerw" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] viewController:self];
 
     }
     if ([self.userType isEqualToString:@"qq"]) {
@@ -265,10 +265,11 @@ enum errorCode {
     }
     if ([self.userType isEqualToString:@"local"]) {
         [self showActivityWithText:@"注册中..."];
-        [[UserService defaultService] registerAijianmeiUserWithUsername:self.userNameTextField.text
-                                                                  email:self.emailTextField.text
-                                                               password:self.passwordTextField.text
-                                                               usertype:self.userType delegate:self];
+        [[UserService defaultService] registerAijianmeiUserWithUsername:_userNameTextField.text
+                                                                  email:_emailTextField.text
+                                                               password:_passwordTextField.text
+                                                               usertype:_userType
+                                                         viewController:self];
     }
     
     
@@ -315,28 +316,10 @@ enum errorCode {
 
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    NSLog(@"Response code: %d", [response statusCode]);
-}
 
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+- (void)signUpSucceeded:(int)errorCode
 {
-    NSLog(@"Error: %@", [error localizedDescription]);
-    [self hideActivity];
-    [self popupUnhappyMessage:@"网络不给力，请稍后再试！" title:nil];
-
-}
-
-- (void)requestDidStartLoad:(RKRequest *)request
-{
-    NSLog(@"Start load request...");
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
-{
-    NSLog(@"***Load objects count: %d", [objects count]);
-    Result *result = [objects objectAtIndex:0];
-    PPDebug(@"The error code:%@",result.errorCode);
+   
     
     /* 10001 用户名重复 
        10002 邮箱重复 
@@ -344,24 +327,23 @@ enum errorCode {
        10004 用户类型
      */
     
-    int errocde = [result.errorCode integerValue];
-    if (ERROR_SUCCESS ==errocde)
+    if (ERROR_SUCCESS ==errorCode)
     {
-        PPDebug(@"注册成功,用户ID:%@",result.uid);
+//        PPDebug(@"注册成功,用户ID:%@",result.uid);
     }
     
-    if (REPEAT_USER_NAME ==errocde){
+    if (REPEAT_USER_NAME ==errorCode){
         [UIUtils alert:@"用户名已被使用"];
         [_userNameTextField becomeFirstResponder];
         return;
     }
-    if (REPEAT_USER_EMAIL ==errocde){
+    if (REPEAT_USER_EMAIL ==errorCode){
         [UIUtils alert:@"邮箱已经被注册"];
         [_emailTextField becomeFirstResponder];
         return;
 
     }
-    if (REPEAT_USER_NAME_EMAIL ==errocde){
+    if (REPEAT_USER_NAME_EMAIL ==errorCode){
         [UIUtils alert:@"用户名和邮箱已被注册"];
         [_userNameTextField becomeFirstResponder];
         return;
@@ -373,7 +355,7 @@ enum errorCode {
     if ([self.userType isEqualToString:@"sina"]) {
         userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
         
-        User *user = [UserManager createUserWithUserId:result.uid
+        User *user = [UserManager createUserWithUserId:@"dd"
                                             sinaUserId:self.snsId
                                               qqUserId:nil
                                               userType:self.userType name:[userInfo objectForKey:@"name"]
@@ -406,7 +388,7 @@ enum errorCode {
     
     //直接注册，用户名;
     if ([self.userType isEqualToString:@"local"]) {
-        User *user = [UserManager createUserWithUserId:result.uid
+        User *user = [UserManager createUserWithUserId:@"dd"
                                             sinaUserId:nil
                                               qqUserId:nil
                                               userType:self.userType
@@ -418,7 +400,7 @@ enum errorCode {
         
         NSLog(@"******Register success,return uid:%@",user.uid);
         [UserService defaultService].user = user;
-        [[UserService defaultService] storeUserInfoByUid:result.uid];
+        [[UserService defaultService] storeUserInfoByUid:user.uid];
         
                 
         //直接从注册页面，跳动到用户界面;

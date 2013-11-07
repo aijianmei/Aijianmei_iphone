@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WoJianMei/Service/UserService.m"
-            timestampString = "405361569.75157"
+            timestampString = "405527304.100529"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "468"
-            endingLineNumber = "468"
+            startingLineNumber = "466"
+            endingLineNumber = "466"
             landmarkName = "-fechUserIdBySnsId:viewController:"
             landmarkType = "5">
          </BreakpointContent>
@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WoJianMei/Service/UserService.m"
-            timestampString = "405361569.75157"
+            timestampString = "405527304.100529"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "476"
-            endingLineNumber = "476"
+            startingLineNumber = "474"
+            endingLineNumber = "474"
             landmarkName = "-fechUserIdBySnsId:viewController:"
             landmarkType = "5">
          </BreakpointContent>
@@ -84,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WoJianMei/Service/ArticleService.m"
-            timestampString = "405274206.800608"
+            timestampString = "405533654.501141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "-findArticleInfoWithAucode:auact:articleId:channel:channelType:uid:viewController:"
             landmarkType = "5">
          </BreakpointContent>
@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WoJianMei/Service/ArticleService.m"
-            timestampString = "405274206.800608"
+            timestampString = "405533654.501141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
             landmarkName = "-postCommentWithUid:targetContentId:comment:channelType:viewController:"
             landmarkType = "5">
          </BreakpointContent>
@@ -115,14 +115,44 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WoJianMei/Controllers/WorkoutViewController/LoginViewController.m"
-            timestampString = "405327597.737533"
+            filePath = "WoJianMei/NetWorkRequest/FitnessNetworkRequest.m"
+            timestampString = "405528132.690203"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
-            landmarkName = "-sinaweiboDidLogIn:"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "+registerUserByName:name:email:password:usertype:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[FitnessNetworkRequest registerUserByName:name:email:password:usertype:]"
+                  moduleName = "WoJianMei"
+                  urlString = "file:///Users/karakei/Documents/Study/GitTomCallon/Aijianmei_iphone/WoJianMei/NetWorkRequest/FitnessNetworkRequest.m"
+                  timestampString = "405533655.023425"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "262"
+                  endingLineNumber = "262"
+                  offsetFromSymbolStart = "263">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__73+[FitnessNetworkRequest registerUserByName:name:email:password:usertype:]_block_invoke108"
+                  moduleName = "WoJianMei"
+                  urlString = "file:///Users/karakei/Documents/Study/GitTomCallon/Aijianmei_iphone/WoJianMei/NetWorkRequest/FitnessNetworkRequest.m"
+                  timestampString = "405533655.023795"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "262"
+                  endingLineNumber = "262"
+                  offsetFromSymbolStart = "62">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -131,62 +161,44 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WoJianMei/Service/UserService.m"
-            timestampString = "405361569.75157"
+            filePath = "WoJianMei/NetWorkRequest/FitnessNetworkRequest.m"
+            timestampString = "405528163.977677"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "697"
-            endingLineNumber = "697"
-            landmarkName = "-fetchSinaUserInfo:delegate:"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
+            landmarkName = "+registerUserByName:name:email:password:usertype:"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WoJianMei/Controllers/MyselfViewContrller/Myself_SettingsViewController.m"
-            timestampString = "405361765.795068"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "848"
-            endingLineNumber = "848"
-            landmarkName = "-didLoadUserInfoSucceeded:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WoJianMei/Model/UserManager.m"
-            timestampString = "405361569.75157"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "-saveUserId:email:height:password:nickName:avatarURL:city:loginStatus:sinaUserId:qqUserId:userType:labelsArray:gender:BMIValue:province:age:description:weight:avatarBackgroundImageURL:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Common_iPhone_20/Core/Core-Application/PPNetworkRequest.m"
-            timestampString = "405408515.042048"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
-            landmarkName = "+sendRequest:constructURLHandler:responseHandler:outputFormat:output:"
-            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[FitnessNetworkRequest registerUserByName:name:email:password:usertype:]"
+                  moduleName = "WoJianMei"
+                  urlString = "file:///Users/karakei/Documents/Study/GitTomCallon/Aijianmei_iphone/WoJianMei/NetWorkRequest/FitnessNetworkRequest.m"
+                  timestampString = "405533655.024183"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "262"
+                  endingLineNumber = "262"
+                  offsetFromSymbolStart = "263">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__73+[FitnessNetworkRequest registerUserByName:name:email:password:usertype:]_block_invoke108"
+                  moduleName = "WoJianMei"
+                  urlString = "file:///Users/karakei/Documents/Study/GitTomCallon/Aijianmei_iphone/WoJianMei/NetWorkRequest/FitnessNetworkRequest.m"
+                  timestampString = "405533655.024545"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "262"
+                  endingLineNumber = "262"
+                  offsetFromSymbolStart = "62">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

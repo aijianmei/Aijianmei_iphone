@@ -125,6 +125,14 @@
 #define PARA_USER_BACKGROUND_IMAGE_URL   @"avatarBackGroundImage"
 
 
+//用户注册
+#define PARA_USER_SIGNUP_USERNAME       @"username"
+#define PARA_USER_SIGNUP_USER_PASSWROD  @"userpassword"
+#define PARA_USER_SIGNUP_USER_TYPE      @"usertype"
+
+
+
+
 
 
 

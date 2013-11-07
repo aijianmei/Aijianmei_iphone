@@ -224,47 +224,48 @@
 }
 
 
-+ (CommonNetworkOutput*)registerUserByEmail:(NSString*)baseURL
-                                      appId:(NSString*)appId
-                                      email:(NSString*)email
-                                   password:(NSString*)password
-                                deviceToken:(NSString*)deviceToken
-                                   deviceId:(NSString*)deviceId
++ (CommonNetworkOutput*)registerUserByName:(NSString *)baseURL
+                                      name:(NSString*)name
+                                     email:(NSString*)email
+                                  password:(NSString*)password
+                                  usertype:(NSString*)usertype;
 {
-//    CommonNetworkOutput* output = [[[CommonNetworkOutput alloc] init] autorelease];
-//    
-//    ConstructURLBlock constructURLHandler = ^NSString *(NSString *baseURL) {
-//        
-//        // set input parameters
-//        NSString* str = [NSString stringWithString:baseURL];
-//        NSString* deviceOS = [DeviceDetection deviceOS];
-//        
-//        str = [str stringByAddQueryParameter:METHOD value:METHOD_REGISTERUSER];
-//        str = [str stringByAddQueryParameter:PARA_EMAIL value:email];
-//        str = [str stringByAddQueryParameter:PARA_PASSWORD value:password];
-//        str = [str stringByAddQueryParameter:PARA_REGISTER_TYPE intValue:REGISTER_TYPE_EMAIL];
-//        str = [str stringByAddQueryParameter:PARA_DEVICETOKEN value:deviceToken];
-//        str = [str stringByAddQueryParameter:PARA_DEVICEID value:deviceId];
-//        
-//        str = [str stringByAddQueryParameter:PARA_COUNTRYCODE value:[LocaleUtils getCountryCode]];
-//        str = [str stringByAddQueryParameter:PARA_LANGUAGE value:[LocaleUtils getLanguageCode]];
-//        str = [str stringByAddQueryParameter:PARA_DEVICEMODEL value:[UIDevice currentDevice].model];
-//        str = [str stringByAddQueryParameter:PARA_DEVICEOS value:deviceOS];
-//        str = [str stringByAddQueryParameter:PARA_DEVICETYPE intValue:DEVICE_TYPE_IOS];
-//        return str;
-//    };
-//    
-//    
-//    PPNetworkResponseBlock responseHandler = ^(NSDictionary *dict, CommonNetworkOutput *output) {
+    CommonNetworkOutput* output = [[[CommonNetworkOutput alloc] init] autorelease];
+    
+    ConstructURLBlock constructURLHandler = ^NSString *(NSString *baseURL) {
+        
+        // set input parameters
+        NSString* str = [NSString stringWithString:baseURL];
+        str = [str stringByAddQueryParameter:AUCODE                         value:AIJIANMEI];
+        str = [str stringByAddQueryParameter:PARA_AUACT                     value:@"au_register"];
+        str = [str stringByAddQueryParameter:PARA_USER_SIGNUP_USERNAME      value:name];
+        str = [str stringByAddQueryParameter:PARA_USER_EMAIL                value:email];
+        str = [str stringByAddQueryParameter:PARA_USER_SIGNUP_USER_PASSWROD value:password];
+        str = [str stringByAddQueryParameter:PARA_USER_SIGNUP_USER_TYPE     value:usertype];
+        
+        return str;
+    };
+    
+    
+    PPNetworkResponseBlock responseHandler = ^(NSDictionary *dict, CommonNetworkOutput *output) {
+        
+        
+        
 //        output.jsonDataDict = [dict objectForKey:RET_DATA];
-//        return;
-//    };
-//    
-//    return [PPNetworkRequest sendRequest:baseURL
-//                     constructURLHandler:constructURLHandler
-//                         responseHandler:responseHandler
-//                                  output:output];
-//    
+        
+          output.jsonDataArray = (NSArray *) dict;
+
+        
+        
+        
+        return;
+    };
+    
+    return [PPNetworkRequest sendRequest:baseURL
+                     constructURLHandler:constructURLHandler
+                         responseHandler:responseHandler
+                                  output:output];
+    
     
 }
 

@@ -497,7 +497,7 @@ enum SinaResultErrorCode
                                                      email:nil
                                                   password:nil];
             
-            [[UserService defaultService] setUser:user];
+            [[UserManager defaultManager] setUser:user];
             
             [self dismissViewControllerAnimated:YES completion:^{}];
             

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PPViewController.h"
-#import <RestKit/RestKit.h>
+#import "UserService.h"
 #import "UIKeyboardViewController.h"
 
 
@@ -19,7 +19,7 @@
 @end
 
 
-@interface SignUpViewController : PPViewController<RKObjectLoaderDelegate,UIKeyboardViewControllerDelegate>
+@interface SignUpViewController : PPViewController<UserServiceDelegate,UIKeyboardViewControllerDelegate>
 {
         
     BOOL isSignupAijianmeiUser;

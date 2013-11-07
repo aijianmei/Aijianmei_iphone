@@ -410,8 +410,6 @@ static UserService* _defaultUserService = nil;
             if ([viewController respondsToSelector:@selector(didLoadUserInfoSucceeded:)]){
                 
                 [viewController didLoadUserInfoSucceeded:output.resultCode];
-                
-                
             }});});
     
     
@@ -506,44 +504,86 @@ static UserService* _defaultUserService = nil;
                                     email:(NSString*)email
                                  password:(NSString*)password
                                  usertype:(NSString*)usertype
-//                                 delegate:(id<RKObjectLoaderDelegate>)delegate
+                           viewController:(PPViewController<UserServiceDelegate>*)viewController
 
 {
-//    [self initResultMap];
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        NSMutableDictionary *queryParams = [[[NSMutableDictionary alloc] init] autorelease];
-//        [queryParams setObject:@"aijianmei" forKey:@"aucode"];
-//        [queryParams setObject:@"au_register" forKey:@"auact"];
-//        [queryParams setObject:usertype forKey:@"usertype"];
-//        [queryParams setObject:name forKey:@"username"];
-//        [queryParams setObject:password forKey:@"userpassword"];
-//        [queryParams setObject:email forKey:@"email"];
-//
-//        RKObjectManager *objectManager = [RKObjectManager sharedManager];
-//        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
-//        
-//        NSLog(@"url: %@", [url absoluteString]);
-//        NSLog(@"resourcePath: %@", [url resourcePath]);
-//        NSLog(@"query: %@", [url query]);
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
-//        });
-//    });
+    
+   // URL=http://42.96.132.109/wapapi/ios.php?&aucode=aijianmei&auact=au_register&username=ghsdfgdfs6&email=asdfasdf@qq.com&userpassword=asdfasdff&usertype=local
+    
+    //A new working Queue
+    dispatch_async(workingQueue, ^{
+        
+        CommonNetworkOutput* output = nil;
+        output = [FitnessNetworkRequest  registerUserByName:SERVER_URL
+                                                       name:name
+                                                      email:email
+                                                   password:password
+                                                   usertype:usertype];
+        
+        //Back to the Main Queue
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [viewController hideActivity];
+            
+            if (output.resultCode == ERROR_SUCCESS) {
+                
+                PPDebug(@"Fetch User ID by SINAWEIBO id ");
+                
+                [viewController dismissViewControllerAnimated:YES completion:^{}];
+                
+            }
+            else if (output.resultCode == ERROR_NETWORK) {
+                //                [viewController popupUnhappyMessage:NSLS(@"kSystemFailure") title:nil];
+                
+                
+            }
+            else if (output.resultCode == ERROR_USERID_NOT_FOUND) {
+                // @"对不起，用户注册无法完成，请联系我们的技术支持以便解决问题"
+                //                [viewController popupUnhappyMessage:NSLS(@"kUnknownRegisterFailure") title:nil];
+                
+                
+                
+            }
+            else if (output.resultCode == ERROR_EMAIL_EXIST) {
+                // @"对不起，该电子邮件已经被注册"
+                //                [viewController popupUnhappyMessage:NSLS(@"kEmailUsed") title:nil];
+                //                InputDialog *dialog = [InputDialog dialogWith:NSLS(@"kUserLogin") delegate:viewController];
+                //                [dialog.targetTextField setPlaceholder:NSLS(@"kEnterPassword")];
+                //                [dialog showInView:viewController.view];
+                
+                
+                
+                
+            }
+            else if (output.resultCode == ERROR_EMAIL_NOT_VALID) {
+                // @"对不起，该电子邮件格式不正确，请重新输入"
+                //                [viewController popupUnhappyMessage:NSLS(@"kEmailNotValid") title:nil];
+                
+                
+                
+            }
+            else {
+                // @"对不起，注册失败，请稍候再试"
+                //                [viewController popupUnhappyMessage:NSLS(@"kGeneralFailure") title:nil];
+                
+            }
+            
+            
+            
+            if ([viewController respondsToSelector:@selector(signUpSucceeded:)]){
+                
+                NSArray *array  = (NSArray *)output.jsonDataDict;
+                NSDictionary *dictionary = [array objectAtIndex:0];
+                NSString *uid = [dictionary objectForKey:@"uid"];
+                [viewController signUpSucceeded:output.resultCode];
+                
+                
+            }
+        });
+    });
+
 }
 
-
-- (void)initResultMap
-{
-//    RKObjectManager *objectManager = [RKObjectManager sharedManager];
-//    RKObjectMapping *resultMapping =[RKObjectMapping mappingForClass:[Result class]];
-//    [resultMapping mapKeyPathsToAttributes:
-//     @"errorCode", @"errorCode",
-//     @"uid", @"_uid",
-//     nil];
-//    [objectManager.mappingProvider setMapping:resultMapping forKeyPath:@""];
-
-}
 
 - (void)registerUserWithUsername:(NSString*)name
                            email:(NSString*)email
@@ -837,6 +877,8 @@ static UserService* _defaultUserService = nil;
                 NSString* retURL = [[output jsonDataDict] objectForKey:PARA_URL];
 //                [[UserManager defaultManager] setAvatar:retURL];
 //                [[UserManager defaultManager] storeUserData];
+                
+                
                 EXECUTE_BLOCK(resultBlock, output.resultCode, retURL);
             }
             else{

@@ -43,11 +43,13 @@ typedef void (^FitnessNetworkResponseBlock)(NSDictionary* jsonDictionary, NSData
                                  password:(NSString*)password
                                  usertype:(NSString*)usertype;
 
-+ (CommonNetworkOutput*)registerUserByEmail:(NSString*)baseURL
-                                      email:(NSString*)email
-                                   password:(NSString*)password
-                                deviceToken:(NSString*)deviceToken
-                                   deviceId:(NSString*)deviceId;
+
++ (CommonNetworkOutput*)registerUserByName:(NSString *)baseURL
+                                      name:(NSString*)name
+                                     email:(NSString*)email
+                                  password:(NSString*)password
+                                  usertype:(NSString*)usertype;
+
 
 
 //////文章接口

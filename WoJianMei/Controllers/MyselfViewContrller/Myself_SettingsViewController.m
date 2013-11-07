@@ -854,8 +854,7 @@
             [self updateUI];
             
             [self.navigationItem.rightBarButtonItem setEnabled:YES];
-            [self.navigationItem.leftBarButtonItem setEnabled:YES];
-            [self popupHappyMessage:@"保存成功" title:nil];
+            [self.navigationItem.leftBarButtonItem  setEnabled:YES];
 }
 
 

@@ -49,48 +49,6 @@
     return self;
 }
 
-- (void)initArticleMap
-{
-//    //获取在AppDelegate中生成的第一个RKObjectManager对象
-//    RKObjectManager *objectManager = [RKObjectManager sharedManager];
-//    //将json映射到class
-//    RKObjectMapping *articleMapping =[RKObjectMapping mappingForClass:[Article class]];
-//    [articleMapping mapKeyPathsToAttributes:
-//     @"category_id",@"category_id",
-//     @"id", @"_id",
-//     @"title", @"_title",
-//     @"brief", @"_brief",
-//     @"create_time", @"_create_time",
-//     @"img", @"_img",
-//     @"click", @"_click",
-//     @"commentCount",@"_commentCount",
-//     @"channeltype",@"_channeltype",
-//     @"url", @"url",
-//     @"shareurl",@"shareurl",
-//     @"channel", @"_channel",nil];
-//    
-//    [objectManager.mappingProvider setMapping:articleMapping forKeyPath:@""];
-}
-
-- (void)initArticleDetailMap
-{
-//    //获取在AppDelegate中生成的第一个RKObjectManager对象
-//    RKObjectManager *objectManager = [RKObjectManager sharedManager];
-//    //将json映射到class
-//    RKObjectMapping *articleMapping =[RKObjectMapping mappingForClass:[ArticleDetail class]];
-//    [articleMapping mapKeyPathsToAttributes:
-//     @"id", @"_id",
-//     @"title", @"_title",
-//     @"author", @"_author",
-//     @"content", @"content",
-//     @"brief", @"_brief",
-//     @"create_time", @"_create_time",
-//     @"img", @"_img",
-//     @"like", @"like",
-//     @"clikc", @"_click",
-//     @"commentsCount",@"_commentsCount",nil];
-//    [objectManager.mappingProvider setMapping:articleMapping forKeyPath:@""];
-}
 
 - (void)findArticleWithAucode:(NSString*)aucode
                         auact:(NSString*)auact
@@ -104,7 +62,7 @@
                viewController:(PPViewController<ArticleServiceDelegate>* )viewController
 {
     
-    [viewController showActivityWithText:@"连接中..."];
+    [viewController showActivityWithText:@"加载中..."];
     
     dispatch_async(workingQueue, ^{
     
