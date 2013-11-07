@@ -67,10 +67,16 @@ static UserService* _defaultUserService = nil;
         //Back to the Main Queue
         dispatch_async(dispatch_get_main_queue(), ^{
             
+            NSDictionary    *dictionary ;
+            NSString        *uid;
             [viewController hideActivity];
             
             
             if (output.resultCode == ERROR_SUCCESS) {
+                
+                 dictionary = output.jsonDataDict;
+                 uid= [dictionary objectForKey:@"uid"];
+                
                 [viewController dismissViewControllerAnimated:YES completion:^{}];
                 
             }
@@ -94,10 +100,6 @@ static UserService* _defaultUserService = nil;
             
             if ([viewController respondsToSelector:@selector(didUserLogined:uid:)]){
                 
-                
-                NSArray *array  = (NSArray *)output.jsonDataDict;
-                NSDictionary *dictionary = [array objectAtIndex:0];
-                NSString *uid = [dictionary objectForKey:@"uid"];
                 [viewController didUserLogined:output.resultCode
                                            uid:uid];
             }
@@ -435,10 +437,29 @@ static UserService* _defaultUserService = nil;
         dispatch_async(dispatch_get_main_queue(), ^{
         
             [viewController hideActivity];
+            
+            NSDictionary *dictionary ;
+            NSString     *uid;
 
             if (output.resultCode == ERROR_SUCCESS) {
                 
                 PPDebug(@"Fetch User ID by SINAWEIBO id ");
+                
+                dictionary = output.jsonDataDict;
+                uid = [dictionary objectForKey:@"uid"];
+                
+                if (![UserManager isUserExisted]) {
+                    [UserManager createUserWithUserId:uid
+                                           sinaUserId:nil
+                                             qqUserId:nil
+                                             userType:nil
+                                                 name:nil
+                                      profileImageUrl:nil
+                                               gender:nil
+                                                email:nil
+                                             password:nil];
+                }
+                
                 
                 [viewController dismissViewControllerAnimated:YES completion:^{}];
 
@@ -483,9 +504,7 @@ static UserService* _defaultUserService = nil;
             
             if ([viewController respondsToSelector:@selector(loginBySinaWeiboAccount:uid:)]){
 
-                NSArray *array  = (NSArray *)output.jsonDataDict;
-                NSDictionary *dictionary = [array objectAtIndex:0];
-                NSString *uid = [dictionary objectForKey:@"uid"];
+               
                 [viewController loginBySinaWeiboAccount:output.resultCode
                                            uid:uid];
                 

@@ -27,9 +27,14 @@ typedef void(^UploadImageResultBlock)(int resultCode, NSString* imageRemoteURL);
                      title:(NSString *)title
                    content:(NSString *)content;
 
--(void)loginBySinaWeiboAccount:(int)resultCode uid:(NSString *)uid;
-- (void)didUserLogined:(int)resultCode uid:(NSString *)uid;
+-(void)loginBySinaWeiboAccount:(int)resultCode
+                           uid:(NSString *)uid;
+
+- (void)didUserLogined:(int)resultCode
+                   uid:(NSString *)uid;
+
 - (void)didLoadUserInfoSucceeded:(int)errorCode;
+
 - (void)signUpSucceeded :(int)errorCode;
 
 

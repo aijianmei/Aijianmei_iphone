@@ -89,7 +89,7 @@
             if (output.resultCode == ERROR_SUCCESS) {
                 
 
-                array =  (NSMutableArray *)output.jsonDataArray;
+                array =  (NSMutableArray *)output.jsonDataDict;
                 newArray  =[NSMutableArray arrayWithObject:array];
                 [newArray removeAllObjects];
 
@@ -170,13 +170,11 @@
             [viewController hideActivity];
             
             NSDictionary *dictionary;
-            NSMutableArray *array;
             ArticleDetail *artileDetail;
 
             
             if (output.resultCode == ERROR_SUCCESS) {
-                array =  (NSMutableArray *)output.jsonDataArray;
-                dictionary = [array objectAtIndex:0];
+                dictionary =output.jsonDataDict;
                 artileDetail = [[ArticleDetail alloc] initWithid:[dictionary objectForKey:@"id"]
                                                           wapimg:[dictionary objectForKey:@"wapimg"]
                                                       wapcontent:[dictionary objectForKey:@"wapcontent"]

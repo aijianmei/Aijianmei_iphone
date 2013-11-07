@@ -153,12 +153,8 @@
     PPNetworkResponseBlock responseHandler = ^(NSDictionary *dict, CommonNetworkOutput *output) {
         
         
-//        output.jsonDataDict = [dict objectForKey:RET_DATA];
+        output.jsonDataDict = [dict objectForKey:RET_DATA];
 
-        output.jsonDataDict = dict;
-
-        
-        
         return;
     };
     
@@ -206,12 +202,8 @@
         
         
          //确定返回的数据类型
-//         output.jsonDataDict = [dict objectForKey:RET_DATA];
+         output.jsonDataDict = [dict objectForKey:RET_DATA];
       
-         output.jsonDataDict = dict;
-
-        
-        
         
         return;
     };
@@ -317,9 +309,8 @@
         
         
         //确定返回的数据类型
-        //         output.jsonDataDict = [dict objectForKey:RET_DATA];
+        output.jsonDataDict = [dict objectForKey:RET_DATA];
         
-        output.jsonDataArray = (NSArray *) dict;
         
         
         
@@ -377,9 +368,8 @@
         
         
         //确定返回的数据类型
-        //         output.jsonDataDict = [dict objectForKey:RET_DATA];
+        output.jsonDataDict = [dict objectForKey:RET_DATA];
         
-        output.jsonDataArray = (NSArray *) dict;
         
         
         
@@ -425,12 +415,7 @@
     PPNetworkResponseBlock responseHandler = ^(NSDictionary *dict, CommonNetworkOutput *output) {
     
         //确定返回的数据类型
-        // output.jsonDataDict = [dict objectForKey:RET_DATA];
-        
-        output.jsonDataArray = (NSArray *) dict;
-        
-        
-        
+         output.jsonDataDict = [dict objectForKey:RET_DATA];
         
         return;
     };
@@ -478,9 +463,7 @@
     PPNetworkResponseBlock responseHandler = ^(NSDictionary *dict, CommonNetworkOutput *output) {
         
         //确定返回的数据类型
-        // output.jsonDataDict = [dict objectForKey:RET_DATA];
-        
-        output.jsonDataArray = (NSArray *) dict;
+         output.jsonDataDict = [dict objectForKey:RET_DATA];
         
         
         
@@ -526,9 +509,7 @@
     PPNetworkResponseBlock responseHandler = ^(NSDictionary *dict, CommonNetworkOutput *output) {
         
         //确定返回的数据类型
-        // output.jsonDataDict = [dict objectForKey:RET_DATA];
-        
-        output.jsonDataArray = (NSArray *) dict;
+         output.jsonDataDict = [dict objectForKey:RET_DATA];
         
         
         
@@ -569,9 +550,7 @@
     PPNetworkResponseBlock responseHandler = ^(NSDictionary *dict, CommonNetworkOutput *output) {
         
         //确定返回的数据类型
-        // output.jsonDataDict = [dict objectForKey:RET_DATA];
-        
-        output.jsonDataArray = (NSArray *) dict;
+         output.jsonDataDict = [dict objectForKey:RET_DATA];
         
         
         
