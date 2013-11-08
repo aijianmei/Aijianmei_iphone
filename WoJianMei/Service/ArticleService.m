@@ -62,7 +62,8 @@
                viewController:(PPViewController<ArticleServiceDelegate>* )viewController
 {
     
-    [viewController showActivityWithText:@"加载中..."];
+      [viewController showProgressHUDActivityWithText:@"加载中..."];
+    
     
     dispatch_async(workingQueue, ^{
     
@@ -80,7 +81,8 @@
 
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            [viewController hideActivity];
+            [viewController hideProgressHUDActivity];
+            
             NSMutableArray    *array;
             NSDictionary *dictionary;
             NSMutableArray *newArray;
@@ -116,26 +118,21 @@
             }
             
             else if (output.resultCode == ERROR_NETWORK) {
-                [viewController popupUnhappyMessage:NSLS(@"kSystemFailure") title:nil];
+                [viewController popupUnhappyMessage:NSLS(@"网络错误,请稍后再试") title:nil];
                 
                 
             }
-            else if (output.resultCode == ERROR_EMAIL_VERIFIED) {
-                // @"对不起，用户注册无法完成，请联系我们的技术支持以便解决问题"
-                [viewController popupUnhappyMessage:NSLS(@"用户名或密码错误") title:nil];
-                
-            }
-            
+           
             else {
                 // @"对不起，注册失败，请稍候再试"
-                //                [viewController popupUnhappyMessage:NSLS(@"kGeneralFailure") title:nil];
+                [viewController popupUnhappyMessage:NSLS(@"kGeneralFailure") title:nil];
                 
             }
             
         
-            if ([viewController respondsToSelector:@selector(didGetArticleArray:)]){
+            if ([viewController respondsToSelector:@selector(didGetArticleArray:errorCode:)]){
                 
-                [viewController didGetArticleArray:newArray];
+                [viewController didGetArticleArray:newArray errorCode:output.resultCode];
 
             }
         });
@@ -154,7 +151,9 @@
 
 {
     
-    [viewController showActivityWithText:@"连接中..."];
+    [viewController showProgressHUDActivityWithText:@"加载中..."];
+    
+    
     dispatch_async(workingQueue, ^{
         CommonNetworkOutput* output = nil;
         output = [FitnessNetworkRequest findArticleInfoWithAucode:SERVER_URL
@@ -167,7 +166,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            [viewController hideActivity];
+            [viewController hideProgressHUDActivity];
             
             NSDictionary *dictionary;
             ArticleDetail *artileDetail;
@@ -197,11 +196,7 @@
                 
                 
             }
-            else if (output.resultCode == ERROR_EMAIL_VERIFIED) {
-                // @"对不起，用户注册无法完成，请联系我们的技术支持以便解决问题"
-                [viewController popupUnhappyMessage:NSLS(@"用户名或密码错误") title:nil];
-                
-            }
+           
             
             else {
                 // @"对不起，注册失败，请稍候再试"
@@ -349,6 +344,8 @@
         viewController:(PPViewController<ArticleServiceDelegate>*)viewController
 {
 
+    
+    [viewController showProgressHUDActivityWithText:@"加载中..."];
     //A new working Queue
     dispatch_async(workingQueue, ^{
         
@@ -360,7 +357,7 @@
         //Back to the Main Queue
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            [viewController hideActivity];
+            [viewController hideProgressHUDActivity];
             
             NSMutableArray      *array;
             NSMutableArray      *newArray;
@@ -397,12 +394,7 @@
                 
                 
             }
-            else if (output.resultCode == ERROR_EMAIL_VERIFIED) {
-                // @"对不起，用户注册无法完成，请联系我们的技术支持以便解决问题"
-                [viewController popupUnhappyMessage:NSLS(@"用户名或密码错误") title:nil];
-                
-            }
-            
+           
             else {
                 // @"对不起，注册失败，请稍候再试"
                 //                [viewController popupUnhappyMessage:NSLS(@"kGeneralFailure") title:nil];

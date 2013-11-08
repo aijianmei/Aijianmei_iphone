@@ -23,7 +23,8 @@
 #import "MyselfViewController.h"
 #import "LoginViewController.h"
 #import "Result.h"
-
+#import "UserManager.h"
+#import "PPNetworkRequest.h"
 
 #import "ImageManager.h"
 #import "UIImageView+WebCache.h"
@@ -174,7 +175,7 @@ typedef enum CONTENT_TYPE {
 {
     [self.viewDeckController toggleRightViewAnimated:YES];
     
-    User *user = [[UserService defaultService] user];
+    User *user = [[UserManager defaultManager] user];
     
     if (user.uid) {
         
@@ -414,7 +415,7 @@ typedef enum CONTENT_TYPE {
     NSString *cateid = @"0";
     NSString *uid = @"265";
     
-    User *user = [[UserService defaultService] user];
+    User *user = [[UserManager defaultManager] user];
     NSString *userUid = user.uid;
     
     if (userUid) {
@@ -608,9 +609,15 @@ typedef enum CONTENT_TYPE {
 
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
--(void)didGetArticleArray:(NSArray *)objects
 
+-(void)didGetArticleArray:(NSArray *)objects errorCode:(int)errorCode
 {
+    
+    if (errorCode ==ERROR_NETWORK) {
+        
+        return ;
+    }
+
     
     NSLog(@"***Load objects count: %d", [objects count]);
 	[self dataSourceDidFinishLoadingNewData];

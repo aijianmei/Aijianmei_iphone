@@ -119,6 +119,27 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+
+    typedef enum
+    {
+        SSRectEdgeNone   = 0,
+        SSRectEdgeTop    = 1 << 0,
+        SSRectEdgeLeft   = 1 << 1,
+        SSRectEdgeBottom = 1 << 2,
+        SSRectEdgeRight  = 1 << 3,
+        SSRectEdgeAll    = SSRectEdgeTop | SSRectEdgeLeft | SSRectEdgeBottom | SSRectEdgeRight
+    }
+    SSRectEdge;
+    
+    
+    
+    
+    
+    [self setExtendedLayoutIncludesOpaqueBars:NO];
+    [self setEdgesForExtendedLayout:SSRectEdgeBottom | SSRectEdgeLeft | SSRectEdgeRight];
+
+
+    
     UIImageView *bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IndexBG.png"]];
     bgImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     
@@ -283,6 +304,11 @@
         lineView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
           [cell addSubview:lineView];
           [lineView release];
+        
+        
+        
+        
+
     }
     
     
@@ -407,7 +433,6 @@
     
     }else{
     
-
     }
     
     

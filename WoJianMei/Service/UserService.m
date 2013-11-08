@@ -53,7 +53,7 @@ static UserService* _defaultUserService = nil;
     
     //http://42.96.132.109/wapapi/ios.php?&aucode=aijianmei&auact=au_login&email=ronaldotomcallon@qq.com&userpassword=xxxxxxxxx&usertype=local
     
-    [viewController showActivityWithText:@"登陆中..."];
+    [viewController showProgressHUDActivityWithText:@"登陆中..."];
     
     //A new working Queue
     dispatch_async(workingQueue, ^{
@@ -69,7 +69,7 @@ static UserService* _defaultUserService = nil;
             
             NSDictionary    *dictionary ;
             NSString        *uid;
-            [viewController hideActivity];
+            [viewController hideProgressHUDActivity];
             
             
             if (output.resultCode == ERROR_SUCCESS) {
@@ -359,14 +359,11 @@ static UserService* _defaultUserService = nil;
         dispatch_async(dispatch_get_main_queue(), ^{
             
             [viewController hideActivity];
-            
-            NSArray           *array ;
-            NSDictionary *dictionary;
+             NSDictionary *dictionary;
             
             if (output.resultCode == ERROR_SUCCESS) {
                 
-                array  = (NSArray *)output.jsonDataArray;
-                dictionary = [array objectAtIndex:0];
+                dictionary=output.jsonDataDict;
                 [[UserManager  defaultManager] saveUserId:[dictionary objectForKey:PARA_USER_UID]
                                                     email:[dictionary objectForKey:PARA_USER_EMAIL]
                                                    height:[dictionary objectForKey:PARA_USER_HEIGHT]
@@ -424,7 +421,7 @@ static UserService* _defaultUserService = nil;
            viewController:(PPViewController<UserServiceDelegate>*)viewController
 
 {
-    [viewController showActivityWithText:@"连接中..."];
+    [viewController showProgressHUDActivityWithText:@"加载中..."];
     
     //A new working Queue
     dispatch_async(workingQueue, ^{
@@ -436,7 +433,7 @@ static UserService* _defaultUserService = nil;
         //Back to the Main Queue
         dispatch_async(dispatch_get_main_queue(), ^{
         
-            [viewController hideActivity];
+            [viewController hideProgressHUDActivity];
             
             NSDictionary *dictionary ;
             NSString     *uid;
@@ -448,7 +445,6 @@ static UserService* _defaultUserService = nil;
                 dictionary = output.jsonDataDict;
                 uid = [dictionary objectForKey:@"uid"];
                 
-                if (![UserManager isUserExisted]) {
                     [UserManager createUserWithUserId:uid
                                            sinaUserId:nil
                                              qqUserId:nil
@@ -458,39 +454,13 @@ static UserService* _defaultUserService = nil;
                                                gender:nil
                                                 email:nil
                                              password:nil];
-                }
                 
                 
                 [viewController dismissViewControllerAnimated:YES completion:^{}];
 
             }
             else if (output.resultCode == ERROR_NETWORK) {
-//                [viewController popupUnhappyMessage:NSLS(@"kSystemFailure") title:nil];
-                
-                
-            }
-            else if (output.resultCode == ERROR_USERID_NOT_FOUND) {
-                // @"对不起，用户注册无法完成，请联系我们的技术支持以便解决问题"
-//                [viewController popupUnhappyMessage:NSLS(@"kUnknownRegisterFailure") title:nil];
-                
-                
-                
-            }
-            else if (output.resultCode == ERROR_EMAIL_EXIST) {
-                // @"对不起，该电子邮件已经被注册"
-//                [viewController popupUnhappyMessage:NSLS(@"kEmailUsed") title:nil];
-//                InputDialog *dialog = [InputDialog dialogWith:NSLS(@"kUserLogin") delegate:viewController];
-//                [dialog.targetTextField setPlaceholder:NSLS(@"kEnterPassword")];
-//                [dialog showInView:viewController.view];
-                
-                
-                
-                
-            }
-            else if (output.resultCode == ERROR_EMAIL_NOT_VALID) {
-                // @"对不起，该电子邮件格式不正确，请重新输入"
-//                [viewController popupUnhappyMessage:NSLS(@"kEmailNotValid") title:nil];
-                
+                [viewController popupUnhappyMessage:NSLS(@"网络错误,请稍后再试") title:nil];
                 
                 
             }
@@ -529,6 +499,8 @@ static UserService* _defaultUserService = nil;
     
    // URL=http://42.96.132.109/wapapi/ios.php?&aucode=aijianmei&auact=au_register&username=ghsdfgdfs6&email=asdfasdf@qq.com&userpassword=asdfasdff&usertype=local
     
+    [viewController showProgressHUDActivityWithText:@"注册中..."];
+
     //A new working Queue
     dispatch_async(workingQueue, ^{
         
@@ -542,7 +514,7 @@ static UserService* _defaultUserService = nil;
         //Back to the Main Queue
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            [viewController hideActivity];
+            [viewController hideProgressHUDActivity];
             
             if (output.resultCode == ERROR_SUCCESS) {
                 

@@ -310,11 +310,7 @@
         
         //确定返回的数据类型
         output.jsonDataDict = [dict objectForKey:RET_DATA];
-        
-        
-        
-        
-        
+
         return;
     };
     
@@ -369,10 +365,6 @@
         
         //确定返回的数据类型
         output.jsonDataDict = [dict objectForKey:RET_DATA];
-        
-        
-        
-        
         
         return;
     };
@@ -510,8 +502,6 @@
         
         //确定返回的数据类型
          output.jsonDataDict = [dict objectForKey:RET_DATA];
-        
-        
         
         return;
     };

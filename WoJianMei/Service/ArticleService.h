@@ -17,7 +17,7 @@
 
 @optional
 
--(void)didGetArticleArray:(NSArray *)objects;
+-(void)didGetArticleArray:(NSArray *)objects errorCode:(int)errorCode;
 -(void)didGetArticleDetail:(ArticleDetail *)articleDetail;
 -(void)didPostLikeSucceeded:(int)errorCode;
 -(void)didPostCommentSucceeded:(int)errorCode;

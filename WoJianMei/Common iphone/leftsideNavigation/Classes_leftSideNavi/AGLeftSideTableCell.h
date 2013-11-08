@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PPTableViewCell.h"
 
-@interface AGLeftSideTableCell : PPTableViewCell
+@interface AGLeftSideTableCell : UITableViewCell
 
 @end

@@ -58,7 +58,8 @@
 }
 
 //下载文章的评论
--(void)loadVideCommentByVideId:(NSString *)VideoId channelType:(NSString *)channleType  delegate:(id<RKObjectLoaderDelegate>)delegate
+-(void)loadVideCommentByVideId:(NSString *)VideoId channelType:(NSString *)channleType
+//                      delegate:(id<RKObjectLoaderDelegate>)delegate
 {
 
     [self initCommentMap];

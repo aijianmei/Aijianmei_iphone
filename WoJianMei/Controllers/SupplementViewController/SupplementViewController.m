@@ -24,6 +24,7 @@
 #import "LoginViewController.h"
 #import "Result.h"
 
+#import "PPNetworkRequest.h"
 
 #import "ImageManager.h"
 #import "UIImageView+WebCache.h"
@@ -621,9 +622,14 @@ typedef enum CONTENT_TYPE {
 
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
-
--(void)didGetArticleArray:(NSArray *)objects
+-(void)didGetArticleArray:(NSArray *)objects errorCode:(int)errorCode
 {
+    
+    if (errorCode ==ERROR_NETWORK) {
+        
+        return ;
+    }
+
     
     NSLog(@"***Load objects count: %d", [objects count]);
 	[self dataSourceDidFinishLoadingNewData];

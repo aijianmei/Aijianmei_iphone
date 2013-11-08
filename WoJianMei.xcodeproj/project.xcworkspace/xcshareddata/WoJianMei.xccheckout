@@ -12,6 +12,8 @@
 	<dict>
 		<key>0E1896B5-0CE6-4D74-BC6D-54B6806F95DC</key>
 		<string>ssh://github.com/aijianmei/TeamTask.git</string>
+		<key>8982E090-42A3-4B89-ADFB-541A62D12B9B</key>
+		<string>git://github.com/devinross/tapkulibrary.git</string>
 		<key>B3643E08-A93A-4BA4-A1B7-75A7D4451A3F</key>
 		<string>ssh://github.com/aijianmei/Common_iPhone_20.git</string>
 		<key>E42144FD-90A0-4025-A29A-D06FE48ECC0A</key>
@@ -23,6 +25,8 @@
 	<dict>
 		<key>0E1896B5-0CE6-4D74-BC6D-54B6806F95DC</key>
 		<string>../../../TeamTask</string>
+		<key>8982E090-42A3-4B89-ADFB-541A62D12B9B</key>
+		<string>../../../Common_iPhone_20/Core/Core-3PP/tapkulibrary</string>
 		<key>B3643E08-A93A-4BA4-A1B7-75A7D4451A3F</key>
 		<string>../../../Common_iPhone_20</string>
 		<key>E42144FD-90A0-4025-A29A-D06FE48ECC0A</key>
@@ -51,6 +55,14 @@
 			<string>B3643E08-A93A-4BA4-A1B7-75A7D4451A3F</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Common_iPhone_20</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8982E090-42A3-4B89-ADFB-541A62D12B9B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>tapkulibrary</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

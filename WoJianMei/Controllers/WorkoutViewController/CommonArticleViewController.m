@@ -138,7 +138,7 @@ enum actionsheetNumber{
 {
     [super viewDidLoad];
     
-    [self.view  setBounds:CGRectMake(0, 0, 320, 480)];
+//    [self.view  setBounds:CGRectMake(0, 0, 320, 480)];
     
     [self setRightBarButtons];
     [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
@@ -156,7 +156,7 @@ enum actionsheetNumber{
     
     
     /////重新定位，设定NavigationBar 的位置
-    [self.navigationController.navigationBar setFrame:CGRectMake(0, 420, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
+//    [self.navigationController.navigationBar setFrame:CGRectMake(0, 420, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
     
     
     //548 480

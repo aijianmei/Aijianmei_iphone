@@ -23,6 +23,7 @@
 #import "MyselfViewController.h"
 #import "LoginViewController.h"
 #import "Result.h"
+#import "PPNetworkRequest.h"
 
 
 #import "ImageManager.h"
@@ -122,10 +123,6 @@ typedef enum CONTENT_TYPE {
     [_segmentedController setSelectedSegmentIndex:0];
     
     [self buttonClicked:sender];
-    
-    // 时间戳转时间的方法
-    //    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:1363948516];
-    //    NSLog(@"1363948516  = %@",confromTimesp);
     
 }
 
@@ -629,9 +626,13 @@ typedef enum CONTENT_TYPE {
 
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
-
--(void)didGetArticleArray:(NSArray *)objects
+-(void)didGetArticleArray:(NSArray *)objects errorCode:(int)errorCode
 {
+    
+    if (errorCode ==ERROR_NETWORK) {
+        
+        return ;
+    }
     
     NSLog(@"***Load objects count: %d", [objects count]);
 	[self dataSourceDidFinishLoadingNewData];
