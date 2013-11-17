@@ -9,6 +9,7 @@
 #import "MyselfSettingCell.h"
 #import "User.h"
 #import "UserService.h"
+#import "UserManager.h"
 
 @implementation MyselfSettingCell
 @synthesize detailLabelView =_detailLabelView;
@@ -87,7 +88,7 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField;
 {
     // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
-    User *user =[[UserService defaultService] user];
+    User *user =[[UserManager defaultManager] user];
     switch (textField.tag) {
         case 1:
         {
@@ -111,7 +112,7 @@
         default:
             break;
     }
-    [[UserService defaultService] setUser:user];
+    [[UserManager defaultManager] setUser:user];
     [[UserService defaultService] storeUserInfoByUid:user.uid];
     
     
@@ -166,7 +167,7 @@
     UIButton *button =(UIButton *)sender;
     int buttonTag = [button tag];
     
-    User *user =[[UserService defaultService] user];
+    User *user =[[UserManager defaultManager] user];
     
     switch (buttonTag) {
         case 1:
@@ -215,8 +216,8 @@
     
     [user setBMIValue:bmi];
     
-    [[UserService defaultService] setUser:user];
-    [[UserService defaultService] storeUserInfoByUid:user.uid];
+    [[UserManager defaultManager] setUser:user];
+    [ [UserManager defaultManager] storeUserInfoByUid:user.uid];
     
     if (newdelegate && [newdelegate respondsToSelector:@selector(didClickAddMoreButton:atIndex:)]) {
         
@@ -231,7 +232,7 @@
     UIButton *button =(UIButton *)sender;
     int buttonTag = [button tag];
     
-    User *user =[[UserService defaultService] user];
+    User *user =[[UserManager defaultManager] user];
     
     switch (buttonTag) {
         case 2:
@@ -282,8 +283,8 @@
     
    [user setBMIValue:bmi];
     
-     [[UserService defaultService] setUser:user];
-     [[UserService defaultService] storeUserInfoByUid:user.uid];
+    [[UserManager defaultManager] setUser:user];
+    [ [UserManager defaultManager] storeUserInfoByUid:user.uid];
     
 
     

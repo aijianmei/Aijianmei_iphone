@@ -40,7 +40,7 @@
 #define PARA_AUACT  @"auact"
 #define PARA_SNSID  @"snsid"
 
-#define PARA_URL                        @"url"
+#define PARA_URL                        @"avatarimage"
 #define PARA_AVATAR                     @"av"
 
 
@@ -119,7 +119,7 @@
 #define PARA_USER_LABELS_ARRAY           @"labelsArray"
 #define PARA_USER_PASSWORD               @"password"
 #define PARA_USER_AGE                    @"age"
-#define PARA_USER_Weight                 @"weight"
+#define PARA_USER_WEIGHT                 @"weight"
 #define PARA_USER_BMI_VALUE              @"BMIValue"
 #define PARA_USER_DESCRIPTION            @"description"
 #define PARA_USER_BACKGROUND_IMAGE_URL   @"avatarBackGroundImage"
@@ -131,6 +131,9 @@
 #define PARA_USER_SIGNUP_USER_TYPE      @"usertype"
 
 
+//update User Info 
+#define METHOD_NEW_UPDATE_USER      @"updateUser"
+#define METHOD_UPLOAD_USER_IMAGE    @"uploadUserImage"
 
 
 

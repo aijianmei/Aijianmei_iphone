@@ -198,6 +198,13 @@ static ImageManager *_defaultManager = nil;
     
 }
 
++(UIImage *)articleBarImage{
+
+    return [UIImage imageNamed:@"topmenu_bg.png"];
+
+}
+
+
 
 
 

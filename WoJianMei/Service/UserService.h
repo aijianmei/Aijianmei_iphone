@@ -13,7 +13,10 @@
 #import "PPViewController.h"
 
 
+@class VersionInfo;
+
 typedef void(^UploadImageResultBlock)(int resultCode, NSString* imageRemoteURL);
+typedef void(^UpdateUserResultBlock)(int resultCode);
 
 
 @protocol UserServiceDelegate <NSObject>
@@ -27,15 +30,13 @@ typedef void(^UploadImageResultBlock)(int resultCode, NSString* imageRemoteURL);
                      title:(NSString *)title
                    content:(NSString *)content;
 
--(void)loginBySinaWeiboAccount:(int)resultCode
-                           uid:(NSString *)uid;
-
-- (void)didUserLogined:(int)resultCode
-                   uid:(NSString *)uid;
-
+-(void)didLoadUpdateVersionInfo:(VersionInfo*)versionInfo errorCode:(int)errorCode;
+-(void)loginBySinaWeiboAccount:(int)resultCode uid:(NSString *)uid;
+- (void)didUserLogined:(int)resultCode uid:(NSString *)uid;
 - (void)didLoadUserInfoSucceeded:(int)errorCode;
-
 - (void)signUpSucceeded :(int)errorCode;
+- (void)didGetFeedbackErrorCode:(int)errorCode;
+
 
 
 @end
@@ -58,6 +59,9 @@ typedef void(^UploadImageResultBlock)(int resultCode, NSString* imageRemoteURL);
 
 - (void)userRegisterByToken:(NSString*)token;
 
+
+- (void)queryVersionWithDelegate:(PPViewController<UserServiceDelegate>*)viewController;
+
 //注册新用户
 - (void)registerUserWithUsername:(NSString*)name
                            email:(NSString*)email
@@ -72,18 +76,14 @@ typedef void(^UploadImageResultBlock)(int resultCode, NSString* imageRemoteURL);
                          keyword:(NSString*)keyword
                         province:(NSString*)province
                             city:(NSString*)city;
-//                        delegate:(id<RKObjectLoaderDelegate>)delegate;
-
-
-
-
-
-
 
 
 //意见反馈
 - (void)postFeedbackWithUid:(NSString*)uid
-                    content:(NSString*)content;
+                    content:(NSString*)content
+             viewController:(PPViewController<UserServiceDelegate>*)viewController;
+
+
 
 
 // 用户登录，只是使用邮箱密码马上可以登录
@@ -104,6 +104,7 @@ typedef void(^UploadImageResultBlock)(int resultCode, NSString* imageRemoteURL);
 
 //新浪微博用户数据注册
 - (void)registerUserWithSinaUserInfo:(NSDictionary*)userInfo;
+
 
 //本地注册
 - (void)loginUserWithUseremail:(NSString*)email
@@ -165,6 +166,8 @@ typedef void(^UploadImageResultBlock)(int resultCode, NSString* imageRemoteURL);
 + (void)followWeixinUser:(NSString *)userData;
 
 
+
+
 //上传头像
 - (void)uploadUserAvatar:(UIImage*)image
              resultBlock:(UploadImageResultBlock)resultBlock;
@@ -172,6 +175,13 @@ typedef void(^UploadImageResultBlock)(int resultCode, NSString* imageRemoteURL);
 //上传背景图片
 - (void)uploadUserBackground:(UIImage*)image
                  resultBlock:(UploadImageResultBlock)resultBlock;
+
+
+- (void)updateUser:(User*)user
+       resultBlock:(UpdateUserResultBlock)resultBlock;
+
+
+
 
 
 //是否绑定邮箱

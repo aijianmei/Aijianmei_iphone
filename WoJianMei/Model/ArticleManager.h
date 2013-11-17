@@ -61,6 +61,9 @@
 
 
 
+- (void)addContentsByCatalog:(int)catalogIndex  index:(int)index ;
+
+
 extern  ArticleManager *GlobalGetArticleManager();
 
 @end

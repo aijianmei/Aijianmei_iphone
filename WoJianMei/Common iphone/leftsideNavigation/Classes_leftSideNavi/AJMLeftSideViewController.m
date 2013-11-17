@@ -132,36 +132,54 @@
     SSRectEdge;
     
     
+//    if ([[UIDevice currentDevice].systemVersion isEqualToString:@"7.0"]
+//        ) {
+        [self setExtendedLayoutIncludesOpaqueBars:NO];
+        [self setEdgesForExtendedLayout:SSRectEdgeBottom | SSRectEdgeLeft | SSRectEdgeRight];
+//    }
     
-    
-    
-    [self setExtendedLayoutIncludesOpaqueBars:NO];
-    [self setEdgesForExtendedLayout:SSRectEdgeBottom | SSRectEdgeLeft | SSRectEdgeRight];
 
-
-    
     UIImageView *bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IndexBG.png"]];
     bgImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    
-    
-    bgImageView.frame = CGRectMake(0.0, 0.0, self.view.frame
-                                   .size.width,     self.view.frame.size.height);
+    bgImageView.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:bgImageView];
     [bgImageView release];
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width , self.view.frame.size.height)
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)
                                               style:UITableViewStylePlain];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.sectionHeaderHeight = 32;
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    _tableView.backgroundColor = [UIColor clearColor];
+    _tableView.backgroundColor = [UIColor clearColor ];
     _tableView.backgroundView = nil;
-    [_tableView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
     [self.view addSubview:_tableView];
     [_tableView release];
+
     
+//    UIImageView *bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IndexBG.png"]];
+//    bgImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+//    
+//    
+//    bgImageView.frame = CGRectMake(0.0, 0.0, self.view.frame
+//                                   .size.width,     self.view.frame.size.height);
+//    [self.view addSubview:bgImageView];
+//    [bgImageView release];
+//    
+//    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width , self.view.frame.size.height)
+//                                              style:UITableViewStylePlain];
+//    _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+//    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    _tableView.sectionHeaderHeight = 32;
+//    _tableView.dataSource = self;
+//    _tableView.delegate = self;
+//    _tableView.backgroundColor = [UIColor clearColor];
+//    _tableView.backgroundView = nil;
+//    [_tableView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+//    [self.view addSubview:_tableView];
+//    [_tableView release];
+//    
 }
 
 
@@ -170,8 +188,6 @@
 #pragma mark - initViewControllers
 -(void)initHomeViewController
 {
-    
-    
     HomeViewController *homeViewVC =[[AppDelegate getAppDelegate] initHomeViewControllerFromAppDelegate];
     _navigationController = [[UINavigationController alloc] initWithRootViewController:homeViewVC];
     
@@ -189,8 +205,6 @@
 }
 
 -(void)initWorkOutViewController{
-    
-    
     
       if (self.workoutViewController ==nil) {
 
@@ -304,17 +318,17 @@
         lineView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
           [cell addSubview:lineView];
           [lineView release];
-        
-        
-        
-        
-
+    
     }
     
     
     UIImageView *imvaew = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cbdqx_1.png"]];
     [cell setSelectedBackgroundView:imvaew];
     [imvaew release];
+    
+    
+    
+    
     
     
     switch (indexPath.section)

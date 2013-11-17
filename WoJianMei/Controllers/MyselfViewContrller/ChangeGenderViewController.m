@@ -7,7 +7,7 @@
 //
 
 #import "ChangeGenderViewController.h"
-#import "UserService.h"
+#import "UserManager.h"
 #import "User.h"
 
 @interface ChangeGenderViewController ()
@@ -43,7 +43,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
 
-    User *user = [[UserService defaultService]user];
+    User *user = [[UserManager defaultManager]user];
     if ([user.gender isEqualToString:@"0"])
     {
         
@@ -97,7 +97,7 @@
     cell.accessoryView = nil;
 
     
-    User *user = [[UserService defaultService]user];
+    User *user = [[UserManager defaultManager]user];
 
     // Configure the cell...
     switch (indexPath.row) {
@@ -145,14 +145,14 @@
     switch (indexPath.row) {
         case 0:
         {
-            user = [[UserService defaultService]user];
+            user = [[UserManager defaultManager]user];
             [user setGender:@"1"];
             [self setTitle:@"男"];
         }
             break;
         case 1:
         {
-            user = [[UserService defaultService]user];
+            user = [[UserManager defaultManager]user];
             [user setGender:@"0"];
             [self setTitle:@"女"];
 
@@ -163,8 +163,9 @@
             break;
     }
 
-    [[UserService defaultService] setUser:user];
-    [[UserService defaultService] storeUserInfoByUid:user.uid];
+    [[UserManager defaultManager] setUser:user];
+    [ [UserManager defaultManager] storeUserInfoByUid:user.uid];
+    
 
      [self.dataTableView reloadData];
 }

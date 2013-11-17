@@ -37,7 +37,6 @@ static UserService* _defaultUserService = nil;
 {
     if (_defaultUserService == nil) {
             _defaultUserService = [[UserService alloc] init];
-//        [_defaultUserService getUserInfoByUid:@"0"];
     }
     return _defaultUserService;
 }
@@ -203,26 +202,75 @@ static UserService* _defaultUserService = nil;
 
 
 
-
-//更新版本的接口
-- (void)initVersionMap
-{
-//    //获取在AppDelegate中生成的第一个RKObjectManager对象
-//    RKObjectManager *objectManager = [RKObjectManager sharedManager];
-//    //将json映射到class
-//    RKObjectMapping *articleMapping =[RKObjectMapping mappingForClass:[VersionInfo class]];
-//    [articleMapping mapKeyPathsToAttributes:
-//     @"version", @"version",
-//     @"downloadurl",@"downloadurl",
-//     @"app_update_title",@"updateTitle",
-//     @"app_update_content",@"updateContent",nil];
-//    [objectManager.mappingProvider setMapping:articleMapping forKeyPath:@""];
-}
-
-
 //用户版本更新
-//- (void)queryVersionWithDelegate:(id<RKObjectLoaderDelegate>)delegate
-//{
+- (void)queryVersionWithDelegate:(PPViewController<UserServiceDelegate>*)viewController
+
+{
+    
+    // http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_getversion
+
+    [viewController showProgressHUDActivityWithText:@"检测中..."];
+    
+    //A new working Queue
+    dispatch_async(workingQueue, ^{
+        
+        CommonNetworkOutput* output = nil;
+        output = [FitnessNetworkRequest queryVersion:SERVER_URL];
+        
+        
+        //Back to the Main Queue
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            NSDictionary    *dictionary ;
+            NSString        *uid;
+            
+            VersionInfo *version;
+
+            
+            if (output.resultCode == ERROR_SUCCESS) {
+                
+                [viewController hideProgressHUDActivity];
+
+                dictionary = output.jsonDataDict;
+                uid= [dictionary objectForKey:@"uid"];
+                
+                version = [[VersionInfo alloc] init] ;
+                [version setUpdateTitle:[dictionary objectForKey:@"app_update_title"]];
+                [version setUpdateContent:[dictionary objectForKey:@"app_update_content"]];
+                [version setVersion:[dictionary objectForKey:@"version"]];
+                [version setDownloadurl:[dictionary objectForKey:@"downloadurl"]];
+
+                
+            }
+            
+            else if (output.resultCode == ERROR_NETWORK) {
+                [viewController popupUnhappyMessage:NSLS(@"kSystemFailure") title:nil];
+                
+                
+            }
+           
+            else {
+                // @"对不起，注册失败，请稍候再试"
+                //                [viewController popupUnhappyMessage:NSLS(@"kGeneralFailure") title:nil];
+                
+            }
+            
+            if ([viewController respondsToSelector:@selector(didLoadUpdateVersionInfo:errorCode:)]){
+                
+                [viewController didLoadUpdateVersionInfo:version
+                                               errorCode:output.resultCode];
+            }
+            
+            
+            
+        });
+    });
+
+    
+    
+    
+    
+    
 //    [self initVersionMap];
 //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //    // http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_getversion
@@ -244,21 +292,77 @@ static UserService* _defaultUserService = nil;
 //            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
 //        });
 //    });
-//}
+}
 
 
 
 //用户反馈
-//- (void)postFeedbackWithUid:(NSString*)uid
-//                    content:(NSString*)content
-//                   delegate:(id<RKObjectLoaderDelegate>)delegate
-//{
+- (void)postFeedbackWithUid:(NSString*)uid
+                    content:(NSString*)content
+             viewController:(PPViewController<UserServiceDelegate>*)viewController
+{
+    [viewController showActivityWithText:@"加载中..."];
     
-//    [self initResultMap];
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     
-      //  http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_sendsuggestion&uid=1&content=ohmygod
+    //A new working Queue
+    dispatch_async(workingQueue, ^{
         
+        CommonNetworkOutput* output = nil;
+        output = [FitnessNetworkRequest postFeedbackWithUid:SERVER_URL
+                                                        uid:uid
+                                                    content:content];
+        
+        //Back to the Main Queue
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [viewController hideActivity];
+            
+            NSDictionary *dictionary;
+            
+            if (output.resultCode == ERROR_SUCCESS) {
+                
+                dictionary=output.jsonDataDict;
+
+                
+                
+                
+            }
+            
+            else if (output.resultCode == ERROR_NETWORK) {
+                [viewController popupUnhappyMessage:NSLS(@"kSystemFailure") title:nil];
+                
+                
+            }
+            else if (output.resultCode == ERROR_EMAIL_VERIFIED) {
+                // @"对不起，用户注册无法完成，请联系我们的技术支持以便解决问题"
+                [viewController popupUnhappyMessage:NSLS(@"用户名或密码错误") title:nil];
+                
+            }
+            
+            else {
+                // @"对不起，注册失败，请稍候再试"
+                //                [viewController popupUnhappyMessage:NSLS(@"kGeneralFailure") title:nil];
+                
+            }
+            
+            if ([viewController respondsToSelector:@selector(didGetFeedbackErrorCode:)]){
+                
+                [viewController didGetFeedbackErrorCode:output.resultCode];
+            }});});
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//
+//      //  http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_sendsuggestion&uid=1&content=ohmygod
+//        
 //        NSMutableDictionary *queryParams = [[NSMutableDictionary alloc] init];
 //        [queryParams setObject:@"aijianmei" forKey:@"aucode"];
 //        [queryParams setObject:@"au_sendsuggestion" forKey:@"auact"];
@@ -268,7 +372,7 @@ static UserService* _defaultUserService = nil;
 //        
 //        
 //        RKObjectManager *objectManager = [RKObjectManager sharedManager];
-//        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
+//       RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
 //        
 //        NSLog(@"url: %@", [url absoluteString]);
 //        NSLog(@"resourcePath: %@", [url resourcePath]);
@@ -278,7 +382,7 @@ static UserService* _defaultUserService = nil;
 //            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
 //        });
 //    });
-//}
+}
 
 
 
@@ -381,7 +485,7 @@ static UserService* _defaultUserService = nil;
                                                  province:[dictionary objectForKey:PARA_USER_PROVINCE]
                                                       age:[dictionary objectForKey:PARA_USER_AGE]
                                               description:[dictionary objectForKey:PARA_USER_DESCRIPTION]
-                                                   weight:[dictionary objectForKey:PARA_USER_Weight]
+                                                   weight:[dictionary objectForKey:PARA_USER_WEIGHT]
                                  avatarBackgroundImageURL:[dictionary objectForKey:PARA_USER_BACKGROUND_IMAGE_URL]];
                 
 
@@ -856,7 +960,7 @@ static UserService* _defaultUserService = nil;
     NSString* userId = [[UserManager defaultManager] userId];
     NSData* data = [image data];
     dispatch_async(workingQueue, ^{
-        CommonNetworkOutput* output = [FitnessNetworkRequest uploadUserImage:SERVER_URL
+        CommonNetworkOutput* output = [FitnessNetworkRequest uploadUserImage:@"http://42.96.132.109/wapapi/imgupload.php?"
                                                                       userId:userId
                                                                    imageData:data
                                                                    imageType:PARA_AVATAR];
@@ -920,7 +1024,7 @@ static UserService* _defaultUserService = nil;
 //    [params setValue:user.BMIValue forParam:@"BMIValue"];
 //    [params setValue:user.province forParam:@"province"];
 //    [params setValue:user.city forParam:@"city"];
-//    
+//
 //    if (image) {
 //    [params setData:imageData1 MIMEType:@"image/png" forParam:@"avatarimage"];
 //    }
@@ -946,6 +1050,28 @@ static UserService* _defaultUserService = nil;
 //         };
 //     }];
 }
+
+- (void)updateUser:(User*)user
+       resultBlock:(UpdateUserResultBlock)resultBlock
+{
+    
+    dispatch_async(workingQueue, ^{
+        
+        CommonNetworkOutput* output = [FitnessNetworkRequest updateUser:@"http://42.96.132.109/wapapi/imgupload.php?"
+                                                                user:user];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            PPDebug(@"<updateUser> result=%d", output.resultCode);
+            if (output.resultCode == ERROR_SUCCESS){
+                // update user info
+                [[UserManager defaultManager] storeUserInfoByUid:user.uid];
+                
+                
+            }
+            EXECUTE_BLOCK(resultBlock, output.resultCode);
+        });
+    });
+}
+
 
 
 - (BOOL)hasBindAccount

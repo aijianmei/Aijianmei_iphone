@@ -215,6 +215,16 @@ enum BUTTON_INDEX {
     return 3;
     
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+
+    if (section==0) {
+        
+        return 60;
+
+    }
+
+    return 0;
+}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -637,7 +647,6 @@ enum BUTTON_INDEX {
 
 -(void)updateApplication{
     
-    [self showActivityWithText:@"连接服务器..."];
     [[UserService defaultService] queryVersionWithDelegate:self];
     
 }
@@ -916,35 +925,11 @@ enum BUTTON_INDEX {
 
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    NSLog(@"Response code: %d", [response statusCode]);
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+-(void)didLoadUpdateVersionInfo:(VersionInfo*)versionInfo errorCode:(int)errorCode
 {
-    NSLog(@"Error: %@", [error localizedDescription]);
-    [self hideActivity];
-    [self popupUnhappyMessage:@"网络不给力，请稍后再试！" title:nil];
-
-}
-
-- (void)requestDidStartLoad:(RKRequest *)request
-{
-    NSLog(@"Start load request...");
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
-{
-    NSLog(@"***Load objects count: %d", [objects count]);
-    [self hideActivity];
-
-    NSObject *result =[objects objectAtIndex:0];
     
-    if ([result isMemberOfClass:[VersionInfo class]]){
-        
-        
-    VersionInfo *versionInfo =[objects objectAtIndex:0];
-    NSLog(@"当前版本是:%@,下载URL:%@,标题:%@,更新内容:%@",      versionInfo.version,
+
+    NSLog(@"当前版本是:%@,下载URL:%@,标题:%@,更新内容:%@",versionInfo.version,
           versionInfo.downloadurl,
           versionInfo.updateTitle,
           versionInfo.updateContent);
@@ -967,7 +952,8 @@ enum BUTTON_INDEX {
                     delegate:self];
                 [self.view addSubview:dialog];
         }
-    }
+    
+    
 }
 
 

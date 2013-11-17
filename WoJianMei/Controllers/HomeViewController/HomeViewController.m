@@ -65,12 +65,12 @@ typedef enum CONTENT_TYPE {
 @end
 
 @implementation HomeViewController
-@synthesize myHeaderView =_myHeaderView;
-@synthesize  carousel =_carousel;
-@synthesize spacePageControl =_spacePageControl;
+@synthesize myHeaderView        =_myHeaderView;
+@synthesize carousel            =_carousel;
+@synthesize spacePageControl    =_spacePageControl;
 @synthesize segmentedController =_segmentedController;
-@synthesize buttonScrollView =_buttonScrollView;
-@synthesize currentButton = _currentButton;
+@synthesize buttonScrollView    =_buttonScrollView;
+@synthesize currentButton       =_currentButton;
 
 
 
@@ -94,12 +94,12 @@ typedef enum CONTENT_TYPE {
 {
     _carousel.delegate = nil;
     _carousel.dataSource = nil;
-    [_myHeaderView release];
-    [_carousel release];
+    [_myHeaderView     release];
+    [_carousel         release];
     [_spacePageControl release];
     [_segmentedController release];
-    [_buttonScrollView release];
-    [_currentButton release];
+    [_buttonScrollView    release];
+    [_currentButton       release];
     [super dealloc];
 }
 
@@ -247,16 +247,8 @@ typedef enum CONTENT_TYPE {
 
 -(void)initTableHeaderView{
     
-    
     UIView *headerView =[[UIView alloc]init];
-    [headerView setFrame: CGRectMake(0, 0, 320, 200)];
-    
-    if ([DeviceDetection isOS7]) {
-
-    [headerView setFrame: CGRectMake(0, 0, 320, 265)];
-
-    }
-    
+    [headerView setFrame: CGRectMake(0,0, 320, 200)];
     self.myHeaderView = headerView;
     [headerView release];
     [self.dataTableView setTableHeaderView:_myHeaderView];
@@ -273,12 +265,7 @@ typedef enum CONTENT_TYPE {
     self.segmentedController=[[SDSegmentedControl alloc]initWithItems:buttonTitleArray];
     [_segmentedController setFrame:CGRectMake(0, 0, 320, 40)];
     
-    if ([DeviceDetection isOS7]) {
-        
-        [_segmentedController setFrame:CGRectMake(0, 65, 320, 40)];
-        
-    }
-    [_segmentedController setSelectedSegmentIndex:0];    
+    [_segmentedController setSelectedSegmentIndex:0];
     [_segmentedController addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventValueChanged];
     [_myHeaderView addSubview:self.segmentedController];
 }
@@ -288,14 +275,7 @@ typedef enum CONTENT_TYPE {
 
 -(void)addCarouselSliders{
     //configure carousel
-    self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 115 - 65, 320, 140)];
-    
-    
-    if ([DeviceDetection isOS7]) {
-        
-        [_carousel setFrame: CGRectMake(0, 115, 320, 140)];
-        
-    }
+    self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0,50,320,140)];
 
     self.carousel.delegate = self;
     self.carousel.dataSource = self;
@@ -315,7 +295,7 @@ typedef enum CONTENT_TYPE {
     
    // 10, 190, 320, 20
     //215, 185, 120, 20
-    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(0, 196 +65, 320, 20)];
+    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(0, 196, 320, 20)];
     [_spacePageControl setBackgroundColor:[UIColor clearColor]];
     _spacePageControl.numberOfPages = [self.dataList count];
     [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
@@ -367,6 +347,8 @@ typedef enum CONTENT_TYPE {
     if (userUid) {
         uid = userUid;
     }
+    
+    
 
     if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==-1) {
         
@@ -403,6 +385,11 @@ typedef enum CONTENT_TYPE {
         _start=0;
         
     }
+    
+    
+    
+    
+    
     
     [[ArticleService sharedService] findArticleWithAucode:aucode
                                                     auact:auact
@@ -651,13 +638,6 @@ typedef enum CONTENT_TYPE {
     
     
 }
-
-
-
-
-
-
-
 
 
 #pragma mark -

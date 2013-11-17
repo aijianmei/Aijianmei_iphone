@@ -10,6 +10,7 @@
 
 #import "PPNetworkRequest.h"
 #import "FitnessNetworkConstants.h"
+#import "User.h"
 
 typedef void (^FitnessNetworkResponseBlock)(NSDictionary* jsonDictionary, NSData* data, int resultCode);
 
@@ -95,8 +96,15 @@ typedef void (^FitnessNetworkResponseBlock)(NSDictionary* jsonDictionary, NSData
                               imageData:(NSData*)imageData
                               imageType:(NSString*)imageType;
 
++ (CommonNetworkOutput*)updateUser:(NSString*)baseURL
+                              user:(User*)user;
 
 
++ (CommonNetworkOutput *)postFeedbackWithUid:(NSString*)baseURL
+                                         uid:(NSString*)uid
+                                     content:(NSString*)content;
+
++ (CommonNetworkOutput *)queryVersion:(NSString*)baseURL;
 
 
 @end

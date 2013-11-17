@@ -25,7 +25,7 @@
 
 
 
-@interface MoreViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,CommonDialogDelegate>
+@interface MoreViewController : PPTableViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,CommonDialogDelegate,UserServiceDelegate>
 
 {
  

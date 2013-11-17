@@ -96,7 +96,7 @@
     [cell.textLabel setText:[[self.dataList objectAtIndex:indexPath.row] objectForKey:@"city"]];
     [cell.textLabel setTextColor:[UIColor grayColor]];
     
-    User *user = [[UserService defaultService] user];
+    User *user = [[UserManager defaultManager] user];
 
     NSString *city = [[self.dataList objectAtIndex:indexPath.row] objectForKey:@"city"];
         
@@ -129,13 +129,13 @@
     NSLog(@"所在区域 :%@%@",self.selectedProvince,self.selectedCity);
     
    
-    User *user = [[UserService defaultService] user];
+    User *user = [[UserManager defaultManager] user];
     
     [user setCity:self.selectedCity];
     [user setProvince:self.selectedProvince];
     
-    [[UserService defaultService] setUser:user];
-    [[UserService defaultService] storeUserInfoByUid:user.uid];
+    [[UserManager defaultManager] setUser:user];
+    [[UserManager defaultManager] storeUserInfoByUid:user.uid];
     [self.navigationController popViewControllerAnimated:YES];
     
     //TODO

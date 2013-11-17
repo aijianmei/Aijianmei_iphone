@@ -7,10 +7,9 @@
 //
 
 #import "PPViewController.h"
-#import <RestKit/RestKit.h>
+#import "UserService.h"
 
-
-@interface FeedBackViewController : PPViewController<UITextFieldDelegate,RKObjectLoaderDelegate>
+@interface FeedBackViewController : PPViewController<UITextFieldDelegate,UserServiceDelegate>
 
 {
     UITextField *_descriptionTextField;

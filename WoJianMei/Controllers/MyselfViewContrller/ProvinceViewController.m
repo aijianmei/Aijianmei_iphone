@@ -10,7 +10,7 @@
 #import "CityViewController.h"
 #import "ProvinceCell.h"
 #import "User.h"
-#import "UserService.h"
+#import "UserManager.h"
 
 @interface ProvinceViewController ()
 
@@ -57,8 +57,8 @@
 
 
 -(void)updateUI{
-    User *user = [[UserService defaultService] user];
-    [[UserService defaultService] storeUserInfoByUid:user.uid];
+    User *user = [[UserManager defaultManager] user];
+    [[UserManager defaultManager] storeUserInfoByUid:user.uid];
     NSString *location = [NSString stringWithFormat:@"%@%@",user.province,user.city];
     [self setTitle:location];
 }

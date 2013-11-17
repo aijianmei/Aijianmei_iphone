@@ -80,6 +80,12 @@
 ///文章单页评论按钮背景
 +(UIImage*)GobalArticelCommentButtonBG;
 
++(UIImage *)articleBarImage;
+
+
+
+
+
 -(NSString*)getAnRandomImage;
 
 

@@ -7,7 +7,7 @@
 //
 
 #import "ChangeNameCell.h"
-#import "UserService.h"
+#import "UserManager.h"
 #import "User.h"
 
 @implementation ChangeNameCell
@@ -48,10 +48,10 @@
 {
     // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
     
-    User *user =[[UserService defaultService] user];
+    User *user =[[UserManager defaultManager] user];
     user.name = textField.text;
-    [[UserService defaultService] setUser:user];
-    [[UserService defaultService] storeUserInfoByUid:user.uid];
+    [[UserManager defaultManager] setUser:user];
+    [[UserManager defaultManager] storeUserInfoByUid:user.uid];
 
     
 }

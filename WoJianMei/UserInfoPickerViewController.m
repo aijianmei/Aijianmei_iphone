@@ -7,7 +7,7 @@
 //
 
 #import "UserInfoPickerViewController.h"
-#import "UserService.h"
+#import "UserManager.h"
 #import "User.h"
 #import "AnimationManager.h"
 #import "DeviceDetection.h"
@@ -395,9 +395,9 @@
      isFemale =YES;
     
     //保存用户数据
-     User *user = [[UserService defaultService] user];
+     User *user = [[UserManager defaultManager] user];
      [user setGender:@"0"];
-    [[UserService defaultService] storeUserInfoByUid:user.uid];
+    [[UserManager defaultManager] storeUserInfoByUid:user.uid];
     
     
     [self.maleButton setHidden:YES];
@@ -414,9 +414,9 @@
     isFemale = NO;
     
     //保存用户数据
-    User *user = [[UserService defaultService] user];
+    User *user = [[UserManager defaultManager] user];
     [user setGender:@"1"];
-    [[UserService defaultService] storeUserInfoByUid:user.uid];
+    [[UserManager defaultManager] storeUserInfoByUid:user.uid];
     
     
     [self.femaleButton setHidden:YES];
@@ -730,9 +730,9 @@
         NSString *weight = [NSString stringWithFormat:@"%dkg",index + weightBase];
         
         [self.weightLabel setText:weight];
-        User *user = [[UserService defaultService] user];
+        User *user = [[UserManager defaultManager] user];
             [user setWeight: weight];
-            [[UserService defaultService]storeUserInfoByUid:user.uid];
+            [[UserManager defaultManager] storeUserInfoByUid:user.uid];
     }
     
     if ([self.selectorHeight isEqual:valueSelector])
@@ -742,9 +742,9 @@
         
         [self.heightLabel setText:height];
             
-            User *user =  [[UserService defaultService] user];
+            User *user =  [[UserManager defaultManager] user];
             [user setHeight:height];
-            [[UserService defaultService]storeUserInfoByUid:user.uid];
+            [[UserManager defaultManager] storeUserInfoByUid:user.uid];
 
     }
     
@@ -763,9 +763,9 @@
         
         NSString *ageValue = [NSString stringWithFormat:@"%i",withNewValue];
         
-        User *user =  [[UserService defaultService] user];
+        User *user =  [[UserManager defaultManager] user];
         [user setAge:ageValue];
-        [[UserService defaultService]storeUserInfoByUid:user.uid];
+        [[UserManager defaultManager] storeUserInfoByUid:user.uid];
         
         
         }

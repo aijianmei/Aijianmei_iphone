@@ -42,7 +42,11 @@
 - (NSString*)userId;
 + (BOOL)isUserExisted;
 + (NSString *)getUserId;
+- (void)storeUserData:(User*)user;
 
+-(void)storeUserInfoByUid:(NSString *)uid;
+//获取保存在本地的用户信息
+-(User*)getUserInfoByUid:(NSString *)uid;
 
 + (User*)createUserWithUserId:(NSString *)userId
                    sinaUserId:(NSString *)sinaUserId

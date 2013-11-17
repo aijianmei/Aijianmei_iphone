@@ -138,15 +138,10 @@ enum actionsheetNumber{
 {
     [super viewDidLoad];
     
-//    [self.view  setBounds:CGRectMake(0, 0, 320, 480)];
-    
     [self setRightBarButtons];
     [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     
- 
-    
-
-    [self.webview setFrame:CGRectMake(0, 0, 320, UIScreen.mainScreen.bounds.size.height)];
+    [self.webview setFrame:CGRectMake(0, 0, 320, UIScreen.mainScreen.bounds.size.height - 44)];
     [self.webview setDelegate:self];
     [self.webview.scrollView setDelegate:self];
     self.navigationController.navigationBarHidden =YES;
@@ -154,18 +149,6 @@ enum actionsheetNumber{
     
 
     
-    
-    /////重新定位，设定NavigationBar 的位置
-//    [self.navigationController.navigationBar setFrame:CGRectMake(0, 420, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
-    
-    
-    //548 480
-//        if (IS_IPHONE5) {
-    /////重新定位，设定NavigationBar 的位置
-//    [self.navigationController.navigationBar setFrame:CGRectMake(0, 508, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
-    //    }
-    
-
     
     
     [[ArticleService sharedService] findArticleInfoWithAucode:@"aijianmei"
@@ -303,13 +286,12 @@ enum actionsheetNumber{
     
     [rightButtonView release];
     
-    
-    
-    
-    
+
     [self.toolBar setItems:[NSArray arrayWithObject:rightBarButton] animated:YES];
 
-    [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"topmenu_bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+//    [[UIToolbar appearance] setBackgroundImage:[ImageManager articleBarImage]
+//                            forToolbarPosition:UIBarPositionBottom
+//                                    barMetrics:UIBarMetricsDefault];
 
 }
 
@@ -929,7 +911,7 @@ enum actionsheetNumber{
         [_webview sizeToFit];
         [_webview scalesPageToFit];
         [_webview setUserInteractionEnabled:YES];
-        [_webview setFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height + 100)];
+        [_webview setFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height - 44)];
         [_webview.scrollView setContentSize:CGSizeMake(320, 400)];
     
        [self updateUserInterface];

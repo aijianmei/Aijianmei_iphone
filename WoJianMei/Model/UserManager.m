@@ -38,6 +38,45 @@ static UserManager* _defaultManager;
     return self.user.uid;
 }
 
+- (void)storeUserData:(User*)user {
+    
+    
+    if (user == nil)
+        return;
+    
+//    self.pbUser = user;
+//    
+//    NSData* data = [self.pbUser data];
+//    if (data == nil)
+//        return;
+    
+//    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+//    [userDefaults setObject:data forKey:KEY_ALL_USER_PB_DATA];
+//    [userDefaults synchronize];
+//    PPDebug(@"<storeUserData> store user data success!");
+
+
+}
+-(void)storeUserInfoByUid:(NSString *)uid
+{
+    
+    //以后程序启动的时候就是要读取默认的这个Uid数据;
+    [[NSUserDefaults standardUserDefaults] setObject:uid forKey:@"OriginalUserId"];
+    
+    
+    NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.user];
+    [[NSUserDefaults standardUserDefaults] setObject:userData forKey:uid];
+    
+}
+
+//获取保存在本地的用户信息
+-(User*)getUserInfoByUid:(NSString *)uid
+{
+    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:uid];
+    User *user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    return user;
+}
 
 + (User*)createUserWithUserId:(NSString *)userId
                    sinaUserId:(NSString *)sinaUserId

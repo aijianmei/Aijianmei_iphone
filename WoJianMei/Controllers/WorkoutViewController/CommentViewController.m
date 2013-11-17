@@ -18,6 +18,8 @@
 #import "UserService.h"
 #import "Result.h"
 #import <AGCommon/UIDevice+Common.h>
+#import "YFInputBar.h"
+
 
 
 enum ErrorCode
@@ -30,14 +32,14 @@ enum ErrorCode
 
 
 
-@interface CommentViewController ()
+@interface CommentViewController ()<YFInputBarDelegate>
+
 
 @end
 
 @implementation CommentViewController
 @synthesize video =_video;
 @synthesize article =_article;
-@synthesize faceToolBar =_faceToolBar;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -53,7 +55,6 @@ enum ErrorCode
 -(void)dealloc {
     [_video release];
     [_article release];
-    [_faceToolBar release];
     [super dealloc];
 
 }
@@ -63,7 +64,6 @@ enum ErrorCode
 -(void)viewDidUnload
 {
 
-    [self setFaceToolBar:nil];
     [super viewDidUnload];
         
 }
@@ -109,22 +109,24 @@ enum ErrorCode
     
     
     
-    self.faceToolBar =[[FaceToolBar alloc]initWithFrame:CGRectMake(0.0f,self.view.frame.size.height - toolBarHeight,self.view.frame.size.width,toolBarHeight)
-                                             superView:self.view];
+    YFInputBar *inputBar = [[YFInputBar alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY([UIScreen mainScreen].bounds)-44, 320, 44)];
+    
+    inputBar.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1];
+    
+    
+    inputBar.delegate = self;
+    inputBar.clearInputWhenSend = YES;
+    inputBar.resignFirstResponderWhenSend = YES;
+    
+    [self.view addSubview:inputBar];
+
     
     
     
-    
-    if ([[UIDevice currentDevice] isPhone5])
-    {
-        [self.faceToolBar setFrame:CGRectMake(0.0f,self.view.frame.size.height + 100 - toolBarHeight,self.view.frame.size.width,toolBarHeight)];
-    }
-    
-    
-    self.faceToolBar.delegate = self;
-    [self.view addSubview:_faceToolBar];
 
 
+    
+    
     [self loadDatas];
     
     
@@ -144,7 +146,7 @@ enum ErrorCode
 
 
 -(void)tap{
-    [self.faceToolBar dismissKeyBoard];
+//    [self.faceToolBar dismissKeyBoard];
 }
 
 
@@ -170,31 +172,6 @@ enum ErrorCode
 }
 
 
-#pragma mark-
-#pragma mark- DelegateMethod
--(void)sendTextAction:(NSString *)inputText{
-    
-    
-     User *user = [[UserService defaultService] user];
-    
-
-    if (self.article) {
-        [[ArticleService sharedService] postCommentWithUid:user.uid
-                                           targetContentId:self.article._id
-                                                   comment:inputText
-                                               channelType:@"1"
-                                            viewController:self];
-    }
-    
-    if (self.video) {
-        [[ArticleService sharedService] postCommentWithUid:user.uid
-                                           targetContentId:self.video._id
-                                                   comment:inputText
-                                               channelType:@"2"
-                                            viewController:self];}
-
-}
-
 
 
 
@@ -213,7 +190,6 @@ enum ErrorCode
     [self.navigationController.navigationBar setFrame:CGRectMake(0, 420, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
 	[self.navigationController popViewControllerAnimated:YES];
     
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -267,8 +243,43 @@ enum ErrorCode
     // Dispose of any resources that can be recreated.
 }
 
+
 #pragma mark -
-#pragma mark - RKObjectLoaderDelegate
+#pragma mark - YFInputBarDelegateMethod
+-(void)inputBar:(YFInputBar *)inputBar sendBtnPress:(UIButton *)sendBtn withInputString:(NSString *)str
+{
+    NSLog(@"%@",str);
+    
+    User *user = [[UserService defaultService] user];
+    
+    
+    if (self.article) {
+        [[ArticleService sharedService] postCommentWithUid:user.uid
+                                           targetContentId:self.article._id
+                                                   comment:str
+                                               channelType:@"1"
+                                            viewController:self];
+    }
+    
+    if (self.video) {
+        [[ArticleService sharedService] postCommentWithUid:user.uid
+                                           targetContentId:self.video._id
+                                                   comment:str
+                                               channelType:@"2"
+                                            viewController:self];
+    }
+
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [((UIView*)obj) resignFirstResponder];
+    }];
+}
+
+#pragma mark -
+#pragma mark - NetWorkDelegateMethod
 
 -(void)didPostCommentSucceeded:(int)errorCode
 {

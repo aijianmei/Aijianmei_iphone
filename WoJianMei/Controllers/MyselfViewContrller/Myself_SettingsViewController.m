@@ -101,53 +101,84 @@
 
 
 -(void)clickSaveButton:(id)sender{
+    
+    
+    [[UserService defaultService] updateUser:[[UserManager defaultManager] user] resultBlock:^(int resultCode){
+    
+        [self hideActivity];
+        
+        if (resultCode == ERROR_SUCCESS){
+            
+            [self uploadWithImage];
+            [self updateUI];
+        }
+        else{
+            
+        
+        }
+    
+    
+    
+    }];
+    
+    
+    
+
+    
+}
+
+
+-(void)uploadWithImage{
 
     if (self.avtarImage) {
         [[UserService defaultService] uploadUserAvatar:self.avtarImage
                                            resultBlock:^(int resultCode, NSString *imageRemoteURL)
+         
+         {
+             [self hideActivity];
+             
+             if (resultCode == ERROR_SUCCESS && [imageRemoteURL length] > 0){
+                 
+                 //                [_pbUserBuilder setAvatar:imageRemoteURL];
+                 
+                 //                  [self updateAvatar:self.avtarImage];
+                 [self updateUI];
+             }
+             else{
+                 
+                 //                [[CommonMessageCenter defaultCenter] postMessageWithText:NSLS(@"kUpdateAvatarFail") delayTime:1.5];
+             }
+         }];
         
-        {
-            [self hideActivity];
-            
-            if (resultCode == ERROR_SUCCESS && [imageRemoteURL length] > 0){
-                
-//                [_pbUserBuilder setAvatar:imageRemoteURL];
-                
-//                  [self updateAvatar:self.avtarImage];
-                   [self updateUI];
-            }
-            else{
-                
-//                [[CommonMessageCenter defaultCenter] postMessageWithText:NSLS(@"kUpdateAvatarFail") delayTime:1.5];
-            }
-        }];
-
         
         
-
+        
     }else{
-        [[UserService defaultService] uploadUserAvatar:self.avtarImage
+        [[UserService defaultService] uploadUserAvatar:[UIImage imageNamed:@"120X120.png"]
                                            resultBlock:^(int resultCode, NSString *imageRemoteURL)
          {
-            [self hideActivity];
-            if (resultCode == ERROR_SUCCESS && [imageRemoteURL length] > 0){
-                                                   
-            //                [_pbUserBuilder setAvatar:imageRemoteURL];
-                                                   
-           //                  [self updateAvatar:self.avtarImage];
-                    [self updateUI];
-        }
-            else{
-                                                   
-            //                [[CommonMessageCenter defaultCenter] postMessageWithText:NSLS(@"kUpdateAvatarFail") delayTime:1.5];
-                }
+             [self hideActivity];
+             if (resultCode == ERROR_SUCCESS && [imageRemoteURL length] > 0){
+                 
+                 //                [_pbUserBuilder setAvatar:imageRemoteURL];
+                 
+                 //                  [self updateAvatar:self.avtarImage];
+                 [self updateUI];
+             }
+             else{
+                 
+                 //                [[CommonMessageCenter defaultCenter] postMessageWithText:NSLS(@"kUpdateAvatarFail") delayTime:1.5];
+             }
              
          }];
-   
+        
     }
     
+    
+    
     //数据加载中的时候，按钮是禁止的再被点击的;
-   //    [self.navigationItem.rightBarButtonItem setEnabled:NO];
+    //    [self.navigationItem.rightBarButtonItem setEnabled:NO];
+
 }
 
 
@@ -180,11 +211,11 @@
         }
     }
     
-    [[UserService defaultService] setUser:self.user];
-    User *user = [[UserService defaultService] user];
+    [[UserManager defaultManager] setUser:self.user];
+    User *user = [[UserManager defaultManager] user];
     [user setAvatarImage:self.avtarImage];
-    [[UserService defaultService] storeUserInfoByUid:user.uid];
-    [[UserService defaultService] setUser:user];
+    [[UserManager defaultManager] storeUserInfoByUid:user.uid];
+    [[UserManager defaultManager] setUser:user];
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
     }];
     
@@ -234,12 +265,12 @@
 -(void)loadDatas{
             
         NSString *uid = [[[UserManager defaultManager] user] uid];
-        User *user =  [[UserService defaultService] getUserInfoByUid:uid];
+        User *user =  [[UserManager defaultManager] getUserInfoByUid:uid];
     
 
         //本地数据存在的时候直接读取本地数据;
         if (user) {
-            User *user = [[UserService defaultService] getUserInfoByUid:uid];
+            User *user = [[UserManager defaultManager] getUserInfoByUid:uid];
             
        //判断用户的数据是否完整
             if (!user.height && !user.weight && !user.age) {
@@ -249,7 +280,10 @@
                 [vc release];
             }
 
-            [[UserService defaultService] setUser:user];
+            [[UserManager defaultManager] setUser:user];
+            [[UserManager defaultManager] storeUserInfoByUid:user.uid];
+            
+            user = [[UserManager defaultManager] getUserInfoByUid:user.uid];
             [self setUser:user];
             [self updateUI];
             

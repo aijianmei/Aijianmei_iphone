@@ -44,16 +44,16 @@
     SVWebViewController           *_webViewController;
 }
 
-@property(nonatomic, retain) UINavigationController         *navigationController;
+@property(nonatomic, retain) UINavigationController           *navigationController;
 @property(nonatomic, retain) HomeViewController               *homeViewController;
-@property(nonatomic, retain) WorkoutPlanViewController *workoutPlanViewController;
-@property(nonatomic, retain) WorkoutViewController         *workoutViewController;
-@property(nonatomic, retain) SupplementViewController   *supplementViewController;
-@property(nonatomic, retain) NutriViewController             *nutriViewController;
-@property(nonatomic, retain) LifeStytleViewController   *lifeStytleViewController;
-@property(nonatomic, retain) WorkOutManagerViewController *workOutManagerViewController;
+@property(nonatomic, retain) WorkoutPlanViewController        *workoutPlanViewController;
+@property(nonatomic, retain) WorkoutViewController            *workoutViewController;
+@property(nonatomic, retain) SupplementViewController         *supplementViewController;
+@property(nonatomic, retain) NutriViewController              *nutriViewController;
+@property(nonatomic, retain) LifeStytleViewController         *lifeStytleViewController;
+@property(nonatomic, retain) WorkOutManagerViewController     *workOutManagerViewController;
 @property(nonatomic, retain) MoreViewController               *moreViewController;
-@property (nonatomic,retain)SVWebViewController *webViewController;
+@property (nonatomic,retain)SVWebViewController               *webViewController;
 
 
 

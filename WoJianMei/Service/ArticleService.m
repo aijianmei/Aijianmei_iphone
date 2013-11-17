@@ -367,7 +367,12 @@
             if (output.resultCode == ERROR_SUCCESS) {
                 
                 
-                array  = (NSMutableArray *)output.jsonDataArray;
+                array  = (NSMutableArray *)output.jsonDataDict;
+                
+                if ([array count]==0) {
+                    return ;
+                }
+                
                 newArray = [NSMutableArray arrayWithArray:array];
                 [newArray removeAllObjects];
                 dictionary = [array objectAtIndex:0];

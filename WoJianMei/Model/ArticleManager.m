@@ -11,6 +11,19 @@
 #define  ARTICLES_LIST        @"ARTICLES_LIST"
 
 
+
+typedef enum CATALOG_INDEX
+
+{
+    HOME_CATALOG = 0,
+    WORKOUT_CATALOG,
+    NUTRI_CATALOG,
+    SUPPLEMENT_CATALOG,
+    LIFESTYLE_CATALOG
+    
+} CATALOG_INDEX;
+
+
 ArticleManager *articleManager;
 extern ArticleManager   *GlobalGetArticleManager()
 {
@@ -66,7 +79,6 @@ extern ArticleManager   *GlobalGetArticleManager()
     
     [_articleList removeObjectAtIndex:[article.articleId intValue]];
     
-
 }
 -(ArticleInfo *)getArticleByWorkOutType:(NSInteger)ArticleId{
     
@@ -76,11 +88,11 @@ extern ArticleManager   *GlobalGetArticleManager()
     return article;
 }
 -(void)addArticleWithId:(NSString*)aId
-                title:(NSString *)aArticleTitle
-            imageName:(NSString *)aImageName
-            timeLeght:(NSString *)aTimeLenght   
-             isFollow:(BOOL)aIsFollow
-              workOut:(WorkOut*)aWorkOut{
+                  title:(NSString *)aArticleTitle
+              imageName:(NSString *)aImageName
+              timeLeght:(NSString *)aTimeLenght
+               isFollow:(BOOL)aIsFollow
+                workOut:(WorkOut*)aWorkOut{
     
 //    ArticleInfo *article = [[ArticleInfo alloc]initWithId:[NSString stringWithFormat:@"%d",[_articleList count]]
 //                                      title:aArticleTitle 
@@ -122,13 +134,6 @@ extern ArticleManager   *GlobalGetArticleManager()
     if (article == nil)
         return;
     
-    [article setIsRead:[NSNumber numberWithBool:YES]];
-    if ([_followArticleList objectForKey:article.articleId] == nil){
-        [self.followArticleList setObject:article forKey:article.articleId];
-        [self saveFollowArticleList];
-        NSLog(@"my follow articlelist %@",[_followArticleList description]);
-        NSLog(@"follow match (%@)", [ArticleInfo description]);
-    }
 }
 
 - (void)unfollowArticle:(ArticleInfo*)article
@@ -136,11 +141,6 @@ extern ArticleManager   *GlobalGetArticleManager()
     if (article == nil)
         return;
     
-    [article setIsRead:[NSNumber numberWithBool:NO]];
-    [_followArticleList removeObjectForKey:article.articleId];
-    [self saveFollowArticleList];
-    
-    NSLog(@"unfollow match (%@)", [article description]);
 }
 
 - (BOOL)isArticleFollowed:(ArticleInfo*)article
@@ -212,6 +212,48 @@ extern ArticleManager   *GlobalGetArticleManager()
         [articleInFollow updateByArticle:articleInFollow];
     }
 }
+
+- (void)addContentsByCatalog:(int)catalogIndex index:(int)index
+{
+    
+    switch (catalogIndex) {
+            
+        case HOME_CATALOG:
+        {
+            NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+        
+        }
+            break;
+        case WORKOUT_CATALOG:
+        {
+            
+        }
+            break;
+        case NUTRI_CATALOG:
+        {
+            
+        }
+            break;
+        case SUPPLEMENT_CATALOG:
+        {
+            
+        }
+            break;
+        case LIFESTYLE_CATALOG:
+        {
+            
+        }
+            break;
+        default:
+            break;
+    }
+    
+
+
+    
+    
+}
+
 
 -(void)dealloc{
     

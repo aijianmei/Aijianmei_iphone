@@ -8,7 +8,7 @@
 
 #import "FeedBackViewController.h"
 #import "User.h"
-#import "UserService.h"
+#import "UserManager.h"
 #import "Result.h"
 #import "PPNetworkRequest.h"
 
@@ -67,13 +67,13 @@
     
     [_descriptionTextField resignFirstResponder];
     
-    User *getuser =[[UserService defaultService] user];
+    User *getuser =[[UserManager defaultManager] user];
     NSString  *uid =getuser.uid;
     PPDebug(@"********用户UID%@,开始信息发送反馈*******",uid);
     
     [[UserService defaultService] postFeedbackWithUid:uid
                                               content:_descriptionTextField.text
-                                             delegate:self];
+                                             viewController:self];
     
 }
 
@@ -106,31 +106,11 @@
 
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    NSLog(@"Response code: %d", [response statusCode]);
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+- (void)didGetFeedbackErrorCode:(int)errorCode
 {
-    NSLog(@"Error: %@", [error localizedDescription]);
-}
 
-- (void)requestDidStartLoad:(RKRequest *)request
-{
-    NSLog(@"Start load request...");
-    [self showActivityWithText:@"加载中"];
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
-{
-    NSLog(@"***Load objects count: %d", [objects count]);
-    Result *result = [objects objectAtIndex:0];
-    PPDebug(@"The error code : %@",result.errorCode);
-    [self hideActivity];
     
-    NSInteger errorCode =  [result.errorCode integerValue];
-    
-    User *user =[[UserService defaultService] user];
+    User *user =[[UserManager defaultManager] user];
     NSString *uid =user.uid;
     
     if (errorCode ==ERROR_SUCCESS )

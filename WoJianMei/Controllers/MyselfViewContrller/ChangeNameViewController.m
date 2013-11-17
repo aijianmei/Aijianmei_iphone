@@ -7,7 +7,7 @@
 //
 
 #import "ChangeNameViewController.h"
-#import "UserService.h"
+#import "UserManager.h"
 #import "User.h"
 #import "ChangeNameCell.h"
 
@@ -107,7 +107,7 @@
     [accessoryViewButton addTarget:self action:@selector(clickDeleteButton:) forControlEvents:UIControlEventTouchUpInside];
     
     
-    User *user =  [[UserService defaultService]user];
+    User *user =  [[UserManager defaultManager] user];
     [cell.nameTextField setText:user.name];
     currentTextField = cell.nameTextField;
     // Configure the cell...
