@@ -67,12 +67,12 @@
                   symbolName = "+[FitnessNetworkRequest registerUserByName:name:email:password:usertype:]"
                   moduleName = "WoJianMei"
                   urlString = "file:///Users/karakei/Documents/Study/GitTomCallon/Aijianmei_iphone/WoJianMei/NetWorkRequest/FitnessNetworkRequest.m"
-                  timestampString = "406366577.367078"
+                  timestampString = "406443036.518104"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "255"
                   endingLineNumber = "255"
-                  offsetFromSymbolStart = "263">
+                  offsetFromSymbolStart = "308">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -81,12 +81,12 @@
                   symbolName = "__73+[FitnessNetworkRequest registerUserByName:name:email:password:usertype:]_block_invoke112"
                   moduleName = "WoJianMei"
                   urlString = "file:///Users/karakei/Documents/Study/GitTomCallon/Aijianmei_iphone/WoJianMei/NetWorkRequest/FitnessNetworkRequest.m"
-                  timestampString = "406366577.367327"
+                  timestampString = "406443036.518438"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "255"
                   endingLineNumber = "255"
-                  offsetFromSymbolStart = "62">
+                  offsetFromSymbolStart = "52">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -113,12 +113,12 @@
                   symbolName = "+[FitnessNetworkRequest registerUserByName:name:email:password:usertype:]"
                   moduleName = "WoJianMei"
                   urlString = "file:///Users/karakei/Documents/Study/GitTomCallon/Aijianmei_iphone/WoJianMei/NetWorkRequest/FitnessNetworkRequest.m"
-                  timestampString = "406366577.36762"
+                  timestampString = "406443036.518778"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "255"
                   endingLineNumber = "255"
-                  offsetFromSymbolStart = "263">
+                  offsetFromSymbolStart = "308">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -127,14 +127,46 @@
                   symbolName = "__73+[FitnessNetworkRequest registerUserByName:name:email:password:usertype:]_block_invoke112"
                   moduleName = "WoJianMei"
                   urlString = "file:///Users/karakei/Documents/Study/GitTomCallon/Aijianmei_iphone/WoJianMei/NetWorkRequest/FitnessNetworkRequest.m"
-                  timestampString = "406366577.367901"
+                  timestampString = "406443036.519058"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "255"
                   endingLineNumber = "255"
-                  offsetFromSymbolStart = "62">
+                  offsetFromSymbolStart = "52">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WoJianMei/Controllers/MyselfViewContrller/Myself_SettingsViewController.m"
+            timestampString = "406433591.778648"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "-uploadWithImage"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WoJianMei/Controllers/MyselfViewContrller/Myself_SettingsViewController.m"
+            timestampString = "406433595.270879"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "-uploadWithImage"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
