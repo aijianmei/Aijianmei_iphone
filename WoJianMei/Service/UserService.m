@@ -19,6 +19,7 @@
 #import "UserManager.h"
 #import "UIImageExt.h"
 #import "BlockUtils.h"
+#import "ProgressHUD.h"
 
 
 
@@ -669,7 +670,6 @@ static UserService* _defaultUserService = nil;
                 
                 NSArray *array  = (NSArray *)output.jsonDataDict;
                 NSDictionary *dictionary = [array objectAtIndex:0];
-                NSString *uid = [dictionary objectForKey:@"uid"];
                 [viewController signUpSucceeded:output.resultCode];
                 
                 
@@ -728,33 +728,6 @@ static UserService* _defaultUserService = nil;
 }
 
 
-- (void)initUserMap
-{
-//    RKObjectManager *objectManager = [RKObjectManager sharedManager];
-//    RKObjectMapping *resultMapping =[RKObjectMapping mappingForClass:[User class]];
-//    [resultMapping mapKeyPathsToAttributes:
-//     @"uid", @"_uid",
-//     @"userType", @"userType",
-//     @"profileImageUrl", @"profileImageUrl",
-//     @"avatarBackGroundImage",@"avatarBackGroundImage",
-//     @"name", @"name",
-//     @"description", @"description",
-//     @"gender", @"gender",
-//     @"sinaUserId",@"sinaUserId",
-//     @"qqUserId",@"qqUserId",
-//     @"email", @"email",
-//     @"labelsArray", @"labelsArray",
-//     @"age", @"age",
-//     @"height", @"height",
-//     @"weight", @"weight",
-//     @"BMIValue", @"BMIValue",
-//     @"province", @"province",
-//     @"city", @"city",
-//     nil];
-//    
-//    [objectManager.mappingProvider setMapping:resultMapping forKeyPath:@""];
-    
-}
 
 /* 当用户选择使用新浪微博登陆的时候，要
     进行判断，该新浪微博的id 是否已经是我们的用户
@@ -942,17 +915,10 @@ static UserService* _defaultUserService = nil;
     
 }
 
-+ (void)followWeixinUser:(NSString *)userData{
-
-  
-
-}
-
 - (void)uploadUserAvatar:(UIImage*)image
              resultBlock:(UploadImageResultBlock)resultBlock
 {
-    //    http://42.96.132.109/wapapi/imgtest.php
-    
+     //http://42.96.132.109/wapapi/imgupload.php?
     // save data locally firstly
 //    [[UserManager defaultManager] saveAvatarLocally:image];
 //    [[UserManager defaultManager] storeUserData];
@@ -982,78 +948,12 @@ static UserService* _defaultUserService = nil;
             
         });
     });
-    
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //Router setup: 
-//    RKObjectManager *objectManager = [RKObjectManager sharedManager];
-//    [objectManager.router routeClass:[User class] toResourcePath:@"/imgtest.php" forMethod:RKRequestMethodPOST];
-//    
-//    NSLog(@"Post an Image baseURL %@%@",[objectManager baseURL],@"/imgtest.php");
-//    
-
-//    
-//    //The post
-//   User *user =[[UserService defaultService] user];
-//    
-////    UIImage *image1 = [UIImage imageNamed:@"touxiang_40x40.png"];
-////    UIImage *image2 = [UIImage imageNamed:@"table_header_bg.png"];
-//    NSData *imageData1 = UIImagePNGRepresentation(image);
-////    NSData *imageData2 = UIImagePNGRepresentation(image2);
- 
-//    RKParams* params = [RKParams params];
-//    [params setValue:user.uid forParam:@"uid"];
-//    [params setValue:user.profileImageUrl forParam:@"profileImageUrl"];
-//    [params setValue:user.name forParam:@"name"];
-//    [params setValue:user.description forParam:@"description"];
-//    [params setValue:user.gender forParam:@"gender"];
-//    [params setValue:user.sinaUserId forParam:@"sinaUserId"];
-//    [params setValue:user.email forParam:@"email"];
-//    [params setValue:user.age forParam:@"age"];
-//    [params setValue:user.weight forParam:@"weight"];
-//    [params setValue:user.height forParam:@"height"];
-//    [params setValue:user.BMIValue forParam:@"BMIValue"];
-//    [params setValue:user.province forParam:@"province"];
-//    [params setValue:user.city forParam:@"city"];
-//
-//    if (image) {
-//    [params setData:imageData1 MIMEType:@"image/png" forParam:@"avatarimage"];
-//    }
-//    
-//    
-//
-//    
-////    [params setData:imageData2 MIMEType:@"image/png" forParam:@"backgroundimage"];
-//    
-//    
-//
-//    [objectManager postObject:user usingBlock:^(RKObjectLoader *loader)
-//     {
-//         loader.delegate = delegate;
-//         loader.params = params;
-//         loader.targetObject = nil;
-//         loader.objectMapping = userMapping;
-//         loader.method = RKRequestMethodPOST;
-//         
-//         loader.onDidLoadResponse = ^(RKResponse *response) {
-//             NSLog(@"Response did arrive");
-//             NSLog(@"%@",response.bodyAsString);
-//         };
-//     }];
 }
 
 - (void)updateUser:(User*)user
        resultBlock:(UpdateUserResultBlock)resultBlock
 {
+    [ProgressHUD show:@"加载中..."];
     
     dispatch_async(workingQueue, ^{
         
@@ -1065,7 +965,9 @@ static UserService* _defaultUserService = nil;
                 // update user info
                 [[UserManager defaultManager] storeUserInfoByUid:user.uid];
                 
-                
+                [ProgressHUD dismiss];
+                [ProgressHUD showSuccess:@"成功保存!"];
+
             }
             EXECUTE_BLOCK(resultBlock, output.resultCode);
         });

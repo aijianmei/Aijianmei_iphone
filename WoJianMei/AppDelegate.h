@@ -12,11 +12,10 @@
 #import "MoreViewController.h"
 #import "IIViewDeckController.h"
 #import "AJMLeftSideViewController.h"
-#import "AJMViewDelegate.h"
 #import "CommonDialog.h"
 #import "SinaWeibo.h"
 #import "SinaWeiboAuthorizeView.h"
-
+#import "UserService.h"
 
 
 
@@ -33,7 +32,7 @@ enum
 };
 
 
-@interface AppDelegate : PPApplication <UIApplicationDelegate,UITabBarControllerDelegate,WXApiDelegate,sendMsgToWeChatViewDelegate,CommonDialogDelegate,SinaWeiboRequestDelegate,SinaWeiboDelegate>
+@interface AppDelegate : PPApplication <UIApplicationDelegate,UITabBarControllerDelegate,WXApiDelegate,sendMsgToWeChatViewDelegate,CommonDialogDelegate,SinaWeiboRequestDelegate,SinaWeiboDelegate,UserServiceDelegate>
 
 {
       UINavigationController *_navigationController;

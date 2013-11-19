@@ -189,6 +189,8 @@ typedef enum CONTENT_TYPE {
 - (void)rightButtonClickHandler:(id)sender
 {
     [self.viewDeckController toggleRightViewAnimated:YES];
+    
+    
     User *user = [[UserManager defaultManager] user];
     
     if (user.uid) {

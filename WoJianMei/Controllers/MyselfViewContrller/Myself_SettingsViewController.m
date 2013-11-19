@@ -101,30 +101,11 @@
 
 
 -(void)clickSaveButton:(id)sender{
-    
-    
+    [self uploadWithImage];
     [[UserService defaultService] updateUser:[[UserManager defaultManager] user] resultBlock:^(int resultCode){
-    
-        [self hideActivity];
-        
         if (resultCode == ERROR_SUCCESS){
-            
-            [self uploadWithImage];
-            [self updateUI];
-        }
-        else{
-            
-        
-        }
-    
-    
-    
-    }];
-    
-    
-    
-
-    
+            [self updateUI];}
+        else{}}];
 }
 
 
@@ -135,18 +116,15 @@
                                            resultBlock:^(int resultCode, NSString *imageRemoteURL)
          
          {
-             [self hideActivity];
              
              if (resultCode == ERROR_SUCCESS && [imageRemoteURL length] > 0){
                  
-                 //                [_pbUserBuilder setAvatar:imageRemoteURL];
+                [[[UserManager  defaultManager] user] setProfileImageUrl:imageRemoteURL];
                  
-                 //                  [self updateAvatar:self.avtarImage];
                  [self updateUI];
              }
              else{
-                 
-                 //                [[CommonMessageCenter defaultCenter] postMessageWithText:NSLS(@"kUpdateAvatarFail") delayTime:1.5];
+                
              }
          }];
         
@@ -154,15 +132,13 @@
         
         
     }else{
-        [[UserService defaultService] uploadUserAvatar:[UIImage imageNamed:@"120X120.png"]
+        [[UserService defaultService] uploadUserAvatar:nil
                                            resultBlock:^(int resultCode, NSString *imageRemoteURL)
          {
-             [self hideActivity];
              if (resultCode == ERROR_SUCCESS && [imageRemoteURL length] > 0){
                  
-                 //                [_pbUserBuilder setAvatar:imageRemoteURL];
-                 
-                 //                  [self updateAvatar:self.avtarImage];
+                 [[[UserManager  defaultManager] user] setProfileImageUrl:imageRemoteURL];
+
                  [self updateUI];
              }
              else{
@@ -173,12 +149,8 @@
          }];
         
     }
-    
-    
-    
     //数据加载中的时候，按钮是禁止的再被点击的;
-    //    [self.navigationItem.rightBarButtonItem setEnabled:NO];
-
+//    [self.navigationItem.rightBarButtonItem setEnabled:NO];
 }
 
 
@@ -435,7 +407,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -451,7 +423,9 @@
         case 2:
             return 1;
             break;
-            
+        case 3:
+            return 3;
+            break;
         default:
             break;
     }
@@ -645,6 +619,50 @@
 
         }
             
+            break;
+        case 3:
+        {
+            
+            switch (indexPath.row) {
+                case 0:
+                {
+                    [cell.textLabel setText:@"邮箱"];
+                    
+                    
+                    if ([[[[UserManager defaultManager] user] email] length] > 0) {
+                        [cell.detailLabelView setText:[UserManager defaultManager].user.email];
+                    }
+
+                    
+                    [cell.detailLabelView setText:@"没有绑定"];
+
+                    
+                }
+                    break;
+                case 1:
+                {
+                    [cell.textLabel setText:@"新浪微薄"];
+                    [cell.detailLabelView setText:@"没有绑定"];
+
+                }
+                    break;
+                case 2:
+                {
+                    [cell.textLabel setText:@"腾讯微博"];
+                    [cell.detailLabelView setText:@"没有绑定"];
+
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+           
+            [cell.textField  setHidden:YES];
+            [cell.lessButton setHidden:YES];
+            [cell.moreButton setHidden:YES];
+            
+        }
             break;
         default:
             break;

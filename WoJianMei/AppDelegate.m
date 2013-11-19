@@ -27,6 +27,7 @@
 #import "Reachability.h"
 #import "NetworkDetector.h"
 #import "UserManager.h"
+#import "AJMViewDelegate.h"
 
 
 
@@ -188,10 +189,10 @@ NSString* GlobalGetServerURL()
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
         if (![[UserManager defaultManager] user]){
-            LoginViewController *loginViewController =    [[AppDelegate getAppDelegate] initLoginViewController];
+            LoginViewController *loginViewController = [[AppDelegate getAppDelegate] initLoginViewController];
             loginViewController.delegate = [self homeViewController];
-            UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:loginViewController];
-            [self.window.rootViewController presentModalViewController:navigation animated:NO];
+            UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:loginViewController];            
+            [self.window.rootViewController presentViewController:navigation animated:YES completion:^{}];
             [navigation release];
         }
     }
@@ -332,11 +333,6 @@ NSString* GlobalGetServerURL()
     }
 }
 
-//- (void)initMobClick
-//{
-//    [MobClick setDelegate:self reportPolicy:BATCH];
-//}
-
 
 
 - (void)initNetworkDetector
@@ -431,9 +427,9 @@ NSString* GlobalGetServerURL()
     PPDebug(@"*****OriginalUserId :%@*****",uid);
     
     if (uid !=nil) {
-        User *user  =[[UserService defaultService] getUserInfoByUid:uid];
-        [[UserService defaultService] setUser: user];
-        [[UserService defaultService] storeUserInfoByUid:uid];;
+        User *user  =[[UserManager defaultManager] getUserInfoByUid:uid];
+        [[UserManager defaultManager] setUser: user];
+        [[UserManager defaultManager] storeUserInfoByUid:uid];;
     }
 
     
@@ -475,24 +471,27 @@ NSString* GlobalGetServerURL()
 //    }
     
     
-    
-    
-    UIImage *startImage = nil;
-    if ([DeviceDetection isIPhone5]) {
-        startImage = [UIImage imageNamed:@"Default-568h.png"];
-    } else {
-        startImage = [UIImage imageNamed:@"Default.png"];
+    if (![[UserManager defaultManager] user]) {
+        
+        UIImage *startImage = nil;
+        if ([DeviceDetection isIPhone5]) {
+            startImage = [UIImage imageNamed:@"Default-568h.png"];
+        } else {
+            startImage = [UIImage imageNamed:@"Default.png"];
+        }
+        
+        UIView* splashView = [[UIImageView alloc] initWithImage:startImage];
+        splashView.frame = [self.window bounds];
+        splashView.tag = SPLASH_VIEW_TAG;
+        [self.window addSubview:splashView];
+        [splashView release];
+        [self performSelector:@selector(removeSplashView) withObject:nil afterDelay:2.0f];
+
     }
     
     
+   
     
-    UIView* splashView = [[UIImageView alloc] initWithImage:startImage];
-    splashView.frame = [self.window bounds];
-    splashView.tag = SPLASH_VIEW_TAG;
-    [self.window addSubview:splashView];
-    [splashView release];
-    [self performSelector:@selector(removeSplashView) withObject:nil afterDelay:2.0f];
-
 
     
     // Register to WeChat   wxd930ea5d5a258f4f
@@ -647,7 +646,7 @@ NSString* GlobalGetServerURL()
     [alert release];
 	
 	// try again
-	 [self bindDevice];
+//	 [self bindDevice];
 }
 
 - (void)showNotification:(NSDictionary*)payload
@@ -762,34 +761,10 @@ NSString* GlobalGetServerURL()
 
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    NSLog(@"Response code: %d", [response statusCode]);
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+-(void)didLoadUpdateVersionInfo:(VersionInfo*)versionInfo errorCode:(int)errorCode
 {
-    NSLog(@"Error: %@", [error localizedDescription]);
-}
-
-- (void)requestDidStartLoad:(RKRequest *)request
-{
-    NSLog(@"Start load request...");
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
-{
-    NSLog(@"***Load objects count: %d", [objects count]);
     
-    if ([objects count]<=0) {
-        return;
-    }
-    
-    NSObject *result =[objects objectAtIndex:0];
-    if ([result isMemberOfClass:[VersionInfo class]]){
-
-        
-        VersionInfo *versionInfo =[objects objectAtIndex:0];
-        NSLog(@"当前版本是:%@,下载URL:%@,标题:%@,更新内容:%@",      versionInfo.version,
+      NSLog(@"当前版本是:%@,下载URL:%@,标题:%@,更新内容:%@",      versionInfo.version,
               versionInfo.downloadurl,
               versionInfo.updateTitle,
               versionInfo.updateContent);
@@ -810,7 +785,6 @@ NSString* GlobalGetServerURL()
     
             [self.window addSubview:dialog];
 
-        }
     }
 }
 

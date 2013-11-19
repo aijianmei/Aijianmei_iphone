@@ -890,7 +890,7 @@ enum BUTTON_INDEX {
             break;
     }
 
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 #pragma mark -
