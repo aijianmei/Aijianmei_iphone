@@ -15,7 +15,7 @@
 #import "BaiduMobStat.h"
 #import "ImageManager.h"
 #import "PostService.h"
-#import "UserService.h"
+#import "UserManager.h"
 #import "Result.h"
 #import <AGCommon/UIDevice+Common.h>
 #import "YFInputBar.h"
@@ -250,7 +250,7 @@ enum ErrorCode
 {
     NSLog(@"%@",str);
     
-    User *user = [[UserService defaultService] user];
+    User *user = [[UserManager defaultManager] user];
     
     
     if (self.article) {
@@ -271,8 +271,18 @@ enum ErrorCode
 
 }
 
+
+
+-(void)inputBar:(YFInputBar*)inputBar retBtnPress:(UIButton*)sendBtn{
+
+    [self.navigationController popViewControllerAnimated:YES];
+
+}
+
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    
     [self.view.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [((UIView*)obj) resignFirstResponder];
     }];

@@ -9,7 +9,7 @@
 #import "MoreViewController.h"
 #import "AboutViewController.h"
 #import "FeedBackViewController.h"
-#import "UserService.h"
+#import "UserManager.h"
 #import "ImageManager.h"
 #import "FontSize.h"
 #import "DeviceDetection.h"
@@ -289,7 +289,7 @@ enum BUTTON_INDEX {
     }else {
         cell.textLabel.text = @"退出当前账号";
         
-        User *user = [[UserService defaultService] user];
+        User *user = [[UserManager defaultManager] user];
         
 
         if (user.uid) {
@@ -707,12 +707,12 @@ enum BUTTON_INDEX {
         case 1:
         {
             
-             self.uid = [[[UserService defaultService] user] uid];
+             self.uid = [[[UserManager defaultManager] user] uid];
             
             if (self.uid)
             {
                 
-                [[UserService defaultService] deleteUserByUid:self.uid];
+                [[UserManager defaultManager] deleteUserByUid:self.uid];
                 [dataTableView reloadData];
                 
                 [[AppDelegate getAppDelegate] showLoginView];

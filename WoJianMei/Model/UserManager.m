@@ -9,6 +9,8 @@
 #import "UserManager.h"
 #import "User.h"
 #import "PPDebug.h"
+#import "SinaWeiboManager.h"
+
 
 
 #define USERID @"AijianmeiUserId"
@@ -195,6 +197,57 @@ avatarBackgroundImageURL:(NSString *)avatarBackgroundImageURL;
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     return [userDefaults objectForKey:USERID];
+}
+
+
+-(void)deleteUserByUid:(NSString *)uid
+{
+    
+    if ([self.user sinaUserId])
+    {
+        [self deleteSinaUserInfoWithUid:self.user.sinaUserId];
+    }
+    
+    if ([self getUserInfoByUid:uid])
+    {
+        [[NSUserDefaults standardUserDefaults]  removeObjectForKey:uid];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OriginalUserId"];
+        NSLog(@"####Delete User with ID :%@ Successfully!",uid);
+    }
+    
+    [self setUser:nil];
+}
+
+//删除新浪微博的信息
+- (void)deleteSinaUserInfoWithUid:(NSString *)uid
+{
+    [[NSUserDefaults standardUserDefaults]  removeObjectForKey:uid];
+    NSLog(@"######Delete sinaweibo account with ID :%@",uid);
+    [[SinaWeiboManager sharedManager] removeAuthData];
+    [[[SinaWeiboManager sharedManager] sinaweibo] logOut];
+    
+}
+
+//保存新浪微博的信息
+- (void)storeSinaUserInfo:(NSDictionary*)userInfo
+{
+    NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);
+    NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:userInfo];
+    [[NSUserDefaults standardUserDefaults] setObject:userData forKey:[[userInfo objectForKey:@"id"] stringValue]];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
+//读取新浪微博的信息
+- (NSDictionary*)getSinaUserInfoWithUid:(NSString *)uid
+{
+    if (!uid) {
+        return nil;
+    }
+    
+    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:uid];
+    NSDictionary *userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+    return userInfo;
 }
 
 

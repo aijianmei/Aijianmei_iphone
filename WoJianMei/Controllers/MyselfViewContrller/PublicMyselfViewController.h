@@ -10,7 +10,6 @@
 #import "StatusCell.h"
 #import "User.h"
 #import "UserService.h"
-#import <RestKit/RestKit.h>
 #import "StatusCell.h"
 #import "ImageBrowser.h"
 #import "PPTableViewController.h"
@@ -21,7 +20,7 @@
 @class MyselfViewController;
 
 
-@interface PublicMyselfViewController : PPTableViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UIActionSheetDelegate,RKObjectLoaderDelegate,StatusCellDelegate,ImageBrowserDelegate>
+@interface PublicMyselfViewController : PPTableViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UIActionSheetDelegate,StatusCellDelegate,ImageBrowserDelegate>
 
 {
     

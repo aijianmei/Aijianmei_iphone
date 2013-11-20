@@ -109,11 +109,7 @@ typedef void(^UpdateUserResultBlock)(int resultCode);
 //本地注册
 - (void)loginUserWithUseremail:(NSString*)email
                       password:(NSString*)password
-                      usertype:(NSString*)usertype
-//                      delegate:(id<RKObjectLoaderDelegate>)delegate
-
-;
-
+                      usertype:(NSString*)usertype;
 
 
 - (void)registerAijianmeiUserWithUsername:(NSString*)name
@@ -125,31 +121,11 @@ typedef void(^UpdateUserResultBlock)(int resultCode);
 ;
 //获取新浪用户信息
 - (void)fetchSinaUserInfo:(NSString*)uid
-                    delegate:(id<SinaWeiboRequestDelegate>)delegate
-;
-
-
-
-
-//保存新浪用户信息
-- (void)storeSinaUserInfo:(NSDictionary*)userInfo;
-
-- (NSDictionary*)getSinaUserInfoWithUid:(NSString*)uid;
-- (void)deleteSinaUserInfoWithUid:(NSString *)uid;
-
+                    delegate:(id<SinaWeiboRequestDelegate>)delegate;
 
 - (void)fechUserBySnsId:(NSString*)snsID
                userType:(NSString*)userType;
 //               delegate:(id<RKObjectLoaderDelegate>)delegate;
-
-//保存用户信息到本地
--(void)storeUserInfoByUid:(NSString *)uid;
-
-//获取保存在本地的用户信息
--(User*)getUserInfoByUid:(NSString *)uid;
-
-//删除在本地的用户信息
--(void)deleteUserByUid:(NSString *)uid;
 
 
 //分享一条新浪微博，附带图片
@@ -160,27 +136,30 @@ typedef void(^UpdateUserResultBlock)(int resultCode);
 //关注爱健美网新浪微博
 - (void)createSinaFriendshipWithUid:(NSString*)uid
                            delegate:(id<SinaWeiboRequestDelegate>)delegate;
-
-
-
-+ (void)followWeixinUser:(NSString *)userData;
-
-
-
-
-//上传头像
+/*
+ 方法名: 上传用户头像
+ 参数 1 :头像图片
+ 参数 2 :block 结果
+*/
 - (void)uploadUserAvatar:(UIImage*)image
              resultBlock:(UploadImageResultBlock)resultBlock;
 
-//上传背景图片
+/*
+ 方法名 :上传背景图片
+ 参数 1 :背景图片
+ 参数 2 :block 结果
+*/
 - (void)uploadUserBackground:(UIImage*)image
                  resultBlock:(UploadImageResultBlock)resultBlock;
 
 
+/*
+ 方法名: 更新用户数据
+ 参数 1 :用户数据
+ 参数 2 :block 结果
+ */
 - (void)updateUser:(User*)user
        resultBlock:(UpdateUserResultBlock)resultBlock;
-
-
 
 
 

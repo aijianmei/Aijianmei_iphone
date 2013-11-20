@@ -327,7 +327,7 @@
     [imvaew release];
     
     
-    
+    [cell setBackgroundColor:[UIColor clearColor]];
     
     
     
@@ -422,6 +422,10 @@
 {
     switch (section)
     {
+        case 0:
+        {
+            return _sectionView;
+        }
         case 1:
             return _sectionView;
         default:
@@ -433,6 +437,8 @@
 {
     switch (section)
     {
+        case 0:
+            return 15;
         case 1:
             return tableView.sectionHeaderHeight;
         default:

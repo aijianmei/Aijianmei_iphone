@@ -287,6 +287,10 @@
               channelType:(NSString*)channleType
            viewController:(PPViewController<ArticleServiceDelegate>*)viewController{
 
+    [viewController showProgressHUDActivityWithText:@"加载中..."];
+
+    
+    
     //A new working Queue
     dispatch_async(workingQueue, ^{
         
@@ -300,11 +304,12 @@
         //Back to the Main Queue
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            [viewController hideActivity];
             
             
             if (output.resultCode == ERROR_SUCCESS) {
                 
+                [viewController hideProgressHUDActivity];
+
                 
                 
             }
@@ -327,8 +332,6 @@
             }
             
             if ([viewController respondsToSelector:@selector(didPostCommentSucceeded:)]){
-                NSArray *array  = (NSArray *)output.jsonDataArray;
-                NSDictionary *dictionary = [array objectAtIndex:0];
                 [viewController didPostCommentSucceeded:output.resultCode];
                 
             }
@@ -357,7 +360,6 @@
         //Back to the Main Queue
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            [viewController hideProgressHUDActivity];
             
             NSMutableArray      *array;
             NSMutableArray      *newArray;
@@ -365,7 +367,8 @@
             NSDictionary *dictionary;
             
             if (output.resultCode == ERROR_SUCCESS) {
-                
+                [viewController hideProgressHUDActivity];
+
                 
                 array  = (NSMutableArray *)output.jsonDataDict;
                 

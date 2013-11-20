@@ -22,6 +22,8 @@
         
         self.textField.tag = 10000;
         self.sendBtn.tag = 10001;
+        self.retButton.tag = 10002;
+
         
         //注册键盘通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -52,7 +54,7 @@
 -(UITextField *)textField
 {
     if (!_textField) {
-        _textField = [[UITextField alloc]initWithFrame:CGRectMake(10, 10, 250, 24)];
+        _textField = [[UITextField alloc]initWithFrame:CGRectMake(60,10,200,24)];
         _textField.backgroundColor = [UIColor whiteColor];
         [self addSubview:_textField];
     }
@@ -70,6 +72,9 @@
     }
     return _sendBtn;
 }
+
+
+
 #pragma mark selfDelegate method
 
 -(void)sendBtnPress:(UIButton*)sender
@@ -84,6 +89,34 @@
         [self resignFirstResponder];
     }
 }
+
+
+-(UIButton *)retButton
+{
+    if (!_returnBtn) {
+        _returnBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_returnBtn setTitle:@"返回" forState:UIControlStateNormal];
+//        [_returnBtn setBackgroundColor:[UIColor whiteColor]];
+        [_returnBtn setFrame:CGRectMake(10, 10, 40, 24)];
+        [_returnBtn addTarget:self action:@selector(retBtnPress:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_returnBtn];
+    }
+    return _returnBtn;
+}
+#pragma mark selfDelegate method
+-(void)retBtnPress:(UIButton*)sender
+{
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(inputBar:retBtnPress:)]) {
+        [self.delegate inputBar:self retBtnPress:sender];
+    }
+    if (self.clearInputWhenSend) {
+        self.textField.text = @"";
+    }
+    if (self.resignFirstResponderWhenSend) {
+        [self resignFirstResponder];
+    }
+}
+
 
 #pragma mark keyboardNotification
 

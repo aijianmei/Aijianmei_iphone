@@ -12,6 +12,8 @@
 @protocol YFInputBarDelegate <NSObject>
 
 -(void)inputBar:(YFInputBar*)inputBar sendBtnPress:(UIButton*)sendBtn withInputString:(NSString*)str;
+-(void)inputBar:(YFInputBar*)inputBar retBtnPress:(UIButton*)retBtn;
+
 
 @end
 @interface YFInputBar : UIView
@@ -20,7 +22,9 @@
 @property(assign,nonatomic)id<YFInputBarDelegate> delegate;
 //这两个可以自己付值
 @property(strong,nonatomic)UITextField *textField;
-@property(strong,nonatomic)UIButton *sendBtn;
+@property(strong,nonatomic)UIButton    *sendBtn;
+@property(strong,nonatomic)UIButton    *returnBtn;
+
 
 //点击btn时候 清空textfield  默认NO
 @property(assign,nonatomic)BOOL clearInputWhenSend;

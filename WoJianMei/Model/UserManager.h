@@ -10,6 +10,7 @@
 #import "User.h"
 
 
+
 #define KEY_ALL_USER_PB_DATA            @"KEY_ALL_USER_PB_DATA"
 #define KEY_USERID                      @"USER_KEY_USERID"
 #define KEY_NICKNAME                    @"USER_KEY_NICKNAME"
@@ -77,6 +78,15 @@
            description:(NSString *)description
                 weight:(NSString *)weight
  avatarBackgroundImageURL:(NSString *)avatarBackgroundImageURL;
+
+
+-(void)deleteUserByUid:(NSString *)uid;
+//删除新浪微博的信息
+- (void)deleteSinaUserInfoWithUid:(NSString *)uid;
+//保存新浪微博的信息
+- (void)storeSinaUserInfo:(NSDictionary*)userInfo;
+//读取新浪微博的信息
+- (NSDictionary*)getSinaUserInfoWithUid:(NSString *)uid;
 
 
 @end

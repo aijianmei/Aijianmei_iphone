@@ -399,8 +399,8 @@ enum errorCode {
                                               password:_passwordTextField.text];
         
         NSLog(@"******Register success,return uid:%@",user.uid);
-        [UserService defaultService].user = user;
-        [[UserService defaultService] storeUserInfoByUid:user.uid];
+        [UserManager defaultManager].user = user;
+        [[UserManager defaultManager] storeUserInfoByUid:user.uid];
         
                 
         //直接从注册页面，跳动到用户界面;

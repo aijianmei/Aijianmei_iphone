@@ -9,12 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
 #import "StatusCell.h"
-#import <RestKit/RestKit.h>
 #import "ImageBrowser.h"
 
 
 
-@interface MyselfViewBaseController : PPTableViewController<StatusCellDelegate,RKObjectLoaderDelegate,ImageBrowserDelegate>{
+@interface MyselfViewBaseController : PPTableViewController<StatusCellDelegate,ImageBrowserDelegate>{
     
     NSMutableDictionary *_avatarDictionary;
     NSMutableDictionary *_imageDictionary;

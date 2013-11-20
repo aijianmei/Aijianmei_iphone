@@ -392,54 +392,6 @@ static UserService* _defaultUserService = nil;
 
 
 
-// 用户登录，只是使用邮箱密码马上可以登录
-//- (void)loginUserWithEmail:(NSString*)email
-//                        password:(NSString*)password
-//                        usertype:(NSString*)usertype
-
-//                  delegate:(id<RKObjectLoaderDelegate>)delegate
-//{
-    
-//    [self initResultMap];
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        NSMutableDictionary *queryParams = [[[NSMutableDictionary alloc] init] autorelease];
-//        [queryParams setObject:@"aijianmei" forKey:@"aucode"];
-//        [queryParams setObject:@"au_login" forKey:@"auact"];
-//        [queryParams setObject:email forKey:@"email"];
-//        [queryParams setObject:password forKey:@"userpassword"];
-//        [queryParams setObject:usertype forKey:@"usertype"];
-//
-//        
-//        RKObjectManager *objectManager = [RKObjectManager sharedManager];
-//        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
-//        
-//        NSLog(@"url: %@", [url absoluteString]);
-//        NSLog(@"resourcePath: %@", [url resourcePath]);
-//        NSLog(@"query: %@", [url query]);
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            
-////            [objectManager loadObjectsAtResourcePath:@"" usingBlock:^(RKObjectLoader *loader)
-////            {
-////                loader.delegate = delegate;
-////                loader.targetObject = nil;
-////                loader.method = RKRequestMethodPOST;
-////                loader.onDidLoadResponse = ^(RKResponse *response) {
-////                    NSLog(@"Response did arrive");
-////                    NSLog(@"%@",response.bodyAsString);
-////                    
-////                    loader.params =queryParams;
-////                    
-////                };
-////            }];
-//
-//            
-//
-//            
-//            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
-//        });
-//    });
-//}
 
 
 
@@ -450,7 +402,7 @@ static UserService* _defaultUserService = nil;
               viewController:(PPViewController<UserServiceDelegate>*)viewController;
 {
     
-    [viewController showActivityWithText:@"..."];
+    [viewController showProgressHUDActivityWithText:@"加载中..."];
      //http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_getuserinfobyuid&uid=435
 
     //A new working Queue
@@ -463,11 +415,11 @@ static UserService* _defaultUserService = nil;
         //Back to the Main Queue
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            [viewController hideActivity];
              NSDictionary *dictionary;
             
             if (output.resultCode == ERROR_SUCCESS) {
-                
+                [viewController hideProgressHUDActivity];
+
                 dictionary=output.jsonDataDict;
                 [[UserManager  defaultManager] saveUserId:[dictionary objectForKey:PARA_USER_UID]
                                                     email:[dictionary objectForKey:PARA_USER_EMAIL]
@@ -667,9 +619,6 @@ static UserService* _defaultUserService = nil;
             
             
             if ([viewController respondsToSelector:@selector(signUpSucceeded:)]){
-                
-                NSArray *array  = (NSArray *)output.jsonDataDict;
-                NSDictionary *dictionary = [array objectAtIndex:0];
                 [viewController signUpSucceeded:output.resultCode];
                 
                 
@@ -806,78 +755,7 @@ static UserService* _defaultUserService = nil;
                                        delegate:delegate];
 }
 
-//保存新浪微博的信息
-- (void)storeSinaUserInfo:(NSDictionary*)userInfo
-{
-    NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);
-    NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:userInfo];
-    [[NSUserDefaults standardUserDefaults] setObject:userData forKey:[[userInfo objectForKey:@"id"] stringValue]];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
 
-
-//读取新浪微博的信息
-- (NSDictionary*)getSinaUserInfoWithUid:(NSString *)uid
-{
-    if (!uid) {
-        return nil;
-    }
-    
-    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:uid];
-    NSDictionary *userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
-    return userInfo;
-}
-
-//删除新浪微博的信息
-- (void)deleteSinaUserInfoWithUid:(NSString *)uid
-{
-    [[NSUserDefaults standardUserDefaults]  removeObjectForKey:uid];
-    NSLog(@"######Delete sinaweibo account with ID :%@",uid);
-    [[SinaWeiboManager sharedManager] removeAuthData];
-    [[[SinaWeiboManager sharedManager] sinaweibo] logOut];
-    
-}
-
-
-
--(void)storeUserInfoByUid:(NSString *)uid
-{
-    
-    //以后程序启动的时候就是要读取默认的这个Uid数据;
-    [[NSUserDefaults standardUserDefaults] setObject:uid forKey:@"OriginalUserId"];
-    
-    
-    NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.user];
-    [[NSUserDefaults standardUserDefaults] setObject:userData forKey:uid];
-    
-}
-
-
--(User*)getUserInfoByUid:(NSString *)uid
-{
-    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:uid];
-    User *user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    return user;
-}
-
--(void)deleteUserByUid:(NSString *)uid
-{
-    
-    if ([self.user sinaUserId])
-    {
-        [self deleteSinaUserInfoWithUid:[self.user sinaUserId]];
-    }
-    
-    if ([self getUserInfoByUid:uid])
-    {
-        [[NSUserDefaults standardUserDefaults]  removeObjectForKey:uid];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OriginalUserId"];
-        NSLog(@"####Delete User with ID :%@ Successfully!",uid);
-    }
-    
-    [self setUser:nil];
-}
 
 //关注爱健美网新浪微博
 - (void)createSinaFriendshipWithUid:(NSString*)uid
@@ -938,6 +816,41 @@ static UserService* _defaultUserService = nil;
                 NSString* retURL = [[output jsonDataDict] objectForKey:PARA_URL];
 //                [[UserManager defaultManager] setAvatar:retURL];
 //                [[UserManager defaultManager] storeUserData];
+                
+                
+                EXECUTE_BLOCK(resultBlock, output.resultCode, retURL);
+            }
+            else{
+                EXECUTE_BLOCK(resultBlock, output.resultCode, nil);
+            }
+            
+        });
+    });
+}
+- (void)uploadUserBackground:(UIImage*)image
+                 resultBlock:(UploadImageResultBlock)resultBlock
+{
+    
+    //http://42.96.132.109/wapapi/imgupload.php?
+    // save data locally firstly
+    //    [[UserManager defaultManager] saveAvatarLocally:image];
+    //    [[UserManager defaultManager] storeUserData];
+    
+    NSString* userId = [[UserManager defaultManager] userId];
+    NSData* data = [image data];
+    dispatch_async(workingQueue, ^{
+        CommonNetworkOutput* output = [FitnessNetworkRequest uploadUserImage:@"http://42.96.132.109/wapapi/imgupload.php?"
+                                                                      userId:userId
+                                                                   imageData:data
+                                                                   imageType:PARA_AVATAR];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (output.resultCode == ERROR_SUCCESS){
+                
+                // update avatar
+                NSString* retURL = [[output jsonDataDict] objectForKey:PARA_URL];
+                //                [[UserManager defaultManager] setAvatar:retURL];
+                //                [[UserManager defaultManager] storeUserData];
                 
                 
                 EXECUTE_BLOCK(resultBlock, output.resultCode, retURL);

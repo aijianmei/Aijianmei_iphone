@@ -333,7 +333,7 @@ enum ErrorCode
     }
 }
 
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+- (void)objectLoader:(NSString *)objectLoader didLoadObjects:(NSArray *)objects
 {
     [self dataSourceDidFinishLoadingNewData];
     [self dataSourceDidFinishLoadingMoreData];

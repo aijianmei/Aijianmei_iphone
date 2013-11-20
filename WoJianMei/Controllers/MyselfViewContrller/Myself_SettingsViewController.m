@@ -485,9 +485,9 @@
                 if (self.avtarImage) {
                     [cell.detailImageView setImage:self.avtarImage];
                 }else{
-                    [cell.detailImageView setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
+                   [cell.detailImageView setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
+    
                 }
-
                 
                 [cell.detailImageView setFrame:CGRectMake(180, 7.50f, 65.0f,65.0f)];
 
@@ -627,14 +627,16 @@
                 case 0:
                 {
                     [cell.textLabel setText:@"邮箱"];
-                    
-                    
+                    [cell.detailLabelView setText:@"没有绑定"];
+
                     if ([[[[UserManager defaultManager] user] email] length] > 0) {
                         [cell.detailLabelView setText:[UserManager defaultManager].user.email];
+                        [cell.detailLabelView setFont:[UIFont systemFontOfSize:10.0]];
+                        [cell.detailLabelView setTextAlignment:NSTextAlignmentLeft];
+
                     }
 
                     
-                    [cell.detailLabelView setText:@"没有绑定"];
 
                     
                 }
@@ -643,6 +645,12 @@
                 {
                     [cell.textLabel setText:@"新浪微薄"];
                     [cell.detailLabelView setText:@"没有绑定"];
+                    
+                    if ([[[[UserManager defaultManager] user] sinaUserId] length] > 0) {
+                        [cell.detailLabelView setText:@"已绑定"];
+                    }
+
+                    
 
                 }
                     break;
@@ -819,9 +827,6 @@
     }
 }
 
-
-
-
 - (NSString *)reCaluclateBMIValueByWeight:(NSString *)aWeight height: (NSString *)aHeight{
     
     //重新计算BMI
@@ -875,14 +880,14 @@
             
     
             //设置为当前用户
-            [[UserService defaultService] setUser:user];
+            [[UserManager defaultManager] setUser:user];
             
             [user setBMIValue:bmi];
             
             
             
             
-            NSDictionary *sinaUserInfo =[[UserService defaultService] getSinaUserInfoWithUid:[SinaWeiboManager sharedManager].sinaweibo.userID];
+            NSDictionary *sinaUserInfo =[[UserManager defaultManager] getSinaUserInfoWithUid:[SinaWeiboManager sharedManager].sinaweibo.userID];
             NSString *profileImageUrl = [sinaUserInfo objectForKey:@"profileImageUrl"];
             
             
@@ -900,7 +905,7 @@
             
             self.user = user;
             //保存用户
-            [[UserService defaultService] storeUserInfoByUid:user.uid];
+            [[UserManager defaultManager] storeUserInfoByUid:user.uid];
             
             
             [self updateUI];

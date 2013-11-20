@@ -462,13 +462,16 @@ NSString* GlobalGetServerURL()
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
 
-//    
+    
 //    if ([DeviceDetection isOS5]){
 //        [[UINavigationBar appearance] setBackgroundImage:[ImageManager navigationBgImage] forBarMetrics:UIBarMetricsDefault];
 //    }else{
 //        
 //       GlobalSetNavBarBackground(@"topmenu_bg.png");
 //    }
+    
+    
+    
     
     
     if (![[UserManager defaultManager] user]) {

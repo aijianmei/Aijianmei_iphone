@@ -211,7 +211,6 @@ enum SinaResultErrorCode
     [self.loginButton addTarget:self action:@selector(closeDoneEdit:) forControlEvents:UIControlEventTouchUpInside];
     
 
-
     SignUpViewController *vc = [[SignUpViewController alloc]initWithNibName:@"SignUpViewController" bundle:nil];
     self.signUpViewController =vc;
 
@@ -395,7 +394,7 @@ enum SinaResultErrorCode
 {
     if ([request.url hasSuffix:@"users/show.json"])
     {
-    [[UserService defaultService] storeSinaUserInfo:result];
+    [[UserManager defaultManager] storeSinaUserInfo:result];
      
     NSDictionary *userInfo = result;
     NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);
@@ -424,7 +423,7 @@ enum SinaResultErrorCode
             if ([uid integerValue] !=0 && errorCode ==0)
             {
                 
-                NSDictionary *sinaUserInfo =[[UserService defaultService] getSinaUserInfoWithUid:[SinaWeiboManager sharedManager].sinaweibo.userID];
+                NSDictionary *sinaUserInfo =[[UserManager defaultManager] getSinaUserInfoWithUid:[SinaWeiboManager sharedManager].sinaweibo.userID];
                 NSString *profileImageUrl = [sinaUserInfo objectForKey:@"profileImageUrl"];
                 
                 
