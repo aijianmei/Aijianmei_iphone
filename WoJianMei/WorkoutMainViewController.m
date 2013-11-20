@@ -260,25 +260,9 @@
 
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    NSLog(@"Response code: %d", [response statusCode]);
-    [self hideActivity];
-}
 
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
-{
-    NSLog(@"Error: %@", [error localizedDescription]);
-    [self hideActivity];
-}
 
-- (void)requestDidStartLoad:(RKRequest *)request
-{
-    NSLog(@"Start load request...");
-    [self showActivityWithText:@"加载中..."];
-    
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+- (void)objectLoader:(NSString *)objectLoader didLoadObjects:(NSArray *)objects
 {
     NSLog(@"***Load objects count: %d", [objects count]);
     [self hideActivity];

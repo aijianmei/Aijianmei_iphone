@@ -474,23 +474,23 @@ NSString* GlobalGetServerURL()
     
     
     
-    if (![[UserManager defaultManager] user]) {
-        
-        UIImage *startImage = nil;
-        if ([DeviceDetection isIPhone5]) {
-            startImage = [UIImage imageNamed:@"Default-568h.png"];
-        } else {
-            startImage = [UIImage imageNamed:@"Default.png"];
-        }
-        
-        UIView* splashView = [[UIImageView alloc] initWithImage:startImage];
-        splashView.frame = [self.window bounds];
-        splashView.tag = SPLASH_VIEW_TAG;
-        [self.window addSubview:splashView];
-        [splashView release];
-        [self performSelector:@selector(removeSplashView) withObject:nil afterDelay:2.0f];
-
-    }
+//    if (![[UserManager defaultManager] user]) {
+//        
+//        UIImage *startImage = nil;
+//        if ([DeviceDetection isIPhone5]) {
+//            startImage = [UIImage imageNamed:@"Default-568h.png"];
+//        } else {
+//            startImage = [UIImage imageNamed:@"Default.png"];
+//        }
+//        
+//        UIView* splashView = [[UIImageView alloc] initWithImage:startImage];
+//        splashView.frame = [self.window bounds];
+//        splashView.tag = SPLASH_VIEW_TAG;
+//        [self.window addSubview:splashView];
+//        [splashView release];
+//        [self performSelector:@selector(removeSplashView) withObject:nil afterDelay:2.0f];
+//
+//    }
     
     
    
@@ -751,7 +751,7 @@ NSString* GlobalGetServerURL()
     //获取用户个人信息
     if ([request.url hasSuffix:@"users/show.json"])
     {
-        [[UserService defaultService] storeSinaUserInfo:result];
+        [[UserManager defaultManager] storeSinaUserInfo:result];
         
         NSDictionary *userInfo = result;
         NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);

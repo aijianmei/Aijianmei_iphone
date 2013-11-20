@@ -12,12 +12,11 @@
 #import "NumberDataCellHeader.h"
 #import "NumberDataCell.h"
 #import "TPKeyboardAvoidingTableView.h"
-#import <RestKit/RestKit.h>
 #import "UserCatalog.h"
 #import "ZSYPopoverListView.h"
 #import "NumberData.h"
 
-@interface NumberDataViewController : PPTableViewController<NumberDataCellFooterDelegate,NumberDataCellHeaderDelegate,NumberDataCellDelegate,UITextFieldDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate,RKObjectLoaderDelegate,ZSYPopoverListDatasource, ZSYPopoverListDelegate>
+@interface NumberDataViewController : PPTableViewController<NumberDataCellFooterDelegate,NumberDataCellHeaderDelegate,NumberDataCellDelegate,UITextFieldDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate,ZSYPopoverListDatasource, ZSYPopoverListDelegate>
 {
     
     NumberDataCellHeader *_header;

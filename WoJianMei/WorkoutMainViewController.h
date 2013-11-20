@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "PPViewController.h"
 #import "WorkoutDetailViewController.h"
-#import <restkit/restkit.h>
 #import "UserCatalog.h"
 
 
@@ -17,7 +16,7 @@
 @class SDSegmentedControl;
 
 
-@interface WorkoutMainViewController : PPViewController<WorkoutDetailDelegate,RKObjectLoaderDelegate>
+@interface WorkoutMainViewController : PPViewController<WorkoutDetailDelegate>
 
 {
 

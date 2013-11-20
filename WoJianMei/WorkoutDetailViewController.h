@@ -7,7 +7,6 @@
 //
 
 #import "PPTableViewController.h"
-#import <RestKit/RestKit.h>
 
 
 @class Workout;
@@ -23,7 +22,7 @@
 @class Workout;
 
 
-@interface WorkoutDetailViewController : PPTableViewController<RKObjectLoaderDelegate>
+@interface WorkoutDetailViewController : PPTableViewController
 {
     NSArray *_workoutArray;
     id <WorkoutDetailDelegate> _delegate;

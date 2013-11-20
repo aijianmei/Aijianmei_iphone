@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PPViewController.h"
 #import "DrawContextView.h"
-#import <RestKit/RestKit.h>
 
-@interface WorkOutProcessViewController : PPViewController<RKObjectLoaderDelegate>
+@interface WorkOutProcessViewController : PPViewController
 {
     DrawContextView *_drawView;
 }

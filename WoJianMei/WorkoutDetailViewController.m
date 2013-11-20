@@ -137,22 +137,8 @@
 
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    NSLog(@"Response code: %d", [response statusCode]);
-}
 
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
-{
-    NSLog(@"Error: %@", [error localizedDescription]);
-}
-
-- (void)requestDidStartLoad:(RKRequest *)request
-{
-    [self showActivityWithText:@"加载中..."];
-    NSLog(@"Start load request...");
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+- (void)objectLoader:(NSString *)objectLoader didLoadObjects:(NSArray *)objects
 {
     NSLog(@"***Load objects count: %d", [objects count]);
     [self hideActivity];
@@ -167,14 +153,6 @@
             //下载用户的个性化锻炼目录
             [self.delegate loadWorkoutCatalogMenueWithWorkout:_choosenWorkout];
         }
-        
-        
-        self.delegate = 
-        
-        
-        
-        
-        
         
         [self.navigationController popToViewController:vc animated:YES];
     }

@@ -14,7 +14,7 @@
 #import "User.h"
 #import <CoreText/CoreText.h>
 #import "WorkOutProcessViewController.h"
-#import "UserService.h"
+#import "UserManager.h"
 #import "UIImageView+WebCache.h"
 #import "UIButton+WebCache.h"
 #import "BaiduMobStat.h"
@@ -444,28 +444,7 @@
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
 
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    NSLog(@"Response code: %d", [response statusCode]);
-    [self hideActivity];
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
-{
-    NSLog(@"Error: %@", [error localizedDescription]);
-    [self hideActivity];
-    if ([[error localizedDescription] isEqualToString:@"请求超时。"]) {
-        PPDebug(@"请求超时");
-    }
-}
-
-- (void)requestDidStartLoad:(RKRequest *)request
-{
-    NSLog(@"Start load request...");
-    [self showActivityWithText:@"数据加载中..."];
-    
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+- (void)objectLoader:(NSString *)objectLoader didLoadObjects:(NSArray *)objects
 {
     [self dataSourceDidFinishLoadingNewData];
     [self dataSourceDidFinishLoadingMoreData];
@@ -482,9 +461,9 @@
 
     if ([object isMemberOfClass:[User class]]) {
          User *user = [objects objectAtIndex:0];
-        [[UserService defaultService] setUser:user];
-        [[UserService defaultService] storeUserInfoByUid:user.uid];
-        self.user =[[UserService defaultService] user];
+        [[UserManager defaultManager] setUser:user];
+        [[UserManager defaultManager] storeUserInfoByUid:user.uid];
+        self.user =[[UserManager defaultManager] user];
         [self upgradeUI];
     }
     
