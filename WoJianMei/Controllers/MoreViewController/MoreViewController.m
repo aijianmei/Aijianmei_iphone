@@ -270,6 +270,7 @@ enum BUTTON_INDEX {
     [cell.textLabel setFont:[UIFont systemFontOfSize:14]];
     [cell.textLabel setTextAlignment:NSTextAlignmentLeft];
     UIImage* image_icon = [UIImage imageNamed:@"szicon_a.png"];
+    
     UIImageView* cellAccessoryView = [[UIImageView alloc] initWithImage:image_icon];
     cell.accessoryView = cellAccessoryView;
     cell.backgroundColor = [UIColor whiteColor];

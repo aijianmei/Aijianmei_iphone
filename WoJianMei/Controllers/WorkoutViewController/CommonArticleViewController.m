@@ -12,7 +12,7 @@
 #import "ImageManager.h"
 #import "CommentViewController.h"
 #import "ArticleDetail.h"
-#import "UserService.h"
+#import "UserManager.h"
 #import "Result.h"
 #import "REComposeViewController.h"
 #import "AppDelegate.h"
@@ -172,16 +172,18 @@ enum actionsheetNumber{
 
 
 ////点击喜欢按钮
--(void)clickLikeButton:(id)sender{    
+-(void)clickLikeButton:(id)sender{
+    
+    
    ArticleDetail *article =[self articleDetail];
-   User *user =  [[UserService defaultService] user];
+   User *user =  [[UserManager defaultManager] user];
     
     if ( user.uid ==nil) {
         return;
     }
     
     
-   [[ArticleService sharedService] sendLikeWithContentId:[article _id]
+   [[ArticleService sharedService] sendLikeWithContentId:article._id
                                                 userId:user.uid
                                            channeltype:@"1"
                                         viewController:self];
@@ -890,7 +892,7 @@ enum actionsheetNumber{
     
     if ([request.url hasSuffix:@"users/show.json"])
     {
-        [[UserService defaultService] storeSinaUserInfo:result];
+        [[UserManager defaultManager] storeSinaUserInfo:result];
         
         NSDictionary *userInfo = result;
         NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);

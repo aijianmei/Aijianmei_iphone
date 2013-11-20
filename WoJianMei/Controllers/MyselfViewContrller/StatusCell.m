@@ -132,7 +132,12 @@
 }
 
 -(void)clickLikeButton:(id)sender{
+    
+    
+    
     if ([delegate respondsToSelector:@selector(cellLikeButtonDidClick:)]){
+        
+        
         [delegate cellLikeButtonDidClick:self];
     }
 }

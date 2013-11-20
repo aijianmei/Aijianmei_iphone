@@ -251,23 +251,16 @@
                 
                 
             }
-            else if (output.resultCode == ERROR_EMAIL_VERIFIED) {
-                // @"对不起，用户注册无法完成，请联系我们的技术支持以便解决问题"
-                [viewController popupUnhappyMessage:NSLS(@"用户名或密码错误") title:nil];
-                
-            }
             
             else {
                 // @"对不起，注册失败，请稍候再试"
-                //                [viewController popupUnhappyMessage:NSLS(@"kGeneralFailure") title:nil];
+                [viewController popupUnhappyMessage:NSLS(@"kGeneralFailure") title:nil];
                 
             }
             
             if ([viewController respondsToSelector:@selector(didPostLikeSucceeded:)]){
                 array  = (NSArray *)output.jsonDataArray;
                 dictionary = [array objectAtIndex:0];
-                
-                
                 [viewController didPostLikeSucceeded:output.resultCode];
                 
             }
