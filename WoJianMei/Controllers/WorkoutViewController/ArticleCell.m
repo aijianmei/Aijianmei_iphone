@@ -46,7 +46,16 @@
 // just replace ProductDetailCell by the new Cell Class Name
 + (ArticleCell*) createCell:(id)delegate
 {
-    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"ArticleCell" owner:self options:nil];
+     NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"ArticleCell" owner:self options:nil];
+    
+    if (isPad) {
+         topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"ArticleCell ~ipad" owner:self options:nil];
+        
+        
+        
+    }
+    
+   
     // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).
     if (topLevelObjects == nil || [topLevelObjects count] <= 0){
         NSLog(@"create <ArticleCell> but cannot find cell object from Nib");
@@ -61,15 +70,21 @@
 
 + (NSString*)getCellIdentifier
 {
+    
+    if (isPad) {
+        return  @"ArticleCell ~ipad";
+    }
     return @"ArticleCell";
 }
 
 + (CGFloat)getCellHeight
 {
+    
     if (isPad) {
-        return 210.f;
+        return 157.0f;
     }
     return 147.0f;
+
 }
 
 - (void)setCellInfo:(Article *)article

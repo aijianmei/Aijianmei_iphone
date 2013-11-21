@@ -462,7 +462,7 @@ typedef enum CONTENT_TYPE {
                                                    offset:offset
                                                    cateid:cateid
                                                       uid:uid
-                                                 delegate:self];
+                                                 viewController:self];
     
     
 }

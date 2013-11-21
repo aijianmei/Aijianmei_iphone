@@ -158,16 +158,34 @@ NSString* GlobalGetServerURL()
 }
 
 -(HomeViewController *)initHomeViewControllerFromAppDelegate{
-
-    if (self.homeViewController == nil) {
-            
-        HomeViewController *vc =[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
-        self.homeViewController =vc;
-            [vc release];
-        self.homeViewController.title = @"首页";
-        }
     
+    if (self.homeViewController == nil) {
+        
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+        {
+            
+            HomeViewController *vc =[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+            self.homeViewController =vc;
+            [vc release];
+        }
+        else
+        {
+            
+            HomeViewController *vc =[[HomeViewController alloc] initWithNibName:@"HomeViewController ~ipad" bundle:nil];
+            self.homeViewController =vc;
+            [vc release];
+        }
+
+    }
+
+    
+    
+    self.homeViewController.title = @"首页";
+
     return  _homeViewController;
+    
+    
+    
 }
 
 -(LoginViewController *)initLoginViewController{
@@ -314,6 +332,18 @@ NSString* GlobalGetServerURL()
     _scene = scene;
 }
 
+-(void) onResp:(BaseResp*)resp
+{
+    if([resp isKindOfClass:[SendMessageToWXResp class]])
+    {
+        if (resp.errCode == WXSuccess){
+            [UIUtils alert:@"已成功分享至微信"];
+            PPDebug(@"<onResp> weixin response success");
+        }else {
+            PPDebug(@"<onResp> weixin response fail");
+        }
+    }
+}
 
 
 
@@ -375,50 +405,7 @@ NSString* GlobalGetServerURL()
     statTracker.sessionResumeInterval = 60;//设置应用进入后台再回到前台为同一次session的间隔时间[0~600s],超过600s则设为600s，默认为30s
     statTracker.shortAppVersion  = IosAppVersion; //参数为NSString * 类型,自定义app版本信息，如果不设置，默认从CFBundleVersion里取
     [statTracker startWithAppId:BaiduMobileAnlyizeAppId];//设置您在mtj网站上添加的app的appkey
-    
-    
-  
 
-    
-//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-//    
-//        HomeViewController *homeVC = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
-//        homeVC.title = @"主页";
-//        self.navigationController = [[UINavigationController alloc] initWithRootViewController:homeVC];
-        
-//        [homeVC release];
-        //左视图
-//        AJMLeftSideViewController *leftVC = [[[AJMLeftSideViewController alloc] init] autorelease];
-//        
-//        IIViewDeckController *vc = [[IIViewDeckController alloc] initWithCenterViewController:_navigationController leftViewController:leftVC];
-//    
-//        vc.leftSize  = self.window.frame.size.width - (320 - 60.0);
-//        self.viewController = vc;
-
-       
-//    } else {
-//        //初始化主视图，  当用户点击左右的导航栏，可以更换；
-//        UIStoryboard * iPadstroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-//        HomeViewController *homeVC = (HomeViewController*)[iPadstroyBoard instantiateViewControllerWithIdentifier:@"HomeViewController"];
-//        homeVC.title = @"锻炼";
-//        UINavigationController *navVC = [[[UINavigationController alloc] initWithRootViewController:homeVC] autorelease];
-//
-//        //左视图
-//        AJMLeftSideViewController *leftVC = [[[AJMLeftSideViewController alloc] init] autorelease];
-//       IIViewDeckController *vc = [[[IIViewDeckController alloc] initWithCenterViewController:navVC leftViewController:leftVC] autorelease];
-//        vc.leftSize  = self.window.frame.size.width - (640 - 344.0);
-//        self.viewController = vc;
-//
-//    }
-//    
-//       
-//
-//        
-////    self.window.rootViewController =self.viewController;
-//    
-//    self.window.rootViewController =self.navigationController;
-//
-//    [self.window makeKeyAndVisible];
     
     //从本地获取用户信息
     //TOTO:根据用户uid登陆获取信息
@@ -438,42 +425,28 @@ NSString* GlobalGetServerURL()
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        
+    
         HomeViewController *homeViewVC =[self initHomeViewControllerFromAppDelegate];
        _navigationController = [[UINavigationController alloc]initWithRootViewController:homeViewVC];
-        
-        
         
         //添加left View 导航栏
         AJMLeftSideViewController *leftVC = [[[AJMLeftSideViewController alloc] init] autorelease];
         
         IIViewDeckController *vc = [[IIViewDeckController alloc] initWithCenterViewController:self.navigationController leftViewController:leftVC];
         
-        vc.leftSize  = self.window.frame.size.width - (320 - 60.0);
+        vc.leftSize  = self.window.frame.size.width - (320 - 44.0);
         self.viewController = vc;
     
-    } else {
-        
-    }
     
     
-    
-    
-    
+
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    
 
     
-//    if ([DeviceDetection isOS5]){
-//        [[UINavigationBar appearance] setBackgroundImage:[ImageManager navigationBgImage] forBarMetrics:UIBarMetricsDefault];
-//    }else{
-//        
-//       GlobalSetNavBarBackground(@"topmenu_bg.png");
-//    }
-    
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    
 	[[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:66.0/255.0 green:155.0/255.0 blue:255.0/255.0 alpha:1]];
 
     

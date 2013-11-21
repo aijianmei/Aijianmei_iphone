@@ -261,6 +261,7 @@
 
     self.moreViewController =[[MoreViewController alloc] initWithNibName:@"MoreViewController" bundle:nil];
     self.moreViewController.title = @"更多";
+
     }
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_moreViewController] ;
 }
@@ -326,6 +327,8 @@
     [cell setSelectedBackgroundView:imvaew];
     [imvaew release];
     
+//    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+//	[[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:66.0/255.0 green:155.0/255.0 blue:255.0/255.0 alpha:1]];
     
     [cell setBackgroundColor:[UIColor clearColor]];
     

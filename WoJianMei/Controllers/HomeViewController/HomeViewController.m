@@ -275,7 +275,14 @@ typedef enum CONTENT_TYPE {
     
 
     self.segmentedController=[[SDSegmentedControl alloc]initWithItems:buttonTitleArray];
-    [_segmentedController setFrame:CGRectMake(0, 0, 320, 40)];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        [_segmentedController setFrame:CGRectMake(0, 0, 320, 40)];
+
+    }else{
+    
+        [_segmentedController setFrame:CGRectMake(0, 0, 768, 40)];
+
+    }
     
     [_segmentedController setSelectedSegmentIndex:0];
     [_segmentedController addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventValueChanged];

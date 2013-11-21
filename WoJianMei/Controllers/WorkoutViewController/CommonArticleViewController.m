@@ -757,9 +757,6 @@ enum actionsheetNumber{
 ////Wechat
 - (void) sendAppContentWithTitle:(NSString*)title  description:(NSString *)descriptoin image:(UIImage *)image urlLink :(NSString*)urlLink
 {
-    
-    
-    
     if (self.delegate  && [self.delegate respondsToSelector:@selector(sendAppContentWithTitle:description:image:urlLink:)]
         )
     {
