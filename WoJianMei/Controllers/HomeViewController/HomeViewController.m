@@ -646,8 +646,7 @@ typedef enum CONTENT_TYPE {
 #pragma mark - ScrollViewDidScrollDelegate
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    PPDebug(@"*****%@******",[scrollView description]);
-    
+//    PPDebug(@"*****%@******",[scrollView description]);
     
 }
 
