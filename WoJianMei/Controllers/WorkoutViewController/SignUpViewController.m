@@ -196,7 +196,7 @@ enum errorCode {
     
 	// Do any additional setup after loading the view.
     if ([self.userType isEqualToString:@"sina"]) {
-        NSDictionary *userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
+        NSDictionary *userInfo = [[UserManager defaultManager] getSinaUserInfoWithUid:self.snsId];
         
         NSString *sinaWeiboUserName =[userInfo objectForKey:@"name"];
         [_userNameTextField setText:sinaWeiboUserName];
@@ -254,7 +254,7 @@ enum errorCode {
     
     NSDictionary *userInfo = nil;
     if ([self.userType isEqualToString:@"sina"]) {
-        userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
+        userInfo = [[UserManager defaultManager] getSinaUserInfoWithUid:self.snsId];
         
         [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.emailTextField.text password:self.passwordTextField.text usertype:self.userType snsId:self.snsId profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:@"23" body_weight:@"65" height:@"175" keyword:@"1233|33|eerw" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] viewController:self];
 
@@ -264,7 +264,7 @@ enum errorCode {
 
     }
     if ([self.userType isEqualToString:@"local"]) {
-        [self showActivityWithText:@"注册中..."];
+        [self showProgressHUDActivityWithText:@"注册中..."];
         [[UserService defaultService] registerAijianmeiUserWithUsername:_userNameTextField.text
                                                                   email:_emailTextField.text
                                                                password:_passwordTextField.text
@@ -353,7 +353,7 @@ enum errorCode {
     //通过新浪微博注册，获得用户名;
     NSDictionary *userInfo = nil;
     if ([self.userType isEqualToString:@"sina"]) {
-        userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
+        userInfo = [[UserManager defaultManager] getSinaUserInfoWithUid:self.snsId];
         
         User *user = [UserManager createUserWithUserId:@"dd"
                                             sinaUserId:self.snsId
@@ -365,8 +365,8 @@ enum errorCode {
                                               password:_passwordTextField.text];
         
         NSLog(@"******Register success,return uid:%@",user.uid);
-        [UserService defaultService].user = user;
-        [[UserService defaultService] storeUserInfoByUid:user.uid];
+        [UserManager defaultManager].user = user;
+        [[UserManager defaultManager] storeUserInfoByUid:user.uid];
         
         
         
@@ -402,17 +402,23 @@ enum errorCode {
         [UserManager defaultManager].user = user;
         [[UserManager defaultManager] storeUserInfoByUid:user.uid];
         
-                
+        
+        
+        
+        
+        
+        
+        
         //直接从注册页面，跳动到用户界面;
         [self dismissViewControllerAnimated:YES completion:^
          {
-             // 调用该方法进入用户资料界面
-             if (delegate && [delegate respondsToSelector:@selector(pushToMyselfViewControllerFrom:)])
-             {
-                 [delegate pushToMyselfViewControllerFrom:self];
-             }
-         }];
+                 // 调用该方法进入用户资料界面
+        if (delegate && [delegate respondsToSelector:@selector(pushToMyselfViewControllerFrom:)])
+                 {
+                     [delegate pushToMyselfViewControllerFrom:self];
+                 }}];
     }
+        
 }
 
 @end

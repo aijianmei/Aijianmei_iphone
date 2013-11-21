@@ -267,32 +267,6 @@ static UserService* _defaultUserService = nil;
         });
     });
 
-    
-    
-    
-    
-    
-//    [self initVersionMap];
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//    // http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_getversion
-//        
-//        NSMutableDictionary *queryParams = [[NSMutableDictionary alloc] init];
-//        [queryParams setObject:@"aijianmei" forKey:@"aucode"];
-//        [queryParams setObject:@"au_getversion" forKey:@"auact"];
-//        
-//    
-//        RKObjectManager *objectManager = [RKObjectManager sharedManager];
-//        RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
-//        
-//        NSLog(@"url: %@", [url absoluteString]);
-//        NSLog(@"resourcePath: %@", [url resourcePath]);
-//        NSLog(@"query: %@", [url query]);
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            
-//            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
-//        });
-//    });
 }
 
 
@@ -350,50 +324,7 @@ static UserService* _defaultUserService = nil;
                 
                 [viewController didGetFeedbackErrorCode:output.resultCode];
             }});});
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//
-//      //  http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_sendsuggestion&uid=1&content=ohmygod
-//        
-//        NSMutableDictionary *queryParams = [[NSMutableDictionary alloc] init];
-//        [queryParams setObject:@"aijianmei" forKey:@"aucode"];
-//        [queryParams setObject:@"au_sendsuggestion" forKey:@"auact"];
-//        [queryParams setObject:uid forKey:@"uid"];
-//        [queryParams setObject:content forKey:@"content"];
-//        
-//        
-//        
-//        RKObjectManager *objectManager = [RKObjectManager sharedManager];
-//       RKURL *url = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/ios.php" queryParameters:queryParams];
-//        
-//        NSLog(@"url: %@", [url absoluteString]);
-//        NSLog(@"resourcePath: %@", [url resourcePath]);
-//        NSLog(@"query: %@", [url query]);
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [url resourcePath], [url query]] delegate:delegate ];
-//        });
-//    });
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -642,9 +573,16 @@ static UserService* _defaultUserService = nil;
                          keyword:(NSString*)keyword
                         province:(NSString*)province
                             city:(NSString*)city
-//                        delegate:(id<RKObjectLoaderDelegate>)delegate
-
+                  viewController:(PPViewController<UserServiceDelegate>*)viewController
 {
+    
+    
+    
+    
+    
+    
+    
+    
 //    [self initResultMap];
 //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //        NSMutableDictionary *queryParams = [[[NSMutableDictionary alloc] init] autorelease];

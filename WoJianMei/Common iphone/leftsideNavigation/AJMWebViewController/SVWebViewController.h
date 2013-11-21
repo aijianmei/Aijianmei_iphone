@@ -7,10 +7,10 @@
 //  https://github.com/samvermette/SVWebViewController
 
 #import <MessageUI/MessageUI.h>
-
+#import "PPViewController.h"
 #import "SVModalWebViewController.h"
 
-@interface SVWebViewController : UIViewController
+@interface SVWebViewController :PPViewController
 
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL*)URL;

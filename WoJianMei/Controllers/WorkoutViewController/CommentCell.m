@@ -95,8 +95,8 @@
     [self.commentTimeLabel setText:[NSString stringWithFormat:@"发表于:%@", comment.timestamp]];
     
     
-    if (comment.username == nil) {
-        [comment setUsername:@"用户名"];
+    if ([[comment.username  class] isSubclassOfClass:[NSNull class]]) {
+        [comment setUsername:@"匿名"];
         return;
     }
    [self.nameLabel setText:comment.username];

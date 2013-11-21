@@ -60,6 +60,11 @@ typedef enum CONTENT_TYPE {
 
 
 
+
+
+
+
+
 @interface HomeViewController ()
 
 @end
@@ -128,6 +133,11 @@ typedef enum CONTENT_TYPE {
     
     [self initUI];
     [self initMoreUI];
+    
+    
+    //允许滚动table view 的时候隐藏导航栏
+//    [self followScrollView:dataTableView];
+
     
     ///// 设置开始
     SDSegmentedControl *sender =[[SDSegmentedControl alloc]init];

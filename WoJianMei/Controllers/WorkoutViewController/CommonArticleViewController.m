@@ -295,6 +295,8 @@ enum actionsheetNumber{
 //                            forToolbarPosition:UIBarPositionBottom
 //                                    barMetrics:UIBarMetricsDefault];
 
+    //设定地步导航栏的颜色
+    [self.toolBar setTintColor:[UIColor colorWithRed:66.0/255.0 green:155.0/255.0 blue:255.0/255.0 alpha:1 ]];
 }
 
 

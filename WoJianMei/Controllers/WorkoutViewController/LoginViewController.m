@@ -332,7 +332,7 @@ enum SinaResultErrorCode
     
     self.userType =@"local";
     
-    [self.navigationController presentViewController:self.signUpViewController animated:YES completion:^{}];
+    [self.navigationController pushViewController:self.signUpViewController  animated:YES];
     
    
      [self.navigationController.navigationBar setHidden:NO];

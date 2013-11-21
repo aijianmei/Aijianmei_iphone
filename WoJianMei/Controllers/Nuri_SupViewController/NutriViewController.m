@@ -178,16 +178,8 @@ typedef enum CONTENT_TYPE {
     User *user = [[UserManager defaultManager] user];
     
     if (user.uid) {
-        
-        
-        //    PublicMyselfViewController *publicStatusViewController = [[AppDelegate getAppDelegate] initPublicStatusViewController];
-        //    [self.navigationController pushViewController:publicStatusViewController animated:YES];
-        
         Myself_SettingsViewController *vc =[[Myself_SettingsViewController alloc]initWithNibName:@"Myself_SettingsViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
-        
-        
-        
         
     }else{
         

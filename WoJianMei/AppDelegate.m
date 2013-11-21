@@ -459,6 +459,8 @@ NSString* GlobalGetServerURL()
     
     
     
+    
+    
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
 
@@ -469,6 +471,11 @@ NSString* GlobalGetServerURL()
 //        
 //       GlobalSetNavBarBackground(@"topmenu_bg.png");
 //    }
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+	[[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:66.0/255.0 green:155.0/255.0 blue:255.0/255.0 alpha:1]];
+
     
     
     

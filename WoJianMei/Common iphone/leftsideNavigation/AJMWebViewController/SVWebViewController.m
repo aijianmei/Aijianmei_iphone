@@ -177,6 +177,11 @@
 //     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"iPhoneNavigationBarBG.png"]];
     
     [self updateToolbarItems];
+    
+    
+    ///允许隐藏导航栏，滑动webview 的时候;
+    [self followScrollView:self.mainWebView];
+
 }
 
 - (void)viewDidUnload {

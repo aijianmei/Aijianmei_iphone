@@ -25,7 +25,7 @@
 #import "Result.h"
 #import "PlayVideoViewController.h"
 #import "PPNetworkRequest.h"
-
+#import "UserManager.h"
 
 #import "ImageManager.h"
 #import "UIImageView+WebCache.h"
@@ -176,19 +176,11 @@ typedef enum CONTENT_TYPE {
 {
     [self.viewDeckController toggleRightViewAnimated:YES];
     
-    User *user = [[UserService defaultService] user];
+    User *user = [[UserManager defaultManager] user];
     
     if (user.uid) {
-        
-        
-        //    PublicMyselfViewController *publicStatusViewController = [[AppDelegate getAppDelegate] initPublicStatusViewController];
-        //    [self.navigationController pushViewController:publicStatusViewController animated:YES];
-        
         Myself_SettingsViewController *vc =[[Myself_SettingsViewController alloc]initWithNibName:@"Myself_SettingsViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
-        
-        
-        
         
     }else{
         
