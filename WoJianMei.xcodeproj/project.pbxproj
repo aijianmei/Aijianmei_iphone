@@ -251,10 +251,10 @@
 		4A3165C5183DF69C008DC2CB /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3165B5183DF69C008DC2CB /* CJSONScanner.m */; };
 		4A3165C6183DF69C008DC2CB /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3165B7183DF69C008DC2CB /* CJSONSerializer.m */; };
 		4A3165CB183DFA1D008DC2CB /* AMScrollingNavbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3165CA183DFA1D008DC2CB /* AMScrollingNavbarViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		4A3165D1183E4A6A008DC2CB /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3165D0183E4A6A008DC2CB /* libBaiduMobStat.a */; };
 		4A3165D7183E4C42008DC2CB /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3165D6183E4C42008DC2CB /* libWeChatSDK.a */; };
 		4A3165DB183E51E4008DC2CB /* HomeViewController ~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3165DA183E51E4008DC2CB /* HomeViewController ~ipad.xib */; };
 		4A3165DD183E5824008DC2CB /* ArticleCell ~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3165DC183E5823008DC2CB /* ArticleCell ~ipad.xib */; };
+		4A3165E0183E655B008DC2CB /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3165DF183E655B008DC2CB /* libBaiduMobStat.a */; };
 		4A34EB3417B36C2F00196793 /* PublicMyselfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34EB3217B36C2D00196793 /* PublicMyselfViewController.m */; };
 		4A34EB3717B36F6D00196793 /* MyselfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A34EB3617B36F6D00196793 /* MyselfViewController.xib */; };
 		4A34EB3917B36F7A00196793 /* PublicMyselfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A34EB3817B36F7900196793 /* PublicMyselfViewController.xib */; };
@@ -1013,11 +1013,11 @@
 		4A3165B8183DF69C008DC2CB /* JSONRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONRepresentation.h; sourceTree = "<group>"; };
 		4A3165C9183DFA1D008DC2CB /* AMScrollingNavbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMScrollingNavbarViewController.h; sourceTree = "<group>"; };
 		4A3165CA183DFA1D008DC2CB /* AMScrollingNavbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMScrollingNavbarViewController.m; sourceTree = "<group>"; };
-		4A3165D0183E4A6A008DC2CB /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
 		4A3165D6183E4C42008DC2CB /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		4A3165DA183E51E4008DC2CB /* HomeViewController ~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "HomeViewController ~ipad.xib"; sourceTree = "<group>"; };
 		4A3165DC183E5823008DC2CB /* ArticleCell ~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ArticleCell ~ipad.xib"; sourceTree = "<group>"; };
 		4A3165DE183E63ED008DC2CB /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
+		4A3165DF183E655B008DC2CB /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
 		4A34EB3117B36C2D00196793 /* PublicMyselfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicMyselfViewController.h; sourceTree = "<group>"; };
 		4A34EB3217B36C2D00196793 /* PublicMyselfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicMyselfViewController.m; sourceTree = "<group>"; };
 		4A34EB3617B36F6D00196793 /* MyselfViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyselfViewController.xib; sourceTree = "<group>"; };
@@ -1780,7 +1780,7 @@
 				4AD66B1415CFCEEC000F7CB8 /* MapKit.framework in Frameworks */,
 				4A4992BF168556700073E682 /* AVFoundation.framework in Frameworks */,
 				4A3165D7183E4C42008DC2CB /* libWeChatSDK.a in Frameworks */,
-				4A3165D1183E4A6A008DC2CB /* libBaiduMobStat.a in Frameworks */,
+				4A3165E0183E655B008DC2CB /* libBaiduMobStat.a in Frameworks */,
 				4A4992BB1685562D0073E682 /* CoreData.framework in Frameworks */,
 				4A4992B9168556240073E682 /* CoreLocation.framework in Frameworks */,
 				4A31655C183D198F008DC2CB /* SinaWeiboConnection.framework in Frameworks */,
@@ -2463,8 +2463,8 @@
 		4A3165CF183E4A6A008DC2CB /* universal-bin */ = {
 			isa = PBXGroup;
 			children = (
+				4A3165DF183E655B008DC2CB /* libBaiduMobStat.a */,
 				4A3165DE183E63ED008DC2CB /* BaiduMobStat.h */,
-				4A3165D0183E4A6A008DC2CB /* libBaiduMobStat.a */,
 			);
 			path = "universal-bin";
 			sourceTree = "<group>";
@@ -5160,7 +5160,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"/Users/karakei/Documents/Study/GitTomCallon/Common_iPhone_20/3PP-SDK/WeChatSDK_1.4.2.1",
-					"/Users/karakei/Documents/Study/GitTomCallon/Common_iPhone_20/3PP-SDK/Baidu_Anlytic/Release-iphonesimulator",
+					"/Users/karakei/Documents/Study/GitTomCallon/Common_iPhone_20/3PP-SDK/Baidu_Anlytic/universal-bin",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -5191,7 +5191,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"/Users/karakei/Documents/Study/GitTomCallon/Common_iPhone_20/3PP-SDK/WeChatSDK_1.4.2.1",
-					"/Users/karakei/Documents/Study/GitTomCallon/Common_iPhone_20/3PP-SDK/Baidu_Anlytic/Release-iphonesimulator",
+					"/Users/karakei/Documents/Study/GitTomCallon/Common_iPhone_20/3PP-SDK/Baidu_Anlytic/universal-bin",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
