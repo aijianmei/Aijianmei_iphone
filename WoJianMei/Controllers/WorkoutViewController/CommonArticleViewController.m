@@ -141,7 +141,7 @@ enum actionsheetNumber{
     [self setRightBarButtons];
     [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     
-    [self.webview setFrame:CGRectMake(0, 0, 320, UIScreen.mainScreen.bounds.size.height - 44)];
+    [_webview setFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height - 44)];
     [self.webview setDelegate:self];
     [self.webview.scrollView setDelegate:self];
     self.navigationController.navigationBarHidden =YES;
@@ -191,9 +191,19 @@ enum actionsheetNumber{
 }
 ////点击评论按钮
 -(void)clickCommentButton:(UIButton *)sender{
+
+    CommentViewController *cVC;
     
-    PPDebug(@"////点击评论按钮");
-    CommentViewController *cVC = [[CommentViewController alloc]initWithNibName:@"CommentViewController" bundle:nil];
+    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
+          cVC= [[CommentViewController alloc]initWithNibName:@"CommentViewController" bundle:nil];
+
+    
+    }else{
+         cVC = [[CommentViewController alloc]initWithNibName:@"CommentViewController ～ipad" bundle:nil];
+
+    
+    }
+    
     [self.navigationController pushViewController:cVC animated:YES];
     cVC.article =self.article;
     
@@ -205,19 +215,11 @@ enum actionsheetNumber{
 ////点击分享按钮
 -(void)clickShareButton:(UIButton *)sender{
     
-    PPDebug(@"////点击分享按钮");
     
-    if ([DeviceDetection isOS6]){
-        
-        [self showAWSheet];
-        
-    }
-    else{
+   
         whichAcctionSheet = RECOMMENDATION;
         [self shareToSocialnetWorks];
-        
-    }
-
+    
 }
 
 - (void)setRightBarButtons
@@ -227,8 +229,12 @@ enum actionsheetNumber{
     
     UIFont *font = [UIFont systemFontOfSize:14];
     
-    UIView *rightButtonView = [[UIView alloc]initWithFrame:CGRectMake(0,0,320, buttonHigh)];
+    UIView *rightButtonView = [[UIView alloc]initWithFrame:CGRectMake(0,0,UIScreen.mainScreen.bounds.size.width, buttonHigh)];
     
+    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPad){
+        [rightButtonView setFrame:CGRectMake(0,0,UIScreen.mainScreen.bounds.size.width,buttonHigh)];
+    }
+
     
     
     [rightButtonView setBackgroundColor:[UIColor clearColor]];
@@ -250,10 +256,16 @@ enum actionsheetNumber{
     
     
     
-    
+    int forIpadPositionX = 400;
     
     
     self.likeButton = [[UIButton alloc] initWithFrame:CGRectMake(270 - 2 * seporator,12, 25, 25)];
+    
+    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPad){
+        self.likeButton = [[UIButton alloc] initWithFrame:CGRectMake(forIpadPositionX + 270 - 2 * seporator,12, 25, 25)];
+
+    }
+
     [_likeButton setImage:[ImageManager GobalArticelLikeButtonBG] forState:UIControlStateNormal];
     [_likeButton setTitle:@"喜欢" forState:UIControlStateNormal];
     [_likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -263,6 +275,11 @@ enum actionsheetNumber{
     
     
     UIButton * commentBarButton = [[UIButton alloc] initWithFrame:CGRectMake(270 - seporator,12, 25, 25)];
+    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPad){
+        [commentBarButton setFrame: CGRectMake(forIpadPositionX + 270 - seporator,12, 25, 25)];
+        
+    }
+
     [commentBarButton addTarget:self action:@selector(clickCommentButton:) forControlEvents:UIControlEventTouchUpInside];
     [commentBarButton setImage:[ImageManager GobalArticelCommentButtonBG] forState:UIControlStateNormal];
     [commentBarButton setTitle:@"评论" forState:UIControlStateNormal];
@@ -273,6 +290,12 @@ enum actionsheetNumber{
     
     
     UIButton *shareBarButton = [[UIButton alloc]initWithFrame:CGRectMake(270,7, 30, 30)];
+    
+    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPad){
+        [shareBarButton setFrame:CGRectMake(forIpadPositionX + 270,7, 30, 30)];
+        
+    }
+
     [shareBarButton setImage:[ImageManager GobalArticelShareButtonBG] forState:UIControlStateNormal];
     [shareBarButton setTitle:@"分享" forState:UIControlStateNormal];
     [shareBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -291,12 +314,12 @@ enum actionsheetNumber{
 
     [self.toolBar setItems:[NSArray arrayWithObject:rightBarButton] animated:YES];
 
-//    [[UIToolbar appearance] setBackgroundImage:[ImageManager articleBarImage]
-//                            forToolbarPosition:UIBarPositionBottom
-//                                    barMetrics:UIBarMetricsDefault];
 
     //设定地步导航栏的颜色
-    [self.toolBar setTintColor:[UIColor colorWithRed:66.0/255.0 green:155.0/255.0 blue:255.0/255.0 alpha:1 ]];
+    [self.toolBar   setTintColor:[UIColor whiteColor]];
+    [self.toolBar  setBarTintColor:[UIColor colorWithRed:66.0/255.0 green:155.0/255.0 blue:255.0/255.0 alpha:1]];
+
+    
 }
 
 
@@ -327,50 +350,6 @@ enum actionsheetNumber{
     
     return result;
 }
-
--(void)tap{
-    
-    [self hideNavigationBar];
-
-}
-
-
-#pragma mark -
-#pragma mark Hide and Show TabBar Methods
-
-- (void)showNavigationBar {
-    UINavigationBar *tabBar = self.navigationController.navigationBar;
-    UIView *parent = tabBar.superview; // UILayoutContainerView
-    UIView *content = [parent.subviews objectAtIndex:0]; // UITransitionView
-    UIView *window = parent.superview;
-    [UIView animateWithDuration:1.5
-                     animations:^{
-                         CGRect tabFrame = tabBar.frame;
-                         tabFrame.origin.y = CGRectGetMaxY(window.bounds) - CGRectGetHeight(tabBar.frame);
-                         tabBar.frame = tabFrame;
-                         CGRect contentFrame = content.frame;
-                         contentFrame.size.height -= tabFrame.size.height;
-                     }];
-}
-
-
-- (void)hideNavigationBar {
-    UINavigationBar *tabBar = self.navigationController.navigationBar;
-    UIView *parent = tabBar.superview; // UILayoutContainerView
-    UIView *content = [parent.subviews objectAtIndex:0];  // UITransitionView
-    UIView *window = parent.superview;
-    
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         CGRect tabFrame = tabBar.frame;
-                         tabFrame.origin.y = CGRectGetMaxY(window.bounds);
-                         tabBar.frame = tabFrame;
-                         content.frame = window.bounds;
-                     }];
-}
-
-
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -479,15 +458,25 @@ enum actionsheetNumber{
 
 -(void)shareToSocialnetWorks
 {
-    whichAcctionSheet = RECOMMENDATION;
-    UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
-                                                       delegate:self
-                                              cancelButtonTitle:NSLS(@"取消")
-                                         destructiveButtonTitle:NSLS(@"分享到新浪微博")
-                                              otherButtonTitles:NSLS(@"分享给微信好友"),NSLS(@"分享到微信朋友圈"),NSLS(@"通过邮箱"),NSLS(@"通过短信"),nil];
     
-    [share showInView:self.view];
-    [share release];
+    if (IOS_VERSION >=6.0) {
+        [self  showAWSheet];
+    }else{
+    
+        
+        whichAcctionSheet = RECOMMENDATION;
+        UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:NSLS(@"取消")
+                                             destructiveButtonTitle:NSLS(@"分享到新浪微博")
+                                                  otherButtonTitles:NSLS(@"分享给微信好友"),NSLS(@"分享到微信朋友圈"),NSLS(@"通过邮箱"),NSLS(@"通过短信"),nil];
+        
+        [share showInView:self.view];
+        [share release];
+
+    }
+    
+    
     
 }
 
@@ -649,7 +638,7 @@ enum actionsheetNumber{
     if (whichAcctionSheet == RECOMMENDATION )
     {
         NSString *bodyStringBegin = @"我正在使用 @爱健美网 iphone手机客户端，学习专业的运动、健身、健康资信，里边的健身运动小知识，和健身计划很适合要增肌、减肥的用户哦！下载地址是";
-        NSString *bodyStringWebsite = @"http://www.aijianmei.com";
+        NSString *bodyStringWebsite = @"http://https://itunes.apple.com/us/app/ai-jian-mei/id683646344?ls=1&mt=8";
         
         NSString *bodyString = [NSString stringWithFormat:@"%@%@", bodyStringBegin, bodyStringWebsite];
         
@@ -912,9 +901,9 @@ enum actionsheetNumber{
         [_webview sizeToFit];
         [_webview scalesPageToFit];
         [_webview setUserInteractionEnabled:YES];
-        [_webview setFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height - 44)];
-        [_webview.scrollView setContentSize:CGSizeMake(320, 400)];
     
+    [self.webview setFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height - 44)];
+
        [self updateUserInterface];
 
     

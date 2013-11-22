@@ -163,15 +163,14 @@ NSString* GlobalGetServerURL()
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
         {
-            
-            HomeViewController *vc =[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+            HomeViewController *vc=[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
             self.homeViewController =vc;
             [vc release];
         }
         else
         {
             
-            HomeViewController *vc =[[HomeViewController alloc] initWithNibName:@"HomeViewController ~ipad" bundle:nil];
+             HomeViewController *vc =[[HomeViewController alloc] initWithNibName:@"HomeViewController ~ipad" bundle:nil];
             self.homeViewController =vc;
             [vc release];
         }
@@ -434,7 +433,7 @@ NSString* GlobalGetServerURL()
         
         IIViewDeckController *vc = [[IIViewDeckController alloc] initWithCenterViewController:self.navigationController leftViewController:leftVC];
         
-        vc.leftSize  = self.window.frame.size.width - (320 - 44.0);
+        vc.leftSize  = self.window.frame.size.width - (320 - 100.0);
         self.viewController = vc;
     
     
@@ -488,7 +487,9 @@ NSString* GlobalGetServerURL()
     if (![self isPushNotificationEnable]){
         [self bindDevice];
     }
-
+    
+    //检测当前版本是否为最新的版本
+    [self performSelector:@selector(updateApplication) withObject:nil afterDelay:10.0f];
 
     
     
@@ -507,10 +508,7 @@ NSString* GlobalGetServerURL()
     [UIView commitAnimations];
     [[self.window viewWithTag:SPLASH_VIEW_TAG] removeFromSuperview];
     
-     
-        
-        //检测当前版本是否为最新的版本
-        [self performSelector:@selector(updateApplication) withObject:nil afterDelay:30.0f];
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -600,8 +598,7 @@ NSString* GlobalGetServerURL()
 
 
 -(void)updateApplication{
-    
-//    [[UserService defaultService] queryVersionWithDelegate:self];
+   [[UserService defaultService] queryVersionWithDelegate:self];
 }
 
 

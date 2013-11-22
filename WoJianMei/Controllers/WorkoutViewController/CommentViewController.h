@@ -12,17 +12,21 @@
 
 @class Video;
 @class Article;
+@class YFInputBar;
 
-@interface CommentViewController : PPTableViewController<UITextFieldDelegate,ArticleServiceDelegate>
+@interface CommentViewController : PPTableViewController<UITextFieldDelegate,ArticleServiceDelegate,UIGestureRecognizerDelegate>
 {
-      Video *_video;
-      Article *_article;
-
+      Video       *_video;
+      Article   *_article;
+      YFInputBar *_inputBar;
     
 }
 
 @property (nonatomic,retain) Video *video;
 @property (nonatomic,retain) Article *article;
+@property (nonatomic,retain) YFInputBar *inputBar;
+
+
 
 
 

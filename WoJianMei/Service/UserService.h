@@ -60,7 +60,7 @@ typedef void(^UpdateUserResultBlock)(int resultCode);
 - (void)userRegisterByToken:(NSString*)token;
 
 
-- (void)queryVersionWithDelegate:(PPViewController<UserServiceDelegate>*)viewController;
+- (void)queryVersionWithDelegate:(id<UserServiceDelegate>*)viewController;
 
 //注册新用户
 - (void)registerUserWithUsername:(NSString*)name

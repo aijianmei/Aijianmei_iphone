@@ -18,7 +18,9 @@
         
         self.backgroundColor = [UIColor grayColor];
         
-        self.frame = CGRectMake(0, CGRectGetMinY(frame), 320, CGRectGetHeight(frame));
+        
+        
+        self.frame = CGRectMake(0, CGRectGetMinY(frame), UIScreen.mainScreen.bounds.size.width, CGRectGetHeight(frame));
         
         self.textField.tag = 10000;
         self.sendBtn.tag = 10001;
@@ -39,7 +41,7 @@
 //_originalFrame的set方法  因为会调用setFrame  所以就不在此做赋值；
 -(void)setOriginalFrame:(CGRect)originalFrame
 {
-    self.frame = CGRectMake(0, CGRectGetMinY(originalFrame), 320, CGRectGetHeight(originalFrame));
+    self.frame = CGRectMake(0, CGRectGetMinY(originalFrame), UIScreen.mainScreen.bounds.size.width, CGRectGetHeight(originalFrame));
 }
 
 -(void)dealloc
@@ -55,6 +57,8 @@
 {
     if (!_textField) {
         _textField = [[UITextField alloc]initWithFrame:CGRectMake(60,10,200,24)];
+        _textField = [[UITextField alloc]initWithFrame:CGRectMake(60,10,UIScreen.mainScreen.bounds.size.width - 120,24)];
+
         _textField.backgroundColor = [UIColor whiteColor];
         [self addSubview:_textField];
     }
@@ -66,7 +70,9 @@
         _sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_sendBtn setTitle:@"发送" forState:UIControlStateNormal];
 //        [_sendBtn setBackgroundColor:[UIColor whiteColor]];
-        [_sendBtn setFrame:CGRectMake(270, 10, 40, 24)];
+        
+        
+        [_sendBtn setFrame:CGRectMake(UIScreen.mainScreen.bounds.size.width - 50, 10, 40, 24)];
         [_sendBtn addTarget:self action:@selector(sendBtnPress:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_sendBtn];
     }

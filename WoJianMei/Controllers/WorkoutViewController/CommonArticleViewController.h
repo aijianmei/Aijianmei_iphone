@@ -49,13 +49,8 @@
 @property (nonatomic, assign) id<sendMsgToWeChatViewDelegate> delegate;
 
 
-
-
-- (void)showNavigationBar;
-- (void)hideNavigationBar;
 - (void)updateUserInterface;
 -(void)shareArticleWithTitle:(NSString*)title image:(UIImage *)image;
--(void)tap;
 
 
 

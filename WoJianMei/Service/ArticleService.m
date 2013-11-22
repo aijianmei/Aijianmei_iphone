@@ -282,8 +282,6 @@
 
     [viewController showProgressHUDActivityWithText:@"加载中..."];
 
-    
-    
     //A new working Queue
     dispatch_async(workingQueue, ^{
         
@@ -303,24 +301,19 @@
                 
                 [viewController hideProgressHUDActivity];
 
-                
-                
             }
             
             else if (output.resultCode == ERROR_NETWORK) {
+                [viewController hideProgressHUDActivity];
                 [viewController popupUnhappyMessage:NSLS(@"kSystemFailure") title:nil];
                 
-                
-            }
-            else if (output.resultCode == ERROR_EMAIL_VERIFIED) {
-                // @"对不起，用户注册无法完成，请联系我们的技术支持以便解决问题"
-                [viewController popupUnhappyMessage:NSLS(@"用户名或密码错误") title:nil];
                 
             }
             
             else {
                 // @"对不起，注册失败，请稍候再试"
-                //                [viewController popupUnhappyMessage:NSLS(@"kGeneralFailure") title:nil];
+                [viewController hideProgressHUDActivity];
+                [viewController popupUnhappyMessage:NSLS(@"kGeneralFailure") title:nil];
                 
             }
             

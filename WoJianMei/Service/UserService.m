@@ -204,13 +204,12 @@ static UserService* _defaultUserService = nil;
 
 
 //用户版本更新
-- (void)queryVersionWithDelegate:(PPViewController<UserServiceDelegate>*)viewController
+- (void)queryVersionWithDelegate:(id<UserServiceDelegate>*)viewController
 
 {
     
     // http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_getversion
 
-    [viewController showProgressHUDActivityWithText:@"检测中..."];
     
     //A new working Queue
     dispatch_async(workingQueue, ^{
@@ -229,9 +228,7 @@ static UserService* _defaultUserService = nil;
 
             
             if (output.resultCode == ERROR_SUCCESS) {
-                
-                [viewController hideProgressHUDActivity];
-
+            
                 dictionary = output.jsonDataDict;
                 uid= [dictionary objectForKey:@"uid"];
                 
@@ -245,7 +242,7 @@ static UserService* _defaultUserService = nil;
             }
             
             else if (output.resultCode == ERROR_NETWORK) {
-                [viewController popupUnhappyMessage:NSLS(@"kSystemFailure") title:nil];
+//                [viewController popupUnhappyMessage:NSLS(@"kSystemFailure") title:nil];
                 
                 
             }

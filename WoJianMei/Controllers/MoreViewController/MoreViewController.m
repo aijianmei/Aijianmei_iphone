@@ -218,9 +218,7 @@ enum BUTTON_INDEX {
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 
     if (section==0) {
-        
         return 60;
-
     }
 
     return 0;
@@ -266,6 +264,7 @@ enum BUTTON_INDEX {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MoreViewCell"] autorelease];
 
     }
+    [cell setBackgroundColor:[UIColor clearColor]];
     
     [cell.textLabel setFont:[UIFont systemFontOfSize:14]];
     [cell.textLabel setTextAlignment:NSTextAlignmentLeft];
@@ -273,7 +272,6 @@ enum BUTTON_INDEX {
     
     UIImageView* cellAccessoryView = [[UIImageView alloc] initWithImage:image_icon];
     cell.accessoryView = cellAccessoryView;
-    cell.backgroundColor = [UIColor whiteColor];
     [cellAccessoryView release];
     
     cell.textLabel.textColor =[UIColor grayColor];
@@ -291,13 +289,10 @@ enum BUTTON_INDEX {
         cell.textLabel.text = @"退出当前账号";
         
         User *user = [[UserManager defaultManager] user];
-        
 
         if (user.uid) {
-            
             cell.textLabel.textColor =[UIColor redColor];
         }
-        
     }
     
 
@@ -398,9 +393,6 @@ enum BUTTON_INDEX {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-
-
-
 #pragma mark --Controller Methods
 
 -(void)accountManagement{
@@ -481,7 +473,7 @@ enum BUTTON_INDEX {
     PPDebug(@"tap on %d",index);
     
     NSString *bodyStringBegin = @"我正在使用爱健美客户端，学习如何健身，分享，很方便很好用，下载地址是";
-    NSString *bodyStringWebsite = @"http://www.aijianmei.com";
+    NSString *bodyStringWebsite = @"https://itunes.apple.com/us/app/ai-jian-mei/id683646344?ls=1&mt=8";
     NSString *bodyString = [NSString stringWithFormat:@"%@%@", bodyStringBegin, bodyStringWebsite];
 
     int TapOnItem = index;

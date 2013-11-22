@@ -40,6 +40,8 @@ enum ErrorCode
 @implementation CommentViewController
 @synthesize video =_video;
 @synthesize article =_article;
+@synthesize inputBar =_inputBar;
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,6 +57,7 @@ enum ErrorCode
 -(void)dealloc {
     [_video release];
     [_article release];
+    [_inputBar release];
     [super dealloc];
 
 }
@@ -82,6 +85,8 @@ enum ErrorCode
 {
     [super viewDidDisappear:YES];
     [[BaiduMobStat defaultStat] pageviewEndWithName:@"CommentView"];
+    [self.navigationController setNavigationBarHidden:NO];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -102,27 +107,18 @@ enum ErrorCode
     
     
     
-    [self.dataTableView setContentSize:CGSizeMake(320, 800)];
-    
-    
-    
-    
-    
-    
-    YFInputBar *inputBar = [[YFInputBar alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY([UIScreen mainScreen].bounds)-44, 320, 44)];
-    
-//    inputBar.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1];
+    YFInputBar *inputBar = [[YFInputBar alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY([UIScreen mainScreen].bounds)-44,UIScreen.mainScreen.bounds.size.width, 44)];
+    self.inputBar  = inputBar;
     
     //设定地步导航栏的颜色
-	inputBar.backgroundColor =[UIColor colorWithRed:66.0/255.0 green:155.0/255.0 blue:255.0/255.0 alpha:1 ];
+	_inputBar.backgroundColor =[UIColor colorWithRed:66.0/255.0 green:155.0/255.0 blue:255.0/255.0 alpha:1 ];
     
-    inputBar.delegate = self;
-    inputBar.clearInputWhenSend = YES;
-    inputBar.resignFirstResponderWhenSend = YES;
+    self.inputBar.delegate = self;
+    self.inputBar.clearInputWhenSend = YES;
+    self.inputBar.resignFirstResponderWhenSend = YES;
     
-    [self.view addSubview:inputBar];
+    [self.view addSubview:_inputBar];
 
-    
     
     
 
@@ -138,17 +134,15 @@ enum ErrorCode
     tapCgr=[[UITapGestureRecognizer alloc]initWithTarget:self
                                                   action:@selector(tap)];
     tapCgr.numberOfTapsRequired=1;
+    tapCgr.delegate =self;
     [self.view addGestureRecognizer:tapCgr];
     [tapCgr release];
-
-    
-
 
 }
 
 
 -(void)tap{
-//    [self.faceToolBar dismissKeyBoard];
+      [self.inputBar resignFirstResponder];
 }
 
 
@@ -189,7 +183,6 @@ enum ErrorCode
 - (void)clickBack:(id)sender
 {
     [self.navigationController.navigationBar setHidden:NO];
-    [self.navigationController.navigationBar setFrame:CGRectMake(0, 420, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height)];
 	[self.navigationController popViewControllerAnimated:YES];
     
 }
@@ -250,11 +243,14 @@ enum ErrorCode
 #pragma mark - YFInputBarDelegateMethod
 -(void)inputBar:(YFInputBar *)inputBar sendBtnPress:(UIButton *)sendBtn withInputString:(NSString *)str
 {
-    NSLog(@"%@",str);
+    
+    if([str length] <=0){
+        [self popupMessage:@"请输入内容..." title:nil];
+        return;
+    }
     
     User *user = [[UserManager defaultManager] user];
-    
-    
+   
     if (self.article) {
         [[ArticleService sharedService] postCommentWithUid:user.uid
                                            targetContentId:self.article._id
@@ -277,6 +273,7 @@ enum ErrorCode
 
 -(void)inputBar:(YFInputBar*)inputBar retBtnPress:(UIButton*)sendBtn{
 
+    self.navigationController.navigationBarHidden =NO;
     [self.navigationController popViewControllerAnimated:YES];
 
 }
@@ -284,11 +281,19 @@ enum ErrorCode
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
+    [self.inputBar resignFirstResponder];
     [self.view.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [((UIView*)obj) resignFirstResponder];
     }];
 }
+#pragma mark -
+#pragma mark - UIScrollViewDelegateMethod 
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self.inputBar resignFirstResponder];
+
+}
+
 
 #pragma mark -
 #pragma mark - NetWorkDelegateMethod

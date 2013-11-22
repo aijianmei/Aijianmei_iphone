@@ -34,7 +34,7 @@
 
         
         
-        self.commentLabel =[[UILabel alloc]initWithFrame:CGRectMake(70, 10, 250, 50)];;
+        self.commentLabel =[[UILabel alloc]initWithFrame:CGRectMake(70, 10, UIScreen.mainScreen.bounds.size.width - 80, 50)];;
         [self.commentLabel setBackgroundColor:[UIColor clearColor]];
         [self.commentLabel setFont:[UIFont systemFontOfSize:11]];
         [self.commentLabel setTextColor:[UIColor grayColor]];
@@ -43,7 +43,7 @@
 
         
         
-        self.commentTimeLabel =[[UILabel alloc]initWithFrame:CGRectMake(220, 60, 100, 20)];
+        self.commentTimeLabel =[[UILabel alloc]initWithFrame:CGRectMake(UIScreen.mainScreen.bounds.size.width - 120, 60,100, 20)];
         [self.commentTimeLabel setFont:[UIFont systemFontOfSize:10]];
         [self.commentTimeLabel setBackgroundColor:[UIColor clearColor]];
         [self.commentTimeLabel setTextColor:[UIColor grayColor]];
@@ -55,8 +55,10 @@
         [self addSubview:self.commentLabel];
         [self addSubview:self.commentTimeLabel];
 
-        
     }
+    
+    [self setBackgroundColor:[UIColor clearColor]];
+    
     return self;
 }
 

@@ -17,7 +17,7 @@
 #import "DeviceDetection.h"
 #import "UIImageUtil.h"
 #import "UIImage+Scale.h"
-
+#import "UserManager.h"
 #import "StatusView.h"
 
 
@@ -66,9 +66,19 @@ enum TapOnItem {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-       self.playerWebView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, 150)];
+       self.playerWebView = [[UIWebView alloc]initWithFrame:CGRectMake(0,64, 320, 150)];
 
-        CommentViewController *comVC =[[CommentViewController alloc]initWithNibName:@"CommentViewController" bundle:nil];
+        CommentViewController *comVC;
+        
+        if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
+            comVC= [[CommentViewController alloc]initWithNibName:@"CommentViewController" bundle:nil];
+            
+            
+        }else{
+            comVC = [[CommentViewController alloc]initWithNibName:@"CommentViewController ～ipad" bundle:nil];
+            
+        }
+
         [comVC.view setFrame:CGRectMake(0, 235, 320, 220)];
         [comVC.dataTableView setBackgroundColor:[UIColor clearColor]];        
         self.commentViewController = comVC;
@@ -101,7 +111,7 @@ enum TapOnItem {
     NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"详情",@"评论",nil];
     
     self.segmentedController=[[SDSegmentedControl alloc]initWithItems:buttonTitleArray];
-    [_segmentedController setFrame:CGRectMake(0, 150, 320, 40)];
+    [_segmentedController setFrame:CGRectMake(0, 215, UIScreen.mainScreen.bounds.size.width, 40)];
     [_segmentedController setSelectedSegmentIndex:0];
     [_segmentedController addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventValueChanged];
     
@@ -120,10 +130,8 @@ enum TapOnItem {
     
     if (segmentedControl.selectedSegmentIndex ==1)
     {
-//        [self.view addSubview:self.commentViewController.view];
         
-        
-        [self.navigationController presentViewController:self.commentViewController animated:YES completion:^{}];
+        [self.navigationController pushViewController:self.commentViewController animated:YES ];
         
         self.commentViewController.video = [self video];
         [self.commentViewController loadDatas];
@@ -207,35 +215,31 @@ enum TapOnItem {
 ////点击分享按钮
 -(void)clickShareButton:(UIButton *)sender{
     
-    
-    PPDebug(@"////点击分享按钮");
-
-    if ([DeviceDetection isOS6]){
-        
-        [self showAWSheet];
-        
-    }
-    else{
         whichAcctionSheet = RECOMMENDATION;
         [self shareToSocialnetWorks];
-        
-    }
-    
 }
 
 
 
 -(void)shareToSocialnetWorks
 {
-    whichAcctionSheet = RECOMMENDATION;
-    UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
-                                                       delegate:self
-                                              cancelButtonTitle:NSLS(@"取消")
-                                         destructiveButtonTitle:NSLS(@"分享到新浪微博")
-                                              otherButtonTitles:NSLS(@"分享给微信好友"),NSLS(@"分享到微信朋友圈"),NSLS(@"通过邮箱"),NSLS(@"通过短信"),nil];
-    
-    [share showInView:self.view];
-    [share release];
+    if (IOS_VERSION >=6.0) {
+        [self  showAWSheet];
+    }else{
+        
+        
+        whichAcctionSheet = RECOMMENDATION;
+        UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:NSLS(@"取消")
+                                             destructiveButtonTitle:NSLS(@"分享到新浪微博")
+                                                  otherButtonTitles:NSLS(@"分享给微信好友"),NSLS(@"分享到微信朋友圈"),NSLS(@"通过邮箱"),NSLS(@"通过短信"),nil];
+        
+        [share showInView:self.view];
+        [share release];
+        
+    }
+
     
 }
 
@@ -787,7 +791,7 @@ enum TapOnItem {
     
     if ([request.url hasSuffix:@"users/show.json"])
     {
-        [[UserService defaultService] storeSinaUserInfo:result];
+        [[UserManager defaultManager] storeSinaUserInfo:result];
         
         NSDictionary *userInfo = result;
         NSLog(@"<storeSinaUserInfo>:%@",[[userInfo objectForKey:@"id"] stringValue]);

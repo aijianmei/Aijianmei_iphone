@@ -44,6 +44,8 @@
 #define NUMBER_OF_ITEMS 4
 #define NUMBER_OF_VISIBLE_ITEMS 18
 #define ITEM_SPACING 320
+#define ITEM_SPACING_IPAD 768.0f
+
 #define EACH_FETCH_SIZE 5
 
 #define SCROLL_VIEW_TAG 20120913
@@ -260,7 +262,14 @@ typedef enum CONTENT_TYPE {
 -(void)initTableHeaderView{
     
     UIView *headerView =[[UIView alloc]init];
-    [headerView setFrame: CGRectMake(0,0, 320, 200)];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        [headerView setFrame: CGRectMake(0,0,UIScreen.mainScreen.bounds.size.width, 200)];
+    }else{
+        [headerView setFrame: CGRectMake(0,0,UIScreen.mainScreen.bounds.size.width, 360.0f)];
+    }
+
+    
+    
     self.myHeaderView = headerView;
     [headerView release];
     [self.dataTableView setTableHeaderView:_myHeaderView];
@@ -275,15 +284,7 @@ typedef enum CONTENT_TYPE {
     
 
     self.segmentedController=[[SDSegmentedControl alloc]initWithItems:buttonTitleArray];
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-        [_segmentedController setFrame:CGRectMake(0, 0, 320, 40)];
-
-    }else{
-    
-        [_segmentedController setFrame:CGRectMake(0, 0, 768, 40)];
-
-    }
-    
+    [_segmentedController setFrame:CGRectMake(0, 0,UIScreen.mainScreen.bounds.size.width, 40)];
     [_segmentedController setSelectedSegmentIndex:0];
     [_segmentedController addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventValueChanged];
     [_myHeaderView addSubview:self.segmentedController];
@@ -294,8 +295,16 @@ typedef enum CONTENT_TYPE {
 
 -(void)addCarouselSliders{
     //configure carousel
-    self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0,50,320,140)];
 
+    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
+        self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0,40,UIScreen.mainScreen.bounds.size.width,160)];
+
+    }
+    else{
+        self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0,40,UIScreen.mainScreen.bounds.size.width,320)];
+    }
+
+    
     self.carousel.delegate = self;
     self.carousel.dataSource = self;
     _carousel.type = iCarouselTypeLinear;
@@ -311,33 +320,22 @@ typedef enum CONTENT_TYPE {
 -(void)addSpacePageControl{
     ////The page controll
     
+    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
+        self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(0, 196, 320, 20)];
+        
+    }
+    else{
+        self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(230,345, 320, 20)];
+    }
+
     
-   // 10, 190, 320, 20
-    //215, 185, 120, 20
-    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(0, 196, 320, 20)];
+    
     [_spacePageControl setBackgroundColor:[UIColor clearColor]];
     _spacePageControl.numberOfPages = [self.dataList count];
     [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
     [_spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot.png"]];
     [_spacePageControl addTarget:self action:@selector(pageControl:) forControlEvents:UIControlEventValueChanged];
     [_myHeaderView addSubview:self.spacePageControl];
-}
-
-#pragma mark-- MoreButon Method
--(void)addMoreButton
-{
-
-    UIButton *moreButotn = [[UIButton alloc]initWithFrame:CGRectMake(270, 0, 40, 30)];
-    [moreButotn.titleLabel setFont:[UIFont systemFontOfSize:12]];
-    [moreButotn setBackgroundImage:[UIImage imageNamed:@"Catalog_More_Button.png"] forState:UIControlStateNormal];
-    [moreButotn addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    [moreButotn setTag:More_BUTTON_TAG];
-    
-    [_myHeaderView addSubview:moreButotn];
-    [moreButotn release];
-
 }
 
 #pragma mark-- ButtonClicked Method
@@ -546,9 +544,20 @@ typedef enum CONTENT_TYPE {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
+    CommonArticleViewController *workOutVc;
     if (self.segmentedController.selectedSegmentIndex ==0 ||self.segmentedController.selectedSegmentIndex ==1 || self.segmentedController.selectedSegmentIndex ==-1)
     {
-        CommonArticleViewController *workOutVc = [[CommonArticleViewController alloc]initWithNibName:@"CommonArticleViewController" bundle:nil];
+        
+        if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
+         workOutVc = [[CommonArticleViewController alloc]initWithNibName:@"CommonArticleViewController" bundle:nil];
+
+            
+        }else{
+            
+         workOutVc = [[CommonArticleViewController alloc]initWithNibName:@"CommonArticleViewController ～ipad" bundle:nil];
+        }
+        
+        
         workOutVc.article = [self.dataList objectAtIndex:indexPath.row];
         [self.navigationController pushViewController:workOutVc animated:YES];
         [workOutVc release];
@@ -593,11 +602,22 @@ typedef enum CONTENT_TYPE {
     
 	if (view == nil)
 	{
-        //set up content
-		view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 160.0f)] autorelease];
-        
         ///add images
-        UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160.0f)];
+        UIImageView *imageView =[[UIImageView alloc]init];
+        
+        
+        //set up content
+       if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
+            view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 160.0f)] autorelease];
+           [imageView setFrame:CGRectMake(0, 0, 320, 160.0f)];
+
+        }else{
+            view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 768.0f, 320.0f)] autorelease];
+            [imageView setFrame:CGRectMake(0, 0, 768.0f, 320.0f)];
+
+        }
+
+ 
         [imageView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@""]];
         [view addSubview:imageView];
         [imageView release];
@@ -617,7 +637,12 @@ typedef enum CONTENT_TYPE {
 
 - (CGFloat)carouselItemWidth:(iCarousel *)carousel
 {
-    return ITEM_SPACING;
+    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
+        return ITEM_SPACING;
+    }else  {
+        return ITEM_SPACING_IPAD;
+}
+        return ITEM_SPACING_IPAD;
 }
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{

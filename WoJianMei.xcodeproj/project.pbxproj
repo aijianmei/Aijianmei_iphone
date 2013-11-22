@@ -497,6 +497,10 @@
 		4AC523AF178E44E7003D9729 /* ProvinceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC523AE178E44E7003D9729 /* ProvinceCell.m */; };
 		4AC523B7178E4DE1003D9729 /* PickCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC523B6178E4DE1003D9729 /* PickCityCell.m */; };
 		4AC523BA178E9011003D9729 /* MyselfSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC523B9178E9011003D9729 /* MyselfSettingCell.m */; };
+		4AC593B7183F3E8900B61C2E /* CommonArticleViewController ～ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC593B6183F3E8900B61C2E /* CommonArticleViewController ～ipad.xib */; };
+		4AC593B9183F694000B61C2E /* CommentViewController ～ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC593B8183F694000B61C2E /* CommentViewController ～ipad.xib */; };
+		4AC593BC183F819000B61C2E /* 76X76.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC593BA183F819000B61C2E /* 76X76.png */; };
+		4AC593BD183F819000B61C2E /* 152X152.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC593BB183F819000B61C2E /* 152X152.png */; };
 		4ACA496A1755EF9700CC9886 /* WorkoutDataComposeSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA49691755EF9700CC9886 /* WorkoutDataComposeSheetView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4ACA496D1755F84300CC9886 /* WorkoutDataComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA496C1755F84300CC9886 /* WorkoutDataComposeViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4ACA723D182C9F3200567C77 /* IndexLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ACA723C182C9F3200567C77 /* IndexLine@2x.png */; };
@@ -1440,6 +1444,10 @@
 		4AC523B6178E4DE1003D9729 /* PickCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickCityCell.m; sourceTree = "<group>"; };
 		4AC523B8178E9010003D9729 /* MyselfSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyselfSettingCell.h; sourceTree = "<group>"; };
 		4AC523B9178E9011003D9729 /* MyselfSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyselfSettingCell.m; sourceTree = "<group>"; };
+		4AC593B6183F3E8900B61C2E /* CommonArticleViewController ～ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CommonArticleViewController ～ipad.xib"; sourceTree = "<group>"; };
+		4AC593B8183F694000B61C2E /* CommentViewController ～ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CommentViewController ～ipad.xib"; sourceTree = "<group>"; };
+		4AC593BA183F819000B61C2E /* 76X76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 76X76.png; sourceTree = "<group>"; };
+		4AC593BB183F819000B61C2E /* 152X152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 152X152.png; sourceTree = "<group>"; };
 		4ACA49681755EF9700CC9886 /* WorkoutDataComposeSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDataComposeSheetView.h; sourceTree = "<group>"; };
 		4ACA49691755EF9700CC9886 /* WorkoutDataComposeSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutDataComposeSheetView.m; sourceTree = "<group>"; };
 		4ACA496B1755F84300CC9886 /* WorkoutDataComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDataComposeViewController.h; sourceTree = "<group>"; };
@@ -1816,6 +1824,7 @@
 				C6DB202B1760D8E40060BD08 /* CommonArticleViewController.h */,
 				C6DB202C1760D8E40060BD08 /* CommonArticleViewController.m */,
 				4A308BA817A16AE100DED650 /* CommonArticleViewController.xib */,
+				4AC593B6183F3E8900B61C2E /* CommonArticleViewController ～ipad.xib */,
 				4A03268D17A8EB380016F6C5 /* VideoCell.h */,
 				4A03268E17A8EB390016F6C5 /* VideoCell.m */,
 				4A03269017A8EE980016F6C5 /* PlayVideoViewController.h */,
@@ -1824,6 +1833,7 @@
 				4A4A5DAE179E512E00F00085 /* CommentViewController.h */,
 				4A4A5DAF179E512E00F00085 /* CommentViewController.m */,
 				4A4A5DB0179E512E00F00085 /* CommentViewController.xib */,
+				4AC593B8183F694000B61C2E /* CommentViewController ～ipad.xib */,
 				4A4A5E0E179E76F900F00085 /* CommentCell.h */,
 				4A4A5E0F179E76FA00F00085 /* CommentCell.m */,
 			);
@@ -2174,6 +2184,8 @@
 		4A1B25D217EED04E00FC6194 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				4AC593BA183F819000B61C2E /* 76X76.png */,
+				4AC593BB183F819000B61C2E /* 152X152.png */,
 				4A1B25D317EED06300FC6194 /* 120X120.png */,
 				4A1B25D417EED06300FC6194 /* 57X57.png */,
 				4A1B25D517EED06300FC6194 /* 114X114.png */,
@@ -4408,6 +4420,7 @@
 				4A9C3FB2177A7ECB0088AA6D /* pageDot@2x.png in Resources */,
 				4A9C3FCA177AD3970088AA6D /* Myself_SettingsViewController.xib in Resources */,
 				4A9C3FCC177AE36F0088AA6D /* LabelsView.xib in Resources */,
+				4AC593BD183F819000B61C2E /* 152X152.png in Resources */,
 				4A0E4DC4178C4B5B00E1287D /* ChangeNameViewController.xib in Resources */,
 				4A0E4DCE178C50B000E1287D /* ChangeDescriptionViewController.xib in Resources */,
 				4A0E4DD3178C559E00E1287D /* ChangeGenderViewController.xib in Resources */,
@@ -4459,6 +4472,7 @@
 				4A0CA66C17ABE65500314B8C /* less_data_Button.png in Resources */,
 				4A0CA66D17ABE65500314B8C /* less_data_Button@2x.png in Resources */,
 				4A0CA66E17ABE65500314B8C /* more_data_Button.png in Resources */,
+				4AC593B9183F694000B61C2E /* CommentViewController ～ipad.xib in Resources */,
 				4A0CA66F17ABE65500314B8C /* more_data_Button@2x.png in Resources */,
 				4A0CA67317ABE65500314B8C /* profile_data_BG.png in Resources */,
 				4A0CA67417ABE65500314B8C /* profile_data_BG@2x.png in Resources */,
@@ -4490,6 +4504,7 @@
 				4A0CA69517ABE65500314B8C /* fgx_1.png in Resources */,
 				4A0CA69817ABE65500314B8C /* fl_3.png in Resources */,
 				4A0CA69A17ABE65500314B8C /* shj_1.png in Resources */,
+				4AC593B7183F3E8900B61C2E /* CommonArticleViewController ～ipad.xib in Resources */,
 				4A12A78417ACE0D500696CF2 /* touxiang_40x40.png in Resources */,
 				4A12A78517ACE0D500696CF2 /* touxiang_40x40@2x.png in Resources */,
 				4A8BCAD817AFE2BE0019CBB1 /* WorkOutManagerViewController.xib in Resources */,
@@ -4586,6 +4601,7 @@
 				4A129DC817CB46A700FD18B2 /* qxzsdq_1.png in Resources */,
 				4A129DC917CB46A700FD18B2 /* qxzsdq_1＠.png in Resources */,
 				4A129DCA17CB46A700FD18B2 /* qxzsfdq_1.png in Resources */,
+				4AC593BC183F819000B61C2E /* 76X76.png in Resources */,
 				4A129DCB17CB46A700FD18B2 /* qxzsfdq_1＠.png in Resources */,
 				4A129DCC17CB46A700FD18B2 /* rq_1.png in Resources */,
 				4A129DCD17CB46A700FD18B2 /* rq_1@.png in Resources */,
