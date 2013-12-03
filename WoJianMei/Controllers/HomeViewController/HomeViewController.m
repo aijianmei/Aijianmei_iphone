@@ -150,6 +150,8 @@ typedef enum CONTENT_TYPE {
 
     }
     
+  
+
 }
 
 - (void)initMoreUI
@@ -195,6 +197,10 @@ typedef enum CONTENT_TYPE {
 - (void)leftButtonClickHandler:(id)sender
 {
     [self.viewDeckController toggleLeftViewAnimated:YES];
+    
+    
+    NSString *string =  [[AppDelegate  getAppDelegate] getDeviceToken];
+    PPDebug(@"%%%%%%%@%%%%%%%",string);
 }
 
 

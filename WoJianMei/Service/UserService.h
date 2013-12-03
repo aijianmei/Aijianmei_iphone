@@ -61,6 +61,8 @@ typedef void(^UpdateUserResultBlock)(int resultCode);
 
 
 - (void)queryVersionWithDelegate:(id<UserServiceDelegate>*)viewController;
+- (void)queryVersion:(id)appDelegate;
+
 
 //注册新用户
 - (void)registerUserWithUsername:(NSString*)name

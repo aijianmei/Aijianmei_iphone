@@ -33,6 +33,7 @@
 #import "BaiduMobStat.h"
 #import "PublicMyselfViewController.h"
 #import "Myself_SettingsViewController.h"
+#import "BasicTopicViewController.h"
 
 
 
@@ -297,24 +298,17 @@ typedef enum CONTENT_TYPE {
     [_myHeaderView addSubview:self.spacePageControl];
 }
 
-#pragma mark-- MoreButon Method
--(void)addMoreButton
-{
-    
-    UIButton *moreButotn = [[UIButton alloc]initWithFrame:CGRectMake(270, 0, 40, 30)];
-    [moreButotn.titleLabel setFont:[UIFont systemFontOfSize:12]];
-    [moreButotn setBackgroundImage:[UIImage imageNamed:@"Catalog_More_Button.png"] forState:UIControlStateNormal];
-    [moreButotn addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    [moreButotn setTag:More_BUTTON_TAG];
-    
-    [_myHeaderView addSubview:moreButotn];
-    [moreButotn release];
-    
-}
+
 
 #pragma mark-- ButtonClicked Method
+- (IBAction)didClickGMuscleOnlineButton:(id)sender {
+    BasicTopicViewController *vc = [[BasicTopicViewController alloc]initWithNibName:@"BasicTopicViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
+}
+
+
+
 -(void)buttonClicked:(SDSegmentedControl *)sender
 
 {

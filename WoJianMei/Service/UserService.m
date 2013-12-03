@@ -204,6 +204,7 @@ static UserService* _defaultUserService = nil;
 
 
 //用户版本更新
+
 - (void)queryVersionWithDelegate:(id<UserServiceDelegate>*)viewController
 
 {
@@ -265,6 +266,70 @@ static UserService* _defaultUserService = nil;
     });
 
 }
+//用户版本更新
+
+- (void)queryVersion:(id)appDelegate;
+
+{
+    
+    // http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=au_getversion
+    
+    
+    //A new working Queue
+    dispatch_async(workingQueue, ^{
+        
+        CommonNetworkOutput* output = nil;
+        output = [FitnessNetworkRequest queryVersion:SERVER_URL];
+        
+        
+        //Back to the Main Queue
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            NSDictionary    *dictionary ;
+            NSString        *uid;
+            
+            VersionInfo *version;
+            
+            
+            if (output.resultCode == ERROR_SUCCESS) {
+                
+                dictionary = output.jsonDataDict;
+                uid= [dictionary objectForKey:@"uid"];
+                
+                version = [[VersionInfo alloc] init] ;
+                [version setUpdateTitle:[dictionary objectForKey:@"app_update_title"]];
+                [version setUpdateContent:[dictionary objectForKey:@"app_update_content"]];
+                [version setVersion:[dictionary objectForKey:@"version"]];
+                [version setDownloadurl:[dictionary objectForKey:@"downloadurl"]];
+                
+                
+            }
+            
+            else if (output.resultCode == ERROR_NETWORK) {
+                //                [viewController popupUnhappyMessage:NSLS(@"kSystemFailure") title:nil];
+                
+                
+            }
+            
+            else {
+                // @"对不起，注册失败，请稍候再试"
+                //                [viewController popupUnhappyMessage:NSLS(@"kGeneralFailure") title:nil];
+                
+            }
+            
+            if ([appDelegate respondsToSelector:@selector(didLoadUpdateVersionInfo:errorCode:)]){
+                
+                [appDelegate didLoadUpdateVersionInfo:version
+                                               errorCode:output.resultCode];
+            }
+            
+            
+            
+        });
+    });
+    
+}
+
 
 
 

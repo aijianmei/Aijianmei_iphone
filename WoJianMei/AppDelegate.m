@@ -432,9 +432,16 @@ NSString* GlobalGetServerURL()
         AJMLeftSideViewController *leftVC = [[[AJMLeftSideViewController alloc] init] autorelease];
         
         IIViewDeckController *vc = [[IIViewDeckController alloc] initWithCenterViewController:self.navigationController leftViewController:leftVC];
-        
-        vc.leftSize  = self.window.frame.size.width - (320 - 100.0);
-        self.viewController = vc;
+    
+    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
+        vc.leftSize  = self.window.frame.size.width - (self.window.frame.size.width - 80.0f);
+
+    }else{
+        vc.leftSize  = self.window.frame.size.width - (self.window.frame.size.width - 80.0f);
+    }
+
+    
+    self.viewController = vc;
     
     
     
@@ -598,7 +605,7 @@ NSString* GlobalGetServerURL()
 
 
 -(void)updateApplication{
-   [[UserService defaultService] queryVersionWithDelegate:self];
+   [[UserService defaultService] queryVersion:self];
 }
 
 
@@ -626,7 +633,7 @@ NSString* GlobalGetServerURL()
     [alert release];
 	
 	// try again
-//	 [self bindDevice];
+	 [self bindDevice];
 }
 
 - (void)showNotification:(NSDictionary*)payload

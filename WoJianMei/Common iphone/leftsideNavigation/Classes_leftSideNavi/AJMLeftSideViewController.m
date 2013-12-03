@@ -156,30 +156,6 @@
     _tableView.backgroundView = nil;
     [self.view addSubview:_tableView];
     [_tableView release];
-
-    
-//    UIImageView *bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IndexBG.png"]];
-//    bgImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-//    
-//    
-//    bgImageView.frame = CGRectMake(0.0, 0.0, self.view.frame
-//                                   .size.width,     self.view.frame.size.height);
-//    [self.view addSubview:bgImageView];
-//    [bgImageView release];
-//    
-//    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width , self.view.frame.size.height)
-//                                              style:UITableViewStylePlain];
-//    _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-//    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    _tableView.sectionHeaderHeight = 32;
-//    _tableView.dataSource = self;
-//    _tableView.delegate = self;
-//    _tableView.backgroundColor = [UIColor clearColor];
-//    _tableView.backgroundView = nil;
-//    [_tableView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
-//    [self.view addSubview:_tableView];
-//    [_tableView release];
-//    
 }
 
 
@@ -276,10 +252,6 @@
 }
 
 
-
-
-
-
 #pragma mark --
 #pragma mark - UITableViewDataSource
 
@@ -292,7 +264,7 @@
 {
     switch (section) {
         case 0:
-            return 8;
+            return 6;
         case 1:
             return 2;
         default:
@@ -324,11 +296,11 @@
     
     
     UIImageView *imvaew = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cbdqx_1.png"]];
+    
     [cell setSelectedBackgroundView:imvaew];
     [imvaew release];
     
-//    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-//	[[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:66.0/255.0 green:155.0/255.0 blue:255.0/255.0 alpha:1]];
+
     
     [cell setBackgroundColor:[UIColor clearColor]];
     
@@ -346,36 +318,35 @@
                      ];
                     break;                    
                 case 1:
-                    cell.textLabel.text = @"锻炼";
+                    cell.textLabel.text = @"运动汇";
                     [cell.imageView setImage:[UIImage imageNamed:@"Workout_Icon.png"]];
 
                     break;
                 case 2:
-                    cell.textLabel.text = @"健身计划";
+                    cell.textLabel.text = @"运动商城";
                     [cell.imageView setImage:[UIImage imageNamed:@"Plan_Icon.png"]];
 
                    break;
                 case 3:
-                    cell.textLabel.text = @"营养";
+                    cell.textLabel.text = @"运动管理";
                     [cell.imageView setImage:[UIImage imageNamed:@"Nuri_Icon.png"]];
-                    
                     break;
                 case 4:
-                    cell.textLabel.text = @"补充";
+                    cell.textLabel.text = @"个人中心";
                     [cell.imageView setImage:[UIImage
                                   imageNamed:@"Supplement_Icon.png"]];
                     break;
+//                case 5:
+//                    cell.textLabel.text = @"生活方式           1509人在线";
+//                    [cell.imageView setImage:[UIImage
+//                                  imageNamed:@"LifeStyle_Icon.png"]];
+//                    break;
+//                case 6:
+//                    cell.textLabel.text = @"运动管理";
+//                    [cell.imageView setImage:[UIImage imageNamed:
+//                                              @"Manager_Icon.png"]];
+                    break;
                 case 5:
-                    cell.textLabel.text = @"生活方式";
-                    [cell.imageView setImage:[UIImage
-                                  imageNamed:@"LifeStyle_Icon.png"]];
-                    break;
-                case 6:
-                    cell.textLabel.text = @"运动管理";
-                    [cell.imageView setImage:[UIImage imageNamed:
-                                              @"Manager_Icon.png"]];
-                    break;
-                case 7:
                     cell.textLabel.text = @"更多";
                     [cell.imageView setImage:[UIImage imageNamed:@"More_Icon.png"]];
                     break;
@@ -452,7 +423,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        
     
     }else{
     
@@ -552,42 +522,42 @@
                     [statTracker logEvent:@"SupplementView" eventLabel:@"SupplementView"];
                 }
                 break;
+//                case 5:
+//                {
+//                    ///生活方式
+//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+//                        
+//                        [self initLifeStytleViewController];
+//                        self.viewDeckController.centerController = _navigationController;
+//                        
+//                        self.view.userInteractionEnabled = YES;
+//                        [_tableView setUserInteractionEnabled:YES];
+//                        
+//                    }];
+//                    
+//                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+//                    [statTracker logEvent:@"LifeStytleView" eventLabel:@"LifeStytleView"];
+//                    
+//                }
+//                break;
+
+//                case 6:
+//                {
+//                   ////运动管理
+//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+//                        
+//                        [self initWorkOutManagerViewController];
+//                        self.viewDeckController.centerController = _navigationController;
+//                    }];
+//                    
+//                    self.view.userInteractionEnabled = YES;
+//                    _tableView.userInteractionEnabled =YES;
+//
+//                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+//                    [statTracker logEvent:@"WorkoutManagerView" eventLabel:@"WorkoutManagerView"];
+//                }
+//                    break;
                 case 5:
-                {
-                    ///生活方式
-                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        
-                        [self initLifeStytleViewController];
-                        self.viewDeckController.centerController = _navigationController;
-                        
-                        self.view.userInteractionEnabled = YES;
-                        [_tableView setUserInteractionEnabled:YES];
-                        
-                    }];
-                    
-                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
-                    [statTracker logEvent:@"LifeStytleView" eventLabel:@"LifeStytleView"];
-                    
-                }
-                break;
-
-                case 6:
-                {
-                   ////运动管理
-                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        
-                        [self initWorkOutManagerViewController];
-                        self.viewDeckController.centerController = _navigationController;
-                    }];
-                    
-                    self.view.userInteractionEnabled = YES;
-                    _tableView.userInteractionEnabled =YES;
-
-                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
-                    [statTracker logEvent:@"WorkoutManagerView" eventLabel:@"WorkoutManagerView"];
-                }
-                    break;
-                case 7:
                 {
                     ///更多
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {

@@ -47,7 +47,7 @@
 @property (nonatomic,retain) LoginViewController *loginViewController;
 
 
-
+- (IBAction)didClickGMuscleOnlineButton:(id)sender;
 
 -(void)buttonClicked:(SDSegmentedControl *)sender;
 -(void)updateUserInterface;

@@ -260,6 +260,9 @@
 		4A34EB3917B36F7A00196793 /* PublicMyselfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A34EB3817B36F7900196793 /* PublicMyselfViewController.xib */; };
 		4A34EB4017B3CDA500196793 /* UserInfoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34EB3E17B3CDA500196793 /* UserInfoPickerViewController.m */; };
 		4A34EB4117B3CDA500196793 /* UserInfoPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A34EB3F17B3CDA500196793 /* UserInfoPickerViewController.xib */; };
+		4A3853B3184DF7DF00D5A66B /* PostTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3853B1184DF7DF00D5A66B /* PostTopicViewController.m */; };
+		4A3853B4184DF7DF00D5A66B /* PostTopicViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3853B2184DF7DF00D5A66B /* PostTopicViewController~ipad.xib */; };
+		4A3853B6184DF7F900D5A66B /* PostTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3853B5184DF7F900D5A66B /* PostTopicViewController.xib */; };
 		4A3AB807175060F20045729D /* WorkOutProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB806175060F10045729D /* WorkOutProcessViewController.m */; };
 		4A429DBF175DD1BA00F018CE /* WorkOutInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A429DBE175DD1B900F018CE /* WorkOutInfo.m */; };
 		4A4991CD168553A30073E682 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A498F9F168553A20073E682 /* ASIAuthenticationDialog.m */; };
@@ -650,6 +653,10 @@
 		4AE52DA31778323400F61933 /* SupplementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE52DA21778323400F61933 /* SupplementViewController.m */; };
 		4AE52E281778327F00F61933 /* ForumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE52E271778327F00F61933 /* ForumViewController.m */; };
 		4AE52E2C1778336E00F61933 /* LifeStytleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE52E2B1778336E00F61933 /* LifeStytleViewController.m */; };
+		4AE545EC184DE466008CF804 /* BasicTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AE545EB184DE466008CF804 /* BasicTopicViewController.xib */; };
+		4AE545EE184DE478008CF804 /* BasicTopicViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AE545ED184DE478008CF804 /* BasicTopicViewController~ipad.xib */; };
+		4AE545F1184DE4DF008CF804 /* BasicTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE545F0184DE4DF008CF804 /* BasicTopicViewController.m */; };
+		4AE545F4184DE5FA008CF804 /* BasicTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE545F3184DE5FA008CF804 /* BasicTopicCell.m */; };
 		C6630B9A176D3CC400A5ACBA /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C6630B99176D3CC400A5ACBA /* JSONKit.m */; };
 		C668C23E176600B9007CC7FF /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C23B176600B9007CC7FF /* GTMNSString+HTML.m */; };
 		C668C23F176600B9007CC7FF /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = C668C23D176600B9007CC7FF /* NSString+HTML.m */; };
@@ -1029,6 +1036,10 @@
 		4A34EB3D17B3CDA500196793 /* UserInfoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoPickerViewController.h; sourceTree = "<group>"; };
 		4A34EB3E17B3CDA500196793 /* UserInfoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoPickerViewController.m; sourceTree = "<group>"; };
 		4A34EB3F17B3CDA500196793 /* UserInfoPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoPickerViewController.xib; sourceTree = "<group>"; };
+		4A3853B0184DF7DF00D5A66B /* PostTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTopicViewController.h; sourceTree = "<group>"; };
+		4A3853B1184DF7DF00D5A66B /* PostTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTopicViewController.m; sourceTree = "<group>"; };
+		4A3853B2184DF7DF00D5A66B /* PostTopicViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PostTopicViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A3853B5184DF7F900D5A66B /* PostTopicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostTopicViewController.xib; sourceTree = "<group>"; };
 		4A3AB805175060F10045729D /* WorkOutProcessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOutProcessViewController.h; sourceTree = "<group>"; };
 		4A3AB806175060F10045729D /* WorkOutProcessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOutProcessViewController.m; sourceTree = "<group>"; };
 		4A429DBD175DD1B900F018CE /* WorkOutInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOutInfo.h; sourceTree = "<group>"; };
@@ -1716,6 +1727,12 @@
 		4AE52E271778327F00F61933 /* ForumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumViewController.m; sourceTree = "<group>"; };
 		4AE52E2A1778336E00F61933 /* LifeStytleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifeStytleViewController.h; sourceTree = "<group>"; };
 		4AE52E2B1778336E00F61933 /* LifeStytleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifeStytleViewController.m; sourceTree = "<group>"; };
+		4AE545EB184DE466008CF804 /* BasicTopicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicTopicViewController.xib; sourceTree = "<group>"; };
+		4AE545ED184DE478008CF804 /* BasicTopicViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "BasicTopicViewController~ipad.xib"; sourceTree = "<group>"; };
+		4AE545EF184DE4DF008CF804 /* BasicTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicTopicViewController.h; sourceTree = "<group>"; };
+		4AE545F0184DE4DF008CF804 /* BasicTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicTopicViewController.m; sourceTree = "<group>"; };
+		4AE545F2184DE5FA008CF804 /* BasicTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicTopicCell.h; sourceTree = "<group>"; };
+		4AE545F3184DE5FA008CF804 /* BasicTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicTopicCell.m; sourceTree = "<group>"; };
 		C6630B98176D3CC400A5ACBA /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		C6630B99176D3CC400A5ACBA /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		C668C23A176600B9007CC7FF /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
@@ -3690,6 +3707,7 @@
 		4ACD190916154F5C00567A24 /* Entries */ = {
 			isa = PBXGroup;
 			children = (
+				4AE545EA184DE435008CF804 /* topicViewcontroller */,
 				4A6585C417B0D5E60056DA91 /* InformationFillView */,
 				4A0326BE17AA63F40016F6C5 /* HomeViewController */,
 				4ADCFE10169D614600A3E979 /* WorkoutViewController */,
@@ -4248,6 +4266,23 @@
 			path = Controllers/lifeStytleViewController;
 			sourceTree = "<group>";
 		};
+		4AE545EA184DE435008CF804 /* topicViewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				4AE545F2184DE5FA008CF804 /* BasicTopicCell.h */,
+				4AE545F3184DE5FA008CF804 /* BasicTopicCell.m */,
+				4AE545EF184DE4DF008CF804 /* BasicTopicViewController.h */,
+				4AE545F0184DE4DF008CF804 /* BasicTopicViewController.m */,
+				4AE545EB184DE466008CF804 /* BasicTopicViewController.xib */,
+				4AE545ED184DE478008CF804 /* BasicTopicViewController~ipad.xib */,
+				4A3853B0184DF7DF00D5A66B /* PostTopicViewController.h */,
+				4A3853B1184DF7DF00D5A66B /* PostTopicViewController.m */,
+				4A3853B5184DF7F900D5A66B /* PostTopicViewController.xib */,
+				4A3853B2184DF7DF00D5A66B /* PostTopicViewController~ipad.xib */,
+			);
+			name = topicViewcontroller;
+			sourceTree = "<group>";
+		};
 		C6630B97176D3CC400A5ACBA /* JSONKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -4379,6 +4414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AE394BC15C2DD9C00D06C61 /* InfoPlist.strings in Resources */,
+				4AE545EE184DE478008CF804 /* BasicTopicViewController~ipad.xib in Resources */,
 				4A4991D5168553A30073E682 /* Documentation.html in Resources */,
 				4A499225168553A30073E682 /* donedown.png in Resources */,
 				4A499226168553A30073E682 /* doneup.png in Resources */,
@@ -4409,6 +4445,7 @@
 				4A873BA316A54AD2005BDA45 /* HZAreaPickerView.xib in Resources */,
 				4A1B25D017EEAB6500FC6194 /* Images.xcassets in Resources */,
 				4A873BA816A54BD7005BDA45 /* Citypicker.xib in Resources */,
+				4A3853B4184DF7DF00D5A66B /* PostTopicViewController~ipad.xib in Resources */,
 				4ACE23A216AB168D002E41D1 /* AccessoryView.xib in Resources */,
 				4A634E1D1753431E00453C0D /* bg@2x.png in Resources */,
 				4A634E1E1753431E00453C0D /* Flower.jpg in Resources */,
@@ -4446,6 +4483,7 @@
 				4A316558183D198F008DC2CB /* Resource.bundle in Resources */,
 				4A0CA65217ABE65500314B8C /* Scroller_BG.png in Resources */,
 				4A0CA65317ABE65500314B8C /* dlk_1@2x.png in Resources */,
+				4A3853B6184DF7F900D5A66B /* PostTopicViewController.xib in Resources */,
 				4A0CA65417ABE65500314B8C /* xldl_1@2.png in Resources */,
 				4A0CA65517ABE65500314B8C /* xldl_2@2x.png in Resources */,
 				4A0CA65617ABE65500314B8C /* about_us@2x.png in Resources */,
@@ -4544,6 +4582,7 @@
 				4AC2BDBF17BCD7F90061E396 /* description_BG.png in Resources */,
 				4AC2BDC017BCD7F90061E396 /* description_BG@2x.png in Resources */,
 				4AC2BDC417BD05300061E396 /* WorkoutViewController.xib in Resources */,
+				4AE545EC184DE466008CF804 /* BasicTopicViewController.xib in Resources */,
 				4AC2BDC817BD07E90061E396 /* LifeStytleViewController.xib in Resources */,
 				4AC2BDCA17BD08070061E396 /* SupplementViewController.xib in Resources */,
 				4AC2BDCC17BD081D0061E396 /* NutriViewController.xib in Resources */,
@@ -4667,6 +4706,7 @@
 				4A4991CF168553A30073E682 /* ASIDataDecompressor.m in Sources */,
 				4A4991D0168553A30073E682 /* ASIDownloadCache.m in Sources */,
 				4ACF0CA71839B71300F7221C /* PPSNSIntegerationService.m in Sources */,
+				4A3853B3184DF7DF00D5A66B /* PostTopicViewController.m in Sources */,
 				4A4991D1168553A30073E682 /* ASIFormDataRequest.m in Sources */,
 				4A4991D2168553A30073E682 /* ASIHTTPRequest.m in Sources */,
 				4ACF0CA41839B71300F7221C /* PPSNSStorageService.m in Sources */,
@@ -4710,6 +4750,7 @@
 				4A49924C168553A30073E682 /* SearchHistoryManager.m in Sources */,
 				4A49924D168553A30073E682 /* UIBackgroundView.m in Sources */,
 				4A49924E168553A30073E682 /* UICustomeBackGroundView.m in Sources */,
+				4AE545F4184DE5FA008CF804 /* BasicTopicCell.m in Sources */,
 				4A49924F168553A30073E682 /* UIBadgeView.m in Sources */,
 				4A499250168553A30073E682 /* CMPopTipView.m in Sources */,
 				4A3165BF183DF69C008DC2CB /* CJSONDeserializer_BlocksExtensions.m in Sources */,
@@ -4966,6 +5007,7 @@
 				4A6585C717B0D6AA0056DA91 /* PostViewCell.m in Sources */,
 				4A6585CB17B0DD9A0056DA91 /* PostViewController.m in Sources */,
 				4A6585CF17B0E0E50056DA91 /* PostService.m in Sources */,
+				4AE545F1184DE4DF008CF804 /* BasicTopicViewController.m in Sources */,
 				4A6585D217B0F2120056DA91 /* PostStatus.m in Sources */,
 				4A6585D517B127220056DA91 /* PostStatusRespose.m in Sources */,
 				4A948FD917B1F80A0037D9A0 /* StatusCell.m in Sources */,
@@ -5181,8 +5223,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WoJianMei;
-				PROVISIONING_PROFILE = "D8C589EA-7AA6-4491-928B-9647851E5884";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D8C589EA-7AA6-4491-928B-9647851E5884";
+				PROVISIONING_PROFILE = "A6C70FA8-5CC3-4906-B7A6-832E49417C1C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A6C70FA8-5CC3-4906-B7A6-832E49417C1C";
 				SHARED_PRECOMPS_DIR = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
@@ -5212,8 +5254,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WoJianMei;
-				PROVISIONING_PROFILE = "D8C589EA-7AA6-4491-928B-9647851E5884";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D8C589EA-7AA6-4491-928B-9647851E5884";
+				PROVISIONING_PROFILE = "A6C70FA8-5CC3-4906-B7A6-832E49417C1C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A6C70FA8-5CC3-4906-B7A6-832E49417C1C";
 				SHARED_PRECOMPS_DIR = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
