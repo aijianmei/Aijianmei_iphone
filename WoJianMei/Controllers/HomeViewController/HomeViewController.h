@@ -45,6 +45,7 @@
 @property (assign, nonatomic) NSInteger totalCount;
 
 
+- (IBAction)clickGMucleButton:(id)sender;
 
 
 -(void)buttonClicked:(SDSegmentedControl *)sender;

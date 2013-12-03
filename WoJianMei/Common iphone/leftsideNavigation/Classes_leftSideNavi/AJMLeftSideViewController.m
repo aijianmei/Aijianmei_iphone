@@ -333,8 +333,9 @@
                     break;
                 case 4:
                     cell.textLabel.text = @"个人中心";
-                    [cell.imageView setImage:[UIImage
-                                  imageNamed:@"Supplement_Icon.png"]];
+                    [cell.imageView setImage:[ImageManager GobalNavigationAvatarImage]];
+//                    [cell.imageView setImage:[UIImage
+//                                  imageNamed:@"Supplement_Icon.png"]];
                     break;
 //                case 5:
 //                    cell.textLabel.text = @"生活方式           1509人在线";
@@ -345,7 +346,7 @@
 //                    cell.textLabel.text = @"运动管理";
 //                    [cell.imageView setImage:[UIImage imageNamed:
 //                                              @"Manager_Icon.png"]];
-                    break;
+//                    break;
                 case 5:
                     cell.textLabel.text = @"更多";
                     [cell.imageView setImage:[UIImage imageNamed:@"More_Icon.png"]];
