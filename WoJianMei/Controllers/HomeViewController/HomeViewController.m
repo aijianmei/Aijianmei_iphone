@@ -347,15 +347,14 @@ typedef enum CONTENT_TYPE {
 }
 
 #pragma mark-- ButtonClicked Method
-- (IBAction)clickGMucleButton:(id)sender {
-    
+- (IBAction)didClickButton:(id)sender{
+
     BasicTopicViewController *vc = [[BasicTopicViewController alloc]initWithNibName:@"BasicTopicViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
-
-    
-    
 }
+
+
 
 -(void)buttonClicked:(SDSegmentedControl *)sender
 
