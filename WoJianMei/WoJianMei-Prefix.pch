@@ -11,7 +11,12 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #define ISIPAD [DeviceDetection isIPAD]
+    #define ISIPHONE5 [DeviceDetection isIPhone5]
+
 #endif
+
+
 
 #if DEBUG
 #define MCRelease(x) [x release]
