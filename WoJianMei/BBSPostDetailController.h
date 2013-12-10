@@ -7,15 +7,12 @@
 //
 
 #import "PPTableViewController.h"
+#import "PostDetailCommonHeaderView.h"
+
 
 
 @class PBBBSPost;
 
 
-@interface BBSPostDetailController : PPTableViewController
-
-
-@property (nonatomic, retain) UIView *myHeaderView;
-
-
+@interface BBSPostDetailController : PPTableViewController<PostDetailCommonHeaderViewDelegate>
 @end

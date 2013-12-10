@@ -12,6 +12,7 @@
 #import "BBSViewController.h"
 #import "DeviceDetection.h"
 #import "BBSHomeCell.h"
+#import "BBSPostDetailController.h"
 
 
 
@@ -380,16 +381,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-    
+    BBSPostDetailController *vc = [[BBSPostDetailController alloc]initWithNibName:@"BBSPostDetailController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
 }
-
-
-
-
-
-
 
 
 - (void)didReceiveMemoryWarning

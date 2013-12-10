@@ -16,7 +16,6 @@
 @end
 
 @protocol VoteHeaderCommonViewProtocol <NSObject>
-
 + (id)createView:(id<VoteHeaderCommonViewDelegate>)delegate;
 + (NSString *)getViewIdentifier;
 - (void)updateView;

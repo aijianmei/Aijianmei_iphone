@@ -122,6 +122,9 @@
 		4A0E22B31856EEE800A07512 /* VoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E22B21856EEE800A07512 /* VoteCell.m */; };
 		4A0E22B51856EEFA00A07512 /* VoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0E22B41856EEFA00A07512 /* VoteCell.xib */; };
 		4A0E22B81856F64900A07512 /* VoteHeaderCommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E22B71856F64900A07512 /* VoteHeaderCommonView.m */; };
+		4A0E22BB18575A2300A07512 /* PostDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E22BA18575A2300A07512 /* PostDetailHeaderView.m */; };
+		4A0E22BD18575A4200A07512 /* PostDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0E22BC18575A4200A07512 /* PostDetailHeaderView.xib */; };
+		4A0E22C018575F3A00A07512 /* PostDetailCommonHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E22BF18575F3A00A07512 /* PostDetailCommonHeaderView.m */; };
 		4A0E4DC3178C4B5B00E1287D /* ChangeNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4DC1178C4B5B00E1287D /* ChangeNameViewController.m */; };
 		4A0E4DC4178C4B5B00E1287D /* ChangeNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0E4DC2178C4B5B00E1287D /* ChangeNameViewController.xib */; };
 		4A0E4DCD178C50B000E1287D /* ChangeDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4DCB178C50AF00E1287D /* ChangeDescriptionViewController.m */; };
@@ -860,6 +863,11 @@
 		4A0E22B41856EEFA00A07512 /* VoteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VoteCell.xib; sourceTree = "<group>"; };
 		4A0E22B61856F64900A07512 /* VoteHeaderCommonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoteHeaderCommonView.h; sourceTree = "<group>"; };
 		4A0E22B71856F64900A07512 /* VoteHeaderCommonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoteHeaderCommonView.m; sourceTree = "<group>"; };
+		4A0E22B918575A2300A07512 /* PostDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostDetailHeaderView.h; sourceTree = "<group>"; };
+		4A0E22BA18575A2300A07512 /* PostDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostDetailHeaderView.m; sourceTree = "<group>"; };
+		4A0E22BC18575A4200A07512 /* PostDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostDetailHeaderView.xib; sourceTree = "<group>"; };
+		4A0E22BE18575F3A00A07512 /* PostDetailCommonHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostDetailCommonHeaderView.h; sourceTree = "<group>"; };
+		4A0E22BF18575F3A00A07512 /* PostDetailCommonHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostDetailCommonHeaderView.m; sourceTree = "<group>"; };
 		4A0E4DC0178C4B5B00E1287D /* ChangeNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeNameViewController.h; sourceTree = "<group>"; };
 		4A0E4DC1178C4B5B00E1287D /* ChangeNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeNameViewController.m; sourceTree = "<group>"; };
 		4A0E4DC2178C4B5B00E1287D /* ChangeNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeNameViewController.xib; sourceTree = "<group>"; };
@@ -4460,6 +4468,11 @@
 				4A3853B2184DF7DF00D5A66B /* PostTopicViewController~ipad.xib */,
 				4A0E229318560DAD00A07512 /* BBSPostDetailController.h */,
 				4A0E229418560DAD00A07512 /* BBSPostDetailController.m */,
+				4A0E22BE18575F3A00A07512 /* PostDetailCommonHeaderView.h */,
+				4A0E22BF18575F3A00A07512 /* PostDetailCommonHeaderView.m */,
+				4A0E22B918575A2300A07512 /* PostDetailHeaderView.h */,
+				4A0E22BA18575A2300A07512 /* PostDetailHeaderView.m */,
+				4A0E22BC18575A4200A07512 /* PostDetailHeaderView.xib */,
 				4A0E229A18560FD700A07512 /* BBSPostDetailTableCell.h */,
 				4A0E229B18560FD700A07512 /* BBSPostDetailTableCell.m */,
 				4A0E229D1856104800A07512 /* BBSPostDetailCell.h */,
@@ -4687,6 +4700,7 @@
 				4A0CA65017ABE65500314B8C /* rq_2.png in Resources */,
 				4A0CA65117ABE65500314B8C /* rq_3.png in Resources */,
 				4A316558183D198F008DC2CB /* Resource.bundle in Resources */,
+				4A0E22BD18575A4200A07512 /* PostDetailHeaderView.xib in Resources */,
 				4A0CA65217ABE65500314B8C /* Scroller_BG.png in Resources */,
 				4A0CA65317ABE65500314B8C /* dlk_1@2x.png in Resources */,
 				4A3853B6184DF7F900D5A66B /* PostTopicViewController.xib in Resources */,
@@ -5243,6 +5257,7 @@
 				4A6585C717B0D6AA0056DA91 /* PostViewCell.m in Sources */,
 				4A6585CB17B0DD9A0056DA91 /* PostViewController.m in Sources */,
 				4A6585CF17B0E0E50056DA91 /* PostService.m in Sources */,
+				4A0E22BB18575A2300A07512 /* PostDetailHeaderView.m in Sources */,
 				4AE545F1184DE4DF008CF804 /* BBSViewController.m in Sources */,
 				4A6585D217B0F2120056DA91 /* PostStatus.m in Sources */,
 				4A6585D517B127220056DA91 /* PostStatusRespose.m in Sources */,
@@ -5302,6 +5317,7 @@
 				4ACF0CD61839B80A00F7221C /* TCWBEngine.m in Sources */,
 				4A03198517E6F06E00D7A45D /* UIKeyboardView.m in Sources */,
 				4ACF0CA91839B71300F7221C /* PPSinaWeiboService.m in Sources */,
+				4A0E22C018575F3A00A07512 /* PostDetailCommonHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

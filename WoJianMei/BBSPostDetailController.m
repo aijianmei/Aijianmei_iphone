@@ -8,13 +8,14 @@
 
 #import "BBSPostDetailController.h"
 #import "BBSPostDetailCell.h"
+#import "PostDetailHeaderView.h"
+
 
 @interface BBSPostDetailController ()
 
 @end
 
 @implementation BBSPostDetailController
-@synthesize myHeaderView =_myHeaderView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -27,7 +28,6 @@
 }
 
 -(void)dealloc{
-    [_myHeaderView release];
     [super dealloc];
     
 }
@@ -49,15 +49,14 @@
     
 }
 -(void)initTableHeaderView{
-    UIView *headerView =[[UIView alloc]init];
+    PostDetailHeaderView *headerView =[PostDetailHeaderView createView:self];
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-        [headerView setFrame: CGRectMake(0,0,UIScreen.mainScreen.bounds.size.width, 244)];
+//        [headerView setFrame: CGRectMake(0,0,UIScreen.mainScreen.bounds.size.width, 244)];
     }else{
-        [headerView setFrame: CGRectMake(0,0,UIScreen.mainScreen.bounds.size.width, 360.0f)];
+//        [headerView setFrame: CGRectMake(0,0,UIScreen.mainScreen.bounds.size.width, 360.0f)];
     }
-    self.myHeaderView = headerView;
-    [headerView release];
-    [self.dataTableView setTableHeaderView:_myHeaderView];
+    [self.dataTableView setTableHeaderView:headerView];
+    
 }
 
 
