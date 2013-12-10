@@ -16,25 +16,9 @@
 
 + (id)defaultManager;
 
-+ (UIImage *)bookBgImage;
-+ (UIImage *)bookselfButtonPress;
-+ (UIImage *)bookselfButton;
-+ (UIImage *)catalogButton;
-+ (UIImage *)catalogButtonPress;
-+ (UIImage *)musicButton;
-+ (UIImage *)videoButton;
 
 
 
-
-
-+(UIImage*)weiboImage;
-+(UIImage*)qqImage;
-+(UIImage*)renrenImage;
-+(UIImage*)kaixinImage;
-+(UIImage*)tengxunWeiboImage;
-+(UIImage*)doubanImage;
-+(UIImage*)loginEmailImage;
 
 
 
@@ -82,11 +66,6 @@
 
 +(UIImage *)articleBarImage;
 
-
-
-
-
--(NSString*)getAnRandomImage;
 
 
 

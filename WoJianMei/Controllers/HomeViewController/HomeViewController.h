@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import "SignUpViewController.h"
 #import "ArticleService.h"
+#import "HomeMainMenuPanel.h"
 
 
 @class AppDelegate;
@@ -31,9 +32,11 @@
     
     SDSegmentedControl *_segmentedController;
     
+    int iid;
 
     
 }
+
 
 @property (nonatomic, retain) UIScrollView *buttonScrollView;
 @property (nonatomic, retain) UIView *myHeaderView;
@@ -43,9 +46,6 @@
 @property (nonatomic, retain) SDSegmentedControl *segmentedController;
 @property (assign, nonatomic) NSInteger start;
 @property (assign, nonatomic) NSInteger totalCount;
-
-
-- (IBAction)didClickButton:(id)sender;
 
 
 -(void)buttonClicked:(SDSegmentedControl *)sender;

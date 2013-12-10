@@ -34,7 +34,7 @@
 #import "DeviceDetection.h"
 
 #import "PPNetworkRequest.h"
-#import "BasicTopicViewController.h"
+#import "BBSViewController.h"
 
 
 
@@ -52,6 +52,10 @@
 
 #define SCROLL_VIEW_TAG 20120913
 #define More_BUTTON_TAG 20130607
+
+
+
+
 
 
 typedef enum CONTENT_TYPE {
@@ -115,11 +119,17 @@ typedef enum CONTENT_TYPE {
 
 #pragma mark -
 #pragma mark - View lifecycle
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
 
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
     [[BaiduMobStat defaultStat] pageviewStartWithName:@"HomeView"];
+
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -135,13 +145,11 @@ typedef enum CONTENT_TYPE {
     self.supportRefreshFooter = YES;
     [super viewDidLoad];
     
+    
+    
     [self initUI];
     [self initMoreUI];
     
-    
-    //允许滚动table view 的时候隐藏导航栏
-//    [self followScrollView:dataTableView];
-
     
     ///// 设置开始
     SDSegmentedControl *sender =[[SDSegmentedControl alloc]init];
@@ -152,8 +160,18 @@ typedef enum CONTENT_TYPE {
 
     }
     
-  
 
+}
+
+-(void)scrolliCarouselSliderAutomacially {
+    int i =1;
+    iid = iid + i;
+    [self.carousel scrollToItemAtIndex:iid duration:1];
+    [self.carousel scrollToItemAtIndex:iid animated:YES];
+    if ([self.carousel currentItemIndex]==3) {
+        [self.carousel scrollToItemAtIndex:0 animated:YES];
+        iid =0;
+    }
 }
 
 - (void)initMoreUI
@@ -199,10 +217,6 @@ typedef enum CONTENT_TYPE {
 - (void)leftButtonClickHandler:(id)sender
 {
     [self.viewDeckController toggleLeftViewAnimated:YES];
-    
-    
-    NSString *string =  [[AppDelegate  getAppDelegate] getDeviceToken];
-    PPDebug(@"%%%%%%%@%%%%%%%",string);
 }
 
 
@@ -248,6 +262,8 @@ typedef enum CONTENT_TYPE {
     [self addButtonScrollView];
     //添加当前划片的提示
     [self addSpacePageControl];
+    
+
 
     [[AppDelegate getAppDelegate] showLoginView];
 }
@@ -300,7 +316,6 @@ typedef enum CONTENT_TYPE {
 
 #pragma mark-- 
 #pragma mark-- addCarouselSliders Method
-
 -(void)addCarouselSliders{
     //configure carousel
 
@@ -311,6 +326,9 @@ typedef enum CONTENT_TYPE {
     else{
         self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0,40,UIScreen.mainScreen.bounds.size.width,320)];
     }
+    
+    [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(scrolliCarouselSliderAutomacially) userInfo:nil repeats:YES];
+
 
     
     self.carousel.delegate = self;
@@ -346,15 +364,9 @@ typedef enum CONTENT_TYPE {
     [_myHeaderView addSubview:self.spacePageControl];
 }
 
+
+
 #pragma mark-- ButtonClicked Method
-- (IBAction)didClickButton:(id)sender{
-
-    BasicTopicViewController *vc = [[BasicTopicViewController alloc]initWithNibName:@"BasicTopicViewController" bundle:nil];
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
-}
-
-
 
 -(void)buttonClicked:(SDSegmentedControl *)sender
 

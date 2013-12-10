@@ -33,7 +33,7 @@
 #import "BaiduMobStat.h"
 #import "PublicMyselfViewController.h"
 #import "Myself_SettingsViewController.h"
-#import "BasicTopicViewController.h"
+#import "BBSViewController.h"
 
 
 
@@ -91,6 +91,7 @@ typedef enum CONTENT_TYPE {
     [_currentButton release];
     [_loginViewController release];
     
+
     [super dealloc];
 }
 
@@ -302,7 +303,7 @@ typedef enum CONTENT_TYPE {
 
 #pragma mark-- ButtonClicked Method
 - (IBAction)didClickGMuscleOnlineButton:(id)sender {
-    BasicTopicViewController *vc = [[BasicTopicViewController alloc]initWithNibName:@"BasicTopicViewController" bundle:nil];
+    BBSViewController *vc = [[BBSViewController alloc]initWithNibName:@"BBSViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
 }
@@ -672,4 +673,18 @@ typedef enum CONTENT_TYPE {
     
 }
 
+- (IBAction)clickHomeButton:(UIButton *)sender {
+}
+
+- (IBAction)clickWorkoutButton:(id)sender {
+}
+
+- (IBAction)clickPlanButton:(id)sender {
+}
+
+- (IBAction)clickNutriButton:(UIButton *)sender {
+}
+
+- (IBAction)clickNuriButton {
+}
 @end

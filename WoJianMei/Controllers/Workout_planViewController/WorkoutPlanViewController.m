@@ -10,7 +10,6 @@
 #import "WorkoutPlanViewController.h"
 #import "IIViewDeckController.h"
 #import "ImageManager.h"
-#import "IIViewDeckController.h"
 #import "AppDelegate.h"
 #import "PublicMyselfViewController.h"
 #import "Myself_SettingsViewController.h"

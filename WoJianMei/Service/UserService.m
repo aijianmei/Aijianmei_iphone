@@ -319,8 +319,8 @@ static UserService* _defaultUserService = nil;
             
             if ([appDelegate respondsToSelector:@selector(didLoadUpdateVersionInfo:errorCode:)]){
                 
-                [appDelegate didLoadUpdateVersionInfo:version
-                                               errorCode:output.resultCode];
+//                [appDelegate didLoadUpdateVersionInfo:version
+//                                               errorCode:output.resultCode];
             }
             
             

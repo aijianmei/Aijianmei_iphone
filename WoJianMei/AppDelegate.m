@@ -106,7 +106,7 @@ NSString* GlobalGetServerURL()
 @synthesize navigationController =_navigationController;
 @synthesize viewDelegate = _viewDelegate;
 @synthesize publicStatusViewController =_publicStatusViewController;
-@synthesize homeViewController =_homeViewController;
+@synthesize bbsHomeViewController =_bbsHomeViewController;
 @synthesize loginViewController =_loginViewController;
 
 
@@ -128,7 +128,7 @@ NSString* GlobalGetServerURL()
     [_window release];
     [_viewController release];
     [_publicStatusViewController release];
-    [_homeViewController release];
+    [_bbsHomeViewController release];
     [_loginViewController release];
     [super dealloc];
 }
@@ -157,21 +157,21 @@ NSString* GlobalGetServerURL()
     return _publicStatusViewController;
 }
 
--(HomeViewController *)initHomeViewControllerFromAppDelegate{
+-(BBSHomeViewController *)initHomeViewControllerFromAppDelegate{
     
-    if (self.homeViewController == nil) {
+    if (self.bbsHomeViewController == nil) {
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
         {
-            HomeViewController *vc=[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
-            self.homeViewController =vc;
+            BBSHomeViewController *vc=[[BBSHomeViewController alloc] initWithNibName:@"BBSHomeViewController" bundle:nil];
+            self.bbsHomeViewController =vc;
             [vc release];
         }
         else
         {
             
-             HomeViewController *vc =[[HomeViewController alloc] initWithNibName:@"HomeViewController ~ipad" bundle:nil];
-            self.homeViewController =vc;
+             BBSHomeViewController *vc =[[BBSHomeViewController alloc] initWithNibName:@"BBSHomeViewController ~ipad" bundle:nil];
+            self.bbsHomeViewController =vc;
             [vc release];
         }
 
@@ -179,9 +179,9 @@ NSString* GlobalGetServerURL()
 
     
     
-    self.homeViewController.title = @"首页";
+    self.bbsHomeViewController.title = @"首页";
 
-    return  _homeViewController;
+    return  _bbsHomeViewController;
     
     
     

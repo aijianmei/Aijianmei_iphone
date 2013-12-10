@@ -30,47 +30,6 @@ static ImageManager *_defaultManager = nil;
     CGSize size = image.size;
     return [image stretchableImageWithLeftCapWidth:size.width/2 topCapHeight:size.height/2];
 }
-
-
-
-
-/////BookImageview
-+ (UIImage *)bookBgImage
-{
-    return [UIImage imageNamed:@"book_bg.png"];
-}
-+ (UIImage *)bookselfButton
-{
-    return [UIImage imageNamed:@"bookself_button.png"];
-}
-+ (UIImage *)bookselfButtonPress
-{
-    return [UIImage imageNamed:@"bookself_button_press.png"];
-}
-
-+ (UIImage *)catalogButton
-{
-    return [UIImage imageNamed:@"page_button.png"];
-}
-
-+ (UIImage *)catalogButtonPress
-{
-    return [UIImage imageNamed:@"page_button_press.png"];    
-}
-
-+ (UIImage *)musicButton
-{
-    return [UIImage imageNamed:@"music.png"];        
-}
-+ (UIImage *)videoButton
-{
-    return [UIImage imageNamed:@"video.png"];            
-}
-
-
-
-
-
 ///////////关联页面
 
 +(UIImage*)weiboImage{

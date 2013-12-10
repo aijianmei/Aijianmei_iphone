@@ -16,6 +16,7 @@
 #import "SinaWeibo.h"
 #import "SinaWeiboAuthorizeView.h"
 #import "UserService.h"
+#import "BBSHomeViewController.h"
 
 
 
@@ -43,9 +44,9 @@ enum
     SinaWeiboManager *_sinaweiboManager;
 
     
-    PublicMyselfViewController *_publicStatusViewController;
-    HomeViewController         *_homeViewController;
-    LoginViewController       *_loginViewController;
+    PublicMyselfViewController    *_publicStatusViewController;
+    BBSHomeViewController         *_bbsHomeViewController;
+    LoginViewController           *_loginViewController;
     
     
     NetworkDetector *_networkDetector;
@@ -57,14 +58,14 @@ enum
 @property (nonatomic, retain)  IIViewDeckController *viewController;
 @property (nonatomic,readonly) AJMViewDelegate *viewDelegate;
 @property (nonatomic,retain) PublicMyselfViewController *publicStatusViewController;
-@property (nonatomic,retain) HomeViewController *homeViewController;
+@property (nonatomic,retain) BBSHomeViewController *bbsHomeViewController;
 @property (nonatomic,retain) LoginViewController *loginViewController;
 
 
 + (AppDelegate*)getAppDelegate;
 
 -(PublicMyselfViewController *)initPublicStatusViewController;
--(HomeViewController *)initHomeViewControllerFromAppDelegate;
+-(BBSHomeViewController *)initHomeViewControllerFromAppDelegate;
 -(LoginViewController *)initLoginViewController;
 -(void)showLoginView;
 

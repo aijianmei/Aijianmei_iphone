@@ -9,7 +9,8 @@
 #import "AJMLeftSideViewController.h"
 #import "AGLeftSideTableCell.h"
 #import "MyselfViewController.h"
-#import "HomeViewController.h"
+#import "BBSHomeViewController.h"
+#import "FitnessInfoViewController.h"
 #import "WorkoutViewController.h"
 #import "WorkoutPlanViewController.h"
 #import "NutriViewController.h"
@@ -61,6 +62,7 @@
 
 @implementation AJMLeftSideViewController
 @synthesize homeViewController =_homeViewController;
+@synthesize fitnessInfoViewController =_fitnessInfoViewController;
 @synthesize workoutPlanViewController =_workoutPlanViewController;
 @synthesize workoutViewController =_workoutViewController;
 @synthesize supplementViewController =_supplementViewController;
@@ -89,6 +91,7 @@
 
     [_navigationController release];
     [_homeViewController release];
+    [_fitnessInfoViewController release];
     [_workoutPlanViewController release];
     [_workoutViewController release];
     [_nutriViewController release];
@@ -103,6 +106,7 @@
 - (void)viewDidUnload
 {
     [self setHomeViewController:nil];
+    [self setFitnessInfoViewController:nil];
     [self setWorkoutPlanViewController:nil];
     [self setWorkoutViewController:nil];
     [self setSupplementViewController:nil];
@@ -168,6 +172,19 @@
     _navigationController = [[UINavigationController alloc] initWithRootViewController:homeViewVC];
     
 }
+
+-(void)initFitnessInfoViewController{
+
+    if (self.fitnessInfoViewController ==nil) {
+        FitnessInfoViewController *vc =[[FitnessInfoViewController alloc] initWithNibName:@"FitnessInfoViewController" bundle:nil];
+        self.fitnessInfoViewController =vc;
+        [vc release];
+        self.fitnessInfoViewController.title = @"运动汇";
+    }
+    
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:_fitnessInfoViewController];
+}
+
 
 -(void)initWorkoutPlanViewController{
     if (self.workoutPlanViewController ==nil) {
@@ -461,7 +478,8 @@
                     ///锻炼
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         
-                    [self initWorkOutViewController];
+//                    [self initWorkOutViewController];
+                        [self initFitnessInfoViewController];
                      self.viewDeckController.centerController = _navigationController;
                 
                     

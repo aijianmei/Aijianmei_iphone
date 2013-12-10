@@ -15,11 +15,14 @@
 @class AppDelegate;
 
 @class HomeViewController;
+@class FitnessInfoViewController;
 @class WorkoutPlanViewController;
 @class WorkoutViewController;
 @class SupplementViewController;
 @class NutriViewController;
 @class LifeStytleViewController;
+
+
 @class WorkOutManagerViewController;
 @class MoreViewController;
 @class SVWebViewController;
@@ -34,6 +37,7 @@
     AppDelegate *_appDelegate;
     
     HomeViewController            *_homeViewController;
+    FitnessInfoViewController     *_fitnessInfoViewController;
     WorkoutPlanViewController     *_workoutPlanViewController;
     WorkoutViewController         *_workoutViewController;
     SupplementViewController      *_supplementViewController;
@@ -46,6 +50,7 @@
 
 @property(nonatomic, retain) UINavigationController           *navigationController;
 @property(nonatomic, retain) HomeViewController               *homeViewController;
+@property(nonatomic, retain) FitnessInfoViewController        *fitnessInfoViewController;
 @property(nonatomic, retain) WorkoutPlanViewController        *workoutPlanViewController;
 @property(nonatomic, retain) WorkoutViewController            *workoutViewController;
 @property(nonatomic, retain) SupplementViewController         *supplementViewController;

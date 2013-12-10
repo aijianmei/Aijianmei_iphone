@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPViewController.h"
 
-@interface PostTopicViewController : UIViewController
+@interface PostTopicViewController : PPViewController
+
+
+- (IBAction)clickPickImagesButton:(id)sender;
+- (IBAction)clickVotesButton:(id)sender;
 
 @end
