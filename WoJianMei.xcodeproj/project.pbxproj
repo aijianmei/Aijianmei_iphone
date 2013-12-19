@@ -2180,6 +2180,7 @@
 				4A0E228A1855EF0A00A07512 /* BBSHomeCell.m */,
 				4A0E22791855CBC400A07512 /* BBSHomeViewController.xib */,
 				4A0E22761855CBB200A07512 /* BBSHomeViewController~ipad.xib */,
+				4AE545EA184DE435008CF804 /* topicViewcontroller */,
 			);
 			name = BBSHomeViewController;
 			sourceTree = "<group>";
@@ -3552,6 +3553,13 @@
 		4A6585C417B0D5E60056DA91 /* InformationFillView */ = {
 			isa = PBXGroup;
 			children = (
+				4A0326BE17AA63F40016F6C5 /* HomeViewController */,
+				4ADCFE10169D614600A3E979 /* WorkoutViewController */,
+				4AE52E291778336E00F61933 /* lifeStytleViewController */,
+				4AE52E251778327F00F61933 /* ForumViewController */,
+				4AE52DA01778323400F61933 /* SupplementViewController */,
+				4AE52D9C177831A500F61933 /* Workout_planViewController */,
+				4ADCFE09169D614600A3E979 /* NuriViewController */,
 				4A34EB3D17B3CDA500196793 /* UserInfoPickerViewController.h */,
 				4A34EB3E17B3CDA500196793 /* UserInfoPickerViewController.m */,
 				4A34EB3F17B3CDA500196793 /* UserInfoPickerViewController.xib */,
@@ -3893,15 +3901,7 @@
 			children = (
 				4A0E22731855CB8300A07512 /* BBSHomeViewController */,
 				4A0E226B1855B6B400A07512 /* FitnessInfoController */,
-				4AE545EA184DE435008CF804 /* topicViewcontroller */,
 				4A6585C417B0D5E60056DA91 /* InformationFillView */,
-				4A0326BE17AA63F40016F6C5 /* HomeViewController */,
-				4ADCFE10169D614600A3E979 /* WorkoutViewController */,
-				4AE52E291778336E00F61933 /* lifeStytleViewController */,
-				4AE52E251778327F00F61933 /* ForumViewController */,
-				4AE52DA01778323400F61933 /* SupplementViewController */,
-				4AE52D9C177831A500F61933 /* Workout_planViewController */,
-				4ADCFE09169D614600A3E979 /* NuriViewController */,
 				4ADCFDFA169D614600A3E979 /* MakeFriendsViewcontrller */,
 				4ADCFE04169D614600A3E979 /* MyselfViewContrller */,
 				4ADCFDFD169D614600A3E979 /* MoreViewController */,
