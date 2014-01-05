@@ -327,6 +327,9 @@
 		4A34EB3C17B37B2300196793 /* PostLikeResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34EB3B17B37B2300196793 /* PostLikeResponse.m */; };
 		4A34EB4017B3CDA500196793 /* UserInfoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34EB3E17B3CDA500196793 /* UserInfoPickerViewController.m */; };
 		4A34EB4117B3CDA500196793 /* UserInfoPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A34EB3F17B3CDA500196793 /* UserInfoPickerViewController.xib */; };
+		4A35589118796CD6007FC165 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A35588E18796CD6007FC165 /* ProgressHUD.bundle */; };
+		4A35589218796CD6007FC165 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A35589018796CD6007FC165 /* ProgressHUD.m */; };
+		4A366F061876A6CE0088F2BF /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A366F031876A6CE0088F2BF /* libWeChatSDK.a */; };
 		4A3AB807175060F20045729D /* WorkOutProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB806175060F10045729D /* WorkOutProcessViewController.m */; };
 		4A429DBF175DD1BA00F018CE /* WorkOutInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A429DBE175DD1B900F018CE /* WorkOutInfo.m */; };
 		4A498E7F1685500F0073E682 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A498DAB1685500F0073E682 /* ioapi.c */; };
@@ -570,7 +573,6 @@
 		4AC1589217DEB4A300E97B27 /* 640X1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1589117DEB4A300E97B27 /* 640X1136.png */; };
 		4AC1589417DEB4AC00E97B27 /* 320X480.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1589317DEB4AC00E97B27 /* 320X480.png */; };
 		4AC1589617DEB4B400E97B27 /* 640X960.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1589517DEB4B400E97B27 /* 640X960.png */; };
-		4AC1589D17DF44F600E97B27 /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC1589917DF44F600E97B27 /* libWeChatSDK_armv7_armv7s.a */; };
 		4AC2BDB017BCCC050061E396 /* CommonDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC2BDAE17BCCC040061E396 /* CommonDialog.m */; };
 		4AC2BDB117BCCC050061E396 /* CommonDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC2BDAF17BCCC050061E396 /* CommonDialog.xib */; };
 		4AC2BDBF17BCD7F90061E396 /* description_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC2BDBD17BCD7F90061E396 /* description_BG.png */; };
@@ -1180,6 +1182,12 @@
 		4A34EB3D17B3CDA500196793 /* UserInfoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoPickerViewController.h; sourceTree = "<group>"; };
 		4A34EB3E17B3CDA500196793 /* UserInfoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoPickerViewController.m; sourceTree = "<group>"; };
 		4A34EB3F17B3CDA500196793 /* UserInfoPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoPickerViewController.xib; sourceTree = "<group>"; };
+		4A35588E18796CD6007FC165 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		4A35588F18796CD6007FC165 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		4A35589018796CD6007FC165 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		4A366F031876A6CE0088F2BF /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		4A366F041876A6CE0088F2BF /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		4A366F051876A6CE0088F2BF /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		4A3AB805175060F10045729D /* WorkOutProcessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOutProcessViewController.h; sourceTree = "<group>"; };
 		4A3AB806175060F10045729D /* WorkOutProcessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOutProcessViewController.m; sourceTree = "<group>"; };
 		4A429DBD175DD1B900F018CE /* WorkOutInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOutInfo.h; sourceTree = "<group>"; };
@@ -1620,9 +1628,6 @@
 		4AC1589117DEB4A300E97B27 /* 640X1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640X1136.png; sourceTree = "<group>"; };
 		4AC1589317DEB4AC00E97B27 /* 320X480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 320X480.png; sourceTree = "<group>"; };
 		4AC1589517DEB4B400E97B27 /* 640X960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640X960.png; sourceTree = "<group>"; };
-		4AC1589917DF44F600E97B27 /* libWeChatSDK_armv7_armv7s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK_armv7_armv7s.a; sourceTree = "<group>"; };
-		4AC1589A17DF44F600E97B27 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		4AC1589B17DF44F600E97B27 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		4AC2BDAD17BCCC040061E396 /* CommonDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDialog.h; sourceTree = "<group>"; };
 		4AC2BDAE17BCCC040061E396 /* CommonDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonDialog.m; sourceTree = "<group>"; };
 		4AC2BDAF17BCCC050061E396 /* CommonDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonDialog.xib; sourceTree = "<group>"; };
@@ -1790,6 +1795,7 @@
 				4A03270017AA89030016F6C5 /* libz.1.2.5.dylib in Frameworks */,
 				4A9449A916A94B5800A96815 /* Security.framework in Frameworks */,
 				4A7B7E96179A5CAC00FD6E56 /* libRestKit.a in Frameworks */,
+				4A366F061876A6CE0088F2BF /* libWeChatSDK.a in Frameworks */,
 				C6DB20271760CDE10060BD08 /* CoreImage.framework in Frameworks */,
 				C6DB20251760CDD40060BD08 /* ImageIO.framework in Frameworks */,
 				4A7CF99215D74EF000206B14 /* SystemConfiguration.framework in Frameworks */,
@@ -1817,7 +1823,6 @@
 				4A5F3FCB17912B3200CD701A /* TencentWeiboConnection.framework in Frameworks */,
 				4A5F3FCC17912B3200CD701A /* WeChatConnection.framework in Frameworks */,
 				4A03282717AA8CDB0016F6C5 /* libBaiduMobStat.a in Frameworks */,
-				4AC1589D17DF44F600E97B27 /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2642,6 +2647,27 @@
 				4A2FA997178D5E5B006A1EFB /* deleteTag.png */,
 			);
 			name = AppButtonClass;
+			sourceTree = "<group>";
+		};
+		4A35588D18796CD6007FC165 /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				4A35588E18796CD6007FC165 /* ProgressHUD.bundle */,
+				4A35588F18796CD6007FC165 /* ProgressHUD.h */,
+				4A35589018796CD6007FC165 /* ProgressHUD.m */,
+			);
+			name = ProgressHUD;
+			path = "ProgressHUD-master/ProgressHUD";
+			sourceTree = "<group>";
+		};
+		4A366F021876A6CE0088F2BF /* WeChatSDK_1.4.2.1 */ = {
+			isa = PBXGroup;
+			children = (
+				4A366F031876A6CE0088F2BF /* libWeChatSDK.a */,
+				4A366F041876A6CE0088F2BF /* WXApi.h */,
+				4A366F051876A6CE0088F2BF /* WXApiObject.h */,
+			);
+			path = WeChatSDK_1.4.2.1;
 			sourceTree = "<group>";
 		};
 		4A498D711685500F0073E682 /* Component-Service */ = {
@@ -3769,7 +3795,7 @@
 		4A959679168ED995006F1317 /* 3PP-SDK */ = {
 			isa = PBXGroup;
 			children = (
-				4AC1589717DF44F600E97B27 /* WeixinSDK */,
+				4A366F021876A6CE0088F2BF /* WeChatSDK_1.4.2.1 */,
 				C6630B97176D3CC400A5ACBA /* JSONKit */,
 				C668C2B6176C63DC007CC7FF /* SinaWeiBoSDK_sso */,
 			);
@@ -3797,16 +3823,6 @@
 				4AC1589317DEB4AC00E97B27 /* 320X480.png */,
 			);
 			name = "登陆背景";
-			sourceTree = "<group>";
-		};
-		4AC1589717DF44F600E97B27 /* WeixinSDK */ = {
-			isa = PBXGroup;
-			children = (
-				4AC1589917DF44F600E97B27 /* libWeChatSDK_armv7_armv7s.a */,
-				4AC1589A17DF44F600E97B27 /* WXApi.h */,
-				4AC1589B17DF44F600E97B27 /* WXApiObject.h */,
-			);
-			path = WeixinSDK;
 			sourceTree = "<group>";
 		};
 		4AC2BDBC17BCCE510061E396 /* Updates */ = {
@@ -4001,6 +4017,7 @@
 		4ADCFF50169D69F500A3E979 /* Common iphone */ = {
 			isa = PBXGroup;
 			children = (
+				4A35588D18796CD6007FC165 /* ProgressHUD */,
 				4A03193917E6EF1600D7A45D /* UIKeyboard */,
 				4A151D0217E3608F005329CA /* IZValueSelector */,
 				4A183E7617CDEA7B000793C2 /* MyCustomTableViewForSelected */,
@@ -4291,7 +4308,7 @@
 		4AE394A415C2DD9C00D06C61 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = 4AE394A715C2DD9C00D06C61 /* Build configuration list for PBXProject "WoJianMei" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -4459,6 +4476,7 @@
 				4A0CA66617ABE65500314B8C /* update_app@2x.png in Resources */,
 				4A0CA66817ABE65500314B8C /* dq_1.png in Resources */,
 				4A0CA66917ABE65500314B8C /* dq_2.png in Resources */,
+				4A35589118796CD6007FC165 /* ProgressHUD.bundle in Resources */,
 				4A0CA66A17ABE65500314B8C /* jt_1@2x.png in Resources */,
 				4A0CA66B17ABE65500314B8C /* Label_Type@2x.png in Resources */,
 				4A0CA66C17ABE65500314B8C /* less_data_Button.png in Resources */,
@@ -4937,6 +4955,7 @@
 				4A0327F417AA8CB70016F6C5 /* UINavigationBar+TKCategory.m in Sources */,
 				4A0327F517AA8CB70016F6C5 /* UIScrollview+TKCategory.m in Sources */,
 				4A0327F617AA8CB70016F6C5 /* UIToolbar+TKCategory.m in Sources */,
+				4A35589218796CD6007FC165 /* ProgressHUD.m in Sources */,
 				4A0327F717AA8CB70016F6C5 /* UIView+TKCategory.m in Sources */,
 				4A03284117AA8F2E0016F6C5 /* CDataScanner.m in Sources */,
 				4A03284217AA8F2E0016F6C5 /* CFilteringJSONSerializer.m in Sources */,
@@ -5068,8 +5087,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -5085,12 +5105,16 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "829AACF4-4823-41AD-AC7D-10691E0936B5";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "829AACF4-4823-41AD-AC7D-10691E0936B5";
@@ -5103,8 +5127,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -5113,9 +5138,12 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -5146,13 +5174,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/MobClick\"",
-					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/WeixinSDK\"",
-					"\"$(SRCROOT)/WoJianMei\"",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/ios_api/Release-iphoneos\"",
-					"\"$(SRCROOT)/ios_api/Release-iphonesimulator\"",
-					"\"$(SRCROOT)/ios_api/universal-bin\"",
+					"\\\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/MobClick\\\"",
+					"\\\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/WeixinSDK\\\"",
+					"\\\"$(SRCROOT)/WoJianMei\\\"",
+					"$(SRCROOT)",
+					"\\\"$(SRCROOT)/ios_api/Release-iphoneos\\\"",
+					"\\\"$(SRCROOT)/ios_api/Release-iphonesimulator\\\"",
+					"\\\"$(SRCROOT)/ios_api/universal-bin\\\"",
+					"/Users/karakei/Documents/Study/GitTomCallon/Common_iPhone_20/3PP-SDK/WeChatSDK_1.4.2.1",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -5184,13 +5213,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/MobClick\"",
-					"\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/WeixinSDK\"",
-					"\"$(SRCROOT)/WoJianMei\"",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/ios_api/Release-iphoneos\"",
-					"\"$(SRCROOT)/ios_api/Release-iphonesimulator\"",
-					"\"$(SRCROOT)/ios_api/universal-bin\"",
+					"\\\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/MobClick\\\"",
+					"\\\"$(SRCROOT)/../Common_iPhone_20/3PP-SDK/WeixinSDK\\\"",
+					"\\\"$(SRCROOT)/WoJianMei\\\"",
+					"$(SRCROOT)",
+					"\\\"$(SRCROOT)/ios_api/Release-iphoneos\\\"",
+					"\\\"$(SRCROOT)/ios_api/Release-iphonesimulator\\\"",
+					"\\\"$(SRCROOT)/ios_api/universal-bin\\\"",
+					"/Users/karakei/Documents/Study/GitTomCallon/Common_iPhone_20/3PP-SDK/WeChatSDK_1.4.2.1",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
