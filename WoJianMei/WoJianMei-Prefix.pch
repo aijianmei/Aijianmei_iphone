@@ -26,4 +26,4 @@
 
 #define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 
-#define kServerUrl @"http://42.96.132.109/wapapi"
+#define kServerUrl @"http://115.29.42.96/wapapi"

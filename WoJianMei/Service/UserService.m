@@ -804,7 +804,7 @@ static UserService* _defaultUserService = nil;
     NSString* userId = [[UserManager defaultManager] userId];
     NSData* data = [image data];
     dispatch_async(workingQueue, ^{
-        CommonNetworkOutput* output = [FitnessNetworkRequest uploadUserImage:@"http://42.96.132.109/wapapi/imgupload.php?"
+        CommonNetworkOutput* output = [FitnessNetworkRequest uploadUserImage:@"http://115.29.42.96/wapapi/imgupload.php?"
                                                                       userId:userId
                                                                    imageData:data
                                                                    imageType:PARA_AVATAR];
@@ -839,7 +839,7 @@ static UserService* _defaultUserService = nil;
     NSString* userId = [[UserManager defaultManager] userId];
     NSData* data = [image data];
     dispatch_async(workingQueue, ^{
-        CommonNetworkOutput* output = [FitnessNetworkRequest uploadUserImage:@"http://42.96.132.109/wapapi/imgupload.php?"
+        CommonNetworkOutput* output = [FitnessNetworkRequest uploadUserImage:@"http://115.29.42.96/wapapi/imgupload.php?"
                                                                       userId:userId
                                                                    imageData:data
                                                                    imageType:PARA_AVATAR];
@@ -870,7 +870,7 @@ static UserService* _defaultUserService = nil;
     
     dispatch_async(workingQueue, ^{
         
-        CommonNetworkOutput* output = [FitnessNetworkRequest updateUser:@"http://42.96.132.109/wapapi/imgupload.php?"
+        CommonNetworkOutput* output = [FitnessNetworkRequest updateUser:@"http://115.29.42.96/wapapi/imgupload.php?"
                                                                 user:user];
         dispatch_async(dispatch_get_main_queue(), ^{
             PPDebug(@"<updateUser> result=%d", output.resultCode);

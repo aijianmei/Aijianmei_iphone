@@ -36,7 +36,9 @@
     if (self) {
         // Initialization code
         
-        self.detailLabelView = [[UILabel alloc]initWithFrame:CGRectMake(145.0f, 11.0f, 115.0f,32.0f)];
+        self.detailLabelView = [[UILabel alloc]initWithFrame:CGRectMake(UIScreen.mainScreen.bounds.size.width - 160.0f, 11.0f, 115.0f,32.0f)];
+        
+        
         [self.detailLabelView setTextAlignment:NSTextAlignmentRight];
         [self.detailLabelView setBackgroundColor:[UIColor clearColor]];
         [self.detailLabelView setTextColor:[UIColor grayColor]];
@@ -45,7 +47,7 @@
         
         
         
-        self.detailImageView = [[UIImageView alloc]initWithFrame:CGRectMake(200, 5.0f, 45.0f,42.0f)];
+        self.detailImageView = [[UIImageView alloc]initWithFrame:CGRectMake(UIScreen.mainScreen.bounds.size.width - 50, 5.0f, 45.0f,42.0f)];
         [self.detailImageView setBackgroundColor:[UIColor clearColor]];
         [self addSubview:_detailImageView];
 
@@ -53,7 +55,7 @@
         
         
         
-        self.textField = [[UITextField alloc]initWithFrame:CGRectMake(100, 15, 142, 27)];
+        self.textField = [[UITextField alloc]initWithFrame:CGRectMake(UIScreen.mainScreen.bounds.size.width - 200, 15, 142, 27)];
         _textField.delegate =self;
         [self.textField setBackground:[UIImage imageNamed:@"profile_data_BG.png"]];
         [_textField setTextAlignment:NSTextAlignmentCenter];
@@ -64,7 +66,7 @@
 
         
         
-        self.moreButton = [[UIButton alloc]initWithFrame:CGRectMake(260,3, 40,22)];
+        self.moreButton = [[UIButton alloc]initWithFrame:CGRectMake(UIScreen.mainScreen.bounds.size.width - 50,3, 40,22)];
         [self.moreButton setBackgroundImage:[UIImage imageNamed:@"more_data_Button.png"] forState:UIControlStateNormal];
     
         [_moreButton addTarget:self action:@selector(clickAddMoreButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -72,7 +74,7 @@
         [self addSubview:_moreButton];
         
         
-        self.lessButton = [[UIButton alloc]initWithFrame:CGRectMake(260, 30, 40, 22)];
+        self.lessButton = [[UIButton alloc]initWithFrame:CGRectMake(UIScreen.mainScreen.bounds.size.width - 50, 30, 40, 22)];
         [_lessButton setBackgroundImage:[UIImage imageNamed:@"less_data_Button.png"] forState:UIControlStateNormal];
 
         [_lessButton addTarget:self action:@selector(clickLessButton:) forControlEvents:UIControlEventTouchUpInside];

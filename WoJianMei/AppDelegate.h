@@ -59,13 +59,17 @@ enum
 @property (nonatomic,readonly) AJMViewDelegate *viewDelegate;
 @property (nonatomic,retain) PublicMyselfViewController *publicStatusViewController;
 @property (nonatomic,retain) BBSHomeViewController *bbsHomeViewController;
+@property (nonatomic,retain) HomeViewController *homeViewController;
+
+
 @property (nonatomic,retain) LoginViewController *loginViewController;
 
 
 + (AppDelegate*)getAppDelegate;
 
+
 -(PublicMyselfViewController *)initPublicStatusViewController;
--(BBSHomeViewController *)initHomeViewControllerFromAppDelegate;
+-(HomeViewController *)initHomeViewControllerFromAppDelegate;
 -(LoginViewController *)initLoginViewController;
 -(void)showLoginView;
 

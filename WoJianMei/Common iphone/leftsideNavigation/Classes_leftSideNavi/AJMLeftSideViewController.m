@@ -17,7 +17,6 @@
 #import "SupplementViewController.h"
 #import "LifeStytleViewController.h"
 #import "MoreViewController.h"
-#import "ForumViewController.h"
 #import "LifeStytleViewController.h"
 #import "MakeFriendsViewController.h"
 #import "LoginViewController.h"
@@ -168,14 +167,29 @@
 #pragma mark - initViewControllers
 -(void)initHomeViewController
 {
-    HomeViewController *homeViewVC =[[AppDelegate getAppDelegate] initHomeViewControllerFromAppDelegate];
-    _navigationController = [[UINavigationController alloc] initWithRootViewController:homeViewVC];
+    HomeViewController *homeViewVC =[[AppDelegate getAppDelegate]  initHomeViewControllerFromAppDelegate];
+    self.homeViewController =homeViewVC;
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:_homeViewController];
     
 }
 
 -(void)initFitnessInfoViewController{
 
     if (self.fitnessInfoViewController ==nil) {
+        
+        
+        if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone)
+        {
+            
+            self.workoutPlanViewController =[[WorkoutPlanViewController alloc] initWithNibName:@"WorkoutPlanViewController" bundle:nil];
+            
+            
+        }else{
+            
+            self.workoutPlanViewController =[[WorkoutPlanViewController alloc] initWithNibName:@"WorkoutPlanViewController~ipad" bundle:nil];
+            
+        }
+
         FitnessInfoViewController *vc =[[FitnessInfoViewController alloc] initWithNibName:@"FitnessInfoViewController" bundle:nil];
         self.fitnessInfoViewController =vc;
         [vc release];
@@ -188,12 +202,24 @@
 
 -(void)initWorkoutPlanViewController{
     if (self.workoutPlanViewController ==nil) {
-        WorkoutPlanViewController *vc =[[WorkoutPlanViewController alloc] initWithNibName:@"WorkoutPlanViewController" bundle:nil];
-        self.workoutPlanViewController =vc;
-        [vc release];
-        self.workoutPlanViewController.title = @"健身计划";
+        
+        if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone)
+        {
+            
+          self.workoutPlanViewController =[[WorkoutPlanViewController alloc] initWithNibName:@"WorkoutPlanViewController" bundle:nil];
+            
+            
+        }else{
+            
+       self.workoutPlanViewController =[[WorkoutPlanViewController alloc] initWithNibName:@"WorkoutPlanViewController~ipad" bundle:nil];
+        
+        }
+
+        
     }
     
+    self.workoutPlanViewController.title = @"健身计划与方案";
+
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_workoutPlanViewController];
 }
 
@@ -201,32 +227,72 @@
     
       if (self.workoutViewController ==nil) {
 
-        WorkoutViewController *vc =[[WorkoutViewController alloc] initWithNibName:@"WorkoutViewController" bundle:nil];
-        self.workoutViewController =vc;
-        [vc release];
-        self.workoutViewController.title = @"锻炼";
+          
+          if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone)
+          {
+              
+           self.workoutViewController =[[WorkoutViewController alloc] initWithNibName:@"WorkoutViewController" bundle:nil];
+              
+              
+              
+          }else{
+              
+            self.workoutViewController =[[WorkoutViewController alloc] initWithNibName:@"WorkoutViewController~ipad" bundle:nil];
+          }
+
+        
       }
     
-    
+    self.workoutViewController.title = @"锻炼";
+
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_workoutViewController];
 }
 
 -(void)initSupplementViewController{
     if (self.supplementViewController ==nil) {
+            
+            if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone)
+            {
+                
+                self.supplementViewController =[[SupplementViewController alloc] initWithNibName:@"SupplementViewController" bundle:nil];
+                
+                
+                
+                
+            }else{
+                
+                self.supplementViewController =[[SupplementViewController alloc] initWithNibName:@"SupplementViewController~ipad" bundle:nil];
+                
+            }
 
-    self.supplementViewController =[[SupplementViewController alloc] initWithNibName:@"SupplementViewController" bundle:nil];
-    self.supplementViewController.title = @"补充";
         
     }
+    self.supplementViewController.title = @"补充";
+
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_supplementViewController] ;
 }
 -(void)initNutriViewController{
     
     if (self.nutriViewController ==nil) {
 
-    self.nutriViewController =[[NutriViewController alloc] initWithNibName:@"NutriViewController" bundle:nil];
-    self.nutriViewController.title = @"营养";
+        if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone)
+        {
+            
+            self.nutriViewController =[[NutriViewController alloc] initWithNibName:@"NutriViewController" bundle:nil];
+            
+            
+            
+            
+        }else{
+            
+            self.nutriViewController =[[NutriViewController alloc] initWithNibName:@"NutriViewController~ipad" bundle:nil];
+            
+        }
+
+        
     }
+    self.nutriViewController.title = @"营养";
+
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_nutriViewController] ;
 }
 
@@ -234,9 +300,26 @@
     
     if (self.lifeStytleViewController ==nil) {
         
-        self.lifeStytleViewController =[[LifeStytleViewController alloc] initWithNibName:@"LifeStytleViewController" bundle:nil];
-        self.lifeStytleViewController.title = @"生活方式";
+        if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone)
+        {
+            
+            self.lifeStytleViewController =[[LifeStytleViewController alloc] initWithNibName:@"LifeStytleViewController" bundle:nil];
+            
+            
+            
+            
+        }else{
+            
+            self.lifeStytleViewController =[[LifeStytleViewController alloc] initWithNibName:@"LifeStytleViewController~ipad" bundle:nil];
+            
+        }
+
+        
+        
+        
     }
+    self.lifeStytleViewController.title = @"生活方式";
+
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_lifeStytleViewController] ;
 }
 
@@ -244,18 +327,49 @@
 -(void)initWorkOutManagerViewController{
     if (self.workOutManagerViewController ==nil) {
 
-    self.workOutManagerViewController =[[WorkOutManagerViewController alloc] initWithNibName:@"WorkOutManagerViewController" bundle:nil];
-    self.workOutManagerViewController.title = @"运动管理";
+        if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone)
+        {
+            
+            self.workOutManagerViewController =[[WorkOutManagerViewController alloc] initWithNibName:@"WorkOutManagerViewController" bundle:nil];
+
+            
+            
+        }else{
+            
+            self.workOutManagerViewController =[[WorkOutManagerViewController alloc] initWithNibName:@"WorkOutManagerViewController~ipad" bundle:nil];
+
+            
+        }
+        
+
+        
     }
+    self.workOutManagerViewController.title = @"运动管理";
+
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_workOutManagerViewController] ;
 }
 -(void)initMoreController{
     if (self.moreViewController ==nil) {
 
-    self.moreViewController =[[MoreViewController alloc] initWithNibName:@"MoreViewController" bundle:nil];
-    self.moreViewController.title = @"更多";
+
+        if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone)
+        {
+            self.moreViewController =[[MoreViewController alloc] initWithNibName:@"MoreViewController" bundle:nil];
+
+            
+        
+        }else{
+            self.moreViewController =[[MoreViewController alloc] initWithNibName:@"MoreViewController~ipad" bundle:nil];
+
+        
+        }
+
+        
+        
 
     }
+    self.moreViewController.title = @"更多";
+
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_moreViewController] ;
 }
 
@@ -263,8 +377,8 @@
 -(void)initWebViewController{
     if (self.webViewController ==nil) {
         self.webViewController = [[SVWebViewController alloc] initWithAddress:@"http://aijianmei.com"];
-        self.webViewController.title = @"官方网站";
   }
+    self.webViewController.title = @"官方网站";
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_webViewController];
 }
 
@@ -281,7 +395,7 @@
 {
     switch (section) {
         case 0:
-            return 6;
+            return 8;
         case 1:
             return 2;
         default:
@@ -335,36 +449,36 @@
                      ];
                     break;                    
                 case 1:
-                    cell.textLabel.text = @"运动汇";
+                    cell.textLabel.text = @"锻炼";
                     [cell.imageView setImage:[UIImage imageNamed:@"Workout_Icon.png"]];
 
                     break;
                 case 2:
-                    cell.textLabel.text = @"运动商城";
+                    cell.textLabel.text = @"健身计划与方案";
                     [cell.imageView setImage:[UIImage imageNamed:@"Plan_Icon.png"]];
 
                    break;
                 case 3:
-                    cell.textLabel.text = @"运动管理";
+                    cell.textLabel.text = @"营养";
                     [cell.imageView setImage:[UIImage imageNamed:@"Nuri_Icon.png"]];
                     break;
                 case 4:
-                    cell.textLabel.text = @"个人中心";
-                    [cell.imageView setImage:[ImageManager GobalNavigationAvatarImage]];
-//                    [cell.imageView setImage:[UIImage
-//                                  imageNamed:@"Supplement_Icon.png"]];
+                    cell.textLabel.text = @"补充品";
+//                    [cell.imageView setImage:[ImageManager GobalNavigationAvatarImage]];
+                    [cell.imageView setImage:[UIImage
+                                  imageNamed:@"Supplement_Icon.png"]];
                     break;
-//                case 5:
-//                    cell.textLabel.text = @"生活方式           1509人在线";
-//                    [cell.imageView setImage:[UIImage
-//                                  imageNamed:@"LifeStyle_Icon.png"]];
-//                    break;
-//                case 6:
-//                    cell.textLabel.text = @"运动管理";
-//                    [cell.imageView setImage:[UIImage imageNamed:
-//                                              @"Manager_Icon.png"]];
-//                    break;
                 case 5:
+                    cell.textLabel.text = @"生活方式";
+                    [cell.imageView setImage:[UIImage
+                                  imageNamed:@"LifeStyle_Icon.png"]];
+                    break;
+                case 6:
+                    cell.textLabel.text = @"运动管理";
+                    [cell.imageView setImage:[UIImage imageNamed:
+                                              @"Manager_Icon.png"]];
+                    break;
+                case 7:
                     cell.textLabel.text = @"更多";
                     [cell.imageView setImage:[UIImage imageNamed:@"More_Icon.png"]];
                     break;
@@ -478,8 +592,7 @@
                     ///锻炼
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
                         
-//                    [self initWorkOutViewController];
-                        [self initFitnessInfoViewController];
+                     [self initWorkOutViewController];
                      self.viewDeckController.centerController = _navigationController;
                 
                     
@@ -541,42 +654,42 @@
                     [statTracker logEvent:@"SupplementView" eventLabel:@"SupplementView"];
                 }
                 break;
-//                case 5:
-//                {
-//                    ///生活方式
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        
-//                        [self initLifeStytleViewController];
-//                        self.viewDeckController.centerController = _navigationController;
-//                        
-//                        self.view.userInteractionEnabled = YES;
-//                        [_tableView setUserInteractionEnabled:YES];
-//                        
-//                    }];
-//                    
-//                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
-//                    [statTracker logEvent:@"LifeStytleView" eventLabel:@"LifeStytleView"];
-//                    
-//                }
-//                break;
-
-//                case 6:
-//                {
-//                   ////运动管理
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        
-//                        [self initWorkOutManagerViewController];
-//                        self.viewDeckController.centerController = _navigationController;
-//                    }];
-//                    
-//                    self.view.userInteractionEnabled = YES;
-//                    _tableView.userInteractionEnabled =YES;
-//
-//                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
-//                    [statTracker logEvent:@"WorkoutManagerView" eventLabel:@"WorkoutManagerView"];
-//                }
-//                    break;
                 case 5:
+                {
+                    ///生活方式
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        
+                        [self initLifeStytleViewController];
+                        self.viewDeckController.centerController = _navigationController;
+                    
+                        self.view.userInteractionEnabled = YES;
+                        [_tableView setUserInteractionEnabled:YES];
+                        
+                    }];
+                    
+                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+                    [statTracker logEvent:@"LifeStytleView" eventLabel:@"LifeStytleView"];
+            
+                }
+                break;
+
+                case 6:
+                {
+                   ////运动管理
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        
+                        [self initWorkOutManagerViewController];
+                        self.viewDeckController.centerController = _navigationController;
+                    }];
+                    
+                    self.view.userInteractionEnabled = YES;
+                    _tableView.userInteractionEnabled =YES;
+
+                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+                    [statTracker logEvent:@"WorkoutManagerView" eventLabel:@"WorkoutManagerView"];
+                }
+                    break;
+                case 7:
                 {
                     ///更多
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {

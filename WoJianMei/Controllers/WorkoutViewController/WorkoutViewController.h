@@ -33,7 +33,8 @@
     SDSegmentedControl *_segmentedController;
     
     
-    
+    int iid;
+
 }
 
 @property (nonatomic, retain) UIScrollView *buttonScrollView;

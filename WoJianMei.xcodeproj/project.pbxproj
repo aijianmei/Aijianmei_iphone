@@ -134,46 +134,6 @@
 		4A0F7D74183226400022EA46 /* YFInputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0F7D73183226400022EA46 /* YFInputBar.m */; };
 		4A129C0C17CAED6100FD18B2 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A129C0B17CAED6100FD18B2 /* TPKeyboardAvoidingTableView.m */; };
 		4A129D7617CB46A700FD18B2 /* hxdhl_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D0717CB46A600FD18B2 /* hxdhl_1.png */; };
-		4A129D9A17CB46A700FD18B2 /* fgx_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D2D17CB46A600FD18B2 /* fgx_1.png */; };
-		4A129D9B17CB46A700FD18B2 /* fgx_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D2E17CB46A600FD18B2 /* fgx_2.png */; };
-		4A129D9C17CB46A700FD18B2 /* gdcbbj_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D2F17CB46A600FD18B2 /* gdcbbj_1.png */; };
-		4A129D9D17CB46A700FD18B2 /* gdcbdq_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D3017CB46A600FD18B2 /* gdcbdq_1.png */; };
-		4A129D9E17CB46A700FD18B2 /* rq_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D3117CB46A600FD18B2 /* rq_1.png */; };
-		4A129D9F17CB46A700FD18B2 /* sjbj_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D3217CB46A600FD18B2 /* sjbj_1.png */; };
-		4A129DA117CB46A700FD18B2 /* sjcban_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D3417CB46A600FD18B2 /* sjcban_1.png */; };
-		4A129DA217CB46A700FD18B2 /* sjcbdq_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D3517CB46A600FD18B2 /* sjcbdq_1.png */; };
-		4A129DA317CB46A700FD18B2 /* sjcblbj_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D3617CB46A600FD18B2 /* sjcblbj_1.png */; };
-		4A129DA617CB46A700FD18B2 /* sjjyz_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D3917CB46A600FD18B2 /* sjjyz_1.png */; };
-		4A129DA817CB46A700FD18B2 /* sjks_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D3B17CB46A600FD18B2 /* sjks_1.png */; };
-		4A129DA917CB46A700FD18B2 /* sjks_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D3C17CB46A600FD18B2 /* sjks_2.png */; };
-		4A129DAA17CB46A700FD18B2 /* sjks_３.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D3D17CB46A700FD18B2 /* sjks_３.png */; };
-		4A129DAB17CB46A700FD18B2 /* sjks_４.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D3E17CB46A700FD18B2 /* sjks_４.png */; };
-		4A129DAE17CB46A700FD18B2 /* srk_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D4117CB46A700FD18B2 /* srk_1.png */; };
-		4A129DAF17CB46A700FD18B2 /* srk_1@.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D4217CB46A700FD18B2 /* srk_1@.png */; };
-		4A129DB917CB46A700FD18B2 /* qxbj_1@.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D4D17CB46A700FD18B2 /* qxbj_1@.png */; };
-		4A129DBA17CB46A700FD18B2 /* qxdh_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D4E17CB46A700FD18B2 /* qxdh_1.png */; };
-		4A129DBB17CB46A700FD18B2 /* qxdh_1@.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D4F17CB46A700FD18B2 /* qxdh_1@.png */; };
-		4A129DBC17CB46A700FD18B2 /* qxdl_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D5017CB46A700FD18B2 /* qxdl_1.png */; };
-		4A129DBD17CB46A700FD18B2 /* qxdl_1＠.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D5117CB46A700FD18B2 /* qxdl_1＠.png */; };
-		4A129DBE17CB46A700FD18B2 /* qxdlan_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D5217CB46A700FD18B2 /* qxdlan_1.png */; };
-		4A129DBF17CB46A700FD18B2 /* qxdlan_1＠.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D5317CB46A700FD18B2 /* qxdlan_1＠.png */; };
-		4A129DC017CB46A700FD18B2 /* qxrqzt_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D5417CB46A700FD18B2 /* qxrqzt_1.png */; };
-		4A129DC117CB46A700FD18B2 /* qxrqzt_1＠.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D5517CB46A700FD18B2 /* qxrqzt_1＠.png */; };
-		4A129DC217CB46A700FD18B2 /* qxsjxsk_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D5617CB46A700FD18B2 /* qxsjxsk_1.png */; };
-		4A129DC317CB46A700FD18B2 /* qxsjxsk_1＠.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D5717CB46A700FD18B2 /* qxsjxsk_1＠.png */; };
-		4A129DC417CB46A700FD18B2 /* qxsjxsk_2@.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D5817CB46A700FD18B2 /* qxsjxsk_2@.png */; };
-		4A129DC517CB46A700FD18B2 /* qxsjxsk_3@.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D5917CB46A700FD18B2 /* qxsjxsk_3@.png */; };
-		4A129DC617CB46A700FD18B2 /* qxsjxsk_２.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D5A17CB46A700FD18B2 /* qxsjxsk_２.png */; };
-		4A129DC717CB46A700FD18B2 /* qxsjxsk_３.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D5B17CB46A700FD18B2 /* qxsjxsk_３.png */; };
-		4A129DC817CB46A700FD18B2 /* qxzsdq_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D5C17CB46A700FD18B2 /* qxzsdq_1.png */; };
-		4A129DC917CB46A700FD18B2 /* qxzsdq_1＠.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D5D17CB46A700FD18B2 /* qxzsdq_1＠.png */; };
-		4A129DCA17CB46A700FD18B2 /* qxzsfdq_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D5E17CB46A700FD18B2 /* qxzsfdq_1.png */; };
-		4A129DCB17CB46A700FD18B2 /* qxzsfdq_1＠.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D5F17CB46A700FD18B2 /* qxzsfdq_1＠.png */; };
-		4A129DCC17CB46A700FD18B2 /* rq_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D6017CB46A700FD18B2 /* rq_1.png */; };
-		4A129DCD17CB46A700FD18B2 /* rq_1@.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D6117CB46A700FD18B2 /* rq_1@.png */; };
-		4A129DCE17CB46A700FD18B2 /* 曲线.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D6217CB46A700FD18B2 /* 曲线.jpg */; };
-		4A129DCF17CB46A700FD18B2 /* 横向选择动作.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D6317CB46A700FD18B2 /* 横向选择动作.jpg */; };
-		4A129DD017CB46A700FD18B2 /* 选择日期.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A129D6417CB46A700FD18B2 /* 选择日期.jpg */; };
 		4A129DD317CB4FC200FD18B2 /* WorkoutDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A129DD217CB4FC100FD18B2 /* WorkoutDataService.m */; };
 		4A129DD717CB902B00FD18B2 /* WorkoutFirstTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A129DD517CB902B00FD18B2 /* WorkoutFirstTypeViewController.m */; };
 		4A129DD817CB902B00FD18B2 /* WorkoutFirstTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A129DD617CB902B00FD18B2 /* WorkoutFirstTypeViewController.xib */; };
@@ -210,12 +170,6 @@
 		4A20191617C25915003D4E54 /* NumberDataCellHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A20191517C25913003D4E54 /* NumberDataCellHeader.m */; };
 		4A20191917C25930003D4E54 /* NumberDataCellFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A20191817C2592E003D4E54 /* NumberDataCellFooter.m */; };
 		4A20192317C325DC003D4E54 /* NumberDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A20192217C325D8003D4E54 /* NumberDataManager.m */; };
-		4A20192F17C35461003D4E54 /* qxzs_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A20192517C35461003D4E54 /* qxzs_1.png */; };
-		4A20193017C35461003D4E54 /* qxzs_２.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A20192617C35461003D4E54 /* qxzs_２.png */; };
-		4A20193117C35461003D4E54 /* sjgl_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A20192717C35461003D4E54 /* sjgl_1.png */; };
-		4A20193217C35461003D4E54 /* sjgl_２.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A20192817C35461003D4E54 /* sjgl_２.png */; };
-		4A20193317C35461003D4E54 /* tzgl_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A20192917C35461003D4E54 /* tzgl_1.png */; };
-		4A20193417C35461003D4E54 /* tzgl_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A20192A17C35461003D4E54 /* tzgl_2.png */; };
 		4A22152A17793C970079430D /* ColorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A22152917793C970079430D /* ColorManager.m */; };
 		4A257EF6178F9697001D153F /* ChangeNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A257EF5178F9697001D153F /* ChangeNameCell.m */; };
 		4A257F0E17900522001D153F /* AddLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A257F0C17900521001D153F /* AddLabelViewController.m */; };
@@ -269,7 +223,6 @@
 		4A31655D183D198F008DC2CB /* TencentWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A316555183D198E008DC2CB /* TencentWeiboConnection.framework */; };
 		4A31655E183D198F008DC2CB /* WeChatConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A316556183D198E008DC2CB /* WeChatConnection.framework */; };
 		4A316594183D1E3B008DC2CB /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A316593183D1E3B008DC2CB /* AdSupport.framework */; };
-		4A316598183D276F008DC2CB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A316597183D276F008DC2CB /* StoreKit.framework */; };
 		4A3165BD183DF69C008DC2CB /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3165A2183DF69C008DC2CB /* CDataScanner.m */; };
 		4A3165BE183DF69C008DC2CB /* CFilteringJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3165A5183DF69C008DC2CB /* CFilteringJSONSerializer.m */; };
 		4A3165BF183DF69C008DC2CB /* CJSONDeserializer_BlocksExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3165A7183DF69C008DC2CB /* CJSONDeserializer_BlocksExtensions.m */; };
@@ -290,6 +243,32 @@
 		4A34EB3917B36F7A00196793 /* PublicMyselfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A34EB3817B36F7900196793 /* PublicMyselfViewController.xib */; };
 		4A34EB4017B3CDA500196793 /* UserInfoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34EB3E17B3CDA500196793 /* UserInfoPickerViewController.m */; };
 		4A34EB4117B3CDA500196793 /* UserInfoPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A34EB3F17B3CDA500196793 /* UserInfoPickerViewController.xib */; };
+		4A35589418797B98007FC165 /* WorkoutViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A35589318797B98007FC165 /* WorkoutViewController~ipad.xib */; };
+		4A35589618798108007FC165 /* MoreViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A35589518798108007FC165 /* MoreViewController~ipad.xib */; };
+		4A35589818798494007FC165 /* LifeStytleViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A35589718798494007FC165 /* LifeStytleViewController~ipad.xib */; };
+		4A35589A187984AE007FC165 /* SupplementViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A355899187984AE007FC165 /* SupplementViewController~ipad.xib */; };
+		4A35589C187984C5007FC165 /* WorkoutPlanViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A35589B187984C5007FC165 /* WorkoutPlanViewController~ipad.xib */; };
+		4A35589E187984E1007FC165 /* NutriViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A35589D187984E1007FC165 /* NutriViewController~ipad.xib */; };
+		4A3558A018798800007FC165 /* AboutViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A35589F18798800007FC165 /* AboutViewController~ipad.xib */; };
+		4A3558A2187989D2007FC165 /* FeedBackViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558A1187989D2007FC165 /* FeedBackViewController~ipad.xib */; };
+		4A3558A4187991F9007FC165 /* WorkOutManagerViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558A3187991F9007FC165 /* WorkOutManagerViewController~ipad.xib */; };
+		4A3558A6187997DE007FC165 /* MyselfViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558A5187997DE007FC165 /* MyselfViewController~ipad.xib */; };
+		4A3558A8187997FA007FC165 /* Myself_SettingsViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558A7187997FA007FC165 /* Myself_SettingsViewController~ipad.xib */; };
+		4A3558AA1879991E007FC165 /* CityViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558A91879991D007FC165 /* CityViewController~ipad.xib */; };
+		4A3558AC18799936007FC165 /* ProvinceViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558AB18799936007FC165 /* ProvinceViewController~ipad.xib */; };
+		4A3558AE18799DA7007FC165 /* ChangeNameViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558AD18799DA7007FC165 /* ChangeNameViewController~ipad.xib */; };
+		4A3558B018799DF7007FC165 /* ChangeDescriptionViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558AF18799DF7007FC165 /* ChangeDescriptionViewController~ipad.xib */; };
+		4A3558B218799E6F007FC165 /* ChangeGenderViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558B118799E6F007FC165 /* ChangeGenderViewController~ipad.xib */; };
+		4A3558B41879A144007FC165 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3558B31879A144007FC165 /* StoreKit.framework */; };
+		4A3558B61879A5EA007FC165 /* LoginViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558B51879A5EA007FC165 /* LoginViewController~ipad.xib */; };
+		4A3558B81879A642007FC165 /* SignUpViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558B71879A642007FC165 /* SignUpViewController~ipad.xib */; };
+		4A3558BA1879A82D007FC165 /* UserInfoPickerViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558B91879A82D007FC165 /* UserInfoPickerViewController~ipad.xib */; };
+		4A3558C51879AE23007FC165 /* 76X76.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558C31879AE23007FC165 /* 76X76.png */; };
+		4A3558C61879AE23007FC165 /* 152X152.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558C41879AE23007FC165 /* 152X152.png */; };
+		4A3558CA1879AEB3007FC165 /* 768X1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558C81879AEB3007FC165 /* 768X1024.png */; };
+		4A3558CC1879AED0007FC165 /* 1536X2048.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558CB1879AED0007FC165 /* 1536X2048.png */; };
+		4A3558CF1879B203007FC165 /* 72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558CD1879B203007FC165 /* 72x72.png */; };
+		4A3558D01879B203007FC165 /* 144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3558CE1879B203007FC165 /* 144x144.png */; };
 		4A3853B3184DF7DF00D5A66B /* PostTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3853B1184DF7DF00D5A66B /* PostTopicViewController.m */; };
 		4A3853B4184DF7DF00D5A66B /* PostTopicViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3853B2184DF7DF00D5A66B /* PostTopicViewController~ipad.xib */; };
 		4A3853B6184DF7F900D5A66B /* PostTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3853B5184DF7F900D5A66B /* PostTopicViewController.xib */; };
@@ -545,8 +524,6 @@
 		4AC523BA178E9011003D9729 /* MyselfSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC523B9178E9011003D9729 /* MyselfSettingCell.m */; };
 		4AC593B7183F3E8900B61C2E /* CommonArticleViewController ～ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC593B6183F3E8900B61C2E /* CommonArticleViewController ～ipad.xib */; };
 		4AC593B9183F694000B61C2E /* CommentViewController ～ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC593B8183F694000B61C2E /* CommentViewController ～ipad.xib */; };
-		4AC593BC183F819000B61C2E /* 76X76.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC593BA183F819000B61C2E /* 76X76.png */; };
-		4AC593BD183F819000B61C2E /* 152X152.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC593BB183F819000B61C2E /* 152X152.png */; };
 		4ACA496A1755EF9700CC9886 /* WorkoutDataComposeSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA49691755EF9700CC9886 /* WorkoutDataComposeSheetView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4ACA496D1755F84300CC9886 /* WorkoutDataComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA496C1755F84300CC9886 /* WorkoutDataComposeViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4ACA723D182C9F3200567C77 /* IndexLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ACA723C182C9F3200567C77 /* IndexLine@2x.png */; };
@@ -673,8 +650,6 @@
 		4AE18AE717D4291D00F0EBB0 /* IndexBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE18ADB17D4291D00F0EBB0 /* IndexBG@2x.png */; };
 		4AE18AE917D42B5F00F0EBB0 /* WorkoutPlanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AE18AE817D42B5F00F0EBB0 /* WorkoutPlanViewController.xib */; };
 		4AE18AEB17D42E8E00F0EBB0 /* IndexLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE18AEA17D42E8E00F0EBB0 /* IndexLine@2x.png */; };
-		4AE18AF017D43E1E00F0EBB0 /* sjjyz_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE18AEE17D43E1700F0EBB0 /* sjjyz_2.png */; };
-		4AE18AF117D43E1E00F0EBB0 /* sjjyz_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE18AEF17D43E1B00F0EBB0 /* sjjyz_4.png */; };
 		4AE18AF317D4444D00F0EBB0 /* RankingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AE18AF217D4444B00F0EBB0 /* RankingViewController.xib */; };
 		4AE356A817B4E70800ADD258 /* kdbj_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE356A017B4E70800ADD258 /* kdbj_1.png */; };
 		4AE356A917B4E70800ADD258 /* kddq_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE356A117B4E70800ADD258 /* kddq_1.png */; };
@@ -694,7 +669,6 @@
 		4AE394C215C2DD9C00D06C61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE394C115C2DD9C00D06C61 /* AppDelegate.m */; };
 		4AE52D9F177831A500F61933 /* WorkoutPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE52D9E177831A500F61933 /* WorkoutPlanViewController.m */; };
 		4AE52DA31778323400F61933 /* SupplementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE52DA21778323400F61933 /* SupplementViewController.m */; };
-		4AE52E281778327F00F61933 /* ForumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE52E271778327F00F61933 /* ForumViewController.m */; };
 		4AE52E2C1778336E00F61933 /* LifeStytleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE52E2B1778336E00F61933 /* LifeStytleViewController.m */; };
 		4AE545EC184DE466008CF804 /* BBSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AE545EB184DE466008CF804 /* BBSViewController.xib */; };
 		4AE545EE184DE478008CF804 /* BBSViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AE545ED184DE478008CF804 /* BBSViewController~ipad.xib */; };
@@ -882,46 +856,6 @@
 		4A129C0A17CAED6100FD18B2 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
 		4A129C0B17CAED6100FD18B2 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		4A129D0717CB46A600FD18B2 /* hxdhl_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hxdhl_1.png; sourceTree = "<group>"; };
-		4A129D2D17CB46A600FD18B2 /* fgx_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fgx_1.png; sourceTree = "<group>"; };
-		4A129D2E17CB46A600FD18B2 /* fgx_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fgx_2.png; sourceTree = "<group>"; };
-		4A129D2F17CB46A600FD18B2 /* gdcbbj_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gdcbbj_1.png; sourceTree = "<group>"; };
-		4A129D3017CB46A600FD18B2 /* gdcbdq_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gdcbdq_1.png; sourceTree = "<group>"; };
-		4A129D3117CB46A600FD18B2 /* rq_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rq_1.png; sourceTree = "<group>"; };
-		4A129D3217CB46A600FD18B2 /* sjbj_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sjbj_1.png; sourceTree = "<group>"; };
-		4A129D3417CB46A600FD18B2 /* sjcban_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sjcban_1.png; sourceTree = "<group>"; };
-		4A129D3517CB46A600FD18B2 /* sjcbdq_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sjcbdq_1.png; sourceTree = "<group>"; };
-		4A129D3617CB46A600FD18B2 /* sjcblbj_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sjcblbj_1.png; sourceTree = "<group>"; };
-		4A129D3917CB46A600FD18B2 /* sjjyz_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sjjyz_1.png; sourceTree = "<group>"; };
-		4A129D3B17CB46A600FD18B2 /* sjks_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sjks_1.png; sourceTree = "<group>"; };
-		4A129D3C17CB46A600FD18B2 /* sjks_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sjks_2.png; sourceTree = "<group>"; };
-		4A129D3D17CB46A700FD18B2 /* sjks_３.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sjks_３.png"; sourceTree = "<group>"; };
-		4A129D3E17CB46A700FD18B2 /* sjks_４.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sjks_４.png"; sourceTree = "<group>"; };
-		4A129D4117CB46A700FD18B2 /* srk_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = srk_1.png; sourceTree = "<group>"; };
-		4A129D4217CB46A700FD18B2 /* srk_1@.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "srk_1@.png"; sourceTree = "<group>"; };
-		4A129D4D17CB46A700FD18B2 /* qxbj_1@.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qxbj_1@.png"; sourceTree = "<group>"; };
-		4A129D4E17CB46A700FD18B2 /* qxdh_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qxdh_1.png; sourceTree = "<group>"; };
-		4A129D4F17CB46A700FD18B2 /* qxdh_1@.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qxdh_1@.png"; sourceTree = "<group>"; };
-		4A129D5017CB46A700FD18B2 /* qxdl_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qxdl_1.png; sourceTree = "<group>"; };
-		4A129D5117CB46A700FD18B2 /* qxdl_1＠.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qxdl_1＠.png"; sourceTree = "<group>"; };
-		4A129D5217CB46A700FD18B2 /* qxdlan_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qxdlan_1.png; sourceTree = "<group>"; };
-		4A129D5317CB46A700FD18B2 /* qxdlan_1＠.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qxdlan_1＠.png"; sourceTree = "<group>"; };
-		4A129D5417CB46A700FD18B2 /* qxrqzt_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qxrqzt_1.png; sourceTree = "<group>"; };
-		4A129D5517CB46A700FD18B2 /* qxrqzt_1＠.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qxrqzt_1＠.png"; sourceTree = "<group>"; };
-		4A129D5617CB46A700FD18B2 /* qxsjxsk_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qxsjxsk_1.png; sourceTree = "<group>"; };
-		4A129D5717CB46A700FD18B2 /* qxsjxsk_1＠.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qxsjxsk_1＠.png"; sourceTree = "<group>"; };
-		4A129D5817CB46A700FD18B2 /* qxsjxsk_2@.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qxsjxsk_2@.png"; sourceTree = "<group>"; };
-		4A129D5917CB46A700FD18B2 /* qxsjxsk_3@.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qxsjxsk_3@.png"; sourceTree = "<group>"; };
-		4A129D5A17CB46A700FD18B2 /* qxsjxsk_２.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qxsjxsk_２.png"; sourceTree = "<group>"; };
-		4A129D5B17CB46A700FD18B2 /* qxsjxsk_３.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qxsjxsk_３.png"; sourceTree = "<group>"; };
-		4A129D5C17CB46A700FD18B2 /* qxzsdq_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qxzsdq_1.png; sourceTree = "<group>"; };
-		4A129D5D17CB46A700FD18B2 /* qxzsdq_1＠.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qxzsdq_1＠.png"; sourceTree = "<group>"; };
-		4A129D5E17CB46A700FD18B2 /* qxzsfdq_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qxzsfdq_1.png; sourceTree = "<group>"; };
-		4A129D5F17CB46A700FD18B2 /* qxzsfdq_1＠.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qxzsfdq_1＠.png"; sourceTree = "<group>"; };
-		4A129D6017CB46A700FD18B2 /* rq_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rq_1.png; sourceTree = "<group>"; };
-		4A129D6117CB46A700FD18B2 /* rq_1@.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rq_1@.png"; sourceTree = "<group>"; };
-		4A129D6217CB46A700FD18B2 /* 曲线.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "曲线.jpg"; sourceTree = "<group>"; };
-		4A129D6317CB46A700FD18B2 /* 横向选择动作.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "横向选择动作.jpg"; sourceTree = "<group>"; };
-		4A129D6417CB46A700FD18B2 /* 选择日期.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "选择日期.jpg"; sourceTree = "<group>"; };
 		4A129DD117CB4FC000FD18B2 /* WorkoutDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkoutDataService.h; path = ../WorkoutDataService.h; sourceTree = "<group>"; };
 		4A129DD217CB4FC100FD18B2 /* WorkoutDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkoutDataService.m; path = ../WorkoutDataService.m; sourceTree = "<group>"; };
 		4A129DD417CB902B00FD18B2 /* WorkoutFirstTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkoutFirstTypeViewController.h; path = Controllers/MyselfViewContrller/WorkoutFirstTypeViewController.h; sourceTree = "<group>"; };
@@ -973,12 +907,6 @@
 		4A20191817C2592E003D4E54 /* NumberDataCellFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberDataCellFooter.m; sourceTree = "<group>"; };
 		4A20192117C325D4003D4E54 /* NumberDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NumberDataManager.h; path = ../NumberDataManager.h; sourceTree = "<group>"; };
 		4A20192217C325D8003D4E54 /* NumberDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NumberDataManager.m; path = ../NumberDataManager.m; sourceTree = "<group>"; };
-		4A20192517C35461003D4E54 /* qxzs_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qxzs_1.png; sourceTree = "<group>"; };
-		4A20192617C35461003D4E54 /* qxzs_２.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qxzs_２.png"; sourceTree = "<group>"; };
-		4A20192717C35461003D4E54 /* sjgl_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sjgl_1.png; sourceTree = "<group>"; };
-		4A20192817C35461003D4E54 /* sjgl_２.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sjgl_２.png"; sourceTree = "<group>"; };
-		4A20192917C35461003D4E54 /* tzgl_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tzgl_1.png; sourceTree = "<group>"; };
-		4A20192A17C35461003D4E54 /* tzgl_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tzgl_2.png; sourceTree = "<group>"; };
 		4A22152817793C970079430D /* ColorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorManager.h; sourceTree = "<group>"; };
 		4A22152917793C970079430D /* ColorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorManager.m; sourceTree = "<group>"; };
 		4A257EF4178F9697001D153F /* ChangeNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeNameCell.h; sourceTree = "<group>"; };
@@ -1085,7 +1013,6 @@
 		4A316561183D1A43008DC2CB /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		4A316562183D1A43008DC2CB /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		4A316593183D1E3B008DC2CB /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		4A316597183D276F008DC2CB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4A3165A1183DF69C008DC2CB /* CDataScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner.h; sourceTree = "<group>"; };
 		4A3165A2183DF69C008DC2CB /* CDataScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner.m; sourceTree = "<group>"; };
 		4A3165A4183DF69C008DC2CB /* CFilteringJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFilteringJSONSerializer.h; sourceTree = "<group>"; };
@@ -1121,6 +1048,32 @@
 		4A34EB3D17B3CDA500196793 /* UserInfoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoPickerViewController.h; sourceTree = "<group>"; };
 		4A34EB3E17B3CDA500196793 /* UserInfoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoPickerViewController.m; sourceTree = "<group>"; };
 		4A34EB3F17B3CDA500196793 /* UserInfoPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoPickerViewController.xib; sourceTree = "<group>"; };
+		4A35589318797B98007FC165 /* WorkoutViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "WorkoutViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A35589518798108007FC165 /* MoreViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MoreViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A35589718798494007FC165 /* LifeStytleViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "LifeStytleViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A355899187984AE007FC165 /* SupplementViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "SupplementViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A35589B187984C5007FC165 /* WorkoutPlanViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "WorkoutPlanViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A35589D187984E1007FC165 /* NutriViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NutriViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A35589F18798800007FC165 /* AboutViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "AboutViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A3558A1187989D2007FC165 /* FeedBackViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FeedBackViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A3558A3187991F9007FC165 /* WorkOutManagerViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "WorkOutManagerViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A3558A5187997DE007FC165 /* MyselfViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MyselfViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A3558A7187997FA007FC165 /* Myself_SettingsViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Myself_SettingsViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A3558A91879991D007FC165 /* CityViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CityViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A3558AB18799936007FC165 /* ProvinceViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProvinceViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A3558AD18799DA7007FC165 /* ChangeNameViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ChangeNameViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A3558AF18799DF7007FC165 /* ChangeDescriptionViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ChangeDescriptionViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A3558B118799E6F007FC165 /* ChangeGenderViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ChangeGenderViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A3558B31879A144007FC165 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		4A3558B51879A5EA007FC165 /* LoginViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "LoginViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A3558B71879A642007FC165 /* SignUpViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "SignUpViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A3558B91879A82D007FC165 /* UserInfoPickerViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UserInfoPickerViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A3558C31879AE23007FC165 /* 76X76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 76X76.png; sourceTree = "<group>"; };
+		4A3558C41879AE23007FC165 /* 152X152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 152X152.png; sourceTree = "<group>"; };
+		4A3558C81879AEB3007FC165 /* 768X1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 768X1024.png; sourceTree = "<group>"; };
+		4A3558CB1879AED0007FC165 /* 1536X2048.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1536X2048.png; sourceTree = "<group>"; };
+		4A3558CD1879B203007FC165 /* 72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 72x72.png; path = App_Icons/72x72.png; sourceTree = "<group>"; };
+		4A3558CE1879B203007FC165 /* 144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 144x144.png; path = App_Icons/144x144.png; sourceTree = "<group>"; };
 		4A3853B0184DF7DF00D5A66B /* PostTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTopicViewController.h; sourceTree = "<group>"; };
 		4A3853B1184DF7DF00D5A66B /* PostTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTopicViewController.m; sourceTree = "<group>"; };
 		4A3853B2184DF7DF00D5A66B /* PostTopicViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PostTopicViewController~ipad.xib"; sourceTree = "<group>"; };
@@ -1559,8 +1512,6 @@
 		4AC523B9178E9011003D9729 /* MyselfSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyselfSettingCell.m; sourceTree = "<group>"; };
 		4AC593B6183F3E8900B61C2E /* CommonArticleViewController ～ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CommonArticleViewController ～ipad.xib"; sourceTree = "<group>"; };
 		4AC593B8183F694000B61C2E /* CommentViewController ～ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CommentViewController ～ipad.xib"; sourceTree = "<group>"; };
-		4AC593BA183F819000B61C2E /* 76X76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 76X76.png; sourceTree = "<group>"; };
-		4AC593BB183F819000B61C2E /* 152X152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 152X152.png; sourceTree = "<group>"; };
 		4ACA49681755EF9700CC9886 /* WorkoutDataComposeSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDataComposeSheetView.h; sourceTree = "<group>"; };
 		4ACA49691755EF9700CC9886 /* WorkoutDataComposeSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutDataComposeSheetView.m; sourceTree = "<group>"; };
 		4ACA496B1755F84300CC9886 /* WorkoutDataComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDataComposeViewController.h; sourceTree = "<group>"; };
@@ -1798,8 +1749,6 @@
 		4AE18ADB17D4291D00F0EBB0 /* IndexBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndexBG@2x.png"; sourceTree = "<group>"; };
 		4AE18AE817D42B5F00F0EBB0 /* WorkoutPlanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkoutPlanViewController.xib; sourceTree = "<group>"; };
 		4AE18AEA17D42E8E00F0EBB0 /* IndexLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndexLine@2x.png"; sourceTree = "<group>"; };
-		4AE18AEE17D43E1700F0EBB0 /* sjjyz_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sjjyz_2.png; sourceTree = "<group>"; };
-		4AE18AEF17D43E1B00F0EBB0 /* sjjyz_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sjjyz_4.png; sourceTree = "<group>"; };
 		4AE18AF217D4444B00F0EBB0 /* RankingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingViewController.xib; sourceTree = "<group>"; };
 		4AE356A017B4E70800ADD258 /* kdbj_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kdbj_1.png; sourceTree = "<group>"; };
 		4AE356A117B4E70800ADD258 /* kddq_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kddq_1.png; sourceTree = "<group>"; };
@@ -1825,8 +1774,6 @@
 		4AE52D9E177831A500F61933 /* WorkoutPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutPlanViewController.m; sourceTree = "<group>"; };
 		4AE52DA11778323400F61933 /* SupplementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplementViewController.h; sourceTree = "<group>"; };
 		4AE52DA21778323400F61933 /* SupplementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplementViewController.m; sourceTree = "<group>"; };
-		4AE52E261778327F00F61933 /* ForumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForumViewController.h; sourceTree = "<group>"; };
-		4AE52E271778327F00F61933 /* ForumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumViewController.m; sourceTree = "<group>"; };
 		4AE52E2A1778336E00F61933 /* LifeStytleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifeStytleViewController.h; sourceTree = "<group>"; };
 		4AE52E2B1778336E00F61933 /* LifeStytleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifeStytleViewController.m; sourceTree = "<group>"; };
 		4AE545EB184DE466008CF804 /* BBSViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBSViewController.xib; sourceTree = "<group>"; };
@@ -1907,6 +1854,7 @@
 				4A3165D7183E4C42008DC2CB /* libWeChatSDK.a in Frameworks */,
 				4A3165E0183E655B008DC2CB /* libBaiduMobStat.a in Frameworks */,
 				4A4992BB1685562D0073E682 /* CoreData.framework in Frameworks */,
+				4A3558B41879A144007FC165 /* StoreKit.framework in Frameworks */,
 				4A4992B9168556240073E682 /* CoreLocation.framework in Frameworks */,
 				4A31655C183D198F008DC2CB /* SinaWeiboConnection.framework in Frameworks */,
 				4A4992B51685552D0073E682 /* AddressBook.framework in Frameworks */,
@@ -1916,7 +1864,6 @@
 				4A316557183D198E008DC2CB /* AGCommon.framework in Frameworks */,
 				4AE394B615C2DD9C00D06C61 /* CoreGraphics.framework in Frameworks */,
 				4AE394B215C2DD9C00D06C61 /* UIKit.framework in Frameworks */,
-				4A316598183D276F008DC2CB /* StoreKit.framework in Frameworks */,
 				4AE394B415C2DD9C00D06C61 /* Foundation.framework in Frameworks */,
 				4A316559183D198F008DC2CB /* ShareSDK.framework in Frameworks */,
 			);
@@ -1965,8 +1912,6 @@
 				4A1B25D217EED04E00FC6194 /* icons */,
 				4AC1588B17DEB46B00E97B27 /* 登陆背景 */,
 				4A129CF317CB46A600FD18B2 /* 健身管理 */,
-				4A20192417C35461003D4E54 /* 四选一 */,
-				4A2018EA17BF5FE8003D4E54 /* SportCircle */,
 				4AC2BDBC17BCCE510061E396 /* Updates */,
 				4A0CA5ED17ABE65500314B8C /* CommonViewController */,
 				4A0CA5F117ABE65500314B8C /* loginViewController */,
@@ -2198,8 +2143,6 @@
 			isa = PBXGroup;
 			children = (
 				4A129D0417CB46A600FD18B2 /* 公共 */,
-				4A129D2017CB46A600FD18B2 /* 数据 */,
-				4A129D4B17CB46A700FD18B2 /* 曲线 */,
 			);
 			name = "健身管理";
 			path = "../../../TeamTask/Dong_设计任务/爱健美版本/2.0/健身管理";
@@ -2211,62 +2154,6 @@
 				4A129D0717CB46A600FD18B2 /* hxdhl_1.png */,
 			);
 			path = "公共";
-			sourceTree = "<group>";
-		};
-		4A129D2017CB46A600FD18B2 /* 数据 */ = {
-			isa = PBXGroup;
-			children = (
-				4AE18AEE17D43E1700F0EBB0 /* sjjyz_2.png */,
-				4AE18AEF17D43E1B00F0EBB0 /* sjjyz_4.png */,
-				4A129D2D17CB46A600FD18B2 /* fgx_1.png */,
-				4A129D2E17CB46A600FD18B2 /* fgx_2.png */,
-				4A129D2F17CB46A600FD18B2 /* gdcbbj_1.png */,
-				4A129D3017CB46A600FD18B2 /* gdcbdq_1.png */,
-				4A129D3117CB46A600FD18B2 /* rq_1.png */,
-				4A129D3217CB46A600FD18B2 /* sjbj_1.png */,
-				4A129D3417CB46A600FD18B2 /* sjcban_1.png */,
-				4A129D3517CB46A600FD18B2 /* sjcbdq_1.png */,
-				4A129D3617CB46A600FD18B2 /* sjcblbj_1.png */,
-				4A129D3917CB46A600FD18B2 /* sjjyz_1.png */,
-				4A129D3B17CB46A600FD18B2 /* sjks_1.png */,
-				4A129D3C17CB46A600FD18B2 /* sjks_2.png */,
-				4A129D3D17CB46A700FD18B2 /* sjks_３.png */,
-				4A129D3E17CB46A700FD18B2 /* sjks_４.png */,
-				4A129D4117CB46A700FD18B2 /* srk_1.png */,
-				4A129D4217CB46A700FD18B2 /* srk_1@.png */,
-			);
-			path = "数据";
-			sourceTree = "<group>";
-		};
-		4A129D4B17CB46A700FD18B2 /* 曲线 */ = {
-			isa = PBXGroup;
-			children = (
-				4A129D4D17CB46A700FD18B2 /* qxbj_1@.png */,
-				4A129D4E17CB46A700FD18B2 /* qxdh_1.png */,
-				4A129D4F17CB46A700FD18B2 /* qxdh_1@.png */,
-				4A129D5017CB46A700FD18B2 /* qxdl_1.png */,
-				4A129D5117CB46A700FD18B2 /* qxdl_1＠.png */,
-				4A129D5217CB46A700FD18B2 /* qxdlan_1.png */,
-				4A129D5317CB46A700FD18B2 /* qxdlan_1＠.png */,
-				4A129D5417CB46A700FD18B2 /* qxrqzt_1.png */,
-				4A129D5517CB46A700FD18B2 /* qxrqzt_1＠.png */,
-				4A129D5617CB46A700FD18B2 /* qxsjxsk_1.png */,
-				4A129D5717CB46A700FD18B2 /* qxsjxsk_1＠.png */,
-				4A129D5817CB46A700FD18B2 /* qxsjxsk_2@.png */,
-				4A129D5917CB46A700FD18B2 /* qxsjxsk_3@.png */,
-				4A129D5A17CB46A700FD18B2 /* qxsjxsk_２.png */,
-				4A129D5B17CB46A700FD18B2 /* qxsjxsk_３.png */,
-				4A129D5C17CB46A700FD18B2 /* qxzsdq_1.png */,
-				4A129D5D17CB46A700FD18B2 /* qxzsdq_1＠.png */,
-				4A129D5E17CB46A700FD18B2 /* qxzsfdq_1.png */,
-				4A129D5F17CB46A700FD18B2 /* qxzsfdq_1＠.png */,
-				4A129D6017CB46A700FD18B2 /* rq_1.png */,
-				4A129D6117CB46A700FD18B2 /* rq_1@.png */,
-				4A129D6217CB46A700FD18B2 /* 曲线.jpg */,
-				4A129D6317CB46A700FD18B2 /* 横向选择动作.jpg */,
-				4A129D6417CB46A700FD18B2 /* 选择日期.jpg */,
-			);
-			path = "曲线";
 			sourceTree = "<group>";
 		};
 		4A151D0217E3608F005329CA /* IZValueSelector */ = {
@@ -2337,33 +2224,15 @@
 		4A1B25D217EED04E00FC6194 /* icons */ = {
 			isa = PBXGroup;
 			children = (
-				4AC593BA183F819000B61C2E /* 76X76.png */,
-				4AC593BB183F819000B61C2E /* 152X152.png */,
+				4A3558C31879AE23007FC165 /* 76X76.png */,
+				4A3558CD1879B203007FC165 /* 72x72.png */,
+				4A3558CE1879B203007FC165 /* 144x144.png */,
+				4A3558C41879AE23007FC165 /* 152X152.png */,
 				4A1B25D317EED06300FC6194 /* 120X120.png */,
 				4A1B25D417EED06300FC6194 /* 57X57.png */,
 				4A1B25D517EED06300FC6194 /* 114X114.png */,
 			);
 			name = icons;
-			sourceTree = "<group>";
-		};
-		4A2018EA17BF5FE8003D4E54 /* SportCircle */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = SportCircle;
-			sourceTree = "<group>";
-		};
-		4A20192417C35461003D4E54 /* 四选一 */ = {
-			isa = PBXGroup;
-			children = (
-				4A20192517C35461003D4E54 /* qxzs_1.png */,
-				4A20192617C35461003D4E54 /* qxzs_２.png */,
-				4A20192717C35461003D4E54 /* sjgl_1.png */,
-				4A20192817C35461003D4E54 /* sjgl_２.png */,
-				4A20192917C35461003D4E54 /* tzgl_1.png */,
-				4A20192A17C35461003D4E54 /* tzgl_2.png */,
-			);
-			path = "四选一";
 			sourceTree = "<group>";
 		};
 		4A27ADFA1777EED1009978C5 /* NetWorkRequest */ = {
@@ -3542,9 +3411,11 @@
 				4A8A7224174E10FE00BD3AAE /* LoginViewController.h */,
 				4A8A7225174E10FF00BD3AAE /* LoginViewController.m */,
 				4A0A581017BB8C970089683A /* LoginViewController.xib */,
+				4A3558B51879A5EA007FC165 /* LoginViewController~ipad.xib */,
 				4A8A7227174E557700BD3AAE /* SignUpViewController.h */,
 				4A8A7228174E557700BD3AAE /* SignUpViewController.m */,
 				4A0A581217BB8CA40089683A /* SignUpViewController.xib */,
+				4A3558B71879A642007FC165 /* SignUpViewController~ipad.xib */,
 				4ACD190916154F5C00567A24 /* Entries */,
 			);
 			name = Controllers;
@@ -3556,13 +3427,13 @@
 				4A0326BE17AA63F40016F6C5 /* HomeViewController */,
 				4ADCFE10169D614600A3E979 /* WorkoutViewController */,
 				4AE52E291778336E00F61933 /* lifeStytleViewController */,
-				4AE52E251778327F00F61933 /* ForumViewController */,
 				4AE52DA01778323400F61933 /* SupplementViewController */,
 				4AE52D9C177831A500F61933 /* Workout_planViewController */,
 				4ADCFE09169D614600A3E979 /* NuriViewController */,
 				4A34EB3D17B3CDA500196793 /* UserInfoPickerViewController.h */,
 				4A34EB3E17B3CDA500196793 /* UserInfoPickerViewController.m */,
 				4A34EB3F17B3CDA500196793 /* UserInfoPickerViewController.xib */,
+				4A3558B91879A82D007FC165 /* UserInfoPickerViewController~ipad.xib */,
 			);
 			name = InformationFillView;
 			sourceTree = "<group>";
@@ -3663,6 +3534,7 @@
 				4A8BCAD417AFE2B90019CBB1 /* WorkOutManagerViewController.h */,
 				4A8BCAD517AFE2BB0019CBB1 /* WorkOutManagerViewController.m */,
 				4A8BCAD617AFE2BD0019CBB1 /* WorkOutManagerViewController.xib */,
+				4A3558A3187991F9007FC165 /* WorkOutManagerViewController~ipad.xib */,
 				4A8F3E6C17BA6BAD000F553A /* WorkoutMainViewController.h */,
 				4A8F3E6D17BA6BAD000F553A /* WorkoutMainViewController.m */,
 				4A8F3E6E17BA6BAE000F553A /* WorkoutMainViewController.xib */,
@@ -3759,6 +3631,8 @@
 		4AC1588B17DEB46B00E97B27 /* 登陆背景 */ = {
 			isa = PBXGroup;
 			children = (
+				4A3558CB1879AED0007FC165 /* 1536X2048.png */,
+				4A3558C81879AEB3007FC165 /* 768X1024.png */,
 				4AC1589517DEB4B400E97B27 /* 640X960.png */,
 				4AC1589117DEB4A300E97B27 /* 640X1136.png */,
 				4AC1589317DEB4AC00E97B27 /* 320X480.png */,
@@ -4106,15 +3980,18 @@
 				4A5F3FD217914E2E00CD701A /* FeedBackViewController.h */,
 				4A5F3FD317914E2E00CD701A /* FeedBackViewController.m */,
 				4A5F3FD417914E2E00CD701A /* FeedBackViewController.xib */,
+				4A3558A1187989D2007FC165 /* FeedBackViewController~ipad.xib */,
 				4ADCFE02169D614600A3E979 /* MoreViewController.h */,
 				4ADCFE03169D614600A3E979 /* MoreViewController.m */,
 				4A0A581417BB90210089683A /* MoreViewController.xib */,
+				4A35589518798108007FC165 /* MoreViewController~ipad.xib */,
 				4A0A581817BB912E0089683A /* MoreViewCell.h */,
 				4A0A581917BB912F0089683A /* MoreViewCell.m */,
 				4A0A581617BB909C0089683A /* MoreViewCell.xib */,
 				4ADCFDFE169D614600A3E979 /* AboutViewController.h */,
 				4ADCFDFF169D614600A3E979 /* AboutViewController.m */,
 				4A5F3FE617914F6700CD701A /* AboutViewController.xib */,
+				4A35589F18798800007FC165 /* AboutViewController~ipad.xib */,
 			);
 			name = MoreViewController;
 			path = Controllers/MoreViewController;
@@ -4131,6 +4008,7 @@
 				4ADCFE07169D614600A3E979 /* MyselfViewController.h */,
 				4ADCFE08169D614600A3E979 /* MyselfViewController.m */,
 				4A34EB3617B36F6D00196793 /* MyselfViewController.xib */,
+				4A3558A5187997DE007FC165 /* MyselfViewController~ipad.xib */,
 				4A2018FE17C1E345003D4E54 /* MyselfViewBaseController.h */,
 				4A2018FF17C1E346003D4E54 /* MyselfViewBaseController.m */,
 				4A20190017C1E348003D4E54 /* MyselfViewBaseController.xib */,
@@ -4149,22 +4027,27 @@
 				4ADCFE05169D614600A3E979 /* Myself_SettingsViewController.h */,
 				4ADCFE06169D614600A3E979 /* Myself_SettingsViewController.m */,
 				4A9C3FC8177AD38D0088AA6D /* Myself_SettingsViewController.xib */,
+				4A3558A7187997FA007FC165 /* Myself_SettingsViewController~ipad.xib */,
 				4AC523B8178E9010003D9729 /* MyselfSettingCell.h */,
 				4AC523B9178E9011003D9729 /* MyselfSettingCell.m */,
 				4A0E4DC0178C4B5B00E1287D /* ChangeNameViewController.h */,
 				4A0E4DC1178C4B5B00E1287D /* ChangeNameViewController.m */,
 				4A0E4DC2178C4B5B00E1287D /* ChangeNameViewController.xib */,
+				4A3558AD18799DA7007FC165 /* ChangeNameViewController~ipad.xib */,
 				4A257EF4178F9697001D153F /* ChangeNameCell.h */,
 				4A257EF5178F9697001D153F /* ChangeNameCell.m */,
 				4A0E4DCA178C50AF00E1287D /* ChangeDescriptionViewController.h */,
 				4A0E4DCB178C50AF00E1287D /* ChangeDescriptionViewController.m */,
 				4A0E4DCC178C50AF00E1287D /* ChangeDescriptionViewController.xib */,
+				4A3558AF18799DF7007FC165 /* ChangeDescriptionViewController~ipad.xib */,
 				4A0E4DCF178C559E00E1287D /* ChangeGenderViewController.h */,
 				4A0E4DD0178C559E00E1287D /* ChangeGenderViewController.m */,
 				4A0E4DD1178C559E00E1287D /* ChangeGenderViewController.xib */,
+				4A3558B118799E6F007FC165 /* ChangeGenderViewController~ipad.xib */,
 				4A2FA97C178D076C006A1EFB /* ProvinceViewController.h */,
 				4A2FA97D178D076C006A1EFB /* ProvinceViewController.m */,
 				4A2FA97E178D076C006A1EFB /* ProvinceViewController.xib */,
+				4A3558AB18799936007FC165 /* ProvinceViewController~ipad.xib */,
 				4A0CA5CC17AB969500314B8C /* BMIViewController.h */,
 				4A0CA5CD17AB969500314B8C /* BMIViewController.m */,
 				4A0CA5CE17AB969500314B8C /* BMIViewController.xib */,
@@ -4173,6 +4056,7 @@
 				4A2FA986178D0E4C006A1EFB /* CityViewController.h */,
 				4A2FA987178D0E4C006A1EFB /* CityViewController.m */,
 				4A2FA988178D0E4C006A1EFB /* CityViewController.xib */,
+				4A3558A91879991D007FC165 /* CityViewController~ipad.xib */,
 				4AC523B5178E4DE1003D9729 /* PickCityCell.h */,
 				4AC523B6178E4DE1003D9729 /* PickCityCell.m */,
 				4A2FA98B178D3DE8006A1EFB /* ChangeLabelsViewController.h */,
@@ -4208,6 +4092,7 @@
 			isa = PBXGroup;
 			children = (
 				4AC2BDCB17BD081D0061E396 /* NutriViewController.xib */,
+				4A35589D187984E1007FC165 /* NutriViewController~ipad.xib */,
 				4ADCFE0A169D614600A3E979 /* NutriViewController.h */,
 				4ADCFE0B169D614600A3E979 /* NutriViewController.m */,
 				4ADCFE0C169D614600A3E979 /* NutritionDetailCell.h */,
@@ -4226,6 +4111,7 @@
 				4ADCFE17169D614600A3E979 /* WorkoutViewController.h */,
 				4ADCFE18169D614600A3E979 /* WorkoutViewController.m */,
 				4AC2BDC317BD05300061E396 /* WorkoutViewController.xib */,
+				4A35589318797B98007FC165 /* WorkoutViewController~ipad.xib */,
 				4A0326AA17A8FFC30016F6C5 /* VideoInfoView.h */,
 				4A0326AB17A8FFC40016F6C5 /* VideoInfoView.m */,
 				4A0326A817A8FEBD0016F6C5 /* VideoInfoView.xib */,
@@ -4356,7 +4242,7 @@
 		4AE394B015C2DD9C00D06C61 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4A316597183D276F008DC2CB /* StoreKit.framework */,
+				4A3558B31879A144007FC165 /* StoreKit.framework */,
 				4A316593183D1E3B008DC2CB /* AdSupport.framework */,
 				4A31653D183D198E008DC2CB /* ShareSDK */,
 				4A03270317AA89520016F6C5 /* CoreTelephony.framework */,
@@ -4417,6 +4303,7 @@
 				4AE52D9D177831A500F61933 /* WorkoutPlanViewController.h */,
 				4AE52D9E177831A500F61933 /* WorkoutPlanViewController.m */,
 				4AE18AE817D42B5F00F0EBB0 /* WorkoutPlanViewController.xib */,
+				4A35589B187984C5007FC165 /* WorkoutPlanViewController~ipad.xib */,
 			);
 			name = Workout_planViewController;
 			path = Controllers/Workout_planViewController;
@@ -4426,21 +4313,12 @@
 			isa = PBXGroup;
 			children = (
 				4AC2BDC917BD08060061E396 /* SupplementViewController.xib */,
+				4A355899187984AE007FC165 /* SupplementViewController~ipad.xib */,
 				4AE52DA11778323400F61933 /* SupplementViewController.h */,
 				4AE52DA21778323400F61933 /* SupplementViewController.m */,
 			);
 			name = SupplementViewController;
 			path = Controllers/SupplementViewController;
-			sourceTree = "<group>";
-		};
-		4AE52E251778327F00F61933 /* ForumViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4AE52E261778327F00F61933 /* ForumViewController.h */,
-				4AE52E271778327F00F61933 /* ForumViewController.m */,
-			);
-			name = ForumViewController;
-			path = Controllers/ForumViewController;
 			sourceTree = "<group>";
 		};
 		4AE52E291778336E00F61933 /* lifeStytleViewController */ = {
@@ -4449,6 +4327,7 @@
 				4AE52E2A1778336E00F61933 /* LifeStytleViewController.h */,
 				4AE52E2B1778336E00F61933 /* LifeStytleViewController.m */,
 				4AC2BDC717BD07E90061E396 /* LifeStytleViewController.xib */,
+				4A35589718798494007FC165 /* LifeStytleViewController~ipad.xib */,
 			);
 			name = lifeStytleViewController;
 			path = Controllers/lifeStytleViewController;
@@ -4627,10 +4506,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A3558A4187991F9007FC165 /* WorkOutManagerViewController~ipad.xib in Resources */,
 				4AE394BC15C2DD9C00D06C61 /* InfoPlist.strings in Resources */,
 				4AE545EE184DE478008CF804 /* BBSViewController~ipad.xib in Resources */,
 				4A4991D5168553A30073E682 /* Documentation.html in Resources */,
 				4A499225168553A30073E682 /* donedown.png in Resources */,
+				4A3558CC1879AED0007FC165 /* 1536X2048.png in Resources */,
 				4A499226168553A30073E682 /* doneup.png in Resources */,
 				4A499228168553A30073E682 /* TestPPViewController.xib in Resources */,
 				4A499242168553A30073E682 /* ReviewRequest.strings in Resources */,
@@ -4663,6 +4544,7 @@
 				4A873BA816A54BD7005BDA45 /* Citypicker.xib in Resources */,
 				4A3853B4184DF7DF00D5A66B /* PostTopicViewController~ipad.xib in Resources */,
 				4ACE23A216AB168D002E41D1 /* AccessoryView.xib in Resources */,
+				4A35589618798108007FC165 /* MoreViewController~ipad.xib in Resources */,
 				4A0E22921856075900A07512 /* bbs_create_draw_disable@2x.png in Resources */,
 				4A634E1D1753431E00453C0D /* bg@2x.png in Resources */,
 				4A634E1E1753431E00453C0D /* Flower.jpg in Resources */,
@@ -4674,7 +4556,6 @@
 				4A9C3FB2177A7ECB0088AA6D /* pageDot@2x.png in Resources */,
 				4A9C3FCA177AD3970088AA6D /* Myself_SettingsViewController.xib in Resources */,
 				4A9C3FCC177AE36F0088AA6D /* LabelsView.xib in Resources */,
-				4AC593BD183F819000B61C2E /* 152X152.png in Resources */,
 				4A0E4DC4178C4B5B00E1287D /* ChangeNameViewController.xib in Resources */,
 				4A0E4DCE178C50B000E1287D /* ChangeDescriptionViewController.xib in Resources */,
 				4A0E4DD3178C559E00E1287D /* ChangeGenderViewController.xib in Resources */,
@@ -4682,8 +4563,10 @@
 				4A2FA98A178D0E4C006A1EFB /* CityViewController.xib in Resources */,
 				4A2FA98F178D3E02006A1EFB /* ChangeLabelsViewController.xib in Resources */,
 				4A2FA998178D5E5C006A1EFB /* apphead@2x.png in Resources */,
+				4A35589E187984E1007FC165 /* NutriViewController~ipad.xib in Resources */,
 				4A2FA999178D5E5C006A1EFB /* deleteTag.png in Resources */,
 				4A257F0F17900522001D153F /* AddLabelViewController.xib in Resources */,
+				4A35589A187984AE007FC165 /* SupplementViewController~ipad.xib in Resources */,
 				4A5F3FD617914E2E00CD701A /* FeedBackViewController.xib in Resources */,
 				4A5F3FE717914F6700CD701A /* AboutViewController.xib in Resources */,
 				4A7B7EBA179A7AAB00FD6E56 /* MIT-LICENSE in Resources */,
@@ -4712,6 +4595,7 @@
 				4A0CA65B17ABE65500314B8C /* feedback_bg2@2x.png in Resources */,
 				4A0CA65C17ABE65500314B8C /* middle_cell_background.png in Resources */,
 				4A0CA65D17ABE65500314B8C /* more_apps@2x.png in Resources */,
+				4A35589818798494007FC165 /* LifeStytleViewController~ipad.xib in Resources */,
 				4A0CA65E17ABE65500314B8C /* quit_app@2x.png in Resources */,
 				4A0CA65F17ABE65500314B8C /* Rate_Us@2x.png in Resources */,
 				4A0CA66017ABE65500314B8C /* share_social@2x.png in Resources */,
@@ -4735,6 +4619,7 @@
 				4A0CA66F17ABE65500314B8C /* more_data_Button@2x.png in Resources */,
 				4A0CA67317ABE65500314B8C /* profile_data_BG.png in Resources */,
 				4A0CA67417ABE65500314B8C /* profile_data_BG@2x.png in Resources */,
+				4A3558B81879A642007FC165 /* SignUpViewController~ipad.xib in Resources */,
 				4A0CA67517ABE65500314B8C /* tx_2.png in Resources */,
 				4A0CA67B17ABE65500314B8C /* top_bar_commonButton.png in Resources */,
 				4A0CA67C17ABE65500314B8C /* top_bar_commonButton@2x.png in Resources */,
@@ -4746,6 +4631,7 @@
 				4A0CA68217ABE65500314B8C /* dq_2.png in Resources */,
 				4A0E22A31856148F00A07512 /* bbs_post_content_bg@2x.png in Resources */,
 				4A0E2262185586AD00A07512 /* common_home_badge@2x.png in Resources */,
+				4A3558CF1879B203007FC165 /* 72x72.png in Resources */,
 				4A0CA68317ABE65500314B8C /* gobal_background@2x.png in Resources */,
 				4A0CA68417ABE65500314B8C /* hhhh.png in Resources */,
 				4A0CA68517ABE65500314B8C /* vbbbb.png in Resources */,
@@ -4754,22 +4640,28 @@
 				4A0CA68817ABE65500314B8C /* friendsCircle.png in Resources */,
 				4A0CA68917ABE65500314B8C /* message.png in Resources */,
 				4A0CA68A17ABE65500314B8C /* sina.png in Resources */,
+				4A3558B61879A5EA007FC165 /* LoginViewController~ipad.xib in Resources */,
 				4A0CA68B17ABE65500314B8C /* wechat.png in Resources */,
 				4A0CA68C17ABE65500314B8C /* dlk_1@2x.png in Resources */,
 				4AA8D45D1827E5F600036560 /* IndexLine.png in Resources */,
 				4A0CA68D17ABE65500314B8C /* comment_icon.png in Resources */,
+				4A3558A6187997DE007FC165 /* MyselfViewController~ipad.xib in Resources */,
 				4A0CA68E17ABE65500314B8C /* like_icon.png in Resources */,
 				4A0CA68F17ABE65500314B8C /* Press_like_icon.png in Resources */,
 				4A0CA69017ABE65500314B8C /* Share_article.png in Resources */,
+				4A3558A2187989D2007FC165 /* FeedBackViewController~ipad.xib in Resources */,
 				4A0CA69317ABE65500314B8C /* dtd_1.png in Resources */,
 				4A0CA69417ABE65500314B8C /* dtd_2.png in Resources */,
+				4A35589418797B98007FC165 /* WorkoutViewController~ipad.xib in Resources */,
 				4A0CA69517ABE65500314B8C /* fgx_1.png in Resources */,
 				4A0CA69817ABE65500314B8C /* fl_3.png in Resources */,
 				4A0E22721855B6F500A07512 /* FitnessInfoViewController.xib in Resources */,
 				4A0CA69A17ABE65500314B8C /* shj_1.png in Resources */,
+				4A3558AC18799936007FC165 /* ProvinceViewController~ipad.xib in Resources */,
 				4AC593B7183F3E8900B61C2E /* CommonArticleViewController ～ipad.xib in Resources */,
 				4A12A78417ACE0D500696CF2 /* touxiang_40x40.png in Resources */,
 				4A12A78517ACE0D500696CF2 /* touxiang_40x40@2x.png in Resources */,
+				4A3558C61879AE23007FC165 /* 152X152.png in Resources */,
 				4A8BCAD817AFE2BE0019CBB1 /* WorkOutManagerViewController.xib in Resources */,
 				4A6585CC17B0DD9A0056DA91 /* PostViewController.xib in Resources */,
 				4A6585D717B136180056DA91 /* PostViewCell.xib in Resources */,
@@ -4779,19 +4671,23 @@
 				4A34EB3917B36F7A00196793 /* PublicMyselfViewController.xib in Resources */,
 				4A34EB4117B3CDA500196793 /* UserInfoPickerViewController.xib in Resources */,
 				4AA8D45A1827E5F600036560 /* AccessoryView@2x.png in Resources */,
+				4A3558CA1879AEB3007FC165 /* 768X1024.png in Resources */,
 				4AE356A817B4E70800ADD258 /* kdbj_1.png in Resources */,
 				4AE356A917B4E70800ADD258 /* kddq_1.png in Resources */,
 				4AE356AA17B4E70800ADD258 /* kdjm_1.png in Resources */,
+				4A3558BA1879A82D007FC165 /* UserInfoPickerViewController~ipad.xib in Resources */,
 				4AA8D4601827E5F600036560 /* IndexSep@2x.png in Resources */,
 				4AE356AB17B4E70800ADD258 /* SLNumberPickerTicks.png in Resources */,
 				4AE356B217B4E92200ADD258 /* girl_big.png in Resources */,
 				4A0E22A1185610C400A07512 /* BBSPostDetailCell.xib in Resources */,
 				4AE356B317B4E92200ADD258 /* boy_big.png in Resources */,
+				4A35589C187984C5007FC165 /* WorkoutPlanViewController~ipad.xib in Resources */,
 				4AE356B417B4E92200ADD258 /* girl_small.png in Resources */,
 				4AE356B517B4E92200ADD258 /* boy_small.png in Resources */,
 				4AE356B817B4EB8400ADD258 /* syb_1.png in Resources */,
 				4AE356B917B4EB8400ADD258 /* xyb_1.png in Resources */,
 				4A9BFDA917B8984C00EC1415 /* kdc_1.png in Resources */,
+				4A3558AE18799DA7007FC165 /* ChangeNameViewController~ipad.xib in Resources */,
 				4A8F3E6B17BA6B64000F553A /* WeightManagerViewController.xib in Resources */,
 				4A8F3E7017BA6BAE000F553A /* WorkoutMainViewController.xib in Resources */,
 				4A1B25D617EED06300FC6194 /* 120X120.png in Resources */,
@@ -4801,6 +4697,7 @@
 				4A0A580817BB766F0089683A /* HomeViewController.xib in Resources */,
 				4A0A580F17BB78C10089683A /* ArticleCell.xib in Resources */,
 				4A0A581117BB8C970089683A /* LoginViewController.xib in Resources */,
+				4A3558C51879AE23007FC165 /* 76X76.png in Resources */,
 				4A0A581317BB8CA50089683A /* SignUpViewController.xib in Resources */,
 				4A0A581517BB90210089683A /* MoreViewController.xib in Resources */,
 				4A0A581717BB909C0089683A /* MoreViewCell.xib in Resources */,
@@ -4826,65 +4723,20 @@
 				4AA8D45C1827E5F600036560 /* IndexBG@2x.png in Resources */,
 				4A20190817C2531C003D4E54 /* NumberDataCellFooter.xib in Resources */,
 				4A20190D17C255F3003D4E54 /* NumberDataViewController.xib in Resources */,
-				4A20192F17C35461003D4E54 /* qxzs_1.png in Resources */,
-				4A20193017C35461003D4E54 /* qxzs_２.png in Resources */,
-				4A20193117C35461003D4E54 /* sjgl_1.png in Resources */,
 				4A0E229718560DAD00A07512 /* BBSPostDetailController~ipad.xib in Resources */,
-				4A20193217C35461003D4E54 /* sjgl_２.png in Resources */,
-				4A20193317C35461003D4E54 /* tzgl_1.png in Resources */,
-				4A20193417C35461003D4E54 /* tzgl_2.png in Resources */,
 				4A129D7617CB46A700FD18B2 /* hxdhl_1.png in Resources */,
-				4A129D9A17CB46A700FD18B2 /* fgx_1.png in Resources */,
-				4A129D9B17CB46A700FD18B2 /* fgx_2.png in Resources */,
-				4A129D9C17CB46A700FD18B2 /* gdcbbj_1.png in Resources */,
-				4A129D9D17CB46A700FD18B2 /* gdcbdq_1.png in Resources */,
-				4A129D9E17CB46A700FD18B2 /* rq_1.png in Resources */,
-				4A129D9F17CB46A700FD18B2 /* sjbj_1.png in Resources */,
-				4A129DA117CB46A700FD18B2 /* sjcban_1.png in Resources */,
-				4A129DA217CB46A700FD18B2 /* sjcbdq_1.png in Resources */,
 				4A0E227A1855CBC400A07512 /* BBSHomeViewController.xib in Resources */,
 				4A0E22B51856EEFA00A07512 /* VoteCell.xib in Resources */,
 				4A0E229918560DBD00A07512 /* BBSPostDetailController.xib in Resources */,
-				4A129DA317CB46A700FD18B2 /* sjcblbj_1.png in Resources */,
-				4A129DA617CB46A700FD18B2 /* sjjyz_1.png in Resources */,
-				4A129DA817CB46A700FD18B2 /* sjks_1.png in Resources */,
-				4A129DA917CB46A700FD18B2 /* sjks_2.png in Resources */,
-				4A129DAA17CB46A700FD18B2 /* sjks_３.png in Resources */,
-				4A129DAB17CB46A700FD18B2 /* sjks_４.png in Resources */,
-				4A129DAE17CB46A700FD18B2 /* srk_1.png in Resources */,
-				4A129DAF17CB46A700FD18B2 /* srk_1@.png in Resources */,
-				4A129DB917CB46A700FD18B2 /* qxbj_1@.png in Resources */,
-				4A129DBA17CB46A700FD18B2 /* qxdh_1.png in Resources */,
-				4A129DBB17CB46A700FD18B2 /* qxdh_1@.png in Resources */,
-				4A129DBC17CB46A700FD18B2 /* qxdl_1.png in Resources */,
-				4A129DBD17CB46A700FD18B2 /* qxdl_1＠.png in Resources */,
+				4A3558A018798800007FC165 /* AboutViewController~ipad.xib in Resources */,
 				4A31655B183D198F008DC2CB /* ShareSDKLocalizable.strings in Resources */,
-				4A129DBE17CB46A700FD18B2 /* qxdlan_1.png in Resources */,
-				4A129DBF17CB46A700FD18B2 /* qxdlan_1＠.png in Resources */,
+				4A3558D01879B203007FC165 /* 144x144.png in Resources */,
 				4A1B25D717EED06300FC6194 /* 57X57.png in Resources */,
-				4A129DC017CB46A700FD18B2 /* qxrqzt_1.png in Resources */,
-				4A129DC117CB46A700FD18B2 /* qxrqzt_1＠.png in Resources */,
-				4A129DC217CB46A700FD18B2 /* qxsjxsk_1.png in Resources */,
 				4A88CC04185186EF004E4D36 /* draw_home_draw@2x.png in Resources */,
 				4A0E22781855CBB200A07512 /* BBSHomeViewController~ipad.xib in Resources */,
-				4A129DC317CB46A700FD18B2 /* qxsjxsk_1＠.png in Resources */,
 				4A88CC0C185187DB004E4D36 /* HomeMainMenuPanel~ipad.xib in Resources */,
-				4A129DC417CB46A700FD18B2 /* qxsjxsk_2@.png in Resources */,
-				4A129DC517CB46A700FD18B2 /* qxsjxsk_3@.png in Resources */,
-				4A129DC617CB46A700FD18B2 /* qxsjxsk_２.png in Resources */,
-				4A129DC717CB46A700FD18B2 /* qxsjxsk_３.png in Resources */,
 				4A88CC001851864D004E4D36 /* HomeMainMenu~ipad.xib in Resources */,
-				4A129DC817CB46A700FD18B2 /* qxzsdq_1.png in Resources */,
-				4A129DC917CB46A700FD18B2 /* qxzsdq_1＠.png in Resources */,
-				4A129DCA17CB46A700FD18B2 /* qxzsfdq_1.png in Resources */,
-				4AC593BC183F819000B61C2E /* 76X76.png in Resources */,
-				4A129DCB17CB46A700FD18B2 /* qxzsfdq_1＠.png in Resources */,
 				4A88CC161854B969004E4D36 /* common_home_front_page@2x.png in Resources */,
-				4A129DCC17CB46A700FD18B2 /* rq_1.png in Resources */,
-				4A129DCD17CB46A700FD18B2 /* rq_1@.png in Resources */,
-				4A129DCE17CB46A700FD18B2 /* 曲线.jpg in Resources */,
-				4A129DCF17CB46A700FD18B2 /* 横向选择动作.jpg in Resources */,
-				4A129DD017CB46A700FD18B2 /* 选择日期.jpg in Resources */,
 				4A129DD817CB902B00FD18B2 /* WorkoutFirstTypeViewController.xib in Resources */,
 				4A183E3C17CC813E000793C2 /* WorkoutDetailViewController.xib in Resources */,
 				4A183E9717CDEA7B000793C2 /* fs_main_login_normal.png in Resources */,
@@ -4905,15 +4757,16 @@
 				4AE18AE717D4291D00F0EBB0 /* IndexBG@2x.png in Resources */,
 				4AE18AE917D42B5F00F0EBB0 /* WorkoutPlanViewController.xib in Resources */,
 				4AE18AEB17D42E8E00F0EBB0 /* IndexLine@2x.png in Resources */,
-				4AE18AF017D43E1E00F0EBB0 /* sjjyz_2.png in Resources */,
-				4AE18AF117D43E1E00F0EBB0 /* sjjyz_4.png in Resources */,
 				4AA8D4591827E5F600036560 /* AccessoryView.png in Resources */,
 				4AE18AF317D4444D00F0EBB0 /* RankingViewController.xib in Resources */,
 				4A711E2817D5B93100E35B98 /* LeftSideViewIcon@2x.png in Resources */,
 				4A711E2F17D5B97C00E35B98 /* top_bar_backButton@2x.png in Resources */,
 				4A711E3117D5BEE400E35B98 /* Navigation_avartar_Image@2x.png in Resources */,
 				4A711E3317D5D0B200E35B98 /* commentBar@2x.png in Resources */,
+				4A3558A8187997FA007FC165 /* Myself_SettingsViewController~ipad.xib in Resources */,
 				4AC1589217DEB4A300E97B27 /* 640X1136.png in Resources */,
+				4A3558B018799DF7007FC165 /* ChangeDescriptionViewController~ipad.xib in Resources */,
+				4A3558B218799E6F007FC165 /* ChangeGenderViewController~ipad.xib in Resources */,
 				4AC1589417DEB4AC00E97B27 /* 320X480.png in Resources */,
 				4AC1589617DEB4B400E97B27 /* 640X960.png in Resources */,
 				4A18A31F17E0274700F86EF5 /* IndexSep.png in Resources */,
@@ -4925,6 +4778,7 @@
 				4A01494E17E3FD9700D16E28 /* kddq_2.png in Resources */,
 				4A01494F17E3FD9700D16E28 /* kdjl_1.png in Resources */,
 				4A88C9671850560D004E4D36 /* BBS.proto in Resources */,
+				4A3558AA1879991E007FC165 /* CityViewController~ipad.xib in Resources */,
 				4A8D3F0417E9589200CDF997 /* Save@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5199,7 +5053,6 @@
 				4AE52D9F177831A500F61933 /* WorkoutPlanViewController.m in Sources */,
 				4AE52DA31778323400F61933 /* SupplementViewController.m in Sources */,
 				4ACA75CE182CB80800567C77 /* TKTableViewCell.m in Sources */,
-				4AE52E281778327F00F61933 /* ForumViewController.m in Sources */,
 				4AE52E2C1778336E00F61933 /* LifeStytleViewController.m in Sources */,
 				C6E027CE177862E100A7BA90 /* ArticleService.m in Sources */,
 				4ACA75BA182CB80800567C77 /* TKCoverflowView.m in Sources */,
@@ -5419,7 +5272,7 @@
 				PROVISIONING_PROFILE = "172F49E2-2AF2-40D7-A045-3923582B8FCE";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "172F49E2-2AF2-40D7-A045-3923582B8FCE";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -5453,7 +5306,7 @@
 				PROVISIONING_PROFILE = "172F49E2-2AF2-40D7-A045-3923582B8FCE";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "172F49E2-2AF2-40D7-A045-3923582B8FCE";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -5464,14 +5317,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Callon (VQ5469GPCM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tom Callon (VQ5469GPCM)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Huang HaiZhi (VEC788Z89Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Huang HaiZhi (VEC788Z89Q)";
 				FRAMEWORK_SEARCH_PATHS = /Users/karakei/Documents/Study/GitTomCallon/Aijianmei_iphone/ThirdParty_Frameworks/ShareSDK;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WoJianMei/WoJianMei-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "WoJianMei/WoJianMei-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"/Users/karakei/Documents/Study/GitTomCallon/Common_iPhone_20/3PP-SDK/WeChatSDK_1.4.2.1",
 					"/Users/karakei/Documents/Study/GitTomCallon/Common_iPhone_20/3PP-SDK/Baidu_Anlytic/universal-bin",
@@ -5479,12 +5332,12 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WoJianMei;
-				PROVISIONING_PROFILE = "D8C589EA-7AA6-4491-928B-9647851E5884";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D8C589EA-7AA6-4491-928B-9647851E5884";
+				PROVISIONING_PROFILE = "69BF65AB-44EE-46A6-AB95-9A629581BAB7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "69BF65AB-44EE-46A6-AB95-9A629581BAB7";
 				SHARED_PRECOMPS_DIR = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
-				VALID_ARCHS = "armv7 armv7s arm64";
+				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -5495,14 +5348,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Callon (VQ5469GPCM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tom Callon (VQ5469GPCM)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Huang HaiZhi (VEC788Z89Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Huang HaiZhi (VEC788Z89Q)";
 				FRAMEWORK_SEARCH_PATHS = /Users/karakei/Documents/Study/GitTomCallon/Aijianmei_iphone/ThirdParty_Frameworks/ShareSDK;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WoJianMei/WoJianMei-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "WoJianMei/WoJianMei-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"/Users/karakei/Documents/Study/GitTomCallon/Common_iPhone_20/3PP-SDK/WeChatSDK_1.4.2.1",
 					"/Users/karakei/Documents/Study/GitTomCallon/Common_iPhone_20/3PP-SDK/Baidu_Anlytic/universal-bin",
@@ -5510,12 +5363,12 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WoJianMei;
-				PROVISIONING_PROFILE = "D8C589EA-7AA6-4491-928B-9647851E5884";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D8C589EA-7AA6-4491-928B-9647851E5884";
+				PROVISIONING_PROFILE = "69BF65AB-44EE-46A6-AB95-9A629581BAB7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "69BF65AB-44EE-46A6-AB95-9A629581BAB7";
 				SHARED_PRECOMPS_DIR = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
-				VALID_ARCHS = "armv7 armv7s arm64";
+				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

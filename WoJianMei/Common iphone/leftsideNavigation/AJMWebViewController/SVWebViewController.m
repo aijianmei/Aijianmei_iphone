@@ -178,9 +178,6 @@
     
     [self updateToolbarItems];
     
-    
-    ///允许隐藏导航栏，滑动webview 的时候;
-    [self followScrollView:self.mainWebView];
 
 }
 
@@ -354,7 +351,7 @@
 }
 
 - (void)doneButtonClicked:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 #pragma mark -

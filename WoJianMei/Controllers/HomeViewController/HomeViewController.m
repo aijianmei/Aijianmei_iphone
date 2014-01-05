@@ -163,16 +163,7 @@ typedef enum CONTENT_TYPE {
 
 }
 
--(void)scrolliCarouselSliderAutomacially {
-    int i =1;
-    iid = iid + i;
-    [self.carousel scrollToItemAtIndex:iid duration:1];
-    [self.carousel scrollToItemAtIndex:iid animated:YES];
-    if ([self.carousel currentItemIndex]==3) {
-        [self.carousel scrollToItemAtIndex:0 animated:YES];
-        iid =0;
-    }
-}
+
 
 - (void)initMoreUI
 {    
@@ -316,6 +307,17 @@ typedef enum CONTENT_TYPE {
 
 #pragma mark-- 
 #pragma mark-- addCarouselSliders Method
+-(void)scrolliCarouselSliderAutomacially {
+    int i =1;
+    iid = iid + i;
+    [self.carousel scrollToItemAtIndex:iid duration:1];
+    [self.carousel scrollToItemAtIndex:iid animated:YES];
+    if ([self.carousel currentItemIndex]==3) {
+        [self.carousel scrollToItemAtIndex:0 animated:YES];
+        iid =0;
+    }
+}
+
 -(void)addCarouselSliders{
     //configure carousel
 

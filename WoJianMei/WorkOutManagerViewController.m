@@ -66,6 +66,20 @@
 
     
     
+    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPad)
+    {
+        UILabel *label = [[UILabel alloc] init];
+        label.backgroundColor = [UIColor clearColor];
+        label.textColor = [UIColor whiteColor];
+        label.shadowColor = [UIColor grayColor];
+        label.font = [UIFont systemFontOfSize:22];
+        self.navigationItem.titleView = label;
+        [label release];
+        
+        
+    }
+
+    
     
     //设置顶部导航栏
 //    [self setRightBarButtons];
@@ -77,6 +91,16 @@
 //    [self.view setTransform:CGAffineTransformMakeRotation(M_PI/2)];
     
 }
+
+- (void)setTitle:(NSString *)title
+{
+    [super setTitle:title];
+    
+    ((UILabel *)self.navigationItem.titleView).text = title;
+    [self.navigationItem.titleView sizeToFit];
+}
+
+
 
 -(void)viewWillAppear:(BOOL)animated
 {

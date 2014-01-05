@@ -232,35 +232,65 @@ typedef enum CONTENT_TYPE {
 #pragma mark-- addButtonScrollView Method
 
 -(void)initTableHeaderView{
-    
+   
     UIView *headerView =[[UIView alloc]init];
-    [headerView setFrame: CGRectMake(0, 0, 320, 200)];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        [headerView setFrame: CGRectMake(0,0,UIScreen.mainScreen.bounds.size.width, 200)];
+    }else{
+        [headerView setFrame: CGRectMake(0,0,UIScreen.mainScreen.bounds.size.width, 360.0f)];
+    }
+    
+    
+    
     self.myHeaderView = headerView;
     [headerView release];
     [self.dataTableView setTableHeaderView:_myHeaderView];
+
 }
 
 
 #pragma mark-- addButtonScrollView Method
 -(void)addButtonScrollView{
     ////Configure The ButtonScrollView
-    
     NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最新文章",@"最热文章", nil];
     
     
     self.segmentedController=[[SDSegmentedControl alloc]initWithItems:buttonTitleArray];
-    [_segmentedController setFrame:CGRectMake(0, 0, 320, 40)];
+    [_segmentedController setFrame:CGRectMake(0, 0,UIScreen.mainScreen.bounds.size.width, 40)];
     [_segmentedController setSelectedSegmentIndex:0];
     [_segmentedController addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventValueChanged];
     [_myHeaderView addSubview:self.segmentedController];
+
 }
 
 #pragma mark--
 #pragma mark-- addCarouselSliders Method
+-(void)scrolliCarouselSliderAutomacially {
+    int i =1;
+    iid = iid + i;
+    [self.carousel scrollToItemAtIndex:iid duration:1];
+    [self.carousel scrollToItemAtIndex:iid animated:YES];
+    if ([self.carousel currentItemIndex]==3) {
+        [self.carousel scrollToItemAtIndex:0 animated:YES];
+        iid =0;
+    }
+}
 
 -(void)addCarouselSliders{
     //configure carousel
-    self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0, 50, 320, 140)];
+    
+    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
+        self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0,40,UIScreen.mainScreen.bounds.size.width,160)];
+        
+    }
+    else{
+        self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0,40,UIScreen.mainScreen.bounds.size.width,320)];
+    }
+    
+    [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(scrolliCarouselSliderAutomacially) userInfo:nil repeats:YES];
+    
+    
+    
     self.carousel.delegate = self;
     self.carousel.dataSource = self;
     _carousel.type = iCarouselTypeLinear;
@@ -271,39 +301,31 @@ typedef enum CONTENT_TYPE {
     [_myHeaderView addSubview:self.carousel];
 }
 
+
 #pragma mark--
 #pragma mark-- MoreButon Method
 -(void)addSpacePageControl{
     ////The page controll
     
+    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
+        self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(0, 196, 320, 20)];
+        
+    }
+    else{
+        self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(230,345, 320, 20)];
+    }
     
-    // 10, 190, 320, 20
-    //215, 185, 120, 20
-    self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(0, 196, 320, 20)];
+    
+    
     [_spacePageControl setBackgroundColor:[UIColor clearColor]];
     _spacePageControl.numberOfPages = [self.dataList count];
     [_spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot.png"]];
     [_spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot.png"]];
     [_spacePageControl addTarget:self action:@selector(pageControl:) forControlEvents:UIControlEventValueChanged];
     [_myHeaderView addSubview:self.spacePageControl];
+    
 }
 
-#pragma mark-- MoreButon Method
--(void)addMoreButton
-{
-    
-    UIButton *moreButotn = [[UIButton alloc]initWithFrame:CGRectMake(270, 0, 40, 30)];
-    [moreButotn.titleLabel setFont:[UIFont systemFontOfSize:12]];
-    [moreButotn setBackgroundImage:[UIImage imageNamed:@"Catalog_More_Button.png"] forState:UIControlStateNormal];
-    [moreButotn addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    [moreButotn setTag:More_BUTTON_TAG];
-    
-    [_myHeaderView addSubview:moreButotn];
-    [moreButotn release];
-    
-}
 
 #pragma mark-- ButtonClicked Method
 -(void)buttonClicked:(SDSegmentedControl *)sender
@@ -542,23 +564,22 @@ typedef enum CONTENT_TYPE {
 	if (view == nil)
 	{
         //set up content
-		view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 160.0f)] autorelease];
+        UIImageView *imageView =[[UIImageView alloc]init];
         
-        ///add images
-        UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160.0f)];
+        if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
+            view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 160.0f)] autorelease];
+            [imageView setFrame:CGRectMake(0, 0, 320, 160.0f)];
+            
+        }else{
+            view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 768.0f, 320.0f)] autorelease];
+            [imageView setFrame:CGRectMake(0, 0, 768.0f, 320.0f)];
+            
+        }
+        
+        
         [imageView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@""]];
         [view addSubview:imageView];
         [imageView release];
-        
-        
-//        label = [[[UILabel alloc] initWithFrame:CGRectMake(0, view.frame.origin.y + 130, view.frame.size.width, view.frame.size.height - 130)] autorelease];
-//        label.textAlignment = UITextAlignmentCenter;
-//		label.font = [label.font fontWithSize:16];
-//        [label setTextColor:[UIColor whiteColor]];
-//        label.backgroundColor = [UIColor colorWithPatternImage:[ImageManager GobalScrollerTitleBG_Image]];
-//        
-//        [imageView  addSubview:label];
-//        
 	}
 	else
 	{

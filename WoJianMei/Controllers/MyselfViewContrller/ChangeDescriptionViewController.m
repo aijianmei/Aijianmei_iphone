@@ -8,7 +8,7 @@
 
 #import "ChangeDescriptionViewController.h"
 #import "User.h"
-#import "UserService.h"
+#import "UserManager.h"
 
 @interface ChangeDescriptionViewController ()
 
@@ -40,7 +40,7 @@
     [self setNavigationLeftButton:@"" imageName:@"top_bar_backButton.png"  action:@selector(clickBack:)];
     [self setNavigationRightButton:@"" imageName:@"Save.png" action:@selector(clickBack:)];
     
-    User *user =[[UserService defaultService] user];
+    User *user =[[UserManager defaultManager] user];
     [_descriptionTextField setDelegate:self];
     [_descriptionTextField setBackground:[UIImage imageNamed:@"description_BG"]];
     [_descriptionTextField setText:user.description];
@@ -92,10 +92,10 @@
 {
     // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
     
-    User *user =[[UserService defaultService] user];
+    User *user =[[UserManager defaultManager] user];
     [user setDescription: textField.text];
-    [[UserService defaultService] setUser:user];
-    [[UserService defaultService] storeUserInfoByUid:user.uid];
+    [[UserManager defaultManager] setUser:user];
+    [[UserManager defaultManager] storeUserInfoByUid:user.uid];
 
         
 }

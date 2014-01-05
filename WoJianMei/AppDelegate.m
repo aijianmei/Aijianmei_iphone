@@ -94,7 +94,7 @@ NSString* GlobalGetServerURL()
     
     
     
-     return @"http://42.96.132.109/wapapi/ios.php?";
+     return @"http://115.29.42.96/wapapi/ios.php?";
     
 }
 
@@ -157,21 +157,20 @@ NSString* GlobalGetServerURL()
     return _publicStatusViewController;
 }
 
--(BBSHomeViewController *)initHomeViewControllerFromAppDelegate{
+-(HomeViewController *)initHomeViewControllerFromAppDelegate{
     
-    if (self.bbsHomeViewController == nil) {
+    if (self.homeViewController == nil) {
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
         {
-            BBSHomeViewController *vc=[[BBSHomeViewController alloc] initWithNibName:@"BBSHomeViewController" bundle:nil];
-            self.bbsHomeViewController =vc;
+            HomeViewController *vc=[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+            self.homeViewController =vc;
             [vc release];
         }
         else
         {
-            
-             BBSHomeViewController *vc =[[BBSHomeViewController alloc] initWithNibName:@"BBSHomeViewController ~ipad" bundle:nil];
-            self.bbsHomeViewController =vc;
+             HomeViewController *vc =[[HomeViewController alloc] initWithNibName:@"HomeViewController ~ipad" bundle:nil];
+            self.homeViewController =vc;
             [vc release];
         }
 
@@ -179,9 +178,9 @@ NSString* GlobalGetServerURL()
 
     
     
-    self.bbsHomeViewController.title = @"首页";
+    self.homeViewController.title = @"首页";
 
-    return  _bbsHomeViewController;
+    return  _homeViewController;
     
     
     
@@ -194,9 +193,9 @@ NSString* GlobalGetServerURL()
         LoginViewController *vc =[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
         self.loginViewController =vc;
         [vc release];
-        self.loginViewController.title = @"登陆";
     }
     
+    self.loginViewController.title = @"登陆";
     return  _loginViewController;
 }
 
@@ -215,8 +214,13 @@ NSString* GlobalGetServerURL()
     }
     else
     {
-        
-        return;
+        if (![[UserManager defaultManager] user]){
+        LoginViewController *loginViewController = [[AppDelegate getAppDelegate] initLoginViewController];
+        loginViewController.delegate = [self homeViewController];
+        UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:loginViewController];
+        [self.window.rootViewController presentViewController:navigation animated:YES completion:^{}];
+        [navigation release];
+    }
     }
 }
 

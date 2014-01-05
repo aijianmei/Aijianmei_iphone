@@ -19,7 +19,7 @@
 #define FORMAT_FITNESS_PB            2   // protocol buffer
 
 
-#define URL_SERVICE                 @"http://59.34.17.68:8012/service/"
+#define URL_SERVICE                 @"http://115.29.42.96:8012/service/"
 
 #define URL_FITNESS_QUERY_VERSION    (URL_SERVICE@"iphoneVersion.txt")
 

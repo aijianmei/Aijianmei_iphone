@@ -247,9 +247,11 @@
        //判断用户的数据是否完整
             if (!user.height && !user.weight && !user.age) {
                 
-                UserInfoPickerViewController *vc = [[UserInfoPickerViewController alloc]initWithNibName:@"UserInfoPickerViewController" bundle:nil];
-                [self.navigationController presentViewController:vc animated:YES completion:^{}];
-                [vc release];
+//                UserInfoPickerViewController *vc = [[UserInfoPickerViewController alloc]initWithNibName:@"UserInfoPickerViewController" bundle:nil];
+//                [self.navigationController presentViewController:vc animated:YES completion:^{}];
+//                [vc release];
+                [self popupHappyMessage:@"请完善您的个人信息亲！" title:nil];
+                
             }
 
             [[UserManager defaultManager] setUser:user];
@@ -489,7 +491,7 @@
     
                 }
                 
-                [cell.detailImageView setFrame:CGRectMake(180, 7.50f, 65.0f,65.0f)];
+                [cell.detailImageView setFrame:CGRectMake(UIScreen.mainScreen.bounds.size.width - 120, 7.50f, 65.0f,65.0f)];
 
             }
             //更改用户名

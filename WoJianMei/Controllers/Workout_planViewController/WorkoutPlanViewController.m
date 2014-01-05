@@ -61,6 +61,15 @@
         [label release];
     }
 }
+
+- (void)setTitle:(NSString *)title
+{
+    [super setTitle:title];
+    
+    ((UILabel *)self.navigationItem.titleView).text = title;
+    [self.navigationItem.titleView sizeToFit];
+}
+
 - (void)leftButtonClickHandler:(id)sender
 {
     [self.viewDeckController toggleLeftViewAnimated:YES];

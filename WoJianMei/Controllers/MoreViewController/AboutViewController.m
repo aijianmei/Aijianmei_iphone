@@ -68,7 +68,7 @@
 
     NSString *versionNumber = [NSString stringWithFormat:@"%@版本",localVersion];
     [self.versionLable setText:versionNumber];
-    [self.versionLable setTextColor:[UIColor whiteColor]];
+//    [self.versionLable setTextColor:[UIColor whiteColor]];
     
 }
 
