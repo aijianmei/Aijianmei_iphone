@@ -14,11 +14,11 @@
 
 #define  REFRESH_REGION_HEIGHT 65.0f
 
-typedef enum{
-	EGOOPullRefreshPulling = 0,
-	EGOOPullRefreshNormal,
-	EGOOPullRefreshLoading,	
-} EGOPullRefreshState;
+//typedef enum{
+//	EGOOPullRefreshPulling = 0,
+//	EGOOPullRefreshNormal,
+//	EGOOPullRefreshLoading,	
+//} EGOPullRefreshState;
 
 typedef enum{
 	EGORefreshHeader = 0,

@@ -171,6 +171,31 @@
 		4A20191917C25930003D4E54 /* NumberDataCellFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A20191817C2592E003D4E54 /* NumberDataCellFooter.m */; };
 		4A20192317C325DC003D4E54 /* NumberDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A20192217C325D8003D4E54 /* NumberDataManager.m */; };
 		4A22152A17793C970079430D /* ColorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A22152917793C970079430D /* ColorManager.m */; };
+		4A226C31187A352F0003312F /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226C2F187A352F0003312F /* StoreViewController.m */; };
+		4A226C32187A352F0003312F /* StoreViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A226C30187A352F0003312F /* StoreViewController~ipad.xib */; };
+		4A226C34187A35500003312F /* StoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A226C33187A35500003312F /* StoreViewController.xib */; };
+		4A226DF8187A42560003312F /* TMPhotoQuiltViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226DD9187A42560003312F /* TMPhotoQuiltViewCell.m */; };
+		4A226DF9187A42560003312F /* TMQuiltView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226DDD187A42560003312F /* TMQuiltView.m */; };
+		4A226DFA187A42560003312F /* TMQuiltViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226DDF187A42560003312F /* TMQuiltViewCell.m */; };
+		4A226DFB187A42560003312F /* TMQuiltViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226DE1187A42560003312F /* TMQuiltViewController.m */; };
+		4A226DFC187A42560003312F /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DE3187A42560003312F /* 1.jpeg */; };
+		4A226DFD187A42560003312F /* 10.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DE4187A42560003312F /* 10.jpeg */; };
+		4A226DFE187A42560003312F /* 2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DE5187A42560003312F /* 2.jpeg */; };
+		4A226DFF187A42560003312F /* 3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DE6187A42560003312F /* 3.jpeg */; };
+		4A226E00187A42560003312F /* 4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DE7187A42560003312F /* 4.jpeg */; };
+		4A226E01187A42560003312F /* 5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DE8187A42560003312F /* 5.jpeg */; };
+		4A226E02187A42560003312F /* 6.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DE9187A42560003312F /* 6.jpeg */; };
+		4A226E03187A42560003312F /* 7.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DEA187A42560003312F /* 7.jpeg */; };
+		4A226E04187A42560003312F /* 8.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DEB187A42560003312F /* 8.jpeg */; };
+		4A226E05187A42560003312F /* 9.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DEC187A42560003312F /* 9.jpeg */; };
+		4A226E06187A42560003312F /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DEE187A42560003312F /* blackArrow.png */; };
+		4A226E07187A42560003312F /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DEF187A42560003312F /* blackArrow@2x.png */; };
+		4A226E08187A42560003312F /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DF0187A42560003312F /* blueArrow.png */; };
+		4A226E09187A42560003312F /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DF1187A42560003312F /* blueArrow@2x.png */; };
+		4A226E0A187A42560003312F /* grayArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DF2187A42560003312F /* grayArrow.png */; };
+		4A226E0B187A42560003312F /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DF3187A42560003312F /* grayArrow@2x.png */; };
+		4A226E0C187A42560003312F /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DF4187A42560003312F /* whiteArrow.png */; };
+		4A226E0D187A42560003312F /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DF5187A42560003312F /* whiteArrow@2x.png */; };
 		4A257EF6178F9697001D153F /* ChangeNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A257EF5178F9697001D153F /* ChangeNameCell.m */; };
 		4A257F0E17900522001D153F /* AddLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A257F0C17900521001D153F /* AddLabelViewController.m */; };
 		4A257F0F17900522001D153F /* AddLabelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A257F0D17900521001D153F /* AddLabelViewController.xib */; };
@@ -909,6 +934,38 @@
 		4A20192217C325D8003D4E54 /* NumberDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NumberDataManager.m; path = ../NumberDataManager.m; sourceTree = "<group>"; };
 		4A22152817793C970079430D /* ColorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorManager.h; sourceTree = "<group>"; };
 		4A22152917793C970079430D /* ColorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorManager.m; sourceTree = "<group>"; };
+		4A226C2E187A352F0003312F /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
+		4A226C2F187A352F0003312F /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
+		4A226C30187A352F0003312F /* StoreViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "StoreViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A226C33187A35500003312F /* StoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreViewController.xib; sourceTree = "<group>"; };
+		4A226DD7187A42560003312F /* EGOViewCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOViewCommon.h; sourceTree = "<group>"; };
+		4A226DD8187A42560003312F /* TMPhotoQuiltViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMPhotoQuiltViewCell.h; sourceTree = "<group>"; };
+		4A226DD9187A42560003312F /* TMPhotoQuiltViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMPhotoQuiltViewCell.m; sourceTree = "<group>"; };
+		4A226DDB187A42560003312F /* TMQuiltView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TMQuiltView-Prefix.pch"; sourceTree = "<group>"; };
+		4A226DDC187A42560003312F /* TMQuiltView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMQuiltView.h; sourceTree = "<group>"; };
+		4A226DDD187A42560003312F /* TMQuiltView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMQuiltView.m; sourceTree = "<group>"; };
+		4A226DDE187A42560003312F /* TMQuiltViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMQuiltViewCell.h; sourceTree = "<group>"; };
+		4A226DDF187A42560003312F /* TMQuiltViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMQuiltViewCell.m; sourceTree = "<group>"; };
+		4A226DE0187A42560003312F /* TMQuiltViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMQuiltViewController.h; sourceTree = "<group>"; };
+		4A226DE1187A42560003312F /* TMQuiltViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMQuiltViewController.m; sourceTree = "<group>"; };
+		4A226DE3187A42560003312F /* 1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpeg; sourceTree = "<group>"; };
+		4A226DE4187A42560003312F /* 10.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpeg; sourceTree = "<group>"; };
+		4A226DE5187A42560003312F /* 2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpeg; sourceTree = "<group>"; };
+		4A226DE6187A42560003312F /* 3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpeg; sourceTree = "<group>"; };
+		4A226DE7187A42560003312F /* 4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpeg; sourceTree = "<group>"; };
+		4A226DE8187A42560003312F /* 5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpeg; sourceTree = "<group>"; };
+		4A226DE9187A42560003312F /* 6.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 6.jpeg; sourceTree = "<group>"; };
+		4A226DEA187A42560003312F /* 7.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpeg; sourceTree = "<group>"; };
+		4A226DEB187A42560003312F /* 8.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.jpeg; sourceTree = "<group>"; };
+		4A226DEC187A42560003312F /* 9.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9.jpeg; sourceTree = "<group>"; };
+		4A226DEE187A42560003312F /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
+		4A226DEF187A42560003312F /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
+		4A226DF0187A42560003312F /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		4A226DF1187A42560003312F /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
+		4A226DF2187A42560003312F /* grayArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayArrow.png; sourceTree = "<group>"; };
+		4A226DF3187A42560003312F /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
+		4A226DF4187A42560003312F /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
+		4A226DF5187A42560003312F /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		4A257EF4178F9697001D153F /* ChangeNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeNameCell.h; sourceTree = "<group>"; };
 		4A257EF5178F9697001D153F /* ChangeNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeNameCell.m; sourceTree = "<group>"; };
 		4A257F0B17900520001D153F /* AddLabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLabelViewController.h; sourceTree = "<group>"; };
@@ -2235,6 +2292,84 @@
 			name = icons;
 			sourceTree = "<group>";
 		};
+		4A226DD1187A42560003312F /* classes */ = {
+			isa = PBXGroup;
+			children = (
+				4A226DD2187A42560003312F /* EGO */,
+				4A226DD8187A42560003312F /* TMPhotoQuiltViewCell.h */,
+				4A226DD9187A42560003312F /* TMPhotoQuiltViewCell.m */,
+				4A226DDA187A42560003312F /* TMQuiltView */,
+			);
+			name = classes;
+			path = "WaterFlow-master/Waterflow/classes";
+			sourceTree = "<group>";
+		};
+		4A226DD2187A42560003312F /* EGO */ = {
+			isa = PBXGroup;
+			children = (
+				4A226DD7187A42560003312F /* EGOViewCommon.h */,
+			);
+			path = EGO;
+			sourceTree = "<group>";
+		};
+		4A226DDA187A42560003312F /* TMQuiltView */ = {
+			isa = PBXGroup;
+			children = (
+				4A226DDB187A42560003312F /* TMQuiltView-Prefix.pch */,
+				4A226DDC187A42560003312F /* TMQuiltView.h */,
+				4A226DDD187A42560003312F /* TMQuiltView.m */,
+				4A226DDE187A42560003312F /* TMQuiltViewCell.h */,
+				4A226DDF187A42560003312F /* TMQuiltViewCell.m */,
+				4A226DE0187A42560003312F /* TMQuiltViewController.h */,
+				4A226DE1187A42560003312F /* TMQuiltViewController.m */,
+			);
+			path = TMQuiltView;
+			sourceTree = "<group>";
+		};
+		4A226DE2187A42560003312F /* images */ = {
+			isa = PBXGroup;
+			children = (
+				4A226DE3187A42560003312F /* 1.jpeg */,
+				4A226DE4187A42560003312F /* 10.jpeg */,
+				4A226DE5187A42560003312F /* 2.jpeg */,
+				4A226DE6187A42560003312F /* 3.jpeg */,
+				4A226DE7187A42560003312F /* 4.jpeg */,
+				4A226DE8187A42560003312F /* 5.jpeg */,
+				4A226DE9187A42560003312F /* 6.jpeg */,
+				4A226DEA187A42560003312F /* 7.jpeg */,
+				4A226DEB187A42560003312F /* 8.jpeg */,
+				4A226DEC187A42560003312F /* 9.jpeg */,
+			);
+			name = images;
+			path = "WaterFlow-master/Waterflow/images";
+			sourceTree = "<group>";
+		};
+		4A226DED187A42560003312F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4A226DEE187A42560003312F /* blackArrow.png */,
+				4A226DEF187A42560003312F /* blackArrow@2x.png */,
+				4A226DF0187A42560003312F /* blueArrow.png */,
+				4A226DF1187A42560003312F /* blueArrow@2x.png */,
+				4A226DF2187A42560003312F /* grayArrow.png */,
+				4A226DF3187A42560003312F /* grayArrow@2x.png */,
+				4A226DF4187A42560003312F /* whiteArrow.png */,
+				4A226DF5187A42560003312F /* whiteArrow@2x.png */,
+			);
+			name = Resources;
+			path = "WaterFlow-master/Waterflow/Resources";
+			sourceTree = "<group>";
+		};
+		4A226E0E187A42620003312F /* WaterFlow */ = {
+			isa = PBXGroup;
+			children = (
+				4A226DD1187A42560003312F /* classes */,
+				4A226DE2187A42560003312F /* images */,
+				4A226DED187A42560003312F /* Resources */,
+			);
+			name = WaterFlow;
+			sourceTree = "<group>";
+		};
 		4A27ADFA1777EED1009978C5 /* NetWorkRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -3434,6 +3569,10 @@
 				4A34EB3E17B3CDA500196793 /* UserInfoPickerViewController.m */,
 				4A34EB3F17B3CDA500196793 /* UserInfoPickerViewController.xib */,
 				4A3558B91879A82D007FC165 /* UserInfoPickerViewController~ipad.xib */,
+				4A226C2E187A352F0003312F /* StoreViewController.h */,
+				4A226C2F187A352F0003312F /* StoreViewController.m */,
+				4A226C33187A35500003312F /* StoreViewController.xib */,
+				4A226C30187A352F0003312F /* StoreViewController~ipad.xib */,
 			);
 			name = InformationFillView;
 			sourceTree = "<group>";
@@ -4125,6 +4264,7 @@
 		4ADCFF50169D69F500A3E979 /* Common iphone */ = {
 			isa = PBXGroup;
 			children = (
+				4A226E0E187A42620003312F /* WaterFlow */,
 				4A88C963185055B5004E4D36 /* ProtocolBuffer */,
 				4A0F7D71183226400022EA46 /* InputBAR */,
 				4ACA723F182CAC7000567C77 /* ProgressHUD */,
@@ -4511,6 +4651,7 @@
 				4AE545EE184DE478008CF804 /* BBSViewController~ipad.xib in Resources */,
 				4A4991D5168553A30073E682 /* Documentation.html in Resources */,
 				4A499225168553A30073E682 /* donedown.png in Resources */,
+				4A226DFF187A42560003312F /* 3.jpeg in Resources */,
 				4A3558CC1879AED0007FC165 /* 1536X2048.png in Resources */,
 				4A499226168553A30073E682 /* doneup.png in Resources */,
 				4A499228168553A30073E682 /* TestPPViewController.xib in Resources */,
@@ -4530,6 +4671,7 @@
 				4A49926D168553A30073E682 /* fireworks2.png in Resources */,
 				4A49926E168553A30073E682 /* snow.png in Resources */,
 				4A1B25D817EED06300FC6194 /* 114X114.png in Resources */,
+				4A226DFC187A42560003312F /* 1.jpeg in Resources */,
 				4ADCFFB5169D69F700A3E979 /* LICENSE in Resources */,
 				4ADCFFB6169D69F700A3E979 /* README.md in Resources */,
 				4ADCFFBB169D69F700A3E979 /* REComposeViewController.bundle in Resources */,
@@ -4551,6 +4693,7 @@
 				4A634E1F1753431E00453C0D /* foursquare-logo@2x.png in Resources */,
 				C668C2C3176C63DC007CC7FF /* SinaWeibo.bundle in Resources */,
 				4A27AE001777EED1009978C5 /* README in Resources */,
+				4A226E01187A42560003312F /* 5.jpeg in Resources */,
 				4A27AEA61777F18E009978C5 /* SVWebViewController.bundle in Resources */,
 				4A9C3FB1177A7ECB0088AA6D /* currentPageDot@2x.png in Resources */,
 				4A9C3FB2177A7ECB0088AA6D /* pageDot@2x.png in Resources */,
@@ -4560,11 +4703,13 @@
 				4A0E4DCE178C50B000E1287D /* ChangeDescriptionViewController.xib in Resources */,
 				4A0E4DD3178C559E00E1287D /* ChangeGenderViewController.xib in Resources */,
 				4A2FA980178D076C006A1EFB /* ProvinceViewController.xib in Resources */,
+				4A226E00187A42560003312F /* 4.jpeg in Resources */,
 				4A2FA98A178D0E4C006A1EFB /* CityViewController.xib in Resources */,
 				4A2FA98F178D3E02006A1EFB /* ChangeLabelsViewController.xib in Resources */,
 				4A2FA998178D5E5C006A1EFB /* apphead@2x.png in Resources */,
 				4A35589E187984E1007FC165 /* NutriViewController~ipad.xib in Resources */,
 				4A2FA999178D5E5C006A1EFB /* deleteTag.png in Resources */,
+				4A226E02187A42560003312F /* 6.jpeg in Resources */,
 				4A257F0F17900522001D153F /* AddLabelViewController.xib in Resources */,
 				4A35589A187984AE007FC165 /* SupplementViewController~ipad.xib in Resources */,
 				4A5F3FD617914E2E00CD701A /* FeedBackViewController.xib in Resources */,
@@ -4582,15 +4727,19 @@
 				4A0CA5D017AB969600314B8C /* BMIViewController.xib in Resources */,
 				4A0CA65017ABE65500314B8C /* rq_2.png in Resources */,
 				4A0CA65117ABE65500314B8C /* rq_3.png in Resources */,
+				4A226C34187A35500003312F /* StoreViewController.xib in Resources */,
 				4A316558183D198F008DC2CB /* Resource.bundle in Resources */,
 				4A0E22BD18575A4200A07512 /* PostDetailHeaderView.xib in Resources */,
 				4A0CA65217ABE65500314B8C /* Scroller_BG.png in Resources */,
 				4A0CA65317ABE65500314B8C /* dlk_1@2x.png in Resources */,
+				4A226E07187A42560003312F /* blackArrow@2x.png in Resources */,
 				4A3853B6184DF7F900D5A66B /* PostTopicViewController.xib in Resources */,
 				4A0CA65417ABE65500314B8C /* xldl_1@2.png in Resources */,
 				4A0CA65517ABE65500314B8C /* xldl_2@2x.png in Resources */,
 				4A0CA65617ABE65500314B8C /* about_us@2x.png in Resources */,
+				4A226E08187A42560003312F /* blueArrow.png in Resources */,
 				4A0CA65917ABE65500314B8C /* bottom_cell_background.png in Resources */,
+				4A226E05187A42560003312F /* 9.jpeg in Resources */,
 				4A0CA65A17ABE65500314B8C /* feed_back@2x.png in Resources */,
 				4A0CA65B17ABE65500314B8C /* feedback_bg2@2x.png in Resources */,
 				4A0CA65C17ABE65500314B8C /* middle_cell_background.png in Resources */,
@@ -4599,10 +4748,12 @@
 				4A0CA65E17ABE65500314B8C /* quit_app@2x.png in Resources */,
 				4A0CA65F17ABE65500314B8C /* Rate_Us@2x.png in Resources */,
 				4A0CA66017ABE65500314B8C /* share_social@2x.png in Resources */,
+				4A226C32187A352F0003312F /* StoreViewController~ipad.xib in Resources */,
 				4A0CA66117ABE65500314B8C /* share_with_firends@2x.png in Resources */,
 				4A0CA66217ABE65500314B8C /* singleCellBackgroud.png in Resources */,
 				4A0CA66317ABE65500314B8C /* social_networks@2x.png in Resources */,
 				4A0CA66417ABE65500314B8C /* szicon_a@2x.png in Resources */,
+				4A226E0B187A42560003312F /* grayArrow@2x.png in Resources */,
 				4A0CA66517ABE65500314B8C /* top_cell_background.png in Resources */,
 				4A3165DB183E51E4008DC2CB /* HomeViewController ~ipad.xib in Resources */,
 				4A0CA66617ABE65500314B8C /* update_app@2x.png in Resources */,
@@ -4669,6 +4820,7 @@
 				4A94900717B238640037D9A0 /* ImageBrowser.xib in Resources */,
 				4A34EB3717B36F6D00196793 /* MyselfViewController.xib in Resources */,
 				4A34EB3917B36F7A00196793 /* PublicMyselfViewController.xib in Resources */,
+				4A226E04187A42560003312F /* 8.jpeg in Resources */,
 				4A34EB4117B3CDA500196793 /* UserInfoPickerViewController.xib in Resources */,
 				4AA8D45A1827E5F600036560 /* AccessoryView@2x.png in Resources */,
 				4A3558CA1879AEB3007FC165 /* 768X1024.png in Resources */,
@@ -4679,6 +4831,7 @@
 				4AA8D4601827E5F600036560 /* IndexSep@2x.png in Resources */,
 				4AE356AB17B4E70800ADD258 /* SLNumberPickerTicks.png in Resources */,
 				4AE356B217B4E92200ADD258 /* girl_big.png in Resources */,
+				4A226DFD187A42560003312F /* 10.jpeg in Resources */,
 				4A0E22A1185610C400A07512 /* BBSPostDetailCell.xib in Resources */,
 				4AE356B317B4E92200ADD258 /* boy_big.png in Resources */,
 				4A35589C187984C5007FC165 /* WorkoutPlanViewController~ipad.xib in Resources */,
@@ -4695,14 +4848,17 @@
 				4A8F3F3817BA76B2000F553A /* ChartViewController.xib in Resources */,
 				4A8F3F3C17BB1E92000F553A /* place_holder@2x.png in Resources */,
 				4A0A580817BB766F0089683A /* HomeViewController.xib in Resources */,
+				4A226E03187A42560003312F /* 7.jpeg in Resources */,
 				4A0A580F17BB78C10089683A /* ArticleCell.xib in Resources */,
 				4A0A581117BB8C970089683A /* LoginViewController.xib in Resources */,
 				4A3558C51879AE23007FC165 /* 76X76.png in Resources */,
 				4A0A581317BB8CA50089683A /* SignUpViewController.xib in Resources */,
 				4A0A581517BB90210089683A /* MoreViewController.xib in Resources */,
+				4A226E0D187A42560003312F /* whiteArrow@2x.png in Resources */,
 				4A0A581717BB909C0089683A /* MoreViewCell.xib in Resources */,
 				4AC2BDB117BCCC050061E396 /* CommonDialog.xib in Resources */,
 				4AC2BDBF17BCD7F90061E396 /* description_BG.png in Resources */,
+				4A226E0A187A42560003312F /* grayArrow.png in Resources */,
 				4AC2BDC017BCD7F90061E396 /* description_BG@2x.png in Resources */,
 				4AC2BDC417BD05300061E396 /* WorkoutViewController.xib in Resources */,
 				4AE545EC184DE466008CF804 /* BBSViewController.xib in Resources */,
@@ -4713,6 +4869,7 @@
 				4A2C9ECF17BE67010079DEEA /* update_5_btn@2x.png in Resources */,
 				4A2C9ED117BE67010079DEEA /* update_6_btn@2x.png in Resources */,
 				4A2C9ED217BE67010079DEEA /* update_2@2x.png in Resources */,
+				4A226E0C187A42560003312F /* whiteArrow.png in Resources */,
 				4A2018F617BF67ED003D4E54 /* statusbar_background.png in Resources */,
 				4A20190217C1E348003D4E54 /* MyselfViewBaseController.xib in Resources */,
 				4ACA723D182C9F3200567C77 /* IndexLine@2x.png in Resources */,
@@ -4735,6 +4892,7 @@
 				4A88CC04185186EF004E4D36 /* draw_home_draw@2x.png in Resources */,
 				4A0E22781855CBB200A07512 /* BBSHomeViewController~ipad.xib in Resources */,
 				4A88CC0C185187DB004E4D36 /* HomeMainMenuPanel~ipad.xib in Resources */,
+				4A226DFE187A42560003312F /* 2.jpeg in Resources */,
 				4A88CC001851864D004E4D36 /* HomeMainMenu~ipad.xib in Resources */,
 				4A88CC161854B969004E4D36 /* common_home_front_page@2x.png in Resources */,
 				4A129DD817CB902B00FD18B2 /* WorkoutFirstTypeViewController.xib in Resources */,
@@ -4743,6 +4901,7 @@
 				4A183E9817CDEA7B000793C2 /* fs_main_login_selected.png in Resources */,
 				4AE18ADC17D4291D00F0EBB0 /* cbdqx_1@2x.png in Resources */,
 				4A0E228D1855EF2400A07512 /* BBSHomeCell.xib in Resources */,
+				4A226E06187A42560003312F /* blackArrow.png in Resources */,
 				4AE18ADD17D4291D00F0EBB0 /* Supplement_Icon@2x.png in Resources */,
 				4AE18ADE17D4291D00F0EBB0 /* Workout_Icon@2x.png in Resources */,
 				4AE18ADF17D4291D00F0EBB0 /* More_Icon@2x.png in Resources */,
@@ -4763,6 +4922,7 @@
 				4A711E2F17D5B97C00E35B98 /* top_bar_backButton@2x.png in Resources */,
 				4A711E3117D5BEE400E35B98 /* Navigation_avartar_Image@2x.png in Resources */,
 				4A711E3317D5D0B200E35B98 /* commentBar@2x.png in Resources */,
+				4A226E09187A42560003312F /* blueArrow@2x.png in Resources */,
 				4A3558A8187997FA007FC165 /* Myself_SettingsViewController~ipad.xib in Resources */,
 				4AC1589217DEB4A300E97B27 /* 640X1136.png in Resources */,
 				4A3558B018799DF7007FC165 /* ChangeDescriptionViewController~ipad.xib in Resources */,
@@ -4791,6 +4951,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AE394BE15C2DD9C00D06C61 /* main.m in Sources */,
+				4A226DFB187A42560003312F /* TMQuiltViewController.m in Sources */,
 				4AE394C215C2DD9C00D06C61 /* AppDelegate.m in Sources */,
 				4A4991CD168553A30073E682 /* ASIAuthenticationDialog.m in Sources */,
 				4ACA75D8182CB80800567C77 /* UINavigationBar+TKCategory.m in Sources */,
@@ -4816,8 +4977,10 @@
 				4ACA75CA182CB80800567C77 /* TKProgressAlertView.m in Sources */,
 				4A49921F168553A30073E682 /* PPApplication.m in Sources */,
 				4ACF0CCF1839B80A00F7221C /* GetIPAddress.m in Sources */,
+				4A226C31187A352F0003312F /* StoreViewController.m in Sources */,
 				4A499220168553A30073E682 /* PPNetworkRequest.m in Sources */,
 				4ACA75CF182CB80800567C77 /* TKTableViewController.m in Sources */,
+				4A226DF9187A42560003312F /* TMQuiltView.m in Sources */,
 				4A499221168553A30073E682 /* PPTabBarController.m in Sources */,
 				4A0E22B31856EEE800A07512 /* VoteCell.m in Sources */,
 				4ACA75BD182CB80800567C77 /* TKGraphController.m in Sources */,
@@ -5068,6 +5231,7 @@
 				4A0E4DD2178C559E00E1287D /* ChangeGenderViewController.m in Sources */,
 				4A2FA97F178D076C006A1EFB /* ProvinceViewController.m in Sources */,
 				4ACF0CD31839B80A00F7221C /* AuthorizeDelegate.m in Sources */,
+				4A226DF8187A42560003312F /* TMPhotoQuiltViewCell.m in Sources */,
 				4A2FA989178D0E4C006A1EFB /* CityViewController.m in Sources */,
 				4A2FA98D178D3DE8006A1EFB /* ChangeLabelsViewController.m in Sources */,
 				4A2FA992178D494C006A1EFB /* LabelManager.m in Sources */,
@@ -5129,6 +5293,7 @@
 				4A34EB3417B36C2F00196793 /* PublicMyselfViewController.m in Sources */,
 				4A34EB4017B3CDA500196793 /* UserInfoPickerViewController.m in Sources */,
 				4ACA75D2182CB80800567C77 /* TKWindow.m in Sources */,
+				4A226DFA187A42560003312F /* TMQuiltViewCell.m in Sources */,
 				4A8F3E6A17BA6B64000F553A /* WeightManagerViewController.m in Sources */,
 				4A8F3E6F17BA6BAE000F553A /* WorkoutMainViewController.m in Sources */,
 				4A8F3F3217BA6FB3000F553A /* RankingViewController.m in Sources */,
@@ -5317,8 +5482,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Huang HaiZhi (VEC788Z89Q)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Huang HaiZhi (VEC788Z89Q)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Callon (VQ5469GPCM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tom Callon (VQ5469GPCM)";
 				FRAMEWORK_SEARCH_PATHS = /Users/karakei/Documents/Study/GitTomCallon/Aijianmei_iphone/ThirdParty_Frameworks/ShareSDK;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WoJianMei/WoJianMei-Prefix.pch";
@@ -5332,12 +5497,12 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WoJianMei;
-				PROVISIONING_PROFILE = "69BF65AB-44EE-46A6-AB95-9A629581BAB7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "69BF65AB-44EE-46A6-AB95-9A629581BAB7";
+				PROVISIONING_PROFILE = "A6C70FA8-5CC3-4906-B7A6-832E49417C1C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A6C70FA8-5CC3-4906-B7A6-832E49417C1C";
 				SHARED_PRECOMPS_DIR = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
-				VALID_ARCHS = "armv7 arm64";
+				VALID_ARCHS = "armv7 arm64 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -5348,8 +5513,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Huang HaiZhi (VEC788Z89Q)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Huang HaiZhi (VEC788Z89Q)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Callon (VQ5469GPCM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tom Callon (VQ5469GPCM)";
 				FRAMEWORK_SEARCH_PATHS = /Users/karakei/Documents/Study/GitTomCallon/Aijianmei_iphone/ThirdParty_Frameworks/ShareSDK;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WoJianMei/WoJianMei-Prefix.pch";
@@ -5363,12 +5528,12 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WoJianMei;
-				PROVISIONING_PROFILE = "69BF65AB-44EE-46A6-AB95-9A629581BAB7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "69BF65AB-44EE-46A6-AB95-9A629581BAB7";
+				PROVISIONING_PROFILE = "A6C70FA8-5CC3-4906-B7A6-832E49417C1C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A6C70FA8-5CC3-4906-B7A6-832E49417C1C";
 				SHARED_PRECOMPS_DIR = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
-				VALID_ARCHS = "armv7 arm64";
+				VALID_ARCHS = "armv7 arm64 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

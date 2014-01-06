@@ -16,6 +16,7 @@
 #import "NutriViewController.h"
 #import "SupplementViewController.h"
 #import "LifeStytleViewController.h"
+#import "StoreViewController.h"
 #import "MoreViewController.h"
 #import "LifeStytleViewController.h"
 #import "MakeFriendsViewController.h"
@@ -67,6 +68,7 @@
 @synthesize supplementViewController =_supplementViewController;
 @synthesize nutriViewController =_nutriViewController;
 @synthesize lifeStytleViewController =_lifeStytleViewController;
+@synthesize storeViewController =_storeViewController;
 @synthesize workOutManagerViewController =_workOutManagerViewController;
 @synthesize moreViewController =_moreViewController;
 @synthesize webViewController =_webViewController;
@@ -96,6 +98,7 @@
     [_nutriViewController release];
     [_supplementViewController release];
     [_lifeStytleViewController release];
+    [_storeViewController release];
     [_workOutManagerViewController release];
     [_moreViewController release];
     [_webViewController release];
@@ -111,6 +114,7 @@
     [self setSupplementViewController:nil];
     [self setNutriViewController:nil];
     [self setLifeStytleViewController:nil];
+    [self setStoreViewController:nil];
     [self setWorkOutManagerViewController:nil];
     [self setMoreViewController:nil];
     [self setWebViewController:nil];
@@ -323,6 +327,28 @@
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_lifeStytleViewController] ;
 }
 
+-(void)initStoreViewController{
+    
+    if (self.storeViewController ==nil) {
+        
+        if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone)
+        {
+            
+            self.storeViewController =[[StoreViewController alloc] initWithNibName:@"StoreViewController" bundle:nil];
+            
+        }else{
+            
+            self.storeViewController =[[StoreViewController alloc] initWithNibName:@"StoreViewController~ipad" bundle:nil];
+            
+        }
+        
+        
+    }
+    self.storeViewController.title = @"运动商城";
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:_storeViewController] ;
+}
+
+
 
 -(void)initWorkOutManagerViewController{
     if (self.workOutManagerViewController ==nil) {
@@ -395,7 +421,7 @@
 {
     switch (section) {
         case 0:
-            return 8;
+            return 9;
         case 1:
             return 2;
         default:
@@ -474,11 +500,17 @@
                                   imageNamed:@"LifeStyle_Icon.png"]];
                     break;
                 case 6:
+                    cell.textLabel.text = @"运动商城";
+                    [cell.imageView setImage:[UIImage
+                                              imageNamed:@"LifeStyle_Icon.png"]];
+                    break;
+
+                case 7:
                     cell.textLabel.text = @"运动管理";
                     [cell.imageView setImage:[UIImage imageNamed:
                                               @"Manager_Icon.png"]];
                     break;
-                case 7:
+                case 8:
                     cell.textLabel.text = @"更多";
                     [cell.imageView setImage:[UIImage imageNamed:@"More_Icon.png"]];
                     break;
@@ -672,8 +704,27 @@
             
                 }
                 break;
-
                 case 6:
+                {
+                    ///生活方式
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        
+                        [self initStoreViewController];
+                        self.viewDeckController.centerController = _navigationController;
+                        
+                        self.view.userInteractionEnabled = YES;
+                        [_tableView setUserInteractionEnabled:YES];
+                        
+                    }];
+                    
+                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+                    [statTracker logEvent:@"StoreViewController" eventLabel:@"StoreView"];
+                    
+                }
+                    break;
+
+
+                case 7:
                 {
                    ////运动管理
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
@@ -689,7 +740,7 @@
                     [statTracker logEvent:@"WorkoutManagerView" eventLabel:@"WorkoutManagerView"];
                 }
                     break;
-                case 7:
+                case 8:
                 {
                     ///更多
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {

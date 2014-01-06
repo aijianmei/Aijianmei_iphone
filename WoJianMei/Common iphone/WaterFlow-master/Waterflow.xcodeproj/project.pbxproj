@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A226DC1187A41780003312F /* EGORefreshTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226DB6187A41780003312F /* EGORefreshTableFooterView.m */; };
+		4A226DC2187A41780003312F /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226DB8187A41780003312F /* EGORefreshTableHeaderView.m */; };
+		4A226DC5187A41780003312F /* TMPhotoQuiltViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226DC0187A41780003312F /* TMPhotoQuiltViewCell.m */; };
+		4A226DCE187A418B0003312F /* TMQuiltView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226DC9187A418B0003312F /* TMQuiltView.m */; };
+		4A226DCF187A418B0003312F /* TMQuiltViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226DCB187A418B0003312F /* TMQuiltViewCell.m */; };
+		4A226DD0187A418B0003312F /* TMQuiltViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226DCD187A418B0003312F /* TMQuiltViewController.m */; };
 		932464C017A20D4C00F73CAA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932464BF17A20D4C00F73CAA /* UIKit.framework */; };
 		932464C217A20D4C00F73CAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932464C117A20D4C00F73CAA /* Foundation.framework */; };
 		932464C417A20D4C00F73CAA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932464C317A20D4C00F73CAA /* CoreGraphics.framework */; };
@@ -18,11 +24,6 @@
 		932464D617A20D4C00F73CAA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 932464D517A20D4C00F73CAA /* Default-568h@2x.png */; };
 		932464D917A20D4C00F73CAA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 932464D817A20D4C00F73CAA /* ViewController.m */; };
 		932464DC17A20D4C00F73CAA /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 932464DA17A20D4C00F73CAA /* ViewController.xib */; };
-		932464EA17A20D7500F73CAA /* TMQuiltView.m in Sources */ = {isa = PBXBuildFile; fileRef = 932464E517A20D7500F73CAA /* TMQuiltView.m */; };
-		932464EB17A20D7500F73CAA /* TMQuiltViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 932464E717A20D7500F73CAA /* TMQuiltViewCell.m */; };
-		932464EC17A20D7500F73CAA /* TMQuiltViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 932464E917A20D7500F73CAA /* TMQuiltViewController.m */; };
-		932464FD17A20D8E00F73CAA /* EGORefreshTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 932464EF17A20D8E00F73CAA /* EGORefreshTableFooterView.m */; };
-		932464FE17A20D8E00F73CAA /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 932464F117A20D8E00F73CAA /* EGORefreshTableHeaderView.m */; };
 		932464FF17A20D8E00F73CAA /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 932464F517A20D8E00F73CAA /* blackArrow.png */; };
 		9324650017A20D8E00F73CAA /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 932464F617A20D8E00F73CAA /* blackArrow@2x.png */; };
 		9324650117A20D8E00F73CAA /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 932464F717A20D8E00F73CAA /* blueArrow.png */; };
@@ -41,11 +42,24 @@
 		9324651917A20DBC00F73CAA /* 7.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9324650F17A20DBC00F73CAA /* 7.jpeg */; };
 		9324651A17A20DBC00F73CAA /* 8.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9324651017A20DBC00F73CAA /* 8.jpeg */; };
 		9324651B17A20DBC00F73CAA /* 9.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9324651117A20DBC00F73CAA /* 9.jpeg */; };
-		9324651E17A2109F00F73CAA /* TMPhotoQuiltViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9324651D17A2109F00F73CAA /* TMPhotoQuiltViewCell.m */; };
 		9324652017A2111100F73CAA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9324651F17A2111000F73CAA /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A226DB5187A41780003312F /* EGORefreshTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableFooterView.h; sourceTree = "<group>"; };
+		4A226DB6187A41780003312F /* EGORefreshTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableFooterView.m; sourceTree = "<group>"; };
+		4A226DB7187A41780003312F /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		4A226DB8187A41780003312F /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		4A226DB9187A41780003312F /* EGOViewCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOViewCommon.h; sourceTree = "<group>"; };
+		4A226DBF187A41780003312F /* TMPhotoQuiltViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMPhotoQuiltViewCell.h; path = classes/TMPhotoQuiltViewCell.h; sourceTree = "<group>"; };
+		4A226DC0187A41780003312F /* TMPhotoQuiltViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMPhotoQuiltViewCell.m; path = classes/TMPhotoQuiltViewCell.m; sourceTree = "<group>"; };
+		4A226DC7187A418B0003312F /* TMQuiltView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TMQuiltView-Prefix.pch"; sourceTree = "<group>"; };
+		4A226DC8187A418B0003312F /* TMQuiltView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMQuiltView.h; sourceTree = "<group>"; };
+		4A226DC9187A418B0003312F /* TMQuiltView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMQuiltView.m; sourceTree = "<group>"; };
+		4A226DCA187A418B0003312F /* TMQuiltViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMQuiltViewCell.h; sourceTree = "<group>"; };
+		4A226DCB187A418B0003312F /* TMQuiltViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMQuiltViewCell.m; sourceTree = "<group>"; };
+		4A226DCC187A418B0003312F /* TMQuiltViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMQuiltViewController.h; sourceTree = "<group>"; };
+		4A226DCD187A418B0003312F /* TMQuiltViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMQuiltViewController.m; sourceTree = "<group>"; };
 		932464BC17A20D4C00F73CAA /* Waterflow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waterflow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		932464BF17A20D4C00F73CAA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		932464C117A20D4C00F73CAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -62,18 +76,6 @@
 		932464D717A20D4C00F73CAA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		932464D817A20D4C00F73CAA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		932464DB17A20D4C00F73CAA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		932464E317A20D7500F73CAA /* TMQuiltView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TMQuiltView-Prefix.pch"; sourceTree = "<group>"; };
-		932464E417A20D7500F73CAA /* TMQuiltView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMQuiltView.h; sourceTree = "<group>"; };
-		932464E517A20D7500F73CAA /* TMQuiltView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMQuiltView.m; sourceTree = "<group>"; };
-		932464E617A20D7500F73CAA /* TMQuiltViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMQuiltViewCell.h; sourceTree = "<group>"; };
-		932464E717A20D7500F73CAA /* TMQuiltViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMQuiltViewCell.m; sourceTree = "<group>"; };
-		932464E817A20D7500F73CAA /* TMQuiltViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMQuiltViewController.h; sourceTree = "<group>"; };
-		932464E917A20D7500F73CAA /* TMQuiltViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMQuiltViewController.m; sourceTree = "<group>"; };
-		932464EE17A20D8E00F73CAA /* EGORefreshTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableFooterView.h; sourceTree = "<group>"; };
-		932464EF17A20D8E00F73CAA /* EGORefreshTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableFooterView.m; sourceTree = "<group>"; };
-		932464F017A20D8E00F73CAA /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
-		932464F117A20D8E00F73CAA /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
-		932464F217A20D8E00F73CAA /* EGOViewCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOViewCommon.h; sourceTree = "<group>"; };
 		932464F517A20D8E00F73CAA /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		932464F617A20D8E00F73CAA /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
 		932464F717A20D8E00F73CAA /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
@@ -92,8 +94,6 @@
 		9324650F17A20DBC00F73CAA /* 7.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpeg; sourceTree = "<group>"; };
 		9324651017A20DBC00F73CAA /* 8.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.jpeg; sourceTree = "<group>"; };
 		9324651117A20DBC00F73CAA /* 9.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9.jpeg; sourceTree = "<group>"; };
-		9324651C17A2109F00F73CAA /* TMPhotoQuiltViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMPhotoQuiltViewCell.h; sourceTree = "<group>"; };
-		9324651D17A2109F00F73CAA /* TMPhotoQuiltViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMPhotoQuiltViewCell.m; sourceTree = "<group>"; };
 		9324651F17A2111000F73CAA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -112,6 +112,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A226DB4187A41780003312F /* EGO */ = {
+			isa = PBXGroup;
+			children = (
+				4A226DB5187A41780003312F /* EGORefreshTableFooterView.h */,
+				4A226DB6187A41780003312F /* EGORefreshTableFooterView.m */,
+				4A226DB7187A41780003312F /* EGORefreshTableHeaderView.h */,
+				4A226DB8187A41780003312F /* EGORefreshTableHeaderView.m */,
+				4A226DB9187A41780003312F /* EGOViewCommon.h */,
+			);
+			name = EGO;
+			path = classes/EGO;
+			sourceTree = "<group>";
+		};
+		4A226DC6187A418B0003312F /* TMQuiltView */ = {
+			isa = PBXGroup;
+			children = (
+				4A226DC7187A418B0003312F /* TMQuiltView-Prefix.pch */,
+				4A226DC8187A418B0003312F /* TMQuiltView.h */,
+				4A226DC9187A418B0003312F /* TMQuiltView.m */,
+				4A226DCA187A418B0003312F /* TMQuiltViewCell.h */,
+				4A226DCB187A418B0003312F /* TMQuiltViewCell.m */,
+				4A226DCC187A418B0003312F /* TMQuiltViewController.h */,
+				4A226DCD187A418B0003312F /* TMQuiltViewController.m */,
+			);
+			name = TMQuiltView;
+			path = classes/TMQuiltView;
+			sourceTree = "<group>";
+		};
 		932464B317A20D4C00F73CAA = {
 			isa = PBXGroup;
 			children = (
@@ -143,17 +171,17 @@
 		932464C517A20D4C00F73CAA /* Waterflow */ = {
 			isa = PBXGroup;
 			children = (
+				4A226DC6187A418B0003312F /* TMQuiltView */,
+				4A226DB4187A41780003312F /* EGO */,
+				4A226DBF187A41780003312F /* TMPhotoQuiltViewCell.h */,
+				4A226DC0187A41780003312F /* TMPhotoQuiltViewCell.m */,
 				9324650717A20DBC00F73CAA /* images */,
-				932464ED17A20D8E00F73CAA /* EGO */,
 				932464F417A20D8E00F73CAA /* Resources */,
-				932464E217A20D7500F73CAA /* TMQuiltView */,
 				932464CE17A20D4C00F73CAA /* AppDelegate.h */,
 				932464CF17A20D4C00F73CAA /* AppDelegate.m */,
 				932464D717A20D4C00F73CAA /* ViewController.h */,
 				932464D817A20D4C00F73CAA /* ViewController.m */,
 				932464DA17A20D4C00F73CAA /* ViewController.xib */,
-				9324651C17A2109F00F73CAA /* TMPhotoQuiltViewCell.h */,
-				9324651D17A2109F00F73CAA /* TMPhotoQuiltViewCell.m */,
 				932464C617A20D4C00F73CAA /* Supporting Files */,
 			);
 			path = Waterflow;
@@ -171,40 +199,6 @@
 				932464D517A20D4C00F73CAA /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		932464E217A20D7500F73CAA /* TMQuiltView */ = {
-			isa = PBXGroup;
-			children = (
-				932464E317A20D7500F73CAA /* TMQuiltView-Prefix.pch */,
-				932464E417A20D7500F73CAA /* TMQuiltView.h */,
-				932464E517A20D7500F73CAA /* TMQuiltView.m */,
-				932464E617A20D7500F73CAA /* TMQuiltViewCell.h */,
-				932464E717A20D7500F73CAA /* TMQuiltViewCell.m */,
-				932464E817A20D7500F73CAA /* TMQuiltViewController.h */,
-				932464E917A20D7500F73CAA /* TMQuiltViewController.m */,
-			);
-			path = TMQuiltView;
-			sourceTree = "<group>";
-		};
-		932464ED17A20D8E00F73CAA /* EGO */ = {
-			isa = PBXGroup;
-			children = (
-				932464EE17A20D8E00F73CAA /* EGORefreshTableFooterView.h */,
-				932464EF17A20D8E00F73CAA /* EGORefreshTableFooterView.m */,
-				932464F017A20D8E00F73CAA /* EGORefreshTableHeaderView.h */,
-				932464F117A20D8E00F73CAA /* EGORefreshTableHeaderView.m */,
-				932464F217A20D8E00F73CAA /* EGOViewCommon.h */,
-				932464F317A20D8E00F73CAA /* LoadMoreDataView */,
-			);
-			path = EGO;
-			sourceTree = "<group>";
-		};
-		932464F317A20D8E00F73CAA /* LoadMoreDataView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LoadMoreDataView;
 			sourceTree = "<group>";
 		};
 		932464F417A20D8E00F73CAA /* Resources */ = {
@@ -324,14 +318,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				932464CC17A20D4C00F73CAA /* main.m in Sources */,
+				4A226DCE187A418B0003312F /* TMQuiltView.m in Sources */,
 				932464D017A20D4C00F73CAA /* AppDelegate.m in Sources */,
+				4A226DCF187A418B0003312F /* TMQuiltViewCell.m in Sources */,
+				4A226DD0187A418B0003312F /* TMQuiltViewController.m in Sources */,
+				4A226DC1187A41780003312F /* EGORefreshTableFooterView.m in Sources */,
+				4A226DC5187A41780003312F /* TMPhotoQuiltViewCell.m in Sources */,
 				932464D917A20D4C00F73CAA /* ViewController.m in Sources */,
-				932464EA17A20D7500F73CAA /* TMQuiltView.m in Sources */,
-				932464EB17A20D7500F73CAA /* TMQuiltViewCell.m in Sources */,
-				932464EC17A20D7500F73CAA /* TMQuiltViewController.m in Sources */,
-				932464FD17A20D8E00F73CAA /* EGORefreshTableFooterView.m in Sources */,
-				932464FE17A20D8E00F73CAA /* EGORefreshTableHeaderView.m in Sources */,
-				9324651E17A2109F00F73CAA /* TMPhotoQuiltViewCell.m in Sources */,
+				4A226DC2187A41780003312F /* EGORefreshTableHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +448,7 @@
 				932464E117A20D4C00F73CAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
