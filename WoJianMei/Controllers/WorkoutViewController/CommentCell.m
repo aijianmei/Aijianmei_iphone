@@ -94,7 +94,7 @@
     
     [self.myImageView setImageWithURL:[NSURL URLWithString:comment.userimg] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"] options:SDWebImageCacheMemoryOnly];
     [self.commentLabel setText:comment.content];
-    [self.commentTimeLabel setText:[NSString stringWithFormat:@"发表于:%@", comment.timestamp]];
+    [self.commentTimeLabel setText:[NSString stringWithFormat:@"发表于:%@", comment.create_time]];
     
     
     if ([[comment.username  class] isSubclassOfClass:[NSNull class]]) {

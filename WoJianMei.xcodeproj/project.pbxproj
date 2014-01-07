@@ -196,6 +196,7 @@
 		4A226E0B187A42560003312F /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DF3187A42560003312F /* grayArrow@2x.png */; };
 		4A226E0C187A42560003312F /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DF4187A42560003312F /* whiteArrow.png */; };
 		4A226E0D187A42560003312F /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DF5187A42560003312F /* whiteArrow@2x.png */; };
+		4A226E10187BC37A0003312F /* PlayVideoViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A226E0F187BC37A0003312F /* PlayVideoViewController~ipad.xib */; };
 		4A257EF6178F9697001D153F /* ChangeNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A257EF5178F9697001D153F /* ChangeNameCell.m */; };
 		4A257F0E17900522001D153F /* AddLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A257F0C17900521001D153F /* AddLabelViewController.m */; };
 		4A257F0F17900522001D153F /* AddLabelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A257F0D17900521001D153F /* AddLabelViewController.xib */; };
@@ -966,6 +967,7 @@
 		4A226DF3187A42560003312F /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
 		4A226DF4187A42560003312F /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		4A226DF5187A42560003312F /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
+		4A226E0F187BC37A0003312F /* PlayVideoViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PlayVideoViewController~ipad.xib"; sourceTree = "<group>"; };
 		4A257EF4178F9697001D153F /* ChangeNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeNameCell.h; sourceTree = "<group>"; };
 		4A257EF5178F9697001D153F /* ChangeNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeNameCell.m; sourceTree = "<group>"; };
 		4A257F0B17900520001D153F /* AddLabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLabelViewController.h; sourceTree = "<group>"; };
@@ -1952,6 +1954,7 @@
 				4A03269017A8EE980016F6C5 /* PlayVideoViewController.h */,
 				4A03269117A8EE980016F6C5 /* PlayVideoViewController.m */,
 				4A03269217A8EE990016F6C5 /* PlayVideoViewController.xib */,
+				4A226E0F187BC37A0003312F /* PlayVideoViewController~ipad.xib */,
 				4A4A5DAE179E512E00F00085 /* CommentViewController.h */,
 				4A4A5DAF179E512E00F00085 /* CommentViewController.m */,
 				4A4A5DB0179E512E00F00085 /* CommentViewController.xib */,
@@ -4657,6 +4660,7 @@
 				4A499228168553A30073E682 /* TestPPViewController.xib in Resources */,
 				4A499242168553A30073E682 /* ReviewRequest.strings in Resources */,
 				4A499255168553A30073E682 /* EGORefreshTableHeaderView.strings in Resources */,
+				4A226E10187BC37A0003312F /* PlayVideoViewController~ipad.xib in Resources */,
 				4A499256168553A30073E682 /* blackArrow.png in Resources */,
 				4A499257168553A30073E682 /* blackArrow@2x.png in Resources */,
 				4A0E22641855906600A07512 /* draw_home_bottom_line@2x.png in Resources */,

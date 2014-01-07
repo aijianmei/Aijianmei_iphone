@@ -116,7 +116,7 @@ enum ErrorCode
     self.inputBar.delegate = self;
     self.inputBar.clearInputWhenSend = YES;
     self.inputBar.resignFirstResponderWhenSend = YES;
-    
+    [self.inputBar.textField setPlaceholder:@"亲!您可以评论哦!"];
     [self.view addSubview:_inputBar];
 
     

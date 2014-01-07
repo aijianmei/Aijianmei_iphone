@@ -66,16 +66,19 @@ enum TapOnItem {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-       self.playerWebView = [[UIWebView alloc]initWithFrame:CGRectMake(0,64, 320, 150)];
 
         CommentViewController *comVC;
         
         if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
             comVC= [[CommentViewController alloc]initWithNibName:@"CommentViewController" bundle:nil];
+            self.playerWebView = [[UIWebView alloc]initWithFrame:CGRectMake(0,64, UIScreen.mainScreen.bounds.size.width, 200)];
+
             
             
         }else{
             comVC = [[CommentViewController alloc]initWithNibName:@"CommentViewController ～ipad" bundle:nil];
+            self.playerWebView = [[UIWebView alloc]initWithFrame:CGRectMake(0,64, UIScreen.mainScreen.bounds.size.width, 400)];
+
             
         }
 
@@ -109,9 +112,16 @@ enum TapOnItem {
     ////Configure The ButtonScrollView
     
     NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"详情",@"评论",nil];
-    
     self.segmentedController=[[SDSegmentedControl alloc]initWithItems:buttonTitleArray];
-    [_segmentedController setFrame:CGRectMake(0, 215, UIScreen.mainScreen.bounds.size.width, 40)];
+    
+    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
+        [_segmentedController setFrame:CGRectMake(0, 215, UIScreen.mainScreen.bounds.size.width, 40)];
+
+    }else{
+        [_segmentedController setFrame:CGRectMake(0, 460, UIScreen.mainScreen.bounds.size.width, 40)];
+
+    
+    }
     [_segmentedController setSelectedSegmentIndex:0];
     [_segmentedController addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventValueChanged];
     
@@ -131,14 +141,20 @@ enum TapOnItem {
     if (segmentedControl.selectedSegmentIndex ==1)
     {
         
-        [self.navigationController pushViewController:self.commentViewController animated:YES ];
+//        if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
+            [self.navigationController pushViewController:self.commentViewController animated:YES ];
+            self.commentViewController.video = [self video];
+            [self.commentViewController loadDatas];
+
         
-        self.commentViewController.video = [self video];
-        [self.commentViewController loadDatas];
-        
-        
-        
-        
+//        }else{
+//            
+//            [self addChildViewController:self.commentViewController];
+//            [self.commentViewController.view setFrame:CGRectMake(0, 503, UIScreen.mainScreen.bounds.size.width,UIScreen.mainScreen.bounds.size.width - 503)];
+//            self.commentViewController.video = [self video];
+//            [self.commentViewController loadDatas];
+//            
+//        }
     }
 }
 
@@ -223,10 +239,10 @@ enum TapOnItem {
 
 -(void)shareToSocialnetWorks
 {
-    if (IOS_VERSION >=6.0) {
-        [self  showAWSheet];
-    }else{
-        
+//    if (IOS_VERSION >=6.0) {
+//        [self  showAWSheet];
+//    }else{
+    
         
         whichAcctionSheet = RECOMMENDATION;
         UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
@@ -238,7 +254,7 @@ enum TapOnItem {
         [share showInView:self.view];
         [share release];
         
-    }
+//    }
 
     
 }
@@ -661,7 +677,6 @@ enum TapOnItem {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self addTitleButtonsSegmentedController];
-    
     [self initVideoWebView];
 
     [self setBackgroundImageName:@"gobal_background.png"];
@@ -675,21 +690,7 @@ enum TapOnItem {
     
     [self.view addSubview:self.commentViewController.view];
 
-
-    
-    [self.titleLabel setText:self.video.title];
-    [self.descriptionView setText:self.video.brief];
-     self.descriptionView.backgroundColor = [UIColor clearColor];
-    [self.descriptionView setEditable:NO];
-    [self.timeLabel setText:self.video.create_time];
-    
-
-    
-    
     [self.view addSubview:self.playerWebView];
-
-    
-    
     [self playVideo:self.video.shareurl withWebView:self.playerWebView];
     
     
@@ -699,7 +700,21 @@ enum TapOnItem {
     [self buttonClicked:_segmentedController];
     
     
+    [self updateUI];
 }
+
+-(void)updateUI{
+
+    [self.titleLabel setText:self.video.title];
+    [self.descriptionView setText:self.video.brief];
+    self.descriptionView.backgroundColor = [UIColor clearColor];
+    [self.descriptionView setEditable:NO];
+    [self.timeLabel setText:self.video.timestamp];
+
+
+}
+
+
 -(void)viewDidUnload{
     [super viewDidUnload];
     [self setTitleLabel:nil];

@@ -595,8 +595,16 @@ typedef enum CONTENT_TYPE {
         
     }else if (self.segmentedController.selectedSegmentIndex ==2 || self.segmentedController.selectedSegmentIndex ==3)
     {
-    
-        PlayVideoViewController *playVc =[[PlayVideoViewController alloc]initWithNibName:@"PlayVideoViewController" bundle:nil];
+        PlayVideoViewController *playVc;
+        if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
+        playVc =[[PlayVideoViewController alloc]initWithNibName:@"PlayVideoViewController" bundle:nil];
+
+        }else{
+            
+            
+        playVc =[[PlayVideoViewController alloc]initWithNibName:@"PlayVideoViewController~ipad" bundle:nil];
+
+        }
         playVc.video  = [self.dataList objectAtIndex:indexPath.row];
        [self.navigationController pushViewController:playVc animated:YES];
         [playVc release];
