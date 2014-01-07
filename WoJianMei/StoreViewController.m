@@ -148,12 +148,12 @@
     [self initUI];
     
     
-    [self setBackgroundImageName:@"gobal_background.png"];
-    [self showBackgroundImage];
+//    [self setBackgroundImageName:@"gobal_background.png"];
+//    [self showBackgroundImage];
 
     
     
-    qtmquitView = [[TMQuiltView alloc] initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height)];
+    qtmquitView = [[TMQuiltView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
 	qtmquitView.delegate = self;
 	qtmquitView.dataSource = self;
 	
@@ -161,9 +161,7 @@
 	
 	[qtmquitView reloadData];
     [self createHeaderView];
-	[self performSelector:@selector(testFinishedLoadData)
-               withObject:nil
-               afterDelay:0.0f];
+	[self performSelector:@selector(testFinishedLoadData) withObject:nil afterDelay:0.0f];
 
 }
 
@@ -320,6 +318,7 @@
 
 #pragma mark -
 #pragma mark EGORefreshTableDelegate Methods
+
 - (void)egoRefreshTableDidTriggerRefresh:(EGORefreshPos)aRefreshPos
 {
 	
@@ -340,6 +339,12 @@
 	
 	return [NSDate date]; // should return date data source was last changed
 	
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (NSMutableArray *)images
@@ -376,6 +381,7 @@
 }
 
 #pragma mark - TMQuiltViewDelegate
+
 - (NSInteger)quiltViewNumberOfColumns:(TMQuiltView *)quiltView {
 	
     
@@ -399,14 +405,5 @@
     [self popupMessage:@"亲！商品暂时不可以购买哦!" title:nil];
 }
 
-
-
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end

@@ -71,6 +71,7 @@
 @synthesize storeViewController =_storeViewController;
 @synthesize workOutManagerViewController =_workOutManagerViewController;
 @synthesize moreViewController =_moreViewController;
+@synthesize bbsHomeViewController =_bbsHomeViewController;
 @synthesize webViewController =_webViewController;
 
 - (id)init
@@ -101,6 +102,7 @@
     [_storeViewController release];
     [_workOutManagerViewController release];
     [_moreViewController release];
+    [_bbsHomeViewController release];
     [_webViewController release];
     [super dealloc];
 }
@@ -117,6 +119,7 @@
     [self setStoreViewController:nil];
     [self setWorkOutManagerViewController:nil];
     [self setMoreViewController:nil];
+    [self setBbsHomeViewController:nil];
     [self setWebViewController:nil];
     [super viewDidUnload];
    
@@ -399,6 +402,31 @@
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_moreViewController] ;
 }
 
+-(void)initBBSHomeViewController{
+    
+    if (self.bbsHomeViewController ==nil) {
+        
+        if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone)
+        {
+            
+            self.bbsHomeViewController =[[BBSHomeViewController alloc] initWithNibName:@"BBSHomeViewController" bundle:nil];
+            
+        }else{
+            
+            self.bbsHomeViewController =[[BBSHomeViewController alloc] initWithNibName:@"BBSHomeViewController~ipad" bundle:nil];
+            
+        }
+        
+        
+    }
+    self.bbsHomeViewController.title = @"运动交流圈";
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:_bbsHomeViewController] ;
+}
+
+
+
+
+
 
 -(void)initWebViewController{
     if (self.webViewController ==nil) {
@@ -421,7 +449,7 @@
 {
     switch (section) {
         case 0:
-            return 9;
+            return 10;
         case 1:
             return 2;
         default:
@@ -514,6 +542,12 @@
                     cell.textLabel.text = @"更多";
                     [cell.imageView setImage:[UIImage imageNamed:@"More_Icon.png"]];
                     break;
+                    
+                case 9:
+                    cell.textLabel.text = @"健身交流圈";
+                    [cell.imageView setImage:[UIImage imageNamed:@"More_Icon.png"]];
+                    break;
+
             }
             break;
         }
@@ -747,6 +781,21 @@
             
                         [self initMoreController];
                         self.moreViewController.delegate =[AppDelegate getAppDelegate];
+                        self.viewDeckController.centerController = _navigationController;
+                    }];
+                    self.view.userInteractionEnabled = YES;
+                    _tableView.userInteractionEnabled =YES;
+                    
+                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+                    [statTracker logEvent:@"MoreView" eventLabel:@"MoreView"];
+                }
+                    break;
+                case 9:
+                {
+                    ///更多
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        
+                        [self initBBSHomeViewController];
                         self.viewDeckController.centerController = _navigationController;
                     }];
                     self.view.userInteractionEnabled = YES;

@@ -135,7 +135,7 @@
         _showsCancelButton          = YES;
         
         if ([self respondsToSelector:@selector(setContentSizeForViewInPopover:)])
-            [self setContentSizeForViewInPopover:kPopoverContentSize];
+           self.preferredContentSize = kPopoverContentSize;
     }
     
     return self;
@@ -166,7 +166,7 @@
     if (self = [super initWithStyle:UITableViewStylePlain])
     {
         if ([self respondsToSelector:@selector(setContentSizeForViewInPopover:)])
-            [self setContentSizeForViewInPopover:kPopoverContentSize];
+            self.preferredContentSize =kPopoverContentSize;
     }
     
     return self;
@@ -490,7 +490,7 @@
             [self setEdgesForExtendedLayout:UIRectEdgeNone];
         
         if ([self respondsToSelector:@selector(setContentSizeForViewInPopover:)])
-            [self setContentSizeForViewInPopover:kPopoverContentSize];
+            self.preferredContentSize = kPopoverContentSize;
     }
     
     return self;
@@ -655,8 +655,7 @@
     else if (photosSelected)
         format = (indexPaths.count > 1) ? NSLocalizedString(@"%d Photos Selected", nil) : NSLocalizedString(@"%d Photo Selected", nil);
 
-    else if (videoSelected)
-        format = (indexPaths.count > 1) ? NSLocalizedString(@"%d Videos Selected", nil) : NSLocalizedString(@"%d Video Selected", nil);
+    else format = (indexPaths.count > 1) ? NSLocalizedString(@"%d Videos Selected", nil) : NSLocalizedString(@"%d Video Selected", nil);
     
     self.title = [NSString stringWithFormat:format, indexPaths.count];
 }
@@ -780,7 +779,7 @@ static UIColor *selectedColor;
     if (self.selected)
     {
         CGContextRef context    = UIGraphicsGetCurrentContext();
-		CGContextSetFillColorWithColor(context, selectedColor.CGColor);
+		CGContextSetFillColorWithColor(context, [UIColor colorWithWhite:1 alpha:0.3].CGColor);
 		CGContextFillRect(context, rect);
         
         [checkedIcon drawAtPoint:CGPointMake(CGRectGetMaxX(rect) - checkedIcon.size.width, CGRectGetMinY(rect))];

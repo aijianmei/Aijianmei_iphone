@@ -197,6 +197,12 @@
 		4A226E0C187A42560003312F /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DF4187A42560003312F /* whiteArrow.png */; };
 		4A226E0D187A42560003312F /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A226DF5187A42560003312F /* whiteArrow@2x.png */; };
 		4A226E10187BC37A0003312F /* PlayVideoViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A226E0F187BC37A0003312F /* PlayVideoViewController~ipad.xib */; };
+		4A226E19187BF2B50003312F /* CTAssetsPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226E15187BF2B50003312F /* CTAssetsPickerController.m */; };
+		4A226E1A187BF2B50003312F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A226E16187BF2B50003312F /* Images.xcassets */; };
+		4A226E1B187BF2B50003312F /* NSDate+TimeInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226E18187BF2B50003312F /* NSDate+TimeInterval.m */; };
+		4A226E1D187BF3B30003312F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A226E1C187BF3B20003312F /* AssetsLibrary.framework */; };
+		4A226E2E187C0D010003312F /* Tom_EGORefreshTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226E2B187C0D010003312F /* Tom_EGORefreshTableFooterView.m */; };
+		4A226E2F187C0D010003312F /* Tom_EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226E2D187C0D010003312F /* Tom_EGORefreshTableHeaderView.m */; };
 		4A257EF6178F9697001D153F /* ChangeNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A257EF5178F9697001D153F /* ChangeNameCell.m */; };
 		4A257F0E17900522001D153F /* AddLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A257F0C17900521001D153F /* AddLabelViewController.m */; };
 		4A257F0F17900522001D153F /* AddLabelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A257F0D17900521001D153F /* AddLabelViewController.xib */; };
@@ -968,6 +974,16 @@
 		4A226DF4187A42560003312F /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		4A226DF5187A42560003312F /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		4A226E0F187BC37A0003312F /* PlayVideoViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PlayVideoViewController~ipad.xib"; sourceTree = "<group>"; };
+		4A226E14187BF2B50003312F /* CTAssetsPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAssetsPickerController.h; sourceTree = "<group>"; };
+		4A226E15187BF2B50003312F /* CTAssetsPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAssetsPickerController.m; sourceTree = "<group>"; };
+		4A226E16187BF2B50003312F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4A226E17187BF2B50003312F /* NSDate+TimeInterval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeInterval.h"; sourceTree = "<group>"; };
+		4A226E18187BF2B50003312F /* NSDate+TimeInterval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeInterval.m"; sourceTree = "<group>"; };
+		4A226E1C187BF3B20003312F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		4A226E2A187C0D010003312F /* Tom_EGORefreshTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tom_EGORefreshTableFooterView.h; sourceTree = "<group>"; };
+		4A226E2B187C0D010003312F /* Tom_EGORefreshTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tom_EGORefreshTableFooterView.m; sourceTree = "<group>"; };
+		4A226E2C187C0D010003312F /* Tom_EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tom_EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		4A226E2D187C0D010003312F /* Tom_EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tom_EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		4A257EF4178F9697001D153F /* ChangeNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeNameCell.h; sourceTree = "<group>"; };
 		4A257EF5178F9697001D153F /* ChangeNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeNameCell.m; sourceTree = "<group>"; };
 		4A257F0B17900520001D153F /* AddLabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLabelViewController.h; sourceTree = "<group>"; };
@@ -1892,6 +1908,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A226E1D187BF3B30003312F /* AssetsLibrary.framework in Frameworks */,
 				4A316594183D1E3B008DC2CB /* AdSupport.framework in Frameworks */,
 				4A03270417AA89580016F6C5 /* CoreTelephony.framework in Frameworks */,
 				4A03270217AA89170016F6C5 /* libstdc++.dylib in Frameworks */,
@@ -2310,6 +2327,10 @@
 		4A226DD2187A42560003312F /* EGO */ = {
 			isa = PBXGroup;
 			children = (
+				4A226E2A187C0D010003312F /* Tom_EGORefreshTableFooterView.h */,
+				4A226E2B187C0D010003312F /* Tom_EGORefreshTableFooterView.m */,
+				4A226E2C187C0D010003312F /* Tom_EGORefreshTableHeaderView.h */,
+				4A226E2D187C0D010003312F /* Tom_EGORefreshTableHeaderView.m */,
 				4A226DD7187A42560003312F /* EGOViewCommon.h */,
 			);
 			path = EGO;
@@ -2371,6 +2392,40 @@
 				4A226DED187A42560003312F /* Resources */,
 			);
 			name = WaterFlow;
+			sourceTree = "<group>";
+		};
+		4A226E11187BE3B40003312F /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				4A8A7224174E10FE00BD3AAE /* LoginViewController.h */,
+				4A8A7225174E10FF00BD3AAE /* LoginViewController.m */,
+				4A0A581017BB8C970089683A /* LoginViewController.xib */,
+				4A3558B51879A5EA007FC165 /* LoginViewController~ipad.xib */,
+			);
+			name = LoginView;
+			sourceTree = "<group>";
+		};
+		4A226E12187BE3C70003312F /* SignUpView */ = {
+			isa = PBXGroup;
+			children = (
+				4A8A7227174E557700BD3AAE /* SignUpViewController.h */,
+				4A8A7228174E557700BD3AAE /* SignUpViewController.m */,
+				4A0A581217BB8CA40089683A /* SignUpViewController.xib */,
+				4A3558B71879A642007FC165 /* SignUpViewController~ipad.xib */,
+			);
+			name = SignUpView;
+			sourceTree = "<group>";
+		};
+		4A226E13187BF2B50003312F /* CTAssetsPickerController */ = {
+			isa = PBXGroup;
+			children = (
+				4A226E14187BF2B50003312F /* CTAssetsPickerController.h */,
+				4A226E15187BF2B50003312F /* CTAssetsPickerController.m */,
+				4A226E16187BF2B50003312F /* Images.xcassets */,
+				4A226E17187BF2B50003312F /* NSDate+TimeInterval.h */,
+				4A226E18187BF2B50003312F /* NSDate+TimeInterval.m */,
+			);
+			path = CTAssetsPickerController;
 			sourceTree = "<group>";
 		};
 		4A27ADFA1777EED1009978C5 /* NetWorkRequest */ = {
@@ -3546,14 +3601,8 @@
 		4A58805215C52B89005F8415 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4A8A7224174E10FE00BD3AAE /* LoginViewController.h */,
-				4A8A7225174E10FF00BD3AAE /* LoginViewController.m */,
-				4A0A581017BB8C970089683A /* LoginViewController.xib */,
-				4A3558B51879A5EA007FC165 /* LoginViewController~ipad.xib */,
-				4A8A7227174E557700BD3AAE /* SignUpViewController.h */,
-				4A8A7228174E557700BD3AAE /* SignUpViewController.m */,
-				4A0A581217BB8CA40089683A /* SignUpViewController.xib */,
-				4A3558B71879A642007FC165 /* SignUpViewController~ipad.xib */,
+				4A226E12187BE3C70003312F /* SignUpView */,
+				4A226E11187BE3B40003312F /* LoginView */,
 				4ACD190916154F5C00567A24 /* Entries */,
 			);
 			name = Controllers;
@@ -4267,6 +4316,7 @@
 		4ADCFF50169D69F500A3E979 /* Common iphone */ = {
 			isa = PBXGroup;
 			children = (
+				4A226E13187BF2B50003312F /* CTAssetsPickerController */,
 				4A226E0E187A42620003312F /* WaterFlow */,
 				4A88C963185055B5004E4D36 /* ProtocolBuffer */,
 				4A0F7D71183226400022EA46 /* InputBAR */,
@@ -4385,6 +4435,7 @@
 		4AE394B015C2DD9C00D06C61 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A226E1C187BF3B20003312F /* AssetsLibrary.framework */,
 				4A3558B31879A144007FC165 /* StoreKit.framework */,
 				4A316593183D1E3B008DC2CB /* AdSupport.framework */,
 				4A31653D183D198E008DC2CB /* ShareSDK */,
@@ -4730,6 +4781,7 @@
 				4A0326A917A8FEBF0016F6C5 /* VideoInfoView.xib in Resources */,
 				4A0CA5D017AB969600314B8C /* BMIViewController.xib in Resources */,
 				4A0CA65017ABE65500314B8C /* rq_2.png in Resources */,
+				4A226E1A187BF2B50003312F /* Images.xcassets in Resources */,
 				4A0CA65117ABE65500314B8C /* rq_3.png in Resources */,
 				4A226C34187A35500003312F /* StoreViewController.xib in Resources */,
 				4A316558183D198F008DC2CB /* Resource.bundle in Resources */,
@@ -4966,6 +5018,7 @@
 				4A4991D0168553A30073E682 /* ASIDownloadCache.m in Sources */,
 				4ACF0CA71839B71300F7221C /* PPSNSIntegerationService.m in Sources */,
 				4A3853B3184DF7DF00D5A66B /* PostTopicViewController.m in Sources */,
+				4A226E19187BF2B50003312F /* CTAssetsPickerController.m in Sources */,
 				4A4991D1168553A30073E682 /* ASIFormDataRequest.m in Sources */,
 				4A4991D2168553A30073E682 /* ASIHTTPRequest.m in Sources */,
 				4ACF0CA41839B71300F7221C /* PPSNSStorageService.m in Sources */,
@@ -5078,6 +5131,7 @@
 				4A499291168553A30073E682 /* LocaleUtils.m in Sources */,
 				4ACF0CE51839B82800F7221C /* Facebook.m in Sources */,
 				4A499292168553A30073E682 /* LogUtil.m in Sources */,
+				4A226E2F187C0D010003312F /* Tom_EGORefreshTableHeaderView.m in Sources */,
 				4A3165BE183DF69C008DC2CB /* CFilteringJSONSerializer.m in Sources */,
 				4A499293168553A30073E682 /* NumberUtil.m in Sources */,
 				4A499294168553A30073E682 /* ArrayOfCharacters.m in Sources */,
@@ -5151,6 +5205,7 @@
 				4A66C1FB16A59E0000A2F22E /* ViewController.m in Sources */,
 				4ACE239C16AB0F2E002E41D1 /* CompostViewController.m in Sources */,
 				4A4EE73016AD3D92005C3ADA /* ComposeViewCell.m in Sources */,
+				4A226E1B187BF2B50003312F /* NSDate+TimeInterval.m in Sources */,
 				4A4EE73316AD43D7005C3ADA /* ComposeViewCellInfo.m in Sources */,
 				4ACF0CD41839B80A00F7221C /* NSObject+WBUtil.m in Sources */,
 				4A8A7226174E10FF00BD3AAE /* LoginViewController.m in Sources */,
@@ -5311,6 +5366,7 @@
 				4A20190117C1E348003D4E54 /* MyselfViewBaseController.m in Sources */,
 				4A20190C17C255F3003D4E54 /* NumberDataViewController.m in Sources */,
 				4ACA75B7182CB80800567C77 /* TKCalendarMonthView.m in Sources */,
+				4A226E2E187C0D010003312F /* Tom_EGORefreshTableFooterView.m in Sources */,
 				4A20191017C25778003D4E54 /* NumberDataCell.m in Sources */,
 				4A20191317C25869003D4E54 /* NumberData.m in Sources */,
 				4A20191617C25915003D4E54 /* NumberDataCellHeader.m in Sources */,

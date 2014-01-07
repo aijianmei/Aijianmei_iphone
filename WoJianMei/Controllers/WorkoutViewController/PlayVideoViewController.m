@@ -243,7 +243,10 @@ enum TapOnItem {
 //        [self  showAWSheet];
 //    }else{
     
-        
+    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
+        [self showAWSheet];
+    }else {
+    
         whichAcctionSheet = RECOMMENDATION;
         UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
                                                            delegate:self
@@ -253,7 +256,8 @@ enum TapOnItem {
         
         [share showInView:self.view];
         [share release];
-        
+
+    }
 //    }
 
     

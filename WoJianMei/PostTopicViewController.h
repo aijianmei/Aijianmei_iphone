@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PPViewController.h"
 
-@interface PostTopicViewController : PPViewController
+@interface PostTopicViewController : PPViewController<UIActionSheetDelegate>
 
 
 - (IBAction)clickPickImagesButton:(id)sender;

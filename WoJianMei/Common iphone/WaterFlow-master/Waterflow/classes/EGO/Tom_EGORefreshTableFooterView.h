@@ -28,6 +28,15 @@
 #import <QuartzCore/QuartzCore.h>
 #import "EGOViewCommon.h"
 
+
+typedef enum{
+	EGOOPullRefreshPulling = 0,
+	EGOOPullRefreshNormal,
+	EGOOPullRefreshLoading,
+}   EGOPullRefreshState;
+
+
+
 @interface Tom_EGORefreshTableFooterView : UIView {
 	
 	id _delegate;
@@ -41,7 +50,7 @@
 
 }
 
-@property(nonatomic,assign) id <Tom_EGORefreshTableDelegate> delegate;
+@property(nonatomic,assign) id <EGORefreshTableDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame arrowImageName:(NSString *)arrow textColor:(UIColor *)textColor;
 

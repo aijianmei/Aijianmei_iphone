@@ -8,13 +8,18 @@
 
 #import "PostTopicViewController.h"
 #import "VotesViewController.h"
+#import "CTAssetsPickerController.h"
 
 
-@interface PostTopicViewController ()
+@interface PostTopicViewController ()<CTAssetsPickerControllerDelegate,UINavigationControllerDelegate>
 
+
+@property (nonatomic, strong) NSMutableArray *assets;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @end
 
 @implementation PostTopicViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,6 +28,12 @@
         // Custom initialization
     }
     return self;
+}
+
+-(void)dealloc{
+
+    
+    [super dealloc];
 }
 
 - (void)viewDidLoad
@@ -61,10 +72,59 @@
 }
 
 - (IBAction)clickPickImagesButton:(id)sender {
+
     
+    UIActionSheet *share = [[UIActionSheet alloc] initWithTitle:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"取消"
+                                         destructiveButtonTitle:@"照相"
+                                              otherButtonTitles:@"相册",nil];
+    [share showInView:self.view];
+    [share release];
+
     
-    [self selectPhoto];
+
 }
+
+#pragma mark --actionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+        {
+            [self takePhoto];
+        }
+            break;
+        case 1:
+        {
+            [self pickAssets];
+        }
+            break;
+        case 2:
+            
+        {
+            NSLog(@"Button index :%d",buttonIndex);
+        }
+            break;
+        default:
+            break;
+    }
+    
+}
+
+
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (buttonIndex==0) {
+        NSLog(@"0");
+        
+    }else {
+        NSLog(@"1");
+    }
+}
+
+
 
 - (IBAction)clickVotesButton:(id)sender {
     
@@ -73,4 +133,51 @@
     [vc release];
     
 }
+
+
+#pragma mark --
+#pragma mark SelectPhotos
+
+-(void)pickAssets{
+  
+    if (!self.assets)
+        self.assets = [[NSMutableArray alloc] init];
+    
+    CTAssetsPickerController *picker = [[CTAssetsPickerController alloc] init];
+    picker.maximumNumberOfSelection = 9;
+    picker.delegate = self;
+    [self presentViewController:picker animated:YES completion:NULL];
+    [picker release];
+    
+}
+#pragma mark --
+#pragma mark - Assets Picker Delegate
+- (void)assetsPickerController:(CTAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
+{
+    [self showPhotosArray];
+    PPDebug(@"%d",[assets count]);
+}
+
+- (NSArray *)indexPathOfNewlyAddedAssets:(NSArray *)assets
+{
+    NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
+    
+    for (int i = self.assets.count; i < self.assets.count + assets.count ; i++)
+        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+    
+    return indexPaths;
+}
+
+#pragma mark --
+#pragma mark - Add the photos array
+-(void)showPhotosArray{
+
+
+}
+
+
+
+
+
+
 @end

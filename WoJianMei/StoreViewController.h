@@ -7,15 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PPViewController.h"
-
 #import "EGORefreshTableHeaderView.h"
 #import "EGORefreshTableFooterView.h"
-#import "EGORefreshTableViewConstant.h"
 #import "EGOViewCommon.h"
 
-
-@interface StoreViewController : PPViewController<EGORefreshTableDelegate,EGORefreshTableHeaderDelegate,EGORefreshTableFooterDelegate>
+@interface StoreViewController : UIViewController<EGORefreshTableDelegate>
 
 {
     //EGOHeader
