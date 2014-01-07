@@ -1,5 +1,5 @@
 //
-//  EGORefreshTableHeaderView.m
+//  EGORefreshTableFooterView.m
 //  Demo
 //
 //  Created by Devin Doty on 10/14/09October14.
@@ -24,13 +24,13 @@
 //  THE SOFTWARE.
 //
 
-#import "EGORefreshTableHeaderView.h"
+#import "Tom_EGORefreshTableFooterView.h"
 
-@interface EGORefreshTableHeaderView (Private)
-
+@interface Tom_EGORefreshTableFooterView (Private)
+- (void)setState:(EGOPullRefreshState)aState;
 @end
 
-@implementation EGORefreshTableHeaderView
+@implementation Tom_EGORefreshTableFooterView
 
 @synthesize delegate=_delegate;
 
@@ -41,7 +41,7 @@
 		self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		self.backgroundColor = [UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:237.0/255.0 alpha:1.0];
 
-		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 30.0f, self.frame.size.width, 20.0f)];
+		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 40.0f, self.frame.size.width, 20.0f)];
 		label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		label.font = [UIFont systemFontOfSize:12.0f];
 		label.textColor = textColor;
@@ -53,7 +53,7 @@
 		_lastUpdatedLabel=label;
 		[label release];
 		
-		label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 48.0f, self.frame.size.width, 20.0f)];
+		label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 20.0f, self.frame.size.width, 20.0f)];
 		label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		label.font = [UIFont boldSystemFontOfSize:13.0f];
 		label.textColor = textColor;
@@ -66,7 +66,7 @@
 		[label release];
 		
 		CALayer *layer = [CALayer layer];
-		layer.frame = CGRectMake(25.0f, frame.size.height - 65.0f, 30.0f, 55.0f);
+		layer.frame = CGRectMake(25.0f, 20.0f, 30.0f, 55.0f);
 		layer.contentsGravity = kCAGravityResizeAspect;
 		layer.contents = (id)[UIImage imageNamed:arrow].CGImage;
 		
@@ -80,7 +80,7 @@
 		_arrowImage=layer;
 		
 		UIActivityIndicatorView *view = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-		view.frame = CGRectMake(25.0f, frame.size.height - 38.0f, 20.0f, 20.0f);
+		view.frame = CGRectMake(25.0f, 20.0f, 20.0f, 20.0f);
 		[self addSubview:view];
 		_activityView = view;
 		[view release];
@@ -129,10 +129,11 @@
 	switch (aState) {
 		case EGOOPullRefreshPulling:
 			
-			_statusLabel.text = NSLocalizedString(@"Release to refresh...", @"Release to refresh status");
+			_statusLabel.text = NSLocalizedString(@"Release to load more...", @"Release to load more");
 			[CATransaction begin];
 			[CATransaction setAnimationDuration:FLIP_ANIMATION_DURATION];
-			_arrowImage.transform = CATransform3DMakeRotation((M_PI / 180.0) * 180.0f, 0.0f, 0.0f, 1.0f);
+//			_arrowImage.transform = CATransform3DMakeRotation((M_PI / 180.0) * 180.0f, 0.0f, 0.0f, 1.0f);
+            _arrowImage.transform = CATransform3DIdentity;
 			[CATransaction commit];
 			
 			break;
@@ -145,12 +146,13 @@
 				[CATransaction commit];
 			}
 			
-			_statusLabel.text = NSLocalizedString(@"Pull down to refresh...", @"Pull down to refresh status");
+			_statusLabel.text = NSLocalizedString(@"Pull up to load more...", @"Pull up to load more");
 			[_activityView stopAnimating];
 			[CATransaction begin];
 			[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions]; 
 			_arrowImage.hidden = NO;
-			_arrowImage.transform = CATransform3DIdentity;
+			//_arrowImage.transform = CATransform3DIdentity;
+            _arrowImage.transform = CATransform3DMakeRotation((M_PI / 180.0) * 180.0f, 0.0f, 0.0f, 1.0f);
 			[CATransaction commit];
 			
 			[self refreshLastUpdatedDate];
@@ -178,12 +180,12 @@
 #pragma mark ScrollView Methods
 
 - (void)egoRefreshScrollViewDidScroll:(UIScrollView *)scrollView {	
-//	NSLog(@"egoRefreshScrollViewDidScroll scrollView.contentOffset.y= %f", scrollView.contentOffset.y);
+	
 	if (_state == EGOOPullRefreshLoading) {
 		
 		CGFloat offset = MAX(scrollView.contentOffset.y * -1, 0);
 		offset = MIN(offset, 60);
-		scrollView.contentInset = UIEdgeInsetsMake(offset, 0.0f, 0.0f, 0.0f);
+		scrollView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, REFRESH_REGION_HEIGHT, 0.0f);
 		
 	} else if (scrollView.isDragging) {
 		
@@ -192,9 +194,12 @@
 			_loading = [_delegate egoRefreshTableDataSourceIsLoading:self];
 		}
 		
-		if (_state == EGOOPullRefreshPulling && scrollView.contentOffset.y > -65.0f && scrollView.contentOffset.y < 0.0f && !_loading) {
+		if (_state == EGOOPullRefreshPulling && 
+            (scrollView.contentOffset.y+scrollView.frame.size.height) < scrollView.contentSize.height+REFRESH_REGION_HEIGHT && 
+            scrollView.contentOffset.y > 0.0f && !_loading) {
 			[self setState:EGOOPullRefreshNormal];
-		} else if (_state == EGOOPullRefreshNormal && scrollView.contentOffset.y < -65.0f && !_loading) {
+		} else if (_state == EGOOPullRefreshNormal && 
+                   scrollView.contentOffset.y+(scrollView.frame.size.height) > scrollView.contentSize.height+REFRESH_REGION_HEIGHT && !_loading) {
 			[self setState:EGOOPullRefreshPulling];
 		}
 		
@@ -207,22 +212,22 @@
 }
 
 - (void)egoRefreshScrollViewDidEndDragging:(UIScrollView *)scrollView {
-    //NSLog(@"egoRefreshScrollViewDidEndDragging scrollView.contentOffset.y= %f", scrollView.contentOffset.y);
+	
 	BOOL _loading = NO;
 	if ([_delegate respondsToSelector:@selector(egoRefreshTableDataSourceIsLoading:)]) {
 		_loading = [_delegate egoRefreshTableDataSourceIsLoading:self];
 	}
 	
-	if (scrollView.contentOffset.y <= - 65.0f && !_loading) {
+	if (scrollView.contentOffset.y+(scrollView.frame.size.height) > scrollView.contentSize.height+REFRESH_REGION_HEIGHT  && !_loading) {
 		
 		if ([_delegate respondsToSelector:@selector(egoRefreshTableDidTriggerRefresh:)]) {
-			[_delegate egoRefreshTableDidTriggerRefresh:EGORefreshHeader];
+			[_delegate egoRefreshTableDidTriggerRefresh:EGORefreshFooter];
 		}
 		
 		[self setState:EGOOPullRefreshLoading];
 		[UIView beginAnimations:nil context:NULL];
 		[UIView setAnimationDuration:0.2];
-		scrollView.contentInset = UIEdgeInsetsMake(60.0f, 0.0f, 0.0f, 0.0f);
+		scrollView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, REFRESH_REGION_HEIGHT, 0.0f);
 		[UIView commitAnimations];
 		
 	}

@@ -1,5 +1,5 @@
 //
-//  EGORefreshTableFooterView.h
+//  EGORefreshTableHeaderView.h
 //  Demo
 //
 //  Created by Devin Doty on 10/14/09October14.
@@ -28,7 +28,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import "EGOViewCommon.h"
 
-@interface EGORefreshTableFooterView : UIView {
+
+
+@interface Tom_EGORefreshTableHeaderView : UIView {
 	
 	id _delegate;
 	EGOPullRefreshState _state;
@@ -41,7 +43,9 @@
 
 }
 
-@property(nonatomic,assign) id <EGORefreshTableDelegate> delegate;
+@property(nonatomic,assign) id <Tom_EGORefreshTableDelegate> delegate;
+
+- (void)setState:(EGOPullRefreshState)aState;
 
 - (id)initWithFrame:(CGRect)frame arrowImageName:(NSString *)arrow textColor:(UIColor *)textColor;
 
@@ -51,4 +55,3 @@
 - (void)egoRefreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView;
 
 @end
-
