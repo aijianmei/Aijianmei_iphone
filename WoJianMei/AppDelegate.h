@@ -17,6 +17,8 @@
 #import "SinaWeiboAuthorizeView.h"
 #import "UserService.h"
 #import "BBSHomeViewController.h"
+#import "EAIntroView.h"
+
 
 
 
@@ -33,7 +35,7 @@ enum
 };
 
 
-@interface AppDelegate : PPApplication <UIApplicationDelegate,UITabBarControllerDelegate,WXApiDelegate,sendMsgToWeChatViewDelegate,CommonDialogDelegate,SinaWeiboRequestDelegate,SinaWeiboDelegate,UserServiceDelegate>
+@interface AppDelegate : PPApplication <UIApplicationDelegate,UITabBarControllerDelegate,WXApiDelegate,sendMsgToWeChatViewDelegate,CommonDialogDelegate,SinaWeiboRequestDelegate,SinaWeiboDelegate,UserServiceDelegate,EAIntroDelegate>
 
 {
       UINavigationController *_navigationController;

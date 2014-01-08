@@ -37,6 +37,8 @@
 
 
 
+
+
 // To be changed for each project  在苹果商店上面的ID
 #define kAppId			@"683646344"
 
@@ -504,8 +506,58 @@ NSString* GlobalGetServerURL()
 
     
     
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]){
+         /*如果不是第二次使用*/
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched"];//设置第二次使用的value值为yes
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];//设置第一次使用的value值为yes
+    }else{
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
+    }
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
+        
+    
+//        WelcomeViewController *welcomeVC = [[WelcomeViewController alloc] init];
+//        
+//        [self.window setRootViewController:welcomeVC];
+        [self showIntroWithCrossDissolve];
+
+        
+    }else{
+//         MainViewController *mainVC = [[MainViewController alloc] init];
+//        
+//        [self.window setRootViewController:mainVC];
+    }
+    
+    
     
     return YES;
+}
+
+
+- (void)showIntroWithCrossDissolve {
+    EAIntroPage *page1 = [EAIntroPage page];
+    page1.title = @"Hello world";
+    page1.desc = @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+    page1.bgImage = [UIImage imageNamed:@"1"];
+    page1.titleImage = [UIImage imageNamed:@"original"];
+    
+    EAIntroPage *page2 = [EAIntroPage page];
+    page2.title = @"This is page 2";
+    page2.desc = @"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.";
+    page2.bgImage = [UIImage imageNamed:@"2"];
+    page2.titleImage = [UIImage imageNamed:@"supportcat"];
+    
+    EAIntroPage *page3 = [EAIntroPage page];
+    page3.title = @"This is page 3";
+    page3.desc = @"Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.";
+    page3.bgImage = [UIImage imageNamed:@"3"];
+    page3.titleImage = [UIImage imageNamed:@"femalecodertocat"];
+    
+    EAIntroView *intro = [[EAIntroView alloc] initWithFrame:self.window.bounds andPages:@[page1,page2,page3]];
+    
+    [intro setDelegate:self];
+    [intro showInView:self.window animateDuration:0.0];
 }
 
 - (void)removeSplashView
@@ -560,6 +612,9 @@ NSString* GlobalGetServerURL()
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+    
+    [self showIntroWithCrossDissolve];
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

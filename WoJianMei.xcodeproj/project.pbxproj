@@ -207,6 +207,18 @@
 		4A257F0E17900522001D153F /* AddLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A257F0C17900521001D153F /* AddLabelViewController.m */; };
 		4A257F0F17900522001D153F /* AddLabelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A257F0D17900521001D153F /* AddLabelViewController.xib */; };
 		4A257F1A17900A80001D153F /* AddLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A257F1917900A7F001D153F /* AddLabelCell.m */; };
+		4A25F50A187D052000A42373 /* EAIntroPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A25F4FB187D052000A42373 /* EAIntroPage.m */; };
+		4A25F50B187D052000A42373 /* EAIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A25F4FD187D052000A42373 /* EAIntroView.m */; };
+		4A25F50C187D052000A42373 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A25F4FF187D052000A42373 /* 1.png */; };
+		4A25F50D187D052000A42373 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A25F500187D052000A42373 /* 2.png */; };
+		4A25F50E187D052000A42373 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A25F501187D052000A42373 /* 3.png */; };
+		4A25F50F187D052000A42373 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A25F502187D052000A42373 /* Default-568h@2x.png */; };
+		4A25F510187D052000A42373 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A25F503187D052000A42373 /* Default.png */; };
+		4A25F511187D052000A42373 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A25F504187D052000A42373 /* Default@2x.png */; };
+		4A25F512187D052000A42373 /* femalecodertocat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A25F505187D052000A42373 /* femalecodertocat@2x.png */; };
+		4A25F513187D052000A42373 /* introBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A25F506187D052000A42373 /* introBg@2x.png */; };
+		4A25F515187D052000A42373 /* original@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A25F508187D052000A42373 /* original@2x.png */; };
+		4A25F516187D052000A42373 /* supportcat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A25F509187D052000A42373 /* supportcat@2x.png */; };
 		4A27ADFF1777EED1009978C5 /* FitnessNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27ADFD1777EED1009978C5 /* FitnessNetworkRequest.m */; };
 		4A27AE001777EED1009978C5 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 4A27ADFE1777EED1009978C5 /* README */; };
 		4A27AE6C1777F006009978C5 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AE511777F006009978C5 /* Article.m */; };
@@ -991,6 +1003,20 @@
 		4A257F0D17900521001D153F /* AddLabelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddLabelViewController.xib; sourceTree = "<group>"; };
 		4A257F1817900A7E001D153F /* AddLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLabelCell.h; sourceTree = "<group>"; };
 		4A257F1917900A7F001D153F /* AddLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLabelCell.m; sourceTree = "<group>"; };
+		4A25F4FA187D052000A42373 /* EAIntroPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAIntroPage.h; sourceTree = "<group>"; };
+		4A25F4FB187D052000A42373 /* EAIntroPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAIntroPage.m; sourceTree = "<group>"; };
+		4A25F4FC187D052000A42373 /* EAIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAIntroView.h; sourceTree = "<group>"; };
+		4A25F4FD187D052000A42373 /* EAIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAIntroView.m; sourceTree = "<group>"; };
+		4A25F4FF187D052000A42373 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		4A25F500187D052000A42373 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		4A25F501187D052000A42373 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		4A25F502187D052000A42373 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		4A25F503187D052000A42373 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4A25F504187D052000A42373 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		4A25F505187D052000A42373 /* femalecodertocat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "femalecodertocat@2x.png"; sourceTree = "<group>"; };
+		4A25F506187D052000A42373 /* introBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "introBg@2x.png"; sourceTree = "<group>"; };
+		4A25F508187D052000A42373 /* original@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "original@2x.png"; sourceTree = "<group>"; };
+		4A25F509187D052000A42373 /* supportcat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "supportcat@2x.png"; sourceTree = "<group>"; };
 		4A27ADFB1777EED1009978C5 /* FitnessNetworkConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitnessNetworkConstants.h; sourceTree = "<group>"; };
 		4A27ADFC1777EED1009978C5 /* FitnessNetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitnessNetworkRequest.h; sourceTree = "<group>"; };
 		4A27ADFD1777EED1009978C5 /* FitnessNetworkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitnessNetworkRequest.m; sourceTree = "<group>"; };
@@ -2426,6 +2452,37 @@
 				4A226E18187BF2B50003312F /* NSDate+TimeInterval.m */,
 			);
 			path = CTAssetsPickerController;
+			sourceTree = "<group>";
+		};
+		4A25F4F9187D052000A42373 /* EAIntroView */ = {
+			isa = PBXGroup;
+			children = (
+				4A25F4FE187D052000A42373 /* Resources */,
+				4A25F4FA187D052000A42373 /* EAIntroPage.h */,
+				4A25F4FB187D052000A42373 /* EAIntroPage.m */,
+				4A25F4FC187D052000A42373 /* EAIntroView.h */,
+				4A25F4FD187D052000A42373 /* EAIntroView.m */,
+			);
+			name = EAIntroView;
+			path = "EAIntroView-master/EAIntroView";
+			sourceTree = "<group>";
+		};
+		4A25F4FE187D052000A42373 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4A25F4FF187D052000A42373 /* 1.png */,
+				4A25F500187D052000A42373 /* 2.png */,
+				4A25F501187D052000A42373 /* 3.png */,
+				4A25F502187D052000A42373 /* Default-568h@2x.png */,
+				4A25F503187D052000A42373 /* Default.png */,
+				4A25F504187D052000A42373 /* Default@2x.png */,
+				4A25F505187D052000A42373 /* femalecodertocat@2x.png */,
+				4A25F506187D052000A42373 /* introBg@2x.png */,
+				4A25F508187D052000A42373 /* original@2x.png */,
+				4A25F509187D052000A42373 /* supportcat@2x.png */,
+			);
+			name = Resources;
+			path = ../Resources;
 			sourceTree = "<group>";
 		};
 		4A27ADFA1777EED1009978C5 /* NetWorkRequest */ = {
@@ -4316,6 +4373,7 @@
 		4ADCFF50169D69F500A3E979 /* Common iphone */ = {
 			isa = PBXGroup;
 			children = (
+				4A25F4F9187D052000A42373 /* EAIntroView */,
 				4A226E13187BF2B50003312F /* CTAssetsPickerController */,
 				4A226E0E187A42620003312F /* WaterFlow */,
 				4A88C963185055B5004E4D36 /* ProtocolBuffer */,
@@ -4734,6 +4792,7 @@
 				4A873B9D16A54AD2005BDA45 /* area.plist in Resources */,
 				4A873B9F16A54AD2005BDA45 /* city.plist in Resources */,
 				4A0E22AA1856EC1800A07512 /* VotesViewController.xib in Resources */,
+				4A25F50E187D052000A42373 /* 3.png in Resources */,
 				4A873BA116A54AD2005BDA45 /* ViewController.xib in Resources */,
 				4ACF0CCE1839B80A00F7221C /* Language.strings in Resources */,
 				4A873BA316A54AD2005BDA45 /* HZAreaPickerView.xib in Resources */,
@@ -4792,15 +4851,19 @@
 				4A3853B6184DF7F900D5A66B /* PostTopicViewController.xib in Resources */,
 				4A0CA65417ABE65500314B8C /* xldl_1@2.png in Resources */,
 				4A0CA65517ABE65500314B8C /* xldl_2@2x.png in Resources */,
+				4A25F512187D052000A42373 /* femalecodertocat@2x.png in Resources */,
 				4A0CA65617ABE65500314B8C /* about_us@2x.png in Resources */,
 				4A226E08187A42560003312F /* blueArrow.png in Resources */,
 				4A0CA65917ABE65500314B8C /* bottom_cell_background.png in Resources */,
 				4A226E05187A42560003312F /* 9.jpeg in Resources */,
 				4A0CA65A17ABE65500314B8C /* feed_back@2x.png in Resources */,
+				4A25F515187D052000A42373 /* original@2x.png in Resources */,
 				4A0CA65B17ABE65500314B8C /* feedback_bg2@2x.png in Resources */,
 				4A0CA65C17ABE65500314B8C /* middle_cell_background.png in Resources */,
+				4A25F50C187D052000A42373 /* 1.png in Resources */,
 				4A0CA65D17ABE65500314B8C /* more_apps@2x.png in Resources */,
 				4A35589818798494007FC165 /* LifeStytleViewController~ipad.xib in Resources */,
+				4A25F516187D052000A42373 /* supportcat@2x.png in Resources */,
 				4A0CA65E17ABE65500314B8C /* quit_app@2x.png in Resources */,
 				4A0CA65F17ABE65500314B8C /* Rate_Us@2x.png in Resources */,
 				4A0CA66017ABE65500314B8C /* share_social@2x.png in Resources */,
@@ -4830,6 +4893,7 @@
 				4A0CA67517ABE65500314B8C /* tx_2.png in Resources */,
 				4A0CA67B17ABE65500314B8C /* top_bar_commonButton.png in Resources */,
 				4A0CA67C17ABE65500314B8C /* top_bar_commonButton@2x.png in Resources */,
+				4A25F511187D052000A42373 /* Default@2x.png in Resources */,
 				4A0CA67D17ABE65500314B8C /* topmenu_bg@2x.png in Resources */,
 				4A0CA67E17ABE65500314B8C /* ccccc.png in Resources */,
 				4A0CA67F17ABE65500314B8C /* ddddd.png in Resources */,
@@ -4851,10 +4915,12 @@
 				4A0CA68B17ABE65500314B8C /* wechat.png in Resources */,
 				4A0CA68C17ABE65500314B8C /* dlk_1@2x.png in Resources */,
 				4AA8D45D1827E5F600036560 /* IndexLine.png in Resources */,
+				4A25F50D187D052000A42373 /* 2.png in Resources */,
 				4A0CA68D17ABE65500314B8C /* comment_icon.png in Resources */,
 				4A3558A6187997DE007FC165 /* MyselfViewController~ipad.xib in Resources */,
 				4A0CA68E17ABE65500314B8C /* like_icon.png in Resources */,
 				4A0CA68F17ABE65500314B8C /* Press_like_icon.png in Resources */,
+				4A25F510187D052000A42373 /* Default.png in Resources */,
 				4A0CA69017ABE65500314B8C /* Share_article.png in Resources */,
 				4A3558A2187989D2007FC165 /* FeedBackViewController~ipad.xib in Resources */,
 				4A0CA69317ABE65500314B8C /* dtd_1.png in Resources */,
@@ -4870,6 +4936,8 @@
 				4A12A78517ACE0D500696CF2 /* touxiang_40x40@2x.png in Resources */,
 				4A3558C61879AE23007FC165 /* 152X152.png in Resources */,
 				4A8BCAD817AFE2BE0019CBB1 /* WorkOutManagerViewController.xib in Resources */,
+				4A25F513187D052000A42373 /* introBg@2x.png in Resources */,
+				4A25F50F187D052000A42373 /* Default-568h@2x.png in Resources */,
 				4A6585CC17B0DD9A0056DA91 /* PostViewController.xib in Resources */,
 				4A6585D717B136180056DA91 /* PostViewCell.xib in Resources */,
 				4A948FDA17B1F80A0037D9A0 /* StatusCell.xib in Resources */,
@@ -5204,6 +5272,7 @@
 				4A66C1F216A59E0000A2F22E /* AWActionSheet.m in Sources */,
 				4A66C1FB16A59E0000A2F22E /* ViewController.m in Sources */,
 				4ACE239C16AB0F2E002E41D1 /* CompostViewController.m in Sources */,
+				4A25F50A187D052000A42373 /* EAIntroPage.m in Sources */,
 				4A4EE73016AD3D92005C3ADA /* ComposeViewCell.m in Sources */,
 				4A226E1B187BF2B50003312F /* NSDate+TimeInterval.m in Sources */,
 				4A4EE73316AD43D7005C3ADA /* ComposeViewCellInfo.m in Sources */,
@@ -5242,6 +5311,7 @@
 				C668C23E176600B9007CC7FF /* GTMNSString+HTML.m in Sources */,
 				4ACF0CD71839B80A00F7221C /* TCWBRequest.m in Sources */,
 				4ACA75D3182CB80800567C77 /* UIBarButtonItem+TKCategory.m in Sources */,
+				4A25F50B187D052000A42373 /* EAIntroView.m in Sources */,
 				4ACF0CA81839B71300F7221C /* PPSinaWeiboRequest.m in Sources */,
 				4ACA75AB182CB80800567C77 /* NSDate+TKCategory.m in Sources */,
 				C668C23F176600B9007CC7FF /* NSString+HTML.m in Sources */,
