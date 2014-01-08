@@ -115,7 +115,7 @@ enum TapOnItem {
     self.segmentedController=[[SDSegmentedControl alloc]initWithItems:buttonTitleArray];
     
     if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
-        [_segmentedController setFrame:CGRectMake(0, 215, UIScreen.mainScreen.bounds.size.width, 40)];
+        [_segmentedController setFrame:CGRectMake(0, 265, UIScreen.mainScreen.bounds.size.width, 40)];
 
     }else{
         [_segmentedController setFrame:CGRectMake(0, 460, UIScreen.mainScreen.bounds.size.width, 40)];

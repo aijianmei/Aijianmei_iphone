@@ -10,7 +10,7 @@
 #import "PPViewController.h"
 #import "SVModalWebViewController.h"
 
-@interface SVWebViewController :PPViewController
+@interface SVWebViewController :UIViewController
 
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL*)URL;

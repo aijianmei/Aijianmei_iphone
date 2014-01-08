@@ -320,7 +320,8 @@ enum ErrorCode
 -(void)didReceiveCommentListSucceeded:(NSArray *)objects  errorCode:(int)errorCode
 
 {
-
+    
+    
         if ([objects count]==0)
         {
             [self popupHappyMessage:@"亲,没有如何评论！" title:nil];

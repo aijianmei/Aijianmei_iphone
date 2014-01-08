@@ -346,7 +346,7 @@
         //Back to the Main Queue
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            
+
             NSMutableArray      *array;
             NSMutableArray      *newArray;
 
@@ -355,7 +355,6 @@
             if (output.resultCode == ERROR_SUCCESS) {
                 [viewController hideProgressHUDActivity];
 
-                
                 array  = (NSMutableArray *)output.jsonDataDict;
                 
                 if ([array count]==0) {
@@ -396,11 +395,9 @@
             }
             
             if ([viewController respondsToSelector:@selector(didReceiveCommentListSucceeded:errorCode:)]){
-                [viewController didReceiveCommentListSucceeded: newArray  errorCode:output.resultCode];
+                [viewController didReceiveCommentListSucceeded:newArray  errorCode:output.resultCode];
             }
         });});
-        
-    
     
 }
                    
