@@ -182,7 +182,7 @@ typedef enum CONTENT_TYPE {
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:rightBtn] autorelease];
     
     
-    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPad)
+    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPad || [[[UIDevice currentDevice]systemVersion ] floatValue] >= 7.0)
     {
         UILabel *label = [[UILabel alloc] init];
         label.backgroundColor = [UIColor clearColor];
@@ -192,8 +192,8 @@ typedef enum CONTENT_TYPE {
         self.navigationItem.titleView = label;
         [label release];
         
-        
     }
+    
 }
 
 - (void)setTitle:(NSString *)title

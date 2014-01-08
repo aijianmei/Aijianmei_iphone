@@ -118,7 +118,7 @@ enum BUTTON_INDEX {
     
 
     
-    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPad)
+    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPad || [[[UIDevice currentDevice]systemVersion ] floatValue] >= 7.0)
     {
         UILabel *label = [[UILabel alloc] init];
         label.backgroundColor = [UIColor clearColor];
@@ -127,7 +127,6 @@ enum BUTTON_INDEX {
         label.font = [UIFont systemFontOfSize:22];
         self.navigationItem.titleView = label;
         [label release];
-        
         
     }
 }

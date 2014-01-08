@@ -225,8 +225,7 @@
         
     }
     
-    self.workoutPlanViewController.title = @"健身计划与方案";
-
+    [self.workoutPlanViewController setTitle:@"健身计划与方案"];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_workoutPlanViewController];
 }
 
@@ -620,13 +619,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-    
-    }else{
-    
-    }
-    
-    
     switch (indexPath.section)
     {
         case 0:
