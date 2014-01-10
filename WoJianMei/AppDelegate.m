@@ -12,7 +12,6 @@
 #import "LoginViewController.h"
 #import "MyselfViewController.h"
 #import "NutriViewController.h"
-#import "MakeFriendsViewController.h"
 #import "MoreViewController.h"
 #import "UIUtils.h"
 #import "DeviceDetection.h"

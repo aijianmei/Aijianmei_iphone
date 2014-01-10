@@ -19,7 +19,6 @@
 #import "StoreViewController.h"
 #import "MoreViewController.h"
 #import "LifeStytleViewController.h"
-#import "MakeFriendsViewController.h"
 #import "LoginViewController.h"
 #import "SVWebViewController.h"
 #import "WorkOutManagerViewController.h"

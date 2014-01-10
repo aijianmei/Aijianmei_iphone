@@ -461,8 +461,6 @@
 		4A4A5DB2179E512E00F00085 /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5DB0179E512E00F00085 /* CommentViewController.xib */; };
 		4A4A5E10179E76FB00F00085 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4A5E0F179E76FA00F00085 /* CommentCell.m */; };
 		4A4A5E13179E77B000F00085 /* CommentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4A5E12179E77AF00F00085 /* CommentInfo.m */; };
-		4A4EE73016AD3D92005C3ADA /* ComposeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EE72F16AD3D92005C3ADA /* ComposeViewCell.m */; };
-		4A4EE73316AD43D7005C3ADA /* ComposeViewCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EE73216AD43D7005C3ADA /* ComposeViewCellInfo.m */; };
 		4A5F3FD517914E2E00CD701A /* FeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F3FD317914E2E00CD701A /* FeedBackViewController.m */; };
 		4A5F3FD617914E2E00CD701A /* FeedBackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A5F3FD417914E2E00CD701A /* FeedBackViewController.xib */; };
 		4A5F3FE717914F6700CD701A /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A5F3FE617914F6700CD701A /* AboutViewController.xib */; };
@@ -624,8 +622,6 @@
 		4ACA75D9182CB80800567C77 /* UIScrollview+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA75A3182CB80800567C77 /* UIScrollview+TKCategory.m */; };
 		4ACA75DA182CB80800567C77 /* UIToolbar+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA75A5182CB80800567C77 /* UIToolbar+TKCategory.m */; };
 		4ACA75DB182CB80800567C77 /* UIView+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA75A7182CB80800567C77 /* UIView+TKCategory.m */; };
-		4ACE239C16AB0F2E002E41D1 /* CompostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE239B16AB0F2E002E41D1 /* CompostViewController.m */; };
-		4ACE23A216AB168D002E41D1 /* AccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ACE23A116AB168D002E41D1 /* AccessoryView.xib */; };
 		4ACF0CA21839B71300F7221C /* PPSNSCommonRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACF0C7D1839B71300F7221C /* PPSNSCommonRequest.m */; };
 		4ACF0CA31839B71300F7221C /* PPSNSCommonService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACF0C7F1839B71300F7221C /* PPSNSCommonService.m */; };
 		4ACF0CA41839B71300F7221C /* PPSNSStorageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACF0C821839B71300F7221C /* PPSNSStorageService.m */; };
@@ -659,7 +655,6 @@
 		4ACF0CEA1839B82800F7221C /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACF0CE41839B82800F7221C /* FBRequest.m */; };
 		4AD66B1415CFCEEC000F7CB8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD66B1315CFCEEC000F7CB8 /* MapKit.framework */; };
 		4AD9FC3816A114AF00BA766D /* SinaUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9FC3716A114AF00BA766D /* SinaUserCell.m */; };
-		4ADCFE19169D614600A3E979 /* MakeFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFDFC169D614600A3E979 /* MakeFriendsViewController.m */; };
 		4ADCFE1A169D614600A3E979 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFDFF169D614600A3E979 /* AboutViewController.m */; };
 		4ADCFE1C169D614600A3E979 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE03169D614600A3E979 /* MoreViewController.m */; };
 		4ADCFE1D169D614600A3E979 /* Myself_SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCFE06169D614600A3E979 /* Myself_SettingsViewController.m */; };
@@ -1462,10 +1457,6 @@
 		4A4A5E0F179E76FA00F00085 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentCell.m; path = ../WorkoutViewController/CommentCell.m; sourceTree = "<group>"; };
 		4A4A5E11179E77AF00F00085 /* CommentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentInfo.h; path = ../Controllers/WorkoutViewController/CommentInfo.h; sourceTree = "<group>"; };
 		4A4A5E12179E77AF00F00085 /* CommentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentInfo.m; path = ../Controllers/WorkoutViewController/CommentInfo.m; sourceTree = "<group>"; };
-		4A4EE72E16AD3D92005C3ADA /* ComposeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComposeViewCell.h; path = ../MyselfViewContrller/ComposeViewCell.h; sourceTree = "<group>"; };
-		4A4EE72F16AD3D92005C3ADA /* ComposeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComposeViewCell.m; path = ../MyselfViewContrller/ComposeViewCell.m; sourceTree = "<group>"; };
-		4A4EE73116AD43D7005C3ADA /* ComposeViewCellInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewCellInfo.h; sourceTree = "<group>"; };
-		4A4EE73216AD43D7005C3ADA /* ComposeViewCellInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewCellInfo.m; sourceTree = "<group>"; };
 		4A5F3FD217914E2E00CD701A /* FeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedBackViewController.h; sourceTree = "<group>"; };
 		4A5F3FD317914E2E00CD701A /* FeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedBackViewController.m; sourceTree = "<group>"; };
 		4A5F3FD417914E2E00CD701A /* FeedBackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedBackViewController.xib; sourceTree = "<group>"; };
@@ -1724,9 +1715,6 @@
 		4ACA75A6182CB80800567C77 /* UIView+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TKCategory.h"; sourceTree = "<group>"; };
 		4ACA75A7182CB80800567C77 /* UIView+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TKCategory.m"; sourceTree = "<group>"; };
 		4ACA75A8182CB80800567C77 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NSDate+TKCategory.strings"; sourceTree = "<group>"; };
-		4ACE239A16AB0F2E002E41D1 /* CompostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompostViewController.h; sourceTree = "<group>"; };
-		4ACE239B16AB0F2E002E41D1 /* CompostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompostViewController.m; sourceTree = "<group>"; };
-		4ACE23A116AB168D002E41D1 /* AccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccessoryView.xib; sourceTree = "<group>"; };
 		4ACF0C7C1839B71300F7221C /* PPSNSCommonRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSNSCommonRequest.h; sourceTree = "<group>"; };
 		4ACF0C7D1839B71300F7221C /* PPSNSCommonRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSNSCommonRequest.m; sourceTree = "<group>"; };
 		4ACF0C7E1839B71300F7221C /* PPSNSCommonService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSNSCommonService.h; sourceTree = "<group>"; };
@@ -1798,8 +1786,6 @@
 		4AD9FC3616A114AE00BA766D /* SinaUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaUserCell.h; sourceTree = "<group>"; };
 		4AD9FC3716A114AF00BA766D /* SinaUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaUserCell.m; sourceTree = "<group>"; };
 		4ADA285217EB305000721A87 /* WoJianMei.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WoJianMei.entitlements; sourceTree = "<group>"; };
-		4ADCFDFB169D614600A3E979 /* MakeFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeFriendsViewController.h; sourceTree = "<group>"; };
-		4ADCFDFC169D614600A3E979 /* MakeFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeFriendsViewController.m; sourceTree = "<group>"; };
 		4ADCFDFE169D614600A3E979 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		4ADCFDFF169D614600A3E979 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		4ADCFE02169D614600A3E979 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
@@ -4024,7 +4010,6 @@
 				4A0E22731855CB8300A07512 /* BBSHomeViewController */,
 				4A0E226B1855B6B400A07512 /* FitnessInfoController */,
 				4A6585C417B0D5E60056DA91 /* InformationFillView */,
-				4ADCFDFA169D614600A3E979 /* MakeFriendsViewcontrller */,
 				4ADCFE04169D614600A3E979 /* MyselfViewContrller */,
 				4ADCFDFD169D614600A3E979 /* MoreViewController */,
 				4A8BCAD917AFE2D30019CBB1 /* WorkoutManager */,
@@ -4203,23 +4188,6 @@
 				4ACF0CE41839B82800F7221C /* FBRequest.m */,
 			);
 			path = FacebookSDK;
-			sourceTree = "<group>";
-		};
-		4ADCFDFA169D614600A3E979 /* MakeFriendsViewcontrller */ = {
-			isa = PBXGroup;
-			children = (
-				4ADCFDFB169D614600A3E979 /* MakeFriendsViewController.h */,
-				4ADCFDFC169D614600A3E979 /* MakeFriendsViewController.m */,
-				4ACE239A16AB0F2E002E41D1 /* CompostViewController.h */,
-				4ACE239B16AB0F2E002E41D1 /* CompostViewController.m */,
-				4A4EE72E16AD3D92005C3ADA /* ComposeViewCell.h */,
-				4A4EE72F16AD3D92005C3ADA /* ComposeViewCell.m */,
-				4A4EE73116AD43D7005C3ADA /* ComposeViewCellInfo.h */,
-				4A4EE73216AD43D7005C3ADA /* ComposeViewCellInfo.m */,
-				4ACE23A116AB168D002E41D1 /* AccessoryView.xib */,
-			);
-			name = MakeFriendsViewcontrller;
-			path = Controllers/MakeFriendsViewcontrller;
 			sourceTree = "<group>";
 		};
 		4ADCFDFD169D614600A3E979 /* MoreViewController */ = {
@@ -4799,7 +4767,6 @@
 				4A1B25D017EEAB6500FC6194 /* Images.xcassets in Resources */,
 				4A873BA816A54BD7005BDA45 /* Citypicker.xib in Resources */,
 				4A3853B4184DF7DF00D5A66B /* PostTopicViewController~ipad.xib in Resources */,
-				4ACE23A216AB168D002E41D1 /* AccessoryView.xib in Resources */,
 				4A35589618798108007FC165 /* MoreViewController~ipad.xib in Resources */,
 				4A0E22921856075900A07512 /* bbs_create_draw_disable@2x.png in Resources */,
 				4A634E1D1753431E00453C0D /* bg@2x.png in Resources */,
@@ -5240,7 +5207,6 @@
 				4A4992B1168553A30073E682 /* SlideImageView.m in Sources */,
 				4A4992B2168553A30073E682 /* UIViewUtils.m in Sources */,
 				4A4992B3168553A30073E682 /* UIWebViewUtil.m in Sources */,
-				4ADCFE19169D614600A3E979 /* MakeFriendsViewController.m in Sources */,
 				4ADCFE1A169D614600A3E979 /* AboutViewController.m in Sources */,
 				4ADCFE1C169D614600A3E979 /* MoreViewController.m in Sources */,
 				4ADCFE1D169D614600A3E979 /* Myself_SettingsViewController.m in Sources */,
@@ -5271,11 +5237,8 @@
 				4A873BA616A54AD2005BDA45 /* Citypicker.m in Sources */,
 				4A66C1F216A59E0000A2F22E /* AWActionSheet.m in Sources */,
 				4A66C1FB16A59E0000A2F22E /* ViewController.m in Sources */,
-				4ACE239C16AB0F2E002E41D1 /* CompostViewController.m in Sources */,
 				4A25F50A187D052000A42373 /* EAIntroPage.m in Sources */,
-				4A4EE73016AD3D92005C3ADA /* ComposeViewCell.m in Sources */,
 				4A226E1B187BF2B50003312F /* NSDate+TimeInterval.m in Sources */,
-				4A4EE73316AD43D7005C3ADA /* ComposeViewCellInfo.m in Sources */,
 				4ACF0CD41839B80A00F7221C /* NSObject+WBUtil.m in Sources */,
 				4A8A7226174E10FF00BD3AAE /* LoginViewController.m in Sources */,
 				4ACF0CAA1839B71300F7221C /* PPTecentWeiboRequest.m in Sources */,
