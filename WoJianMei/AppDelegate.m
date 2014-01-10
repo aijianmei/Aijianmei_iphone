@@ -181,10 +181,8 @@ NSString* GlobalGetServerURL()
     
     self.homeViewController.title = @"首页";
 
-    return  _homeViewController;
-    
-    
-    
+    return  self.homeViewController;
+
 }
 
 -(LoginViewController *)initLoginViewController{
@@ -385,21 +383,7 @@ NSString* GlobalGetServerURL()
     
     
     [self initNetworkDetector];
-    
-    
-    
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    NSLog(@"Initiating remoteNoticationssAreActive");
-    if(!application.enabledRemoteNotificationTypes){
-        NSLog(@"Initiating remoteNoticationssAreActive1");
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge)];
-    }
-    UIApplication* myapp = [UIApplication sharedApplication];
-    myapp.idleTimerDisabled = YES;
-    
-    
-    
-    
+
     BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
     statTracker.enableExceptionLog = YES; // 是否允许截获并发送崩溃信息，请设置YES或者NO
     statTracker.channelId = @"ReplaceMeWithYourChannel";//设置您的app的发布渠道

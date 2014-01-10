@@ -151,8 +151,6 @@
 		4A183E9717CDEA7B000793C2 /* fs_main_login_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A183E8517CDEA7B000793C2 /* fs_main_login_normal.png */; };
 		4A183E9817CDEA7B000793C2 /* fs_main_login_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A183E8617CDEA7B000793C2 /* fs_main_login_selected.png */; };
 		4A183E9B17CDEA7B000793C2 /* ZSYPopoverListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A183E8B17CDEA7B000793C2 /* ZSYPopoverListView.m */; };
-		4A18A31F17E0274700F86EF5 /* IndexSep.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A18A31D17E0274700F86EF5 /* IndexSep.png */; };
-		4A18A32017E0274700F86EF5 /* IndexSep.png@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A18A31E17E0274700F86EF5 /* IndexSep.png@2x.png */; };
 		4A1B25D017EEAB6500FC6194 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A1B25CF17EEAB6500FC6194 /* Images.xcassets */; };
 		4A1B25D617EED06300FC6194 /* 120X120.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A1B25D317EED06300FC6194 /* 120X120.png */; };
 		4A1B25D717EED06300FC6194 /* 57X57.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A1B25D417EED06300FC6194 /* 57X57.png */; };
@@ -686,9 +684,7 @@
 		4AE18AE417D4291D00F0EBB0 /* Weibo_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE18AD817D4291D00F0EBB0 /* Weibo_Icon@2x.png */; };
 		4AE18AE517D4291D00F0EBB0 /* Manager_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE18AD917D4291D00F0EBB0 /* Manager_Icon@2x.png */; };
 		4AE18AE617D4291D00F0EBB0 /* Nuri_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE18ADA17D4291D00F0EBB0 /* Nuri_Icon@2x.png */; };
-		4AE18AE717D4291D00F0EBB0 /* IndexBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE18ADB17D4291D00F0EBB0 /* IndexBG@2x.png */; };
 		4AE18AE917D42B5F00F0EBB0 /* WorkoutPlanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AE18AE817D42B5F00F0EBB0 /* WorkoutPlanViewController.xib */; };
-		4AE18AEB17D42E8E00F0EBB0 /* IndexLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE18AEA17D42E8E00F0EBB0 /* IndexLine@2x.png */; };
 		4AE18AF317D4444D00F0EBB0 /* RankingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AE18AF217D4444B00F0EBB0 /* RankingViewController.xib */; };
 		4AE356A817B4E70800ADD258 /* kdbj_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE356A017B4E70800ADD258 /* kdbj_1.png */; };
 		4AE356A917B4E70800ADD258 /* kddq_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE356A117B4E70800ADD258 /* kddq_1.png */; };
@@ -920,8 +916,6 @@
 		4A183E8617CDEA7B000793C2 /* fs_main_login_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fs_main_login_selected.png; sourceTree = "<group>"; };
 		4A183E8A17CDEA7B000793C2 /* ZSYPopoverListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSYPopoverListView.h; sourceTree = "<group>"; };
 		4A183E8B17CDEA7B000793C2 /* ZSYPopoverListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSYPopoverListView.m; sourceTree = "<group>"; };
-		4A18A31D17E0274700F86EF5 /* IndexSep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IndexSep.png; sourceTree = "<group>"; };
-		4A18A31E17E0274700F86EF5 /* IndexSep.png@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndexSep.png@2x.png"; sourceTree = "<group>"; };
 		4A1B25CF17EEAB6500FC6194 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4A1B25D317EED06300FC6194 /* 120X120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120X120.png; sourceTree = "<group>"; };
 		4A1B25D417EED06300FC6194 /* 57X57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 57X57.png; sourceTree = "<group>"; };
@@ -1833,9 +1827,7 @@
 		4AE18AD817D4291D00F0EBB0 /* Weibo_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Weibo_Icon@2x.png"; sourceTree = "<group>"; };
 		4AE18AD917D4291D00F0EBB0 /* Manager_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Manager_Icon@2x.png"; sourceTree = "<group>"; };
 		4AE18ADA17D4291D00F0EBB0 /* Nuri_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nuri_Icon@2x.png"; sourceTree = "<group>"; };
-		4AE18ADB17D4291D00F0EBB0 /* IndexBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndexBG@2x.png"; sourceTree = "<group>"; };
 		4AE18AE817D42B5F00F0EBB0 /* WorkoutPlanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkoutPlanViewController.xib; sourceTree = "<group>"; };
-		4AE18AEA17D42E8E00F0EBB0 /* IndexLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndexLine@2x.png"; sourceTree = "<group>"; };
 		4AE18AF217D4444B00F0EBB0 /* RankingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingViewController.xib; sourceTree = "<group>"; };
 		4AE356A017B4E70800ADD258 /* kdbj_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kdbj_1.png; sourceTree = "<group>"; };
 		4AE356A117B4E70800ADD258 /* kddq_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kddq_1.png; sourceTree = "<group>"; };
@@ -2086,10 +2078,7 @@
 			isa = PBXGroup;
 			children = (
 				4A8D3F0317E9589200CDF997 /* Save@2x.png */,
-				4A18A31D17E0274700F86EF5 /* IndexSep.png */,
-				4A18A31E17E0274700F86EF5 /* IndexSep.png@2x.png */,
 				4A711E2717D5B93100E35B98 /* LeftSideViewIcon@2x.png */,
-				4AE18AEA17D42E8E00F0EBB0 /* IndexLine@2x.png */,
 				4AE18AD017D4291C00F0EBB0 /* cbdqx_1@2x.png */,
 				4AE18AD117D4291C00F0EBB0 /* Supplement_Icon@2x.png */,
 				4AE18AD217D4291C00F0EBB0 /* Workout_Icon@2x.png */,
@@ -2101,7 +2090,6 @@
 				4AE18AD817D4291D00F0EBB0 /* Weibo_Icon@2x.png */,
 				4AE18AD917D4291D00F0EBB0 /* Manager_Icon@2x.png */,
 				4AE18ADA17D4291D00F0EBB0 /* Nuri_Icon@2x.png */,
-				4AE18ADB17D4291D00F0EBB0 /* IndexBG@2x.png */,
 				4A711E3017D5BEE300E35B98 /* Navigation_avartar_Image@2x.png */,
 				4A0CA61D17ABE65500314B8C /* top_bar_commonButton.png */,
 				4A0CA61E17ABE65500314B8C /* top_bar_commonButton@2x.png */,
@@ -5003,10 +4991,8 @@
 				4AE18AE417D4291D00F0EBB0 /* Weibo_Icon@2x.png in Resources */,
 				4AE18AE517D4291D00F0EBB0 /* Manager_Icon@2x.png in Resources */,
 				4AE18AE617D4291D00F0EBB0 /* Nuri_Icon@2x.png in Resources */,
-				4AE18AE717D4291D00F0EBB0 /* IndexBG@2x.png in Resources */,
 				4AE18AE917D42B5F00F0EBB0 /* WorkoutPlanViewController.xib in Resources */,
 				4A2E8F8A187F9FD600DA523D /* IndexBG@2x.png in Resources */,
-				4AE18AEB17D42E8E00F0EBB0 /* IndexLine@2x.png in Resources */,
 				4AA8D4591827E5F600036560 /* AccessoryView.png in Resources */,
 				4AE18AF317D4444D00F0EBB0 /* RankingViewController.xib in Resources */,
 				4A711E2817D5B93100E35B98 /* LeftSideViewIcon@2x.png in Resources */,
@@ -5020,8 +5006,6 @@
 				4A3558B218799E6F007FC165 /* ChangeGenderViewController~ipad.xib in Resources */,
 				4AC1589417DEB4AC00E97B27 /* 320X480.png in Resources */,
 				4AC1589617DEB4B400E97B27 /* 640X960.png in Resources */,
-				4A18A31F17E0274700F86EF5 /* IndexSep.png in Resources */,
-				4A18A32017E0274700F86EF5 /* IndexSep.png@2x.png in Resources */,
 				4A151D2517E3608F005329CA /*   in Resources */,
 				4A151D2817E3608F005329CA /* selectorRect.png in Resources */,
 				4A151D2917E3608F005329CA /* selectorRect@2x.png in Resources */,

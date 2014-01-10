@@ -9,6 +9,7 @@
 #import "AJMLeftSideViewController.h"
 #import "AGLeftSideTableCell.h"
 #import "MyselfViewController.h"
+#import "HomeViewController.h"
 #import "BBSHomeViewController.h"
 #import "FitnessInfoViewController.h"
 #import "WorkoutViewController.h"
@@ -19,6 +20,7 @@
 #import "StoreViewController.h"
 #import "MoreViewController.h"
 #import "LifeStytleViewController.h"
+
 #import "LoginViewController.h"
 #import "SVWebViewController.h"
 #import "WorkOutManagerViewController.h"
@@ -173,10 +175,14 @@
 #pragma mark - initViewControllers
 -(void)initHomeViewController
 {
-    HomeViewController *homeViewVC =[[AppDelegate getAppDelegate]  initHomeViewControllerFromAppDelegate];
-    self.homeViewController =homeViewVC;
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:_homeViewController];
     
+    if (self.homeViewController ==nil) {
+    
+        HomeViewController *homeViewVC =[[AppDelegate getAppDelegate]  initHomeViewControllerFromAppDelegate];
+        self.homeViewController =homeViewVC;
+    }
+   
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:_homeViewController];
 }
 
 -(void)initFitnessInfoViewController{
