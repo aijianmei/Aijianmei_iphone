@@ -180,7 +180,6 @@ NSString* GlobalGetServerURL()
     
     
     self.homeViewController.title = @"首页";
-
     return  self.homeViewController;
 
 }
