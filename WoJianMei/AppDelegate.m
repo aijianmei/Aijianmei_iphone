@@ -497,9 +497,9 @@ NSString* GlobalGetServerURL()
     
     
     ///
-    if (![self isPushNotificationEnable]){
-        [self bindDevice];
-    }
+//    if (![self isPushNotificationEnable]){
+//        [self bindDevice];
+//    }
     
     //检测当前版本是否为最新的版本
     [self performSelector:@selector(updateApplication) withObject:nil afterDelay:10.0f];
@@ -520,7 +520,7 @@ NSString* GlobalGetServerURL()
 //        WelcomeViewController *welcomeVC = [[WelcomeViewController alloc] init];
 //        
 //        [self.window setRootViewController:welcomeVC];
-        [self showIntroWithCrossDissolve];
+//        [self showIntroWithCrossDissolve];
 
         
     }else{
@@ -666,58 +666,7 @@ NSString* GlobalGetServerURL()
 
 
 
-#pragma mark -
-#pragma mark Device Notification Delegate
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-	
-    // Get a hex string from the device token with no spaces or < >
-	[self saveDeviceToken:deviceToken];
-    //TODO post the device token to the server.
-    
-    // user already register
-    
-}
 
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *) error {
-	NSString *message = [error localizedDescription];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"错误"
-													message: message
-                                                   delegate: nil
-                                          cancelButtonTitle: @"确认"
-                                          otherButtonTitles: nil];
-    [alert show];
-    [alert release];
-	
-	// try again
-	 [self bindDevice];
-}
-
-- (void)showNotification:(NSDictionary*)payload
-{
-	NSDictionary *dict = [[payload objectForKey:@"aps"] objectForKey:@"alert"];
-	NSString* msg = [dict valueForKey:@"loc-key"];
-	NSArray*  args = [dict objectForKey:@"loc-args"];
-	
-	if (args != nil && [args count] >= 2){
-		NSString* from = nil; //[args objectAtIndex:0];
-		NSString* text = nil; //[args objectAtIndex:1];
-		[UIUtils alert:[NSString stringWithFormat:NSLS(msg), from, text]];
-	}
-}
-
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-	NSDictionary *payload = userInfo;
-    
-#ifdef DEBUG
-	NSLog(@"receive push notification, payload=%@", [payload description]);
-#endif
-    
-	if (nil != payload) {
-        NSString *alert = [[payload objectForKey:@"aps"] valueForKey:@"alert"];
-        PPDebug(@"%@",alert);
-	}
-}
 
 
 

@@ -14,5 +14,7 @@
 
 - (IBAction)clickPickImagesButton:(id)sender;
 - (IBAction)clickVotesButton:(id)sender;
+- (IBAction)clickVideoButton:(id)sender;
+
 
 @end

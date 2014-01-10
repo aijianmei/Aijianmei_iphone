@@ -124,6 +124,10 @@
     }
 }
 
+- (IBAction)clickVideoButton:(id)sender{
+     [self takeVideo];
+}
+
 
 
 - (IBAction)clickVotesButton:(id)sender {

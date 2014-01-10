@@ -164,7 +164,6 @@ typedef enum CONTENT_TYPE {
 }
 
 
-
 - (void)initMoreUI
 {    
     ////leftBtn

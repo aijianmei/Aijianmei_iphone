@@ -96,13 +96,19 @@ enum TapOnItem {
 }
 -(void)dealloc{
     
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"UIMoviePlayerControllerDidEnterFullscreenNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"UIMoviePlayerControllerDidExitFullscreenNotification" object:nil];
+    
     [_video release];
     [_segmentedController release];
     [_titleLabel release];
     [_descriptionView release];
     [_timeLabel release];
+    self.playerWebView.delegate = nil;
     [_playerWebView release];
     [_commentViewController release];
+
     [super dealloc];
     
 }
@@ -180,7 +186,8 @@ enum TapOnItem {
     [self hideActivity];
 }
 
-#pragma mark - MoviePlayer Methods
+#pragma mark --
+#pragma mark -- MoviePlayer Methods
 - (void)playVideo:(NSString *)urlString withWebView:(UIWebView*)videoView  {
     
     NSString *embedHTML =@"\
@@ -196,8 +203,6 @@ enum TapOnItem {
     </script>\
     </head><body onload=\"load()\"style=\"margin:0\">\
    <iframe height=\"%0.0f\" width=\"%0.0f\" src=\"%@\"  frameborder=0 allowfullscreen></iframe></body></html>";
-
-    
     
     videoView.backgroundColor   =  [UIColor redColor];    
     NSString *html = [NSString stringWithFormat:
@@ -210,7 +215,11 @@ enum TapOnItem {
     
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoPlayStarted:) name:@"UIMoviePlayerControllerDidEnterFullscreenNotification" object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoPlayFinished:) name:@"UIMoviePlayerControllerDidExitFullscreenNotification" object:nil];
+    
+
+    
     
 }
 
@@ -220,13 +229,15 @@ enum TapOnItem {
     PPDebug(@"video start to paly ");
 }
 
+
 -(void)videoPlayFinished:(NSNotification *)notification{
     // your code here
     // self.isInFullScreenMode = NO;
     PPDebug(@"video finish to paly ");
-    
 
 }
+
+
 
 ////点击分享按钮
 -(void)clickShareButton:(UIButton *)sender{
@@ -662,6 +673,10 @@ enum TapOnItem {
 
 
 #pragma mark -
+#pragma mark - ClickBack
+
+
+#pragma mark -
 #pragma mark - View lifecycle
 
 -(void) viewDidAppear:(BOOL)animated
@@ -674,6 +689,17 @@ enum TapOnItem {
 {
     [super viewDidDisappear:YES];
     [[BaiduMobStat defaultStat] pageviewEndWithName:@"PlayVideoView"];
+}
+
+- (void)clickBack:(id)sender
+{
+    
+    
+    if ([self.playerWebView isLoading]) {
+        [self.playerWebView stopLoading];
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad
