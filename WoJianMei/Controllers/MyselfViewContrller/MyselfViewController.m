@@ -196,12 +196,12 @@
 
 -(void)loadUserData{
     
-    NSString *uid = [[[UserService defaultService] user] uid];
+    NSString *uid = [[[UserManager defaultManager] user] uid];
     
     //本地数据存在的时候直接读取本地数据;
-    if ([[UserService defaultService] getUserInfoByUid:uid]) {
-        User *user = [[UserService defaultService] getUserInfoByUid:uid];
-        [[UserService defaultService] setUser:user];
+    if ([[UserManager defaultManager] getUserInfoByUid:uid]) {
+        User *user = [[UserManager defaultManager] getUserInfoByUid:uid];
+        [[UserManager defaultManager] setUser:user];
         [self setUser:user];
         [self upgradeUI];
         //加载新数据
@@ -210,7 +210,7 @@
         
     }else{
         //本地数据不存在，用户第一次登陆的时候，就往服务器拉数据
-        [[UserService defaultService] fecthUserInfoWithUid:uid delegate:self];
+        [[UserService defaultService] fecthUserInfoWithUid:uid viewController:self];
     }
 }
 
@@ -359,7 +359,7 @@
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
     
 }
 
@@ -367,15 +367,14 @@
 
 -(void)loadPublicDatas
 {
-//    [self showActivityWithText:@"数据加载中..."];
     _reloading = YES;
     shouldLoad =YES;
-    [[PostService sharedService] loadStatusWithUid:[self.user.uid integerValue]
-                                         targetUid:[self.targetUid integerValue]
-                                          gymGroup:0
-                                             start:0
-                                            offSet:5
-                                          delegate:self];
+    [[PostService sharedService] loadStatusWithUid:self.user.uid
+                                         targetUid:self.targetUid
+                                          gymGroup:@"0"
+                                             start:@"0"
+                                            offSet:@"5"
+                                          viewController:self];
 }
 
 
@@ -387,24 +386,24 @@
     
     _reloading = YES;
 //    [self showActivityWithText:@"数据加载中..."];
-    [[PostService sharedService] loadStatusWithUid:[self.user.uid integerValue]
-                                         targetUid:[self.targetUid  integerValue]
-                                          gymGroup:0
-                                             start:0
-                                            offSet:5
-                                          delegate:self];
+    [[PostService sharedService] loadStatusWithUid:self.user.uid
+                                         targetUid:self.targetUid
+                                          gymGroup:@"0"
+                                             start:@"0"
+                                            offSet:@"5"
+                                          viewController:self];
 
 }
 //加载更多数据
 - (void)loadMoreTableViewDataSource {
     _reloading = NO;
 //    [self showActivityWithText:@"数据加载中..."];
-    [[PostService sharedService] loadStatusWithUid:[self.user.uid integerValue]
-                                         targetUid:[self.targetUid integerValue]
-                                          gymGroup:0
-                                             start:_start
-                                            offSet:5
-                                          delegate:self];
+    [[PostService sharedService] loadStatusWithUid:self.user.uid
+                                         targetUid:self.targetUid
+                                          gymGroup:@"0"
+                                             start:@"0"
+                                            offSet:[NSString stringWithFormat:@"%d", _start]
+                                    viewController:self];
     
 }
 
@@ -444,7 +443,9 @@
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
 
-- (void)objectLoader:(NSString *)objectLoader didLoadObjects:(NSArray *)objects
+
+
+-(void)didLoadStatusesSucceeded:(int)errorCode didLoadObjects:(NSArray *)objects
 {
     [self dataSourceDidFinishLoadingNewData];
     [self dataSourceDidFinishLoadingMoreData];
@@ -457,18 +458,8 @@
         return;
     }
        
-    NSObject *object  = [objects objectAtIndex:0];
-
-    if ([object isMemberOfClass:[User class]]) {
-         User *user = [objects objectAtIndex:0];
-        [[UserManager defaultManager] setUser:user];
-        [[UserManager defaultManager] storeUserInfoByUid:user.uid];
-        self.user =[[UserManager defaultManager] user];
-        [self upgradeUI];
-    }
+   
     
-    
-    if ([object isMemberOfClass:[PostStatus class]]){
         PostStatus *postStatus =  [objects objectAtIndex:0];
         PPDebug(@"*****Get Statuses Successfully!!!*****");
         PPDebug(@"******%@******",postStatus._id);
@@ -497,23 +488,30 @@
         [self.dataTableView reloadData];
         [self getImages];
         [self.navigationItem.rightBarButtonItem setEnabled:YES];
-    }
     
-    if ([object isMemberOfClass:[PostStatusRespose class]]){
-        PostStatusRespose *postStatusRespose =  [objects objectAtIndex:0];
-        PPDebug(@"*****Post one Status Successfully!!!*****");
-        PPDebug(@"*****%@*****",postStatusRespose.uid);
-        PPDebug(@"*****%@*****",postStatusRespose.errorCode);
 
-        [self.navigationItem.rightBarButtonItem setEnabled:YES];
-
-    }
+//    if ([object isMemberOfClass:[PostStatusRespose class]]){
+//        PostStatusRespose *postStatusRespose =  [objects objectAtIndex:0];
+//        PPDebug(@"*****Post one Status Successfully!!!*****");
+//        PPDebug(@"*****%@*****",postStatusRespose.uid);
+//        PPDebug(@"*****%@*****",postStatusRespose.errorCode);
+//
+//        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+//
+//    }
     
-    if ([objects count] == 0) {
-        [self popupMessage:@"亲,已经没有更多数据了！" title:nil];
-        return;
-    }
 
 }
+
+-(void)didLoadUserInfoSucceeded:(int)errorCode{
+    
+        User *user = nil;
+        [[UserManager defaultManager] setUser:user];
+        [[UserManager defaultManager] storeUserInfoByUid:user.uid];
+        self.user =[[UserManager defaultManager] user];
+        [self upgradeUI];
+
+}
+
 
 @end

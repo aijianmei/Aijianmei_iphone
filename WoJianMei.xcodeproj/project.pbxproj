@@ -503,6 +503,22 @@
 		4A8A7229174E557700BD3AAE /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8A7228174E557700BD3AAE /* SignUpViewController.m */; };
 		4A8BCAD717AFE2BE0019CBB1 /* WorkOutManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8BCAD517AFE2BB0019CBB1 /* WorkOutManagerViewController.m */; };
 		4A8BCAD817AFE2BE0019CBB1 /* WorkOutManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8BCAD617AFE2BD0019CBB1 /* WorkOutManagerViewController.xib */; };
+		4A8C5703188146FB00C715C2 /* profile_backgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8C5702188146FB00C715C2 /* profile_backgroud.png */; };
+		4A8C57061881476000C715C2 /* description_bround.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8C57041881476000C715C2 /* description_bround.png */; };
+		4A8C57071881476000C715C2 /* gender_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8C57051881476000C715C2 /* gender_on.png */; };
+		4A8C578B18818D3A00C715C2 /* PBJStrobeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C578618818D3A00C715C2 /* PBJStrobeView.m */; };
+		4A8C578C18818D3A00C715C2 /* PBJVision.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C578818818D3A00C715C2 /* PBJVision.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		4A8C578D18818D3A00C715C2 /* PBJVisionUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C578A18818D3A00C715C2 /* PBJVisionUtilities.m */; };
+		4A8C579118818F4A00C715C2 /* CaptureVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C578F18818F4A00C715C2 /* CaptureVideoViewController.m */; };
+		4A8C579218818F4A00C715C2 /* CaptureVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8C579018818F4A00C715C2 /* CaptureVideoViewController.xib */; };
+		4A8C57941881907700C715C2 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8C57931881907700C715C2 /* CoreVideo.framework */; };
+		4A8C57961881908200C715C2 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8C57951881908200C715C2 /* CoreMedia.framework */; };
+		4A8C579D1881935600C715C2 /* capture_flip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8C57981881935600C715C2 /* capture_flip@2x.png */; };
+		4A8C579E1881935600C715C2 /* capture_rec_base@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8C57991881935600C715C2 /* capture_rec_base@2x.png */; };
+		4A8C579F1881935600C715C2 /* capture_rec_blink@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8C579A1881935600C715C2 /* capture_rec_blink@2x.png */; };
+		4A8C57A01881935600C715C2 /* capture_rec_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8C579B1881935600C715C2 /* capture_rec_off@2x.png */; };
+		4A8C57A11881935600C715C2 /* capture_yep@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8C579C1881935600C715C2 /* capture_yep@2x.png */; };
+		4A8C57A418819E2400C715C2 /* VideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C57A318819E2400C715C2 /* VideoManager.m */; };
 		4A8D3F0417E9589200CDF997 /* Save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8D3F0317E9589200CDF997 /* Save@2x.png */; };
 		4A8F3E6A17BA6B64000F553A /* WeightManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F3E6817BA6B64000F553A /* WeightManagerViewController.m */; };
 		4A8F3E6B17BA6B64000F553A /* WeightManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8F3E6917BA6B64000F553A /* WeightManagerViewController.xib */; };
@@ -1454,8 +1470,8 @@
 		4A6585CA17B0DD9A0056DA91 /* PostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostViewController.xib; sourceTree = "<group>"; };
 		4A6585CD17B0E0E50056DA91 /* PostService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostService.h; sourceTree = "<group>"; };
 		4A6585CE17B0E0E50056DA91 /* PostService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostService.m; sourceTree = "<group>"; };
-		4A6585D017B0F2120056DA91 /* PostStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostStatus.h; sourceTree = "<group>"; };
-		4A6585D117B0F2120056DA91 /* PostStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostStatus.m; sourceTree = "<group>"; };
+		4A6585D017B0F2120056DA91 /* PostStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostStatus.h; path = ../Service/PostStatus.h; sourceTree = "<group>"; };
+		4A6585D117B0F2120056DA91 /* PostStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostStatus.m; path = ../Service/PostStatus.m; sourceTree = "<group>"; };
 		4A6585D317B127210056DA91 /* PostStatusRespose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostStatusRespose.h; sourceTree = "<group>"; };
 		4A6585D417B127210056DA91 /* PostStatusRespose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostStatusRespose.m; sourceTree = "<group>"; };
 		4A6585D617B136180056DA91 /* PostViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostViewCell.xib; sourceTree = "<group>"; };
@@ -1472,6 +1488,8 @@
 		4A7B7EAE179A7AAA00FD6E56 /* SDSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDSegmentedControl.h; sourceTree = "<group>"; };
 		4A7B7EAF179A7AAB00FD6E56 /* SDSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDSegmentedControl.m; sourceTree = "<group>"; };
 		4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4A7FBB551883B3260090FE8B /* SendMsgToWeChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMsgToWeChatViewController.h; sourceTree = "<group>"; };
+		4A7FBB581883BDA10090FE8B /* RespForWeChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RespForWeChatViewController.h; sourceTree = "<group>"; };
 		4A873B8C16A54AD2005BDA45 /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
 		4A873B8F16A54AD2005BDA45 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 		4A873B9316A54AD2005BDA45 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
@@ -1507,6 +1525,27 @@
 		4A8BCAD417AFE2B90019CBB1 /* WorkOutManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOutManagerViewController.h; sourceTree = "<group>"; };
 		4A8BCAD517AFE2BB0019CBB1 /* WorkOutManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOutManagerViewController.m; sourceTree = "<group>"; };
 		4A8BCAD617AFE2BD0019CBB1 /* WorkOutManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkOutManagerViewController.xib; sourceTree = "<group>"; };
+		4A8C5702188146FB00C715C2 /* profile_backgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_backgroud.png; sourceTree = "<group>"; };
+		4A8C57041881476000C715C2 /* description_bround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = description_bround.png; sourceTree = "<group>"; };
+		4A8C57051881476000C715C2 /* gender_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gender_on.png; sourceTree = "<group>"; };
+		4A8C578518818D3A00C715C2 /* PBJStrobeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBJStrobeView.h; sourceTree = "<group>"; };
+		4A8C578618818D3A00C715C2 /* PBJStrobeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBJStrobeView.m; sourceTree = "<group>"; };
+		4A8C578718818D3A00C715C2 /* PBJVision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBJVision.h; sourceTree = "<group>"; };
+		4A8C578818818D3A00C715C2 /* PBJVision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBJVision.m; sourceTree = "<group>"; };
+		4A8C578918818D3A00C715C2 /* PBJVisionUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBJVisionUtilities.h; sourceTree = "<group>"; };
+		4A8C578A18818D3A00C715C2 /* PBJVisionUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBJVisionUtilities.m; sourceTree = "<group>"; };
+		4A8C578E18818F4A00C715C2 /* CaptureVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureVideoViewController.h; sourceTree = "<group>"; };
+		4A8C578F18818F4A00C715C2 /* CaptureVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureVideoViewController.m; sourceTree = "<group>"; };
+		4A8C579018818F4A00C715C2 /* CaptureVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CaptureVideoViewController.xib; sourceTree = "<group>"; };
+		4A8C57931881907700C715C2 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		4A8C57951881908200C715C2 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		4A8C57981881935600C715C2 /* capture_flip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capture_flip@2x.png"; sourceTree = "<group>"; };
+		4A8C57991881935600C715C2 /* capture_rec_base@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capture_rec_base@2x.png"; sourceTree = "<group>"; };
+		4A8C579A1881935600C715C2 /* capture_rec_blink@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capture_rec_blink@2x.png"; sourceTree = "<group>"; };
+		4A8C579B1881935600C715C2 /* capture_rec_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capture_rec_off@2x.png"; sourceTree = "<group>"; };
+		4A8C579C1881935600C715C2 /* capture_yep@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capture_yep@2x.png"; sourceTree = "<group>"; };
+		4A8C57A218819E2400C715C2 /* VideoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoManager.h; sourceTree = "<group>"; };
+		4A8C57A318819E2400C715C2 /* VideoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoManager.m; sourceTree = "<group>"; };
 		4A8D3F0317E9589200CDF997 /* Save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Save@2x.png"; sourceTree = "<group>"; };
 		4A8F3E6717BA6B63000F553A /* WeightManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeightManagerViewController.h; sourceTree = "<group>"; };
 		4A8F3E6817BA6B64000F553A /* WeightManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeightManagerViewController.m; sourceTree = "<group>"; };
@@ -1896,6 +1935,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A8C57961881908200C715C2 /* CoreMedia.framework in Frameworks */,
+				4A8C57941881907700C715C2 /* CoreVideo.framework in Frameworks */,
 				4A226E1D187BF3B30003312F /* AssetsLibrary.framework in Frameworks */,
 				4A316594183D1E3B008DC2CB /* AdSupport.framework in Frameworks */,
 				4A03270417AA89580016F6C5 /* CoreTelephony.framework in Frameworks */,
@@ -2039,6 +2080,9 @@
 		4A0CA60717ABE65500314B8C /* myProfile */ = {
 			isa = PBXGroup;
 			children = (
+				4A8C5702188146FB00C715C2 /* profile_backgroud.png */,
+				4A8C57041881476000C715C2 /* description_bround.png */,
+				4A8C57051881476000C715C2 /* gender_on.png */,
 				4A12A78217ACE0D400696CF2 /* touxiang_40x40.png */,
 				4A12A78317ACE0D400696CF2 /* touxiang_40x40@2x.png */,
 				4A0CA60917ABE65500314B8C /* dq_1.png */,
@@ -2465,8 +2509,6 @@
 				4A6585CE17B0E0E50056DA91 /* PostService.m */,
 				4A129DD917CB9A6000FD18B2 /* WorkoutCatalog.h */,
 				4A129DDA17CB9A6000FD18B2 /* WorkoutCatalog.m */,
-				4A6585D017B0F2120056DA91 /* PostStatus.h */,
-				4A6585D117B0F2120056DA91 /* PostStatus.m */,
 				4A6585D317B127210056DA91 /* PostStatusRespose.h */,
 				4A6585D417B127210056DA91 /* PostStatusRespose.m */,
 				4A129DD117CB4FC000FD18B2 /* WorkoutDataService.h */,
@@ -2520,6 +2562,8 @@
 				4A20191217C25867003D4E54 /* NumberData.m */,
 				4A20192117C325D4003D4E54 /* NumberDataManager.h */,
 				4A20192217C325D8003D4E54 /* NumberDataManager.m */,
+				4A6585D017B0F2120056DA91 /* PostStatus.h */,
+				4A6585D117B0F2120056DA91 /* PostStatus.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3765,6 +3809,33 @@
 			name = WorkoutManager;
 			sourceTree = "<group>";
 		};
+		4A8C578418818D3A00C715C2 /* Vision */ = {
+			isa = PBXGroup;
+			children = (
+				4A8C57971881935600C715C2 /* UI */,
+				4A8C578518818D3A00C715C2 /* PBJStrobeView.h */,
+				4A8C578618818D3A00C715C2 /* PBJStrobeView.m */,
+				4A8C578718818D3A00C715C2 /* PBJVision.h */,
+				4A8C578818818D3A00C715C2 /* PBJVision.m */,
+				4A8C578918818D3A00C715C2 /* PBJVisionUtilities.h */,
+				4A8C578A18818D3A00C715C2 /* PBJVisionUtilities.m */,
+			);
+			name = Vision;
+			path = PBJVision/Project/Vision/Vision;
+			sourceTree = "<group>";
+		};
+		4A8C57971881935600C715C2 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				4A8C57981881935600C715C2 /* capture_flip@2x.png */,
+				4A8C57991881935600C715C2 /* capture_rec_base@2x.png */,
+				4A8C579A1881935600C715C2 /* capture_rec_blink@2x.png */,
+				4A8C579B1881935600C715C2 /* capture_rec_off@2x.png */,
+				4A8C579C1881935600C715C2 /* capture_yep@2x.png */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		4A948FF317B238630037D9A0 /* ImageBrowser */ = {
 			isa = PBXGroup;
 			children = (
@@ -4297,6 +4368,7 @@
 		4ADCFF50169D69F500A3E979 /* Common iphone */ = {
 			isa = PBXGroup;
 			children = (
+				4A8C578418818D3A00C715C2 /* Vision */,
 				4A25F4F9187D052000A42373 /* EAIntroView */,
 				4A226E13187BF2B50003312F /* CTAssetsPickerController */,
 				4A226E0E187A42620003312F /* WaterFlow */,
@@ -4397,6 +4469,8 @@
 				4A0CA5DB17ABE65500314B8C /* Resources */,
 				4AE394C015C2DD9C00D06C61 /* AppDelegate.h */,
 				4AE394C115C2DD9C00D06C61 /* AppDelegate.m */,
+				4A7FBB551883B3260090FE8B /* SendMsgToWeChatViewController.h */,
+				4A7FBB581883BDA10090FE8B /* RespForWeChatViewController.h */,
 				4AC2BDAD17BCCC040061E396 /* CommonDialog.h */,
 				4AC2BDAE17BCCC040061E396 /* CommonDialog.m */,
 				4AC2BDAF17BCCC050061E396 /* CommonDialog.xib */,
@@ -4417,6 +4491,8 @@
 		4AE394B015C2DD9C00D06C61 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A8C57951881908200C715C2 /* CoreMedia.framework */,
+				4A8C57931881907700C715C2 /* CoreVideo.framework */,
 				4A226E1C187BF3B20003312F /* AssetsLibrary.framework */,
 				4A3558B31879A144007FC165 /* StoreKit.framework */,
 				4A316593183D1E3B008DC2CB /* AdSupport.framework */,
@@ -4521,6 +4597,11 @@
 				4A3853B1184DF7DF00D5A66B /* PostTopicViewController.m */,
 				4A3853B5184DF7F900D5A66B /* PostTopicViewController.xib */,
 				4A3853B2184DF7DF00D5A66B /* PostTopicViewController~ipad.xib */,
+				4A8C578E18818F4A00C715C2 /* CaptureVideoViewController.h */,
+				4A8C578F18818F4A00C715C2 /* CaptureVideoViewController.m */,
+				4A8C579018818F4A00C715C2 /* CaptureVideoViewController.xib */,
+				4A8C57A218819E2400C715C2 /* VideoManager.h */,
+				4A8C57A318819E2400C715C2 /* VideoManager.m */,
 				4A0E229318560DAD00A07512 /* BBSPostDetailController.h */,
 				4A0E229418560DAD00A07512 /* BBSPostDetailController.m */,
 				4A0E22BE18575F3A00A07512 /* PostDetailCommonHeaderView.h */,
@@ -4690,6 +4771,7 @@
 				4A226DFF187A42560003312F /* 3.jpeg in Resources */,
 				4A499226168553A30073E682 /* doneup.png in Resources */,
 				4A499228168553A30073E682 /* TestPPViewController.xib in Resources */,
+				4A8C5703188146FB00C715C2 /* profile_backgroud.png in Resources */,
 				4A499242168553A30073E682 /* ReviewRequest.strings in Resources */,
 				4A499255168553A30073E682 /* EGORefreshTableHeaderView.strings in Resources */,
 				4A226E10187BC37A0003312F /* PlayVideoViewController~ipad.xib in Resources */,
@@ -4718,6 +4800,7 @@
 				4A25F50E187D052000A42373 /* 3.png in Resources */,
 				4A873BA116A54AD2005BDA45 /* ViewController.xib in Resources */,
 				4ACF0CCE1839B80A00F7221C /* Language.strings in Resources */,
+				4A8C579F1881935600C715C2 /* capture_rec_blink@2x.png in Resources */,
 				4A873BA316A54AD2005BDA45 /* HZAreaPickerView.xib in Resources */,
 				4A1B25D017EEAB6500FC6194 /* Images.xcassets in Resources */,
 				4A873BA816A54BD7005BDA45 /* Citypicker.xib in Resources */,
@@ -4756,6 +4839,7 @@
 				4ACA75A9182CB80800567C77 /* NSDate+TKCategory.strings in Resources */,
 				4A0E22A81856EBFD00A07512 /* VotesViewController~ipad.xib in Resources */,
 				4A308BA917A16AE100DED650 /* CommonArticleViewController.xib in Resources */,
+				4A8C57A11881935600C715C2 /* capture_yep@2x.png in Resources */,
 				4A03269417A8EE9A0016F6C5 /* PlayVideoViewController.xib in Resources */,
 				4A3165DD183E5824008DC2CB /* ArticleCell ~ipad.xib in Resources */,
 				4A0E22AC1856ECEF00A07512 /* VoteHeaderView.xib in Resources */,
@@ -4788,11 +4872,13 @@
 				4A25F516187D052000A42373 /* supportcat@2x.png in Resources */,
 				4A0CA65E17ABE65500314B8C /* quit_app@2x.png in Resources */,
 				4A0CA65F17ABE65500314B8C /* Rate_Us@2x.png in Resources */,
+				4A8C579218818F4A00C715C2 /* CaptureVideoViewController.xib in Resources */,
 				4A0CA66017ABE65500314B8C /* share_social@2x.png in Resources */,
 				4A226C32187A352F0003312F /* StoreViewController~ipad.xib in Resources */,
 				4A0CA66117ABE65500314B8C /* share_with_firends@2x.png in Resources */,
 				4A0CA66217ABE65500314B8C /* singleCellBackgroud.png in Resources */,
 				4A0CA66317ABE65500314B8C /* social_networks@2x.png in Resources */,
+				4A8C57061881476000C715C2 /* description_bround.png in Resources */,
 				4A0CA66417ABE65500314B8C /* szicon_a@2x.png in Resources */,
 				4A226E0B187A42560003312F /* grayArrow@2x.png in Resources */,
 				4A0CA66517ABE65500314B8C /* top_cell_background.png in Resources */,
@@ -4802,6 +4888,7 @@
 				4A0CA66917ABE65500314B8C /* dq_2.png in Resources */,
 				4A88CC0B185187DB004E4D36 /* HomeMainMenuPanel.xib in Resources */,
 				4A0CA66A17ABE65500314B8C /* jt_1@2x.png in Resources */,
+				4A8C579E1881935600C715C2 /* capture_rec_base@2x.png in Resources */,
 				4A0CA66B17ABE65500314B8C /* Label_Type@2x.png in Resources */,
 				4A0CA66C17ABE65500314B8C /* less_data_Button.png in Resources */,
 				4A0CA66D17ABE65500314B8C /* less_data_Button@2x.png in Resources */,
@@ -4829,6 +4916,7 @@
 				4A0CA68617ABE65500314B8C /* copylink.png in Resources */,
 				4A0CA68717ABE65500314B8C /* email.png in Resources */,
 				4A0CA68817ABE65500314B8C /* friendsCircle.png in Resources */,
+				4A8C579D1881935600C715C2 /* capture_flip@2x.png in Resources */,
 				4A0CA68917ABE65500314B8C /* message.png in Resources */,
 				4A0CA68A17ABE65500314B8C /* sina.png in Resources */,
 				4A3558B61879A5EA007FC165 /* LoginViewController~ipad.xib in Resources */,
@@ -4854,6 +4942,7 @@
 				4A12A78417ACE0D500696CF2 /* touxiang_40x40.png in Resources */,
 				4A12A78517ACE0D500696CF2 /* touxiang_40x40@2x.png in Resources */,
 				4A3558C61879AE23007FC165 /* 152X152.png in Resources */,
+				4A8C57A01881935600C715C2 /* capture_rec_off@2x.png in Resources */,
 				4A8BCAD817AFE2BE0019CBB1 /* WorkOutManagerViewController.xib in Resources */,
 				4A25F513187D052000A42373 /* introBg@2x.png in Resources */,
 				4A6585CC17B0DD9A0056DA91 /* PostViewController.xib in Resources */,
@@ -4889,6 +4978,7 @@
 				4A8F3F3817BA76B2000F553A /* ChartViewController.xib in Resources */,
 				4A8F3F3C17BB1E92000F553A /* place_holder@2x.png in Resources */,
 				4A0A580817BB766F0089683A /* HomeViewController.xib in Resources */,
+				4A8C57071881476000C715C2 /* gender_on.png in Resources */,
 				4A226E03187A42560003312F /* 7.jpeg in Resources */,
 				4A0A580F17BB78C10089683A /* ArticleCell.xib in Resources */,
 				4A0A581117BB8C970089683A /* LoginViewController.xib in Resources */,
@@ -5002,6 +5092,7 @@
 				4A4991D2168553A30073E682 /* ASIHTTPRequest.m in Sources */,
 				4ACF0CA41839B71300F7221C /* PPSNSStorageService.m in Sources */,
 				4A4991D3168553A30073E682 /* ASIInputStream.m in Sources */,
+				4A8C57A418819E2400C715C2 /* VideoManager.m in Sources */,
 				4ACF0CEA1839B82800F7221C /* FBRequest.m in Sources */,
 				4A4991D4168553A30073E682 /* ASINetworkQueue.m in Sources */,
 				4ACF0CAD1839B71300F7221C /* mztools.c in Sources */,
@@ -5098,6 +5189,7 @@
 				4A499289168553A30073E682 /* UIImageExt.m in Sources */,
 				4ACF0CAE1839B71300F7221C /* unzip.c in Sources */,
 				4A49928A168553A30073E682 /* UIImageUtil.m in Sources */,
+				4A8C579118818F4A00C715C2 /* CaptureVideoViewController.m in Sources */,
 				4ACF0CAF1839B71300F7221C /* zip.c in Sources */,
 				4ACA75B5182CB80800567C77 /* TKCalendarDayViewController.m in Sources */,
 				4A0E226F1855B6D800A07512 /* FitnessInfoViewController.m in Sources */,
@@ -5170,6 +5262,7 @@
 				4ADCFFBA169D69F700A3E979 /* REComposeSheetView.m in Sources */,
 				4ADCFFBC169D69F700A3E979 /* REComposeViewController.m in Sources */,
 				4ADCFFD6169D69F700A3E979 /* iCarousel.m in Sources */,
+				4A8C578B18818D3A00C715C2 /* PBJStrobeView.m in Sources */,
 				4ACA75C9182CB80800567C77 /* TKNavigationController.m in Sources */,
 				4ADCFFD7169D69F700A3E979 /* ReflectionView.m in Sources */,
 				4AA7ECE5169F0F78003E8949 /* SMPageControl.m in Sources */,
@@ -5246,6 +5339,7 @@
 				4A27AEAB1777F18E009978C5 /* IIWrapController.m in Sources */,
 				4A27AEC01777F303009978C5 /* AGLeftSideTableCell.m in Sources */,
 				4A27AEC11777F303009978C5 /* AGSectionView.m in Sources */,
+				4A8C578D18818D3A00C715C2 /* PBJVisionUtilities.m in Sources */,
 				4A27AEC21777F303009978C5 /* AJMLeftSideViewController.m in Sources */,
 				4A88CC0A185187DB004E4D36 /* HomeMainMenuPanel.m in Sources */,
 				4A27AEC31777F303009978C5 /* AJMViewDelegate.m in Sources */,
@@ -5366,6 +5460,7 @@
 				4A183E3B17CC813E000793C2 /* WorkoutDetailViewController.m in Sources */,
 				4A183E4417CC8CE5000793C2 /* UserCatalog.m in Sources */,
 				4A183E9017CDEA7B000793C2 /* CacheMemoryTestViewController.m in Sources */,
+				4A8C578C18818D3A00C715C2 /* PBJVision.m in Sources */,
 				4A183E9B17CDEA7B000793C2 /* ZSYPopoverListView.m in Sources */,
 				4A151D2617E3608F005329CA /* IZValueSelectorView.m in Sources */,
 				4A03198417E6F06E00D7A45D /* UIKeyboardViewController.m in Sources */,

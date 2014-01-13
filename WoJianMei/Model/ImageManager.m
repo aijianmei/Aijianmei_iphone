@@ -166,6 +166,14 @@ static ImageManager *_defaultManager = nil;
 
 
 
++(UIImage *)avatarPlacHolderImage{
+
+    return [UIImage imageNamed:@"touxiang_40x40@2x.png"];
+
+}
+
+
+
 
 
 

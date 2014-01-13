@@ -71,6 +71,7 @@
 @synthesize lifeStytleViewController =_lifeStytleViewController;
 @synthesize storeViewController =_storeViewController;
 @synthesize workOutManagerViewController =_workOutManagerViewController;
+@synthesize myselfViewController =_myselfViewController;
 @synthesize moreViewController =_moreViewController;
 @synthesize bbsHomeViewController =_bbsHomeViewController;
 @synthesize webViewController =_webViewController;
@@ -102,6 +103,7 @@
     [_lifeStytleViewController release];
     [_storeViewController release];
     [_workOutManagerViewController release];
+    [_myselfViewController release];
     [_moreViewController release];
     [_bbsHomeViewController release];
     [_webViewController release];
@@ -119,6 +121,7 @@
     [self setLifeStytleViewController:nil];
     [self setStoreViewController:nil];
     [self setWorkOutManagerViewController:nil];
+    [self setMyselfViewController:nil];
     [self setMoreViewController:nil];
     [self setBbsHomeViewController:nil];
     [self setWebViewController:nil];
@@ -381,6 +384,31 @@
 
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_workOutManagerViewController] ;
 }
+-(void)initMyselfCenterViewController{
+    if (self.myselfViewController ==nil) {
+        
+        if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone)
+        {
+            
+            self.myselfViewController =[[MyselfViewController alloc] initWithNibName:@"MyselfViewController" bundle:nil];
+            
+            
+            
+        }else{
+            
+            self.myselfViewController  =[[MyselfViewController alloc] initWithNibName:@"MyselfViewController~ipad" bundle:nil];
+            
+            
+        }
+        
+        
+        
+    }
+    self.myselfViewController.title = @"个人中心";
+    
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:_myselfViewController] ;
+}
+
 -(void)initMoreController{
     if (self.moreViewController ==nil) {
 
@@ -453,7 +481,7 @@
 {
     switch (section) {
         case 0:
-            return 8;
+            return 9;
         case 1:
             return 2;
         default:
@@ -543,6 +571,11 @@
                                               @"Manager_Icon.png"]];
                     break;
                 case 7:
+                    cell.textLabel.text = @"个人中心";
+                    [cell.imageView setImage:[ImageManager GobalNavigationAvatarImage]];
+                    break;
+
+                case 8:
                     cell.textLabel.text = @"更多";
                     [cell.imageView setImage:[UIImage imageNamed:@"More_Icon.png"]];
                     break;
@@ -636,7 +669,7 @@
                     ///首页
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
     
-                       [self initHomeViewController];
+                       [self initBBSHomeViewController];
                        self.viewDeckController.centerController = _navigationController;
                                             }];
                     
@@ -772,7 +805,24 @@
                     [statTracker logEvent:@"WorkoutManagerView" eventLabel:@"WorkoutManagerView"];
                 }
                     break;
+                    
                 case 7:
+                {
+                    ////个人中心
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                        
+                        [self initMyselfCenterViewController];
+                        self.viewDeckController.centerController = _navigationController;
+                    }];
+                    
+                    self.view.userInteractionEnabled = YES;
+                    _tableView.userInteractionEnabled =YES;
+                    
+                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+                    [statTracker logEvent:@"MyselfCenter" eventLabel:@"MyselfCenterView"];
+                }
+                    break;
+                case 8:
                 {
                     ///更多
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {

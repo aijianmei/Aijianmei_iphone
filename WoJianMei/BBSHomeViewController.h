@@ -8,12 +8,18 @@
 
 #import "PPTableViewController.h"
 #import "HomeMainMenuPanel.h"
+#import "PostService.h"
+
 
 
 @class PBBBSPost;
 
-@interface BBSHomeViewController : PPTableViewController<HomeCommonViewDelegate,HomeMainMenuPanelDelegate,HomeMenuViewDelegate>
+@interface BBSHomeViewController : PPTableViewController<HomeCommonViewDelegate,HomeMainMenuPanelDelegate,HomeMenuViewDelegate,PostStatusServiceDelegate>
 {
+    
+    BOOL _reloading;
+    BOOL  shouldLoad;
+    NSInteger _start;
 
 }
 

@@ -8,9 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "PostStatus.h"
+#import "PPViewController.h"
+#import "CommonService.h"
 
 
-@interface PostService : NSObject
+@protocol PostStatusServiceDelegate <NSObject>
+-(void)didLoadStatusesSucceeded:(int)errorCode didLoadObjects:(NSArray *)objects;
+@optional
+
+
+
+@end
+
+@interface PostService : CommonService
 {
     PostStatus *_postStatus;
     
@@ -23,24 +33,18 @@
 -(void)postStatusWithUid:(NSString *)uid
                    image:(UIImage *)image
                  content:(NSString*)content
-//                delegate:(id<RKObjectLoaderDelegate>)delegate
-;
+          viewController:(PPViewController<PostStatusServiceDelegate>* )viewController;
 //获取分享
--(void)loadStatusWithUid:(int)uid
-               targetUid:(int)targetUid
-                gymGroup:(int)gymGroup
-                   start:(int)start
-                  offSet:(int)offSet
-//                delegate:(id<RKObjectLoaderDelegate>)delegate
-;
-
-
-
+-(void)loadStatusWithUid:(NSString*)uid
+               targetUid:(NSString*)targetUid
+                gymGroup:(NSString*)gymGroup
+                   start:(NSString*)start
+                  offSet:(NSString*)offSet
+          viewController:(PPViewController<PostStatusServiceDelegate>* )viewController;
 //点击喜欢
 -(void)postLikeWithUid:(int)uid
               StatusId:(int)StatusId
-//              delegate:(id<RKObjectLoaderDelegate>)delegate
-;
+        viewController:(PPViewController<PostStatusServiceDelegate>* )viewController;
 
 
 

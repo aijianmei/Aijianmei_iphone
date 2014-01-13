@@ -49,7 +49,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcj-nO-2wo">
-                    <rect key="frame" x="19" y="284" width="45" height="30"/>
+                    <rect key="frame" x="51" y="284" width="45" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="图片：">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -59,35 +59,31 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boy_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="8sp-Wj-shV">
-                    <rect key="frame" x="64" y="285" width="41" height="29"/>
+                    <rect key="frame" x="100" y="285" width="41" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boy_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="DLj-La-6Gj">
-                    <rect key="frame" x="165" y="285" width="41" height="29"/>
+                    <rect key="frame" x="231" y="285" width="41" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="draw_home_draw.png" translatesAutoresizingMaskIntoConstraints="NO" id="8cd-fX-8dt">
-                    <rect key="frame" x="271" y="286" width="41" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wha-Yc-pcT">
-                    <rect key="frame" x="222" y="286" width="45" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="投票：">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="clickVotesButton:" destination="-1" eventType="touchUpInside" id="MUr-Kb-Wme"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Sy-23-jx3">
-                    <rect key="frame" x="119" y="286" width="45" height="30"/>
+                    <rect key="frame" x="181" y="286" width="45" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="视频：">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="clickVideoButton:" destination="-1" eventType="touchUpInside" id="KNJ-nz-3Qc"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8X-QW-c4E">
+                    <rect key="frame" x="118" y="391" width="71" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="take video">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clickVotesButton:" destination="-1" eventType="touchUpInside" id="OFU-cv-GPF"/>
                     </connections>
                 </button>
             </subviews>
@@ -98,6 +94,5 @@
     </objects>
     <resources>
         <image name="boy_big.png" width="257" height="584"/>
-        <image name="draw_home_draw.png" width="74" height="76"/>
     </resources>
 </document>

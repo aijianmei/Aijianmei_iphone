@@ -9,5 +9,23 @@
 #import "VideoManager.h"
 
 @implementation VideoManager
+@synthesize videoPath =_videoPath;
+
+static VideoManager* _defaultManager;
+
++ (VideoManager*)defaultManager{
+    if (_defaultManager == nil){
+        _defaultManager = [[VideoManager alloc] init];
+    }
+    return _defaultManager;
+}
+
+-(void)dealloc{
+    [_videoPath release];
+    [super dealloc];
+}
+
+
+
 
 @end

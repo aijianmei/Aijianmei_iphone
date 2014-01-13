@@ -50,7 +50,10 @@
 
 
 
-
+- (void)sendVideoWithTitle:(NSString*)title
+               description:(NSString *)descriptoin
+                     image:(UIImage *)image
+                 videoLink:(NSString*)videoLink;
 
 
 -(void)addTitleButtonsSegmentedController;

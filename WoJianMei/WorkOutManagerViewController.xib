@@ -19,7 +19,7 @@
                     <rect key="frame" x="45" y="226" width="231" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="此功能暂未推迟，敬请期待!">
+                    <state key="normal" title="此功能暂未推出，敬请期待!">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>

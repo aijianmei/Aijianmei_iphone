@@ -12,16 +12,7 @@
 #import "AWActionSheet.h"
 #import "WXApiObject.h"
 #import "CommonDialog.h"
-
-@protocol sendMsgToWeChatViewDelegate <NSObject>
-- (void) sendTextContent:(NSString*)nsText;
-- (void) sendAppContentWithTitle:(NSString*)title  description:(NSString *)descriptoin image:(UIImage *)image urlLink :(NSString*)urlLink;
-- (void) sendImageContent;
-- (void) sendNewsContent ;
-- (void) doAuth;
-- (void) changeScene:(NSInteger)scene;
-
-@end
+#import "SendMsgToWeChatViewController.h"
 
 
 

@@ -8,6 +8,7 @@
 
 #import "BBSHomeTableCell.h"
 #import "PPDebug.h"
+#import "PostStatus.h"
 
 
 @implementation BBSHomeTableCell
@@ -19,7 +20,10 @@
 @synthesize titleContent = _titleContent;
 @synthesize timestamp = _timestamp;
 @synthesize imageMask = _imageMask;
+@synthesize imageView =_imageView;
 @synthesize avatarMask = _avatarMask;
+
+@synthesize videoPlayer =_videoPlayer;
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -36,10 +40,14 @@
     PPRelease(_nickName);
     PPRelease(_titleContent);
     PPRelease(_timestamp);
-    PPRelease(_image);
+    PPRelease(_imageView);
     PPRelease(_imageMask);
     PPRelease(_avatarMask);
     PPRelease(_bgImageView);
+    
+    
+    PPRelease(_videoPlayer);
+
     [super dealloc];
 }
 
@@ -70,6 +78,10 @@
     
     return cell;
     
+}
+
+- (void)updateContentWithPostStatus:(PostStatus *)status{
+
 }
 
 

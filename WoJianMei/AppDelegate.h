@@ -18,6 +18,8 @@
 #import "UserService.h"
 #import "BBSHomeViewController.h"
 #import "EAIntroView.h"
+#import "RespForWeChatViewController.h"
+
 
 
 
@@ -35,7 +37,7 @@ enum
 };
 
 
-@interface AppDelegate : PPApplication <UIApplicationDelegate,UITabBarControllerDelegate,WXApiDelegate,sendMsgToWeChatViewDelegate,CommonDialogDelegate,SinaWeiboRequestDelegate,SinaWeiboDelegate,UserServiceDelegate,EAIntroDelegate>
+@interface AppDelegate : PPApplication <UIApplicationDelegate,UITabBarControllerDelegate,WXApiDelegate,sendMsgToWeChatViewDelegate,RespForWeChatViewDelegate,CommonDialogDelegate,SinaWeiboRequestDelegate,SinaWeiboDelegate,UserServiceDelegate,EAIntroDelegate,UIAlertViewDelegate>
 
 {
       UINavigationController *_navigationController;
@@ -74,6 +76,15 @@ enum
 -(HomeViewController *)initHomeViewControllerFromAppDelegate;
 -(LoginViewController *)initLoginViewController;
 -(void)showLoginView;
+
+- (void)sendAppContentWithTitle:(NSString*)title
+                    description:(NSString *)descriptoin
+                          image:(UIImage *)image
+                        urlLink:(NSString*)urlLink;
+- (void)sendVideoContentWithTitle:(NSString*)title
+                      description:(NSString *)descriptoin
+                            image:(UIImage *)image
+                        videoLink:(NSString*)videoLink;
 
 
 

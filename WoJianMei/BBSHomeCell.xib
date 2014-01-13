@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BBSHomeCell"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BBSHomeCell" rowHeight="147" id="ycA-5E-6VJ" customClass="BBSHomeCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="147"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BBSHomeCell" rowHeight="151" id="ycA-5E-6VJ" customClass="BBSHomeCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="151"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ycA-5E-6VJ" id="Sf1-b0-sF8">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="146"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="57X57.png" translatesAutoresizingMaskIntoConstraints="NO" id="Iob-Vd-9sY">
                         <rect key="frame" x="9" y="70" width="50" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" 大家看看我的3各月增肌训练结果！快快兄弟们，兄弟们！！" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="316" translatesAutoresizingMaskIntoConstraints="NO" id="gZm-kp-w5q">
-                        <rect key="frame" x="1" y="3" width="316" height="50"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" 大家看看我的3各月增肌训练结果！快快兄弟们，兄弟们！！" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="308" translatesAutoresizingMaskIntoConstraints="NO" id="gZm-kp-w5q">
+                        <rect key="frame" x="9" y="3" width="308" height="50"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -86,6 +86,17 @@
                 </subviews>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="avatar" destination="Iob-Vd-9sY" id="ngr-Dh-Grm"/>
+                <outlet property="comments" destination="gZm-kp-w5q" id="UJi-Yh-VsP"/>
+                <outlet property="fitnessLevel" destination="H7R-De-Op9" id="W8V-Mw-tmO"/>
+                <outlet property="gender" destination="QJX-8K-H0M" id="a7H-ry-RMU"/>
+                <outlet property="imageView" destination="vVQ-y9-iO9" id="JTt-f7-9yq"/>
+                <outlet property="nickName" destination="CND-aR-1gF" id="0x1-Xt-eTh"/>
+                <outlet property="timestamp" destination="yYU-Zo-lHh" id="f56-f8-YbD"/>
+                <outlet property="titleContent" destination="gZm-kp-w5q" id="Dfl-Qc-wwh"/>
+                <outlet property="visitTimes" destination="5Hp-PD-fTn" id="U23-w0-ypY"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

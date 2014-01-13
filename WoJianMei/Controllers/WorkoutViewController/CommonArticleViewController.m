@@ -80,7 +80,6 @@ enum actionsheetNumber{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.delegate =[AppDelegate getAppDelegate];
     }
     return self;
 }
@@ -542,6 +541,8 @@ enum actionsheetNumber{
     
     int TapOnItem = index;
     
+    self.delegate =[self getAppDelegate];
+
     
     switch (TapOnItem) {
         case SINA_WEIBO:
@@ -746,14 +747,14 @@ enum actionsheetNumber{
 ////Wechat
 - (void) sendAppContentWithTitle:(NSString*)title  description:(NSString *)descriptoin image:(UIImage *)image urlLink :(NSString*)urlLink
 {
-    if (self.delegate  && [self.delegate respondsToSelector:@selector(sendAppContentWithTitle:description:image:urlLink:)]
+    if (_delegate  && [_delegate respondsToSelector:@selector(sendAppContentWithTitle:description:image:urlLink:)]
         )
     {
         
-        [self.delegate sendAppContentWithTitle:title
-                                   description:descriptoin
-                                         image:image
-                                       urlLink:urlLink];
+        [_delegate sendAppContentWithTitle:title
+                               description:descriptoin
+                                     image:image
+                                   urlLink:urlLink];
     }
 }
 

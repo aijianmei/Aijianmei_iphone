@@ -107,4 +107,16 @@ typedef void (^FitnessNetworkResponseBlock)(NSDictionary* jsonDictionary, NSData
 + (CommonNetworkOutput *)queryVersion:(NSString*)baseURL;
 
 
+
+
+///Statuses
++ (CommonNetworkOutput *)loadStatusesById:(NSString*)baseURL
+                                      Id:(NSString*)Id
+                                targetId:(NSString*)targetId
+                                 gymGroup:(NSString*)gymGroup
+                                    start:(NSString*)start
+                                   offSet:(NSString*)offSet;
+
+
+
 @end

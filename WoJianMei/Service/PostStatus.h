@@ -20,6 +20,7 @@
     NSString *_bigImageUrl;
     NSString *_avatarProfileUrl;
     NSString *_create_time;
+    NSString *_videoURL;
 
 }
 @property (nonatomic,retain) NSString *_id;
@@ -32,8 +33,12 @@
 @property (nonatomic,retain) NSString *bigImageUrl;
 @property (nonatomic,retain) NSString *avatarProfileUrl;
 @property (nonatomic,retain) NSString *create_time;
+@property (nonatomic,retain) NSString *videoURL;
+
 
 - (NSString*)timestamp;
+
+-(id)initWithDictionary:(NSDictionary*)dictionary;
 
 
 @end

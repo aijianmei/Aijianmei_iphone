@@ -9,5 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @interface VideoManager : NSObject
+{
+    NSString *_videoPath;
+
+}
+@property (nonatomic,retain) NSString *videoPath;
+
+
++ (VideoManager*)defaultManager;
 
 @end

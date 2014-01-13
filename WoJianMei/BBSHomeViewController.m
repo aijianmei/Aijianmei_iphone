@@ -13,6 +13,10 @@
 #import "DeviceDetection.h"
 #import "BBSHomeCell.h"
 #import "BBSPostDetailController.h"
+#import "UserManager.h"
+#import "PostStatus.h"
+
+
 
 
 
@@ -46,6 +50,49 @@
     [super viewDidAppear:animated];
     [self.homeMainMenuPanel animatePageButtons];
 
+}
+
+#pragma mark  Reload and LoadMore Method
+//加载新的数据
+- (void)reloadTableViewDataSource{
+    
+    _reloading = YES;
+    User *user =[[UserManager defaultManager]user];
+    [[PostService sharedService] loadStatusWithUid:user.uid
+                                         targetUid:nil
+                                          gymGroup:@"0"
+                                             start:@"0"
+                                            offSet:@"5"
+                                    viewController:self];
+    
+}
+//加载更多数据
+- (void)loadMoreTableViewDataSource {
+    _reloading = NO;
+    User *user =[[UserManager defaultManager]user];
+    [[PostService sharedService] loadStatusWithUid:user.uid
+                                         targetUid:nil
+                                          gymGroup:@"0"
+                                             start:@"0"
+                                            offSet:[NSString stringWithFormat:@"%d", _start]
+                                    viewController:self];
+    
+}
+
+-(void)loadPublicPostDatas
+{
+    _reloading = YES;
+    shouldLoad =YES;
+    
+    User *user =[[UserManager defaultManager]user];
+    
+    
+    [[PostService sharedService] loadStatusWithUid:user.uid
+                                         targetUid:nil
+                                          gymGroup:@"0"
+                                             start:@"0"
+                                            offSet:@"5"
+                                    viewController:self];
 }
 
 - (void)viewDidLoad
@@ -99,7 +146,12 @@
     
     
     
-    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(handleStaticTimer:) userInfo:nil repeats:YES];
+//    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(handleStaticTimer:) userInfo:nil repeats:YES];
+ 
+    
+    
+    
+    [self loadPublicPostDatas];
     
 }
 
@@ -356,7 +408,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return [self.dataList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -367,6 +419,8 @@
 	if (cell == nil) {
 		cell = [BBSHomeCell createCell:self];
 	}
+
+    [cell updateCellWithBBSPost:[self.dataList objectAtIndex:indexPath.row]];
     
 	return cell;
     
@@ -375,7 +429,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    PBBBSPost *post = [self.dataList objectAtIndex:indexPath.row];
+    PostStatus *post = [self.dataList objectAtIndex:indexPath.row];
 	return [BBSHomeCell getCellHeightWithBBSPost:post];
 }
 
@@ -391,6 +445,49 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)didLoadStatusesSucceeded:(int)errorCode didLoadObjects:(NSArray *)objects
+{
+    [self dataSourceDidFinishLoadingNewData];
+    [self dataSourceDidFinishLoadingMoreData];
+    
+    [self hideActivity];
+    PPDebug(@"***Load objects count: %d", [objects count]);
+    
+    if ([objects count] == 0) {
+        [self popupMessage:@"亲,已经没有更多数据了！" title:nil];
+        return;
+    }
+    
+    
+    
+    PostStatus *postStatus =  [objects objectAtIndex:0];
+    PPDebug(@"*****Get Statuses Successfully!!!*****");
+    PPDebug(@"******%@******",postStatus._id);
+    PPDebug(@"******%@******",postStatus.uid);
+    PPDebug(@"******%@******",postStatus.content);
+    PPDebug(@"******%@******",postStatus.imageurl);
+    PPDebug(@"******%@******",postStatus.create_time);
+    NSMutableArray *newDataList =nil;
+    
+    if (_start == 0) {
+        self.dataList = objects;
+    } else {
+        
+        newDataList = [NSMutableArray arrayWithArray:self.dataList];
+        [newDataList addObjectsFromArray:objects];
+        if (_reloading) {
+            [newDataList setArray:objects];
+            _start =0;
+            
+        }
+        self.dataList = newDataList;
+    }
+    
+    _start += [objects count];
+    PPDebug(@"****objects %d******",[self.dataList count]);
+    [self.dataTableView reloadData];
+    
 }
 
 @end

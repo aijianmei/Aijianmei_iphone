@@ -10,9 +10,24 @@
 #import "WXApiObject.h"
 
 @protocol sendMsgToWeChatViewDelegate <NSObject>
-- (void) changeScene:(NSInteger)scene;
-- (void) sendTextContent;
+
+@optional
+- (void) sendTextContent:(NSString*)nsText;
+- (void) sendAppContentWithTitle:(NSString*)title
+                     description:(NSString *)descriptoin image:(UIImage *)image urlLink :(NSString*)urlLink;
+- (void)sendVideoContentWithTitle:(NSString*)title
+                      description:(NSString *)descriptoin
+                            image:(UIImage *)image
+                        videoLink:(NSString*)videoLink;
+
 - (void) sendImageContent;
+- (void) sendNewsContent ;
+- (void) doAuth;
+
+
+- (void) changeScene:(NSInteger)scene;
+
+- (void) sendTextContent;
 - (void) sendLinkContent;
 - (void) sendMusicContent;
 - (void) sendVideoContent;
@@ -20,10 +35,4 @@
 - (void) sendNonGifContent;
 - (void) sendGifContent;
 - (void) sendFileContent;
-@end
-
-@interface SendMsgToWeChatViewController : UIViewController<UITextViewDelegate>
-
-@property (nonatomic, assign) id<sendMsgToWeChatViewDelegate,NSObject> delegate;
-
 @end

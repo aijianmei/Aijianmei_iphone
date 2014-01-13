@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol RespForWeChatViewDelegate <NSObject>
+@optional
 - (void) RespTextContent;
 - (void) RespImageContent;
 - (void) RespLinkContent;
@@ -18,10 +19,4 @@
 - (void) RespNonGifContent;
 - (void) RespGifContent;
 - (void) RespFileContent;
-@end
-
-@interface RespForWeChatViewController : UIViewController
-
-@property (nonatomic, assign) id<RespForWeChatViewDelegate,NSObject> delegate;
-
 @end

@@ -42,8 +42,6 @@
 #define kAppId			@"683646344"
 
 
-
-
 ///aijianmei
 #define WeChatId @"wxc996cdfc0f512dd7"
 
@@ -262,6 +260,32 @@ NSString* GlobalGetServerURL()
 }
 
 
+- (void)sendVideoContentWithTitle:(NSString*)title
+                      description:(NSString *)descriptoin
+                            image:(UIImage *)image
+                        videoLink:(NSString*)videoLink
+{
+    
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.title = title;
+    message.description = descriptoin;
+    
+    [message setThumbImage:image];
+    
+    WXVideoObject *ext = [WXVideoObject object];
+    ext.videoUrl = videoLink;
+    
+    message.mediaObject = ext;
+    
+    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+    req.bText = NO;
+    req.message = message;
+    req.scene = _scene;
+    
+    [WXApi sendReq:req];
+}
+
+
 #define BUFFER_SIZE  1024 * 100
 - (void)sendAppContentWithTitle:(NSString*)title
                     description:(NSString *)descriptoin
@@ -329,25 +353,84 @@ NSString* GlobalGetServerURL()
     [WXApi sendResp:resp];
 }
 
--(void) changeScene:(NSInteger)scene{
+-(void)changeScene:(NSInteger)scene{
     _scene = scene;
+}
+
+
+-(void) onReq:(BaseReq*)req
+{
+    if([req isKindOfClass:[GetMessageFromWXReq class]])
+    {
+        // 微信请求App提供内容， 需要app提供内容后使用sendRsp返回
+        NSString *strTitle = [NSString stringWithFormat:@"微信请求App提供内容"];
+        NSString *strMsg = @"微信请求App提供内容，App要调用sendResp:GetMessageFromWXResp返回给微信";
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        alert.tag = 1000;
+        [alert show];
+        [alert release];
+    }
+    else if([req isKindOfClass:[ShowMessageFromWXReq class]])
+    {
+        ShowMessageFromWXReq* temp = (ShowMessageFromWXReq*)req;
+        WXMediaMessage *msg = temp.message;
+        
+        //显示微信传过来的内容
+        WXAppExtendObject *obj = msg.mediaObject;
+        
+        NSString *strTitle = [NSString stringWithFormat:@"微信请求App显示内容"];
+        NSString *strMsg = [NSString stringWithFormat:@"标题：%@ \n内容：%@ \n附带信息：%@ \n缩略图:%u bytes\n\n", msg.title, msg.description, obj.extInfo, msg.thumbData.length];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
+    else if([req isKindOfClass:[LaunchFromWXReq class]])
+    {
+        //从微信启动App
+        NSString *strTitle = [NSString stringWithFormat:@"从微信启动"];
+        NSString *strMsg = @"这是从微信启动的消息";
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
 }
 
 -(void) onResp:(BaseResp*)resp
 {
     if([resp isKindOfClass:[SendMessageToWXResp class]])
     {
-        if (resp.errCode == WXSuccess){
-            [UIUtils alert:@"已成功分享至微信"];
-            PPDebug(@"<onResp> weixin response success");
-        }else {
-            PPDebug(@"<onResp> weixin response fail");
+        switch (resp.errCode) {
+            case WXSuccess:
+            {
+                [UIUtils alert:@"已成功分享至微信"];
+                PPDebug(@"<onResp> weixin response success");
+
+            }
+                break;
+            case WXErrCodeUserCancel:
+            {
+                [UIUtils alert:@"用户取消分享"];
+                PPDebug(@"<onResp> weixin response fail");
+                
+            }
+                break;
+
+            case WXErrCodeUnsupport:
+            {
+                [UIUtils alert:@"微信版本不支持"];
+                PPDebug(@"<onResp> weixin response fail");
+                
+            }
+                break;
+                
+            default:
+                break;
         }
     }
 }
-
-
-
 
 - (void)initUserService
 {
@@ -608,15 +691,17 @@ NSString* GlobalGetServerURL()
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
     
-
     if ([url.absoluteString hasSuffix:SinaweibossoLogin]) {
         return [[SinaWeiboManager sharedManager].sinaweibo handleOpenURL:url];
     } else {
         return YES;
     }
     if ([url.absoluteString hasPrefix:@"http://weixin.qq.com/"]) {
+        
         return [WXApi handleOpenURL:url delegate:self];
+        
     } else {
+        
         return YES;
     }
 
@@ -624,21 +709,23 @@ NSString* GlobalGetServerURL()
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
+    BOOL success;
 
     if ([sourceApplication isEqualToString:@"com.sina.weibo"] && [url.absoluteString hasPrefix:SinaweibossoLogin]){
-        return [[SinaWeiboManager sharedManager].sinaweibo handleOpenURL:url];
-    }else{
         
-    return YES;
+         success =[[SinaWeiboManager sharedManager].sinaweibo handleOpenURL:url];
+        
+        return success;
     }
     
-    if ([url.absoluteString hasPrefix:@"http://weixin.qq.com/"]){
-        return [WXApi handleOpenURL:url delegate:self];
-    }else{
+    if ([sourceApplication isEqualToString:@"com.tencent.xin"] && [url.absoluteString hasSuffix:@"wechat"]){
         
-        return YES;
+         success = [WXApi handleOpenURL:url delegate:self];
+        
+        return success;
     }
 
+    return YES;
 }
 
 

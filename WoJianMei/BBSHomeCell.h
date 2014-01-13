@@ -9,6 +9,7 @@
 #import "BBSHomeTableCell.h"
 
 
+@class PostStatus;
 @class PBBBSPost ;
 
 @interface BBSHomeCell :BBSHomeTableCell
@@ -16,8 +17,8 @@
 
 + (id)createCell:(id)delegate;
 + (NSString*)getCellIdentifier;
-+ (CGFloat)getCellHeightWithBBSPost:(PBBBSPost *)post;
-- (void)updateCellWithBBSPost:(PBBBSPost *)post;
++ (CGFloat)getCellHeightWithBBSPost:(PostStatus *)post;
+- (void)updateCellWithBBSPost:(PostStatus *)post;
 
 
 @end

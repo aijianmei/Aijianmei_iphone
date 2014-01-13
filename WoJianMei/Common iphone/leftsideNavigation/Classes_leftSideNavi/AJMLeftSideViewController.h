@@ -23,8 +23,7 @@
 @class LifeStytleViewController;
 @class StoreViewController;
 @class BBSHomeViewController;
-
-
+@class MyselfViewController;
 @class WorkOutManagerViewController;
 @class MoreViewController;
 @class SVWebViewController;
@@ -47,6 +46,8 @@
     LifeStytleViewController      *_lifeStytleViewController;
     StoreViewController           *_storeViewController;
     WorkOutManagerViewController  *_workOutManagerViewController;
+    MyselfViewController                *_myselfViewController;
+
     MoreViewController            *_moreViewController;
     BBSHomeViewController         *_bbsHomeViewController;
     SVWebViewController           *_webViewController;
@@ -62,6 +63,7 @@
 @property(nonatomic, retain) LifeStytleViewController         *lifeStytleViewController;
 @property(nonatomic, retain) StoreViewController              *storeViewController;
 @property(nonatomic, retain) WorkOutManagerViewController     *workOutManagerViewController;
+@property(nonatomic, retain) MyselfViewController     *myselfViewController;
 @property(nonatomic, retain) MoreViewController               *moreViewController;
 @property(nonatomic, retain) BBSHomeViewController            *bbsHomeViewController;
 

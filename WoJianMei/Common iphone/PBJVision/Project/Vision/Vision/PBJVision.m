@@ -506,9 +506,11 @@ typedef void (^PBJVisionBlock)();
         // set the framerate and preset
         CMTime frameDuration = CMTimeMake( 1, 30 );
         if ( videoConnection.supportsVideoMinFrameDuration )
-            videoConnection.videoMinFrameDuration = frameDuration; // needs to be applied to session in iOS 7
+            videoConnection.videoMinFrameDuration = frameDuration;
+        // needs to be applied to session in iOS 7
         if ( videoConnection.supportsVideoMaxFrameDuration )
-            videoConnection.videoMaxFrameDuration = frameDuration; // needs to be applied to session in iOS 7
+            videoConnection.videoMaxFrameDuration = frameDuration;
+        // needs to be applied to session in iOS 7
         
     } else if (newCaptureOutput == _captureOutputPhoto) {
     

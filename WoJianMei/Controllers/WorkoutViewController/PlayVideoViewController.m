@@ -86,11 +86,6 @@ enum TapOnItem {
         [comVC.dataTableView setBackgroundColor:[UIColor clearColor]];        
         self.commentViewController = comVC;
         [comVC release];
-       
-        
-        //Set the wechat deletgate
-        self.delegate =[self getAppDelegate];
-        
     }
     return self;
 }
@@ -336,6 +331,7 @@ enum TapOnItem {
     
     int TapOnItem = index;
     
+    self.delegate = [self getAppDelegate];
     
     switch (TapOnItem) {
         case SINA_WEIBO:
@@ -345,22 +341,30 @@ enum TapOnItem {
             break;
         case FREIND_CIRCLE:
         {
+            ///发送给朋友圈
             [self onSelectTimelineScene];
-            
             UIImage *image = [self getImageFromURL:_video.img];
             postImage = image;
             
-            [self sendAppContentWithTitle:_video.title description:_video.brief image:postImage  urlLink:_video.shareurl];
+            [self sendVideoWithTitle:_video.title
+                         description:_video.brief
+                               image:postImage
+                           videoLink:_video.shareurl];
             
         }
             break;
         case WECHAT:
         {
             
+            ///发送给朋友圈的朋友
+            
             [self onSelectSessionScene];
             UIImage *image = [self getImageFromURL:_video.img];
             postImage = image;
-            [self sendAppContentWithTitle:_video.title description:_video.brief image:postImage urlLink:_video.shareurl];
+            [self sendVideoWithTitle:_video.title
+                         description:_video.brief
+                               image:postImage
+                           videoLink:_video.shareurl];
             
         }
             break;
@@ -441,7 +445,10 @@ enum TapOnItem {
                 
                 UIImage *image = [self getImageFromURL:_video.img];
                 postImage =[image scaleToSize:CGSizeMake(70,70)];
-                [self sendAppContentWithTitle:_video.title description:_video.brief image:postImage  urlLink:_video.shareurl];
+                [self sendVideoWithTitle:_video.title
+                             description:_video.brief
+                                   image:postImage
+                               videoLink:_video.shareurl];
                 
             }
             case SEND_WECHAT_FRIENDS:
@@ -451,7 +458,10 @@ enum TapOnItem {
                 UIImage *image = [self getImageFromURL:_video.img];
                 
                 postImage =[image scaleToSize:CGSizeMake(70,70)];
-                [self sendAppContentWithTitle:_video.title description:_video.brief image:postImage  urlLink:_video.shareurl];
+                [self sendVideoWithTitle:_video.title
+                             description:_video.brief
+                                   image:postImage
+                               videoLink:_video.shareurl];
                 
             }
                 break;
@@ -497,32 +507,41 @@ enum TapOnItem {
 }
 
 - (void)onSelectSessionScene{
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(changeScene:)]) {
     [_delegate changeScene:WXSceneSession];
     [self popupHappyMessage:@"分享场景:会话" title:nil];
+        
+    }
     
 }
 
 - (void)onSelectTimelineScene{
     
     if (_delegate && [_delegate respondsToSelector:@selector(changeScene:)]) {
-        
         [_delegate changeScene:WXSceneTimeline];
         [self popupHappyMessage:@"分享场景:朋友圈" title:nil];
-        
     }
     
     
 }
 
 ////Wechat
-- (void) sendAppContentWithTitle:(NSString*)title  description:(NSString *)descriptoin image:(UIImage *)image urlLink :(NSString*)urlLink
+- (void)sendVideoWithTitle:(NSString*)title
+               description:(NSString *)descriptoin
+                     image:(UIImage *)image
+                 videoLink:(NSString*)videoLink
 {
-    if (_delegate  && [_delegate respondsToSelector:@selector(sendAppContentWithTitle:description:image:urlLink:)]
+    
+    if (_delegate  && [_delegate respondsToSelector:@selector(sendVideoContentWithTitle:description:image:videoLink:)]
         )
     {
-        PPDebug(@"Share to Wechat！");
+        [_delegate sendVideoContentWithTitle:title
+                                     description:descriptoin
+                                           image:image
+                                       videoLink:videoLink];
         
-        [_delegate sendAppContentWithTitle:title description:descriptoin image:image urlLink:urlLink];
+        
     }
 }
 
@@ -532,12 +551,8 @@ enum TapOnItem {
     if (_delegate  && [_delegate respondsToSelector:@selector(sendNewsContent)]
         )
     {
-        PPDebug(@"Share to Wechat！");
-        
         [_delegate sendNewsContent];
     }
-    
-    
 }
 
 - (AppDelegate*)getAppDelegate

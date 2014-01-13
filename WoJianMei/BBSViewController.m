@@ -10,6 +10,10 @@
 #import "PostTopicViewController.h"
 #import "BBSHomeCell.h"
 #import "BBSPostDetailController.h"
+#import "UserManager.h"
+#import "PostStatus.h"
+#import "VideoManager.h"
+
 
 
 ///// the setings of the iCarousel
@@ -34,6 +38,33 @@
     return self;
 }
 
+-(void)handleLoadNewDatas{
+
+    PostStatus *post =[self.dataList objectAtIndex:2];
+    [post setVideoURL:[[VideoManager defaultManager] videoPath]];
+    
+    NSMutableArray *arrary =[NSMutableArray arrayWithArray:self.dataList];
+    [arrary insertObject:post atIndex:0];
+    
+    self.dataList = arrary;
+    
+    
+    NSIndexPath *path1 = [NSIndexPath indexPathForRow:0 inSection:0];
+    NSArray *indexArray = [NSArray arrayWithObjects:path1,nil];
+    
+    [self.dataTableView insertRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationLeft];
+}
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    if ([[VideoManager defaultManager] videoPath]) {
+        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(handleLoadNewDatas) userInfo:nil repeats:NO];
+    }
+    
+    [super viewDidAppear:animated];
+}
+
 - (void)viewDidLoad
 {
     
@@ -46,6 +77,25 @@
     [self setBackgroundImageName:@"gobal_background.png"];
     [self showBackgroundImage];
     [self initUI];
+    
+    [self loadPublicPostDatas];
+    
+}
+
+-(void)loadPublicPostDatas
+{
+    _reloading = YES;
+    shouldLoad =YES;
+    
+     User *user =[[UserManager defaultManager]user];
+
+    
+    [[PostService sharedService] loadStatusWithUid:user.uid
+                                         targetUid:nil
+                                          gymGroup:@"0"
+                                             start:@"0"
+                                            offSet:@"5"
+                                    viewController:self];
 }
 - (void)initUI
 {
@@ -199,6 +249,34 @@
 }
 
 
+#pragma mark  Reload and LoadMore Method
+//加载新的数据
+- (void)reloadTableViewDataSource{
+    
+    _reloading = YES;
+    User *user =[[UserManager defaultManager]user];
+    [[PostService sharedService] loadStatusWithUid:user.uid
+                                         targetUid:nil
+                                          gymGroup:@"0"
+                                             start:@"0"
+                                            offSet:@"5"
+                                    viewController:self];
+    
+}
+//加载更多数据
+- (void)loadMoreTableViewDataSource {
+    _reloading = NO;
+    User *user =[[UserManager defaultManager]user];
+    [[PostService sharedService] loadStatusWithUid:user.uid
+                                         targetUid:nil
+                                          gymGroup:@"0"
+                                             start:@"0"
+                                            offSet:[NSString stringWithFormat:@"%d", _start]
+                                    viewController:self];
+    
+}
+
+
 
 
 
@@ -221,7 +299,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return [self.dataList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -231,22 +309,33 @@
 	BBSHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
 		cell = [BBSHomeCell createCell:self];
+
 	}
+    PostStatus *post = [self postStatusForIndexPath:indexPath];
+    [cell updateCellWithBBSPost:post];
     
 	return cell;
-    
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    PBBBSPost *post = [self.dataList objectAtIndex:indexPath.row];
+    PostStatus *post = [self.dataList objectAtIndex:indexPath.row];
 	return [BBSHomeCell getCellHeightWithBBSPost:post];
+}
+
+#pragma mark - table view delegate
+- (PostStatus *)postStatusForIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *dList = self.dataList;
+    if (indexPath.row >= [dList count]) {
+        return nil;
+    }
+    PostStatus *action = [self.dataList objectAtIndex:indexPath.row];
+    return action;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     BBSPostDetailController *vc = [[BBSPostDetailController alloc]initWithNibName:@"BBSPostDetailController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
@@ -261,6 +350,54 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+#pragma mark -
+#pragma mark - RKObjectLoaderDelegate
+
+
+
+-(void)didLoadStatusesSucceeded:(int)errorCode didLoadObjects:(NSArray *)objects
+{
+    [self dataSourceDidFinishLoadingNewData];
+    [self dataSourceDidFinishLoadingMoreData];
+    
+    [self hideActivity];
+    PPDebug(@"***Load objects count: %d", [objects count]);
+    
+    if ([objects count] == 0) {
+        [self popupMessage:@"亲,已经没有更多数据了！" title:nil];
+        return;
+    }
+    
+    
+    
+    PostStatus *postStatus =  [objects objectAtIndex:0];
+    PPDebug(@"*****Get Statuses Successfully!!!*****");
+    PPDebug(@"******%@******",postStatus._id);
+    PPDebug(@"******%@******",postStatus.uid);
+    PPDebug(@"******%@******",postStatus.content);
+    PPDebug(@"******%@******",postStatus.imageurl);
+    PPDebug(@"******%@******",postStatus.create_time);
+    NSMutableArray *newDataList =nil;
+    
+    if (_start == 0) {
+        self.dataList = objects;
+    } else {
+        
+        newDataList = [NSMutableArray arrayWithArray:self.dataList];
+        [newDataList addObjectsFromArray:objects];
+        if (_reloading) {
+            [newDataList setArray:objects];
+            _start =0;
+            
+        }
+        self.dataList = newDataList;
+    }
+    
+    _start += [objects count];
+    PPDebug(@"****objects %d******",[self.dataList count]);
+    [self.dataTableView reloadData];
+    
 }
 
 @end

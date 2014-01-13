@@ -9,6 +9,13 @@
 #import "PostTopicViewController.h"
 #import "VotesViewController.h"
 #import "CTAssetsPickerController.h"
+#import "CaptureVideoViewController.h"
+#import "VideoManager.h"
+
+
+#import <MediaPlayer/MediaPlayer.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+
 
 
 @interface PostTopicViewController ()<CTAssetsPickerControllerDelegate,UINavigationControllerDelegate>
@@ -19,6 +26,9 @@
 @end
 
 @implementation PostTopicViewController
+@synthesize videoPlayer =_videoPlayer;
+@synthesize movieURL    =_movieURL;
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -32,8 +42,21 @@
 
 -(void)dealloc{
 
-    
+    [_videoPlayer release];
+    [_movieURL release];
     [super dealloc];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self playVideo];
+    [super viewWillAppear:animated];
+}
+-(void)viewDidAppear:(BOOL)animated{
+    
+    
+    
+    [self playVideo];
+    [super viewDidAppear:animated];
 }
 
 - (void)viewDidLoad
@@ -61,6 +84,8 @@
 }
 
 -(void)clickDoneButton:(UIButton *)sender{
+    
+    
     
     [self popupHappyMessage:@"亲!发布内容不能够为空!" title:nil];
 }
@@ -125,19 +150,49 @@
 }
 
 - (IBAction)clickVideoButton:(id)sender{
-     [self takeVideo];
+    
+    CaptureVideoViewController *vc =[[CaptureVideoViewController alloc]initWithNibName:@"CaptureVideoViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+    self.navigationController.navigationBarHidden =YES;
+
+    [vc release];
+    
 }
 
 
 
 - (IBAction)clickVotesButton:(id)sender {
     
-    VotesViewController *vc = [[VotesViewController alloc]initWithNibName:@"VotesViewController" bundle:nil];
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
+//    VotesViewController *vc = [[VotesViewController alloc]initWithNibName:@"VotesViewController" bundle:nil];
+//    [self.navigationController pushViewController:vc animated:YES];
+//    [vc release];
+    
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
+    [UIApplication sharedApplication].statusBarHidden =YES;
+    [self presentViewController:picker animated:YES completion:NULL];
     
 }
 
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    self.movieURL= info[UIImagePickerControllerMediaURL];
+    [[VideoManager defaultManager] setVideoPath:[NSString stringWithFormat:@"%@",self.movieURL]];
+    NSLog(@"%@",[VideoManager defaultManager].videoPath);
+
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
 
 #pragma mark --
 #pragma mark SelectPhotos
@@ -177,6 +232,46 @@
 -(void)showPhotosArray{
 
 
+}
+
+
+
+#pragma mark --
+#pragma mark - ShowPickedVideos
+-(void)playVideo{
+
+    if (_movieURL) {
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(moviePlayBackDidFinish:)
+                                                     name:MPMoviePlayerPlaybackDidFinishNotification
+                                                   object:self.videoPlayer];
+        
+        
+        self.videoPlayer=[[MPMoviePlayerController alloc] initWithContentURL:_movieURL];
+        [self.videoPlayer.view setFrame:CGRectMake (0,320,320,200)];
+        [self.videoPlayer.view setBackgroundColor:[UIColor redColor]];
+        
+        self.videoPlayer.movieSourceType=MPMovieSourceTypeFile;
+        //本地文件播放要设置视频资源为文件类型资源，若设置为stream 则会错误
+        [self.videoPlayer prepareToPlay];
+        if(self.videoPlayer.isPreparedToPlay)
+        {
+            [self.videoPlayer play];
+        }
+        [self.view addSubview:self.videoPlayer.view];
+    }
+}
+
+- (void)moviePlayBackDidFinish:(NSNotification *)notification {
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
+    
+//    [self.videoPlayer stop];
+//    [self.videoPlayer.view removeFromSuperview];
+//    self.videoPlayer = nil;
+    
 }
 
 

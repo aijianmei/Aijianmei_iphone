@@ -16,13 +16,6 @@
 
 + (id)defaultManager;
 
-
-
-
-
-
-
-
 +(UIImage*)avatarbackgroundImage;
 
 - (UIImage *)allBackgroundImage;
@@ -65,6 +58,9 @@
 +(UIImage*)GobalArticelCommentButtonBG;
 
 +(UIImage *)articleBarImage;
+
++(UIImage *)avatarPlacHolderImage;
+
 
 
 

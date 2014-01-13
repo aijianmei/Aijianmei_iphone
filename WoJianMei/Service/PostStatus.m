@@ -19,7 +19,32 @@
 @synthesize bigImageUrl =_bigImageUrl;
 @synthesize create_time =_create_time;
 @synthesize avatarProfileUrl =_avatarProfileUrl;
+@synthesize videoURL =_videoURL;
 
+
+
+
+
+-(id)initWithDictionary:(NSDictionary*)dictionary{
+    self = [super init];
+    if (self) {
+    
+        self._id = [dictionary objectForKey:@"id"];
+        self.uid = [dictionary objectForKey:@"uid"];
+        self.group = [dictionary objectForKey:@"group"];
+        self.imageurl = [dictionary objectForKey:@"imageurl"];
+        self.create_time = [dictionary objectForKey:@"create_time"];
+        self.userName = [dictionary objectForKey:@"userName"];
+        self.content = [dictionary objectForKey:@"content"];
+        self.bigImageUrl = [dictionary objectForKey:@"bigImageUrl"];
+        self.avatarProfileUrl = [dictionary objectForKey:@"avatarProfileUrl"];
+        self.like = [dictionary objectForKey:@"like"];
+    }
+    
+    
+    return self;
+
+}
 
 - (NSString*)timestamp
 {
