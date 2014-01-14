@@ -312,6 +312,10 @@
 		4A3853B4184DF7DF00D5A66B /* PostTopicViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3853B2184DF7DF00D5A66B /* PostTopicViewController~ipad.xib */; };
 		4A3853B6184DF7F900D5A66B /* PostTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3853B5184DF7F900D5A66B /* PostTopicViewController.xib */; };
 		4A3AB807175060F20045729D /* WorkOutProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AB806175060F10045729D /* WorkOutProcessViewController.m */; };
+		4A425B2B1884E836000934FC /* camera_btn_publish.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A425B291884E836000934FC /* camera_btn_publish.png */; };
+		4A425B2C1884E836000934FC /* camera_btn_publish@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A425B2A1884E836000934FC /* camera_btn_publish@2x.png */; };
+		4A425B2F1884E8AB000934FC /* camera_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A425B2D1884E8AB000934FC /* camera_cancel.png */; };
+		4A425B301884E8AB000934FC /* camera_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A425B2E1884E8AB000934FC /* camera_cancel@2x.png */; };
 		4A429DBF175DD1BA00F018CE /* WorkOutInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A429DBE175DD1B900F018CE /* WorkOutInfo.m */; };
 		4A4991CD168553A30073E682 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A498F9F168553A20073E682 /* ASIAuthenticationDialog.m */; };
 		4A4991CE168553A30073E682 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A498FA2168553A20073E682 /* ASIDataCompressor.m */; };
@@ -1175,6 +1179,10 @@
 		4A3853B5184DF7F900D5A66B /* PostTopicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostTopicViewController.xib; sourceTree = "<group>"; };
 		4A3AB805175060F10045729D /* WorkOutProcessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOutProcessViewController.h; sourceTree = "<group>"; };
 		4A3AB806175060F10045729D /* WorkOutProcessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOutProcessViewController.m; sourceTree = "<group>"; };
+		4A425B291884E836000934FC /* camera_btn_publish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_btn_publish.png; sourceTree = "<group>"; };
+		4A425B2A1884E836000934FC /* camera_btn_publish@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_btn_publish@2x.png"; sourceTree = "<group>"; };
+		4A425B2D1884E8AB000934FC /* camera_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_cancel.png; sourceTree = "<group>"; };
+		4A425B2E1884E8AB000934FC /* camera_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_cancel@2x.png"; sourceTree = "<group>"; };
 		4A429DBD175DD1B900F018CE /* WorkOutInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOutInfo.h; sourceTree = "<group>"; };
 		4A429DBE175DD1B900F018CE /* WorkOutInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOutInfo.m; sourceTree = "<group>"; };
 		4A498F9E168553A20073E682 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
@@ -4588,7 +4596,6 @@
 		4AE545EA184DE435008CF804 /* topicViewcontroller */ = {
 			isa = PBXGroup;
 			children = (
-				4A0E22911856075900A07512 /* bbs_create_draw_disable@2x.png */,
 				4AE545EF184DE4DF008CF804 /* BBSViewController.h */,
 				4AE545F0184DE4DF008CF804 /* BBSViewController.m */,
 				4AE545EB184DE466008CF804 /* BBSViewController.xib */,
@@ -4600,6 +4607,11 @@
 				4A8C578E18818F4A00C715C2 /* CaptureVideoViewController.h */,
 				4A8C578F18818F4A00C715C2 /* CaptureVideoViewController.m */,
 				4A8C579018818F4A00C715C2 /* CaptureVideoViewController.xib */,
+				4A0E22911856075900A07512 /* bbs_create_draw_disable@2x.png */,
+				4A425B2D1884E8AB000934FC /* camera_cancel.png */,
+				4A425B2E1884E8AB000934FC /* camera_cancel@2x.png */,
+				4A425B291884E836000934FC /* camera_btn_publish.png */,
+				4A425B2A1884E836000934FC /* camera_btn_publish@2x.png */,
 				4A8C57A218819E2400C715C2 /* VideoManager.h */,
 				4A8C57A318819E2400C715C2 /* VideoManager.m */,
 				4A0E229318560DAD00A07512 /* BBSPostDetailController.h */,
@@ -4864,6 +4876,7 @@
 				4A226E05187A42560003312F /* 9.jpeg in Resources */,
 				4A0CA65A17ABE65500314B8C /* feed_back@2x.png in Resources */,
 				4A25F515187D052000A42373 /* original@2x.png in Resources */,
+				4A425B301884E8AB000934FC /* camera_cancel@2x.png in Resources */,
 				4A0CA65B17ABE65500314B8C /* feedback_bg2@2x.png in Resources */,
 				4A0CA65C17ABE65500314B8C /* middle_cell_background.png in Resources */,
 				4A25F50C187D052000A42373 /* 1.png in Resources */,
@@ -4914,6 +4927,7 @@
 				4A0CA68417ABE65500314B8C /* hhhh.png in Resources */,
 				4A0CA68517ABE65500314B8C /* vbbbb.png in Resources */,
 				4A0CA68617ABE65500314B8C /* copylink.png in Resources */,
+				4A425B2B1884E836000934FC /* camera_btn_publish.png in Resources */,
 				4A0CA68717ABE65500314B8C /* email.png in Resources */,
 				4A0CA68817ABE65500314B8C /* friendsCircle.png in Resources */,
 				4A8C579D1881935600C715C2 /* capture_flip@2x.png in Resources */,
@@ -4942,6 +4956,7 @@
 				4A12A78417ACE0D500696CF2 /* touxiang_40x40.png in Resources */,
 				4A12A78517ACE0D500696CF2 /* touxiang_40x40@2x.png in Resources */,
 				4A3558C61879AE23007FC165 /* 152X152.png in Resources */,
+				4A425B2F1884E8AB000934FC /* camera_cancel.png in Resources */,
 				4A8C57A01881935600C715C2 /* capture_rec_off@2x.png in Resources */,
 				4A8BCAD817AFE2BE0019CBB1 /* WorkOutManagerViewController.xib in Resources */,
 				4A25F513187D052000A42373 /* introBg@2x.png in Resources */,
@@ -4994,6 +5009,7 @@
 				4AC2BDC417BD05300061E396 /* WorkoutViewController.xib in Resources */,
 				4AE545EC184DE466008CF804 /* BBSViewController.xib in Resources */,
 				4AC2BDC817BD07E90061E396 /* LifeStytleViewController.xib in Resources */,
+				4A425B2C1884E836000934FC /* camera_btn_publish@2x.png in Resources */,
 				4A88CC181854B97B004E4D36 /* common_home_wood_bg@2x.png in Resources */,
 				4AC2BDCA17BD08070061E396 /* SupplementViewController.xib in Resources */,
 				4AC2BDCC17BD081D0061E396 /* NutriViewController.xib in Resources */,

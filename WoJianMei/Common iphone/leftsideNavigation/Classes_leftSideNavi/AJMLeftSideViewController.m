@@ -128,6 +128,14 @@
     [super viewDidUnload];
    
 }
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+
+    [super viewWillAppear:animated];
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -676,7 +684,7 @@
                     self.view.userInteractionEnabled = YES;
                     _tableView.userInteractionEnabled =YES;
                     
-                    
+                   
 
                     //百度统计;
                     BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
@@ -1038,6 +1046,8 @@
     return NO;
     
 }
+
+
 
 
 

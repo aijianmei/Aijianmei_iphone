@@ -99,6 +99,13 @@ typedef enum CONTENT_TYPE {
 #pragma mark -
 #pragma mark - View lifecycle
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+   
+    
+    [super viewWillAppear:animated];
+}
+
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];

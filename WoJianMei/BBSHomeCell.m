@@ -16,14 +16,11 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
-
+#define VideoPlayerHeight   120
+#define VideoPlayerWidth    250
 
 
 @implementation BBSHomeCell
-
-
-
-
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -46,42 +43,72 @@
     return @"BBSHomeCell";
 }
 
+
++ (CGFloat)heightForTitleText:(NSString *)text
+{
+    CGSize size = CGSizeMake(100, 100);
+    return size.height;
+}
+
++ (CGFloat)heightForContentText:(NSString *)text
+{
+    CGSize size = CGSizeMake(100, 100);
+    return size.height;
+}
+
++ (CGFloat)heightForSourceText:(NSString *)text
+{
+    CGSize size = CGSizeMake(100, 100);
+    return size.height;
+}
+
+
 + (CGFloat)getCellHeightWithBBSPost:(PostStatus *)post{
     
-    if (post.videoURL) {
-        return 147.0f + 100.0f;
-    }
-    return 147.0f;
+    CGFloat sourceHeight = [BBSHomeCell heightForSourceText:post.content];
+    
+    CGFloat contentHeight = [BBSHomeCell heightForContentText:post.content];
+    
+    CGFloat titleHeight = [BBSHomeCell heightForTitleText:post.content];
+    
+    
+    CGFloat height = contentHeight + sourceHeight + titleHeight;
+    
+    
+    return 147.0f + height;
 }
 
 - (void)updateCellWithBBSPost:(PostStatus *)post{
-    
-    
+
     [self.timestamp setText:post.timestamp];
     [self.avatar setImageWithURL:[NSURL URLWithString:post.avatarProfileUrl] placeholderImage:[ImageManager avatarPlacHolderImage]];
-    [self.comments setText:post.content];
+    [self.titleContent setText:post.content];
     [self.nickName setText:post.userName];
-    [self.imageView setImageWithURL:[NSURL URLWithString:post.imageurl] placeholderImage:[UIImage imageNamed:@"place_holder@2x.png"]];
     
     
-    if (post.videoURL) {
-        [self updateContentWithPostStatus:post];
+    if (post.imageurl) {
+        [self.imageView setImageWithURL:[NSURL URLWithString:post.imageurl] placeholderImage:[UIImage imageNamed:@"place_holder@2x.png"]];
     }
+    
     
     if (post.videoURL) {
         [self playVideoWithUrl:[NSURL URLWithString:post.videoURL]];
-
-   }
+    }
+    
+    
+    [self updateContentWithPostStatus:post];
+    
 }
 
 
 -(void)updateContentWithPostStatus:(PostStatus *)status{
- 
-        
-    [self.imageView setHidden:YES];
     
+    [self.timestamp  setFrame:CGRectMake(CGRectGetMinX(self.timestamp.frame),130 + 100,CGRectGetWidth(self.timestamp.frame),CGRectGetHeight(self.timestamp.frame))];
     
-
+    [self.visitTimes  setFrame:CGRectMake(CGRectGetMinX(self.visitTimes.frame),230,CGRectGetWidth(self.visitTimes.frame),CGRectGetHeight(self.visitTimes.frame))];
+    
+    [self.comments  setFrame:CGRectMake(CGRectGetMinX(self.comments.frame),230 ,CGRectGetWidth(self.comments.frame),CGRectGetHeight(self.comments.frame))];
+    
 }
 
 
@@ -94,9 +121,11 @@
         
     
     
+
+
     
         self.videoPlayer=[[MPMoviePlayerController alloc] initWithContentURL:videoURL];
-        [self.videoPlayer.view setFrame:CGRectMake (70,67,200,70)];
+        [self.videoPlayer.view setFrame:CGRectMake (70,67,VideoPlayerWidth,VideoPlayerHeight)];
         [self.videoPlayer.view setBackgroundColor:[UIColor redColor]];
         
         self.videoPlayer.movieSourceType=MPMovieSourceTypeFile;

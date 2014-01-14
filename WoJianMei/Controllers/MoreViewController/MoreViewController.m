@@ -161,7 +161,7 @@ enum BUTTON_INDEX {
 
 - (void)initOptionList
 {
-    NSArray *array = [[NSArray alloc] initWithObjects: @"分享", @"信息反馈",@"喜欢我们,打分鼓励", @"关于我们",  nil];
+    NSArray *array = [[NSArray alloc] initWithObjects: @"分享", @"信息反馈",@"喜欢我们,打分鼓励", @"关于爱健美",  nil];
     self.listData = array;
     [array release];
 }

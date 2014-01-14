@@ -55,7 +55,6 @@
 - (void)initMaskViews
 {
     
-
 }
 
 
@@ -75,12 +74,14 @@
     
     [cell initMaskViews];
     
-    
     return cell;
     
 }
 
 - (void)updateContentWithPostStatus:(PostStatus *)status{
+    
+    
+    
 
 }
 

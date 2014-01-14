@@ -119,11 +119,12 @@ typedef enum CONTENT_TYPE {
 
 #pragma mark -
 #pragma mark - View lifecycle
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    
     [super viewWillAppear:animated];
 }
-
 
 -(void) viewDidAppear:(BOOL)animated
 {

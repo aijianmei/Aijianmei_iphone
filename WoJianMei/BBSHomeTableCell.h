@@ -58,4 +58,5 @@
 
 - (void)updateContentWithPostStatus:(PostStatus *)status;
 
+
 @end

@@ -19,6 +19,6 @@
 + (NSString*)getCellIdentifier;
 + (CGFloat)getCellHeightWithBBSPost:(PostStatus *)post;
 - (void)updateCellWithBBSPost:(PostStatus *)post;
-
++ (CGFloat)heightForSourceText:(NSString *)text;
 
 @end

@@ -44,6 +44,8 @@ UIAlertViewDelegate>
     UIButton *_flipButton;
     
     
+    UIButton  *_nextButton;
+    
     UILabel * _reminderLabel;
     
     UIView *_previewView;
@@ -100,9 +102,9 @@ UIAlertViewDelegate>
     
     // cancle button
     _cancleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _cancleButton.frame = CGRectMake(viewWidth - 20.0f - 20.0f - 100.0f, 20.0f, 20.0f, 20.0f);
+    _cancleButton.frame = CGRectMake(20.0f, 20.0f, 20.0f, 20.0f);
     
-    UIImage *cancleButtonImage = [UIImage imageNamed:@"capture_yep"];
+    UIImage *cancleButtonImage = [UIImage imageNamed:@"camera_cancel@2x"];
     [_cancleButton setImage:cancleButtonImage forState:UIControlStateNormal];
     [_cancleButton addTarget:self action:@selector(_handleCancleButton:) forControlEvents:UIControlEventTouchUpInside];
 
@@ -112,9 +114,12 @@ UIAlertViewDelegate>
     // elapsed time and red dot
     _strobeView = [[PBJStrobeView alloc] initWithFrame:CGRectZero];
     CGRect strobeFrame = _strobeView.frame;
-    strobeFrame.origin = CGPointMake(15.0f, 15.0f);
+    strobeFrame.origin = CGPointMake(135.0f, 15.0f);
     _strobeView.frame = strobeFrame;
     [self.view addSubview:_strobeView];
+    
+    
+    
     
     // preview
     _previewView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -125,6 +130,9 @@ UIAlertViewDelegate>
     previewFrame.size = CGSizeMake(previewWidth, previewWidth);
     _previewView.frame = previewFrame;
     
+    
+    
+    
     // add AV layer
     _previewLayer = [[PBJVision sharedInstance] previewLayer];
     CGRect previewBounds = _previewView.layer.bounds;
@@ -133,6 +141,9 @@ UIAlertViewDelegate>
     _previewLayer.position = CGPointMake(CGRectGetMidX(previewBounds), CGRectGetMidY(previewBounds));
     [_previewView.layer addSublayer:_previewLayer];
     [self.view addSubview:_previewView];
+    
+    
+    
     
     // instruction label
     _instructionLabel = [[UILabel alloc] initWithFrame:self.view.bounds];
@@ -185,8 +196,40 @@ UIAlertViewDelegate>
     
     [_flipButton addTarget:self action:@selector(_handleFlipButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_flipButton];
+    
+    
+    
+    CGSize size = CGSizeMake(136, 36);
+    _nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _nextButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    //[_nextButton setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
+    //_nextButton.titleLabel.shadowOffset = CGSizeMake(0, 1);
+    UIImage * nextImg = [UIImage imageNamed:@"camera_btn_publish.png"];
+    nextImg = [nextImg stretchableImageWithLeftCapWidth:5 topCapHeight:5];
+    UIImage * nextImg_select = [UIImage imageNamed:@"camera_btn_publish_select.png"];
+    nextImg_select = [nextImg_select stretchableImageWithLeftCapWidth:5 topCapHeight:5];
+    [_nextButton setBackgroundImage:nextImg forState:UIControlStateNormal];
+    [_nextButton setBackgroundImage:nextImg_select forState:UIControlStateHighlighted];
+    [_nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+   
+    [_nextButton setTitle:@"下一步" forState:UIControlStateNormal];
+    [_nextButton addTarget:self action:@selector(didClickNext:) forControlEvents:UIControlEventTouchUpInside];
+    _nextButton.frame = CGRectMake(0, 400, size.width, size.height);
+    [self.view addSubview:_nextButton];
+    [_nextButton setHidden:YES];
+    
+    
+    
+    
+    
+    
 }
 
+
+-(void)didClickNext:(id)sender{
+  
+    
+}
 
 - (void)viewDidLoad
 {

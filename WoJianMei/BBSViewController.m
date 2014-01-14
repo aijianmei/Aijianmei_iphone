@@ -53,13 +53,18 @@
     NSArray *indexArray = [NSArray arrayWithObjects:path1,nil];
     
     [self.dataTableView insertRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationLeft];
+    [self.dataTableView reloadData];
 }
 
 
 -(void)viewDidAppear:(BOOL)animated{
     
     if ([[VideoManager defaultManager] videoPath]) {
-        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(handleLoadNewDatas) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:0.5
+                                         target:self
+                                       selector:@selector(handleLoadNewDatas)
+                                       userInfo:nil
+                                        repeats:NO];
     }
     
     [super viewDidAppear:animated];
@@ -212,7 +217,7 @@
             
         }
         
-        [imageView setImage:[UIImage imageNamed:@"320X480.png"]];
+        [imageView setImage:[UIImage imageNamed:@"place_holder@2x.png"]];
         [view addSubview:imageView];
         [imageView release];
         
@@ -309,8 +314,10 @@
 	BBSHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
 		cell = [BBSHomeCell createCell:self];
+        [cell.videoPlayer.view setHidden:YES];
 
 	}
+
     PostStatus *post = [self postStatusForIndexPath:indexPath];
     [cell updateCellWithBBSPost:post];
     
@@ -319,7 +326,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    PostStatus *post = [self.dataList objectAtIndex:indexPath.row];
+    PostStatus *post = [self postStatusForIndexPath:indexPath];
 	return [BBSHomeCell getCellHeightWithBBSPost:post];
 }
 

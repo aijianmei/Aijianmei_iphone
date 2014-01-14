@@ -594,7 +594,7 @@ NSString* GlobalGetServerURL()
 //        [self.window setRootViewController:mainVC];
     }
     
-    
+
     
     return YES;
 }
