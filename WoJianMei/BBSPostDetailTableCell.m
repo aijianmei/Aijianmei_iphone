@@ -20,8 +20,33 @@
     return self;
 }
 
+-(void)dealloc{
+    
+    [_avtarImageView release];
+    _avtarImageView =nil;
+    
+    [_nameLabel release];
+    _nameLabel =nil;
+    
+    [_fitnessLevel release];
+    _fitnessLevel =nil;
+    
+     [_floorLabel release];
+    _floorLabel = nil;
+    
+    [_textView release];
+    _textView =nil;
+    
+    [_imgView release];
+    _imgView =nil;
+    
+    
+    [super dealloc];
+}
 -(void)initMaskViews{
     
+    [self.imageView setImage:nil];
+    [self.avtarImageView setImage:[UIImage imageNamed:@"xldl_1.png"]];
     
 
 }
@@ -43,14 +68,5 @@
 
 
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

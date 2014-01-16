@@ -316,6 +316,7 @@
 		4A425B2C1884E836000934FC /* camera_btn_publish@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A425B2A1884E836000934FC /* camera_btn_publish@2x.png */; };
 		4A425B2F1884E8AB000934FC /* camera_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A425B2D1884E8AB000934FC /* camera_cancel.png */; };
 		4A425B301884E8AB000934FC /* camera_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A425B2E1884E8AB000934FC /* camera_cancel@2x.png */; };
+		4A425B341884F395000934FC /* MLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A425B331884F395000934FC /* MLNavigationController.m */; };
 		4A429DBF175DD1BA00F018CE /* WorkOutInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A429DBE175DD1B900F018CE /* WorkOutInfo.m */; };
 		4A4991CD168553A30073E682 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A498F9F168553A20073E682 /* ASIAuthenticationDialog.m */; };
 		4A4991CE168553A30073E682 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A498FA2168553A20073E682 /* ASIDataCompressor.m */; };
@@ -458,6 +459,9 @@
 		4A4A5DB2179E512E00F00085 /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4A5DB0179E512E00F00085 /* CommentViewController.xib */; };
 		4A4A5E10179E76FB00F00085 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4A5E0F179E76FA00F00085 /* CommentCell.m */; };
 		4A4A5E13179E77B000F00085 /* CommentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4A5E12179E77AF00F00085 /* CommentInfo.m */; };
+		4A55F6AA1886CB40001D0A1B /* BBSImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A55F6A91886CB40001D0A1B /* BBSImageManager.m */; };
+		4A55F6AD1887CD33001D0A1B /* 768X1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A55F6AB1887CD33001D0A1B /* 768X1024.png */; };
+		4A55F6AE1887CD33001D0A1B /* 1536X2048.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A55F6AC1887CD33001D0A1B /* 1536X2048.png */; };
 		4A5F3FD517914E2E00CD701A /* FeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F3FD317914E2E00CD701A /* FeedBackViewController.m */; };
 		4A5F3FD617914E2E00CD701A /* FeedBackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A5F3FD417914E2E00CD701A /* FeedBackViewController.xib */; };
 		4A5F3FE717914F6700CD701A /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A5F3FE617914F6700CD701A /* AboutViewController.xib */; };
@@ -632,6 +636,10 @@
 		4ACA75D9182CB80800567C77 /* UIScrollview+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA75A3182CB80800567C77 /* UIScrollview+TKCategory.m */; };
 		4ACA75DA182CB80800567C77 /* UIToolbar+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA75A5182CB80800567C77 /* UIToolbar+TKCategory.m */; };
 		4ACA75DB182CB80800567C77 /* UIView+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA75A7182CB80800567C77 /* UIView+TKCategory.m */; };
+		4ACAFA6D1885414B0059C296 /* timeline_image_loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ACAFA6B1885414B0059C296 /* timeline_image_loading.png */; };
+		4ACAFA6E1885414B0059C296 /* timeline_image_loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ACAFA6C1885414B0059C296 /* timeline_image_loading@2x.png */; };
+		4ACAFA71188544330059C296 /* 640X960.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ACAFA6F188544330059C296 /* 640X960.png */; };
+		4ACAFA72188544330059C296 /* 640X1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ACAFA70188544330059C296 /* 640X1136.png */; };
 		4ACF0CA21839B71300F7221C /* PPSNSCommonRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACF0C7D1839B71300F7221C /* PPSNSCommonRequest.m */; };
 		4ACF0CA31839B71300F7221C /* PPSNSCommonService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACF0C7F1839B71300F7221C /* PPSNSCommonService.m */; };
 		4ACF0CA41839B71300F7221C /* PPSNSStorageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACF0C821839B71300F7221C /* PPSNSStorageService.m */; };
@@ -1183,6 +1191,8 @@
 		4A425B2A1884E836000934FC /* camera_btn_publish@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_btn_publish@2x.png"; sourceTree = "<group>"; };
 		4A425B2D1884E8AB000934FC /* camera_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_cancel.png; sourceTree = "<group>"; };
 		4A425B2E1884E8AB000934FC /* camera_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_cancel@2x.png"; sourceTree = "<group>"; };
+		4A425B321884F395000934FC /* MLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLNavigationController.h; sourceTree = "<group>"; };
+		4A425B331884F395000934FC /* MLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLNavigationController.m; sourceTree = "<group>"; };
 		4A429DBD175DD1B900F018CE /* WorkOutInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOutInfo.h; sourceTree = "<group>"; };
 		4A429DBE175DD1B900F018CE /* WorkOutInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOutInfo.m; sourceTree = "<group>"; };
 		4A498F9E168553A20073E682 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
@@ -1462,6 +1472,10 @@
 		4A4A5E0F179E76FA00F00085 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentCell.m; path = ../WorkoutViewController/CommentCell.m; sourceTree = "<group>"; };
 		4A4A5E11179E77AF00F00085 /* CommentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentInfo.h; path = ../Controllers/WorkoutViewController/CommentInfo.h; sourceTree = "<group>"; };
 		4A4A5E12179E77AF00F00085 /* CommentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentInfo.m; path = ../Controllers/WorkoutViewController/CommentInfo.m; sourceTree = "<group>"; };
+		4A55F6A81886CB40001D0A1B /* BBSImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSImageManager.h; sourceTree = "<group>"; };
+		4A55F6A91886CB40001D0A1B /* BBSImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSImageManager.m; sourceTree = "<group>"; };
+		4A55F6AB1887CD33001D0A1B /* 768X1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 768X1024.png; sourceTree = "<group>"; };
+		4A55F6AC1887CD33001D0A1B /* 1536X2048.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1536X2048.png; sourceTree = "<group>"; };
 		4A5F3FD217914E2E00CD701A /* FeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedBackViewController.h; sourceTree = "<group>"; };
 		4A5F3FD317914E2E00CD701A /* FeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedBackViewController.m; sourceTree = "<group>"; };
 		4A5F3FD417914E2E00CD701A /* FeedBackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedBackViewController.xib; sourceTree = "<group>"; };
@@ -1740,6 +1754,10 @@
 		4ACA75A6182CB80800567C77 /* UIView+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TKCategory.h"; sourceTree = "<group>"; };
 		4ACA75A7182CB80800567C77 /* UIView+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TKCategory.m"; sourceTree = "<group>"; };
 		4ACA75A8182CB80800567C77 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NSDate+TKCategory.strings"; sourceTree = "<group>"; };
+		4ACAFA6B1885414B0059C296 /* timeline_image_loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeline_image_loading.png; sourceTree = "<group>"; };
+		4ACAFA6C1885414B0059C296 /* timeline_image_loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_image_loading@2x.png"; sourceTree = "<group>"; };
+		4ACAFA6F188544330059C296 /* 640X960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640X960.png; sourceTree = "<group>"; };
+		4ACAFA70188544330059C296 /* 640X1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640X1136.png; sourceTree = "<group>"; };
 		4ACF0C7C1839B71300F7221C /* PPSNSCommonRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSNSCommonRequest.h; sourceTree = "<group>"; };
 		4ACF0C7D1839B71300F7221C /* PPSNSCommonRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSNSCommonRequest.m; sourceTree = "<group>"; };
 		4ACF0C7E1839B71300F7221C /* PPSNSCommonService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSNSCommonService.h; sourceTree = "<group>"; };
@@ -2023,6 +2041,10 @@
 		4A0CA5DB17ABE65500314B8C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4A55F6AB1887CD33001D0A1B /* 768X1024.png */,
+				4A55F6AC1887CD33001D0A1B /* 1536X2048.png */,
+				4ACAFA6F188544330059C296 /* 640X960.png */,
+				4ACAFA70188544330059C296 /* 640X1136.png */,
 				4A1B25D217EED04E00FC6194 /* icons */,
 				4A129CF317CB46A600FD18B2 /* 健身管理 */,
 				4AC2BDBC17BCCE510061E396 /* Updates */,
@@ -2528,6 +2550,7 @@
 		4A27AE4F1777F006009978C5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4A55F6A71886CAF7001D0A1B /* BBS */,
 				4A0326CA17AA648B0016F6C5 /* SinaResult.h */,
 				4A0326CB17AA648B0016F6C5 /* SinaResult.m */,
 				4A27AE501777F006009978C5 /* Article.h */,
@@ -2759,6 +2782,15 @@
 			path = "universal-bin";
 			sourceTree = "<group>";
 		};
+		4A425B311884F395000934FC /* MultiNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				4A425B321884F395000934FC /* MLNavigationController.h */,
+				4A425B331884F395000934FC /* MLNavigationController.m */,
+			);
+			path = MultiNavigation;
+			sourceTree = "<group>";
+		};
 		4A498D711685500F0073E682 /* Component-Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -2887,6 +2919,7 @@
 		4A49905E168553A20073E682 /* Core-Components-Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4A425B311884F395000934FC /* MultiNavigation */,
 				4A3165C8183DFA1D008DC2CB /* AMScrollingNavbar */,
 				4A49905F168553A20073E682 /* BgTabController */,
 				4A499062168553A20073E682 /* IconSelectController */,
@@ -3659,6 +3692,15 @@
 				4A4991CC168553A30073E682 /* UIWebViewUtil.m */,
 			);
 			path = WebView;
+			sourceTree = "<group>";
+		};
+		4A55F6A71886CAF7001D0A1B /* BBS */ = {
+			isa = PBXGroup;
+			children = (
+				4A55F6A81886CB40001D0A1B /* BBSImageManager.h */,
+				4A55F6A91886CB40001D0A1B /* BBSImageManager.m */,
+			);
+			name = BBS;
 			sourceTree = "<group>";
 		};
 		4A58805215C52B89005F8415 /* Controllers */ = {
@@ -4616,19 +4658,21 @@
 				4A8C57A318819E2400C715C2 /* VideoManager.m */,
 				4A0E229318560DAD00A07512 /* BBSPostDetailController.h */,
 				4A0E229418560DAD00A07512 /* BBSPostDetailController.m */,
+				4A0E229818560DBD00A07512 /* BBSPostDetailController.xib */,
+				4A0E229518560DAD00A07512 /* BBSPostDetailController~ipad.xib */,
 				4A0E22BE18575F3A00A07512 /* PostDetailCommonHeaderView.h */,
 				4A0E22BF18575F3A00A07512 /* PostDetailCommonHeaderView.m */,
 				4A0E22B918575A2300A07512 /* PostDetailHeaderView.h */,
 				4A0E22BA18575A2300A07512 /* PostDetailHeaderView.m */,
 				4A0E22BC18575A4200A07512 /* PostDetailHeaderView.xib */,
+				4ACAFA6B1885414B0059C296 /* timeline_image_loading.png */,
+				4ACAFA6C1885414B0059C296 /* timeline_image_loading@2x.png */,
 				4A0E229A18560FD700A07512 /* BBSPostDetailTableCell.h */,
 				4A0E229B18560FD700A07512 /* BBSPostDetailTableCell.m */,
 				4A0E229D1856104800A07512 /* BBSPostDetailCell.h */,
 				4A0E229E1856104800A07512 /* BBSPostDetailCell.m */,
-				4A0E22A21856148F00A07512 /* bbs_post_content_bg@2x.png */,
 				4A0E22A0185610C400A07512 /* BBSPostDetailCell.xib */,
-				4A0E229818560DBD00A07512 /* BBSPostDetailController.xib */,
-				4A0E229518560DAD00A07512 /* BBSPostDetailController~ipad.xib */,
+				4A0E22A21856148F00A07512 /* bbs_post_content_bg@2x.png */,
 				4A0E22A41856EBFD00A07512 /* VotesViewController.h */,
 				4A0E22A51856EBFD00A07512 /* VotesViewController.m */,
 				4A0E22B11856EEE800A07512 /* VoteCell.h */,
@@ -4882,9 +4926,11 @@
 				4A25F50C187D052000A42373 /* 1.png in Resources */,
 				4A0CA65D17ABE65500314B8C /* more_apps@2x.png in Resources */,
 				4A35589818798494007FC165 /* LifeStytleViewController~ipad.xib in Resources */,
+				4A55F6AD1887CD33001D0A1B /* 768X1024.png in Resources */,
 				4A25F516187D052000A42373 /* supportcat@2x.png in Resources */,
 				4A0CA65E17ABE65500314B8C /* quit_app@2x.png in Resources */,
 				4A0CA65F17ABE65500314B8C /* Rate_Us@2x.png in Resources */,
+				4ACAFA71188544330059C296 /* 640X960.png in Resources */,
 				4A8C579218818F4A00C715C2 /* CaptureVideoViewController.xib in Resources */,
 				4A0CA66017ABE65500314B8C /* share_social@2x.png in Resources */,
 				4A226C32187A352F0003312F /* StoreViewController~ipad.xib in Resources */,
@@ -4905,6 +4951,7 @@
 				4A0CA66B17ABE65500314B8C /* Label_Type@2x.png in Resources */,
 				4A0CA66C17ABE65500314B8C /* less_data_Button.png in Resources */,
 				4A0CA66D17ABE65500314B8C /* less_data_Button@2x.png in Resources */,
+				4ACAFA72188544330059C296 /* 640X1136.png in Resources */,
 				4A0CA66E17ABE65500314B8C /* more_data_Button.png in Resources */,
 				4AC593B9183F694000B61C2E /* CommentViewController ～ipad.xib in Resources */,
 				4A0CA66F17ABE65500314B8C /* more_data_Button@2x.png in Resources */,
@@ -4918,6 +4965,7 @@
 				4A0CA67E17ABE65500314B8C /* ccccc.png in Resources */,
 				4A0CA67F17ABE65500314B8C /* ddddd.png in Resources */,
 				4A0CA68117ABE65500314B8C /* dq_1.png in Resources */,
+				4ACAFA6D1885414B0059C296 /* timeline_image_loading.png in Resources */,
 				4A0E22701855B6D800A07512 /* FitnessInfoViewController~ipad.xib in Resources */,
 				4A0CA68217ABE65500314B8C /* dq_2.png in Resources */,
 				4A0E22A31856148F00A07512 /* bbs_post_content_bg@2x.png in Resources */,
@@ -4973,6 +5021,7 @@
 				4AE356A917B4E70800ADD258 /* kddq_1.png in Resources */,
 				4AE356AA17B4E70800ADD258 /* kdjm_1.png in Resources */,
 				4A3558BA1879A82D007FC165 /* UserInfoPickerViewController~ipad.xib in Resources */,
+				4ACAFA6E1885414B0059C296 /* timeline_image_loading@2x.png in Resources */,
 				4AA8D4601827E5F600036560 /* IndexSep@2x.png in Resources */,
 				4AE356AB17B4E70800ADD258 /* SLNumberPickerTicks.png in Resources */,
 				4AE356B217B4E92200ADD258 /* girl_big.png in Resources */,
@@ -5031,6 +5080,7 @@
 				4A129D7617CB46A700FD18B2 /* hxdhl_1.png in Resources */,
 				4A0E227A1855CBC400A07512 /* BBSHomeViewController.xib in Resources */,
 				4A0E22B51856EEFA00A07512 /* VoteCell.xib in Resources */,
+				4A55F6AE1887CD33001D0A1B /* 1536X2048.png in Resources */,
 				4A0E229918560DBD00A07512 /* BBSPostDetailController.xib in Resources */,
 				4A3558A018798800007FC165 /* AboutViewController~ipad.xib in Resources */,
 				4A31655B183D198F008DC2CB /* ShareSDKLocalizable.strings in Resources */,
@@ -5127,6 +5177,7 @@
 				4A499221168553A30073E682 /* PPTabBarController.m in Sources */,
 				4A0E22B31856EEE800A07512 /* VoteCell.m in Sources */,
 				4ACA75BD182CB80800567C77 /* TKGraphController.m in Sources */,
+				4A425B341884F395000934FC /* MLNavigationController.m in Sources */,
 				4A0E229F1856104800A07512 /* BBSPostDetailCell.m in Sources */,
 				4A499222168553A30073E682 /* PPTableViewCell.m in Sources */,
 				4A499223168553A30073E682 /* PPTableViewController.m in Sources */,
@@ -5339,6 +5390,7 @@
 				4A27AE6C1777F006009978C5 /* Article.m in Sources */,
 				4A27AE6D1777F006009978C5 /* ArticleDetail.m in Sources */,
 				4A27AE6E1777F006009978C5 /* ArticleInfo.m in Sources */,
+				4A55F6AA1886CB40001D0A1B /* BBSImageManager.m in Sources */,
 				4A27AE6F1777F006009978C5 /* ArticleManager.m in Sources */,
 				4A27AE711777F006009978C5 /* ImageManager.m in Sources */,
 				4A27AE731777F006009978C5 /* Result.m in Sources */,
@@ -5632,8 +5684,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Callon (VQ5469GPCM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tom Callon (VQ5469GPCM)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Huang HaiZhi (VEC788Z89Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Huang HaiZhi (VEC788Z89Q)";
 				FRAMEWORK_SEARCH_PATHS = /Users/karakei/Documents/Study/GitTomCallon/Aijianmei_iphone/ThirdParty_Frameworks/ShareSDK;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WoJianMei/WoJianMei-Prefix.pch";
@@ -5647,8 +5699,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WoJianMei;
-				PROVISIONING_PROFILE = "A6C70FA8-5CC3-4906-B7A6-832E49417C1C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A6C70FA8-5CC3-4906-B7A6-832E49417C1C";
+				PROVISIONING_PROFILE = "69BF65AB-44EE-46A6-AB95-9A629581BAB7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "69BF65AB-44EE-46A6-AB95-9A629581BAB7";
 				SHARED_PRECOMPS_DIR = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
@@ -5663,8 +5715,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Callon (VQ5469GPCM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tom Callon (VQ5469GPCM)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Huang HaiZhi (VEC788Z89Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Huang HaiZhi (VEC788Z89Q)";
 				FRAMEWORK_SEARCH_PATHS = /Users/karakei/Documents/Study/GitTomCallon/Aijianmei_iphone/ThirdParty_Frameworks/ShareSDK;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WoJianMei/WoJianMei-Prefix.pch";
@@ -5678,8 +5730,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WoJianMei;
-				PROVISIONING_PROFILE = "A6C70FA8-5CC3-4906-B7A6-832E49417C1C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A6C70FA8-5CC3-4906-B7A6-832E49417C1C";
+				PROVISIONING_PROFILE = "69BF65AB-44EE-46A6-AB95-9A629581BAB7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "69BF65AB-44EE-46A6-AB95-9A629581BAB7";
 				SHARED_PRECOMPS_DIR = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";

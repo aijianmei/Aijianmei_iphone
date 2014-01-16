@@ -10,4 +10,7 @@
 
 @interface BBSImageManager : NSObject
 
++ (id)defaultManager;
+-(CGSize)image:(UIImage *)image sizeWithConstHeight:(CGFloat)height maxWidth:(CGFloat)maxWidth;
+
 @end

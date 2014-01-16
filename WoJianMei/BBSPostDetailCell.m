@@ -7,6 +7,10 @@
 //
 
 #import "BBSPostDetailCell.h"
+#import "PostStatus.h"
+#import "UIImageView+WebCache.h"
+
+
 
 @implementation BBSPostDetailCell
 
@@ -20,26 +24,53 @@
 }
 
 
-+ (id)createCell:(id)delegate{
+-(void)initViews{
     
+    [self.imageView setImage:[UIImage imageNamed:@"xldl_1.png"]];
+    [self.avtarImageView setImage:[UIImage imageNamed:@"xldl_1.png"]];
+}
+
+- (void)setUseContentLabel:(BOOL)useContentLabel{
+
+
+}
+
++ (id)createCell:(id)delegate{
     BBSPostDetailCell *cell = [BBSPostDetailTableCell createCellWithIdentifier:[self getCellIdentifier] delegate:delegate];
+    [cell initViews];
+    [cell setUseContentLabel:NO];
     return cell;
 
 }
 + (NSString*)getCellIdentifier{
     return @"BBSPostDetailCell";
 }
-+ (CGFloat)getCellHeightWithBBSPost:(PBBBSPostComment *)postComment{
++ (CGFloat)getCellHeightWithBBSPost:(PostStatus *)post{
     
-    return 299.0f;
+    return 386.0f;
 
 }
-- (void)updateCellWithBBSPost:(PBBBSPostComment *)postComment{
+
+- (void)updateCellWithBBSPost:(PostStatus *)post{
     
-    
-    
+    [self updateContentWithBBSPost:post];
 
 }
+- (void)updateContentWithBBSPost:(PostStatus *)post{
+    
+    [self.avtarImageView setImageWithURL:[NSURL URLWithString:post.avatarProfileUrl] placeholderImage:nil success:^(UIImage *image, BOOL cached) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+
+    [self.textView setText:post.content];
+    
+    
+    [self.imgView  setImageWithURL:[NSURL URLWithString:post.imageurl]];
+
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];

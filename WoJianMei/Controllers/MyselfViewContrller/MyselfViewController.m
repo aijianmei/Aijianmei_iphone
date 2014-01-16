@@ -442,9 +442,6 @@
 
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
-
-
-
 -(void)didLoadStatusesSucceeded:(int)errorCode didLoadObjects:(NSArray *)objects
 {
     [self dataSourceDidFinishLoadingNewData];
@@ -505,10 +502,8 @@
 
 -(void)didLoadUserInfoSucceeded:(int)errorCode{
     
-        User *user = nil;
-        [[UserManager defaultManager] setUser:user];
-        [[UserManager defaultManager] storeUserInfoByUid:user.uid];
         self.user =[[UserManager defaultManager] user];
+        [[UserManager defaultManager] storeUserInfoByUid:self.user.uid];
         [self upgradeUI];
 
 }

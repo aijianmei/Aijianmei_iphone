@@ -134,6 +134,8 @@
     [headerView release];
 }
 
+
+
 #pragma mark--
 #pragma mark-- addCarouselSliders Method
 -(void)addCarouselSliders{
@@ -281,10 +283,6 @@
     
 }
 
-
-
-
-
 #pragma mark--
 #pragma mark--ClickPostMethod
 -(void)clickPostButton:(id)sender{
@@ -360,9 +358,6 @@
 }
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
-
-
-
 -(void)didLoadStatusesSucceeded:(int)errorCode didLoadObjects:(NSArray *)objects
 {
     [self dataSourceDidFinishLoadingNewData];
@@ -404,6 +399,7 @@
     _start += [objects count];
     PPDebug(@"****objects %d******",[self.dataList count]);
     [self.dataTableView reloadData];
+    
     
 }
 

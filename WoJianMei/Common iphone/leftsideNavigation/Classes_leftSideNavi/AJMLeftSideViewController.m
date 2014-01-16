@@ -489,7 +489,7 @@
 {
     switch (section) {
         case 0:
-            return 9;
+            return 8;
         case 1:
             return 2;
         default:
@@ -578,12 +578,12 @@
                     [cell.imageView setImage:[UIImage imageNamed:
                                               @"Manager_Icon.png"]];
                     break;
-                case 7:
-                    cell.textLabel.text = @"个人中心";
-                    [cell.imageView setImage:[ImageManager GobalNavigationAvatarImage]];
-                    break;
+//                case 7:
+//                    cell.textLabel.text = @"个人中心";
+//                    [cell.imageView setImage:[ImageManager GobalNavigationAvatarImage]];
+//                    break;
 
-                case 8:
+                case 7:
                     cell.textLabel.text = @"更多";
                     [cell.imageView setImage:[UIImage imageNamed:@"More_Icon.png"]];
                     break;
@@ -677,7 +677,7 @@
                     ///首页
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
     
-                       [self initBBSHomeViewController];
+                        [self initBBSHomeViewController];
                        self.viewDeckController.centerController = _navigationController;
                                             }];
                     
@@ -814,23 +814,23 @@
                 }
                     break;
                     
+//                case 7:
+//                {
+//                    ////个人中心
+//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+//                        
+//                        [self initMyselfCenterViewController];
+//                        self.viewDeckController.centerController = _navigationController;
+//                    }];
+//                    
+//                    self.view.userInteractionEnabled = YES;
+//                    _tableView.userInteractionEnabled =YES;
+//                    
+//                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+//                    [statTracker logEvent:@"MyselfCenter" eventLabel:@"MyselfCenterView"];
+//                }
+//                    break;
                 case 7:
-                {
-                    ////个人中心
-                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                        
-                        [self initMyselfCenterViewController];
-                        self.viewDeckController.centerController = _navigationController;
-                    }];
-                    
-                    self.view.userInteractionEnabled = YES;
-                    _tableView.userInteractionEnabled =YES;
-                    
-                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
-                    [statTracker logEvent:@"MyselfCenter" eventLabel:@"MyselfCenterView"];
-                }
-                    break;
-                case 8:
                 {
                     ///更多
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {

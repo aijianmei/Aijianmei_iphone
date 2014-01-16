@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BBSPostDetailCell"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BBSPostDetailCell" rowHeight="299" id="e6L-cA-nkg" customClass="BBSPostDetailCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="299"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BBSPostDetailCell" rowHeight="386" id="e6L-cA-nkg" customClass="BBSPostDetailCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="386"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e6L-cA-nkg" id="kMx-5C-EQF">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="298"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="385"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="120X120.png" translatesAutoresizingMaskIntoConstraints="NO" id="dpe-zf-NMD">
@@ -39,50 +39,64 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="我每天卧推都上千啊！！！你们有谁比我做的更加所啊  ，哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈和" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hek-2O-4JQ">
-                        <rect key="frame" x="38" y="80" width="271" height="87"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rate_Us.png" translatesAutoresizingMaskIntoConstraints="NO" id="QSU-UO-hUk">
-                        <rect key="frame" x="150" y="175" width="30" height="30"/>
+                        <rect key="frame" x="150" y="261" width="30" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="comment_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="o8S-Id-2bo">
-                        <rect key="frame" x="238" y="175" width="30" height="30"/>
+                        <rect key="frame" x="238" y="261" width="30" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="赞" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JR-F3-2Vk">
-                        <rect key="frame" x="188" y="179" width="17" height="21"/>
+                        <rect key="frame" x="188" y="265" width="17" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="回复" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0J9-gZ-QQK">
-                        <rect key="frame" x="275" y="179" width="34" height="21"/>
+                        <rect key="frame" x="275" y="265" width="34" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4分钟之前" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5W-Dx-d68">
-                        <rect key="frame" x="36" y="184" width="78" height="21"/>
+                        <rect key="frame" x="36" y="270" width="78" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bbs_post_content_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="M4f-5U-ts3">
-                        <rect key="frame" x="39" y="208" width="270" height="85"/>
+                        <rect key="frame" x="39" y="294" width="270" height="85"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H4w-KX-0lz">
+                        <rect key="frame" x="69" y="61" width="240" height="56"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="9.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="mO2-OL-VTc">
+                        <rect key="frame" x="134" y="144" width="80" height="80"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="avtarImageView" destination="dpe-zf-NMD" id="peN-R9-2cP"/>
+                <outlet property="fitnessLevel" destination="H4t-Y2-c1c" id="jFj-V3-5ek"/>
+                <outlet property="floorLabel" destination="wfl-DS-qte" id="ZJM-LE-ouY"/>
+                <outlet property="imgView" destination="mO2-OL-VTc" id="YeD-a5-sZj"/>
+                <outlet property="nameLabel" destination="iRj-PB-B8Z" id="FMM-45-eM2"/>
+                <outlet property="textView" destination="H4w-KX-0lz" id="ygF-ND-2ne"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>
         <image name="120X120.png" width="120" height="120"/>
+        <image name="9.jpeg" width="280" height="373"/>
         <image name="Rate_Us.png" width="17" height="18"/>
         <image name="bbs_post_content_bg.png" width="80" height="82"/>
         <image name="comment_icon.png" width="43" height="44"/>

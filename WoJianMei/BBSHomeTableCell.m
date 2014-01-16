@@ -21,6 +21,8 @@
 @synthesize timestamp = _timestamp;
 @synthesize imageMask = _imageMask;
 @synthesize imageView =_imageView;
+
+
 @synthesize avatarMask = _avatarMask;
 
 @synthesize videoPlayer =_videoPlayer;
@@ -39,6 +41,7 @@
     PPRelease(_avatar);
     PPRelease(_nickName);
     PPRelease(_titleContent);
+    PPRelease(_textContent);
     PPRelease(_timestamp);
     PPRelease(_imageView);
     PPRelease(_imageMask);
@@ -54,7 +57,13 @@
 
 - (void)initMaskViews
 {
+    [self.textContent setText:nil];
     
+}
+
+- (void)setUseContentLabel:(BOOL)useContentLabel
+{
+
 }
 
 
@@ -77,6 +86,9 @@
     return cell;
     
 }
+
+
+
 
 - (void)updateContentWithPostStatus:(PostStatus *)status{
     

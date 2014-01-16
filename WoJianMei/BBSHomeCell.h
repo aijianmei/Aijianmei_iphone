@@ -14,11 +14,15 @@
 
 @interface BBSHomeCell :BBSHomeTableCell
 
+{
+    PostStatus *_post;
+}
+
+@property (nonatomic,retain) PostStatus *post;
 
 + (id)createCell:(id)delegate;
 + (NSString*)getCellIdentifier;
 + (CGFloat)getCellHeightWithBBSPost:(PostStatus *)post;
 - (void)updateCellWithBBSPost:(PostStatus *)post;
-+ (CGFloat)heightForSourceText:(NSString *)text;
 
 @end

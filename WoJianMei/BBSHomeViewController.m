@@ -420,11 +420,22 @@
 		cell = [BBSHomeCell createCell:self];
 	}
 
-    [cell updateCellWithBBSPost:[self.dataList objectAtIndex:indexPath.row]];
+    PostStatus *post = [self postStatusForIndexPath:indexPath];
+    [cell updateCellWithBBSPost:post];
     
 	return cell;
     
     
+}
+
+- (PostStatus *)postStatusForIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *dList = self.dataList;
+    if (indexPath.row >= [dList count]) {
+        return nil;
+    }
+    PostStatus *action = [self.dataList objectAtIndex:indexPath.row];
+    return action;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -19,6 +19,7 @@
 @interface BBSHomeTableCell : PPTableViewCell
 {
     UILabel        *_titleContent;
+    UILabel        *_textContent;
     UIImageView    *_avatar;
     UILabel        *_nickName;
     UILabel        *_gender;
@@ -26,7 +27,6 @@
     UILabel        *_timestamp;
     UILabel        *_visitTimes;
     UILabel          *_comments;
-    UIImageView      *_imageView;
     UIButton        *_imageMask;
     UIButton       *_avatarMask;
     
@@ -36,6 +36,7 @@
 }
 
 @property (retain, nonatomic) IBOutlet UILabel *titleContent;
+@property (retain, nonatomic) IBOutlet UILabel *textContent;
 @property (retain, nonatomic) IBOutlet UIImageView   *avatar;
 @property (retain, nonatomic) IBOutlet UILabel     *nickName;
 @property (retain, nonatomic) IBOutlet UILabel       *gender;
@@ -55,8 +56,7 @@
 
 + (id)createCellWithIdentifier:(NSString *)identifier
                       delegate:(id)delegate;
-
-- (void)updateContentWithPostStatus:(PostStatus *)status;
+- (void)updateImageViewFrameWithImage:(UIImage *)image;
 
 
 @end

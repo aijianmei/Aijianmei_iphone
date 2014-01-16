@@ -154,7 +154,6 @@
     CaptureVideoViewController *vc =[[CaptureVideoViewController alloc]initWithNibName:@"CaptureVideoViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
     self.navigationController.navigationBarHidden =YES;
-
     [vc release];
     
 }

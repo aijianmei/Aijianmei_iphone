@@ -9,14 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "BBSPostDetailTableCell.h"
 
-@class PBBBSPostComment ;
+@class PostStatus ;
 
 @interface BBSPostDetailCell : BBSPostDetailTableCell
 
 
 + (id)createCell:(id)delegate;
 + (NSString*)getCellIdentifier;
-+ (CGFloat)getCellHeightWithBBSPost:(PBBBSPostComment *)postComment;
-- (void)updateCellWithBBSPost:(PBBBSPostComment *)postComment;
++ (CGFloat)getCellHeightWithBBSPost:(PostStatus *)post;
+- (void)updateCellWithBBSPost:(PostStatus *)post;
+- (void)updateContentWithBBSPost:(PostStatus *)post;
+
 
 @end
