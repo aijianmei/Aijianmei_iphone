@@ -8,12 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
+#import "StoreService.h"
+#import "CuzyAdSDK.h"
 
-@interface StoreViewController : PPTableViewController
+
+
+
+@interface StoreViewController : PPTableViewController<StoreServiceDelegate,CuzyAdSDKDelegate>
 
 {
     
-
 }
+@property(nonatomic,readwrite) BOOL loadingmore;
+
+
+-(void)showDetailTaobaoWebView:(NSString*)urlString;
+
+
+
 
 @end

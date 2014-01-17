@@ -793,6 +793,10 @@
                     BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
                     [statTracker logEvent:@"StoreViewController" eventLabel:@"StoreView"];
                     
+                    
+                    ///点击左边导航栏的时候，加载商店产品
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateInformation" object:nil];
+                    
                 }
                     break;
 
@@ -811,6 +815,10 @@
 
                     BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
                     [statTracker logEvent:@"WorkoutManagerView" eventLabel:@"WorkoutManagerView"];
+                    
+                    
+
+                    
                 }
                     break;
                     

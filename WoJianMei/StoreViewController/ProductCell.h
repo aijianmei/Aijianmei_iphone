@@ -8,6 +8,16 @@
 
 #import "ProductCommonCell.h"
 
+@class ProductItem;
 @interface ProductCell : ProductCommonCell
+
+
++ (id)createCell:(id)delegate;
++ (NSString*)getCellIdentifier;
++ (CGFloat)getCellHeight;
+
+
+-(void)updateCellWithProduct:(ProductItem *)product;
+
 
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CuzyAdSDK.h"
 
-@interface ProductItem : NSObject
+
+@interface ProductItem :CuzyTBKItem
+
 
 @end

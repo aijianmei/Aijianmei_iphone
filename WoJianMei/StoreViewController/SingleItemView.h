@@ -1,12 +1,18 @@
 
 
 #import <UIKit/UIKit.h>
-#import "FrontViewController.h"
-@interface SingleItemView : UIView{
+#import "StoreViewController.h"
+#import "CuzyAdSDK.h"
+
+@interface SingleItemView : UIView<CuzyAdSDKDelegate>
+{
     
 }
 
-@property(assign, nonatomic)FrontViewController* viewController;
+@property(assign, nonatomic)StoreViewController* viewController;
+
+
+
 @property (retain, nonatomic) NSString* clickUrlString;
 @property (retain, nonatomic) IBOutlet UIImageView *imageViewContent;
 @property (retain, nonatomic) IBOutlet UIImageView *imageViewBG;

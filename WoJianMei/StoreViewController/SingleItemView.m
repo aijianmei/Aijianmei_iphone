@@ -1,6 +1,5 @@
 
 #import "SingleItemView.h"
-#import "TaoBaoDetailViewController.h"
 
 
 @implementation SingleItemView
@@ -9,6 +8,7 @@
 @synthesize nameLabel;
 @synthesize priceLabel;
 @synthesize totalSaleCountLable;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -35,6 +35,10 @@
     [super dealloc];
 }
 - (IBAction)TBKItemPressAction:(id)sender {
+    
+    PPDebug(@"###########%@#######",self.clickUrlString);
+
     [self.viewController showDetailTaobaoWebView:self.clickUrlString];
+    
 }
 @end

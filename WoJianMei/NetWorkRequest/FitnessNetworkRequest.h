@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import "PPNetworkRequest.h"
 #import "FitnessNetworkConstants.h"
 #import "User.h"
