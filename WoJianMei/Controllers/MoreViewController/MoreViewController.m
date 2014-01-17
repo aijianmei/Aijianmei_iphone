@@ -25,6 +25,10 @@
 #import "IIViewDeckController.h"
 
 
+//友盟SDK
+#import "UMTableViewController.h"
+
+
 
 
 #define kAppId			@"683646344"
@@ -58,8 +62,8 @@ typedef enum {
     FEEDBACK,
     LIKE_US,
     SHOW_ABOUT_VIEW,
+    REMMOMED_APPS,
     UPDATE_APP,
-   // REMMOMED_APPS,
     LOGOUT
 } MORE_SELECTION;
 
@@ -161,7 +165,7 @@ enum BUTTON_INDEX {
 
 - (void)initOptionList
 {
-    NSArray *array = [[NSArray alloc] initWithObjects: @"分享", @"信息反馈",@"喜欢我们,打分鼓励", @"关于爱健美",  nil];
+    NSArray *array = [[NSArray alloc] initWithObjects: @"分享", @"信息反馈",@"喜欢我们,打分鼓励", @"关于爱健美", @"应用推荐",nil];
     self.listData = array;
     [array release];
 }
@@ -231,7 +235,7 @@ enum BUTTON_INDEX {
         {
             PPDebug(@"Section one");
             
-            return 4;
+            return 5;
 
         }
             break;
@@ -312,6 +316,10 @@ enum BUTTON_INDEX {
             case SHOW_ABOUT_VIEW:
                 image = [UIImage imageNamed:@"about_us.png"];
                 break;
+            case REMMOMED_APPS:
+                image = [UIImage imageNamed:@"more_apps.png"];
+                break;
+                
             default:
                 break;
         }
@@ -363,6 +371,11 @@ enum BUTTON_INDEX {
             case SHOW_ABOUT_VIEW:
             {
                 [self showAboutView];
+            }
+                break;
+            case REMMOMED_APPS :
+            {
+                [self showRecommendApps];
             }
                 break;
             default:
@@ -635,6 +648,13 @@ enum BUTTON_INDEX {
     [abVC release];
 }
 
+-(void)showRecommendApps{
+ 
+    UMTableViewController *controller = [[UMTableViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
+
+}
 
 
 -(void)updateApplication{

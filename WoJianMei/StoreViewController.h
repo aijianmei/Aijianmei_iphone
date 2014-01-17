@@ -7,20 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EGORefreshTableHeaderView.h"
-#import "EGORefreshTableFooterView.h"
-#import "EGOViewCommon.h"
 
-@interface StoreViewController : UIViewController<EGORefreshTableDelegate>
+
+@interface StoreViewController : UIViewController
 
 {
-    //EGOHeader
-    EGORefreshTableHeaderView *_refreshHeaderView;
-    //EGOFoot
-    EGORefreshTableFooterView *_refreshFooterView;
-    //
-    BOOL _reloading;
-
+    
 
 }
 

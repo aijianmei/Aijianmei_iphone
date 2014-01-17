@@ -489,7 +489,7 @@
 {
     switch (section) {
         case 0:
-            return 8;
+            return 9;
         case 1:
             return 2;
         default:
@@ -567,13 +567,13 @@
                     [cell.imageView setImage:[UIImage
                                   imageNamed:@"LifeStyle_Icon.png"]];
                     break;
-//                case 6:
-//                    cell.textLabel.text = @"运动商城";
-//                    [cell.imageView setImage:[UIImage
-//                                              imageNamed:@"LifeStyle_Icon.png"]];
-//                    break;
-
                 case 6:
+                    cell.textLabel.text = @"运动商城";
+                    [cell.imageView setImage:[UIImage
+                                              imageNamed:@"LifeStyle_Icon.png"]];
+                    break;
+
+                case 7:
                     cell.textLabel.text = @"运动管理";
                     [cell.imageView setImage:[UIImage imageNamed:
                                               @"Manager_Icon.png"]];
@@ -583,7 +583,7 @@
 //                    [cell.imageView setImage:[ImageManager GobalNavigationAvatarImage]];
 //                    break;
 
-                case 7:
+                case 8:
                     cell.textLabel.text = @"更多";
                     [cell.imageView setImage:[UIImage imageNamed:@"More_Icon.png"]];
                     break;
@@ -777,27 +777,27 @@
             
                 }
                 break;
-//                case 6:
-//                {
-//                    ///生活方式
-//                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-//                        
-//                        [self initStoreViewController];
-//                        self.viewDeckController.centerController = _navigationController;
-//                        
-//                        self.view.userInteractionEnabled = YES;
-//                        [_tableView setUserInteractionEnabled:YES];
-//                        
-//                    }];
-//                    
-//                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
-//                    [statTracker logEvent:@"StoreViewController" eventLabel:@"StoreView"];
-//                    
-//                }
-//                    break;
-
-
                 case 6:
+                {
+                    ///运动商城
+                    [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+
+                        [self initStoreViewController];
+                        self.viewDeckController.centerController = _navigationController;
+
+                        self.view.userInteractionEnabled = YES;
+                        [_tableView setUserInteractionEnabled:YES];
+                        
+                    }];
+                    
+                    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+                    [statTracker logEvent:@"StoreViewController" eventLabel:@"StoreView"];
+                    
+                }
+                    break;
+
+
+                case 7:
                 {
                    ////运动管理
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
@@ -830,7 +830,7 @@
 //                    [statTracker logEvent:@"MyselfCenter" eventLabel:@"MyselfCenterView"];
 //                }
 //                    break;
-                case 7:
+                case 8:
                 {
                     ///更多
                     [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
