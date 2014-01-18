@@ -42,7 +42,7 @@
                     </state>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="你的邮箱..." clearsOnBeginEditing="YES" minimumFontSize="17" background="dlk_1.png" clearButtonMode="whileEditing" id="56">
-                    <rect key="frame" x="53" y="154" width="214" height="30"/>
+                    <rect key="frame" x="53" y="148" width="214" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>

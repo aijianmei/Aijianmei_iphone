@@ -424,7 +424,7 @@ enum SinaResultErrorCode
             {
                 
                 NSDictionary *sinaUserInfo =[[UserManager defaultManager] getSinaUserInfoWithUid:[SinaWeiboManager sharedManager].sinaweibo.userID];
-                NSString *profileImageUrl = [sinaUserInfo objectForKey:@"profileImageUrl"];
+                NSString *profileImageUrl = [sinaUserInfo objectForKey:@"avatar_hd"];
                 
                 
                 //正式创建新用户
@@ -439,6 +439,8 @@ enum SinaResultErrorCode
                                                       password:nil];
                 
                 [[UserManager defaultManager] setUser:user];
+                [[UserManager defaultManager] storeUserInfoByUid:user.uid];
+
                 
                      // 调用该方法进入用户资料界面
                 if (delegate &&[delegate respondsToSelector:@selector(pushToMyselfViewController:)])
@@ -447,20 +449,22 @@ enum SinaResultErrorCode
                      }
             }
     }
+}
+
+
+- (void)createAcountBySinaWeibo:(int)resultCode{
+    
+    if (NO_Such_User ==resultCode)
+    {
+        PPDebug(@"该用户不存在,用户要开始创建新的账户");
+        
+        self.signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;
+        self.signUpViewController.userType =[self userType];
+        [self.navigationController pushViewController:_signUpViewController animated:YES];
         
         
-        if (NO_Such_User ==errorCode)
-        {
-            PPDebug(@"该用户不存在,用户要开始创建新的账户");
-            
-            _signUpViewController.snsId = _sinaweiboManager.sinaweibo.userID;
-            _signUpViewController.userType =[self userType];
-            
-            [self.navigationController pushViewController:self.signUpViewController animated:YES];
-            
-        }
-    
-    
+        
+    }
 }
 
 - (void)didUserLogined:(int)resultCode uid:(NSString *)uid

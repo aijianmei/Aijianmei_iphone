@@ -139,8 +139,7 @@ enum errorCode {
 
 - (void)clickBack:(id)sender
 {
-	[self.navigationController dismissViewControllerAnimated:YES
-                                                  completion:^{}];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)closeDoneEdit:(id)sender{
@@ -151,6 +150,8 @@ enum errorCode {
      
     
 }
+
+
 
 
 
@@ -192,19 +193,6 @@ enum errorCode {
     [tapCgr release];
     
     
-
-    
-	// Do any additional setup after loading the view.
-    if ([self.userType isEqualToString:@"sina"]) {
-        NSDictionary *userInfo = [[UserManager defaultManager] getSinaUserInfoWithUid:self.snsId];
-        
-        NSString *sinaWeiboUserName =[userInfo objectForKey:@"name"];
-        [_userNameTextField setText:sinaWeiboUserName];
-
-    }
-    
-
-    
     //停顿一会儿之后显示键盘
     float duration =0.4;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:duration
@@ -213,7 +201,15 @@ enum errorCode {
                                                 userInfo:nil
                                                  repeats:NO];
     
-    //隐藏导航栏
+    
+    // Do any additional setup after loading the view.
+    if ([self.userType isEqualToString:@"sina"]) {
+        NSDictionary *userInfo = [[UserManager defaultManager] getSinaUserInfoWithUid:self.snsId];
+        
+        NSString *sinaWeiboUserName =[userInfo objectForKey:@"name"];
+        [_userNameTextField setText:sinaWeiboUserName];
+        
+    }
 
 }
 
@@ -246,18 +242,20 @@ enum errorCode {
 
 - (void)didPressSignup:(id)sender
 {
-    
-    
+
     if ([self verifyField] == NO){
         return;
     }
     
     NSDictionary *userInfo = nil;
+    
     if ([self.userType isEqualToString:@"sina"]) {
-        userInfo = [[UserManager defaultManager] getSinaUserInfoWithUid:self.snsId];
-        
-        [[UserService defaultService] registerUserWithUsername:[userInfo objectForKey:@"name"] email:self.emailTextField.text password:self.passwordTextField.text usertype:self.userType snsId:self.snsId profileImageUrl:[userInfo objectForKey:@"profile_image_url"] sex:[userInfo objectForKey:@"gender"] age:@"23" body_weight:@"65" height:@"175" keyword:@"1233|33|eerw" province:[userInfo objectForKey:@"province"] city:[userInfo objectForKey:@"city"] viewController:self];
-
+        userInfo = [[UserManager defaultManager] getSinaUserInfoWithUid:_snsId];
+        [[UserService defaultService] registerAijianmeiUserWithUsername:_userNameTextField.text
+                                                                  email:_emailTextField.text
+                                                               password:_passwordTextField.text
+                                                               usertype:_userType
+                                                         viewController:self];
     }
     if ([self.userType isEqualToString:@"qq"]) {
        
@@ -316,11 +314,9 @@ enum errorCode {
 
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
-
-- (void)signUpSucceeded:(int)errorCode
+- (void)signUpSucceeded:(int)errorCode uid:(NSString *)uid
 {
    
-    
     /* 10001 用户名重复 
        10002 邮箱重复 
        10003 用户名以及邮箱都重复   
@@ -329,7 +325,7 @@ enum errorCode {
     
     if (ERROR_SUCCESS ==errorCode)
     {
-//        PPDebug(@"注册成功,用户ID:%@",result.uid);
+        PPDebug(@"注册成功,用户ID:%@",uid);
     }
     
     if (REPEAT_USER_NAME ==errorCode){
@@ -355,7 +351,7 @@ enum errorCode {
     if ([self.userType isEqualToString:@"sina"]) {
         userInfo = [[UserManager defaultManager] getSinaUserInfoWithUid:self.snsId];
         
-        User *user = [UserManager createUserWithUserId:@"dd"
+        User *user = [UserManager createUserWithUserId:uid
                                             sinaUserId:self.snsId
                                               qqUserId:nil
                                               userType:self.userType name:[userInfo objectForKey:@"name"]
@@ -383,12 +379,10 @@ enum errorCode {
     }
     
     
-    
-    
-    
+
     //直接注册，用户名;
     if ([self.userType isEqualToString:@"local"]) {
-        User *user = [UserManager createUserWithUserId:@"dd"
+        User *user = [UserManager createUserWithUserId:uid
                                             sinaUserId:nil
                                               qqUserId:nil
                                               userType:self.userType
@@ -405,9 +399,7 @@ enum errorCode {
         
         
         
-        
-        
-        
+    
         
         //直接从注册页面，跳动到用户界面;
         [self dismissViewControllerAnimated:YES completion:^

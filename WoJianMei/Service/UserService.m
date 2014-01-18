@@ -42,9 +42,6 @@ static UserService* _defaultUserService = nil;
     return _defaultUserService;
 }
 
-
-
-
 - (void)loginUserWithEmail:(NSString*)email
                   password:(NSString*)password
                   usertype:(NSString*)usertype
@@ -70,6 +67,7 @@ static UserService* _defaultUserService = nil;
             NSDictionary    *dictionary ;
             NSString        *uid;
             [viewController hideProgressHUDActivity];
+            
             
             
             if (output.resultCode == ERROR_SUCCESS) {
@@ -489,9 +487,6 @@ static UserService* _defaultUserService = nil;
             NSString     *uid;
 
             if (output.resultCode == ERROR_SUCCESS) {
-                
-                PPDebug(@"Fetch User ID by SINAWEIBO id ");
-                
                 dictionary = output.jsonDataDict;
                 uid = [dictionary objectForKey:@"uid"];
                 
@@ -507,6 +502,13 @@ static UserService* _defaultUserService = nil;
                 
                 
                 [viewController dismissViewControllerAnimated:YES completion:^{}];
+                
+                if ([viewController respondsToSelector:@selector(loginBySinaWeiboAccount:uid:)]){
+                    [viewController loginBySinaWeiboAccount:output.resultCode
+                                                        uid:uid];
+                    
+                }
+                
 
             }
             else if (output.resultCode == ERROR_NETWORK) {
@@ -514,21 +516,16 @@ static UserService* _defaultUserService = nil;
                 
                 
             }
-            else {
-                // @"对不起，注册失败，请稍候再试"
-//                [viewController popupUnhappyMessage:NSLS(@"kGeneralFailure") title:nil];
+            //用户需要从新注册
+            else if(output.resultCode ==10002) {
+                // @"请注册新账号"
+                [viewController popupUnhappyMessage:NSLS(@"请注册新账号") title:nil];
                 
-            }
-            
-            
-            
-            if ([viewController respondsToSelector:@selector(loginBySinaWeiboAccount:uid:)]){
-
-               
-                [viewController loginBySinaWeiboAccount:output.resultCode
-                                           uid:uid];
-                
-                
+                if ([viewController respondsToSelector:@selector(createAcountBySinaWeibo:)]){
+                    [viewController createAcountBySinaWeibo:output.resultCode];
+                    
+                    
+                }
             }
             });
         });
@@ -561,20 +558,19 @@ static UserService* _defaultUserService = nil;
                                                    password:password
                                                    usertype:usertype];
         
+        
         //Back to the Main Queue
         dispatch_async(dispatch_get_main_queue(), ^{
-            
+            NSDictionary *dictionary =nil;
             [viewController hideProgressHUDActivity];
             
             if (output.resultCode == ERROR_SUCCESS) {
-                
-                PPDebug(@"Fetch User ID by SINAWEIBO id ");
-                
+                 dictionary = output.jsonDataDict ;
                 [viewController dismissViewControllerAnimated:YES completion:^{}];
                 
             }
             else if (output.resultCode == ERROR_NETWORK) {
-                //                [viewController popupUnhappyMessage:NSLS(@"kSystemFailure") title:nil];
+                [viewController popupUnhappyMessage:NSLS(@"kSystemFailure") title:nil];
                 
                 
             }
@@ -609,10 +605,10 @@ static UserService* _defaultUserService = nil;
                 
             }
             
+             NSString *uid =[dictionary objectForKey:@"uid"];
             
-            
-            if ([viewController respondsToSelector:@selector(signUpSucceeded:)]){
-                [viewController signUpSucceeded:output.resultCode];
+            if ([viewController respondsToSelector:@selector(signUpSucceeded:uid:)]){
+                [viewController signUpSucceeded:output.resultCode uid:uid];
                 
                 
             }
@@ -637,12 +633,6 @@ static UserService* _defaultUserService = nil;
                             city:(NSString*)city
                   viewController:(PPViewController<UserServiceDelegate>*)viewController
 {
-    
-    
-    
-    
-    
-    
     
     
 //    [self initResultMap];
@@ -814,9 +804,6 @@ static UserService* _defaultUserService = nil;
                 
                 // update avatar
                 NSString* retURL = [[output jsonDataDict] objectForKey:PARA_URL];
-//                [[UserManager defaultManager] setAvatar:retURL];
-//                [[UserManager defaultManager] storeUserData];
-                
                 
                 EXECUTE_BLOCK(resultBlock, output.resultCode, retURL);
             }
@@ -876,8 +863,9 @@ static UserService* _defaultUserService = nil;
             PPDebug(@"<updateUser> result=%d", output.resultCode);
             if (output.resultCode == ERROR_SUCCESS){
                 // update user info
+                [[UserManager defaultManager] setUser:user];
                 [[UserManager defaultManager] storeUserInfoByUid:user.uid];
-                
+
                 [ProgressHUD dismiss];
                 [ProgressHUD showSuccess:@"成功保存!"];
 

@@ -120,7 +120,6 @@
              if (resultCode == ERROR_SUCCESS && [imageRemoteURL length] > 0){
                  
                 [[[UserManager  defaultManager] user] setProfileImageUrl:imageRemoteURL];
-                 
                  [self updateUI];
              }
              else{
@@ -150,7 +149,7 @@
         
     }
     //数据加载中的时候，按钮是禁止的再被点击的;
-//    [self.navigationItem.rightBarButtonItem setEnabled:NO];
+    [self.navigationItem.rightBarButtonItem setEnabled:NO];
 }
 
 
@@ -272,6 +271,7 @@
 
 
 -(void)updateUI{
+    [self.navigationItem.rightBarButtonItem setEnabled:YES];
     [self.dataTableView reloadData];
 }
 

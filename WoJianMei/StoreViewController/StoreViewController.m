@@ -147,32 +147,6 @@ static int currentPageIndex = 0;
 }
 
 
-
-
-
--(void)LoadMore
-{
-    self.loadingmore =YES;
-     currentPageIndex ++;
-    [[StoreService sharedService] findPorductsWithThemeID:@""
-                                                searchKey:@"杜蕾斯"
-                                                pageIndex:[NSString stringWithFormat:
-                                                           @"%d",currentPageIndex]
-                                           viewController:self];
-
-}
-
-
-
--(void)loadProductsData{
-
-    [[StoreService sharedService] findPorductsWithThemeID:@""
-                                                searchKey:@"杜蕾斯"
-                                                pageIndex:[NSString stringWithFormat:
-                                                            @"%d",currentPageIndex]
-                                           viewController:self];
-}
-
 - (void)viewDidLoad
 {
     
@@ -308,13 +282,17 @@ static int currentPageIndex = 0;
 }
 
 
-- (void)MyReloadData {
-    
-    [self LoadMore];
+
+#pragma mark --
+#pragma mark - Pull - Refresh Delegate
+
+-(void)loadProductsData{
+    [[StoreService sharedService] findPorductsWithThemeID:@""
+                                                searchKey:@"康比特 蛋白粉"
+                                                pageIndex:[NSString stringWithFormat:
+                                                           @"%d",0]
+                                           viewController:self];
 }
-
-
-#pragma Pull Refresh Delegate
 - (void)reloadTableViewDataSource
 {
     self.loadingmore =NO;
@@ -322,6 +300,22 @@ static int currentPageIndex = 0;
 }
 
 #pragma mark - Load More
+-(void)LoadMore
+{
+    self.loadingmore =YES;
+    currentPageIndex ++;
+    [[StoreService sharedService] findPorductsWithThemeID:@""
+                                                searchKey:@"康比特 蛋白粉"
+                                                pageIndex:[NSString stringWithFormat:
+                                                           @"%d",currentPageIndex]
+                                           viewController:self];
+    
+}
+- (void)MyReloadData {
+    
+    [self LoadMore];
+}
+
 - (void)loadMoreTableViewDataSource
 {
     
@@ -329,8 +323,10 @@ static int currentPageIndex = 0;
     self.loadingmore = YES;
     
     //currentPage ++;
-    [self performSelector:@selector(MyReloadData) withObject:self afterDelay:1.0f];
+//    [self performSelector:@selector(MyReloadData) withObject:self afterDelay:1.0f];
     //make a delay to show loading process for a while
+    
+    [self MyReloadData];
 }
 
 -(void)didGetProductsArray:(NSArray *)products errorCode:(int)errorCode{
@@ -338,7 +334,12 @@ static int currentPageIndex = 0;
     [self dataSourceDidFinishLoadingNewData];
     [self dataSourceDidFinishLoadingMoreData];
 
-    self.dataList = products;
+    if ([products count]==0) {
+        self.loadingmore = NO;
+        [self popupHappyMessage:@"亲,没有数据了！" title:nil];
+        return ;
+    }
+    
     
     if (self.loadingmore)
     {
@@ -355,7 +356,6 @@ static int currentPageIndex = 0;
     }
 
     [self.dataTableView reloadData];
-
 }
 
 

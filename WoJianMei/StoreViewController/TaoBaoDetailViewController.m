@@ -18,8 +18,6 @@
 {
     if (![self.urlString isEqualToString:inputUrlString]) {
         urlString = inputUrlString;
-        
-       
     }}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -42,6 +40,9 @@
     NSData* imageData = [NSData dataWithContentsOfFile:filePath];
     self.loadingImage.backgroundColor = [UIColor clearColor];
     [self.loadingImage setData:imageData];
+    [self.loadingImage setHidden:YES];
+    
+    
     //NSURL* url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSURL* url = [NSURL URLWithString:urlString];
     
@@ -90,17 +91,21 @@
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    [self.loadingImage setHidden:NO];
-    NSString* absoluteString = [webView.request.URL absoluteString];
+//    [self.loadingImage setHidden:NO];
+//    NSString* absoluteString = [webView.request.URL absoluteString];
     
    
+    [self showProgressHUDActivityWithText:@"加载中..."];
 
     
     
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.loadingImage setHidden:YES];
+//    [self.loadingImage setHidden:YES];
+    
+    [self hideProgressHUDActivity];
+
     
     NSLog(@"webview fininsh loading %@", [webView.request.URL absoluteString]);
     NSString* absoluteString = [webView.request.URL absoluteString];
@@ -153,7 +158,9 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    [self.loadingImage setHidden:YES];
+//    [self.loadingImage setHidden:YES];
+    [self hideProgressHUDActivity];
+
 }
 
 -(void)HandleJD:(NSString*)absoluteString

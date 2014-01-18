@@ -121,69 +121,69 @@
     switch (type) {
             //draw main menu
         case HomeMenuTypeDrawDraw :{
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawGuess:{
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawGame:{
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawTimeline:{
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawRank:{
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawContest:{
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawBBS:{
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawShop:{
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawBigShop: {
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawApps:{
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawFreeCoins:
         {
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawPlayWithFriend:{
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawPhoto: {
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
             //draw bottom menu
         case HomeMenuTypeDrawHome :{
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawOpus:{
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawMessage:{
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawSetting:{
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawMore:{
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawMe:{
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawFriend:{
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         case HomeMenuTypeDrawCharge: {
-            return [UIImage imageNamed:@"draw_home_draw.png"];
+            return [UIImage imageNamed:@"144x144.png"];
         }
         default:
         return nil;

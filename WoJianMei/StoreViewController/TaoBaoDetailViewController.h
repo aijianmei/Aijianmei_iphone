@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SCGIFImageView.h"
-@interface TaoBaoDetailViewController : UIViewController<UIWebViewDelegate>
+#import "PPViewController.h"
+
+@interface TaoBaoDetailViewController : PPViewController<UIWebViewDelegate>
 {
     
 }

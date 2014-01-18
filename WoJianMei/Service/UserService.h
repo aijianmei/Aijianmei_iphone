@@ -32,9 +32,11 @@ typedef void(^UpdateUserResultBlock)(int resultCode);
 
 -(void)didLoadUpdateVersionInfo:(VersionInfo*)versionInfo errorCode:(int)errorCode;
 -(void)loginBySinaWeiboAccount:(int)resultCode uid:(NSString *)uid;
+- (void)createAcountBySinaWeibo:(int)resultCode;
+
 - (void)didUserLogined:(int)resultCode uid:(NSString *)uid;
 - (void)didLoadUserInfoSucceeded:(int)errorCode;
-- (void)signUpSucceeded :(int)errorCode;
+- (void)signUpSucceeded :(int)errorCode uid:(NSString *)uid;
 - (void)didGetFeedbackErrorCode:(int)errorCode;
 
 
