@@ -228,6 +228,7 @@
 		4A2FA999178D5E5C006A1EFB /* deleteTag.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FA997178D5E5B006A1EFB /* deleteTag.png */; };
 		4A2FA99C178D5E70006A1EFB /* AppButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FA99B178D5E6F006A1EFB /* AppButton.m */; };
 		4A308BA917A16AE100DED650 /* CommonArticleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A308BA817A16AE100DED650 /* CommonArticleViewController.xib */; };
+		4A3142AE188AACDA0077731D /* Store@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3142AD188AACDA0077731D /* Store@2x.png */; };
 		4A316557183D198E008DC2CB /* AGCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A31653E183D198E008DC2CB /* AGCommon.framework */; };
 		4A316558183D198F008DC2CB /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A316550183D198E008DC2CB /* Resource.bundle */; };
 		4A316559183D198F008DC2CB /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A316551183D198E008DC2CB /* ShareSDK.framework */; };
@@ -1055,6 +1056,7 @@
 		4A2FA99A178D5E6E006A1EFB /* AppButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppButton.h; sourceTree = "<group>"; };
 		4A2FA99B178D5E6F006A1EFB /* AppButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppButton.m; sourceTree = "<group>"; };
 		4A308BA817A16AE100DED650 /* CommonArticleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommonArticleViewController.xib; path = ../WorkoutViewController/CommonArticleViewController.xib; sourceTree = "<group>"; };
+		4A3142AD188AACDA0077731D /* Store@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Store@2x.png"; sourceTree = "<group>"; };
 		4A31653E183D198E008DC2CB /* AGCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGCommon.framework; sourceTree = "<group>"; };
 		4A316540183D198E008DC2CB /* ISSCAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSCAccount.h; sourceTree = "<group>"; };
 		4A316541183D198E008DC2CB /* ISSCAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSCAttachment.h; sourceTree = "<group>"; };
@@ -2142,6 +2144,7 @@
 		4A0CA61717ABE65500314B8C /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				4A3142AD188AACDA0077731D /* Store@2x.png */,
 				4A8D3F0317E9589200CDF997 /* Save@2x.png */,
 				4A711E2717D5B93100E35B98 /* LeftSideViewIcon@2x.png */,
 				4AE18AD017D4291C00F0EBB0 /* cbdqx_1@2x.png */,
@@ -5030,6 +5033,7 @@
 				4A8C57A01881935600C715C2 /* capture_rec_off@2x.png in Resources */,
 				4A8BCAD817AFE2BE0019CBB1 /* WorkOutManagerViewController.xib in Resources */,
 				4A25F513187D052000A42373 /* introBg@2x.png in Resources */,
+				4A3142AE188AACDA0077731D /* Store@2x.png in Resources */,
 				4A6585CC17B0DD9A0056DA91 /* PostViewController.xib in Resources */,
 				4A6585D717B136180056DA91 /* PostViewCell.xib in Resources */,
 				4A948FDA17B1F80A0037D9A0 /* StatusCell.xib in Resources */,

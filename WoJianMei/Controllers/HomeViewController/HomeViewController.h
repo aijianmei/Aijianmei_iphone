@@ -32,9 +32,10 @@
     
     SDSegmentedControl *_segmentedController;
     
+    
     int iid;
 
-    
+
 }
 
 

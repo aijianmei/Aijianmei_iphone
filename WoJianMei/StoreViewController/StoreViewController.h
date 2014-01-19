@@ -10,11 +10,12 @@
 #import "PPTableViewController.h"
 #import "StoreService.h"
 #import "CuzyAdSDK.h"
+#import "AJM_CommonViewController.h"
 
 
 
 
-@interface StoreViewController : PPTableViewController<StoreServiceDelegate,CuzyAdSDKDelegate>
+@interface StoreViewController : AJM_CommonViewController<StoreServiceDelegate,CuzyAdSDKDelegate>
 
 {
     
@@ -23,8 +24,5 @@
 
 
 -(void)showDetailTaobaoWebView:(NSString*)urlString;
-
-
-
 
 @end

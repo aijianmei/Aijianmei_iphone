@@ -37,18 +37,17 @@
 #import "BBSViewController.h"
 
 
-
-
-
-
-
 ///// the setings of the iCarousel
 #define NUMBER_OF_ITEMS 4
 #define NUMBER_OF_VISIBLE_ITEMS 18
 #define ITEM_SPACING 320
 #define ITEM_SPACING_IPAD 768.0f
 
+
+
 #define EACH_FETCH_SIZE 5
+
+
 
 #define SCROLL_VIEW_TAG 20120913
 #define More_BUTTON_TAG 20130607
@@ -254,8 +253,6 @@ typedef enum CONTENT_TYPE {
     //添加当前划片的提示
     [self addSpacePageControl];
     
-
-
     [[AppDelegate getAppDelegate] showLoginView];
 }
 
@@ -273,7 +270,6 @@ typedef enum CONTENT_TYPE {
 }
 
 #pragma mark-- addButtonScrollView Method
-
 -(void)initTableHeaderView{
     
     UIView *headerView =[[UIView alloc]init];

@@ -47,7 +47,7 @@
         
         //30内的产品
         [[CuzyAdSDK sharedAdSDK] setFilter_ComissionVolumeIn30days:@"30" withEnd:@""];
-        
+        [[CuzyAdSDK sharedAdSDK] setRawItemPicSize:@"600x600"];
         NSMutableArray* returnArray =
         (NSMutableArray*)[[CuzyAdSDK sharedAdSDK] fetchRawItemArraysWithThemeID:themeId
                          orSearchKeywords:searchKey

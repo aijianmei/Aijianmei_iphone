@@ -20,15 +20,11 @@
 #import "SingleItemView.h"
 #import "UIImageView+WebCache.h"
 #import "TaoBaoDetailViewController.h"
+#import "SDSegmentedControl.h"
 
 
 
-
-
-
-
-
-#define APP_KEY @"200449"
+#define AppKey   @"200449"
 #define AppSecret @"10f7b750f9c1aff5d772d248ce2de0f6"
 
 
@@ -40,9 +36,6 @@ static int currentPageIndex = 0;
 
 @implementation StoreViewController
 @synthesize loadingmore=_loadingmore;
-
-
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -59,72 +52,6 @@ static int currentPageIndex = 0;
     
     [super dealloc];
 }
-
-#pragma mark -
-#pragma mark - InitMoreUI
-- (void)initUI
-{
-    ////leftBtn
-    UIButton *leftBtn = [[[UIButton alloc] init] autorelease];
-    [leftBtn setImage:[ImageManager GobalNavigationLeftSideButtonImage] forState:UIControlStateNormal];
-    leftBtn.frame = CGRectMake(0.0, 0.0, 53.0, 30.0);
-    [leftBtn addTarget:self action:@selector(leftButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:leftBtn] autorelease];
-    
-    ////rightBtn
-    UIButton *rightBtn = [[[UIButton alloc] init] autorelease];
-    [rightBtn setImage:[ImageManager GobalNavigationAvatarImage] forState:UIControlStateNormal];
-    rightBtn.frame = CGRectMake(0.0, 0.0, 49.0, 29.0);
-    [rightBtn addTarget:self action:@selector(rightButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:rightBtn] autorelease];
-    
-    
-    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPad || [[[UIDevice currentDevice]systemVersion ] floatValue] >= 7.0)
-    {
-        UILabel *label = [[UILabel alloc] init];
-        label.backgroundColor = [UIColor clearColor];
-        label.textColor = [UIColor whiteColor];
-        label.shadowColor = [UIColor grayColor];
-        label.font = [UIFont systemFontOfSize:22];
-        self.navigationItem.titleView = label;
-        [label release];
-        
-        
-    }
-}
-
-- (void)setTitle:(NSString *)title
-{
-    [super setTitle:title];
-    
-    ((UILabel *)self.navigationItem.titleView).text = title;
-    [self.navigationItem.titleView sizeToFit];
-}
-
-
-- (void)leftButtonClickHandler:(id)sender
-{
-    [self.viewDeckController toggleLeftViewAnimated:YES];
-}
-
-
-- (void)rightButtonClickHandler:(id)sender
-{
-    [self.viewDeckController toggleRightViewAnimated:YES];
-    
-    
-    User *user = [[UserManager defaultManager] user];
-    
-    if (user.uid) {
-        Myself_SettingsViewController *vc =[[Myself_SettingsViewController alloc]initWithNibName:@"Myself_SettingsViewController" bundle:nil];
-        [self.navigationController pushViewController:vc animated:YES];
-        
-    }else{
-        
-        [[AppDelegate  getAppDelegate] showLoginView];
-    }
-}
-
 
 
 #pragma mark -
@@ -154,22 +81,26 @@ static int currentPageIndex = 0;
     self.supportRefreshFooter = YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self initUI];
-    [self setBackgroundImageName:@"gobal_background.png"];
-    [self showBackgroundImage];
     
     
     
     //Set Delegate
     [[CuzyAdSDK sharedAdSDK] setDelegate:self];
-
     //release server key & secret:
-    [[CuzyAdSDK sharedAdSDK] registerAppWithAppKey:APP_KEY 	andAppSecret:AppSecret];
+    [[CuzyAdSDK sharedAdSDK] registerAppWithAppKey:AppKey
+                                      andAppSecret:AppSecret];
     
+    
+    
+    
+    //默认点击第一个
+     currentPageIndex = 0;
+//    [self.segmentedController setSelectedSegmentIndex:0];
+//    [self  buttonClicked:_segmentedController];
     self.loadingmore = NO;
 
+
     
- 
     ///
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:@"updateInformation" object:nil];
 }
@@ -177,7 +108,6 @@ static int currentPageIndex = 0;
 -(void)receiveNotification:(NSNotification*)note{
     //return from category , reset page information
     currentPageIndex = 0;
-    [self loadProductsData];
 }
 
 
@@ -283,52 +213,176 @@ static int currentPageIndex = 0;
 
 
 
+
+
+
+
+
+
+
+#pragma mark--
+#pragma mark-- SDSegmentedControl Click Method
+-(void)buttonClicked:(SDSegmentedControl *)sender{
+    
+    currentPageIndex =0;
+
+    NSString *index =[NSString stringWithFormat:@"%d",currentPageIndex];
+    
+    if (sender.selectedSegmentIndex ==0) {
+        
+        [self loadProductsDataWithThemeID:nil
+                                searchKey:@"蛋白粉"
+                                pageIndex:@"0"];
+        
+        NSLog(@"##########%d",sender.selectedSegmentIndex);
+        
+    }
+    if (sender.selectedSegmentIndex ==1) {
+        
+        
+        [self loadProductsDataWithThemeID:nil
+                                searchKey:@"减肥 胶囊"
+                                pageIndex:index];
+        NSLog(@"##########%d",sender.selectedSegmentIndex);
+
+        
+    }
+    if (sender.selectedSegmentIndex==2) {
+        
+        [self loadProductsDataWithThemeID:nil
+                                searchKey:@"瑜伽垫"
+                                pageIndex:index];
+        
+        
+        NSLog(@"##########%d",sender.selectedSegmentIndex);
+
+    }
+    if (sender.selectedSegmentIndex==3) {
+        
+        [self loadProductsDataWithThemeID:nil
+                                searchKey:@"健身 背心 运动"
+                                pageIndex:index];
+        NSLog(@"##########%d",sender.selectedSegmentIndex);
+
+    }
+    
+    
+}
+
 #pragma mark --
 #pragma mark - Pull - Refresh Delegate
+-(void)loadProductsDataWithThemeID:(NSString *)themeID
+                         searchKey:(NSString *)searchKey
+                        pageIndex :(NSString *)pageIndex
 
--(void)loadProductsData{
-    [[StoreService sharedService] findPorductsWithThemeID:@""
-                                                searchKey:@"康比特 蛋白粉"
-                                                pageIndex:[NSString stringWithFormat:
-                                                           @"%d",0]
+
+{
+    [[StoreService sharedService] findPorductsWithThemeID:themeID
+                                                searchKey:searchKey
+                                                pageIndex:pageIndex
                                            viewController:self];
 }
+
+
 - (void)reloadTableViewDataSource
 {
-    self.loadingmore =NO;
-    [self loadProductsData];
+     self.loadingmore =NO;
+     currentPageIndex =0;
+    
+    NSString *index =[NSString stringWithFormat:@"%d",currentPageIndex];
+
+    if (_segmentedController.selectedSegmentIndex ==0) {
+        
+        [self loadProductsDataWithThemeID:nil
+                                searchKey:@"蛋白粉"
+                                pageIndex:index];
+        
+        
+    }
+    if (_segmentedController.selectedSegmentIndex ==1) {
+        
+        
+        [self loadProductsDataWithThemeID:nil
+                                searchKey:@"减肥 胶囊"
+                                pageIndex:index];
+        
+        
+    }
+    if (_segmentedController.selectedSegmentIndex==2) {
+        
+        [self loadProductsDataWithThemeID:nil
+                                searchKey:@"瑜伽垫"
+                                pageIndex:index];
+        
+        
+        
+    }
+    if (_segmentedController.selectedSegmentIndex==3) {
+        
+        [self loadProductsDataWithThemeID:nil
+                                searchKey:@"健身 背心 运动"
+                                pageIndex:index];
+    }
+
 }
 
-#pragma mark - Load More
--(void)LoadMore
+#pragma mark --
+#pragma mark -- Pull Load More Datas
+-(void)LoadMoreDatas
 {
     self.loadingmore =YES;
+    //currentPage ++;
     currentPageIndex ++;
-    [[StoreService sharedService] findPorductsWithThemeID:@""
-                                                searchKey:@"康比特 蛋白粉"
-                                                pageIndex:[NSString stringWithFormat:
-                                                           @"%d",currentPageIndex]
-                                           viewController:self];
     
-}
-- (void)MyReloadData {
+    NSString *index =[NSString stringWithFormat:@"%d",currentPageIndex];
     
-    [self LoadMore];
+    if (_segmentedController.selectedSegmentIndex ==0) {
+        
+        [self loadProductsDataWithThemeID:nil
+                                searchKey:@"蛋白粉"
+                                pageIndex:index];
+        
+        
+    }
+    if (_segmentedController.selectedSegmentIndex ==1) {
+        
+        
+        [self loadProductsDataWithThemeID:nil
+                                searchKey:@"减肥 胶囊"
+                                pageIndex:index];
+        
+        
+    }
+    if (_segmentedController.selectedSegmentIndex==2) {
+        
+        [self loadProductsDataWithThemeID:nil
+                                searchKey:@"瑜伽垫"
+                                pageIndex:index];
+        
+        
+        
+    }
+    if (_segmentedController.selectedSegmentIndex==3) {
+        
+        [self loadProductsDataWithThemeID:nil
+                                searchKey:@"健身 背心 运动"
+                                pageIndex:index];
+    }
+
 }
 
 - (void)loadMoreTableViewDataSource
 {
     
     if (self.loadingmore) return;
-    self.loadingmore = YES;
     
     //currentPage ++;
-//    [self performSelector:@selector(MyReloadData) withObject:self afterDelay:1.0f];
-    //make a delay to show loading process for a while
+    [self LoadMoreDatas];
     
-    [self MyReloadData];
 }
 
+#pragma mark --
+#pragma mark --Did get productions Method
 -(void)didGetProductsArray:(NSArray *)products errorCode:(int)errorCode{
     
     [self dataSourceDidFinishLoadingNewData];
@@ -337,6 +391,7 @@ static int currentPageIndex = 0;
     if ([products count]==0) {
         self.loadingmore = NO;
         [self popupHappyMessage:@"亲,没有数据了！" title:nil];
+        [self.dataTableView reloadData];
         return ;
     }
     
@@ -357,8 +412,6 @@ static int currentPageIndex = 0;
 
     [self.dataTableView reloadData];
 }
-
-
 
 
 @end
