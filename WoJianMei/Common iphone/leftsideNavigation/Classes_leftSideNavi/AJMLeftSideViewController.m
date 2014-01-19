@@ -362,7 +362,7 @@
         
         
     }
-    self.storeViewController.title = @"运动商城";
+    self.storeViewController.title = @"爱健美商城";
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_storeViewController] ;
 }
 
@@ -568,7 +568,7 @@
                                   imageNamed:@"LifeStyle_Icon.png"]];
                     break;
                 case 6:
-                    cell.textLabel.text = @"运动商城";
+                    cell.textLabel.text = @"爱健美商城";
                     [cell.imageView setImage:[UIImage
                                               imageNamed:@"Store.png"]];
                     break;

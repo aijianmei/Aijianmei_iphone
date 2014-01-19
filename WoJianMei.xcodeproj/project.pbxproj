@@ -458,7 +458,6 @@
 		4A711E3317D5D0B200E35B98 /* commentBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A711E3217D5D0B200E35B98 /* commentBar@2x.png */; };
 		4A7B7EBA179A7AAB00FD6E56 /* MIT-LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B7EAC179A7AAA00FD6E56 /* MIT-LICENSE */; };
 		4A7B7EBB179A7AAB00FD6E56 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B7EAD179A7AAA00FD6E56 /* README.md */; };
-		4A7B7EBC179A7AAB00FD6E56 /* SDSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7B7EAF179A7AAB00FD6E56 /* SDSegmentedControl.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4A7CF99215D74EF000206B14 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */; };
 		4A873B9D16A54AD2005BDA45 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A873B8C16A54AD2005BDA45 /* area.plist */; };
 		4A873B9F16A54AD2005BDA45 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A873B8F16A54AD2005BDA45 /* city.plist */; };
@@ -532,6 +531,16 @@
 		4A9C3FCC177AE36F0088AA6D /* LabelsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A9C3FCB177AE36D0088AA6D /* LabelsView.xib */; };
 		4A9C3FCF177AE3F00088AA6D /* LabelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9C3FCE177AE3EF0088AA6D /* LabelsView.m */; };
 		4AA7ECE5169F0F78003E8949 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA7ECE4169F0F78003E8949 /* SMPageControl.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		4AA895DD188B9CFC00652493 /* SDSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA895DC188B9CFC00652493 /* SDSegmentedControl.m */; settings = {COMPILER_FLAGS = " -fobjc-arc"; }; };
+		4AA895DF188BABAF00652493 /* TaoBaoDetailViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA895DE188BABAF00652493 /* TaoBaoDetailViewController~ipad.xib */; };
+		4AA895E1188BAE6900652493 /* ProductCell~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA895E0188BAE6900652493 /* ProductCell~ipad.xib */; };
+		4AA895E3188BAF3C00652493 /* SingleItemView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA895E2188BAF3C00652493 /* SingleItemView~ipad.xib */; };
+		4AA895E7188BB8E800652493 /* cuzy_layout_1_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA895E5188BB8E800652493 /* cuzy_layout_1_back@2x.png */; };
+		4AA895E8188BB8E800652493 /* cuzy_layout_1_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA895E6188BB8E800652493 /* cuzy_layout_1_back.png */; };
+		4AA895EB188BB91100652493 /* cuzy_layout_1_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA895E9188BB91100652493 /* cuzy_layout_1_cancel.png */; };
+		4AA895EC188BB91100652493 /* cuzy_layout_1_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA895EA188BB91100652493 /* cuzy_layout_1_cancel@2x.png */; };
+		4AA895F5188BBA3200652493 /* UINavigationController+CustomBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA895F2188BBA3200652493 /* UINavigationController+CustomBackButton.m */; };
+		4AA895F6188BBA3200652493 /* UIViewController+CustomBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA895F4188BBA3200652493 /* UIViewController+CustomBackButton.m */; };
 		4AA8D4591827E5F600036560 /* AccessoryView.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA8D4501827E5F600036560 /* AccessoryView.png */; };
 		4AA8D45A1827E5F600036560 /* AccessoryView@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA8D4511827E5F600036560 /* AccessoryView@2x.png */; };
 		4AA8D45D1827E5F600036560 /* IndexLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA8D4541827E5F600036560 /* IndexLine.png */; };
@@ -1469,8 +1478,6 @@
 		4A711E3217D5D0B200E35B98 /* commentBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commentBar@2x.png"; sourceTree = "<group>"; };
 		4A7B7EAC179A7AAA00FD6E56 /* MIT-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "MIT-LICENSE"; sourceTree = "<group>"; };
 		4A7B7EAD179A7AAA00FD6E56 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		4A7B7EAE179A7AAA00FD6E56 /* SDSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDSegmentedControl.h; sourceTree = "<group>"; };
-		4A7B7EAF179A7AAB00FD6E56 /* SDSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDSegmentedControl.m; sourceTree = "<group>"; };
 		4A7CF99115D74EF000206B14 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4A7FBB551883B3260090FE8B /* SendMsgToWeChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMsgToWeChatViewController.h; sourceTree = "<group>"; };
 		4A7FBB581883BDA10090FE8B /* RespForWeChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RespForWeChatViewController.h; sourceTree = "<group>"; };
@@ -1578,6 +1585,19 @@
 		4A9C3FCE177AE3EF0088AA6D /* LabelsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelsView.m; sourceTree = "<group>"; };
 		4AA7ECE3169F0F78003E8949 /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPageControl.h; sourceTree = "<group>"; };
 		4AA7ECE4169F0F78003E8949 /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPageControl.m; sourceTree = "<group>"; };
+		4AA895DB188B9CFC00652493 /* SDSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDSegmentedControl.h; sourceTree = "<group>"; };
+		4AA895DC188B9CFC00652493 /* SDSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDSegmentedControl.m; sourceTree = "<group>"; };
+		4AA895DE188BABAF00652493 /* TaoBaoDetailViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "TaoBaoDetailViewController~ipad.xib"; sourceTree = "<group>"; };
+		4AA895E0188BAE6900652493 /* ProductCell~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProductCell~ipad.xib"; sourceTree = "<group>"; };
+		4AA895E2188BAF3C00652493 /* SingleItemView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "SingleItemView~ipad.xib"; sourceTree = "<group>"; };
+		4AA895E5188BB8E800652493 /* cuzy_layout_1_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cuzy_layout_1_back@2x.png"; sourceTree = "<group>"; };
+		4AA895E6188BB8E800652493 /* cuzy_layout_1_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cuzy_layout_1_back.png; sourceTree = "<group>"; };
+		4AA895E9188BB91100652493 /* cuzy_layout_1_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cuzy_layout_1_cancel.png; sourceTree = "<group>"; };
+		4AA895EA188BB91100652493 /* cuzy_layout_1_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cuzy_layout_1_cancel@2x.png"; sourceTree = "<group>"; };
+		4AA895F1188BBA3200652493 /* UINavigationController+CustomBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+CustomBackButton.h"; sourceTree = "<group>"; };
+		4AA895F2188BBA3200652493 /* UINavigationController+CustomBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+CustomBackButton.m"; sourceTree = "<group>"; };
+		4AA895F3188BBA3200652493 /* UIViewController+CustomBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CustomBackButton.h"; sourceTree = "<group>"; };
+		4AA895F4188BBA3200652493 /* UIViewController+CustomBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CustomBackButton.m"; sourceTree = "<group>"; };
 		4AA8D4501827E5F600036560 /* AccessoryView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AccessoryView.png; sourceTree = "<group>"; };
 		4AA8D4511827E5F600036560 /* AccessoryView@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AccessoryView@2x.png"; sourceTree = "<group>"; };
 		4AA8D4541827E5F600036560 /* IndexLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IndexLine.png; sourceTree = "<group>"; };
@@ -2051,6 +2071,7 @@
 		4A0CA5DB17ABE65500314B8C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4AA895E4188BB8D500652493 /* StoreViewController */,
 				4A55F6AB1887CD33001D0A1B /* 768X1024.png */,
 				4A55F6AC1887CD33001D0A1B /* 1536X2048.png */,
 				4ACAFA6F188544330059C296 /* 640X960.png */,
@@ -3677,10 +3698,10 @@
 		4A7B7E97179A7AAA00FD6E56 /* SDSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
+				4AA895DB188B9CFC00652493 /* SDSegmentedControl.h */,
+				4AA895DC188B9CFC00652493 /* SDSegmentedControl.m */,
 				4A7B7EAC179A7AAA00FD6E56 /* MIT-LICENSE */,
 				4A7B7EAD179A7AAA00FD6E56 /* README.md */,
-				4A7B7EAE179A7AAA00FD6E56 /* SDSegmentedControl.h */,
-				4A7B7EAF179A7AAB00FD6E56 /* SDSegmentedControl.m */,
 			);
 			name = SDSegmentedControl;
 			path = "rs-SDSegmentedControl";
@@ -3865,6 +3886,17 @@
 			);
 			name = SMPageControll;
 			path = ../Controllers/WorkoutViewController;
+			sourceTree = "<group>";
+		};
+		4AA895E4188BB8D500652493 /* StoreViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4AA895E5188BB8E800652493 /* cuzy_layout_1_back@2x.png */,
+				4AA895E6188BB8E800652493 /* cuzy_layout_1_back.png */,
+				4AA895E9188BB91100652493 /* cuzy_layout_1_cancel.png */,
+				4AA895EA188BB91100652493 /* cuzy_layout_1_cancel@2x.png */,
+			);
+			name = StoreViewController;
 			sourceTree = "<group>";
 		};
 		4AA8D44F1827E5F600036560 /* leftsideNavi_Resource */ = {
@@ -4206,18 +4238,25 @@
 				4AD1D6781889594400B07D19 /* SingleItemView.h */,
 				4AD1D6791889594400B07D19 /* SingleItemView.m */,
 				4AD1D67A1889594400B07D19 /* SingleItemView.xib */,
+				4AA895E2188BAF3C00652493 /* SingleItemView~ipad.xib */,
 				4AD1D66C1889512F00B07D19 /* ProductCommonCell.h */,
 				4AD1D66D1889512F00B07D19 /* ProductCommonCell.m */,
 				4AD1D66F188951D200B07D19 /* ProductCell.h */,
 				4AD1D670188951D200B07D19 /* ProductCell.m */,
 				4AD1D672188951F800B07D19 /* ProductCell.xib */,
+				4AA895E0188BAE6900652493 /* ProductCell~ipad.xib */,
 				4AD1D647188936B300B07D19 /* StoreViewController.h */,
 				4AD1D648188936B300B07D19 /* StoreViewController.m */,
+				4AA895F1188BBA3200652493 /* UINavigationController+CustomBackButton.h */,
+				4AA895F2188BBA3200652493 /* UINavigationController+CustomBackButton.m */,
+				4AA895F3188BBA3200652493 /* UIViewController+CustomBackButton.h */,
+				4AA895F4188BBA3200652493 /* UIViewController+CustomBackButton.m */,
 				4AD1D649188936B300B07D19 /* StoreViewController.xib */,
 				4AD1D64A188936B300B07D19 /* StoreViewController~ipad.xib */,
 				4AD1D6881889727E00B07D19 /* TaoBaoDetailViewController.h */,
 				4AD1D6891889727E00B07D19 /* TaoBaoDetailViewController.m */,
 				4AD1D68A1889727E00B07D19 /* TaoBaoDetailViewController.xib */,
+				4AA895DE188BABAF00652493 /* TaoBaoDetailViewController~ipad.xib */,
 				4AD1D69018897C0300B07D19 /* loading.gif */,
 			);
 			path = StoreViewController;
@@ -4872,6 +4911,7 @@
 				4A49926E168553A30073E682 /* snow.png in Resources */,
 				4A1B25D817EED06300FC6194 /* 114X114.png in Resources */,
 				4ADCFFB5169D69F700A3E979 /* LICENSE in Resources */,
+				4AA895E7188BB8E800652493 /* cuzy_layout_1_back@2x.png in Resources */,
 				4ADCFFB6169D69F700A3E979 /* README.md in Resources */,
 				4ADCFFBB169D69F700A3E979 /* REComposeViewController.bundle in Resources */,
 				4ADCFFC8169D69F700A3E979 /* Screenshot.png in Resources */,
@@ -4902,6 +4942,7 @@
 				4A0E4DC4178C4B5B00E1287D /* ChangeNameViewController.xib in Resources */,
 				4A0E4DCE178C50B000E1287D /* ChangeDescriptionViewController.xib in Resources */,
 				4A0E4DD3178C559E00E1287D /* ChangeGenderViewController.xib in Resources */,
+				4AA895E3188BAF3C00652493 /* SingleItemView~ipad.xib in Resources */,
 				4A2FA980178D076C006A1EFB /* ProvinceViewController.xib in Resources */,
 				4A2FA98A178D0E4C006A1EFB /* CityViewController.xib in Resources */,
 				4A2FA98F178D3E02006A1EFB /* ChangeLabelsViewController.xib in Resources */,
@@ -4925,6 +4966,7 @@
 				4A0E22AC1856ECEF00A07512 /* VoteHeaderView.xib in Resources */,
 				4A0326A917A8FEBF0016F6C5 /* VideoInfoView.xib in Resources */,
 				4A0CA5D017AB969600314B8C /* BMIViewController.xib in Resources */,
+				4AA895EC188BB91100652493 /* cuzy_layout_1_cancel@2x.png in Resources */,
 				4A0CA65017ABE65500314B8C /* rq_2.png in Resources */,
 				4A226E1A187BF2B50003312F /* Images.xcassets in Resources */,
 				4A0CA65117ABE65500314B8C /* rq_3.png in Resources */,
@@ -4935,6 +4977,7 @@
 				4A3853B6184DF7F900D5A66B /* PostTopicViewController.xib in Resources */,
 				4A0CA65417ABE65500314B8C /* xldl_1@2.png in Resources */,
 				4A0CA65517ABE65500314B8C /* xldl_2@2x.png in Resources */,
+				4AA895E8188BB8E800652493 /* cuzy_layout_1_back.png in Resources */,
 				4A25F512187D052000A42373 /* femalecodertocat@2x.png in Resources */,
 				4A0CA65617ABE65500314B8C /* about_us@2x.png in Resources */,
 				4A0CA65917ABE65500314B8C /* bottom_cell_background.png in Resources */,
@@ -4955,6 +4998,7 @@
 				4A0CA66017ABE65500314B8C /* share_social@2x.png in Resources */,
 				4A0CA66117ABE65500314B8C /* share_with_firends@2x.png in Resources */,
 				4A0CA66217ABE65500314B8C /* singleCellBackgroud.png in Resources */,
+				4AA895EB188BB91100652493 /* cuzy_layout_1_cancel.png in Resources */,
 				4A0CA66317ABE65500314B8C /* social_networks@2x.png in Resources */,
 				4A8C57061881476000C715C2 /* description_bround.png in Resources */,
 				4AD1D66B1889468D00B07D19 /* readme.txt in Resources */,
@@ -4992,6 +5036,7 @@
 				4A0CA68217ABE65500314B8C /* dq_2.png in Resources */,
 				4A0E22A31856148F00A07512 /* bbs_post_content_bg@2x.png in Resources */,
 				4A0E2262185586AD00A07512 /* common_home_badge@2x.png in Resources */,
+				4AA895DF188BABAF00652493 /* TaoBaoDetailViewController~ipad.xib in Resources */,
 				4A3558CF1879B203007FC165 /* 72x72.png in Resources */,
 				4A0CA68317ABE65500314B8C /* gobal_background@2x.png in Resources */,
 				4A0CA68417ABE65500314B8C /* hhhh.png in Resources */,
@@ -5009,6 +5054,7 @@
 				4A0CA68B17ABE65500314B8C /* wechat.png in Resources */,
 				4A0CA68C17ABE65500314B8C /* dlk_1@2x.png in Resources */,
 				4AA8D45D1827E5F600036560 /* IndexLine.png in Resources */,
+				4AA895E1188BAE6900652493 /* ProductCell~ipad.xib in Resources */,
 				4A25F50D187D052000A42373 /* 2.png in Resources */,
 				4A0CA68D17ABE65500314B8C /* comment_icon.png in Resources */,
 				4AD1D69118897C0300B07D19 /* loading.gif in Resources */,
@@ -5194,6 +5240,7 @@
 				4ACA75BD182CB80800567C77 /* TKGraphController.m in Sources */,
 				4A425B341884F395000934FC /* MLNavigationController.m in Sources */,
 				4A0E229F1856104800A07512 /* BBSPostDetailCell.m in Sources */,
+				4AA895F5188BBA3200652493 /* UINavigationController+CustomBackButton.m in Sources */,
 				4A499222168553A30073E682 /* PPTableViewCell.m in Sources */,
 				4A499223168553A30073E682 /* PPTableViewController.m in Sources */,
 				4A499224168553A30073E682 /* PPViewController.m in Sources */,
@@ -5303,6 +5350,7 @@
 				4A49929F168553A30073E682 /* Reachability.m in Sources */,
 				4ACA75C0182CB80800567C77 /* TKIndicatorCell.m in Sources */,
 				4A4992A0168553A30073E682 /* CommonNetworkClient.m in Sources */,
+				4AA895F6188BBA3200652493 /* UIViewController+CustomBackButton.m in Sources */,
 				4A3165C6183DF69C008DC2CB /* CJSONSerializer.m in Sources */,
 				4A4992A3168553A30073E682 /* UIAlertViewUtils.m in Sources */,
 				4ACA75CD182CB80800567C77 /* TKSwitchCell.m in Sources */,
@@ -5468,7 +5516,6 @@
 				4A257F1A17900A80001D153F /* AddLabelCell.m in Sources */,
 				4A5F3FD517914E2E00CD701A /* FeedBackViewController.m in Sources */,
 				4A2BCF801793919D006ED7C8 /* VersionInfo.m in Sources */,
-				4A7B7EBC179A7AAB00FD6E56 /* SDSegmentedControl.m in Sources */,
 				4A4A5DB1179E512E00F00085 /* CommentViewController.m in Sources */,
 				4A4A5E10179E76FB00F00085 /* CommentCell.m in Sources */,
 				4A4A5E13179E77B000F00085 /* CommentInfo.m in Sources */,
@@ -5498,6 +5545,7 @@
 				4A0E22BB18575A2300A07512 /* PostDetailHeaderView.m in Sources */,
 				4AE545F1184DE4DF008CF804 /* BBSViewController.m in Sources */,
 				4A6585D217B0F2120056DA91 /* PostStatus.m in Sources */,
+				4AA895DD188B9CFC00652493 /* SDSegmentedControl.m in Sources */,
 				4A6585D517B127220056DA91 /* PostStatusRespose.m in Sources */,
 				4A948FD917B1F80A0037D9A0 /* StatusCell.m in Sources */,
 				4A94900417B238640037D9A0 /* CustomScrollView.m in Sources */,

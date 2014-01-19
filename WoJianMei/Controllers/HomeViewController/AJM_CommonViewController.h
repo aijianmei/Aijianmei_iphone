@@ -9,6 +9,12 @@
 #import "PPTableViewController.h"
 #import "iCarousel.h"
 
+///// the setings of the iCarousel
+#define NUMBER_OF_ITEMS 4
+#define NUMBER_OF_VISIBLE_ITEMS 18
+#define ITEM_SPACING 320
+#define ITEM_SPACING_IPAD 768.0f
+
 
 @class AppDelegate;
 @class SMPageControl;

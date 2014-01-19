@@ -21,7 +21,9 @@
 #import "UIImageView+WebCache.h"
 #import "TaoBaoDetailViewController.h"
 #import "SDSegmentedControl.h"
+#import "DeviceDetection.h"
 
+#import "UINavigationController+CustomBackButton.h"
 
 
 #define AppKey   @"200449"
@@ -103,11 +105,98 @@ static int currentPageIndex = 0;
     
     ///
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:@"updateInformation" object:nil];
+    
+    [self.dataTableView setBackgroundColor:[UIColor clearColor]];
 }
 
 -(void)receiveNotification:(NSNotification*)note{
     //return from category , reset page information
     currentPageIndex = 0;
+}
+
+
+#pragma mark -
+#pragma mark iCarousel methods
+- (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
+{
+    return NUMBER_OF_ITEMS;
+    //    return [self.dataList count];
+}
+
+- (NSUInteger)numberOfVisibleItemsInCarousel:(iCarousel *)carousel
+{
+    //if you have less than around 30 items in the carousel
+    //you'll get better performance if NUMBER_OF_VISIBLE_ITEMS >= NUMBER_OF_ITEMS
+    //because then the item view reflections won't have to be re-generated as
+    //the carousel is scrolling
+    return NUMBER_OF_VISIBLE_ITEMS;
+}
+
+- (UIView *)carousel:(iCarousel *)carousel
+  viewForItemAtIndex:(NSUInteger)index
+         reusingView:(UIView *)view
+{
+    
+	//create new view if no view is available for recycling
+    
+    ProductItem *product = [self.dataList objectAtIndex:index];
+    
+    UILabel *label = nil;
+    
+	if (view == nil)
+	{
+        ///add images
+        UIImageView *imageView =[[UIImageView alloc]init];
+        
+        //set up content
+        if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
+            view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 160.0f)] autorelease];
+            [imageView setFrame:CGRectMake(0, 0, 320, 160.0f)];
+            
+        }else{
+            view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 768.0f, 320.0f)] autorelease];
+            [imageView setFrame:CGRectMake(0, 0, 768.0f, 320.0f)];
+            
+        }
+        
+        
+        [imageView setImageWithURL:[NSURL URLWithString:product.itemImageURLString] placeholderImage:[UIImage imageNamed:@"place_holder.png"]];
+        [view addSubview:imageView];
+        [imageView release];
+        
+	}
+	else
+	{
+		label = [[view subviews] lastObject];
+	}
+	
+    //set label
+//	label.text = [NSString stringWithFormat:@"%@", article.title];
+    
+	return view;
+    
+}
+
+- (CGFloat)carouselItemWidth:(iCarousel *)carousel
+{
+    if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
+        return ITEM_SPACING;
+    }else  {
+        return ITEM_SPACING_IPAD;
+    }
+    return ITEM_SPACING_IPAD;
+}
+
+- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
+    PPDebug(@"I did selected the picture of %d",index);
+    
+}
+
+-(void)carouselCurrentItemIndexUpdated:(iCarousel *)carousel{
+    
+    PPDebug(@"%d",[carousel currentItemIndex]);
+    
+    [self.spacePageControl setCurrentPage:[carousel currentItemIndex]];
 }
 
 
@@ -132,9 +221,16 @@ static int currentPageIndex = 0;
 	if (cell == nil) {
 		cell = [ProductCell createCell:self];
         
+        
         NSArray *array1 = [[NSBundle mainBundle] loadNibNamed:@"SingleItemView"owner:self options:nil];
         SingleItemView *leftView = [array1 objectAtIndex:0];
+        
         leftView.center = CGPointMake(80, 85);
+
+        if (ISIPAD) {
+        leftView.center = CGPointMake(UIScreen.mainScreen.bounds.size.width/4,125);
+
+        }
         leftView.tag = LEFT_ITEM_TAG;
         leftView.viewController = self;
 
@@ -146,7 +242,10 @@ static int currentPageIndex = 0;
         SingleItemView *rightView = [array2 objectAtIndex:0];
         rightView.tag = RIGHT_ITEM_TAG;
         rightView.center = CGPointMake(240, 85);
-        
+        if (ISIPAD) {
+          rightView.center = CGPointMake(UIScreen.mainScreen.bounds.size.width/2 + UIScreen.mainScreen.bounds.size.width/4 ,125);
+            
+        }
         rightView.viewController =self;
         
         [cell addSubview:rightView];
@@ -163,6 +262,8 @@ static int currentPageIndex = 0;
     [self setSingleItemView:rightView withTaobaoItem:[self.dataList objectAtIndex:2*indexPath.row+1]];
     
     
+//    [cell setBackgroundColor:[UIColor clearColor]];
+
     return cell;
 }
 
@@ -231,7 +332,7 @@ static int currentPageIndex = 0;
     if (sender.selectedSegmentIndex ==0) {
         
         [self loadProductsDataWithThemeID:nil
-                                searchKey:@"蛋白粉"
+                                searchKey:@"增肌 蛋白粉"
                                 pageIndex:@"0"];
         
         NSLog(@"##########%d",sender.selectedSegmentIndex);
@@ -241,7 +342,7 @@ static int currentPageIndex = 0;
         
         
         [self loadProductsDataWithThemeID:nil
-                                searchKey:@"减肥 胶囊"
+                                searchKey:@"减肥"
                                 pageIndex:index];
         NSLog(@"##########%d",sender.selectedSegmentIndex);
 
@@ -294,7 +395,7 @@ static int currentPageIndex = 0;
     if (_segmentedController.selectedSegmentIndex ==0) {
         
         [self loadProductsDataWithThemeID:nil
-                                searchKey:@"蛋白粉"
+                                searchKey:@"增肌 蛋白粉"
                                 pageIndex:index];
         
         
@@ -339,7 +440,7 @@ static int currentPageIndex = 0;
     if (_segmentedController.selectedSegmentIndex ==0) {
         
         [self loadProductsDataWithThemeID:nil
-                                searchKey:@"蛋白粉"
+                                searchKey:@"增肌 蛋白粉"
                                 pageIndex:index];
         
         
@@ -411,6 +512,9 @@ static int currentPageIndex = 0;
     }
 
     [self.dataTableView reloadData];
+    [self.carousel  reloadData];
+    
+    
 }
 
 

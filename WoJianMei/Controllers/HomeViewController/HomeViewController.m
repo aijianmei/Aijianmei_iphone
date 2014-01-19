@@ -610,7 +610,6 @@ typedef enum CONTENT_TYPE {
 
 #pragma mark -
 #pragma mark iCarousel methods
-
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
         return NUMBER_OF_ITEMS;

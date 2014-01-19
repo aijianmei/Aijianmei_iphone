@@ -11,6 +11,8 @@
 #import "UIImageView+WebCache.h"
 #import "SingleItemView.h"
 
+#define isPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+
 
 
 
@@ -72,9 +74,18 @@
     
 }
 + (NSString*)getCellIdentifier{
+    
+    if (isPad) {
+    return @"ProductCell~ipad";
+
+    }
     return @"ProductCell";
 }
 + (CGFloat)getCellHeight{
+    
+    if (isPad) {
+    return 250;
+    }
     return 167.0f;
 }
 
