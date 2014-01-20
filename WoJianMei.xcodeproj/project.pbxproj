@@ -2261,13 +2261,6 @@
 			path = Workout;
 			sourceTree = "<group>";
 		};
-		4A0E226A1855B5AC00A07512 /* FitnessInfoMenue */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = FitnessInfoMenue;
-			sourceTree = "<group>";
-		};
 		4A0E226B1855B6B400A07512 /* FitnessInfoController */ = {
 			isa = PBXGroup;
 			children = (
@@ -4436,7 +4429,6 @@
 		4ADCFE10169D614600A3E979 /* WorkoutViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4A0E226A1855B5AC00A07512 /* FitnessInfoMenue */,
 				4ADCFE17169D614600A3E979 /* WorkoutViewController.h */,
 				4ADCFE18169D614600A3E979 /* WorkoutViewController.m */,
 				4AC2BDC317BD05300061E396 /* WorkoutViewController.xib */,

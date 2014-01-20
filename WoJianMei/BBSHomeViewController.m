@@ -421,6 +421,7 @@
 	}
 
     PostStatus *post = [self postStatusForIndexPath:indexPath];
+    
     [cell updateCellWithBBSPost:post];
     
 	return cell;

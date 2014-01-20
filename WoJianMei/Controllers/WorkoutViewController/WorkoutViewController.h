@@ -49,15 +49,8 @@
 
 
 - (IBAction)didClickGMuscleOnlineButton:(id)sender;
-
 -(void)buttonClicked:(SDSegmentedControl *)sender;
 -(void)updateUserInterface;
--(void)pushToMyselfViewController;
-
-
-
-////For the fitness Inforamtions
-
 
 
 

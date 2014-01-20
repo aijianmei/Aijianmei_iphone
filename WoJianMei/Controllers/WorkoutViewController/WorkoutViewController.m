@@ -106,13 +106,13 @@ typedef enum CONTENT_TYPE {
     [super viewWillAppear:animated];
 }
 
--(void) viewDidAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
     [[BaiduMobStat defaultStat] pageviewStartWithName:@"SignupView"];
 }
 
--(void) viewDidDisappear:(BOOL)animated
+-(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:YES];
     [[BaiduMobStat defaultStat] pageviewEndWithName:@"SignupView"];
@@ -124,6 +124,14 @@ typedef enum CONTENT_TYPE {
     self.supportRefreshHeader = YES;
     self.supportRefreshFooter = YES;
     [super viewDidLoad];
+    
+    
+    
+    
+    
+    
+    
+    
     
     [self initUI];
     [self initMoreUI];
@@ -171,7 +179,6 @@ typedef enum CONTENT_TYPE {
 - (void)setTitle:(NSString *)title
 {
     [super setTitle:title];
-    
     ((UILabel *)self.navigationItem.titleView).text = title;
     [self.navigationItem.titleView sizeToFit];
 }
@@ -270,7 +277,12 @@ typedef enum CONTENT_TYPE {
 -(void)addButtonScrollView{
     ////Configure The ButtonScrollView
     
-    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"锻炼方法",@"基础知识",@"锻炼视频", nil];
+    NSArray *buttonTitleArray =[NSArray arrayWithObjects:
+                                @"锻炼方法",
+                                @"基础知识",
+                                @"锻炼视频",
+                                nil];
+    
     self.segmentedController=[[SDSegmentedControl alloc]initWithItems:buttonTitleArray];
     [_segmentedController setFrame:CGRectMake(0, 0,UIScreen.mainScreen.bounds.size.width, 40)];
     [_segmentedController setSelectedSegmentIndex:0];

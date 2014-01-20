@@ -24,7 +24,6 @@
 #import "LoginViewController.h"
 #import "SVWebViewController.h"
 #import "WorkOutManagerViewController.h"
-#import "IIViewDeckController.h"
 #import "AppDelegate.h"
 
 
@@ -216,9 +215,9 @@
         FitnessInfoViewController *vc =[[FitnessInfoViewController alloc] initWithNibName:@"FitnessInfoViewController" bundle:nil];
         self.fitnessInfoViewController =vc;
         [vc release];
-        self.fitnessInfoViewController.title = @"运动汇";
     }
     
+    self.fitnessInfoViewController.title = @"运动汇";
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_fitnessInfoViewController];
 }
 
@@ -266,7 +265,6 @@
       }
     
     self.workoutViewController.title = @"锻炼";
-
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_workoutViewController];
 }
 
@@ -290,7 +288,6 @@
         
     }
     self.supplementViewController.title = @"补充";
-
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_supplementViewController] ;
 }
 -(void)initNutriViewController{
@@ -313,9 +310,9 @@
 
         
     }
-    self.nutriViewController.title = @"营养";
-
+    [self.nutriViewController setTitle:@"营养"];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_nutriViewController] ;
+
 }
 
 -(void)initLifeStytleViewController{
@@ -341,7 +338,6 @@
         
     }
     self.lifeStytleViewController.title = @"生活方式";
-
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_lifeStytleViewController] ;
 }
 
@@ -413,7 +409,6 @@
         
     }
     self.myselfViewController.title = @"个人中心";
-    
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_myselfViewController] ;
 }
 
@@ -438,7 +433,6 @@
 
     }
     self.moreViewController.title = @"更多";
-
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:_moreViewController] ;
 }
 

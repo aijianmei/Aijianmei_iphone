@@ -51,7 +51,6 @@ static int currentPageIndex = 0;
 -(void)dealloc{
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateInformation" object:nil];
-    
     [super dealloc];
 }
 
@@ -151,7 +150,7 @@ static int currentPageIndex = 0;
         //set up content
         if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
             view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 160.0f)] autorelease];
-            [imageView setFrame:CGRectMake(0, 0, 320, 160.0f)];
+            [imageView setFrame:CGRectMake(0, 0, 320.0f, 160.0f)];
             
         }else{
             view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 768.0f, 320.0f)] autorelease];
@@ -342,7 +341,7 @@ static int currentPageIndex = 0;
         
         
         [self loadProductsDataWithThemeID:nil
-                                searchKey:@"减肥"
+                                searchKey:@"安全套"
                                 pageIndex:index];
         NSLog(@"##########%d",sender.selectedSegmentIndex);
 
@@ -404,7 +403,7 @@ static int currentPageIndex = 0;
         
         
         [self loadProductsDataWithThemeID:nil
-                                searchKey:@"减肥 胶囊"
+                                searchKey:@"安全套"
                                 pageIndex:index];
         
         
@@ -449,7 +448,7 @@ static int currentPageIndex = 0;
         
         
         [self loadProductsDataWithThemeID:nil
-                                searchKey:@"减肥 胶囊"
+                                searchKey:@"安全套"
                                 pageIndex:index];
         
         

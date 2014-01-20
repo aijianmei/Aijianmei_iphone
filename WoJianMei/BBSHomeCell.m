@@ -59,7 +59,7 @@
 
 + (id)createCell:(id)delegate
 {
-    BBSHomeCell *cell = [BBSHomeTableCell createCellWithIdentifier:[self getCellIdentifier] delegate:delegate];
+    BBSHomeCell *cell = [BBSHomeCell createCellWithIdentifier:[self getCellIdentifier] delegate:delegate];
     [cell initMaskViews];
     return cell;
 }

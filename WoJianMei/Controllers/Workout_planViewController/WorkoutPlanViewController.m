@@ -21,7 +21,7 @@
 ///// the setings of the iCarousel
 #define NUMBER_OF_ITEMS 4
 #define NUMBER_OF_VISIBLE_ITEMS 18
-#define ITEM_SPACING 320
+#define ITEM_SPACING 220
 #define ITEM_SPACING_IPAD 768.0f
 
 
@@ -144,7 +144,7 @@
     
     UIView *headerView =[[UIView alloc]init];
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-        [headerView setFrame: CGRectMake(0,0,UIScreen.mainScreen.bounds.size.width, 200)];
+        [headerView setFrame: CGRectMake(0,0,UIScreen.mainScreen.bounds.size.width, 200+ 200)];
     }else{
         [headerView setFrame: CGRectMake(0,0,UIScreen.mainScreen.bounds.size.width, 360.0f)];
     }
@@ -183,37 +183,46 @@
 #pragma mark--
 #pragma mark-- addCarouselSliders Method
 -(void)scrolliCarouselSliderAutomacially {
-    int i =1;
-    iid = iid + i;
-    [self.carousel scrollToItemAtIndex:iid duration:1];
-    [self.carousel scrollToItemAtIndex:iid animated:YES];
-    if ([self.carousel currentItemIndex]==3) {
-        [self.carousel scrollToItemAtIndex:0 animated:YES];
-        iid =0;
-    }
+//    int i =1;
+//    iid = iid + i;
+//    [self.carousel scrollToItemAtIndex:iid duration:1];
+//    [self.carousel scrollToItemAtIndex:iid animated:YES];
+//    if ([self.carousel currentItemIndex]==3) {
+//        [self.carousel scrollToItemAtIndex:0 animated:YES];
+//        iid =0;
+//    }
 }
 
 -(void)addCarouselSliders{
     //configure carousel
     if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
-        self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0,40,UIScreen.mainScreen.bounds.size.width,160)];
+        self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0,40,UIScreen.mainScreen.bounds.size.width ,160 + 200)];
         
     }
     else{
         self.carousel = [[iCarousel alloc]initWithFrame:CGRectMake(0,40,UIScreen.mainScreen.bounds.size.width,320)];
     }
     
-    [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(scrolliCarouselSliderAutomacially) userInfo:nil repeats:YES];
-    
+    [NSTimer scheduledTimerWithTimeInterval:4
+                                     target:self
+                                   selector:@selector(scrolliCarouselSliderAutomacially)
+                                   userInfo:nil
+                                    repeats:YES];
     
     
     self.carousel.delegate = self;
     self.carousel.dataSource = self;
-    _carousel.type = iCarouselTypeLinear;
-    [_carousel setScrollEnabled:YES];
+//    [self.carousel setStopAtItemBoundary:YES];
+    self.carousel.type = iCarouselTypeLinear;
+    [self.carousel setScrollEnabled:YES];
+    
+    //边界的bounce
+    [self.carousel setBounces:NO];
+    
+    
     
     //可以调整slider 的滑动速度;
-    [_carousel setScrollSpeed:0.25f];
+    [self.carousel setScrollSpeed:0.75f];
     
     [_myHeaderView addSubview:self.carousel];
 }
@@ -223,7 +232,7 @@
 -(void)addSpacePageControl{
     ////The page controll
     if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
-        self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(0, 196, 320, 20)];
+        self.spacePageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(0, 196 + 200, 320, 20)];
         
     }
     else{
@@ -294,22 +303,18 @@
   viewForItemAtIndex:(NSUInteger)index
          reusingView:(UIView *)view
 {
-    
 	//create new view if no view is available for recycling
-    
-    
     UILabel *label = nil;
     
 	if (view == nil)
 	{
         ///add images
         UIImageView *imageView =[[UIImageView alloc]init];
-        
-        
         //set up content
         if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
-            view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 160.0f)] autorelease];
-            [imageView setFrame:CGRectMake(0, 0, 320, 160.0f)];
+            view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 220.0f, 160.0f+ 200)] autorelease];
+            [view setBackgroundColor:[UIColor redColor]];
+            [imageView setFrame:CGRectMake(0, 0, 190.0f, 160.0f + 200)];
             
         }else{
             view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 768.0f, 320.0f)] autorelease];
