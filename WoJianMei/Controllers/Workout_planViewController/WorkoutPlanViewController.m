@@ -322,7 +322,7 @@
             
         }
         
-        [imageView setImage:[UIImage imageNamed:@"144x144.png"]];
+        [imageView setImage:[ImageManager sliderPlacHolderImage]];
         [view addSubview:imageView];
         [imageView release];
         

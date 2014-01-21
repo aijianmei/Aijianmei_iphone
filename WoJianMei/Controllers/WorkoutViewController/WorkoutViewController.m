@@ -626,7 +626,7 @@ typedef enum CONTENT_TYPE {
         }
         
         
-        [imageView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@""]];
+        [imageView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[ImageManager sliderPlacHolderImage]];
         [view addSubview:imageView];
         [imageView release];
         

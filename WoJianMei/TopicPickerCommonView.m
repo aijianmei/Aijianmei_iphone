@@ -7,25 +7,15 @@
 //
 
 #import "TopicPickerCommonView.h"
-
 @implementation TopicPickerCommonView
+@synthesize delegate = _delegate;
+@synthesize statusImageView =_statusImageView;
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+
+
+-(void)dealloc{
+    
+    [_statusImageView release];[self setStatusImageView:nil];
+    [super dealloc];
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
-
 @end

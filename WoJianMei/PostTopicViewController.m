@@ -11,21 +11,26 @@
 #import "CTAssetsPickerController.h"
 #import "CaptureVideoViewController.h"
 #import "VideoManager.h"
-
-
+#import "StoreViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "TopicPickerDisplayView.h"
+#import "PostService.h"
+#import "UserManager.h"
+
+
+
 
 
 
 @interface PostTopicViewController ()<CTAssetsPickerControllerDelegate,UINavigationControllerDelegate>
 
 
-@property (nonatomic, strong) NSMutableArray *assets;
-@property (nonatomic, strong) NSDateFormatter *dateFormatter;
+@property (nonatomic, retain) NSMutableArray *assets;
 @end
 
 @implementation PostTopicViewController
+@synthesize assets =_assets;
 @synthesize videoPlayer =_videoPlayer;
 @synthesize movieURL    =_movieURL;
 
@@ -44,6 +49,7 @@
 
     [_videoPlayer release];
     [_movieURL release];
+    [_assets release];
     [super dealloc];
 }
 
@@ -85,9 +91,25 @@
 
 -(void)clickDoneButton:(UIButton *)sender{
     
+    User *user =  [[UserManager defaultManager] user];
     
     
-    [self popupHappyMessage:@"亲!发布内容不能够为空!" title:nil];
+//    ALAsset *asset = [self.assets objectAtIndex:0];
+       UIImage *image = [UIImage imageNamed:@"72x72.png"];
+    
+
+    if (image) {
+        [[PostService sharedService] postStatusWithUid:user.uid
+                                                 image:image
+                                               content:@"forTesing"
+                                        viewController:self];
+
+    }
+    
+    
+    
+
+//    [self popupHappyMessage:@"亲!发布内容不能够为空!" title:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -160,20 +182,17 @@
 
 
 
-- (IBAction)clickVotesButton:(id)sender {
-    
+- (IBAction)clickProductsButton:(id)sender
+{
+
 //    VotesViewController *vc = [[VotesViewController alloc]initWithNibName:@"VotesViewController" bundle:nil];
 //    [self.navigationController pushViewController:vc animated:YES];
 //    [vc release];
     
+    StoreViewController *vc = [[StoreViewController alloc] initWithNibName:@"StoreViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
     
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
-    [UIApplication sharedApplication].statusBarHidden =YES;
-    [self presentViewController:picker animated:YES completion:NULL];
     
 }
 
@@ -200,9 +219,12 @@
   
     if (!self.assets)
         self.assets = [[NSMutableArray alloc] init];
+
+    [self.assets removeAllObjects];
     
     CTAssetsPickerController *picker = [[CTAssetsPickerController alloc] init];
     picker.maximumNumberOfSelection = 9;
+    picker.assetsFilter = [ALAssetsFilter allAssets];
     picker.delegate = self;
     [self presentViewController:picker animated:YES completion:NULL];
     [picker release];
@@ -212,6 +234,7 @@
 #pragma mark - Assets Picker Delegate
 - (void)assetsPickerController:(CTAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
 {
+    [self.assets addObjectsFromArray:assets];
     [self showPhotosArray];
     PPDebug(@"%d",[assets count]);
 }
@@ -229,8 +252,22 @@
 #pragma mark --
 #pragma mark - Add the photos array
 -(void)showPhotosArray{
+    
+    
+    TopicPickerDisplayView *view =[TopicPickerDisplayView createView:self];
+    
+    ALAsset *asset = [self.assets objectAtIndex:0];
+//    cell.textLabel.text = [self.dateFormatter stringFromDate:[asset valueForProperty:ALAssetPropertyDate]];
+//    cell.detailTextLabel.text = [asset valueForProperty:ALAssetPropertyType];
+//    cell.imageView.image = [UIImage imageWithCGImage:asset.thumbnail];
 
-
+    [view.statusImageView setImage:[UIImage imageWithCGImage:asset.thumbnail]];
+    [view setFrame:CGRectMake(0, 400,CGRectGetWidth(view.frame), CGRectGetHeight(view.frame))];
+    [self.view addSubview:view];
+    
+    
+    
+    
 }
 
 
@@ -273,6 +310,12 @@
     
 }
 
+
+-(void)didPostStatusesSucceeded:(int)errorCode{
+
+    
+
+}
 
 
 

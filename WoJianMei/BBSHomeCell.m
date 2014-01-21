@@ -259,7 +259,7 @@
     
     //Image Content
     if (post.imageurl) {
-        [self.imageView setImageWithURL:[NSURL URLWithString:post.imageurl]
+        [self.imageView setImageWithURL:[NSURL URLWithString:@"http://127.0.0.1/~tomcallon/image1.jpg"]
                        placeholderImage:[UIImage imageNamed:@"place_holder@2x.png"]
                                 success:^(UIImage *image, BOOL cached)
          {

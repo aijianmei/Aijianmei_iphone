@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TopicPickerCommonView.h"
 
-@interface TopicPickerDisplayView : UIView
+
+
+@interface TopicPickerDisplayView : TopicPickerCommonView<TopicPickerCommonViewProtocol>
+
+
 
 @end

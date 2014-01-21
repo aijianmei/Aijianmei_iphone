@@ -11,4 +11,7 @@
 
 
 
+#define PARA_IMAGE @"imageurl"
+
+
 #endif

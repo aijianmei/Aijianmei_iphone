@@ -117,7 +117,8 @@ static ImageManager *_defaultManager = nil;
 ////用户头像背景图片
 +(UIImage*)getProfile_backgroud{
 
-    return [UIImage imageNamed:@"profile_backgroud.png"];
+    return
+    [UIImage imageNamed:@"profile_backgroud.png"];
 
 }
 
@@ -172,6 +173,12 @@ static ImageManager *_defaultManager = nil;
 
 }
 
+
++(UIImage *)sliderPlacHolderImage{
+
+     return [UIImage
+        imageNamed:@"place_holder@2x.png"];
+}
 
 
 

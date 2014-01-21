@@ -13,8 +13,11 @@
 
 
 @protocol PostStatusServiceDelegate <NSObject>
--(void)didLoadStatusesSucceeded:(int)errorCode didLoadObjects:(NSArray *)objects;
+
 @optional
+-(void)didLoadStatusesSucceeded:(int)errorCode didLoadObjects:(NSArray *)objects;
+-(void)didPostStatusesSucceeded:(int)errorCode;
+
 
 
 

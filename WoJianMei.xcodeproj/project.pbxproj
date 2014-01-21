@@ -170,7 +170,7 @@
 		4A20192317C325DC003D4E54 /* NumberDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A20192217C325D8003D4E54 /* NumberDataManager.m */; };
 		4A22152A17793C970079430D /* ColorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A22152917793C970079430D /* ColorManager.m */; };
 		4A226E10187BC37A0003312F /* PlayVideoViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A226E0F187BC37A0003312F /* PlayVideoViewController~ipad.xib */; };
-		4A226E19187BF2B50003312F /* CTAssetsPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226E15187BF2B50003312F /* CTAssetsPickerController.m */; };
+		4A226E19187BF2B50003312F /* CTAssetsPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226E15187BF2B50003312F /* CTAssetsPickerController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		4A226E1A187BF2B50003312F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A226E16187BF2B50003312F /* Images.xcassets */; };
 		4A226E1B187BF2B50003312F /* NSDate+TimeInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226E18187BF2B50003312F /* NSDate+TimeInterval.m */; };
 		4A226E1D187BF3B30003312F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A226E1C187BF3B20003312F /* AssetsLibrary.framework */; };
@@ -524,6 +524,11 @@
 		4A94900B17B238640037D9A0 /* UILabel+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A94900317B238640037D9A0 /* UILabel+Size.m */; };
 		4A94901017B239D40037D9A0 /* ZJTHelpler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A94900D17B239CF0037D9A0 /* ZJTHelpler.m */; };
 		4A94901117B239D40037D9A0 /* ZJTStatusBarAlertWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A94900F17B239D20037D9A0 /* ZJTStatusBarAlertWindow.m */; };
+		4A9B65D2188E434D0087555C /* TopicPickerDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B65D1188E434D0087555C /* TopicPickerDisplayView.m */; };
+		4A9B65D4188E4DC70087555C /* TopicPickerDisplayView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A9B65D3188E4DC70087555C /* TopicPickerDisplayView~ipad.xib */; };
+		4A9B65D6188E4DE30087555C /* TopicPickerDisplayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A9B65D5188E4DE30087555C /* TopicPickerDisplayView.xib */; };
+		4A9B65D9188E4ED90087555C /* TopicPickerCommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B65D8188E4ED90087555C /* TopicPickerCommonView.m */; };
+		4A9B65DC188E5E8D0087555C /* PostStatusNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B65DB188E5E8D0087555C /* PostStatusNetwork.m */; };
 		4A9BFDA917B8984C00EC1415 /* kdc_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A9BFDA817B8984C00EC1415 /* kdc_1.png */; };
 		4A9C3FB1177A7ECB0088AA6D /* currentPageDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A9C3FAF177A7ECB0088AA6D /* currentPageDot@2x.png */; };
 		4A9C3FB2177A7ECB0088AA6D /* pageDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A9C3FB0177A7ECB0088AA6D /* pageDot@2x.png */; };
@@ -1576,6 +1581,15 @@
 		4A94900D17B239CF0037D9A0 /* ZJTHelpler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTHelpler.m; sourceTree = "<group>"; };
 		4A94900E17B239D10037D9A0 /* ZJTStatusBarAlertWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTStatusBarAlertWindow.h; sourceTree = "<group>"; };
 		4A94900F17B239D20037D9A0 /* ZJTStatusBarAlertWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTStatusBarAlertWindow.m; sourceTree = "<group>"; };
+		4A9B65D0188E434D0087555C /* TopicPickerDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicPickerDisplayView.h; sourceTree = "<group>"; };
+		4A9B65D1188E434D0087555C /* TopicPickerDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicPickerDisplayView.m; sourceTree = "<group>"; };
+		4A9B65D3188E4DC70087555C /* TopicPickerDisplayView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "TopicPickerDisplayView~ipad.xib"; sourceTree = "<group>"; };
+		4A9B65D5188E4DE30087555C /* TopicPickerDisplayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicPickerDisplayView.xib; sourceTree = "<group>"; };
+		4A9B65D7188E4ED90087555C /* TopicPickerCommonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicPickerCommonView.h; sourceTree = "<group>"; };
+		4A9B65D8188E4ED90087555C /* TopicPickerCommonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicPickerCommonView.m; sourceTree = "<group>"; };
+		4A9B65DA188E5E8D0087555C /* PostStatusNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostStatusNetwork.h; sourceTree = "<group>"; };
+		4A9B65DB188E5E8D0087555C /* PostStatusNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostStatusNetwork.m; sourceTree = "<group>"; };
+		4A9B65DE188E5EDE0087555C /* PostStatusNetworkConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostStatusNetworkConstant.h; sourceTree = "<group>"; };
 		4A9BFDA817B8984C00EC1415 /* kdc_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kdc_1.png; sourceTree = "<group>"; };
 		4A9C3FAF177A7ECB0088AA6D /* currentPageDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "currentPageDot@2x.png"; sourceTree = "<group>"; };
 		4A9C3FB0177A7ECB0088AA6D /* pageDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pageDot@2x.png"; sourceTree = "<group>"; };
@@ -2036,7 +2050,6 @@
 		4A0326BE17AA63F40016F6C5 /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4A88CC0518518783004E4D36 /* Menue */,
 				4A0326BF17AA63F80016F6C5 /* AJM_CommonViewController.h */,
 				4A0326C017AA63F80016F6C5 /* AJM_CommonViewController.m */,
 				4A0326C117AA63F80016F6C5 /* HomeViewController.h */,
@@ -2275,6 +2288,7 @@
 		4A0E22731855CB8300A07512 /* BBSHomeViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4A88CC0518518783004E4D36 /* Menue */,
 				4A0E22741855CBB200A07512 /* BBSHomeViewController.h */,
 				4A0E22751855CBB200A07512 /* BBSHomeViewController.m */,
 				4A0E228E1855F50500A07512 /* BBSHomeTableCell.h */,
@@ -2464,6 +2478,7 @@
 				4A27ADFD1777EED1009978C5 /* FitnessNetworkRequest.m */,
 				4A27ADFE1777EED1009978C5 /* README */,
 				4AD1D6541889387E00B07D19 /* StoreNetwork */,
+				4A9B65DD188E5E950087555C /* PostStatusNetwork */,
 			);
 			path = NetWorkRequest;
 			sourceTree = "<group>";
@@ -3765,6 +3780,7 @@
 				4A88CBFF1851864D004E4D36 /* HomeMenuView.m */,
 			);
 			name = Menue;
+			path = Controllers/HomeViewController;
 			sourceTree = "<group>";
 		};
 		4A8BCAD917AFE2D30019CBB1 /* WorkoutManager */ = {
@@ -3867,6 +3883,16 @@
 			);
 			name = "3PP-SDK";
 			path = "../Common_iPhone_20/3PP-SDK";
+			sourceTree = "<group>";
+		};
+		4A9B65DD188E5E950087555C /* PostStatusNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				4A9B65DA188E5E8D0087555C /* PostStatusNetwork.h */,
+				4A9B65DB188E5E8D0087555C /* PostStatusNetwork.m */,
+				4A9B65DE188E5EDE0087555C /* PostStatusNetworkConstant.h */,
+			);
+			name = PostStatusNetwork;
 			sourceTree = "<group>";
 		};
 		4AA7ECEB169F1597003E8949 /* SMPageControll */ = {
@@ -4669,6 +4695,12 @@
 				4AE545F0184DE4DF008CF804 /* BBSViewController.m */,
 				4AE545EB184DE466008CF804 /* BBSViewController.xib */,
 				4AE545ED184DE478008CF804 /* BBSViewController~ipad.xib */,
+				4A9B65D7188E4ED90087555C /* TopicPickerCommonView.h */,
+				4A9B65D8188E4ED90087555C /* TopicPickerCommonView.m */,
+				4A9B65D0188E434D0087555C /* TopicPickerDisplayView.h */,
+				4A9B65D1188E434D0087555C /* TopicPickerDisplayView.m */,
+				4A9B65D5188E4DE30087555C /* TopicPickerDisplayView.xib */,
+				4A9B65D3188E4DC70087555C /* TopicPickerDisplayView~ipad.xib */,
 				4A3853B0184DF7DF00D5A66B /* PostTopicViewController.h */,
 				4A3853B1184DF7DF00D5A66B /* PostTopicViewController.m */,
 				4A3853B5184DF7F900D5A66B /* PostTopicViewController.xib */,
@@ -4994,6 +5026,7 @@
 				4A0CA66317ABE65500314B8C /* social_networks@2x.png in Resources */,
 				4A8C57061881476000C715C2 /* description_bround.png in Resources */,
 				4AD1D66B1889468D00B07D19 /* readme.txt in Resources */,
+				4A9B65D6188E4DE30087555C /* TopicPickerDisplayView.xib in Resources */,
 				4A0CA66417ABE65500314B8C /* szicon_a@2x.png in Resources */,
 				4A0CA66517ABE65500314B8C /* top_cell_background.png in Resources */,
 				4A3165DB183E51E4008DC2CB /* HomeViewController ~ipad.xib in Resources */,
@@ -5173,6 +5206,7 @@
 				4A711E2817D5B93100E35B98 /* LeftSideViewIcon@2x.png in Resources */,
 				4A711E2F17D5B97C00E35B98 /* top_bar_backButton@2x.png in Resources */,
 				4A711E3117D5BEE400E35B98 /* Navigation_avartar_Image@2x.png in Resources */,
+				4A9B65D4188E4DC70087555C /* TopicPickerDisplayView~ipad.xib in Resources */,
 				4A711E3317D5D0B200E35B98 /* commentBar@2x.png in Resources */,
 				4A3558A8187997FA007FC165 /* Myself_SettingsViewController~ipad.xib in Resources */,
 				4A3558B018799DF7007FC165 /* ChangeDescriptionViewController~ipad.xib in Resources */,
@@ -5235,6 +5269,7 @@
 				4AA895F5188BBA3200652493 /* UINavigationController+CustomBackButton.m in Sources */,
 				4A499222168553A30073E682 /* PPTableViewCell.m in Sources */,
 				4A499223168553A30073E682 /* PPTableViewController.m in Sources */,
+				4A9B65D2188E434D0087555C /* TopicPickerDisplayView.m in Sources */,
 				4A499224168553A30073E682 /* PPViewController.m in Sources */,
 				4ACA75C5182CB80800567C77 /* TKLabelTextViewCell.m in Sources */,
 				4A499227168553A30073E682 /* TestPPViewController.m in Sources */,
@@ -5509,6 +5544,7 @@
 				4A5F3FD517914E2E00CD701A /* FeedBackViewController.m in Sources */,
 				4A2BCF801793919D006ED7C8 /* VersionInfo.m in Sources */,
 				4A4A5DB1179E512E00F00085 /* CommentViewController.m in Sources */,
+				4A9B65DC188E5E8D0087555C /* PostStatusNetwork.m in Sources */,
 				4A4A5E10179E76FB00F00085 /* CommentCell.m in Sources */,
 				4A4A5E13179E77B000F00085 /* CommentInfo.m in Sources */,
 				4ACA75D6182CB80800567C77 /* UIImage+TKCategory.m in Sources */,
@@ -5582,6 +5618,7 @@
 				4ACF0CD11839B80A00F7221C /* FileStreame.m in Sources */,
 				4A129C0C17CAED6100FD18B2 /* TPKeyboardAvoidingTableView.m in Sources */,
 				4ACA75CC182CB80800567C77 /* TKProgressCircleView.m in Sources */,
+				4A9B65D9188E4ED90087555C /* TopicPickerCommonView.m in Sources */,
 				4A129DD317CB4FC200FD18B2 /* WorkoutDataService.m in Sources */,
 				4ACA75BE182CB80800567C77 /* TKGraphView.m in Sources */,
 				4A0E22A71856EBFD00A07512 /* VotesViewController.m in Sources */,

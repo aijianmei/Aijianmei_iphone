@@ -719,62 +719,7 @@
 }
 
 
-///Statuses
-+ (CommonNetworkOutput *)loadStatusesById:(NSString*)baseURL
-                                       Id:(NSString*)Id
-                                 targetId:(NSString*)targetId
-                                 gymGroup:(NSString*)gymGroup
-                                    start:(NSString*)start
-                                   offSet:(NSString*)offSet{
 
-    CommonNetworkOutput* output = [[[CommonNetworkOutput alloc] init] autorelease];
-    ConstructURLBlock constructURLHandler = ^NSString *(NSString *baseURL)
-    {
-        
-        
-        // set input parameters
-        NSString* str = [NSString stringWithString:baseURL];
-        
-        str = [str stringByAddQueryParameter:AUCODE
-                                       value:AIJIANMEI];
-        str = [str stringByAddQueryParameter:PARA_AUACT
-                                       value:@"getCircleList"];
-        str = [str stringByAddQueryParameter:PARA_UID
-                                       value:Id];
-        str = [str stringByAddQueryParameter:@"targetUid"
-                                       value:targetId];
-        str = [str stringByAddQueryParameter:@"group"
-                                       value:gymGroup];
-        str = [str stringByAddQueryParameter:@"start"
-                                       value:start];
-        str = [str stringByAddQueryParameter:@"offSet"
-                                       value:offSet];
-        
-        return str;
-        
-    };
-    
-    PPNetworkResponseBlock responseHandler = ^(NSDictionary *dict, CommonNetworkOutput *output) {
-        
-        //确定返回的数据类型
-//        output.jsonDataDict = [dict objectForKey:RET_DATA];
-        
-        output.jsonDataArray = (NSArray *)dict;
-        
-        return;
-    };
-    
-    return [PPNetworkRequest forTestingsendRequest:baseURL
-                     constructURLHandler:constructURLHandler
-                         responseHandler:responseHandler
-                                  output:output];
-    
-    
-
-    
-    
-    
-}
 
 
 

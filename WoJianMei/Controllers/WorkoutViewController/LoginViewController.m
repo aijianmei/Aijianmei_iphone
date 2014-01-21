@@ -501,6 +501,7 @@ enum SinaResultErrorCode
                                                   password:nil];
             
             [[UserManager defaultManager] setUser:user];
+            [[UserManager defaultManager] storeUserInfoByUid:user.uid];
             
             [self dismissViewControllerAnimated:YES completion:^{}];
             
