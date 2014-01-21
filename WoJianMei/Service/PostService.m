@@ -11,9 +11,13 @@
 #import "PostStatusRespose.h"
 #import "Result.h"
 #import "PPViewController.h"
-#import "FitnessNetworkRequest.h"
 #import "FitnessNetworkConstants.h"
+#import "PostStatusNetwork.h"
+#import "PostStatusNetworkConstant.h"
 #import "CommonService.h"
+#import "UIImageExt.h"
+
+
 
 
 @protocol PostServiceDelegate <NSObject>
@@ -53,53 +57,53 @@
 
 #pragma mark --
 #pragma mark Post Status
-//-(void)postStatusWithUid:(NSString *)uid
-//                   image:(UIImage *)image
-//                 content:(NSString*)content
-//                delegate:(id<RKObjectLoaderDelegate>)delegate{
-//  //  http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=getcircleList
-//        //Router setup:
-//        RKObjectManager *objectManager = [RKObjectManager sharedManager];
-//        [objectManager.router routeClass:[PostStatusRespose class] toResourcePath:@"/ios.php" forMethod:RKRequestMethodPOST];
-//        
-//        NSLog(@"Post an Image baseURL %@%@",[objectManager baseURL],@"/ios.php");
-//
-//        //Mapping setup:
-//        RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[PostStatusRespose class]];
-//        [userMapping mapKeyPathsToAttributes:
-//         @"errorCode", @"errorCode",
-//         @"uid",@"uid",
-//         nil];
-//        [objectManager.mappingProvider addObjectMapping:userMapping];
-//        [objectManager.mappingProvider setMapping:userMapping forKeyPath:@""];
-//    
-//      PostStatusRespose *postStatusRespose = [[PostStatusRespose alloc]init];
-//    
-//        //The post
-//        RKParams* params = [RKParams params];
-//        [params setValue:@"aijianmei" forParam:@"aucode"];
-//        [params setValue:@"postCircleList" forParam:@"auact"];
-//        [params setValue:uid forParam:@"uid"];
-//        [params setValue:content forParam:@"content"];
-//    
-//        NSData *imageData = UIImagePNGRepresentation(image);
-//        if (imageData)
-//        {
-//           [params setData:imageData MIMEType:@"image/png" forParam:@"imageurl"];
-//        }
-//    
-//        [objectManager postObject:postStatusRespose usingBlock:^(RKObjectLoader *loader)
-//         {
-//             loader.delegate = delegate;
-//             loader.params = params;
-//             loader.targetObject = nil;
-//             loader.onDidLoadResponse = ^(RKResponse *response) {
-//                 NSLog(@"Response did arrive");
-//                 NSLog(@"%@",response.bodyAsString);
-//             };
-//         }];
-//}
-//
+-(void)postStatusWithUid:(NSString *)uid
+                   image:(UIImage *)image
+                 content:(NSString*)content
+          viewController:(PPViewController<PostStatusServiceDelegate>* )viewController{
+    
+    [viewController showProgressHUDActivityWithText:@"加载中..."];
+
+    dispatch_async(workingQueue, ^{
+        CommonNetworkOutput* output = nil;
+        output = [PostStatusNetwork postStatusByUid:SERVER_URL
+                                                uId:uid
+                                              image:[image data]
+                                            content:content];
+        
+        
+        
+        //Back to the Main Queue
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [viewController hideProgressHUDActivity];
+            NSMutableArray *restulArray = [[[NSMutableArray alloc]initWithCapacity:[output.jsonDataArray count]] autorelease];
+
+            if (output.resultCode == ERROR_SUCCESS) {
+                int i = 0;
+                for (i = 0;i<=[output.jsonDataArray count]-1;i++) {
+                    PostStatus *p =[[PostStatus alloc]initWithDictionary:[output.jsonDataArray objectAtIndex:i]];
+                    [restulArray addObject:p];
+                }
+            }
+            
+            else if (output.resultCode == ERROR_NETWORK) {
+                [viewController popupUnhappyMessage:NSLS(@"kSystemFailure") title:nil];
+            }
+            
+            
+            
+            if ([viewController respondsToSelector:@selector(didPostStatusesSucceeded:)]){
+                [viewController didPostStatusesSucceeded:output.resultCode];
+            }
+            
+            
+            
+            
+        });
+    });
+}
+
 #pragma mark --
 #pragma mark load Status
 -(void)loadStatusWithUid:(NSString*)uid
@@ -112,7 +116,7 @@
     [viewController showProgressHUDActivityWithText:@"加载中..."];
     dispatch_async(workingQueue, ^{
         CommonNetworkOutput* output = nil;
-        output = [FitnessNetworkRequest loadStatusesById:SERVER_URL
+        output = [PostStatusNetwork loadStatusesById:SERVER_URL
                                                       Id:uid
                                                 targetId:targetUid
                                                 gymGroup:gymGroup
