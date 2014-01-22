@@ -36,7 +36,7 @@
         str = [str stringByAddQueryParameter:AUCODE
                                        value:AIJIANMEI];
         str = [str stringByAddQueryParameter:PARA_AUACT
-                                       value:@"postCircleList"];
+                                       value:@"postcircleList"];
         str = [str stringByAddQueryParameter:PARA_UID
                                        value:uid];
         str = [str stringByAddQueryParameter:@"content"
@@ -99,7 +99,7 @@
     //        //The post
     //        RKParams* params = [RKParams params];
     //        [params setValue:@"aijianmei" forParam:@"aucode"];
-    //        [params setValue:@"postCircleList" forParam:@"auact"];
+    //        [params setValue:@"postcircleList" forParam:@"auact"];
     //        [params setValue:uid forParam:@"uid"];
     //        [params setValue:content forParam:@"content"];
     //
