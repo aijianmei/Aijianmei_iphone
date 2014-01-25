@@ -144,7 +144,6 @@
     [self addButtonScrollView];
     
     [[AppDelegate getAppDelegate] showLoginView];
-
 }
 
 

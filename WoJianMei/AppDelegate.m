@@ -92,7 +92,12 @@ NSString* GlobalGetServerURL()
 //    return [ConfigManager getAPIServerURL];
     
     
+     //Debug
     
+  //    return @"http://192.168.1.107/~tomcallon/tom/ios.php?";
+
+    
+    //For Online
      return @"http://115.29.42.96/wapapi/ios.php?";
     
 }

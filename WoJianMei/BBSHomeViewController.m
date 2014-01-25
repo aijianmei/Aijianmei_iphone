@@ -153,6 +153,9 @@
     
     [self loadPublicPostDatas];
     
+    [self.dataTableView setHidden:YES];
+
+    
 }
 
 
@@ -500,6 +503,8 @@
     PPDebug(@"****objects %d******",[self.dataList count]);
     [self.dataTableView reloadData];
     
+    [self.dataTableView setHidden:NO];
+
 }
 
 @end

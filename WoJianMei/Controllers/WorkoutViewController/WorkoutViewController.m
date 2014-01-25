@@ -209,6 +209,7 @@ typedef enum CONTENT_TYPE {
 #pragma mark  UPDATEUI  Methods
 -(void)updateUserInterface{
     [self hideActivity];
+    [self.dataTableView setHidden:NO];
     [self.carousel reloadData];
     [self.dataTableView reloadData];
     [_spacePageControl setNumberOfPages:NUMBER_OF_ITEMS];
@@ -232,6 +233,8 @@ typedef enum CONTENT_TYPE {
     [self addSpacePageControl];
     
     [self showLoginView];
+    
+    [self.dataTableView setHidden:YES];
 }
 
 
@@ -676,7 +679,7 @@ typedef enum CONTENT_TYPE {
 
 -(void)carouselCurrentItemIndexUpdated:(iCarousel *)carousel{
     
-    PPDebug(@"%d",[carousel currentItemIndex]);
+//    PPDebug(@"%d",[carousel currentItemIndex]);
     
     [self.spacePageControl setCurrentPage:[carousel currentItemIndex]];
 }

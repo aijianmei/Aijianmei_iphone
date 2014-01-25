@@ -510,11 +510,22 @@ static int currentPageIndex = 0;
         self.dataList = products;
     }
 
-    [self.dataTableView reloadData];
-    [self.carousel  reloadData];
     
+    
+    [self updateUserInterface];
     
 }
+
+#pragma mark -
+#pragma mark  UPDATEUI  Methods
+-(void)updateUserInterface{
+    [self hideActivity];
+    [self.dataTableView setHidden:NO];
+    [self.carousel reloadData];
+    [self.dataTableView reloadData];
+    [_spacePageControl setNumberOfPages:NUMBER_OF_ITEMS];
+}
+
 
 
 @end

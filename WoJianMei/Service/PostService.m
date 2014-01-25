@@ -125,6 +125,9 @@
         //Back to the Main Queue
         dispatch_async(dispatch_get_main_queue(), ^{
             
+            [viewController hideProgressHUDActivity];
+
+            
             NSMutableArray *restulArray = [[[NSMutableArray alloc]initWithCapacity:[output.jsonDataArray count]] autorelease];
             if (output.resultCode == ERROR_SUCCESS) {
                 [viewController hideProgressHUDActivity];

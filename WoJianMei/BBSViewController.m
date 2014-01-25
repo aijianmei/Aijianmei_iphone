@@ -60,11 +60,11 @@
 -(void)viewDidAppear:(BOOL)animated{
     
     if ([[VideoManager defaultManager] videoPath]) {
-        [NSTimer scheduledTimerWithTimeInterval:0.5
-                                         target:self
-                                       selector:@selector(handleLoadNewDatas)
-                                       userInfo:nil
-                                        repeats:NO];
+//        [NSTimer scheduledTimerWithTimeInterval:0.5
+//                                         target:self
+//                                       selector:@selector(handleLoadNewDatas)
+//                                       userInfo:nil
+//                                        repeats:NO];
     }
     
     [super viewDidAppear:animated];
@@ -107,6 +107,9 @@
     [self initButtons];
     [self initTableHeaderView];
     [self addCarouselSliders];
+    
+    [self.dataTableView setHidden:YES];
+
     
 }
 
@@ -247,12 +250,12 @@
 }
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
-    PPDebug(@"I did selected the picture of %d",index);
+//    PPDebug(@"I did selected the picture of %d",index);
 }
 
 -(void)carouselCurrentItemIndexUpdated:(iCarousel *)carousel{
     
-    PPDebug(@"%d",[carousel currentItemIndex]);
+//    PPDebug(@"%d",[carousel currentItemIndex]);
 }
 
 
@@ -398,8 +401,10 @@
     
     _start += [objects count];
     PPDebug(@"****objects %d******",[self.dataList count]);
+    [self.dataTableView setHidden:NO];
     [self.dataTableView reloadData];
     
+
     
 }
 

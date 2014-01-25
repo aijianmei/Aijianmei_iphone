@@ -50,7 +50,6 @@
 
 -(void)buttonClicked:(SDSegmentedControl *)sender;
 -(void)updateUserInterface;
--(void)pushToMyselfViewController;
 
 
 
