@@ -1,3 +1,4 @@
+
 //
 //  LoginViewController.m
 //  WoJianMei
@@ -17,6 +18,8 @@
 #import "SinaResult.h"
 #import "BaiduMobStat.h"
 #import "DeviceDetection.h"
+#import "StringUtil.h"
+
 
 //239725454
 //e2064ac8fab9d889a9eccecc5babad11
@@ -223,6 +226,16 @@ enum SinaResultErrorCode
     tapCgr.numberOfTapsRequired=1;
     [self.view addGestureRecognizer:tapCgr];
     [tapCgr release];
+    
+    
+    
+    //if
+     NSString *userEmail =[UserManager loadUserEmail];
+     NSString *userPassword =[UserManager loadUserPassword];
+
+     [self.usernameField setText:userEmail];
+     [self.passwordField setText:userPassword];
+
 
 }
 
@@ -251,10 +264,10 @@ enum SinaResultErrorCode
     }
     NSDictionary *userInfo = nil;
     if ([self.userType isEqualToString:@"sina"]) {
-        userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
+        userInfo = [[UserManager defaultManager] getSinaUserInfoWithUid:self.snsId];
     }
     if ([self.userType isEqualToString:@"qq"]) {
-//        userInfo = [[UserService defaultService] getSinaUserInfoWithUid:self.snsId];
+       userInfo = [[UserManager defaultManager] getSinaUserInfoWithUid:self.snsId];
     }
     
     if ([self.userType isEqualToString:@"local"]) {
@@ -264,6 +277,8 @@ enum SinaResultErrorCode
                                             password:_passwordField.text
                                             usertype:self.userType
                                             viewController:self];
+    
+    
     
     
 }
@@ -352,6 +367,8 @@ enum SinaResultErrorCode
 {
     NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
     [[SinaWeiboManager sharedManager] storeAuthData];
+    
+    
     //微博登陆后获取用户数据
     [[UserService defaultService] fetchSinaUserInfo:sinaweibo.userID
                                            delegate:self];
@@ -502,6 +519,17 @@ enum SinaResultErrorCode
             
             [[UserManager defaultManager] setUser:user];
             [[UserManager defaultManager] storeUserInfoByUid:user.uid];
+            [[UserManager defaultManager] storeUserId:uid];
+
+
+            
+            ///存储好用户名以及登陆密码
+            [[UserManager defaultManager] storeUserEmail:_usernameField.text];
+            [[UserManager defaultManager] storeUserPassword:_passwordField.text];
+
+            
+            
+            
             
             [self dismissViewControllerAnimated:YES completion:^{}];
             

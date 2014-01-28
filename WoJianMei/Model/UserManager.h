@@ -40,12 +40,24 @@
 
 @property (nonatomic,retain) User *user;
 
-- (NSString*)userId;
 + (BOOL)isUserExisted;
-+ (NSString *)getUserId;
+- (NSString*)userId;
+- (BOOL)storeUserId:(NSString *)uid;
++ (NSString *)loadUserId;
+
+
+//Set the email and password info at login view controller
+-(BOOL)storeUserEmail:(NSString *)userEmail;
++ (NSString*)loadUserEmail;
+
+-(BOOL)storeUserPassword:(NSString *)userPassword;
++(NSString*)loadUserPassword;
+
+
+
 - (void)storeUserData:(User*)user;
 
--(void)storeUserInfoByUid:(NSString *)uid;
+-(BOOL)storeUserInfoByUid:(NSString *)uid;
 //获取保存在本地的用户信息
 -(User*)getUserInfoByUid:(NSString *)uid;
 

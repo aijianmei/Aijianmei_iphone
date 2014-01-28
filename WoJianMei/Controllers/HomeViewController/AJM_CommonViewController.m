@@ -206,7 +206,7 @@
 -(void)addButtonScrollView{
     ////Configure The ButtonScrollView
     
-    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"最新文章",@"最热文章",@"最新视频",@"最热视频", nil];
+    NSArray *buttonTitleArray =[NSArray arrayWithObjects:@"运动营养",@"运动服饰",@"运动器材",@"运动减肥", nil];
     
     
     self.segmentedController=[[SDSegmentedControl alloc]initWithItems:buttonTitleArray];

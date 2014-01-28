@@ -170,15 +170,15 @@ enum TapOnItem {
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    [self showActivityWithText:@"加载中..."];
+    [self showProgressHUDActivityWithText:@"加载中..."];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self hideActivity];
+    [self hideProgressHUDActivity];
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    [self hideActivity];
+    [self hideProgressHUDActivity];
 }
 
 #pragma mark --
@@ -826,14 +826,14 @@ enum TapOnItem {
     if ([request.url hasSuffix:@"statuses/upload.json"])
     {
         NSLog(@"******%@",[error description]);
-        [self hideActivity];
+        [self hideProgressHUDActivity];
         [self popupHappyMessage:@"分享失败" title:@""];
     }
     
     if ([request.url hasSuffix:@"users/show.json"])
     {
         NSLog(@"******%@",[error description]);
-        [self hideActivity];
+        [self hideProgressHUDActivity];
         [self popupHappyMessage:@"用户资料获取失败" title:@""];
     }
     
@@ -845,7 +845,7 @@ enum TapOnItem {
     if ([request.url hasSuffix:@"statuses/upload.json"])
     {
         NSLog(@"******%@",[result description]);
-        [self hideActivity];
+        [self hideProgressHUDActivity];
         [self popupHappyMessage:@"分享成功" title:@""];
     }
     

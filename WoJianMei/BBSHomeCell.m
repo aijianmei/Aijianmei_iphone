@@ -186,8 +186,6 @@
 }
 
 + (CGFloat)getCellHeightWithBBSPost:(PostStatus *)post{
-    
-    
     CGFloat titleHeight = [BBSHomeCell heightForTitleText:post.content];
     CGFloat topBasicInfoHeight = [BBSHomeCell heightForTopBasicInfoText:post.content];
     CGFloat contentHeight = [BBSHomeCell heightForContentText:@"sf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadDDDDDDDDDDDDDDDD"];

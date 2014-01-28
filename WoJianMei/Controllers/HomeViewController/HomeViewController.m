@@ -156,11 +156,11 @@ typedef enum CONTENT_TYPE {
     [_segmentedController setSelectedSegmentIndex:0];
     
     if ([[UserManager defaultManager]user]) {
+        
+        
         [self buttonClicked:sender];
 
     }
-    
-
 }
 
 
@@ -215,9 +215,7 @@ typedef enum CONTENT_TYPE {
     [self.viewDeckController toggleRightViewAnimated:YES];
     
     
-    User *user = [[UserManager defaultManager] user];
-    
-    if (user.uid) {
+    if ([[UserManager defaultManager]user]) {
         Myself_SettingsViewController *vc =[[Myself_SettingsViewController alloc]initWithNibName:@"Myself_SettingsViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
 

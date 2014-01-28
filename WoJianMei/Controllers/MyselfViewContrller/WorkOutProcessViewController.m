@@ -221,8 +221,6 @@
 
 #pragma mark -
 #pragma mark - RKObjectLoaderDelegate
-
-
 - (void)objectLoader:(NSString *)objectLoader didLoadObjects:(NSArray *)objects
 {
     NSLog(@"***Load objects count: %d", [objects count]);

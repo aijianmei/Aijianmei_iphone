@@ -205,7 +205,7 @@ NSString* GlobalGetServerURL()
 
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
-        if (![[UserManager defaultManager] user]){
+        if (![[UserManager defaultManager]user]){
             LoginViewController *loginViewController = [[AppDelegate getAppDelegate] initLoginViewController];
             loginViewController.delegate = [self homeViewController];
             UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:loginViewController];            
@@ -215,7 +215,7 @@ NSString* GlobalGetServerURL()
     }
     else
     {
-        if (![[UserManager defaultManager] user]){
+        if (![[UserManager defaultManager]user]){
         LoginViewController *loginViewController = [[AppDelegate getAppDelegate] initLoginViewController];
         loginViewController.delegate = [self homeViewController];
         UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:loginViewController];
@@ -485,8 +485,12 @@ NSString* GlobalGetServerURL()
     //从本地获取用户信息
     //TOTO:根据用户uid登陆获取信息
     
-    NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey: @"OriginalUserId"];
+    
+    NSString *uid =[UserManager loadUserId];
     PPDebug(@"*****OriginalUserId :%@*****",uid);
+    
+    
+    
     
     if (uid !=nil) {
         User *user  =[[UserManager defaultManager] getUserInfoByUid:uid];
@@ -716,12 +720,22 @@ NSString* GlobalGetServerURL()
 {
     BOOL success;
 
-    if ([sourceApplication isEqualToString:@"com.sina.weibo"] && [url.absoluteString hasPrefix:SinaweibossoLogin]){
-        
+    //For weibo HD like ipad
+    if ([sourceApplication isEqualToString:@"com.sina.weibohd"] && [url.absoluteString hasPrefix:SinaweibossoLogin]){
+    
          success =[[SinaWeiboManager sharedManager].sinaweibo handleOpenURL:url];
         
         return success;
     }
+    
+    //For weibo like iphone 5
+    if ([sourceApplication isEqualToString:@"com.sina.weibo"] && [url.absoluteString hasPrefix:SinaweibossoLogin]){
+        
+        success =[[SinaWeiboManager sharedManager].sinaweibo handleOpenURL:url];
+        
+        return success;
+    }
+
     
     if ([sourceApplication isEqualToString:@"com.tencent.xin"] && [url.absoluteString hasSuffix:@"wechat"]){
         

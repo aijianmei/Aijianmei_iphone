@@ -469,7 +469,7 @@ static UserService* _defaultUserService = nil;
            viewController:(PPViewController<UserServiceDelegate>*)viewController
 
 {
-    [viewController showProgressHUDActivityWithText:@"加载中..."];
+    [viewController showProgressHUDActivityWithText:@"登陆中..."];
     
     //A new working Queue
     dispatch_async(workingQueue, ^{
@@ -523,8 +523,6 @@ static UserService* _defaultUserService = nil;
                 
                 if ([viewController respondsToSelector:@selector(createAcountBySinaWeibo:)]){
                     [viewController createAcountBySinaWeibo:output.resultCode];
-                    
-                    
                 }
             }
             });

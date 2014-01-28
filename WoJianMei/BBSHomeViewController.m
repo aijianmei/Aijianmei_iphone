@@ -20,7 +20,7 @@
 
 
 
-#define MAIN_MENU_ORIGIN_Y ISIPAD ? 365 : 0
+#define MAIN_MENU_ORIGIN_Y ISIPAD ? 0 : 0
 
 
 

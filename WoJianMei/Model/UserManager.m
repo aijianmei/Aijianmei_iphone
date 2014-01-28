@@ -13,7 +13,12 @@
 
 
 
-#define USERID @"AijianmeiUserId"
+#define USERID @"OriginalUserId"
+
+#define USER_EMAIL @"Aijianmei_User_Email"
+#define USER_PassWord @"Aijianmei_User_PassWord"
+
+
 #define AVATAR_LOCAL_FILENAME   @"user_avatar.png"
 
 
@@ -40,6 +45,7 @@ static UserManager* _defaultManager;
     return self.user.uid;
 }
 
+
 - (void)storeUserData:(User*)user {
     
     
@@ -59,16 +65,25 @@ static UserManager* _defaultManager;
 
 
 }
--(void)storeUserInfoByUid:(NSString *)uid
+-(BOOL)storeUserInfoByUid:(NSString *)uid
 {
     
+    BOOL storeSuccess = NO;
+    
+    if (uid) {
     //以后程序启动的时候就是要读取默认的这个Uid数据;
-    [[NSUserDefaults standardUserDefaults] setObject:uid forKey:@"OriginalUserId"];
+    [[NSUserDefaults standardUserDefaults] setObject:uid forKey:USERID];
     
-    
-    NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.user];
+     NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.user];
     [[NSUserDefaults standardUserDefaults] setObject:userData forKey:uid];
+        
+        PPDebug(@"Store userID %@ Successfully !",[ UserManager loadUserId]);
+        storeSuccess = YES;
+        return storeSuccess ;
+    }
+
     
+    return storeSuccess;
 }
 
 //获取保存在本地的用户信息
@@ -183,6 +198,7 @@ avatarBackgroundImageURL:(NSString *)avatarBackgroundImageURL;
 
 
 
+
 + (BOOL)isUserExisted
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -193,11 +209,84 @@ avatarBackgroundImageURL:(NSString *)avatarBackgroundImageURL;
     return NO;
 }
 
-+ (NSString *)getUserId
+- (BOOL)storeUserId:(NSString *)uid{
+    
+    BOOL storeSuccess  =NO;
+    
+    if (uid) {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:uid forKey:USERID];
+        PPDebug(@"#####Store user ID  %@ Successfully!!!",[UserManager loadUserId]);
+        storeSuccess = YES;
+        return storeSuccess;
+    }
+    else if(uid ==nil){
+        PPDebug(@"#####Store user ID  Fail!!!");
+        storeSuccess =NO;
+        return storeSuccess;
+
+    }
+    
+    
+    
+    return storeSuccess;
+    
+}
++ (NSString *)loadUserId
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    return [userDefaults objectForKey:USERID];
+    NSString *uid = [userDefaults objectForKey:USERID];
+    
+    return uid;
 }
+
+
+
+-(BOOL)storeUserEmail:(NSString *)userEmail{
+    
+    BOOL storeSuccess = NO;
+    if ([userEmail length] != 0) {
+        [[NSUserDefaults standardUserDefaults] setObject:userEmail forKey:USER_EMAIL];
+        storeSuccess = YES;
+        
+        PPDebug(@"#####Store user Email  %@ Successfully!!!",[UserManager loadUserEmail]);
+        return storeSuccess;
+    }
+    else if (userEmail  ==nil){
+    PPDebug(@"####userEmail is nil");
+        return storeSuccess;
+    }
+    
+    return storeSuccess;
+}
+
++ (NSString*)loadUserEmail{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *userEmail =[userDefaults objectForKey:USER_EMAIL];
+    return userEmail;
+}
+-(BOOL)storeUserPassword:(NSString *)userPassword{
+    BOOL storeSuccess = NO;
+    if ([userPassword length] != 0) {
+    [[NSUserDefaults standardUserDefaults] setObject:userPassword forKey:USER_PassWord];
+        storeSuccess = YES;
+        PPDebug(@"#####Store User Password %@ Successfully!!!",[UserManager loadUserPassword]);
+        return storeSuccess;
+        
+    }else if (userPassword ==nil){
+        PPDebug(@"####Password is nil");
+        return storeSuccess;
+    }
+    
+    return storeSuccess;
+}
++(NSString*)loadUserPassword{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *userEmail =[userDefaults objectForKey:USER_PassWord];
+    return userEmail;
+}
+
+
 
 
 -(void)deleteUserByUid:(NSString *)uid
@@ -211,8 +300,14 @@ avatarBackgroundImageURL:(NSString *)avatarBackgroundImageURL;
     if ([self getUserInfoByUid:uid])
     {
         [[NSUserDefaults standardUserDefaults]  removeObjectForKey:uid];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OriginalUserId"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERID];
+        
+        [[NSUserDefaults standardUserDefaults] synchronize];
         NSLog(@"####Delete User with ID :%@ Successfully!",uid);
+        
+        
+        
+        
     }
     
     [self setUser:nil];
