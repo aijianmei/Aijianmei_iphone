@@ -26,7 +26,7 @@
                     <textInputTraits key="textInputTraits" returnKeyType="send" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" tag="12" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBX-Es-Mfc">
-                    <rect key="frame" x="293" y="351" width="47" height="34"/>
+                    <rect key="frame" x="265" y="351" width="47" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <state key="normal" title="注  册">
@@ -56,7 +56,7 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6X-Bh-rHY">
-                    <rect key="frame" x="390" y="351" width="47" height="34"/>
+                    <rect key="frame" x="430" y="351" width="47" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <state key="normal" title="登  陆">

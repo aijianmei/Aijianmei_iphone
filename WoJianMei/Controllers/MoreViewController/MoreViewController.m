@@ -621,7 +621,6 @@ enum BUTTON_INDEX {
     if ([DeviceDetection isOS6]){
         
         [self showAWSheet];
-        
     }
     else{
         whichAcctionSheet = RECOMMENDATION;
@@ -671,7 +670,11 @@ enum BUTTON_INDEX {
 -(void)logout{
     
     PPDebug(@"User is trying to logout");
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"若退出当前账号,您的所有用户数据将会被清楚！" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                    message:@"若您退出当前账号,您的所有用户数据将会被删除！"
+                                                   delegate:self
+                                          cancelButtonTitle:@"取消"
+                                          otherButtonTitles:@"确定", nil];
     [alert show];
     [alert release];
 
