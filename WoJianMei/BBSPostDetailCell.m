@@ -58,7 +58,7 @@
 }
 - (void)updateContentWithBBSPost:(PostStatus *)post{
     
-    [self.avtarImageView setImageWithURL:[NSURL URLWithString:post.avatarProfileUrl] placeholderImage:nil success:^(UIImage *image, BOOL cached) {
+    [self.avtarImageView setImageWithURL:[NSURL URLWithString:@"http://192.168.1.106/~tomcallon/image1.jpg"] placeholderImage:nil success:^(UIImage *image, BOOL cached) {
         
     } failure:^(NSError *error) {
         
@@ -67,7 +67,13 @@
     [self.textView setText:post.content];
     
     
-    [self.imgView  setImageWithURL:[NSURL URLWithString:post.imageurl]];
+    [self.imgView  setImageWithURL:[NSURL URLWithString:@"http://192.168.1.106/~tomcallon/image2.jpg"] placeholderImage:nil success:^(UIImage *image, BOOL cached) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+
+    
 
 }
 

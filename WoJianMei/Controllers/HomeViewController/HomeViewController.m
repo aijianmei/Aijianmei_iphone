@@ -722,6 +722,7 @@ typedef enum CONTENT_TYPE {
 #pragma mark - DidGetArticleArrayMethods
 -(void)didGetArticleArray:(NSArray *)objects errorCode:(int)errorCode
 {
+   
     
     if (errorCode ==ERROR_NETWORK ) {
         

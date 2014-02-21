@@ -78,22 +78,28 @@
     [self.titleLabel setText:@"我练习胸肌的方法正确吗？？buddy !!!!"];
     CGFloat titleHeight =[PostDetailHeaderView   heightForTitleText:self.titleLabel.text];
     [self  resetView:self.titleLabel y:20 height:titleHeight];
-    [self.titleLabel setBackgroundColor:[UIColor redColor]];
+//    [self.titleLabel setBackgroundColor:[UIColor redColor]];
     
     
     //Text Content
     [self.contentView setText:@"以下是我的健身房方法哦，请各位大神看看我的健身方法是否正确哦。"];
     CGFloat textHeight =[PostDetailHeaderView   heightForTitleText:self.contentView.text];
     [self  resetView:self.contentView y:20 height:textHeight];
-    [self.contentView setBackgroundColor:[UIColor greenColor]];
+//    [self.contentView setBackgroundColor:[UIColor greenColor]];
 
     
     
-    [self.imageView setImageWithURL:[NSURL URLWithString:post.imageurl] placeholderImage:nil success:^(UIImage *image, BOOL cached) {
-        
-    } failure:^(NSError *error) {
-        
-    }];
+    
+    [self.imageView setImageWithURL:[NSURL URLWithString:@"http://192.168.1.106/~tomcallon/image2.jpg"]
+                   placeholderImage:[UIImage imageNamed:@"place_holder@2x.png"]
+                            success:^(UIImage *image, BOOL cached)
+     {
+     }
+                            failure:^(NSError *error)
+     {
+         
+     }];
+
     
     [self.nameLable setText:@"我是猛男"];
     [self.genderLabel setText:@"男"];

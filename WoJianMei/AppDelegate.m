@@ -94,7 +94,7 @@ NSString* GlobalGetServerURL()
     
      //Debug
     
-  //    return @"http://192.168.1.107/~tomcallon/tom/ios.php?";
+//     return @"http://192.168.1.104/~tomcallon/htdocs/wapapi/ios.php?";
 
     
     //For Online
@@ -488,8 +488,6 @@ NSString* GlobalGetServerURL()
     
     NSString *uid =[UserManager loadUserId];
     PPDebug(@"*****OriginalUserId :%@*****",uid);
-    
-    
     
     
     if (uid !=nil) {

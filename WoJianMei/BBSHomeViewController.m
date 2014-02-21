@@ -153,7 +153,7 @@
     
     [self loadPublicPostDatas];
     
-    [self.dataTableView setHidden:YES];
+    [self.dataTableView setHidden:NO];
 
     
 }
@@ -461,6 +461,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark --
+#pragma mark  DidLoadStatusesSucceeded Method
+
 -(void)didLoadStatusesSucceeded:(int)errorCode didLoadObjects:(NSArray *)objects
 {
     [self dataSourceDidFinishLoadingNewData];

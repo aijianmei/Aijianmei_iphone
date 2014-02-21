@@ -36,7 +36,7 @@
         str = [str stringByAddQueryParameter:AUCODE
                                        value:AIJIANMEI];
         str = [str stringByAddQueryParameter:PARA_AUACT
-                                       value:@"postcircleList"];
+                                       value:@"postCircleList"];
         str = [str stringByAddQueryParameter:PARA_UID
                                        value:uid];
         str = [str stringByAddQueryParameter:@"content"
@@ -77,51 +77,6 @@
                        constructURLHandler:constructURLHandler
                            responseHandler:responseHandler
                                     output:output];
-    
-    //  //  http://42.96.132.109/wapapi/ios.php?aucode=aijianmei&auact=getcircleList
-    //        //Router setup:
-    //        RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    //        [objectManager.router routeClass:[PostStatusRespose class] toResourcePath:@"/ios.php" forMethod:RKRequestMethodPOST];
-    //
-    //        NSLog(@"Post an Image baseURL %@%@",[objectManager baseURL],@"/ios.php");
-    //
-    //        //Mapping setup:
-    //        RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[PostStatusRespose class]];
-    //        [userMapping mapKeyPathsToAttributes:
-    //         @"errorCode", @"errorCode",
-    //         @"uid",@"uid",
-    //         nil];
-    //        [objectManager.mappingProvider addObjectMapping:userMapping];
-    //        [objectManager.mappingProvider setMapping:userMapping forKeyPath:@""];
-    //
-    //      PostStatusRespose *postStatusRespose = [[PostStatusRespose alloc]init];
-    //
-    //        //The post
-    //        RKParams* params = [RKParams params];
-    //        [params setValue:@"aijianmei" forParam:@"aucode"];
-    //        [params setValue:@"postcircleList" forParam:@"auact"];
-    //        [params setValue:uid forParam:@"uid"];
-    //        [params setValue:content forParam:@"content"];
-    //
-    //        NSData *imageData = UIImagePNGRepresentation(image);
-    //        if (imageData)
-    //        {
-    //           [params setData:imageData MIMEType:@"image/png" forParam:@"imageurl"];
-    //        }
-    //
-    //        [objectManager postObject:postStatusRespose usingBlock:^(RKObjectLoader *loader)
-    //         {
-    //             loader.delegate = delegate;
-    //             loader.params = params;
-    //             loader.targetObject = nil;
-    //             loader.onDidLoadResponse = ^(RKResponse *response) {
-    //                 NSLog(@"Response did arrive");
-    //                 NSLog(@"%@",response.bodyAsString);
-    //             };
-    //         }];
-    //}
-    //
-    
 }
 
 ///load Single Image Statuse

@@ -92,14 +92,14 @@
 -(void)clickDoneButton:(UIButton *)sender{
     
     User *user =  [[UserManager defaultManager] user];
-    
+    NSString *uid = [user uid];
     
 //    ALAsset *asset = [self.assets objectAtIndex:0];
        UIImage *image = [UIImage imageNamed:@"72x72.png"];
     
 
-    if (image) {
-        [[PostService sharedService] postStatusWithUid:user.uid
+    if (image && uid) {
+        [[PostService sharedService] postStatusWithUid:uid
                                                  image:image
                                                content:@"forTesing"
                                         viewController:self];

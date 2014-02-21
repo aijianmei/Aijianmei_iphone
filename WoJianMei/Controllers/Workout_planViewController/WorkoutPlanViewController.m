@@ -15,7 +15,7 @@
 #import "Myself_SettingsViewController.h"
 #import "SMPageControl.h"
 #import "SDSegmentedControl.h"
-
+#import "UIImageView+WebCache.h"
 
 
 ///// the setings of the iCarousel
@@ -162,10 +162,10 @@
     ////Configure The ButtonScrollView
     
     NSArray *buttonTitleArray =[NSArray arrayWithObjects:
-                                @"Daily Dose",
-                                @"Get Lean",
-                                @"Get Moving",
-                                @"Get Strong",
+                                @"日常锻炼",
+                                @"增肌增重",
+                                @"瘦身减肥",
+                                @"每日瑜伽",
                                 nil];
     
     
@@ -306,6 +306,13 @@
 	//create new view if no view is available for recycling
     UILabel *label = nil;
     
+    NSArray *demoArray  = [NSArray arrayWithObjects:
+                           @"http://192.168.1.106/~tomcallon/planImage1.jpg",
+                           @"http://192.168.1.106/~tomcallon/planImage2.jpg",
+                           @"http://192.168.1.106/~tomcallon/planImage3.jpg",
+                           @"http://192.168.1.106/~tomcallon/planImage4.jpg", nil];
+    
+    
 	if (view == nil)
 	{
         ///add images
@@ -313,7 +320,7 @@
         //set up content
         if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone){
             view = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 220.0f, 160.0f+ 200)] autorelease];
-            [view setBackgroundColor:[UIColor redColor]];
+//            [view setBackgroundColor:[UIColor redColor]];
             [imageView setFrame:CGRectMake(0, 0, 190.0f, 160.0f + 200)];
             
         }else{
@@ -321,8 +328,14 @@
             [imageView setFrame:CGRectMake(0, 0, 768.0f, 320.0f)];
             
         }
+                
+         [imageView setImageWithURL:[NSURL URLWithString:[demoArray objectAtIndex:index]] placeholderImage:[ImageManager sliderPlacHolderImage] success:^(UIImage *image, BOOL cached) {
+             //TODO
+         } failure:^(NSError *error) {
+             //TODO
+         }];
         
-        [imageView setImage:[ImageManager sliderPlacHolderImage]];
+        
         [view addSubview:imageView];
         [imageView release];
         

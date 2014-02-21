@@ -95,7 +95,8 @@
     
     NSLog(@"h = %f", CGRectGetHeight(frame));
     NSLog(@"w = %f", CGRectGetWidth(frame));
-    return titleHeight;
+    
+    return titleHeight + 10;
 }
 + (CGFloat)heightForTopBasicInfoText:(NSString *)text
 {
@@ -128,7 +129,7 @@
         return 0;
     }
     //size
-    CGSize size = CGSizeMake(320, 100);
+    CGSize size = CGSizeMake(320, 200);
     
     //Dictionary
     NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:text];
@@ -144,7 +145,9 @@
     
     NSLog(@"h = %f", CGRectGetHeight(frame));
     NSLog(@"w = %f", CGRectGetWidth(frame));
-    return heightForContentText;
+    
+    
+    return heightForContentText + 20;
 
 }
 + (CGFloat)heightForImages:(PostStatus *)postStatus
@@ -186,9 +189,11 @@
 }
 
 + (CGFloat)getCellHeightWithBBSPost:(PostStatus *)post{
+    post.content = @"我们天都锻炼腿部肌肉哦！！！哈哈哈";
+
     CGFloat titleHeight = [BBSHomeCell heightForTitleText:post.content];
     CGFloat topBasicInfoHeight = [BBSHomeCell heightForTopBasicInfoText:post.content];
-    CGFloat contentHeight = [BBSHomeCell heightForContentText:@"sf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadDDDDDDDDDDDDDDDD"];
+    CGFloat contentHeight = [BBSHomeCell heightForContentText:post.content];
     CGFloat imageHeight = [BBSHomeCell heightForImages:post];
 //    CGFloat videoHeight = [BBSHomeCell heightForVideo:post];
     CGFloat bottomBasicInfoHeight = [BBSHomeCell heightForBottomBasicInfoText:post.content];
@@ -214,12 +219,15 @@
 
 -(void)updateContentWithPostStatus:(PostStatus *)post{
     
+    
+    post.content = @"我们天都锻炼腿部肌肉哦！！！哈哈哈";
+    
     //Title
     [self.titleContent setText:post.content];
     CGFloat y = SPACE_BETWEEN_TITLE_AND_TOP_ELDGE;
     CGFloat titleHeight =[BBSHomeCell heightForTitleText:post.content];
     [self resetView:self.titleContent y:y height:titleHeight];
-    [self.titleContent setBackgroundColor:[UIColor greenColor]];
+//    [self.titleContent setBackgroundColor:[UIColor greenColor]];
 
     
     //Avatar
@@ -237,27 +245,25 @@
     CGFloat name_Height =[BBSHomeCell heightForTopBasicInfoText:post.userName];
     
     [self resetView:self.nickName y:name_y height:name_Height];
-    [self.nickName setBackgroundColor:[UIColor blueColor]];
+//    [self.nickName setBackgroundColor:[UIColor blueColor]];
     
-    [self resetView:self.timestamp y:name_y height:name_Height];
-    [self.gender setBackgroundColor:[UIColor blueColor]];
+    [self resetView:self.gender y:name_y height:name_Height];
+//    [self.gender setBackgroundColor:[UIColor blueColor]];
 
-    [self resetView:self.timestamp y:name_y height:name_Height];
-    [self.fitnessLevel setBackgroundColor:[UIColor blueColor]];
+    [self resetView:self.fitnessLevel y:name_y height:name_Height];
+//    [self.fitnessLevel setBackgroundColor:[UIColor blueColor]];
     
     
     //textConent
-    [self.textContent setText:@"sf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadsasf;asfjdasfjajsd;f;jasjfjasf;asf;as;df;as;f;asfasf;asfadlsfalsfladlsfals;dfladlsfladslfadDDDDDDDDDDDDDDDD"];
+    [self.textContent setText:post.content];
     CGFloat content_y = SPACE_BETWEEN_NAME_AND_TEXTCONTENT + CGRectGetMaxY(self.nickName.frame);
     CGFloat contentHeight =[BBSHomeCell heightForContentText:self.textContent.text];
     [self resetView:self.textContent y:content_y height:contentHeight];
-    [self.textContent setBackgroundColor:[UIColor redColor]];
-    
-    
+//   [self.textContent setBackgroundColor:[UIColor redColor]];
     
     //Image Content
     if (post.imageurl) {
-        [self.imageView setImageWithURL:[NSURL URLWithString:@"http://192.168.1.101/~tomcallon/image1.jpg"]
+        [self.imageView setImageWithURL:[NSURL URLWithString:@"http://192.168.1.106/~tomcallon/image1.jpg"]
                        placeholderImage:[UIImage imageNamed:@"place_holder@2x.png"]
                                 success:^(UIImage *image, BOOL cached)
          {
@@ -299,13 +305,13 @@
     CGFloat time_y = SPACE_BETWEEN_IMAGE_OR_VIDEO_AND_TIMELABEL + CGRectGetMaxY(self.imageView.frame);
     CGFloat time_Height =[BBSHomeCell heightForTopBasicInfoText:post.userName];
     [self resetView:self.timestamp y:time_y height:time_Height];
-    [self.timestamp setBackgroundColor:[UIColor orangeColor]];
+//    [self.timestamp setBackgroundColor:[UIColor orangeColor]];
     
     [self resetView:self.visitTimes y:time_y height:time_Height];
-    [self.visitTimes setBackgroundColor:[UIColor orangeColor]];
+//    [self.visitTimes setBackgroundColor:[UIColor orangeColor]];
     
     [self resetView:self.comments y:time_y height:time_Height];
-    [self.comments setBackgroundColor:[UIColor orangeColor]];
+//    [self.comments setBackgroundColor:[UIColor orangeColor]];
     
 }
 
