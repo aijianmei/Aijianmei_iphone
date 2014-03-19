@@ -29,7 +29,7 @@
         self.detailTextLabel.highlightedTextColor = self.detailTextLabel.textColor;
         
         _mImageView = [[UMUFPImageView alloc] initWithPlaceholderImage:nil];
-        _mImageView.shouldRedrawImageToAdaptImageViewSize = NO;
+//        _mImageView.shouldRedrawImageToAdaptImageViewSize = NO;
 		self.mImageView.frame = CGRectMake(20.0f, 6.0f, 48.0f, 48.0f);
         self.mImageView.layer.borderWidth = 0.8;
         self.mImageView.layer.borderColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:0.5].CGColor;
