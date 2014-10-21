@@ -17,7 +17,6 @@
 #import "NutriViewController.h"
 #import "SupplementViewController.h"
 #import "LifeStytleViewController.h"
-#import "StoreViewController.h"
 #import "MoreViewController.h"
 #import "LifeStytleViewController.h"
 
@@ -68,7 +67,6 @@
 @synthesize supplementViewController =_supplementViewController;
 @synthesize nutriViewController =_nutriViewController;
 @synthesize lifeStytleViewController =_lifeStytleViewController;
-@synthesize storeViewController =_storeViewController;
 @synthesize workOutManagerViewController =_workOutManagerViewController;
 @synthesize myselfViewController =_myselfViewController;
 @synthesize moreViewController =_moreViewController;
@@ -100,7 +98,6 @@
     [_nutriViewController release];
     [_supplementViewController release];
     [_lifeStytleViewController release];
-    [_storeViewController release];
     [_workOutManagerViewController release];
     [_myselfViewController release];
     [_moreViewController release];
@@ -118,7 +115,6 @@
     [self setSupplementViewController:nil];
     [self setNutriViewController:nil];
     [self setLifeStytleViewController:nil];
-    [self setStoreViewController:nil];
     [self setWorkOutManagerViewController:nil];
     [self setMyselfViewController:nil];
     [self setMoreViewController:nil];
@@ -343,23 +339,29 @@
 
 -(void)initStoreViewController{
     
-    if (self.storeViewController ==nil) {
+    if (self.lifeStytleViewController ==nil) {
         
         if ([UIDevice currentDevice].userInterfaceIdiom ==UIUserInterfaceIdiomPhone)
         {
             
-            self.storeViewController =[[StoreViewController alloc] initWithNibName:@"StoreViewController" bundle:nil];
+            self.lifeStytleViewController =[[LifeStytleViewController alloc] initWithNibName:@"LifeStytleViewController" bundle:nil];
+            
+            
+            
             
         }else{
             
-            self.storeViewController =[[StoreViewController alloc] initWithNibName:@"StoreViewController~ipad" bundle:nil];
+            self.lifeStytleViewController =[[LifeStytleViewController alloc] initWithNibName:@"LifeStytleViewController~ipad" bundle:nil];
             
         }
         
         
+        
+        
     }
-    self.storeViewController.title = @"爱健美商城";
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:_storeViewController] ;
+    self.lifeStytleViewController.title = @"生活方式";
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:_lifeStytleViewController] ;
+
 }
 
 
@@ -572,21 +574,10 @@
                     [cell.imageView setImage:[UIImage imageNamed:
                                               @"Manager_Icon.png"]];
                     break;
-//                case 7:
-//                    cell.textLabel.text = @"个人中心";
-//                    [cell.imageView setImage:[ImageManager GobalNavigationAvatarImage]];
-//                    break;
-
                 case 8:
                     cell.textLabel.text = @"更多";
                     [cell.imageView setImage:[UIImage imageNamed:@"More_Icon.png"]];
                     break;
-                    
-//                case 9:
-//                    cell.textLabel.text = @"健身交流圈";
-//                    [cell.imageView setImage:[UIImage imageNamed:@"More_Icon.png"]];
-//                    break;
-
             }
             break;
         }

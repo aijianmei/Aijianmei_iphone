@@ -154,13 +154,15 @@ typedef enum CONTENT_TYPE {
     ///// 设置开始
     SDSegmentedControl *sender =[[SDSegmentedControl alloc]init];
     [_segmentedController setSelectedSegmentIndex:0];
+//    
+//    if ([[UserManager defaultManager]user]) {
+//        
+//        
+//        [self buttonClicked:sender];
+//
+//    }
     
-    if ([[UserManager defaultManager]user]) {
-        
-        
-        [self buttonClicked:sender];
-
-    }
+    
 }
 
 

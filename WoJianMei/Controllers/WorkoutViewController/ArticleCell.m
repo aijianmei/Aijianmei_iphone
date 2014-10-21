@@ -89,34 +89,37 @@
 
 - (void)setCellInfo:(Article *)article
 {
-      //set articles cells
-      [self.titleLabel setText:article.title];
-      [self.descriptionLabel setText:article.brief];
-      [self.imgView setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@"place_holder.png"]];
-    
-    CALayer * layer = [self.imgView layer];
-    layer.borderColor = [[UIColor whiteColor] CGColor];
-    layer.borderWidth = 3.0f;
-    
-    //添加四个边阴影
-    _imgView.layer.shadowColor = [UIColor blackColor].CGColor;
-    _imgView.layer.shadowOffset = CGSizeMake(0, 0);
-    _imgView.layer.shadowOpacity = 0.5;
-    _imgView.layer.shadowRadius = 10.0;
-    
-    //给iamgeview添加阴影 < wbr > 和边框
-    
-    //添加两个边阴影
-    _imgView.layer.shadowColor = [UIColor blackColor].CGColor;
-    _imgView.layer.shadowOffset = CGSizeMake(4, 4);
-    _imgView.layer.shadowOpacity = 0.5;
-    _imgView.layer.shadowRadius = 2.0;
-    
-    
-      [self.commentLabel setText:article.commentCount];
-      [self.releasedTimeLabel setText:article.timestamp];
-    
-      PPDebug(@"%@",article.create_time);
+//      //set articles cells
+//      [self.titleLabel setText:article.title];
+//      [self.descriptionLabel setText:article.brief];
+//    
+//    
+//    [self.imgView sd_setImageWithURL:[NSURL URLWithString:article.img] placeholderImage:[UIImage imageNamed:@"place_holder.png"] options:SDWebImageCacheMemoryOnly];
+//    
+//    
+//    CALayer * layer = [self.imgView layer];
+//    layer.borderColor = [[UIColor whiteColor] CGColor];
+//    layer.borderWidth = 3.0f;
+//    
+//    //添加四个边阴影
+//    _imgView.layer.shadowColor = [UIColor blackColor].CGColor;
+//    _imgView.layer.shadowOffset = CGSizeMake(0, 0);
+//    _imgView.layer.shadowOpacity = 0.5;
+//    _imgView.layer.shadowRadius = 10.0;
+//    
+//    //给iamgeview添加阴影 < wbr > 和边框
+//    
+//    //添加两个边阴影
+//    _imgView.layer.shadowColor = [UIColor blackColor].CGColor;
+//    _imgView.layer.shadowOffset = CGSizeMake(4, 4);
+//    _imgView.layer.shadowOpacity = 0.5;
+//    _imgView.layer.shadowRadius = 2.0;
+//    
+//    
+//      [self.commentLabel setText:article.commentCount];
+//      [self.releasedTimeLabel setText:article.timestamp];
+//    
+//      PPDebug(@"%@",article.create_time);
 }
 
 

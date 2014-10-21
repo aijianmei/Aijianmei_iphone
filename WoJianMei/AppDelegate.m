@@ -469,7 +469,7 @@ NSString* GlobalGetServerURL()
     // Override point for customization after application launch.
     
     
-    [self initNetworkDetector];
+//    [self initNetworkDetector];
 
     BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
     statTracker.enableExceptionLog = YES; // 是否允许截获并发送崩溃信息，请设置YES或者NO
@@ -484,7 +484,7 @@ NSString* GlobalGetServerURL()
     
     //从本地获取用户信息
     //TOTO:根据用户uid登陆获取信息
-    
+ 
     
     NSString *uid =[UserManager loadUserId];
     PPDebug(@"*****OriginalUserId :%@*****",uid);
@@ -497,7 +497,7 @@ NSString* GlobalGetServerURL()
     }
 
     
-    
+
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
@@ -523,6 +523,13 @@ NSString* GlobalGetServerURL()
     
     
     
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:66.0/255.0 green:155.0/255.0 blue:255.0/255.0 alpha:1]];
+    
+
+    
+    
 
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
@@ -530,31 +537,27 @@ NSString* GlobalGetServerURL()
     
 
     
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-	[[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:66.0/255.0 green:155.0/255.0 blue:255.0/255.0 alpha:1]];
+    
+    
+    
+    
+    if (![[UserManager defaultManager] user]) {
+        
+        UIImage *startImage = nil;
+        if ([DeviceDetection isIPhone5]) {
+            startImage = [UIImage imageNamed:@"Default-568h.png"];
+        } else {
+            startImage = [UIImage imageNamed:@"Default.png"];
+        }
+        
+        UIView* splashView = [[UIImageView alloc] initWithImage:startImage];
+        splashView.frame = [self.window bounds];
+        splashView.tag = SPLASH_VIEW_TAG;
+        [self.window addSubview:splashView];
+        [splashView release];
+        [self performSelector:@selector(removeSplashView) withObject:nil afterDelay:2.0f];
 
-    
-    
-    
-    
-    
-//    if (![[UserManager defaultManager] user]) {
-//        
-//        UIImage *startImage = nil;
-//        if ([DeviceDetection isIPhone5]) {
-//            startImage = [UIImage imageNamed:@"Default-568h.png"];
-//        } else {
-//            startImage = [UIImage imageNamed:@"Default.png"];
-//        }
-//        
-//        UIView* splashView = [[UIImageView alloc] initWithImage:startImage];
-//        splashView.frame = [self.window bounds];
-//        splashView.tag = SPLASH_VIEW_TAG;
-//        [self.window addSubview:splashView];
-//        [splashView release];
-//        [self performSelector:@selector(removeSplashView) withObject:nil afterDelay:2.0f];
-//
-//    }
+    }
     
     
    
@@ -587,18 +590,15 @@ NSString* GlobalGetServerURL()
     }
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
-        
     
-//        WelcomeViewController *welcomeVC = [[WelcomeViewController alloc] init];
-//        
-//        [self.window setRootViewController:welcomeVC];
-//        [self showIntroWithCrossDissolve];
+    
+       
+        [self showIntroWithCrossDissolve];
 
         
     }else{
-//         MainViewController *mainVC = [[MainViewController alloc] init];
-//        
-//        [self.window setRootViewController:mainVC];
+        
+        
     }
     
 
@@ -698,11 +698,12 @@ NSString* GlobalGetServerURL()
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
     
-    if ([url.absoluteString hasSuffix:SinaweibossoLogin]) {
-        return [[SinaWeiboManager sharedManager].sinaweibo handleOpenURL:url];
-    } else {
-        return YES;
-    }
+//    if ([url.absoluteString hasSuffix:SinaweibossoLogin]) {
+//        return [[SinaWeiboManager sharedManager].sinaweibo handleOpenURL:url];
+//    } else {
+//        return YES;
+//    }
+    
     if ([url.absoluteString hasPrefix:@"http://weixin.qq.com/"]) {
         
         return [WXApi handleOpenURL:url delegate:self];

@@ -7,7 +7,6 @@
 //
 
 #import "BBSViewController.h"
-#import "PostTopicViewController.h"
 #import "BBSHomeCell.h"
 #import "BBSPostDetailController.h"
 #import "UserManager.h"
@@ -289,10 +288,6 @@
 #pragma mark--
 #pragma mark--ClickPostMethod
 -(void)clickPostButton:(id)sender{
-    
-    PostTopicViewController *vc = [[PostTopicViewController alloc]initWithNibName:@"PostTopicViewController" bundle:nil];
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
 
 }
 

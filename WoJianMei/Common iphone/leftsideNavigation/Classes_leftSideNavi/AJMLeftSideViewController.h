@@ -21,7 +21,6 @@
 @class SupplementViewController;
 @class NutriViewController;
 @class LifeStytleViewController;
-@class StoreViewController;
 @class BBSHomeViewController;
 @class MyselfViewController;
 @class WorkOutManagerViewController;
@@ -44,7 +43,6 @@
     SupplementViewController      *_supplementViewController;
     NutriViewController           *_nutriViewController;
     LifeStytleViewController      *_lifeStytleViewController;
-    StoreViewController           *_storeViewController;
     WorkOutManagerViewController  *_workOutManagerViewController;
     MyselfViewController                *_myselfViewController;
 
@@ -61,7 +59,6 @@
 @property(nonatomic, retain) SupplementViewController         *supplementViewController;
 @property(nonatomic, retain) NutriViewController              *nutriViewController;
 @property(nonatomic, retain) LifeStytleViewController         *lifeStytleViewController;
-@property(nonatomic, retain) StoreViewController              *storeViewController;
 @property(nonatomic, retain) WorkOutManagerViewController     *workOutManagerViewController;
 @property(nonatomic, retain) MyselfViewController     *myselfViewController;
 @property(nonatomic, retain) MoreViewController               *moreViewController;
